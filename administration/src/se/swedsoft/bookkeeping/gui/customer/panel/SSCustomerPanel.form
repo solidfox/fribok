@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.customer.panel.SSCustomerPanel">
+  <grid id="d6612" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="26" y="21" width="556" height="440"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="dad">
+        <constraints>
+          <xy x="4" y="4" width="548" height="381"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+            <preferred-size width="200" height="200"/>
+          </grid>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="e8c7b" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="4">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="customerframe.panel.1"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <hspacer id="217e2">
+                <constraints>
+                  <xy x="438" y="77" width="100" height="11"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                </constraints>
+              </hspacer>
+              <vspacer id="81c03">
+                <constraints>
+                  <xy x="215" y="332" width="11" height="20"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+              <grid id="46ae0" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="1">
+                <margin top="4" left="4" bottom="4" right="4"/>
+                <constraints>
+                  <xy x="4" y="4" width="434" height="158"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="etched"/>
+                <children>
+                  <component id="d92c2" class="javax.swing.JTextField" binding="iCustomerNr">
+                    <constraints>
+                      <xy x="128" y="6" width="120" height="20"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="A-122145"/>
+                    </properties>
+                  </component>
+                  <component id="72ece" class="javax.swing.JTextField" binding="iName">
+                    <constraints>
+                      <xy x="128" y="27" width="300" height="20"/>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="300" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="JFS Bokföring"/>
+                    </properties>
+                  </component>
+                  <component id="a1b62" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="30" width="35" height="14"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.name"/>
+                    </properties>
+                  </component>
+                  <component id="c9ce0" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="9" width="120" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                        <preferred-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.customernr"/>
+                    </properties>
+                  </component>
+                  <component id="5820f" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="135" width="90" height="14"/>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.yourcontact"/>
+                    </properties>
+                  </component>
+                  <component id="408cf" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="114" width="96" height="14"/>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.ourcontact"/>
+                    </properties>
+                  </component>
+                  <component id="106eb" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="93" width="80" height="14"/>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                        <minimum-size width="80" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.vatnr"/>
+                    </properties>
+                  </component>
+                  <component id="25b6e" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="72" width="112" height="14"/>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                        <minimum-size width="80" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.orginisationnumber"/>
+                    </properties>
+                  </component>
+                  <component id="9247e" class="javax.swing.JTextField" binding="iYourContactPerson">
+                    <constraints>
+                      <xy x="128" y="132" width="150" height="20"/>
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="JFS Bokföring"/>
+                    </properties>
+                  </component>
+                  <component id="fef3" class="javax.swing.JTextField" binding="iOurContactPerson">
+                    <constraints>
+                      <xy x="128" y="111" width="150" height="20"/>
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="JFS Bokföring"/>
+                    </properties>
+                  </component>
+                  <component id="49b08" class="javax.swing.JTextField" binding="iVATNumber">
+                    <constraints>
+                      <xy x="128" y="90" width="150" height="20"/>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="999999-9999"/>
+                    </properties>
+                  </component>
+                  <component id="f54ab" class="javax.swing.JTextField" binding="iOrginisationNumber">
+                    <constraints>
+                      <xy x="128" y="69" width="150" height="20"/>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text value="999999-9999"/>
+                    </properties>
+                  </component>
+                  <component id="20027" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="51" width="60" height="14"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                        <minimum-size width="60" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.email"/>
+                    </properties>
+                  </component>
+                  <component id="7b1c5" class="javax.swing.JTextField" binding="iEMail">
+                    <constraints>
+                      <xy x="128" y="48" width="300" height="20"/>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="4" fill="1">
+                        <preferred-size width="300" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <inheritsPopupMenu value="false"/>
+                      <text value="aa@bb.com"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="9a82a" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="1">
+                <margin top="4" left="4" bottom="4" right="4"/>
+                <constraints>
+                  <xy x="4" y="166" width="284" height="74"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0"/>
+                </constraints>
+                <properties/>
+                <border type="etched"/>
+                <children>
+                  <component id="cf116" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="9" width="120" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                        <preferred-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.telefax"/>
+                    </properties>
+                  </component>
+                  <component id="79c7b" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="30" width="44" height="14"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.phone"/>
+                    </properties>
+                  </component>
+                  <component id="3d810" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="51" width="53" height="14"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.phone2"/>
+                    </properties>
+                  </component>
+                  <component id="60815" class="javax.swing.JTextField" binding="iTelefax">
+                    <constraints>
+                      <xy x="128" y="6" width="150" height="20"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <inheritsPopupMenu value="false"/>
+                      <text value="035-18 77 46"/>
+                    </properties>
+                  </component>
+                  <component id="b3ab6" class="javax.swing.JTextField" binding="iPhone">
+                    <constraints>
+                      <xy x="128" y="27" width="150" height="20"/>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <inheritsPopupMenu value="false"/>
+                      <text value="035-18 77 46"/>
+                    </properties>
+                  </component>
+                  <component id="7ef31" class="javax.swing.JTextField" binding="iPhone2">
+                    <constraints>
+                      <xy x="128" y="48" width="150" height="20"/>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <inheritsPopupMenu value="false"/>
+                      <text value="035-18 77 46"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="e5df0" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="244" width="161" height="88"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="12ece" class="javax.swing.JCheckBox" binding="iEuSaleCommodity">
+                    <constraints>
+                      <xy x="0" y="0" width="122" height="22"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.eusalecommodity"/>
+                    </properties>
+                  </component>
+                  <component id="b33cb" class="javax.swing.JCheckBox" binding="iEuSaleYhirdPartCommodity">
+                    <constraints>
+                      <xy x="0" y="22" width="159" height="22"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.eusalethirdpartcommodity"/>
+                    </properties>
+                  </component>
+                  <component id="e857b" class="javax.swing.JCheckBox" binding="iVatFreeSale">
+                    <constraints>
+                      <xy x="0" y="44" width="116" height="22"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="customerframe.vatfreesale"/>
+                    </properties>
+                  </component>
+                  <component id="48fde" class="javax.swing.JCheckBox" binding="iHideUnitPrice">
+                    <constraints>
+                      <xy x="0" y="66" width="161" height="22"/>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Dölj enhetspris på följesedel"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="5fbd9" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="customerframe.panel.2"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <hspacer id="c31eb">
+                <constraints>
+                  <xy x="339" y="96" width="199" height="11"/>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                </constraints>
+              </hspacer>
+              <grid id="3a0a" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="4" width="315" height="195"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="36828" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="1">
+                    <margin top="4" left="4" bottom="4" right="4"/>
+                    <constraints>
+                      <xy x="0" y="0" width="315" height="137"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="3"/>
+                    </constraints>
+                    <properties/>
+                    <border type="etched"/>
+                    <children>
+                      <component id="deb2e" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="9" width="120" height="14"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                            <preferred-size width="120" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.invoicecurrency"/>
+                        </properties>
+                      </component>
+                      <component id="c1983" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iInvoiceCurrency">
+                        <constraints>
+                          <xy x="128" y="6" width="120" height="20"/>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="8" fill="0">
+                            <preferred-size width="120" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="32dcf" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="30" width="84" height="14"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.paymentterm"/>
+                        </properties>
+                      </component>
+                      <component id="155df" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iPaymentTerm">
+                        <constraints>
+                          <xy x="128" y="27" width="120" height="20"/>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="8" fill="0">
+                            <preferred-size width="120" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="51bfb" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="51" width="79" height="14"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.deliveryterm"/>
+                        </properties>
+                      </component>
+                      <component id="914e6" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iDeliveryTerm">
+                        <constraints>
+                          <xy x="128" y="48" width="120" height="20"/>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="8" fill="0">
+                            <preferred-size width="120" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="d672f" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="72" width="71" height="14"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.delivaryway"/>
+                        </properties>
+                      </component>
+                      <component id="e90c8" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iDeliveryWay">
+                        <constraints>
+                          <xy x="128" y="69" width="120" height="20"/>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="8" fill="0">
+                            <preferred-size width="120" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="f1f3e" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="93" width="63" height="14"/>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.creditlimit"/>
+                        </properties>
+                      </component>
+                      <component id="8a16d" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iCreditLimit">
+                        <constraints>
+                          <xy x="128" y="90" width="150" height="20"/>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="8" fill="0">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="2.223.245,50"/>
+                        </properties>
+                      </component>
+                      <component id="ce690" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="114" width="41" height="14"/>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.discount"/>
+                        </properties>
+                      </component>
+                      <component id="a1c2" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iDiscount">
+                        <constraints>
+                          <xy x="128" y="111" width="150" height="20"/>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="8" fill="0">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <inheritsPopupMenu value="false"/>
+                          <text value="25.00"/>
+                        </properties>
+                      </component>
+                      <component id="9a579" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="280" y="114" width="15" height="14"/>
+                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text value="%"/>
+                        </properties>
+                      </component>
+                      <component id="2b7c9" class="javax.swing.JLabel" binding="iCreditLimitCurrency">
+                        <constraints>
+                          <xy x="280" y="93" width="29" height="14"/>
+                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text value="Label"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="2d9bb" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="1">
+                    <margin top="4" left="4" bottom="4" right="4"/>
+                    <constraints>
+                      <xy x="0" y="142" width="284" height="53"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties/>
+                    <border type="etched"/>
+                    <children>
+                      <component id="3acc9" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="9" width="120" height="14"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                            <preferred-size width="120" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.bankaccount"/>
+                        </properties>
+                      </component>
+                      <component id="b82da" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="6" y="30" width="83" height="14"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="customerframe.plusaccount"/>
+                        </properties>
+                      </component>
+                      <component id="12b8f" class="javax.swing.JTextField" binding="iBankAccountNumber">
+                        <constraints>
+                          <xy x="128" y="6" width="150" height="20"/>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="999999-9999"/>
+                        </properties>
+                      </component>
+                      <component id="81b5c" class="javax.swing.JTextField" binding="iPlusAccountNumber">
+                        <constraints>
+                          <xy x="128" y="27" width="150" height="20"/>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <text value="999999-9999"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="4e363" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="204" width="315" height="79"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="etched"/>
+                <children>
+                  <component id="8f2cb" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="2" y="5" width="62" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Kommentar:"/>
+                    </properties>
+                  </component>
+                  <scrollpane id="74917">
+                    <constraints>
+                      <xy x="2" y="27" width="311" height="50"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3">
+                        <preferred-size width="150" height="100"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="c2001" class="javax.swing.JTextPane" binding="iComment">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+              <vspacer id="b6164">
+                <constraints>
+                  <xy x="156" y="283" width="11" height="69"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+            </children>
+          </grid>
+          <grid id="85b55" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="customerframe.panel.3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <hspacer id="d9946">
+                <constraints>
+                  <xy x="518" y="78" width="20" height="11"/>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                </constraints>
+              </hspacer>
+              <vspacer id="ffcf3">
+                <constraints>
+                  <xy x="124" y="191" width="11" height="161"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+              <grid id="c44c6" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="1">
+                <margin top="4" left="4" bottom="4" right="4"/>
+                <constraints>
+                  <xy x="4" y="4" width="252" height="160"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="etched" title=""/>
+                <children>
+                  <component id="49ef8" class="se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel" binding="iInvoiceAddress">
+                    <constraints>
+                      <xy x="10" y="10" width="232" height="140"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <enabled value="true"/>
+                      <title resource-bundle="book" key="customerframe.invoiceadress"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="45b3b" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+                <margin top="4" left="4" bottom="4" right="4"/>
+                <constraints>
+                  <xy x="266" y="4" width="252" height="160"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties>
+                  <enabled value="false"/>
+                </properties>
+                <border type="etched" title=""/>
+                <children>
+                  <component id="be927" class="se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel" binding="iDeliveryAddress">
+                    <constraints>
+                      <xy x="10" y="10" width="232" height="140"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <enabled value="false"/>
+                      <title resource-bundle="book" key="companypanel.deliveryadress"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="3dba4" class="javax.swing.JCheckBox" binding="iUseInvoiceForDelivery">
+                <constraints>
+                  <xy x="266" y="169" width="235" height="22"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                  <selected value="true"/>
+                  <text resource-bundle="book" key="customerframe.useinvoiceasdelivery"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+      <component id="f6118" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="410" width="548" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>

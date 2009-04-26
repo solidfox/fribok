@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.suppliercreditinvoice.dialog.SSSelectSupplierInvoiceDialog">
+  <grid id="86b4a" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="23" y="96" width="409" height="139"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="37ed7" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="2">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="401" height="65"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="837b" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="9" width="193" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="suppliercreditinvoiceframe.newdialog.descrioption"/>
+            </properties>
+          </component>
+          <component id="da1ba" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iInvoices">
+            <constraints>
+              <xy x="6" y="33" width="250" height="20"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="250" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+      <component id="5f52d" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="110" width="401" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>

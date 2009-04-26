@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.accountplans.panel.SSAccountPlanPanel">
+  <grid id="34c61" binding="iPanel" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="4">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="15" y="21" width="582" height="335"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="d6f84" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="306" width="574" height="25"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="1"/>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="e1e5c" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="2">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="574" height="118"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <grid id="f4ac5" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="438" y="6" width="130" height="106"/>
+              <grid row="0" column="3" row-span="5" col-span="1" vsize-policy="7" hsize-policy="3" anchor="5" fill="2"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="c95e4" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iImportFields">
+                <constraints>
+                  <xy x="0" y="0" width="130" height="25"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0">
+                    <preferred-size width="130" height="-1"/>
+                    <maximum-size width="-1" height="28"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <horizontalAlignment value="0"/>
+                  <iconName value="ICON_IMPORT"/>
+                  <text resource-bundle="book" key="accountplanframe.importfield"/>
+                  <toolTipText resource-bundle="book" key="accountplanframe.importfield.tooltip"/>
+                </properties>
+              </component>
+              <vspacer id="c732c">
+                <constraints>
+                  <xy x="59" y="25" width="11" height="56"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+              <component id="f9e8c" class="javax.swing.JButton" binding="iDeleteRowButton">
+                <constraints>
+                  <xy x="0" y="81" width="130" height="25"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0">
+                    <preferred-size width="130" height="-1"/>
+                    <maximum-size width="-1" height="28"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text resource-bundle="book" key="accountplanframe.deleterow"/>
+                  <toolTipText resource-bundle="book" key="voucherpanel.deleterow"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <hspacer id="79e28">
+            <constraints>
+              <xy x="400" y="10" width="38" height="11"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+          <component id="d5579" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="9" width="31" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="accountplanpanel.name"/>
+            </properties>
+          </component>
+          <component id="ec6bf" class="javax.swing.JTextField" binding="iName">
+            <constraints>
+              <xy x="78" y="6" width="318" height="20"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <preferred-size width="300" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="3ae2" class="javax.swing.JLabel" binding="iBaseLabel">
+            <constraints>
+              <xy x="6" y="31" width="58" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="accountplanpanel.base"/>
+            </properties>
+          </component>
+          <component id="925c9" class="javax.swing.JTextField" binding="iBase">
+            <constraints>
+              <xy x="78" y="28" width="318" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <preferred-size width="300" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+            </properties>
+          </component>
+          <component id="4992c" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="53" width="61" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="accountplanpanel.assessementyear"/>
+            </properties>
+          </component>
+          <component id="97c5c" class="javax.swing.JTextField" binding="iAssessementYear">
+            <constraints>
+              <xy x="78" y="50" width="150" height="20"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="ff09b" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="75" width="68" height="14"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="accountplanpanel.type"/>
+            </properties>
+          </component>
+          <component id="cedb" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iType">
+            <constraints>
+              <xy x="78" y="72" width="150" height="20"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <vspacer id="358ec">
+            <constraints>
+              <xy x="231" y="92" width="11" height="20"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+            </constraints>
+          </vspacer>
+        </children>
+      </grid>
+      <scrollpane id="9636c">
+        <constraints>
+          <xy x="4" y="126" width="574" height="156"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="7f332" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iTable">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

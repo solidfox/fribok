@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.print.dialog.SSMainBookDialog">
+  <grid id="4467b" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="28" y="39" width="470" height="222"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="42ec9" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="0">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="462" height="164"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="7e70" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="275" y="81" width="14" height="14"/>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="date.seperator"/>
+            </properties>
+          </component>
+          <component id="3b6b3" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iFromDate">
+            <constraints>
+              <xy x="108" y="98" width="160" height="20"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <dateFormatString resource-bundle="book" key="date.formatstring"/>
+              <focusTraversalPolicyProvider value="false"/>
+            </properties>
+          </component>
+          <component id="5771b" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iToDate">
+            <constraints>
+              <xy x="296" y="98" width="160" height="20"/>
+              <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <dateFormatString resource-bundle="book" key="date.formatstring"/>
+              <enabled value="true"/>
+            </properties>
+          </component>
+          <component id="32646" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="275" y="101" width="14" height="14"/>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="date.seperator"/>
+            </properties>
+          </component>
+          <component id="6367d" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iToAccount">
+            <constraints>
+              <xy x="296" y="78" width="160" height="20"/>
+              <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="429d2" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iFromAccount">
+            <constraints>
+              <xy x="108" y="78" width="160" height="20"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="76be" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="6" width="300" height="28"/>
+              <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="mainbookreport.dialog.description"/>
+            </properties>
+          </component>
+          <component id="ba015" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="81" width="36" height="14"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="mainbookreport.dialog.account"/>
+            </properties>
+          </component>
+          <component id="77647" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="101" width="39" height="14"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="mainbookreport.dialog.date"/>
+            </properties>
+          </component>
+          <component id="68931" class="javax.swing.JCheckBox" binding="iCheckProject">
+            <constraints>
+              <xy x="6" y="34" width="64" height="22"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="mainbookreport.dialog.project"/>
+            </properties>
+          </component>
+          <component id="ebb71" class="javax.swing.JCheckBox" binding="iCheckResultunit">
+            <constraints>
+              <xy x="6" y="56" width="98" height="22"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="mainbookreport.dialog.resultunit"/>
+            </properties>
+          </component>
+          <component id="e327f" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iProject">
+            <constraints>
+              <xy x="108" y="35" width="160" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="5e327" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iResultunit">
+            <constraints>
+              <xy x="108" y="57" width="160" height="20"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+      <component id="b0cbc" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="193" width="462" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Tender" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+    <!--- Declared parameters in the report. -->
+
+    <parameter name="title"      class="java.lang.String"/>
+
+    <parameter name="company.logo"       class="java.awt.Image"/>
+
+    <parameter name="company.name"      class="java.lang.String"/>
+    <parameter name="company.address1"  class="java.lang.String"/>
+    <parameter name="company.address2"  class="java.lang.String"/>
+    <parameter name="company.zipcode"   class="java.lang.String"/>
+    <parameter name="company.city"      class="java.lang.String"/>
+    <parameter name="company.country"   class="java.lang.String"/>
+    <parameter name="company.phone"     class="java.lang.String"/>
+    <parameter name="company.telefax"   class="java.lang.String"/>
+    <parameter name="company.residence" class="java.lang.String"/>
+    <parameter name="company.email"     class="java.lang.String"/>
+    <parameter name="company.homepage"  class="java.lang.String"/>
+
+    <parameter name="company.plusaccount"  class="java.lang.String"/>
+    <parameter name="company.bankaccount"  class="java.lang.String"/>
+
+    <parameter name="company.bic"   class="java.lang.String"/>
+    <parameter name="company.iban"  class="java.lang.String"/>
+    <parameter name="company.bank"  class="java.lang.String"/>
+
+
+    <parameter name="number"    class="java.lang.Integer"/>
+    <parameter name="date"      class="java.lang.String"/>
+    <parameter name="text"      class="java.lang.String"/>
+
+    <parameter name="tender.deliveryadress.name"     class="java.lang.String"/>
+    <parameter name="tender.deliveryadress.address1" class="java.lang.String"/>
+    <parameter name="tender.deliveryadress.address2" class="java.lang.String"/>
+    <parameter name="tender.deliveryadress.zipcode"  class="java.lang.String"/>
+    <parameter name="tender.deliveryadress.city"     class="java.lang.String"/>
+    <parameter name="tender.deliveryadress.country"  class="java.lang.String"/>
+
+    <parameter name="tender.invoiceadress.name"      class="java.lang.String"/>
+    <parameter name="tender.invoiceadress.address1"  class="java.lang.String"/>
+    <parameter name="tender.invoiceadress.address2"  class="java.lang.String"/>
+    <parameter name="tender.invoiceadress.zipcode"   class="java.lang.String"/>
+    <parameter name="tender.invoiceadress.city"      class="java.lang.String"/>
+    <parameter name="tender.invoiceadress.country"  class="java.lang.String"/>
+
+
+
+    <parameter name="tender.ourcontact"                class="java.lang.String"/>
+    <parameter name="tender.deliveryterm"              class="java.lang.String"/>
+    <parameter name="tender.deliveryway"               class="java.lang.String"/>
+    <parameter name="tender.paymentterm"               class="java.lang.String"/>
+    <parameter name="tender.delayinterest"             class="java.lang.String"/>
+    <parameter name="tender.customernr"                class="java.lang.String"/>
+    <parameter name="tender.yourcontact"               class="java.lang.String"/>
+    <parameter name="tender.vatnumber"                 class="java.lang.String"/>
+    <parameter name="tender.currency"                  class="java.lang.String"/>
+    <parameter name="tender.taxrate1"                  class="java.lang.String"/>
+    <parameter name="tender.taxrate2"                  class="java.lang.String"/>
+    <parameter name="tender.taxrate3"                  class="java.lang.String"/>
+
+    <parameter name="tender.hasdiscount"         class="java.lang.Boolean"/>
+
+    <parameter name="tender.netsum"             class="java.math.BigDecimal"/>
+    <parameter name="tender.taxsum1"            class="java.math.BigDecimal"/>
+    <parameter name="tender.taxsum2"            class="java.math.BigDecimal"/>
+    <parameter name="tender.taxsum3"            class="java.math.BigDecimal"/>
+    <parameter name="tender.rounding"           class="java.math.BigDecimal"/>
+    <parameter name="tender.totalsum"           class="java.math.BigDecimal"/>
+
+    <parameter name="subreport.report"      class="net.sf.jasperreports.engine.JasperReport"/>
+    <field     name="subreport.datasource"  class="net.sf.jasperreports.engine.JRDataSource"/>
+
+    <field name="row.number"          class="java.lang.String"/>
+    <field name="row.description"     class="java.lang.String"/>
+    <field name="row.count"           class="java.lang.Integer"/>
+    <field name="row.unit"            class="java.lang.String"/>
+    <field name="row.unitprice"       class="java.math.BigDecimal"/>
+    <field name="row.discount"        class="java.math.BigDecimal"/>
+    <field name="row.sum"             class="java.math.BigDecimal"/>
+
+    <background>
+        <band isSplitAllowed="false" height="842">
+            <frame>
+                <reportElement x="40" y="236" width="510" height="424"/>
+
+                <box border="Thin" borderColor="#000000"/>
+            </frame>
+        </band>
+    </background>
+
+
+    <columnHeader>
+        <band isSplitAllowed="false" height="176">
+
+            <!-- Delivery adress frame -->
+            <frame>
+                <reportElement x="40" y="0" width="250" height="86"/>
+
+                <box border="Thin" borderColor="#000000"/>
+
+                <!-- Adress text -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="5" y="2" width="240" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.deliveryadress}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Name -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="14" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryadress.name}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Address 1 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="28" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryadress.address1}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Address 2 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="42" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryadress.address2}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Zip Code + City -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="56" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryadress.zipcode} + " " + $P{tender.deliveryadress.city}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Country -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="70" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryadress.country}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+            </frame>
+
+            <!-- Invoice adress frame -->
+            <frame>
+                <reportElement x="300" y="0" width="250" height="86"/>
+
+                <box border="Thin" borderColor="#000000"/>
+
+                <!-- Adress text -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="5" y="2" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.invoiceadress}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Name -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="14" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.invoiceadress.name}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Address 1 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="28" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.invoiceadress.address1}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Address 2 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="42" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.invoiceadress.address2}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Zip Code + City -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="56" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.invoiceadress.zipcode} + " " + $P{tender.invoiceadress.city}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Country -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="70" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.invoiceadress.country}]]>
+                    </textFieldExpression>
+                </textField>
+
+            </frame>
+
+            <!-- tender details, Column 1 -->
+            <frame>
+                <reportElement x="45" y="90" width="250" height="76"/>
+
+                <!-- Our contact -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="0" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.ourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="0" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.ourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+                <!-- Deliveryterm -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="15" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.deliveryterm}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="15" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryterm}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Delivery way -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="30" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.deliveryway}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="30" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.deliveryway}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Payment term -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="45" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.paymentterm}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="45" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.paymentterm}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Delay interest -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="60" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.delayinterest}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="60" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.delayinterest} != null ? $P{tender.delayinterest} + "%" : null]]>
+                    </textFieldExpression>
+                </textField>
+
+
+
+            </frame>
+
+            <!-- tender details, Column 2 -->
+            <frame>
+                <reportElement x="305" y="90" width="250" height="76"/>
+
+                <!-- Customer nr -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="0" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.customernr}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="0" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.customernr}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+                <!-- Your contact -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="15" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.yourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="15" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.yourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+
+            </frame>
+
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band isSplitAllowed="true" height="436">
+
+            <!-- Subreport for the rows -->
+            <frame>
+                <reportElement x="40" y="0" width="510" height="411" isPrintWhenDetailOverflows="true"/>
+
+                <box border="Thin" borderColor="#000000"  topBorder="None" />
+
+                <subreport isUsingCache="false">
+                    <reportElement x="0" y="0" width="510" height="411" isPrintWhenDetailOverflows="true"/>
+
+                    <parametersMapExpression>
+                        <![CDATA[$P{REPORT_PARAMETERS_MAP}]]>
+                    </parametersMapExpression>
+
+                    <subreportParameter name="REPORT_RESOURCE_BUNDLE">
+                        <subreportParameterExpression>
+                            <![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]>
+                        </subreportParameterExpression>
+                    </subreportParameter>
+
+                    <dataSourceExpression>
+                        <![CDATA[$F{subreport.datasource}]]>
+                    </dataSourceExpression>
+
+                    <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                        <![CDATA[$P{subreport.report}]]>
+                    </subreportExpression>
+
+
+                </subreport>
+            </frame>
+
+            <!-- Summary fields -->
+            <frame>
+                <reportElement x="40" y="411" width="510" height="25" positionType="Float"/>
+
+                <box border="Thin" borderColor="#000000" topBorder="None" />
+
+
+                <!-- Net sum -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="3" y="1" width="77" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.netsum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="0" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{tender.netsum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <line>
+                    <reportElement x="80" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Tax 1 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="83" y="1" width="77" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.tax}  + " " + $P{tender.taxrate1} + "%"]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="80" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{tender.taxsum1}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <line>
+                    <reportElement x="160" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Tax 2 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="163" y="1" width="77" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.tax}  + " " + $P{tender.taxrate2} + "%"]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="160" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{tender.taxsum2}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <line>
+                    <reportElement x="240" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Tax 3 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="243" y="1" width="77" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.tax}  + " " + $P{tender.taxrate3} + "%"]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="240" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{tender.taxsum3}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <line>
+                    <reportElement x="320" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+
+                <!-- Rounding-->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="323" y="1" width="77" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.rounding}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="320" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{tender.rounding}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <line>
+                    <reportElement x="400" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Total sum-->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="403" y="1" width="77" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{tenderreport.totalsum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="400" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{tender.totalsum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="483" y="10" width="27" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{tender.currency}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+
+            </frame>
+
+
+        </band>
+    </detail>
+
+
+
+</jasperReport>

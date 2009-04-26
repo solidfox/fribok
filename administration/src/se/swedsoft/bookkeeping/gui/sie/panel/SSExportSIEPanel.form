@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.sie.panel.SSExportSIEPanel">
+  <grid id="aaf80" binding="iPanel" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="24" y="34" width="346" height="223"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="e50e3" binding="iSetupPanel" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="0">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <xy x="4" y="29" width="338" height="140"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title-resource-bundle="book" title-key="siepanel.selecttype"/>
+        <children>
+          <component id="30e83" class="javax.swing.JRadioButton" binding="iSIERadio1">
+            <constraints>
+              <xy x="6" y="23" width="109" height="22"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <selected value="true"/>
+              <text resource-bundle="book" key="siepanel.selecttype.1"/>
+            </properties>
+          </component>
+          <component id="ed508" class="javax.swing.JRadioButton" binding="iSIERadio3">
+            <constraints>
+              <xy x="6" y="81" width="125" height="22"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="siepanel.selecttype.3"/>
+            </properties>
+          </component>
+          <component id="b9c3b" class="javax.swing.JRadioButton" binding="iSIERadio4">
+            <constraints>
+              <xy x="6" y="109" width="128" height="22"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="siepanel.selecttype.4"/>
+            </properties>
+          </component>
+          <component id="52138" class="javax.swing.JRadioButton" binding="iSIERadio2">
+            <constraints>
+              <xy x="6" y="52" width="123" height="22"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="siepanel.selecttype.2"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="7cec9" class="javax.swing.JLabel" binding="iCommentLabel">
+        <constraints>
+          <xy x="4" y="7" width="62" height="14"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+        </constraints>
+        <properties>
+          <text resource-bundle="book" key="siepanel.comment"/>
+        </properties>
+      </component>
+      <component id="e4aac" class="javax.swing.JTextField" binding="iComment">
+        <constraints>
+          <xy x="76" y="4" width="250" height="20"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+            <minimum-size width="250" height="-1"/>
+            <preferred-size width="150" height="-1"/>
+            <maximum-size width="250" height="20"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="c6bcd" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="76" y="194" width="266" height="25"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>

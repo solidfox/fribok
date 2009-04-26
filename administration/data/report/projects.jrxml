@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Projects" resourceBundle="book">
+
+
+    <!-- Declared fields in the report. -->
+    <field name="project.number"        class="java.lang.String"/>
+    <field name="project.name"          class="java.lang.String"/>
+    <field name="project.description"   class="java.lang.String"/>
+    <field name="project.concluded"     class="java.lang.String"/>
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+
+            <!-- Column 1 -->
+            <textField>
+                <reportElement x="20" y="0" width="80" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{projectreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="80" y="0" width="220" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{projectreport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="260" y="0" width="400" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{projectreport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="180" y="0" width="80" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{projectreport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="14">
+            <textField>
+                <reportElement x="20" y="0" width="70" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{project.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="80" y="0" width="220" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{project.name}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="260" y="0" width="400" height="14" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{project.description}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="180" y="0" width="80" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{project.concluded}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+
+
+
+</jasperReport>

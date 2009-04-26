@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.voucher.dialogs.SSAddAccountDialog">
+  <grid id="f5eb2" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="34" y="36" width="393" height="244"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="39034" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="215" width="385" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="c7ccc" row-count="7" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="385" height="182"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="a9514" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="9" width="74" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Kontonummer:"/>
+            </properties>
+          </component>
+          <component id="74f8d" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="34" width="62" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Beskrivning:"/>
+            </properties>
+          </component>
+          <component id="a9fc4" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="59" width="52" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Momskod:"/>
+            </properties>
+          </component>
+          <component id="5f0f" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="84" width="49" height="14"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="SRU-kod:"/>
+            </properties>
+          </component>
+          <component id="37c2b" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="109" width="64" height="14"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Rapportkod:"/>
+            </properties>
+          </component>
+          <component id="62a09" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="134" width="71" height="14"/>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Projekt krävs:"/>
+            </properties>
+          </component>
+          <component id="d6975" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="159" width="105" height="14"/>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Resultatenhet krävs:"/>
+            </properties>
+          </component>
+          <component id="5d9b" class="javax.swing.JTextField" binding="iDescription">
+            <constraints>
+              <xy x="121" y="31" width="200" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <minimum-size width="200" height="-1"/>
+                <maximum-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="c7005" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iVatCode">
+            <constraints>
+              <xy x="121" y="56" width="75" height="20"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <minimum-size width="75" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="ee8e3" class="javax.swing.JTextField" binding="iReportCode">
+            <constraints>
+              <xy x="121" y="106" width="50" height="20"/>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <minimum-size width="50" height="-1"/>
+                <maximum-size width="50" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="afde3" class="javax.swing.JCheckBox" binding="iProjectRequired">
+            <constraints>
+              <xy x="121" y="131" width="22" height="20"/>
+              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="d6fec" class="javax.swing.JCheckBox" binding="iResultUnitRequired">
+            <constraints>
+              <xy x="121" y="156" width="22" height="20"/>
+              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="e518b" class="javax.swing.JTextField" binding="iAccountNr">
+            <constraints>
+              <xy x="121" y="6" width="50" height="20"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <minimum-size width="50" height="-1"/>
+                <maximum-size width="50" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="d4247" class="javax.swing.JTextField" binding="iSruCode">
+            <constraints>
+              <xy x="121" y="81" width="50" height="20"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <minimum-size width="50" height="-1"/>
+                <maximum-size width="50" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+      <vspacer id="68085">
+        <constraints>
+          <xy x="191" y="191" width="11" height="24"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>

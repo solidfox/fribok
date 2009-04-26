@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="MultiReport" resourceBundle="book" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+
+    <field name="report.name"       class="java.lang.String"/>
+
+    <field name="report.report"     class="net.sf.jasperreports.engine.JasperReport"/>
+    <field name="report.datasource" class="net.sf.jasperreports.engine.JRDataSource"/>
+    <field name="report.parameters" class="java.util.Map"/>
+    <field name="report.bundle"     class="java.util.ResourceBundle"/>
+
+    <!-- 595  842 -->
+    <detail >
+        <band height="842" isSplitAllowed="true">
+            <subreport>
+                <reportElement x="0" y="0" width="595" height="842" isPrintWhenDetailOverflows="true" backcolor="#FF0000" stretchType="RelativeToBandHeight"/>
+
+
+
+                <parametersMapExpression>
+                    <![CDATA[$F{report.parameters}]]>
+                </parametersMapExpression>
+
+                <subreportParameter name="REPORT_RESOURCE_BUNDLE">
+                    <subreportParameterExpression>
+                        <![CDATA[$F{report.bundle}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <dataSourceExpression>
+                    <![CDATA[$F{report.datasource}]]>
+                </dataSourceExpression>
+                
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[$F{report.report}]]>
+                </subreportExpression>
+            </subreport>
+
+        </band>
+    </detail>
+
+
+</jasperReport>

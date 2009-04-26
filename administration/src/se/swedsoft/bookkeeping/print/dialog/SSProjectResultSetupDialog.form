@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.print.dialog.SSProjectResultSetupDialog">
+  <grid id="cce21" binding="iPanel" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="33" y="33" width="397" height="201"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="13d8d" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="2">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="389" height="50"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="a4fc1" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="4" y="7" width="30" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="report.perioddialog.start"/>
+            </properties>
+          </component>
+          <component id="eb87e" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="207" y="7" width="20" height="14"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="report.perioddialog.end"/>
+            </properties>
+          </component>
+          <component id="b944a" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iTo">
+            <constraints>
+              <xy x="216" y="26" width="160" height="20"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
+                <minimum-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <dateFormatString resource-bundle="book" key="date.formatstring"/>
+              <enabled value="true"/>
+            </properties>
+          </component>
+          <component id="2bf56" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iFrom">
+            <constraints>
+              <xy x="13" y="26" width="160" height="20"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
+                <minimum-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <dateFormatString resource-bundle="book" key="date.formatstring"/>
+              <enabled value="true"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="6473e" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="0">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="54" width="389" height="78"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="1"/>
+        </constraints>
+        <properties/>
+        <border type="etched" title="Visa projekt"/>
+        <children>
+          <component id="5a641" class="javax.swing.JRadioButton" binding="iRadioAll">
+            <constraints>
+              <xy x="10" y="24" width="100" height="22"/>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <selected value="true"/>
+              <text value="Alla oavslutade"/>
+            </properties>
+          </component>
+          <component id="133d4" class="javax.swing.JRadioButton" binding="iRadioSingle">
+            <constraints>
+              <xy x="10" y="46" width="64" height="22"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Endast:"/>
+            </properties>
+          </component>
+          <component id="72a3" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iProjects">
+            <constraints>
+              <xy x="149" y="47" width="160" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="160" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <enabled value="false"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="955ac" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="172" width="389" height="25"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+      </component>
+      <vspacer id="191c5">
+        <constraints>
+          <xy x="193" y="132" width="11" height="40"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>

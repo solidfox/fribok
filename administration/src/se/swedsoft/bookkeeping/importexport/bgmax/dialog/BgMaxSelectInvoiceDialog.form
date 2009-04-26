@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.importexport.bgmax.dialog.BgMaxSelectInvoiceDialog">
+  <grid id="19bd0" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="2">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="28" y="24" width="449" height="551"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <vspacer id="be2f6">
+        <constraints>
+          <xy x="219" y="442" width="11" height="80"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+        </constraints>
+      </vspacer>
+      <component id="c7a51" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="522" width="441" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="1"/>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="61a4d" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="2">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="441" height="436"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="90848" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="6" width="341" height="42"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <inheritsPopupMenu value="true"/>
+              <text resource-bundle="book" key="bgmaximport.selectinvoice.description"/>
+            </properties>
+          </component>
+          <component id="c4e78" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iInvoices">
+            <constraints>
+              <xy x="6" y="410" width="400" height="20"/>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <preferred-size width="400" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <grid id="c2019" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="0">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <xy x="6" y="50" width="429" height="94"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="etched" title-resource-bundle="book" title-key="bgmaximport.selectinvoice.invoicedetails"/>
+            <children>
+              <component id="4e6da" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="24" width="120" height="14"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0">
+                    <minimum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Referensnummer:"/>
+                </properties>
+              </component>
+              <component id="8e06c" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="47" width="40" height="14"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Belopp:"/>
+                </properties>
+              </component>
+              <component id="f41ee" class="se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField" binding="iBelopp">
+                <constraints>
+                  <xy x="132" y="44" width="150" height="20"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="f8356" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="67" width="34" height="14"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Valuta"/>
+                </properties>
+              </component>
+              <component id="44a8b" class="javax.swing.JTextField" binding="iReference">
+                <constraints>
+                  <xy x="132" y="24" width="150" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="1667b" class="javax.swing.JTextField" binding="iCurrency">
+                <constraints>
+                  <xy x="132" y="64" width="150" height="20"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="0">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="eaf7a" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="391" width="59" height="14"/>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Välj faktura"/>
+            </properties>
+          </component>
+          <grid id="49ae8" row-count="6" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="0">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <xy x="6" y="146" width="429" height="154"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="etched" title="Betalaren"/>
+            <children>
+              <component id="bf457" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="27" width="120" height="14"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                    <minimum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <text value="Namn"/>
+                </properties>
+              </component>
+              <component id="81b27" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="47" width="37" height="14"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Adress"/>
+                </properties>
+              </component>
+              <component id="b2314" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="67" width="63" height="14"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Postnummer"/>
+                </properties>
+              </component>
+              <component id="9f62f" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="87" width="20" height="14"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Ort"/>
+                </properties>
+              </component>
+              <component id="d16f2" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="107" width="27" height="14"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Land"/>
+                </properties>
+              </component>
+              <component id="22c3e" class="javax.swing.JTextField" binding="iBetalarensNamn">
+                <constraints>
+                  <xy x="132" y="24" width="287" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="5c29e" class="javax.swing.JTextField" binding="iBetalarensAdress">
+                <constraints>
+                  <xy x="132" y="44" width="287" height="20"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="a9dbb" class="javax.swing.JTextField" binding="iBetalarensPostnummer">
+                <constraints>
+                  <xy x="132" y="64" width="287" height="20"/>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="6b81" class="javax.swing.JTextField" binding="iBetalarensOrt">
+                <constraints>
+                  <xy x="132" y="84" width="287" height="20"/>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="a19a9" class="javax.swing.JTextField" binding="iBetalarensLand">
+                <constraints>
+                  <xy x="132" y="104" width="287" height="20"/>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="4ec8a" class="javax.swing.JTextField" binding="iBetalarensOrganisationsnr">
+                <constraints>
+                  <xy x="132" y="124" width="287" height="20"/>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+              <component id="36ae7" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="10" y="127" width="108" height="14"/>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Organisationsnummer"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="a842a" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="0">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <xy x="6" y="302" width="429" height="84"/>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="etched" title-resource-bundle="book" title-key="bgmaximport.selectinvoice.informationstext"/>
+            <children>
+              <scrollpane id="cf670">
+                <constraints>
+                  <xy x="10" y="24" width="409" height="50"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3">
+                    <minimum-size width="200" height="50"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="9cac4" class="javax.swing.JTextPane" binding="iInformationsText">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

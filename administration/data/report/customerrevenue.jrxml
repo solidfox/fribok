@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="MainBook" resourceBundle="book">
+
+
+    <parameter name="Report"     class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="Parameters" class="java.util.HashMap"/>
+
+
+
+    <!-- Declared fields in the report. -->
+
+    <field name="customer.number"      class="java.lang.String"/>
+    <field name="customer.description" class="java.lang.String"/>
+
+    <field name="month.data"  class="net.sf.jasperreports.engine.JRDataSource"/>
+
+    <columnHeader>
+        <band height="30">
+            <line>
+                <reportElement x="20" y="23" width="510" height="1"/>
+            </line>
+
+            <!-- Column 1 -->
+            <textField>
+                <reportElement x="20" y="0" width="80" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerrevenue.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="100" y="0" width="220" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerrevenue.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="450" y="0" width="80" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerrevenue.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band height="30" isSplitAllowed="true">
+
+            <!-- Title -->
+            <textField>
+                <reportElement x="20" y="0" width="80" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.number}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="0" width="250" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.description}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <subreport isUsingCache="false">
+                <reportElement x="20" y="14" width="555" height="0" isPrintWhenDetailOverflows="true"/>
+
+                 <subreportParameter name="customer.number">
+                    <subreportParameterExpression>
+                        <![CDATA[$F{customer.number}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <dataSourceExpression>
+                    <![CDATA[$F{month.data}]]>
+                </dataSourceExpression>
+
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[$P{Report}]]>
+                </subreportExpression>
+
+
+            </subreport>
+
+
+        </band>
+    </detail>
+
+</jasperReport>

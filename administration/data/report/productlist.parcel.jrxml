@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Projects" resourceBundle="book">
+
+
+    <!-- Declared fields in the report. -->
+    <field name="product.number"        class="java.lang.String"/>
+    <field name="product.description"   class="java.lang.String"/>
+    <field name="product.count"         class="java.lang.Integer"/>
+    <field name="product.unit"          class="java.lang.String"/>
+
+
+    <detail>
+        <band height="14">
+            <textField>
+                <reportElement x="40" y="0" width="70" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="100" y="0" width="220" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.description}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="370" y="0" width="70" height="14" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.count}]]>
+                </textFieldExpression>
+            </textField>                  
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="443" y="0" width="80" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.unit}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+
+
+
+</jasperReport>

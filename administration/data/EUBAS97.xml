@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+
+<accountGroup>
+
+    <result>
+        <group id="1" bundle="accountgroup.1">
+            <group id="1" fromAccount="3000" toAccount="3799" bundle="accountgroup.1.1" />
+            <group id="2" fromAccount="4900" toAccount="4999" bundle="accountgroup.1.2"/>
+            <group id="3" fromAccount="3800" toAccount="3899" bundle="accountgroup.1.3"/>
+            <group id="4" fromAccount="3900" toAccount="3999" bundle="accountgroup.1.4"/>
+        </group>
+
+        <group id="2" bundle="accountgroup.2">
+            <group id="5" fromAccount="4000" toAccount="4899" bundle="accountgroup.2.1"/>
+            <group id="6" fromAccount="5000" toAccount="6999" bundle="accountgroup.2.2"/>
+            <group id="7" fromAccount="7000" toAccount="7699" bundle="accountgroup.2.3"/>
+            <group id="8" fromAccount="7700" toAccount="7899" bundle="accountgroup.2.4"/>
+            <group id="9" fromAccount="7900" toAccount="7999" bundle="accountgroup.2.5"/>
+            <group id="10" fromAccount="8000" toAccount="8699" bundle="accountgroup.2.6"/>
+            <group id="11" fromAccount="8700" toAccount="8799" bundle="accountgroup.2.7"/>
+            <group id="12" fromAccount="8800" toAccount="8899" bundle="accountgroup.2.8"/>
+            <group id="13" fromAccount="8900" toAccount="8999" bundle="accountgroup.2.9"/>
+        </group>
+
+    </result>
+
+    <balance>
+        <group id="1" bundle="accountgroup.3">
+            <group id="1" bundle="accountgroup.3.1">
+                <group id="1" fromAccount="1000" toAccount="1099" bundle="accountgroup.3.1.1"/>
+                <group id="2" fromAccount="1100" toAccount="1299" bundle="accountgroup.3.1.2"/>
+                <group id="3" fromAccount="1300" toAccount="1399" bundle="accountgroup.3.1.3"/>
+            </group>
+            <group id="2" bundle="accountgroup.3.2">
+                <group id="1" fromAccount="1400" toAccount="1499" bundle="accountgroup.3.2.1"/>
+                <group id="2" fromAccount="1500" toAccount="1799" bundle="accountgroup.3.2.2"/>
+                <group id="3" fromAccount="1800" toAccount="1899" bundle="accountgroup.3.2.3"/>
+                <group id="4" fromAccount="1900" toAccount="1999" bundle="accountgroup.3.2.4"/>
+            </group>
+        </group>
+        <group id="2" bundle="accountgroup.4">
+            <group id="1" fromAccount="2000" toAccount="2099" bundle="accountgroup.4.1"/>
+            <group id="2" fromAccount="2100" toAccount="2199" bundle="accountgroup.4.2"/>
+            <group id="3" fromAccount="2200" toAccount="2299" bundle="accountgroup.4.3"/>
+            <group id="4" fromAccount="2300" toAccount="2399" bundle="accountgroup.4.4"/>
+            <group id="5" fromAccount="2400" toAccount="2999" bundle="accountgroup.4.5"/>
+
+        </group>
+    </balance>
+
+
+
+
+</accountGroup>

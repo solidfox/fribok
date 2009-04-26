@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Balance" resourceBundle="book">
+
+
+    <!-- Declared fields in the report. -->
+    <field name="account.number"      class="java.lang.Integer"/>
+    <field name="account.description" class="java.lang.String"/>
+    <field name="account.inBalance"   class="java.math.BigDecimal"/>
+    <field name="account.inSaldo"     class="java.math.BigDecimal"/>
+    <field name="account.change"      class="java.math.BigDecimal"/>
+    <field name="account.outSaldo"    class="java.math.BigDecimal"/>
+
+    <field name="account.group.1"    class="java.lang.Integer"/>
+    <field name="account.group.2"    class="java.lang.Integer"/>
+    <field name="account.group.3"    class="java.lang.Integer"/>
+
+    <field name="group.1.title"    class="java.lang.String"/>
+    <field name="group.2.title"    class="java.lang.String"/>
+    <field name="group.3.title"    class="java.lang.String"/>
+
+    <field name="group.1.sumtitle"    class="java.lang.String"/>
+    <field name="group.2.sumtitle"    class="java.lang.String"/>
+    <field name="group.3.sumtitle"    class="java.lang.String"/>
+
+
+    <!-- group 1 variables -->
+    <variable name="group.1.inBalance" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.1">
+        <variableExpression>$F{account.inBalance}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.1.inSaldo" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.1">
+        <variableExpression>$F{account.inSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.1.change" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.1">
+        <variableExpression>$F{account.change}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.1.outSaldo" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.1">
+        <variableExpression>$F{account.outSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <!-- group 2 variables -->
+    <variable name="group.2.inBalance" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.2">
+        <variableExpression>$F{account.inBalance}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.2.inSaldo" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.2">
+        <variableExpression>$F{account.inSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.2.change" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.2">
+        <variableExpression>$F{account.change}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.2.outSaldo" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.2">
+        <variableExpression>$F{account.outSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+
+    <!-- group 3 variables -->
+    <variable name="group.3.inBalance" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.3">
+        <variableExpression>$F{account.inBalance}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.3.inSaldo" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.3">
+        <variableExpression>$F{account.inSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.3.change" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.3">
+        <variableExpression>$F{account.change}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="group.3.outSaldo" class="java.math.BigDecimal" resetType="Group" calculation="Sum" resetGroup="group.3">
+        <variableExpression>$F{account.outSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <!-- summary 3 variables -->
+    <variable name="summary.inBalance" class="java.math.BigDecimal" resetType="Report" calculation="Sum" >
+        <variableExpression>$F{account.inBalance}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="summary.inSaldo" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+        <variableExpression>$F{account.inSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="summary.change" class="java.math.BigDecimal" resetType="Report" calculation="Sum" >
+        <variableExpression>$F{account.change}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+    <variable name="summary.outSaldo" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+        <variableExpression>$F{account.outSaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0)</initialValueExpression>
+    </variable>
+
+
+    <!-- Group the data by level one group number. -->
+    <group name="group.1" minHeightToStartNewPage="50">
+        <groupExpression>
+            <![CDATA[$F{account.group.1}]]>
+        </groupExpression>
+
+        <groupHeader>
+            <band height="25">
+                <textField>
+                    <reportElement x="20" y="4" width="400" height="16">
+                    </reportElement>
+                    <textElement>
+                        <font size="12" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$F{group.1.title}]]>
+                    </textFieldExpression>
+                </textField>
+
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="20">
+
+                <rectangle>
+                    <reportElement x="20" y="0" width="510" height="2" backcolor="#000000"/>
+                    <graphicElement pen="None" fill="Solid"/>
+                </rectangle>
+
+                <!-- Sum title -->
+                <textField >
+                    <reportElement x="20" y="2" width="270" height="16"/>
+                    <textElement>
+                        <font size="8" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String">
+                        <![CDATA[$F{group.1.sumtitle}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- sums -->
+                <textField pattern="#,##0.00">
+                    <reportElement x="250" y="2" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.1.inBalance}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="320" y="2" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.1.inSaldo}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="390" y="2" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.1.change}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="460" y="2" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.1.outSaldo}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+            </band>
+        </groupFooter>
+    </group>
+
+
+    <!-- Group the data by level two group number. -->
+    <group name="group.2" minHeightToStartNewPage="50">
+        <groupExpression>
+            <![CDATA[$F{account.group.2}]]>
+        </groupExpression>
+
+        <groupHeader>
+            <band height="15">
+                <textField>
+                    <reportElement x="30" y="0" width="380" height="14">
+                    </reportElement>
+                    <textElement>
+                        <font size="10" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$F{group.2.title}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="15">
+                <line>
+                    <reportElement x="40" y="0" width="490" height="1"/>
+                </line>
+
+                <!-- Sum title -->
+                <textField>
+                    <reportElement x="40" y="1" width="250" height="12"/>
+                    <textElement>
+                        <font size="8" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String">
+                        <![CDATA[$F{group.2.sumtitle}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- sums -->
+                <textField pattern="#,##0.00">
+                    <reportElement x="250" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.2.inBalance}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="320" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.2.inSaldo}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="390" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.2.change}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="460" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.2.outSaldo}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+            </band>
+        </groupFooter>
+    </group>
+
+    <!-- Group the data by level three group number. -->
+    <group name="group.3" minHeightToStartNewPage="50">
+        <groupExpression>
+            <![CDATA[$F{account.group.3}]]>
+        </groupExpression>
+
+        <groupHeader>
+            <band height="12">
+                <printWhenExpression>
+                    <![CDATA[new Boolean($F{account.group.3}.intValue() != -1)]]>
+                </printWhenExpression>
+
+                <textField>
+                    <reportElement x="40" y="0" width="360" height="12"/>
+                    <textElement>
+                        <font size="8" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$F{group.3.title}]]>
+                    </textFieldExpression>
+                </textField>
+
+            </band>
+        </groupHeader>
+        <groupFooter>
+            <band height="20">
+                <printWhenExpression>
+                    <![CDATA[new Boolean($F{account.group.3}.intValue() != -1)]]>
+                </printWhenExpression>
+
+                <line>
+                    <reportElement x="50" y="0" width="480" height="1"/>
+                </line>
+
+                <!-- Sum title -->
+                <textField>
+                    <reportElement x="50" y="1" width="250" height="12"/>
+                    <textElement>
+                        <font size="8" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression class="java.lang.String">
+                        <![CDATA[$F{group.3.sumtitle}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- sums -->
+                <textField pattern="#,##0.00">
+                    <reportElement x="250" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.3.inBalance}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="320" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.3.inSaldo}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="390" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.3.change}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00">
+                    <reportElement x="460" y="1" width="70" height="11" />
+                    <textElement textAlignment="Right">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{group.3.outSaldo}]]>
+                    </textFieldExpression>
+                </textField>
+
+            </band>
+        </groupFooter>
+    </group>
+
+
+
+
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+
+            <!-- Column 1 -->
+            <textField>
+                <reportElement x="50" y="0" width="80" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="100" y="0" width="220" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="250" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="320" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="390" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="460" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.column.6}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </columnHeader>
+
+
+
+
+    <detail>
+        <band height="11">
+            <textField>
+                <reportElement x="50" y="0" width="70" height="11" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{account.number}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="100" y="0" width="220" height="11" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{account.description}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField pattern="#,##0.00">
+                <reportElement x="250" y="0" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{account.inBalance}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="320" y="0" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{account.inSaldo}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="390" y="0" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{account.change}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="460" y="0" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{account.outSaldo}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+
+    <summary>
+        <band height="20">
+
+            <rectangle>
+                <reportElement x="20" y="0" width="510" height="2" backcolor="#000000"/>
+                <graphicElement pen="None" fill="Solid"/>
+            </rectangle>
+
+            <!-- Sum title -->
+            <textField >
+                <reportElement x="20" y="2" width="270" height="16"/>
+                <textElement>
+                    <font size="10" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{balancereport.summary.title}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- sums -->
+            <textField pattern="#,##0.00">
+                <reportElement x="250" y="2" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{summary.inBalance}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="320" y="2" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{summary.inSaldo}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="390" y="2" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{summary.change}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00">
+                <reportElement x="460" y="2" width="70" height="11" />
+                <textElement textAlignment="Right">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{summary.outSaldo}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+
+</jasperReport>

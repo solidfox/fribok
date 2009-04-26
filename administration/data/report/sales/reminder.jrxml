@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Invoice">
+    <!--- Declared parameters in the report. -->
+
+    <parameter name="title"      class="java.lang.String"/>
+
+    <parameter name="company.logo"          class="java.awt.Image"/>
+    <parameter name="company.name"          class="java.lang.String"/>
+    <parameter name="company.address1"      class="java.lang.String"/>
+    <parameter name="company.address2"      class="java.lang.String"/>
+    <parameter name="company.zipcode"       class="java.lang.String"/>
+    <parameter name="company.city"          class="java.lang.String"/>
+    <parameter name="company.country"       class="java.lang.String"/>
+    <parameter name="company.phone"         class="java.lang.String"/>
+    <parameter name="company.telefax"       class="java.lang.String"/>
+    <parameter name="company.residence"     class="java.lang.String"/>
+    <parameter name="company.email"         class="java.lang.String"/>
+    <parameter name="company.homepage"      class="java.lang.String"/>
+    <parameter name="company.reminderfee"   class="java.math.BigDecimal"/>
+    <parameter name="company.delayinterest" class="java.math.BigDecimal"/>
+    <parameter name="company.plusaccount"   class="java.lang.String"/>
+    <parameter name="company.bankaccount"   class="java.lang.String"/>
+    <parameter name="company.bic"           class="java.lang.String"/>
+    <parameter name="company.iban"          class="java.lang.String"/>
+    <parameter name="company.bank"          class="java.lang.String"/>
+
+
+    <parameter name="number"    class="java.lang.Integer"/>
+    <parameter name="date"      class="java.lang.String"/>
+    <parameter name="text"      class="java.lang.String"/>
+
+    <parameter name="customer.invoiceadress.name"      class="java.lang.String"/>
+    <parameter name="customer.invoiceadress.address1"  class="java.lang.String"/>
+    <parameter name="customer.invoiceadress.address2"  class="java.lang.String"/>
+    <parameter name="customer.invoiceadress.zipcode"   class="java.lang.String"/>
+    <parameter name="customer.invoiceadress.city"      class="java.lang.String"/>
+    <parameter name="customer.invoiceadress.country"  class="java.lang.String"/>
+
+    <parameter name="customer.customernr"       class="java.lang.String"/>
+    <parameter name="customer.currency"         class="java.lang.String"/>
+    <parameter name="customer.yourcontact"      class="java.lang.String"/>
+    <parameter name="customer.ourcontact"       class="java.lang.String"/>
+
+
+    <parameter name="reminder.reminderfee"       class="java.math.BigDecimal"/>
+
+
+
+    <parameter name="subreport.report"         class="net.sf.jasperreports.engine.JasperReport"/>
+    <field     name="subreport.datasource"     class="net.sf.jasperreports.engine.JRDataSource"/>
+
+
+    <variable name="delayfee.sum" class="java.math.BigDecimal" calculation="System" resetType="Report">
+        <initialValueExpression>
+            <![CDATA[new BigDecimal(0.0)]]>
+        </initialValueExpression>
+    </variable>
+
+    <variable name="saldo.sum" class="java.math.BigDecimal" calculation="System" resetType="Report">
+        <initialValueExpression>
+            <![CDATA[new BigDecimal(0.0)]]>
+        </initialValueExpression>
+    </variable>
+
+    <columnHeader>
+        <band isSplitAllowed="false" height="128">
+
+
+            <!-- invoice adress frame -->
+            <frame>
+                <reportElement x="300" y="0" width="250" height="86"/>
+
+                <box border="Thin" borderColor="#000000"/>
+
+                <!-- Adress text -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="5" y="2" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="8"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{reminderreport.invoiceadress}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Name -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="14" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.invoiceadress.name}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Address 1 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="28" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.invoiceadress.address1}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Address 2 -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="42" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.invoiceadress.address2}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Zip Code + City -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="56" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.invoiceadress.zipcode} + " " + $P{customer.invoiceadress.city}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <!-- Country -->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="10" y="70" width="240" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.invoiceadress.country}]]>
+                    </textFieldExpression>
+                </textField>
+
+            </frame>
+
+            <!-- Invoice details, Column 1 -->
+            <frame>
+                <reportElement x="45" y="90" width="250" height="30"/>
+
+                <!-- Our contact -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="0" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{customer.ourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="0" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.ourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+                <!-- Remainderfee -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="15" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{company.reminderfee}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true"  pattern="#,##0.00">
+                    <reportElement x="100" y="15" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$P{company.reminderfee}]]>
+                    </textFieldExpression>
+                </textField>
+            </frame>
+
+
+            <!-- Invoice details, Column 2 -->
+            <frame>
+                <reportElement x="305" y="90" width="250" height="30"/>
+
+                <!-- Customer nr -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="0" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{customer.customernr}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="0" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.customernr}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+                <!-- Your contact -->
+                <textField isBlankWhenNull="false">
+                    <reportElement x="0" y="15" width="100" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{customer.yourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true">
+                    <reportElement x="100" y="15" width="150" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="8" />
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.yourcontact}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+
+            </frame>
+
+
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band isSplitAllowed="true" height="484">
+
+            <!-- Subreport for the rows 385-->
+            <frame>
+                <reportElement x="40" y="0" width="510" height="459" isPrintWhenDetailOverflows="true"/>
+
+                <box border="Thin" borderColor="#000000"  topBorder="None" />
+
+                <subreport isUsingCache="false">
+                    <reportElement x="0" y="0" width="510" height="459" isPrintWhenDetailOverflows="true"/>
+
+                    <parametersMapExpression>
+                        <![CDATA[$P{REPORT_PARAMETERS_MAP}]]>
+                    </parametersMapExpression>
+
+                    <subreportParameter name="REPORT_RESOURCE_BUNDLE">
+                        <subreportParameterExpression>
+                            <![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]>
+                        </subreportParameterExpression>
+                    </subreportParameter>
+
+                    <dataSourceExpression>
+                        <![CDATA[$F{subreport.datasource}]]>
+                    </dataSourceExpression>
+
+                    <returnValue subreportVariable="delayfee.sum"  toVariable="delayfee.sum"/>
+                    <returnValue subreportVariable="saldo.sum"     toVariable="saldo.sum"/>
+
+                    <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                        <![CDATA[$P{subreport.report}]]>
+                    </subreportExpression>
+
+
+                </subreport>
+            </frame>
+
+            <!-- Summary fields -->
+            <frame>
+                <reportElement x="40" y="459" width="510" height="25" positionType="Float"/>
+
+                <box border="Thin" borderColor="#000000" topBorder="None" />
+
+                <line>
+                    <reportElement x="160" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Remiderfee-->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="163" y="1" width="177" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{reminderreport.totalreminderfee}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField isBlankWhenNull="true" pattern="#,##0.00" >
+                    <reportElement x="160" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                         <![CDATA[$P{reminder.reminderfee}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+                <line>
+                    <reportElement x="240" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Rounding-->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="243" y="1" width="177" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{reminderreport.delayfee}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true" evaluationTime="Report">
+                    <reportElement x="240" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{delayfee.sum} == null ? new BigDecimal(0.0): $V{delayfee.sum}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+
+                <line>
+                    <reportElement x="320" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Rounding-->
+                <textField isBlankWhenNull="true">
+                    <reportElement x="323" y="1" width="177" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{reminderreport.saldosum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true" evaluationTime="Report">
+                    <reportElement x="320" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{saldo.sum} == null ? new BigDecimal(0.0): $V{saldo.sum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <line>
+                    <reportElement x="400" y="0" width="1" height="25"/>
+                    <graphicElement pen="Thin"/>
+                </line>
+
+                <!-- Total sum-->
+                <textField isBlankWhenNull="true" evaluationTime="Report">
+                    <reportElement x="403" y="1" width="80" height="12"/>
+                    <textElement textAlignment="Left">
+                        <font size="7" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$R{reminderreport.totalsum}]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true"  evaluationTime="Report">
+                    <reportElement x="400" y="10" width="77" height="14"/>
+                    <textElement textAlignment="Right">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression class="java.math.BigDecimal">
+                        <![CDATA[$V{delayfee.sum}.add($V{saldo.sum}).add($P{reminder.reminderfee})]]>
+                    </textFieldExpression>
+                </textField>
+
+                <textField pattern="#,##0.00" isBlankWhenNull="true">
+                    <reportElement x="483" y="10" width="27" height="14"/>
+                    <textElement textAlignment="Left">
+                        <font size="10"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$P{customer.currency}]]>
+                    </textFieldExpression>
+                </textField>
+
+
+            </frame>
+
+
+        </band>
+    </detail>
+
+
+
+</jasperReport>

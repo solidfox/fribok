@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install4j version="4.0.6" transformSequenceNumber="1">
+  <directoryPresets config="./Media" />
+  <application name="JFS Fakturering${compiler:DEMOVERSION}" distributionSourceDir="" applicationId="8935-7796-7698-3696" mediaDir="./Media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="9" lzmaCompression="true" pack200Compression="false" excludeSignedFromPacking="true" keepModificationTimes="true" shortName="JFSFakt" publisher="JFS Bokföring" publisherWeb="http://www.jfsbokforing.se/" version="1.0.5" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false">
+    <languages skipLanguageSelection="false">
+      <principalLanguage id="sv" customLocalizationFile="" />
+      <additionalLanguages />
+    </languages>
+    <searchSequence>
+      <registry />
+      <envVar name="JAVA_HOME" />
+      <envVar name="JDK_HOME" />
+    </searchSequence>
+    <variables>
+      <variable name="DEMOVERSION" value="" />
+    </variables>
+  </application>
+  <files>
+    <roots />
+    <mountPoints>
+      <mountPoint id="4" root="" location="data" mode="755" />
+      <mountPoint id="5" root="" location="graphic" mode="755" />
+      <mountPoint id="6" root="" location="db" mode="755" />
+      <mountPoint id="10845" root="" location="db/lib" mode="755" />
+      <mountPoint id="10846" root="" location="db/data" mode="755" />
+      <mountPoint id="7" root="" location="lib" mode="755" />
+      <mountPoint id="69" root="" location="accountplans" mode="755" />
+      <mountPoint id="11456" root="" location="pdftoemail" mode="755" />
+      <mountPoint id="20" root="" location="" mode="755" />
+    </mountPoints>
+    <entries>
+      <dirEntry mountPoint="4" file="../Project/dist/data" overwrite="1" shared="false" mode="644" uninstallMode="2" excludeSuffixes="" dirMode="755">
+        <exclude>
+          <entry location="report/compiled" launcher="false" />
+        </exclude>
+      </dirEntry>
+      <dirEntry mountPoint="5" file="../Project/dist/graphic" overwrite="1" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <dirEntry mountPoint="10845" file="../Project/dist/db/lib" overwrite="1" shared="false" mode="644" uninstallMode="2" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <dirEntry mountPoint="10846" file="../Project/dist/db/data" overwrite="1" shared="false" mode="644" uninstallMode="2" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <fileEntry mountPoint="6" file="../Project/dist/db/JFSDB.backup" overwrite="0" shared="false" mode="644" uninstallMode="1" />
+      <fileEntry mountPoint="6" file="../Project/dist/db/JFSDB.data" overwrite="0" shared="false" mode="644" uninstallMode="1" />
+      <fileEntry mountPoint="6" file="../Project/dist/db/JFSDB.properties" overwrite="0" shared="false" mode="644" uninstallMode="1" />
+      <fileEntry mountPoint="6" file="../Project/dist/db/JFSDB.script" overwrite="0" shared="false" mode="644" uninstallMode="1" />
+      <fileEntry mountPoint="6" file="../Project/dist/db/Server.jar" overwrite="1" shared="false" mode="644" uninstallMode="2" />
+      <dirEntry mountPoint="7" file="../Project/dist/lib" overwrite="1" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <dirEntry mountPoint="69" file="./Accountplans" overwrite="3" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude />
+      </dirEntry>
+      <fileEntry mountPoint="20" file="../Project/dist/JFS.jar" overwrite="1" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="20" file="./IDAutomationOCRb.ttf" overwrite="1" shared="false" mode="644" uninstallMode="2" />
+      <fileEntry mountPoint="20" file="../Project/dist/database.config" overwrite="1" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="20" file="./IDAutomationOCRa.ttf" overwrite="1" shared="false" mode="644" uninstallMode="2" />
+    </entries>
+    <components>
+      <component name="Programfiler" id="11" displayDescription="false" selected="true" mandatory="true" downloadable="false">
+        <description />
+        <include all="false">
+          <entry location="data" launcher="false" />
+          <entry location="graphic" launcher="false" />
+          <entry location="db" launcher="false" />
+          <entry location="lib" launcher="false" />
+          <entry location="pdftoemail" launcher="false" />
+          <entry location="JFS.jar" launcher="false" />
+          <entry location="IDAutomationOCRb.ttf" launcher="false" />
+          <entry location="database.config" launcher="false" />
+          <entry location="IDAutomationOCRa.ttf" launcher="false" />
+          <entry location="Info.plist" launcher="false" />
+          <entry location="JFS Fakturering" launcher="true" />
+          <entry location="JFSFakturering" launcher="true" />
+        </include>
+        <dependencies />
+      </component>
+      <component name="Baskontoplaner" id="34" displayDescription="false" selected="false" mandatory="false" downloadable="false">
+        <description />
+        <include all="false">
+          <entry location="accountplans" launcher="false" />
+        </include>
+        <dependencies />
+      </component>
+      <component name="Server" id="10731" displayDescription="false" selected="true" mandatory="false" downloadable="false">
+        <description />
+        <include all="false">
+          <entry location="server" launcher="false" />
+        </include>
+        <dependencies />
+      </component>
+    </components>
+  </files>
+  <launchers>
+    <launcher name="JFS Fakturering" id="8" external="false" excludeFromMenu="false" menuName="" icnsFile="./JFSLogo.icns" pngIcon16File="./Icon16.png" pngIcon32File="./Icon32.png" macServiceDependencies="" swtApp="false">
+      <executable name="JFS Fakturering" type="1" iconSet="true" iconFile="" executableDir="" redirectStderr="true" stderrFile="error.log" redirectStdout="true" stdoutFile="output.log" failOnStderrOutput="false" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker">
+        <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" />
+      </executable>
+      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="800" height="600" bitmapFile="../Project/dist/graphic/Background.gif">
+        <text>
+          <statusLine x="20" y="20" text="" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+          <versionLine x="20" y="40" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+        </text>
+      </splashScreen>
+      <java mainClass="se.swedsoft.bookkeeping.SSBookkeeping" vmParameters="" arguments="" allowVMPassthroughParameters="true" preferredVM="">
+        <classPath>
+          <scanDirectory location="lib" failOnError="false" />
+          <scanDirectory location="data" failOnError="false" />
+          <scanDirectory location="graphic" failOnError="false" />
+          <archive location="JFS.jar" failOnError="false" />
+        </classPath>
+        <nativeLibraryDirectories />
+      </java>
+      <includedFiles />
+      <unextractableFiles />
+      <customScript mode="1" file="">
+        <scriptLines />
+      </customScript>
+    </launcher>
+    <launcher name="JFSFakturering" id="10691" external="false" excludeFromMenu="false" menuName="" icnsFile="./JFSLogo.icns" pngIcon16File="./Icon16.png" pngIcon32File="./Icon32.png" macServiceDependencies="" swtApp="false">
+      <executable name="JFSFakturering" type="1" iconSet="true" iconFile="" executableDir="" redirectStderr="true" stderrFile="error.log" redirectStdout="true" stdoutFile="output.log" failOnStderrOutput="false" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker">
+        <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" />
+      </executable>
+      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="800" height="600" bitmapFile="../Project/dist/graphic/Background.gif">
+        <text>
+          <statusLine x="20" y="20" text="" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+          <versionLine x="20" y="40" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+        </text>
+      </splashScreen>
+      <java mainClass="se.swedsoft.bookkeeping.SSBookkeeping" vmParameters="" arguments="" allowVMPassthroughParameters="true" preferredVM="">
+        <classPath>
+          <scanDirectory location="lib" failOnError="false" />
+          <scanDirectory location="data" failOnError="false" />
+          <scanDirectory location="graphic" failOnError="false" />
+          <archive location="JFS.jar" failOnError="false" />
+        </classPath>
+        <nativeLibraryDirectories />
+      </java>
+      <includedFiles />
+      <unextractableFiles />
+      <customScript mode="1" file="">
+        <scriptLines />
+      </customScript>
+    </launcher>
+    <launcher name="server" id="10779" external="false" excludeFromMenu="false" menuName="" icnsFile="./JFSLogo.icns" pngIcon16File="./Icon16.png" pngIcon32File="./Icon32.png" macServiceDependencies="" swtApp="false">
+      <executable name="JFSServer" type="1" iconSet="true" iconFile="" executableDir="db" redirectStderr="true" stderrFile="server_error.log" redirectStdout="true" stdoutFile="server_output.log" failOnStderrOutput="false" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker">
+        <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" />
+      </executable>
+      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="800" height="600" bitmapFile="../Project/dist/graphic/Background.gif">
+        <text>
+          <statusLine x="20" y="20" text="" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+          <versionLine x="20" y="40" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+        </text>
+      </splashScreen>
+      <java mainClass="se.swedsoft.SSServer" vmParameters="" arguments="" allowVMPassthroughParameters="true" preferredVM="">
+        <classPath>
+          <scanDirectory location="db/lib" failOnError="false" />
+          <scanDirectory location="db/data" failOnError="false" />
+          <archive location="db/Server.jar" failOnError="false" />
+        </classPath>
+        <nativeLibraryDirectories />
+      </java>
+      <includedFiles />
+      <unextractableFiles />
+      <customScript mode="1" file="">
+        <scriptLines />
+      </customScript>
+    </launcher>
+  </launchers>
+  <installerGui installerType="1" suggestPreviousProgramGroup="true" addOnAppId="" suggestPreviousLocations="true" allowUnattended="true" allowConsole="true" useCustomInstallerHeaderImage="false" customInstallerHeaderImage="" useCustomUninstallerHeaderImage="false" customUninstallerHeaderImage="" customSize="false" customWidth="500" customHeight="390" useCustomIcon="false" customIcnsFile="" customPngIcon16File="" customPngIcon32File="" customIcoFile="" vmParameters="" watermark="true" resizable="true" suppressProgressDialog="false">
+    <customCode useInstalledFiles="false">
+      <archive location="./Plugins/Plugins.jar" />
+    </customCode>
+    <installerScreens>
+      <screen name="" id="102" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.WelcomeScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="103" beanClass="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.InstallationDirectoryScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="105" beanClass="com.install4j.runtime.beans.screens.StandardProgramGroupScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.StandardProgramGroupScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="3443" beanClass="com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.AdditionalConfirmationsScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions>
+          <action name="" id="3451" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.control.RunScriptAction">
+                  <void property="script">
+                    <object class="com.install4j.api.beans.ScriptProperty">
+                      <void property="value">
+                        <string>InstallationComponentSetup iComponent =  context.getInstallationComponentById("34");
+
+System.out.println(iComponent);
+
+iComponent.setSelected(true);
+
+return true;</string>
+                      </void>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getBooleanVariable("installBaseplansAction")</condition>
+          </action>
+        </actions>
+        <formComponents>
+          <formComponent name="" id="3450" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
+                  <void property="checkboxText">
+                    <string>Installera baskontoplaner</string>
+                  </void>
+                  <void property="initiallySelected">
+                    <boolean>true</boolean>
+                  </void>
+                  <void property="variableName">
+                    <string>installBaseplansAction</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+        </formComponents>
+      </screen>
+      <screen name="" id="106" beanClass="com.install4j.runtime.beans.screens.InstallationScreen" rollbackBarrier="true" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.InstallationScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions>
+          <action name="Remove compiled directory" id="2902" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.DeleteFileAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>data/report/compiled</string>
+                    </object>
+                  </void>
+                  <void property="recurse">
+                    <boolean>true</boolean>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="107" beanClass="com.install4j.runtime.beans.actions.UninstallPreviousAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.UninstallPreviousAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="108" beanClass="com.install4j.runtime.beans.actions.InstallFilesAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.InstallFilesAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="Install IDAutomationOCRa" id="488" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.CopyFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>jre/lib/fonts/IDAutomationOCRa.ttf</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>IDAutomationOCRa.ttf</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="Install IDAutomationOCRb" id="489" beanClass="com.install4j.runtime.beans.actions.files.CopyFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.CopyFileAction">
+                  <void property="destinationFile">
+                    <object class="java.io.File">
+                      <string>jre/lib/fonts/IDAutomationOCRb.ttf</string>
+                    </object>
+                  </void>
+                  <void property="overwriteMode">
+                    <object class="com.install4j.api.context.OverwriteMode" field="ALWAYS" />
+                  </void>
+                  <void property="sourceFile">
+                    <object class="java.io.File">
+                      <string>IDAutomationOCRb.ttf</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="109" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
+                  <void property="programGroupName">
+                    <string>${compiler:sys.fullName}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="110" beanClass="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction">
+                  <void property="itemName">
+                    <string>${compiler:sys.fullName} ${compiler:sys.version}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="12150" beanClass="com.install4j.runtime.beans.actions.control.SetVariableAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.control.SetVariableAction">
+                  <void property="script">
+                    <object class="com.install4j.api.beans.ScriptProperty">
+                      <void property="value">
+                        <string>"-Xmx" + Math.min(1400, Math.round(SystemInfo.getPhysicalMemory() * 0.5 / 1024/ 1024)) + "m"</string>
+                      </void>
+                    </object>
+                  </void>
+                  <void property="variableName">
+                    <string>xmx</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="9187" beanClass="com.install4j.runtime.beans.actions.misc.AddVmOptionsAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.misc.AddVmOptionsAction">
+                  <void property="launcherId">
+                    <string>8</string>
+                  </void>
+                  <void property="vmOptions">
+                    <array class="java.lang.String" length="1">
+                      <void index="0">
+                        <string>${installer:xmx}</string>
+                      </void>
+                    </array>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="10702" beanClass="com.install4j.runtime.beans.actions.misc.AddVmOptionsAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.misc.AddVmOptionsAction">
+                  <void property="launcherId">
+                    <string>10691</string>
+                  </void>
+                  <void property="vmOptions">
+                    <array class="java.lang.String" length="1">
+                      <void index="0">
+                        <string>${installer:xmx}</string>
+                      </void>
+                    </array>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="12151" beanClass="com.install4j.runtime.beans.actions.misc.AddVmOptionsAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.misc.AddVmOptionsAction">
+                  <void property="launcherId">
+                    <string>10779</string>
+                  </void>
+                  <void property="vmOptions">
+                    <array class="java.lang.String" length="1">
+                      <void index="0">
+                        <string>${installer:xmx}</string>
+                      </void>
+                    </array>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="12178" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.DeleteFileAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>Info.plist</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+        </actions>
+        <formComponents />
+      </screen>
+      <screen name="" id="111" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.FinishedScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions>
+          <action name="" id="124" beanClass="RegisterProductAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="RegisterProductAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="1564" beanClass="com.install4j.runtime.beans.actions.finish.ExecuteLauncherAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.finish.ExecuteLauncherAction">
+                  <void property="launcherId">
+                    <string>8</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getBooleanVariable("executeLauncherAction") &amp;&amp; (!context.isUnattended())</condition>
+          </action>
+          <action name="" id="10824" beanClass="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>JFS Fakturering</string>
+                    </object>
+                  </void>
+                  <void property="name">
+                    <string>${compiler:sys.fullName}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getBooleanVariable("createDesktopLinkAction")</condition>
+          </action>
+          <action name="" id="12124" beanClass="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.desktop.CreateDesktopLinkAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>JFSFakturering</string>
+                    </object>
+                  </void>
+                  <void property="name">
+                    <string>${compiler:sys.fullName}</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>context.getBooleanVariable("createDesktopLinkAction")</condition>
+          </action>
+        </actions>
+        <formComponents>
+          <formComponent name="Add a desktop link" id="10825" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
+                  <void property="checkboxText">
+                    <string>${i18n:CreateDesktopIcon}</string>
+                  </void>
+                  <void property="initiallySelected">
+                    <boolean>true</boolean>
+                  </void>
+                  <void property="variableName">
+                    <string>createDesktopLinkAction</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+          <formComponent name="Execute launcher" id="1565" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
+                  <void property="checkboxText">
+                    <string>${i18n:RunEntryExec("${compiler:sys.fullName}")}</string>
+                  </void>
+                  <void property="initiallySelected">
+                    <boolean>true</boolean>
+                  </void>
+                  <void property="variableName">
+                    <string>executeLauncherAction</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <initScript />
+          </formComponent>
+        </formComponents>
+      </screen>
+    </installerScreens>
+    <uninstallerScreens>
+      <screen name="" id="112" beanClass="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="113" beanClass="com.install4j.runtime.beans.screens.UninstallationScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallationScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions>
+          <action name="Delete IDAutomationOCRa" id="840" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.DeleteFileAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>jre/lib/fonts/IDAutomationOCRa.ttf</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="Delete IDAutomationOCRb" id="839" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.DeleteFileAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>jre/lib/fonts/IDAutomationOCRb.ttf</string>
+                    </object>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="Remove compiled directory" id="2621" beanClass="com.install4j.runtime.beans.actions.files.DeleteFileAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.files.DeleteFileAction">
+                  <void property="file">
+                    <object class="java.io.File">
+                      <string>data/report/compiled</string>
+                    </object>
+                  </void>
+                  <void property="recurse">
+                    <boolean>true</boolean>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="114" beanClass="com.install4j.runtime.beans.actions.UninstallFilesAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.actions.UninstallFilesAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+          <action name="" id="126" beanClass="RemoveFilesUninstallAction" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="RemoveFilesUninstallAction" />
+              </java>
+            </serializedBean>
+            <condition />
+          </action>
+        </actions>
+        <formComponents />
+      </screen>
+      <screen name="" id="115" beanClass="com.install4j.runtime.beans.screens.UninstallFailureScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallFailureScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+      <screen name="" id="116" beanClass="com.install4j.runtime.beans.screens.UninstallSuccessScreen" rollbackBarrier="false" backButton="2" finishScreen="true">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.UninstallSuccessScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </uninstallerScreens>
+    <installerStartup>
+      <screen name="" id="15" beanClass="com.install4j.runtime.beans.screens.StartupScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.StartupScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </installerStartup>
+    <uninstallerStartup>
+      <screen name="" id="16" beanClass="com.install4j.runtime.beans.screens.StartupScreen" rollbackBarrier="false" backButton="2" finishScreen="false">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.screens.StartupScreen" />
+          </java>
+        </serializedBean>
+        <condition />
+        <validation />
+        <actions />
+        <formComponents />
+      </screen>
+    </uninstallerStartup>
+  </installerGui>
+  <mediaSets>
+    <win32 name="Windows" id="1" mediaFileName="" installDir="JFS Fakturering" overridePrincipalLanguage="true" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_03" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+      <excludedLaunchers>
+        <launcher id="10691" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude>
+        <entry location="Info.plist" launcher="false" />
+      </exclude>
+      <variables />
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </win32>
+    <win32 name="Windows 64" id="853" mediaFileName="${compiler:sys.shortName}_${compiler:sys.platform}64_${compiler:sys.version}" installDir="JFS Fakturering" overridePrincipalLanguage="true" requires64bit="true" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_03" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+      <excludedLaunchers>
+        <launcher id="10691" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude>
+        <entry location="Info.plist" launcher="false" />
+      </exclude>
+      <variables />
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </win32>
+    <macosFolder name="Mac OS X" id="91" mediaFileName="" installDir="JFSFakturering" overridePrincipalLanguage="true" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers>
+        <launcher id="10691" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude />
+      <variables />
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </macosFolder>
+    <unixInstaller name="Unix/Linux" id="27" mediaFileName="" installDir="JFSFakt" overridePrincipalLanguage="true" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="linux-x86-1.6.0_03" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers>
+        <launcher id="8" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude>
+        <entry location="Info.plist" launcher="false" />
+      </exclude>
+      <variables />
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+      <installerScript mode="1" file="">
+        <scriptLines />
+      </installerScript>
+    </unixInstaller>
+    <win32 name="Windows - Demo" id="78" mediaFileName="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}_Demo" installDir="JFS Fakturering Demo" overridePrincipalLanguage="true" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_03" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+      <excludedLaunchers>
+        <launcher id="10691" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude>
+        <entry location="Info.plist" launcher="false" />
+      </exclude>
+      <variables>
+        <variable name="DEMOVERSION" value=" - Demo" />
+      </variables>
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </win32>
+    <win32 name="Windows 64 - Demo" id="9184" mediaFileName="${compiler:sys.shortName}_${compiler:sys.platform}64_${compiler:sys.version}_Demo" installDir="JFS Fakturering Demo" overridePrincipalLanguage="true" requires64bit="true" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_03" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+      <excludedLaunchers>
+        <launcher id="10691" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude>
+        <entry location="Info.plist" launcher="false" />
+      </exclude>
+      <variables>
+        <variable name="DEMOVERSION" value=" - Demo" />
+      </variables>
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </win32>
+    <macosFolder name="Mac OS X - Demo" id="93" mediaFileName="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}_Demo" installDir="JFSFaktureringDemo" overridePrincipalLanguage="true" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers>
+        <launcher id="10691" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude />
+      <variables>
+        <variable name="DEMOVERSION" value=" - Demo" />
+      </variables>
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+    </macosFolder>
+    <unixInstaller name="Unix/Linux - Demo" id="84" mediaFileName="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}_Demo" installDir="JFSFakt_Demo" overridePrincipalLanguage="true" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="linux-x86-1.6.0_03" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers>
+        <launcher id="8" />
+      </excludedLaunchers>
+      <excludedComponents />
+      <overriddenPrincipalLanguage id="sv" customLocalizationFile="" />
+      <exclude>
+        <entry location="Info.plist" launcher="false" />
+      </exclude>
+      <variables>
+        <variable name="DEMOVERSION" value=" - Demo" />
+      </variables>
+      <excludedInstallerScreens />
+      <excludedUninstallerScreens />
+      <installerScript mode="1" file="">
+        <scriptLines />
+      </installerScript>
+    </unixInstaller>
+  </mediaSets>
+  <buildIds buildAll="false" />
+</install4j>
+

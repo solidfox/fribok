@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.ownreport.panel.SSOwnReportPanel">
+  <grid id="95cdf" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="8" y="7" width="541" height="279"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties>
+      <focusTraversalPolicyProvider value="false"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="70447" binding="iTabbedPane">
+        <constraints>
+          <xy x="0" y="89" width="541" height="160"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3">
+            <preferred-size width="200" height="200"/>
+          </grid>
+        </constraints>
+        <properties>
+          <focusTraversalPolicyProvider value="true"/>
+          <inheritsPopupMenu value="true"/>
+          <tabPlacement value="1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="1d994" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="ownreportpanel.tab1"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <scrollpane id="56386">
+                <constraints>
+                  <xy x="4" y="29" width="527" height="102"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="33efe" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iHeadingTable">
+                    <constraints/>
+                    <properties>
+                      <enabled value="true"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="245d6" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iAddRowButton">
+                <constraints>
+                  <xy x="498" y="8" width="33" height="11"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0"/>
+                </constraints>
+                <properties>
+                  <iconName value="ICON_BOTTOM16"/>
+                  <toolTipText value="Lägg till rad ovanför markerad"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="8db91" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="ownreportpanel.tab2"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <requestFocusEnabled value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <scrollpane id="86c62">
+                <constraints>
+                  <xy x="4" y="29" width="527" height="102"/>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="61fb2" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iAccountTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="a9af7" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iHeadingComboBox">
+                <constraints>
+                  <xy x="52" y="4" width="250" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                    <minimum-size width="250" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties/>
+              </component>
+              <component id="71be4" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="4" y="7" width="38" height="14"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Rubrik:"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="ccb30" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="ownreportpanel.tab4"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <scrollpane id="37d4d">
+                <constraints>
+                  <xy x="4" y="29" width="527" height="102"/>
+                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="682d2" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iMonthlyTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="475ad" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iAccountComboBox">
+                <constraints>
+                  <xy x="50" y="4" width="75" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                    <minimum-size width="75" height="-1"/>
+                    <maximum-size width="75" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <enabled value="true"/>
+                </properties>
+              </component>
+              <component id="7222b" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="4" y="7" width="36" height="14"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Konto:"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+      <component id="7b7e4" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="339" y="254" width="202" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="4" fill="0"/>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="3b448" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="5" left="5" bottom="5" right="0"/>
+        <constraints>
+          <xy x="0" y="0" width="541" height="84"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="a8e7a" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="7" y="10" width="35" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="ownreportpanel.name"/>
+            </properties>
+          </component>
+          <component id="a7ecc" class="javax.swing.JTextField" binding="iName">
+            <constraints>
+              <xy x="93" y="7" width="200" height="20"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <minimum-size width="200" height="-1"/>
+                <preferred-size width="150" height="-1"/>
+                <maximum-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="79c6a" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="7" y="35" width="42" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Projekt:"/>
+            </properties>
+          </component>
+          <component id="2e6db" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="7" y="60" width="76" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Resultatenhet:"/>
+            </properties>
+          </component>
+          <component id="1e5a6" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iProjectComboBox">
+            <constraints>
+              <xy x="93" y="32" width="75" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <minimum-size width="75" height="-1"/>
+                <maximum-size width="75" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="8136d" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iResultUnitComboBox">
+            <constraints>
+              <xy x="93" y="57" width="75" height="20"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <minimum-size width="75" height="-1"/>
+                <maximum-size width="75" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="SupplierCreditInvoiceList" resourceBundle="book">
+
+    <parameter name="Report"     class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="Parameters" class="java.util.HashMap"/>
+
+
+    <!-- Declared fields in the report. -->
+
+    <field name="suppliercreditinvoice.number"       class="java.lang.Integer"/>
+    <field name="suppliercreditinvoice.suppliernr"   class="java.lang.String"/>
+    <field name="suppliercreditinvoice.suppliername" class="java.lang.String"/>
+    <field name="suppliercreditinvoice.date"         class="java.lang.String"/>
+    <field name="suppliercreditinvoice.currency"     class="java.lang.String"/>
+
+    <field name="suppliercreditinvoice.sum"          class="java.math.BigDecimal"/>
+    <field name="suppliercreditinvoice.tax"          class="java.math.BigDecimal"/>
+
+    <field name="invoice.totalsum"          class="java.math.BigDecimal"/>
+    <field name="invoice.totaltax"          class="java.math.BigDecimal"/>
+
+    <field name="suppliercreditinvoice.rows"  class="net.sf.jasperreports.engine.JRDataSource"/>
+
+    <!-- The sum. -->
+    <variable name="sum" class="java.math.BigDecimal"  resetType="Report" calculation="Sum">
+        <variableExpression>
+            <![CDATA[$F{invoice.totalsum}]]>
+        </variableExpression>
+        <initialValueExpression>
+            <![CDATA[new BigDecimal(0.0)]]>
+        </initialValueExpression>
+    </variable>
+
+    <!-- The sum. -->
+    <variable name="taxsum" class="java.math.BigDecimal"  resetType="Report" calculation="Sum">
+        <variableExpression>
+            <![CDATA[$F{invoice.totaltax}]]>
+        </variableExpression>
+        <initialValueExpression>
+            <![CDATA[new BigDecimal(0.0)]]>
+        </initialValueExpression>
+    </variable>
+
+    <columnHeader>
+        <band height="30">
+            <line>
+                <reportElement x="20" y="23" width="510" height="1"/>
+            </line>
+
+            <!-- Faktura nr -->
+            <textField>
+                <reportElement x="20" y="0" width="80" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{suppliercreditinvoicelistreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="80" y="0" width="70" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{suppliercreditinvoicelistreport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="140" y="0" width="80" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{suppliercreditinvoicelistreport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <textField>
+                <reportElement x="320" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{suppliercreditinvoicelistreport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="380" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{suppliercreditinvoicelistreport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="480" y="0" width="50" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{suppliercreditinvoicelistreport.column.6}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band height="30" isSplitAllowed="true">
+
+
+            <!-- Title -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="20" y="0" width="30" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{suppliercreditinvoice.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Customer nr -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="80" y="0" width="200" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{suppliercreditinvoice.suppliernr}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Customer name -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="140" y="0" width="200" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{suppliercreditinvoice.suppliername}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Currency -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="380" y="0" width="70" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{suppliercreditinvoice.currency}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Date -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="470" y="0" width="60" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{suppliercreditinvoice.date}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Order rows -->
+            <subreport isUsingCache="false">
+                <reportElement x="20" y="12" width="555" height="0" isPrintWhenDetailOverflows="true"/>
+
+                <subreportParameter name="suppliercreditinvoice.number">
+                    <subreportParameterExpression>
+                        <![CDATA[$F{suppliercreditinvoice.number}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <subreportParameter name="suppliercreditinvoice.sum">
+                    <subreportParameterExpression>
+                        <![CDATA[$F{suppliercreditinvoice.sum}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <subreportParameter name="suppliercreditinvoice.tax">
+                    <subreportParameterExpression>
+                        <![CDATA[$F{suppliercreditinvoice.tax}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <dataSourceExpression>
+                    <![CDATA[$F{suppliercreditinvoice.rows}]]>
+                </dataSourceExpression>
+
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[$P{Report}]]>
+                </subreportExpression>
+
+
+            </subreport>
+
+
+        </band>
+    </detail>
+
+    <summary>
+        <band height="30">
+            <rectangle>
+                <reportElement x="20" y="0" width="510" height="2" backcolor="#000000"/>
+                <graphicElement pen="None" fill="Solid"/>
+            </rectangle>
+
+            <textField>
+                <reportElement x="20" y="2" width="250" height="14"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{inpaymentlistreport.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Total sum-->
+            <textField pattern="#,##0.00" isBlankWhenNull="true">
+                <reportElement x="450" y="2" width="80" height="14"/>
+
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{sum}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="20" y="14" width="250" height="14"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{invoicelistreport.totaltaxsum}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Total tax sum-->
+            <textField pattern="#,##0.00" isBlankWhenNull="true">
+                <reportElement x="450" y="14" width="80" height="14"/>
+
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{taxsum}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </summary>
+
+</jasperReport>

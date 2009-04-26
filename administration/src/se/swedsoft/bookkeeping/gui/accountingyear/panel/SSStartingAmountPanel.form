@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.accountingyear.panel.SSStartingAmountPanel">
+  <grid id="cd27b" binding="iPanel" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="0">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="24" y="23" width="419" height="330"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="670ea">
+        <constraints>
+          <xy x="0" y="0" width="419" height="310"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="da485" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iTable">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <grid id="454" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <xy x="0" y="310" width="419" height="20"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <hspacer id="f032a">
+            <constraints>
+              <xy x="0" y="4" width="109" height="11"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+          <component id="270a1" class="se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField" binding="iSumField">
+            <constraints>
+              <xy x="279" y="0" width="120" height="20"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0">
+                <minimum-size width="120" height="-1"/>
+                <maximum-size width="-1" height="20"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+            </properties>
+          </component>
+          <component id="242a6" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="109" y="3" width="170" height="14"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="startingammountpanel.sumlabel"/>
+            </properties>
+          </component>
+          <xy id="38af6" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="401" y="0" width="16" height="20"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+                <minimum-size width="16" height="-1"/>
+                <maximum-size width="16" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </xy>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

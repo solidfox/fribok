@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageTax">
+  <grid id="b96c0" binding="iPanel" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="65" y="272" width="334" height="121"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <hspacer id="4f2fb">
+        <constraints>
+          <xy x="310" y="36" width="20" height="11"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="41b83">
+        <constraints>
+          <xy x="151" y="80" width="11" height="37"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+        </constraints>
+      </vspacer>
+      <grid id="9849d" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="2">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="306" height="76"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="e8d5a" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="9" width="70" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                <preferred-size width="70" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="companyframe.taxrate1"/>
+            </properties>
+          </component>
+          <component id="3f5f8" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="31" width="57" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="companyframe.taxrate2"/>
+            </properties>
+          </component>
+          <component id="1308a" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="53" width="57" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="companyframe.taxrate3"/>
+            </properties>
+          </component>
+          <component id="8eb00" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iTaxRate1">
+            <constraints>
+              <xy x="78" y="6" width="200" height="20"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0">
+                <preferred-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="6fd9a" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="280" y="9" width="15" height="14"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="%"/>
+            </properties>
+          </component>
+          <component id="5bb07" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="280" y="31" width="15" height="14"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="%"/>
+            </properties>
+          </component>
+          <component id="e5070" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="280" y="53" width="15" height="14"/>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="%"/>
+            </properties>
+          </component>
+          <component id="a1f00" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iTaxRate2">
+            <constraints>
+              <xy x="78" y="28" width="200" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0">
+                <preferred-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="199f7" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iTaxRate3">
+            <constraints>
+              <xy x="78" y="50" width="200" height="20"/>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="8" fill="0">
+                <preferred-size width="200" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.voucher.panel.SSVoucherPanel">
+  <grid id="2808e" binding="iPanel" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="14" y="14" width="713" height="242"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="828e5">
+        <constraints>
+          <xy x="4" y="96" width="705" height="55"/>
+          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+        </constraints>
+        <properties>
+          <verticalScrollBarPolicy value="22"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="df634" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iTable">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="4690f" class="javax.swing.JCheckBox" binding="iStoreAsTemplate">
+        <constraints>
+          <xy x="4" y="66" width="147" height="22"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0"/>
+        </constraints>
+        <properties>
+          <selected value="false"/>
+          <text resource-bundle="book" key="voucherpanel.storeastemplate"/>
+        </properties>
+      </component>
+      <grid id="e22fd" row-count="2" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="705" height="57"/>
+          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="28c49" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="9" width="80" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                <minimum-size width="80" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="voucherpanel.number"/>
+            </properties>
+          </component>
+          <component id="e901f" class="javax.swing.JFormattedTextField" binding="iNumber">
+            <constraints>
+              <xy x="96" y="6" width="80" height="20"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1">
+                <preferred-size width="80" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="true"/>
+              <focusable value="false"/>
+            </properties>
+          </component>
+          <component id="9b15f" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="34" width="80" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                <minimum-size width="80" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="voucherpanel.description"/>
+            </properties>
+          </component>
+          <component id="842f6" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iDescription">
+            <constraints>
+              <xy x="96" y="31" width="603" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="8" fill="1"/>
+            </constraints>
+            <properties/>
+          </component>
+          <hspacer id="a1a29">
+            <constraints>
+              <xy x="186" y="10" width="314" height="11"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+          <component id="8f858" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="500" y="9" width="39" height="14"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="voucherpanel.date"/>
+            </properties>
+          </component>
+          <component id="f1de" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iDate">
+            <constraints>
+              <xy x="549" y="6" width="150" height="20"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0">
+                <minimum-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <dateFormatString resource-bundle="book" key="date.formatstring"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="e5a64" class="javax.swing.JButton" binding="iDeleteRowButton">
+        <constraints>
+          <xy x="618" y="66" width="91" height="25"/>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1">
+            <preferred-size width="80" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text resource-bundle="book" key="voucherpanel.deleterow"/>
+          <toolTipText resource-bundle="book" key="voucherpanel.deleterow"/>
+        </properties>
+      </component>
+      <component id="88e90" class="javax.swing.JButton" binding="iMarkRowButton">
+        <constraints>
+          <xy x="503" y="66" width="105" height="25"/>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1">
+            <preferred-size width="80" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text resource-bundle="book" key="voucherpanel.markrow"/>
+          <toolTipText resource-bundle="book" key="voucherpanel.markrow"/>
+        </properties>
+      </component>
+      <grid id="d13b1" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="156" width="705" height="52"/>
+          <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <grid id="83239" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="6" y="6" width="200" height="40"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="1" anchor="0" fill="3"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="e09c3" class="se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField" binding="iDebetSum">
+                <constraints>
+                  <xy x="0" y="0" width="100" height="20"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
+                    <minimum-size width="100" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                  <text value="0,00"/>
+                </properties>
+              </component>
+              <component id="67c29" class="se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField" binding="iCreditSum">
+                <constraints>
+                  <xy x="100" y="0" width="100" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
+                    <minimum-size width="100" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                  <text value="0,00"/>
+                </properties>
+              </component>
+              <component id="a9940" class="se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField" binding="iDifference">
+                <constraints>
+                  <xy x="100" y="20" width="100" height="20"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
+                    <minimum-size width="100" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                  <text value="0,00"/>
+                </properties>
+              </component>
+              <component id="9757" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="0" y="23" width="80" height="14"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0">
+                    <minimum-size width="80" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <inheritsPopupMenu value="true"/>
+                  <text resource-bundle="book" key="voucherpanel.difference"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <hspacer id="26846">
+            <constraints>
+              <xy x="322" y="20" width="233" height="11"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+          <grid id="a7130" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="555" y="6" width="144" height="40"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="5171e" class="javax.swing.JLabel">
+                <constraints>
+                  <xy x="0" y="0" width="34" height="14"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0"/>
+                </constraints>
+                <properties>
+                  <text value="Saldo:"/>
+                </properties>
+              </component>
+              <component id="34907" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iSaldo">
+                <constraints>
+                  <xy x="44" y="0" width="100" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="9" fill="0">
+                    <preferred-size width="100" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="f7464" class="javax.swing.JLabel" binding="iErrorLabel">
+            <constraints>
+              <xy x="236" y="6" width="76" height="14"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0"/>
+            </constraints>
+            <properties>
+              <text value="Felmeddelande"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="902de" row-count="1" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <xy x="4" y="213" width="705" height="25"/>
+          <grid row="4" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="2" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="67dca" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iOkButton">
+            <constraints>
+              <xy x="495" y="0" width="100" height="25"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0">
+                <minimum-size width="100" height="-1"/>
+                <maximum-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="button.register"/>
+            </properties>
+          </component>
+          <component id="b82a" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iCancelButton">
+            <constraints>
+              <xy x="605" y="0" width="100" height="25"/>
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0">
+                <minimum-size width="100" height="-1"/>
+                <maximum-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="button.cancel"/>
+            </properties>
+          </component>
+          <component id="ba3a6" class="javax.swing.JCheckBox" binding="iReopenDialog">
+            <constraints>
+              <xy x="0" y="1" width="207" height="22"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="voucherframe.reopendialog"/>
+            </properties>
+          </component>
+          <component id="727a7" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iAddAccountButton">
+            <constraints>
+              <xy x="237" y="0" width="120" height="25"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                <minimum-size width="120" height="-1"/>
+                <maximum-size width="120" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="Lägg till konto"/>
+            </properties>
+          </component>
+          <hspacer id="a396">
+            <constraints>
+              <xy x="367" y="7" width="128" height="11"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+        </children>
+      </grid>
+      <hspacer id="814ff">
+        <constraints>
+          <xy x="161" y="73" width="342" height="11"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+        </constraints>
+      </hspacer>
+    </children>
+  </grid>
+</form>

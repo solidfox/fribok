@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.project.panel.SSProjectPanel">
+  <grid id="342b9" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="31" y="30" width="404" height="266"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="cc281" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="1">
+        <margin top="4" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="4" width="396" height="204"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="etched"/>
+        <children>
+          <component id="65263" class="javax.swing.JFormattedTextField" binding="iNumber">
+            <constraints>
+              <xy x="72" y="6" width="80" height="20"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <preferred-size width="150" height="-1"/>
+                <maximum-size width="80" height="20"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="17e23" class="javax.swing.JTextField" binding="iName">
+            <constraints>
+              <xy x="72" y="27" width="318" height="20"/>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                <preferred-size width="150" height="-1"/>
+                <maximum-size width="-1" height="20"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <scrollpane id="13d25">
+            <constraints>
+              <xy x="72" y="48" width="318" height="127"/>
+              <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3">
+                <minimum-size width="300" height="120"/>
+              </grid>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="1be45" class="javax.swing.JTextArea" binding="iDescription">
+                <constraints/>
+                <properties>
+                  <lineWrap value="true"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
+          <component id="a98d" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="30" width="35" height="14"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="projectpanel.name"/>
+            </properties>
+          </component>
+          <component id="eb9b1" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="9" width="47" height="14"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+            </constraints>
+            <properties>
+              <focusTraversalPolicyProvider value="true"/>
+              <text resource-bundle="book" key="projectpanel.number"/>
+            </properties>
+          </component>
+          <component id="548" class="javax.swing.JLabel">
+            <constraints>
+              <xy x="6" y="48" width="62" height="14"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0"/>
+            </constraints>
+            <properties>
+              <inheritsPopupMenu value="false"/>
+              <text resource-bundle="book" key="projectpanel.description"/>
+              <verticalAlignment value="0"/>
+              <verticalTextPosition value="0"/>
+            </properties>
+          </component>
+          <grid id="1af8e" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <xy x="72" y="176" width="298" height="22"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="a0117" class="javax.swing.JCheckBox" binding="iConcluded">
+                <constraints>
+                  <xy x="0" y="0" width="70" height="22"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="8" fill="0"/>
+                </constraints>
+                <properties>
+                  <text resource-bundle="book" key="projectpanel.concluded"/>
+                </properties>
+              </component>
+              <component id="3508e" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iConcludedDate">
+                <constraints>
+                  <xy x="74" y="1" width="160" height="20"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                    <minimum-size width="160" height="-1"/>
+                    <maximum-size width="-1" height="20"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <dateFormatString resource-bundle="book" key="date.formatstring"/>
+                  <enabled value="false"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="bea47" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="4" bottom="4" right="4"/>
+        <constraints>
+          <xy x="4" y="233" width="396" height="29"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <hspacer id="f6ed5">
+            <constraints>
+              <xy x="4" y="7" width="178" height="11"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+            </constraints>
+          </hspacer>
+          <component id="b6844" class="javax.swing.JButton" binding="iCancelButton">
+            <constraints>
+              <xy x="292" y="0" width="100" height="25"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="okcancelpanel.cancelbutton"/>
+            </properties>
+          </component>
+          <component id="8024e" class="javax.swing.JButton" binding="iOkButton">
+            <constraints>
+              <xy x="182" y="0" width="100" height="25"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1">
+                <preferred-size width="100" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text resource-bundle="book" key="okcancelpanel.okbutton"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

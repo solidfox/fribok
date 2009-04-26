@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="StockAccount" resourceBundle="book">
+
+
+    <!-- Declared fields in the report. -->
+    <field name="product.number"        class="java.lang.String"/>
+    <field name="product.description"   class="java.lang.String"/>
+    <field name="product.orderpoint"    class="java.lang.Integer"/>
+    <field name="product.ordercount"    class="java.lang.Integer"/>
+    <field name="product.quantity"      class="java.lang.Integer"/>
+    <field name="product.reserved"      class="java.lang.Integer"/>
+    <field name="product.ordered"       class="java.lang.Integer"/>
+
+    <variable name="product.avaiable" class="java.lang.Integer" calculation="Nothing" resetType="None">
+        <variableExpression><![CDATA[new Integer($F{product.quantity}.intValue() -  $F{product.reserved}.intValue())]]></variableExpression>
+    </variable>
+
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+
+            <!-- Column 1 -->
+            <textField>
+                <reportElement x="20" y="0" width="70" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="90" y="0" width="100" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="190" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="260" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="330" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="380" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.6}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="430" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.7}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="480" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{stockaccountreport.column.8}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="14">
+            <textField>
+                <reportElement x="20" y="0" width="70" height="12" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="90" y="0" width="100" height="12" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.description}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="190" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.orderpoint}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="260" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.ordercount}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <textField isBlankWhenNull="false">
+                <reportElement x="330" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.quantity}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="false">
+                <reportElement x="380" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.reserved}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="false">
+                <reportElement x="430" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.ordered}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="false">
+                <reportElement x="480" y="0" width="50" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$V{product.avaiable}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+
+
+
+
+</jasperReport>

@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.purchaseorder.panel.SSPurchaseOrderPanel">
+  <grid id="f17e9" binding="iPanel" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="2">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="22" y="18" width="786" height="441"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="454b5">
+        <constraints>
+          <xy x="4" y="4" width="778" height="386"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+            <preferred-size width="200" height="200"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="bce4b" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="purchaseorderframe.panel.1"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <scrollpane id="fd4f1">
+                <constraints>
+                  <xy x="4" y="184" width="764" height="123"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3">
+                    <minimum-size width="-1" height="120"/>
+                  </grid>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="ac890" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <grid id="bb042" row-count="7" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="1">
+                <margin top="4" left="4" bottom="4" right="4"/>
+                <constraints>
+                  <xy x="4" y="4" width="764" height="158"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="etched"/>
+                <children>
+                  <component id="af6cf" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="9" width="70" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.number"/>
+                    </properties>
+                  </component>
+                  <component id="3a186" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="30" width="61" height="14"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.supplier"/>
+                    </properties>
+                  </component>
+                  <component id="e3564" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="51" width="92" height="14"/>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.suppliername"/>
+                    </properties>
+                  </component>
+                  <component id="9d117" class="javax.swing.JTextField" binding="iSupplierName">
+                    <constraints>
+                      <xy x="102" y="48" width="250" height="20"/>
+                      <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1">
+                        <minimum-size width="250" height="-1"/>
+                        <preferred-size width="250" height="-1"/>
+                        <maximum-size width="250" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="be365" class="javax.swing.JFormattedTextField" binding="iNumber">
+                    <constraints>
+                      <xy x="102" y="6" width="150" height="20"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1">
+                        <minimum-size width="150" height="-1"/>
+                        <preferred-size width="150" height="-1"/>
+                        <maximum-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <editable value="false"/>
+                    </properties>
+                  </component>
+                  <component id="e1479" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="30" width="114" height="14"/>
+                      <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.estimateddelivery"/>
+                    </properties>
+                  </component>
+                  <component id="849e9" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iDate">
+                    <constraints>
+                      <xy x="538" y="6" width="200" height="20"/>
+                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0">
+                        <minimum-size width="200" height="-1"/>
+                        <preferred-size width="200" height="-1"/>
+                        <maximum-size width="200" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <dateFormatString resource-bundle="book" key="date.formatstring"/>
+                    </properties>
+                  </component>
+                  <component id="9ed1b" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="9" width="66" height="14"/>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.date"/>
+                    </properties>
+                  </component>
+                  <hspacer id="9d52d">
+                    <constraints>
+                      <xy x="387" y="10" width="27" height="11"/>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="4ce5a" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iPaymentTerm">
+                    <constraints>
+                      <xy x="618" y="48" width="120" height="20"/>
+                      <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0">
+                        <minimum-size width="120" height="-1"/>
+                        <preferred-size width="120" height="-1"/>
+                        <maximum-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <enabled value="true"/>
+                    </properties>
+                  </component>
+                  <component id="464e5" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iDeliveryTerm">
+                    <constraints>
+                      <xy x="618" y="69" width="120" height="20"/>
+                      <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0">
+                        <minimum-size width="120" height="-1"/>
+                        <preferred-size width="120" height="-1"/>
+                        <maximum-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="9c5c8" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iDeliveryWay">
+                    <constraints>
+                      <xy x="618" y="90" width="120" height="20"/>
+                      <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0">
+                        <minimum-size width="120" height="-1"/>
+                        <preferred-size width="120" height="-1"/>
+                        <maximum-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="ef4f0" class="se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox" binding="iCurrency">
+                    <constraints>
+                      <xy x="618" y="111" width="120" height="20"/>
+                      <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0">
+                        <minimum-size width="120" height="-1"/>
+                        <preferred-size width="120" height="-1"/>
+                        <maximum-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="a722a" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="114" width="38" height="14"/>
+                      <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="tenderframe.currency"/>
+                    </properties>
+                  </component>
+                  <component id="5dc" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="93" width="71" height="14"/>
+                      <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.deliveryway"/>
+                    </properties>
+                  </component>
+                  <hspacer id="7f779">
+                    <constraints>
+                      <xy x="356" y="10" width="27" height="11"/>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="fd56f" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="72" width="63" height="14"/>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.ourcontact"/>
+                    </properties>
+                  </component>
+                  <component id="d2a12" class="javax.swing.JTextField" binding="iOurContactPerson">
+                    <constraints>
+                      <xy x="102" y="69" width="250" height="20"/>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1">
+                        <minimum-size width="250" height="-1"/>
+                        <preferred-size width="250" height="-1"/>
+                        <maximum-size width="250" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="3f09d" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="6" y="93" width="57" height="14"/>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.yourcontact"/>
+                    </properties>
+                  </component>
+                  <component id="fba1b" class="javax.swing.JTextField" binding="iYourContactPerson">
+                    <constraints>
+                      <xy x="102" y="90" width="250" height="20"/>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1">
+                        <minimum-size width="250" height="-1"/>
+                        <preferred-size width="250" height="-1"/>
+                        <maximum-size width="250" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="df1a8" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iEstimatedDelivery">
+                    <constraints>
+                      <xy x="538" y="27" width="200" height="20"/>
+                      <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0">
+                        <minimum-size width="200" height="-1"/>
+                        <preferred-size width="200" height="-1"/>
+                        <maximum-size width="200" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <dateFormatString resource-bundle="book" key="date.formatstring"/>
+                    </properties>
+                  </component>
+                  <component id="946b1" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox" binding="iSupplier">
+                    <constraints>
+                      <xy x="102" y="27" width="150" height="20"/>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0">
+                        <minimum-size width="150" height="-1"/>
+                        <preferred-size width="150" height="-1"/>
+                        <maximum-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="7ede2" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="51" width="84" height="14"/>
+                      <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.paymentterm"/>
+                    </properties>
+                  </component>
+                  <component id="fb2f5" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="72" width="79" height="14"/>
+                      <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.deliveryterm"/>
+                    </properties>
+                  </component>
+                  <component id="49046" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iCurrencyRate">
+                    <constraints>
+                      <xy x="618" y="132" width="120" height="20"/>
+                      <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="4" fill="0">
+                        <minimum-size width="120" height="-1"/>
+                        <preferred-size width="120" height="-1"/>
+                        <maximum-size width="120" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <fractionDigits value="5"/>
+                      <text value="1,00000"/>
+                    </properties>
+                  </component>
+                  <component id="a8b" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="414" y="135" width="58" height="14"/>
+                      <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Valutakurs:"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="75bfb" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="309" width="764" height="48"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <grid id="6dd35" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="2" vgap="0">
+                    <margin top="0" left="2" bottom="4" right="2"/>
+                    <constraints>
+                      <xy x="606" y="0" width="158" height="48"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                    </constraints>
+                    <properties/>
+                    <border type="etched"/>
+                    <children>
+                      <component id="69deb" class="javax.swing.JLabel">
+                        <constraints>
+                          <xy x="4" y="5" width="61" height="14"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                        </constraints>
+                        <properties>
+                          <text resource-bundle="book" key="purchaseorderframe.sum"/>
+                        </properties>
+                      </component>
+                      <component id="6845b" class="se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField" binding="iTotalSum">
+                        <constraints>
+                          <xy x="4" y="22" width="150" height="20"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1">
+                            <minimum-size width="150" height="-1"/>
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <editable value="false"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <hspacer id="5f80a">
+                    <constraints>
+                      <xy x="0" y="18" width="606" height="11"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                    </constraints>
+                  </hspacer>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="7042a" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="purchaseorderframe.panel.2"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <vspacer id="efe6b">
+                <constraints>
+                  <xy x="238" y="242" width="11" height="115"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+              <hspacer id="93b81">
+                <constraints>
+                  <xy x="484" y="74" width="284" height="11"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                </constraints>
+              </hspacer>
+              <grid id="24eb0" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="4" left="4" bottom="4" right="4"/>
+                <constraints>
+                  <xy x="4" y="4" width="480" height="152"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="etched"/>
+                <children>
+                  <component id="8ecf8" class="se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel" binding="iDeliveryAddress">
+                    <constraints>
+                      <xy x="6" y="6" width="232" height="140"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <title resource-bundle="book" key="purchaseorderframe.ourdeliveryaddress"/>
+                    </properties>
+                  </component>
+                  <component id="e06b5" class="se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel" binding="iSupplierAddress">
+                    <constraints>
+                      <xy x="242" y="6" width="232" height="140"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <title resource-bundle="book" key="purchaseorderframe.supplieraddress"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="fd056" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="4" vgap="0">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="158" width="480" height="84"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="etched"/>
+                <children>
+                  <scrollpane id="75764">
+                    <constraints>
+                      <xy x="2" y="22" width="476" height="60"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="3">
+                        <minimum-size width="-1" height="60"/>
+                        <preferred-size width="60" height="60"/>
+                        <maximum-size width="500" height="60"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children>
+                      <component id="10d73" class="javax.swing.JTextArea" binding="iText">
+                        <constraints/>
+                        <properties/>
+                      </component>
+                    </children>
+                  </scrollpane>
+                  <component id="86959" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="2" y="5" width="86" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="purchaseorderframe.text"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="786a4" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="purchaseorderframe.panel.3"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <vspacer id="ff803">
+                <constraints>
+                  <xy x="218" y="324" width="11" height="33"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+                </constraints>
+              </vspacer>
+              <hspacer id="84e62">
+                <constraints>
+                  <xy x="464" y="158" width="304" height="11"/>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                </constraints>
+              </hspacer>
+              <component id="cb61b" class="se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel" binding="iDefaultAccounts">
+                <constraints>
+                  <xy x="4" y="4" width="440" height="320"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0"/>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+      <component id="fbe05" class="se.swedsoft.bookkeeping.gui.util.SSButtonPanel" binding="iButtonPanel">
+        <constraints>
+          <xy x="4" y="412" width="778" height="25"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="1"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>

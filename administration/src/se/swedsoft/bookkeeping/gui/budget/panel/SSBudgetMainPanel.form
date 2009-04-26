@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.budget.panel.SSBudgetMainPanel">
+  <grid id="95cdf" binding="iPanel" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="8" y="7" width="541" height="279"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties>
+      <focusTraversalPolicyProvider value="false"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <tabbedpane id="70447" binding="iTabbedPane">
+        <constraints>
+          <xy x="0" y="20" width="541" height="259"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3">
+            <preferred-size width="200" height="200"/>
+          </grid>
+        </constraints>
+        <properties>
+          <focusTraversalPolicyProvider value="true"/>
+          <inheritsPopupMenu value="true"/>
+          <tabPlacement value="1"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="1d994" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="budgetframe.panel.resultatbudget.title"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <scrollpane id="56386">
+                <constraints>
+                  <xy x="4" y="4" width="527" height="226"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="33efe" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iBudgetTable">
+                    <constraints/>
+                    <properties>
+                      <enabled value="true"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+          <grid id="8db91" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="4" left="4" bottom="4" right="4"/>
+            <constraints>
+              <tabbedpane title-resource-bundle="book" title-key="budgetframe.panel.monthlydistribution.title"/>
+            </constraints>
+            <properties>
+              <enabled value="true"/>
+              <requestFocusEnabled value="false"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="faf8c" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="4" width="527" height="20"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="3"/>
+                </constraints>
+                <properties>
+                  <inheritsPopupMenu value="true"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="fab49" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="0" y="3" width="32" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="budgetframe.monthlytable.account"/>
+                    </properties>
+                  </component>
+                  <hspacer id="8a165">
+                    <constraints>
+                      <xy x="470" y="4" width="57" height="11"/>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="b8a06" class="javax.swing.JTextField" binding="iAccountDescription">
+                    <constraints>
+                      <xy x="132" y="0" width="338" height="20"/>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                        <preferred-size width="300" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <editable value="false"/>
+                      <focusTraversalPolicyProvider value="true"/>
+                    </properties>
+                  </component>
+                  <component id="e8ebc" class="se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld" binding="iAccountNumber">
+                    <constraints>
+                      <xy x="42" y="0" width="80" height="20"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="0">
+                        <preferred-size width="80" height="-1"/>
+                        <maximum-size width="-1" height="20"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <focusTraversalPolicyProvider value="true"/>
+                      <inheritsPopupMenu value="true"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <scrollpane id="f7554">
+                <constraints>
+                  <xy x="4" y="29" width="527" height="176"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="6a5b7" class="se.swedsoft.bookkeeping.gui.util.table.SSTable" binding="iMonthlyTable">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+              <grid id="80d8e" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <xy x="4" y="210" width="527" height="20"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="ad314" class="javax.swing.JLabel">
+                    <constraints>
+                      <xy x="0" y="3" width="42" height="14"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0"/>
+                    </constraints>
+                    <properties>
+                      <text resource-bundle="book" key="budgetframe.monthlytable.sum"/>
+                      <verticalAlignment value="1"/>
+                      <verticalTextPosition value="1"/>
+                    </properties>
+                  </component>
+                  <hspacer id="dd48">
+                    <constraints>
+                      <xy x="330" y="4" width="197" height="11"/>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="4b9cd" class="javax.swing.JTextField" binding="iSumTextField">
+                    <constraints>
+                      <xy x="52" y="0" width="100" height="20"/>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+                        <preferred-size width="100" height="-1"/>
+                        <maximum-size width="100" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <editable value="false"/>
+                      <enabled value="true"/>
+                      <focusTraversalPolicyProvider value="true"/>
+                      <horizontalAlignment value="4"/>
+                      <text value="122"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+</form>

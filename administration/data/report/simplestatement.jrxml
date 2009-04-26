@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="SimpleStatement" resourceBundle="book" >
+
+    <reportFont name="SansSerif" isDefault="true" fontName="SansSerif"></reportFont>
+
+    <parameter name="Report"     class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="Parameters" class="java.util.HashMap"/>
+
+
+    <parameter name="date.from"  class="java.lang.String"/>
+    <parameter name="date.to"     class="java.lang.String"/>
+
+    <parameter name="company.name"         class="java.lang.String"/>
+    <parameter name="company.corporateid"  class="java.lang.String"/>
+
+
+    <!-- Declared fields in the report. -->
+    <field name="group.number"         class="java.lang.Integer"/>
+    <field name="group.section"        class="java.lang.Integer"/>
+    <field name="group.description"    class="java.lang.String"/>
+
+    <field name="group.rows"        class="net.sf.jasperreports.engine.JRDataSource"/>
+ 
+    <pageHeader>
+        <band height="120">
+
+            <textField>
+                <reportElement x="300" y="0" width="150" height="16"/>
+                <textElement>
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Förenklat årsbokslut"]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="300" y="12" width="150" height="16"/>
+                <textElement>
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Enskilda näringsidkare"]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <rectangle radius="3">
+                <reportElement x="0" y="42" width="555" height="78"/>
+                <graphicElement pen="Thin"/>
+            </rectangle>
+
+            <line>
+                <reportElement x="450" y="42" width="1" height="78"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+            <textField>
+                <reportElement x="5" y="42" width="150" height="26"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Namn"]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="5" y="42" width="450" height="24"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{company.name}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="455" y="42" width="105" height="26"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Organisationsnummer"]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="455" y="42" width="105" height="24"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="10" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{company.corporateid}]]>
+                </textFieldExpression>
+            </textField>
+
+            <line>
+                <reportElement x="0" y="66" width="555" height="1"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+            <frame>
+                <reportElement x="0" y="79" width="13" height="11"/>
+                <box topBorder="Thin" rightBorder="Thin"/>
+            </frame>
+
+            <textField>
+                <reportElement x="15" y="66" width="75" height="24"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Kalenderår"]]>
+                </textFieldExpression>
+            </textField>
+
+            <frame>
+                <reportElement x="75" y="79" width="13" height="11"/>
+                <box topBorder="Thin" rightBorder="Thin"  leftBorder="Thin"/>
+            </frame>
+
+            <textField>
+                <reportElement x="90" y="66" width="75" height="24"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Räkenskapsår"]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <line>
+                <reportElement x="150" y="66" width="1" height="25"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+
+
+            <textField>
+                <reportElement x="155" y="66" width="150" height="26"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["F.o.m"]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="155" y="66" width="150" height="24"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="10" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{date.from}]]>
+                </textFieldExpression>
+            </textField>
+
+            <line>
+                <reportElement x="300" y="66" width="1" height="25"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+            <textField>
+                <reportElement x="305" y="66" width="150" height="26"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["T.o.m"]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="305" y="66" width="150" height="24"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="10" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{date.to}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="450" y="66" width="105" height="52"/>
+                <textElement textAlignment="Center">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Bokföringsnämndens regler\nför förenklat årsbokslut\n(BFNAR 2006:1)\noch broschyr hittar du\npå  www.bfn.se"]]>
+                </textFieldExpression>
+            </textField>
+
+            <line>
+                <reportElement x="0" y="90" width="450" height="1"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+            <textField>
+                <reportElement x="5" y="90" width="150" height="26"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Verksamhetens art"]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </pageHeader>
+
+    <detail>
+        <band height="52" isSplitAllowed="false">
+
+
+            <textField>
+                <reportElement x="0" y="0" width="275" height="14">
+                    <printWhenExpression>
+                        <![CDATA[ new Boolean($F{group.number}.intValue() == 1 || $F{group.number}.intValue() == 7 )]]>
+                    </printWhenExpression>
+                </reportElement>
+
+                <textElement>
+                    <font size="10" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{group.section}.intValue() == 1 ? $R{simplestatement.section.1} : $R{simplestatement.section.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="0" y="0" width="275" height="26"/>
+                <textElement verticalAlignment="Bottom">
+                    <font size="10" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{group.description}]]>
+                </textFieldExpression>
+            </textField>
+
+            <rectangle radius="3">
+                <reportElement x="0" y="26" width="275" height="26" stretchType="RelativeToBandHeight"/>
+                <graphicElement pen="Thin"/>
+            </rectangle>
+
+            <!-- Mainbook rows -->
+            <subreport isUsingCache="false">
+                <reportElement x="0" y="26" width="275" height="26" isPrintWhenDetailOverflows="true"/>
+
+                <subreportParameter name="section.number">
+                    <subreportParameterExpression>
+                        <![CDATA[$F{group.number}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <dataSourceExpression>
+                    <![CDATA[$F{group.rows}]]>
+                </dataSourceExpression>
+
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[$P{Report}]]>
+                </subreportExpression>
+            </subreport>
+
+        </band>
+    </detail>
+
+
+    <pageFooter>
+        <band height="60">
+            <textField>
+                <reportElement x="0" y="0" width="555" height="25"/>
+                <textElement>
+                    <font size="10" isBold="true"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Underskrift"]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="12" width="555" height="14"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["enligt bokföringslagen och Bokföringsnämndens regler för förenklat bokslut"]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <rectangle radius="3">
+                <reportElement x="0" y="25" width="275" height="35"/>
+                <graphicElement pen="Thin"/>
+            </rectangle>
+            <textField>
+                <reportElement x="4" y="25" width="555" height="25"/>
+                <textElement>
+                    <font size="6"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Namnteckning"]]>
+                </textFieldExpression>
+            </textField>
+
+            <rectangle radius="3">
+                <reportElement x="280" y="25" width="275" height="35"/>
+                <graphicElement pen="Thin"/>
+            </rectangle>
+
+            <textField>
+                <reportElement x="280" y="25" width="275" height="35"/>
+                <textElement textAlignment="Center"  verticalAlignment="Middle" >
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["Spara detta bokslut i 10 år tillsammans med bokföringen\noch bokslutsunderlagen"]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+
+</jasperReport>

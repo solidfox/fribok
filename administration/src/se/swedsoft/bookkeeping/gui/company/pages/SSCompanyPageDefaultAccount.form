@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageDefaultAccount">
+  <grid id="ecdb1" binding="iPanel" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="4" left="4" bottom="4" right="4"/>
+    <constraints>
+      <xy x="62" y="36" width="468" height="350"/>
+      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="291bc" class="se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel" binding="iDefaultAccountPanel">
+        <constraints>
+          <xy x="4" y="4" width="400" height="20"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0">
+            <preferred-size width="400" height="-1"/>
+          </grid>
+        </constraints>
+      </component>
+      <hspacer id="60b48">
+        <constraints>
+          <xy x="404" y="8" width="60" height="11"/>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="97595">
+        <constraints>
+          <xy x="198" y="24" width="11" height="322"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>

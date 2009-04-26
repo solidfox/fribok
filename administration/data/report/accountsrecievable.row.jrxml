@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="AccountsRecievableRow" resourceBundle="book">
+
+    <parameter name="customer.number" class="java.lang.String"/>
+
+    <field name="invoice.number"          class="java.lang.Integer"/>
+    <field name="invoice.date"            class="java.lang.String"/>
+    <field name="invoice.currency"        class="java.lang.String"/>
+    <field name="invoice.value"           class="java.math.BigDecimal"/>
+    <field name="invoice.credited"        class="java.math.BigDecimal"/>
+    <field name="invoice.payed"           class="java.math.BigDecimal"/>
+    <field name="invoice.currencyrate"    class="java.math.BigDecimal"/>
+    <field name="invoice.localsaldo"      class="java.math.BigDecimal"/>
+
+
+    <!-- The sum. -->
+    <variable name="sum" class="java.math.BigDecimal"  resetType="Report" calculation="Sum">
+        <variableExpression>$F{invoice.localsaldo}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0) </initialValueExpression>
+    </variable>
+
+
+    <detail>
+        <band height="12" isSplitAllowed="true">
+            <printWhenExpression>
+                <![CDATA[new Boolean( $F{invoice.localsaldo}.signum() != 0) ]]>
+            </printWhenExpression>
+            
+            <!-- Number -->
+            <textField>
+                <reportElement x="60" y="0" width="80" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{invoice.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Date -->
+            <textField>
+                <reportElement x="120" y="0" width="70" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{invoice.date}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <!-- Value -->
+            <textField pattern="#,##0.00">
+                <reportElement x="190" y="0" width="60" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.value}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Credited -->
+            <textField pattern="#,##0.00">
+                <reportElement x="250" y="0" width="60" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.credited}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Payed -->
+            <textField pattern="#,##0.00"  isBlankWhenNull="true">
+                <reportElement x="310" y="0" width="60" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.payed}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Currency -->
+            <textField>
+                <reportElement x="370" y="0" width="40" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{invoice.currency}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <!-- Currency rate -->
+            <textField pattern="#,##0.00000"  isBlankWhenNull="true">
+                <reportElement x="410" y="0" width="40" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.currencyrate} ]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Invoice sum  -->
+            <textField pattern="#,##0.00">
+                <reportElement x="450" y="0" width="60" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.localsaldo} ]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+        </band>
+    </detail>
+
+    <summary>
+        <band height="12" isSplitAllowed="false">
+            <line>
+                <reportElement x="60" y="0" width="450" height="1"/>
+            </line>
+
+            <textField>
+                <reportElement x="60" y="0" width="250" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{accountsrecievablereport.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <textField pattern="#,##0.00" isBlankWhenNull="false">
+                <reportElement x="260" y="0" width="250" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{sum}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </summary>
+
+
+</jasperReport>

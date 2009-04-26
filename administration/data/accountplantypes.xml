@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<accountplantype>
+    <item name="BAS95"      schema="BAS95.xml"/>
+    <item name="BAS96"      schema="BAS96.xml"/>
+    <item name="EUBAS97"    schema="EUBAS97.xml"/>
+</accountplantype>
+
+
+
