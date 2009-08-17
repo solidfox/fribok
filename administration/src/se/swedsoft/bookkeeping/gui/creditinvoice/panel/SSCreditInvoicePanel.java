@@ -472,11 +472,11 @@ public class SSCreditInvoicePanel {
         }
         // Kund namn
         iCustomerName.setText(iCreditInvoice.getCustomerName());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOurContactPerson.setText(iCreditInvoice.getOurContactPerson());
         // Er kontaktperson:
         iYourContactPerson.setText(iCreditInvoice.getYourContactPerson());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iDelayInterest.setValue(iCreditInvoice.getDelayInterest());
 
         // Valuta
@@ -487,12 +487,12 @@ public class SSCreditInvoicePanel {
         iPaymentTerm.setSelected(iCreditInvoice.getPaymentTerm(), true);
         // Leveransvilkor
         iDeliveryTerm.setSelected(iCreditInvoice.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iCreditInvoice.getDeliveryWay());
 
-        // Bokförd
+        // BokfÃ¶rd
         iEntered.setSelected( iCreditInvoice.isEntered() );
-        // Lagerför
+        // LagerfÃ¶r
         isStockInfluencing.setSelected( iCreditInvoice.isStockInfluencing() );
 
         // Momsfritt
@@ -503,9 +503,9 @@ public class SSCreditInvoicePanel {
         iTaxRate2.setValue( iCreditInvoice.getTaxRate2() );
         // Momssats 3
         iTaxRate3.setValue( iCreditInvoice.getTaxRate3() );
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iEuSaleCommodity.setSelected(iCreditInvoice.getEuSaleCommodity());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iEuSaleYhirdPartCommodity.setSelected(iCreditInvoice.getEuSaleThirdPartCommodity());
 
 
@@ -537,11 +537,11 @@ public class SSCreditInvoicePanel {
         iCreditInvoice.setCustomerNr(iCustomer.getText());
         // Kund namn
         iCreditInvoice.setCustomerName(iCustomerName.getText());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iCreditInvoice.setOurContactPerson(iOurContactPerson.getText());
         // Er kontaktperson:
         iCreditInvoice.setYourContactPerson(iYourContactPerson.getText());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iCreditInvoice.setDelayInterest(iDelayInterest.getValue());
         // Valuta
         iCreditInvoice.setCurrency(iCurrency.getSelected());
@@ -551,7 +551,7 @@ public class SSCreditInvoicePanel {
         iCreditInvoice.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iCreditInvoice.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iCreditInvoice.setDeliveryWay(iDeliveryWay.getSelected());
         // Momsfritt
         iCreditInvoice.setTaxFree(iTaxFree.isSelected());
@@ -562,9 +562,9 @@ public class SSCreditInvoicePanel {
         iCreditInvoice.setTaxRate2(iTaxRate2.getValue());
         // Momssats
         iCreditInvoice.setTaxRate3(iTaxRate3.getValue());
-        // Bokförd
+        // BokfÃ¶rd
         iCreditInvoice.setEntered( iEntered.isSelected() );
-        // Lagerför
+        // LagerfÃ¶r
         iCreditInvoice.setStockInfluencing( isStockInfluencing.isSelected() );
 
         // Offerttext

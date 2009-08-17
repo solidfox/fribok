@@ -27,7 +27,7 @@ import java.awt.event.ActionEvent;
  * Use this rather than the base class SSInternalFrame to enable global changes
  * to the application GUI.
  *
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public abstract class SSDefaultTableFrame extends SSInternalFrame {
 

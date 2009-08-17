@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
-import com.incors.plaf.alloy.AlloyCommonUtilities;
+//import com.incors.plaf.alloy.AlloyCommonUtilities;
 
 import javax.swing.*;
 import java.util.*;
@@ -12,6 +12,7 @@ import java.text.DateFormatSymbols;
 import java.text.DateFormat;
 
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
+import com.incors.plaf.alloy.AlloyCommonUtilities;
 
 
 /**
@@ -240,7 +241,8 @@ public class SSDayChooser implements ActionListener {
                 iButton.setDate       ( iCurrentDate );
 
                 if( iCurrentDate.equals( iDate )){
-                    AlloyCommonUtilities.set3DBackground(iButton, SELECTED_COLOR);
+                    //AlloyCommonUtilities.set3DBackground(iButton, SELECTED_COLOR);
+                    iButton.setBackground(SELECTED_COLOR);
                 } else {
                     iButton.setBackground(  new JButton().getBackground() );
                 }

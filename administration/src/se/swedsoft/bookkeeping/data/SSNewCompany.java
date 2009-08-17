@@ -16,7 +16,7 @@ import java.rmi.server.UID;
 import java.awt.*;
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSNewCompany implements Serializable {
 
@@ -64,11 +64,11 @@ public class SSNewCompany implements Serializable {
     private String      iSwift;
 
     private SSCurrency    iCurrency;
-    // Fördröjningsränta
+    // FÃ¶rdrÃ¶jningsrÃ¤nta
     private BigDecimal    iDelayintrest;
-    // Påminnelseavgift
+    // PÃ¥minnelseavgift
     private BigDecimal    iReminderfee;
-    // Beräknad leveranstid
+    // BerÃ¤knad leveranstid
     private String        iEstimatedDelivery;
 
     // Momssatser
@@ -109,7 +109,7 @@ public class SSNewCompany implements Serializable {
 
 
 
-    // Autoräknare
+    // AutorÃ¤knare
     private SSAutoIncrement iAutoIncrement;
 
     //////////////////////////////////////////////////////

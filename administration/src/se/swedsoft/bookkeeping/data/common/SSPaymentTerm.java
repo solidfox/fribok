@@ -160,7 +160,7 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
         List<SSPaymentTerm> iPaymentTerms = new LinkedList<SSPaymentTerm>();
 
         iPaymentTerms.add( new SSPaymentTerm("K" , "Kontant"));
-        iPaymentTerms.add( new SSPaymentTerm("PF", "Postförskott"));
+        iPaymentTerms.add( new SSPaymentTerm("PF", "PostfÃ¶rskott"));
         iPaymentTerms.add( new SSPaymentTerm("30", "30 dagar netto"));
         iPaymentTerms.add( new SSPaymentTerm("52", "10 dagar netto"));
         iPaymentTerms.add( new SSPaymentTerm("10", "10 dagar netto"));

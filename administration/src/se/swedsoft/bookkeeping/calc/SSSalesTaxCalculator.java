@@ -78,7 +78,7 @@ public class SSSalesTaxCalculator {
                 case 21: iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "E"); break;
                 case 22: iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "OTTU"); break;
                 case 23: iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "VTEU"); break;
-                case 24: iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "ÖVEU"); break;
+                case 24: iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "Ã–VEU"); break;
                 case 25: iSum = SSAccountMath.getSumByVATCodeForAccounts(debetMinusCreditSum, "VFEU"); break;
                 case 26: iSum = SSAccountMath.getSumByVATCodeForAccounts(debetMinusCreditSum, "3VEU"); break;
 

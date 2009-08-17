@@ -157,12 +157,12 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * <code>rowIndex</code>.
      *
      * voucherrowtable.column.1=Konto
-     * voucherrowtable.column.2=Benämning
+     * voucherrowtable.column.2=BenÃ¤mning
      * voucherrowtable.column.3=Debet
      * voucherrowtable.column.4=Kredit
      * voucherrowtable.column.5=Projekt
      * voucherrowtable.column.6=Resultatenhet
-     * voucherrowtable.column.7=Ändrad
+     * voucherrowtable.column.7=Ã„ndrad
      * voucherrowtable.column.8=Signatur
 
      *

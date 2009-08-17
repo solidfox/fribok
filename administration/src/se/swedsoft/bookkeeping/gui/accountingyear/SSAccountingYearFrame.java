@@ -299,44 +299,44 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      */
     private void openSelectedAccountingYear() {
-        //Hämta markerat år
+        //HÃ¤mta markerat Ã¥r
         SSNewAccountingYear iNewYear = getSelected();
 
-        // Kontrollera att ett år blev valt
+        // Kontrollera att ett Ã¥r blev valt
         if (iNewYear == null) {
-            //Inget år markerat. Visa felmeddelande.
+            //Inget Ã¥r markerat. Visa felmeddelande.
             new SSErrorDialog(getMainFrame(), "accountingyearframe.selectone");
             return;
         }
-        //Stäng fönstret om året är öppet
+        //StÃ¤ng fÃ¶nstret om Ã¥ret Ã¤r Ã¶ppet
         if (iNewYear.equals(SSDB.getInstance().getCurrentYear())) {
             SSAccountingYearFrame.getInstance().dispose();
             return;
         }
-        //Kontrollera att året fortfarande finns i databasen
+        //Kontrollera att Ã¥ret fortfarande finns i databasen
         iNewYear = SSDB.getInstance().getAccountingYear(iNewYear);
         if (iNewYear == null) {
-            //Året fanns inte kvar i databasen. Visa felmeddelande.
+            //Ã…ret fanns inte kvar i databasen. Visa felmeddelande.
             new SSErrorDialog(getMainFrame(), "accountingyearframe.yeargone");
             return;
         }
 
-        //Fråga om året ska öppnas.
+        //FrÃ¥ga om Ã¥ret ska Ã¶ppnas.
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(), "accountingyearframe.replaceyear", iNewYear.toRenderString());
         if (iDialog.getResponce() != JOptionPane.YES_OPTION) {
             //Svarade inte ja. Avbryt funktionen
             return;
         }
-        //Lås upp förra året
+        //LÃ¥s upp fÃ¶rra Ã¥ret
         SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
-        //Sätt det valda året som nuvarande år
+        //SÃ¤tt det valda Ã¥ret som nuvarande Ã¥r
         SSDB.getInstance().setCurrentYear(iNewYear);
         SSDB.getInstance().initYear(true);
         SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),iNewYear.getId());
 
-        //Lås nya året
+        //LÃ¥s nya Ã¥ret
         SSYearLock.applyLock(iNewYear);
-        //Stäng alla fönster
+        //StÃ¤ng alla fÃ¶nster
         SSFrameManager.getInstance().close();
     }
 
@@ -352,10 +352,10 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
             return;
         }
 
-        //Kontrollera att året fortfarande finns i databasen
+        //Kontrollera att Ã¥ret fortfarande finns i databasen
         iAccountingYear = SSDB.getInstance().getAccountingYear(iAccountingYear);
         if (iAccountingYear == null) {
-            //Året fanns inte kvar i databasen. Visa felmeddelande.
+            //Ã…ret fanns inte kvar i databasen. Visa felmeddelande.
             new SSErrorDialog(getMainFrame(), "accountingyearframe.yeargone");
             return;
         }
@@ -373,16 +373,16 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
                 return;
             }
 
-            //Lås upp förra året
+            //LÃ¥s upp fÃ¶rra Ã¥ret
             SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
-            //Sätt det valda året som nuvarande år
+            //SÃ¤tt det valda Ã¥ret som nuvarande Ã¥r
             SSDB.getInstance().setCurrentYear(iAccountingYear);
             SSDB.getInstance().initYear(true);
             SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),iAccountingYear.getId());
 
-            //Lås nya året
+            //LÃ¥s nya Ã¥ret
             SSYearLock.applyLock(iAccountingYear);
-            //Stäng alla fönster
+            //StÃ¤ng alla fÃ¶nster
             SSFrameManager.getInstance().close();
         }
 

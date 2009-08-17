@@ -62,7 +62,7 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
      */
     protected void getColumns(SSResultCalculator iCalculator) {
         addParameter("column.text.2", bundle.getString("resultreport.column.1") ); // Perioden
-        addParameter("column.text.3", bundle.getString("resultreport.column.7") ); // Hela året
+        addParameter("column.text.3", bundle.getString("resultreport.column.7") ); // Hela Ã¥ret
 
         iColumn1 = null;
         iColumn2 = iCalculator.getResultunitChangePeriod();

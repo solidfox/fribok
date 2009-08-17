@@ -181,7 +181,7 @@ public class SSVoucherTemplateImporter {
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
 
-        sb.append("Följande konteringsmallar kommer att importeras:<br>");
+        sb.append("FÃ¶ljande konteringsmallar kommer att importeras:<br>");
 
         sb.append("<ul>");
         for (SSVoucherTemplate iVoucherTemplate : iVoucherTemplates) {
@@ -191,7 +191,7 @@ public class SSVoucherTemplateImporter {
         }
         sb.append("</ul>");
 
-        sb.append("Fortsätt med importeringen ?");
+        sb.append("FortsÃ¤tt med importeringen ?");
         sb.append("</html>");
 
 

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * Date: 2006-jun-15
  * Time: 10:07:35
  *
- * Inköpsorder
+ * InkÃ¶psorder
  */
 public class SSPurchaseOrder implements SSTableSearchable, Serializable {
 
@@ -29,19 +29,19 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
     private Integer iInvoiceNr;
     // Datum
     protected Date iDate;
-    // Leverantörsnummer
+    // LeverantÃ¶rsnummer
     protected String iSupplierNr;
-    // Leverantörsnamn
+    // LeverantÃ¶rsnamn
     protected String iSupplierName;
-    // Väntat leveransdatum
+    // VÃ¤ntat leveransdatum
     protected Date iEstimatedDelivery;
     // Betalningsvilkor
     protected SSPaymentTerm iPaymentTerm;
     // Leveransvilkor
     protected SSDeliveryTerm iDeliveryTerm;
-    // Leveranssätt
+    // LeveranssÃ¤tt
     protected SSDeliveryWay iDeliveryWay;
-    // Vår kontakt
+    // VÃ¥r kontakt
     protected String iOurContact;
     // Er kontakt
     protected String iYourContact;
@@ -50,9 +50,9 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
     //Valutakurs
     protected BigDecimal iCurrencyRate;
 
-    // Vår leveransaddress
+    // VÃ¥r leveransaddress
     protected SSAddress iDeliveryAddress;
-    // Leverantörens address
+    // LeverantÃ¶rens address
     protected SSAddress iSupplierAddress;
     // Frivillig text
     private String iText;

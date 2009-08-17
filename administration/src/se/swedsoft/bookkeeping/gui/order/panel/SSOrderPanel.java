@@ -389,11 +389,11 @@ public class SSOrderPanel {
 
         // Kund namn
         iCustomerName.setText(iOrder.getCustomerName());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOurContactPerson.setText(iOrder.getOurContactPerson());
         // Er kontaktperson:
         iYourContactPerson.setText(iOrder.getYourContactPerson());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iDelayInterest.setValue(iOrder.getDelayInterest());
 
         // Valuta
@@ -404,7 +404,7 @@ public class SSOrderPanel {
         iPaymentTerm.setSelected(iOrder.getPaymentTerm());
         // Leveransvilkor
         iDeliveryTerm.setSelected(iOrder.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iOrder.getDeliveryWay());
 
 
@@ -416,11 +416,11 @@ public class SSOrderPanel {
         iTaxRate2.setValue( iOrder.getTaxRate2() );
         // Momssats 3
         iTaxRate3.setValue( iOrder.getTaxRate3() );
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iEuSaleCommodity.setSelected(iOrder.getEuSaleCommodity());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iEuSaleYhirdPartCommodity.setSelected(iOrder.getEuSaleThirdPartCommodity());
-        // Göm enhetspris på följesedel
+        // GÃ¶m enhetspris pÃ¥ fÃ¶ljesedel
         iHideUnitprice.setSelected(iOrder.getHideUnitprice());
 
         // Offerttext
@@ -457,11 +457,11 @@ public class SSOrderPanel {
         iOrder.setCustomerNr(iCustomer.getText());
         // Kund namn
         iOrder.setCustomerName(iCustomerName.getText());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOrder.setOurContactPerson(iOurContactPerson.getText());
         // Er kontaktperson:
         iOrder.setYourContactPerson(iYourContactPerson.getText());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iOrder.setDelayInterest(iDelayInterest.getValue());
 
         // Valuta
@@ -472,15 +472,15 @@ public class SSOrderPanel {
         iOrder.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iOrder.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iOrder.setDeliveryWay(iDeliveryWay.getSelected());
         // Momsfritt
         iOrder.setTaxFree(iTaxFree.isSelected());
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iOrder.setEuSaleCommodity(iEuSaleCommodity.isSelected());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iOrder.setEuSaleYhirdPartCommodity(iEuSaleYhirdPartCommodity.isSelected());
-        //Dölj enhetspris på följesedel
+        //DÃ¶lj enhetspris pÃ¥ fÃ¶ljesedel
         iOrder.setHideUnitprice(iHideUnitprice.isSelected());
         // Momssats 1
         iOrder.setTaxRate1(iTaxRate1.getValue());

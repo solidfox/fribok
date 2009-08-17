@@ -91,8 +91,8 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
     }
 
     /**
-     * Returnar de produkter som ska finnas med i inköpsförslaget. Detta inkluderar
-     * produkter med lagerantal mindre än beställningspunkten förutsatt att det är en
+     * Returnar de produkter som ska finnas med i inkÃ¶psfÃ¶rslaget. Detta inkluderar
+     * produkter med lagerantal mindre Ã¤n bestÃ¤llningspunkten fÃ¶rutsatt att det Ã¤r en
      * lagervara samt inte en paketprodukt.
      *
      * @return iProducts

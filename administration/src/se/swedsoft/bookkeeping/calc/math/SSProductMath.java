@@ -172,12 +172,12 @@ public class SSProductMath {
 
                 Integer iQuantity = iRow.getQuantity();
 
-                // Lägg till inpriset för produkten multiplicerat med antalet
+                // LÃ¤gg till inpriset fÃ¶r produkten multiplicerat med antalet
                 if(iRowProduct == null || iQuantity == null) continue;
 
                 BigDecimal iInprice = getInprice(iRowProduct, iDate);
 
-                // Om endast en rad saknar inpris så kan vi inte räkna ut något inpris
+                // Om endast en rad saknar inpris sÃ¥ kan vi inte rÃ¤kna ut nÃ¥got inpris
                 if(iInprice == null) return null;
 
                 iInpriceSum = iInpriceSum.add( iInprice.multiply( new BigDecimal(iQuantity) ) );

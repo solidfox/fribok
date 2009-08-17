@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class SupplierPaymentConfig {
 
-    // Avs‰ndarens (vÂrt) bankgironummer
+    // Avs√§ndarens (v√•rt) bankgironummer
     private static String iOurBankGiroAccount;
 
     private static String iMessage;

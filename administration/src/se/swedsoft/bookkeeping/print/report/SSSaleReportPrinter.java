@@ -230,7 +230,7 @@ public class SSSaleReportPrinter extends SSPrinter {
             });
         }
 
-        //Lite udda. Sorterar på Totalt Täckningsbidrag. Är felbenämt.
+        //Lite udda. Sorterar pÃ¥ Totalt TÃ¤ckningsbidrag. Ã„r felbenÃ¤mt.
         if(iSortingMode == SortingMode.AverageSellingPrice){
             Collections.sort(iProducts, new Comparator<SSProduct>() {
                 public int compare(SSProduct iProduct1, SSProduct iProduct2) {
@@ -366,7 +366,7 @@ public class SSSaleReportPrinter extends SSPrinter {
 
                     BigDecimal iInprice = iInprices.get(iRowProduct.getNumber());
 
-                    // Om endast en rad saknar inpris så kan vi inte räkna ut något inpris
+                    // Om endast en rad saknar inpris sÃ¥ kan vi inte rÃ¤kna ut nÃ¥got inpris
                     if(iInprice == null) break;
                     iInpriceSum = iInpriceSum.add( iInprice.multiply( new BigDecimal(iQuantity) ) );
                 }

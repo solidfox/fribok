@@ -28,7 +28,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
 
-    // Leverantörsnummer
+    // LeverantÃ¶rsnummer
     private String iNumber;
 
     // Namn
@@ -48,9 +48,9 @@ public class SSSupplier implements Serializable, SSTableSearchable {
     private String iRegistrationNumber;
     // Er kontaktperson
     private String iYourContact;
-    // Vår kontaktperson
+    // VÃ¥r kontaktperson
     private String iOurContact;
-    // Vårt kund nummer
+    // VÃ¥rt kund nummer
     private String iOurCustomerNr;
 
     // Bankgiro nummer:
@@ -67,7 +67,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
     private SSPaymentTerm  iPaymentTerm;
     // Leveransvilkor
     private SSDeliveryTerm iDeliveryTerm;
-    // Leveranssätt
+    // LeveranssÃ¤tt
     private SSDeliveryWay iDeliveryWay;
 
     // Address

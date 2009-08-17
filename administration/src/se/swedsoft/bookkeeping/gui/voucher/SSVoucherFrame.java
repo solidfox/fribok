@@ -112,7 +112,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
         });
         iToolBar.add(iButton);
 
-        // Ändra verifikation
+        // Ã„ndra verifikation
         // ***************************
         iButton = new SSButton("ICON_EDITITEM", "voucherframe.editbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -133,7 +133,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
         iToolBar.add(iButton);
         iToolBar.addSeparator();
 
-        // Skapa ny ändringsverifikation
+        // Skapa ny Ã¤ndringsverifikation
         // ***************************
         iButton = new SSButton("ICON_CREATECHANGE", "voucherframe.createchangebutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -249,7 +249,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
 
         iToolBar.addSeparator();
 
-        // Importera verifikationer från sie
+        // Importera verifikationer frÃ¥n sie
         // ***************************
         iButton = new SSButton("Task List 24", "voucherframe.importsiebutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {

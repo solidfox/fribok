@@ -122,7 +122,7 @@ public class SSSupplierPanel {
      * @return
      */
     public SSSupplier getSupplier() {
-        // Leverantörsnummer
+        // LeverantÃ¶rsnummer
         iSupplier.setNumber(iSupplierNr.getText());
         // Namn
         iSupplier.setName(iName.getText());
@@ -140,9 +140,9 @@ public class SSSupplierPanel {
         iSupplier.setRegistrationNumber(iRegistrationNumber.getText());
         // Er kontaktperson
         iSupplier.setYourContact(iYourContact.getText());
-        // Vår kontaktperson
+        // VÃ¥r kontaktperson
         iSupplier.setOurContact(iOurContact.getText());
-        // Vårt kund nummer
+        // VÃ¥rt kund nummer
         iSupplier.setOurCustomerNr(iOurCustomerNr.getText());
         // Bankgiro nummer:
         iSupplier.setBankGiro(iBankGiroNumber.getText());
@@ -156,7 +156,7 @@ public class SSSupplierPanel {
         iSupplier.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iSupplier.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iSupplier.setDeliveryWay(iDeliveryWay.getSelected());
         // Address
         iSupplier.setAddress(iAddress.getAddress());
@@ -177,7 +177,7 @@ public class SSSupplierPanel {
     public void setSupplier(SSSupplier iSupplier,boolean newSupplier) {
         this.iSupplier = iSupplier;
 
-        // Leverantörsnummer
+        // LeverantÃ¶rsnummer
         iSupplierNr.setText(iSupplier.getNumber());
         // Namn
         iName.setText(iSupplier.getName());
@@ -195,9 +195,9 @@ public class SSSupplierPanel {
         iRegistrationNumber.setText(iSupplier.getRegistrationNumber());
         // Er kontaktperson
         iYourContact.setText(iSupplier.getYourContact());
-        // Vår kontaktperson
+        // VÃ¥r kontaktperson
         iOurContact.setText(iSupplier.getOurContact());
-        // Vårt kund nummer
+        // VÃ¥rt kund nummer
         iOurCustomerNr.setText(iSupplier.getOurCustomerNr());
         // Bankgiro nummer:
         iBankGiroNumber.setText(iSupplier.getBankgiro());
@@ -215,7 +215,7 @@ public class SSSupplierPanel {
         iPaymentTerm.setSelected(iSupplier.getPaymentTerm());
         // Leveransvilkor
         iDeliveryTerm.setSelected(iSupplier.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iSupplier.getDeliveryWay());
         // Address
         iAddress.setAdress(iSupplier.getAddress());

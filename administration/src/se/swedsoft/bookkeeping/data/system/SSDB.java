@@ -131,7 +131,7 @@ public class SSDB {
         createNewTables();
         //dropTriggers();
         createLocalTriggers();
-        //Läs in företaget och året som senast var öppet.
+        //LÃ¤s in fÃ¶retaget och Ã¥ret som senast var Ã¶ppet.
         Integer iLastCompany = SSDBConfig.getCompanyId();
         Integer iLastYear = SSDBConfig.getYearId();
 
@@ -193,10 +193,10 @@ public class SSDB {
         } catch (IOException e) {
             e.printStackTrace();
             //Kunde inte ansluta.
-            //Borde inte kunna komma hit då det borde kommit SQLEXCEPTION före!!
+            //Borde inte kunna komma hit dÃ¥ det borde kommit SQLEXCEPTION fÃ¶re!!
         }
         iLocking = true;
-        //Läs in företaget och året som senast var öppet.
+        //LÃ¤s in fÃ¶retaget och Ã¥ret som senast var Ã¶ppet.
         Integer iLastCompany = SSDBConfig.getCompanyId();
         Integer iLastYear = SSDBConfig.getYearId();
 
@@ -235,7 +235,7 @@ public class SSDB {
         if(iCurrentCompany == null) return;
 
         if(iShowDialog){
-            SSInitDialog.runProgress(SSMainFrame.getInstance(),"Läser in data", new Runnable(){
+            SSInitDialog.runProgress(SSMainFrame.getInstance(),"LÃ¤ser in data", new Runnable(){
                 public void run() {
                     getProducts();
                     getCustomers();
@@ -318,7 +318,7 @@ public class SSDB {
         getCurrentYear();
 
         if (iShowLoadingDialog) {
-            SSInitDialog.runProgress(SSMainFrame.getInstance(), "Läser in data", new Runnable() {
+            SSInitDialog.runProgress(SSMainFrame.getInstance(), "LÃ¤ser in data", new Runnable() {
                 public void run() {
                     getVouchers();
                 }
@@ -1061,7 +1061,7 @@ public class SSDB {
 
         Date iFirstDayOfCurrent = iCurrentYear.getFrom();
 
-        //Hämta sista dagen i föregående år
+        //HÃ¤mta sista dagen i fÃ¶regÃ¥ende Ã¥r
         Calendar iCalendar = Calendar.getInstance();
         iCalendar.setTime(iFirstDayOfCurrent);
         iCalendar.add(Calendar.DATE, -1);
@@ -2341,9 +2341,9 @@ public class SSDB {
 ////////////////////////////////////////////////////////////////////////////////////////
 
     public synchronized void triggerAction(String iTriggerName, String iTableName, String iNumber) {
-        /** Körs då en trigger triggas i databasen. De flesta triggers uppdaterar listan som
-         *  som motsvarar objekten triggen körts på. Projekt, Resultatenhet och konteringsmallar får
-         *  behandlas något annorlunda då dessa inte lästs in i minnet vid uppstart.
+        /** KÃ¶rs dÃ¥ en trigger triggas i databasen. De flesta triggers uppdaterar listan som
+         *  som motsvarar objekten triggen kÃ¶rts pÃ¥. Projekt, Resultatenhet och konteringsmallar fÃ¥r
+         *  behandlas nÃ¥got annorlunda dÃ¥ dessa inte lÃ¤sts in i minnet vid uppstart.
          */
 
         try {
@@ -2456,7 +2456,7 @@ public class SSDB {
                 if (SSAutoDistFrame.getInstance() != null) SSAutoDistFrame.getInstance().updateFrame();
             }
             /**
-             * FÖRSÄLJNING
+             * FÃ–RSÃ„LJNING
              */
             else if (iTriggerName.equals("NEWINPAYMENT") && iInpayments != null) {
                 SSInpayment iInpayment = new SSInpayment();
@@ -2680,7 +2680,7 @@ public class SSDB {
                 if (SSPeriodicInvoiceFrame.getInstance() != null) SSPeriodicInvoiceFrame.getInstance().updateFrame();
             }
             /**
-             * INKÖP
+             * INKÃ–P
              */
             else if (iTriggerName.equals("NEWOUTPAYMENT") && iOutpayments!= null) {
                 SSOutpayment iOutpayment = new SSOutpayment();
@@ -2928,7 +2928,7 @@ public class SSDB {
                 if (SSOutdeliveryFrame.getInstance() != null) SSOutdeliveryFrame.getInstance().updateFrame();
             }
             /**
-             * BOKFÖRING
+             * BOKFÃ–RING
              */
             else if (iTriggerName.equals("NEWVOUCHER") && iVouchers!= null) {
                 SSVoucher iVoucher = new SSVoucher(Integer.parseInt(iNumber));
@@ -6062,7 +6062,7 @@ public class SSDB {
             iStatement.close();
 
         } catch (SQLException e) {
-            //System.out.println("Triggers fanns redan vi remote tilläggning");
+            //System.out.println("Triggers fanns redan vi remote tillÃ¤ggning");
             //e.printStackTrace();
         }
     }
@@ -6141,7 +6141,7 @@ public class SSDB {
             iStatement.close();
 
         } catch (SQLException e) {
-            //System.out.println("Triggers fanns redan vi lokal tilläggning");
+            //System.out.println("Triggers fanns redan vi lokal tillÃ¤ggning");
             //e.printStackTrace();
         }
     }
@@ -6232,8 +6232,8 @@ public class SSDB {
     }
 
     /**
-     * Funktion för att läsa in den gamla databasen till HSQL-databasen. Finns filen
-     * bookkeeper.db samt tillhörande .data filer läses dessa in i hsql-databasen och
+     * Funktion fÃ¶r att lÃ¤sa in den gamla databasen till HSQL-databasen. Finns filen
+     * bookkeeper.db samt tillhÃ¶rande .data filer lÃ¤ses dessa in i hsql-databasen och
      * zippas ner.
      */
     public void readOldDatabase() {

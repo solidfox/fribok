@@ -11,7 +11,7 @@ import java.util.Date;
  * Date: 2006-aug-30
  * Time: 14:18:56
  *
- * ÷ppningspost
+ * √ñppningspost
  */
 public class LBinPostTK13 extends LBinPost {
 
@@ -34,8 +34,8 @@ public class LBinPostTK13 extends LBinPost {
      */
     public void write(LBinLine iLine){
         iLine.append("13");
-        iLine.append(iReferenceText   , 25 );  //  3 => 27: Rubrik fˆr betalningspecifikation
-        iLine.append(iValueText       , 12 );  // 28 => 39: Rubrik fˆr belopp
+        iLine.append(iReferenceText   , 25 );  //  3 => 27: Rubrik f√∂r betalningspecifikation
+        iLine.append(iValueText       , 12 );  // 28 => 39: Rubrik f√∂r belopp
         iLine.append(""               , 41 );  // 40 => 80: Blanka
     }
 
@@ -44,8 +44,8 @@ public class LBinPostTK13 extends LBinPost {
      * @param iLine
      */
     public void read(LBinLine iLine){
-        iReferenceText      = iLine.readString( 3, 27); //  3 => 27: Rubrik fˆr betalningspecifikation
-        iValueText          = iLine.readString(28, 39); // 28 => 39: Rubrik fˆr belopp
+        iReferenceText      = iLine.readString( 3, 27); //  3 => 27: Rubrik f√∂r betalningspecifikation
+        iValueText          = iLine.readString(28, 39); // 28 => 39: Rubrik f√∂r belopp
 
     }
 }

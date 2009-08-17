@@ -33,7 +33,7 @@ public class SIEEntryTaxar extends SIEEntry {
      */
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
-        // #TAXAR taxeringsår
+        // #TAXAR taxeringsÃ¥r
         if(!iReader.hasFields(STRING, INT)) {
             throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
         }

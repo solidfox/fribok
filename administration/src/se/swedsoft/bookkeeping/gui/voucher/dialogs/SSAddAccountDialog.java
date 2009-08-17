@@ -46,7 +46,7 @@ public class SSAddAccountDialog extends SSDialog {
 
 
     public SSAddAccountDialog(final SSMainFrame iDialog){
-        super(iDialog, "Lägg till konto" );
+        super(iDialog, "LÃ¤gg till konto" );
 
         SSVATCodeTableModel iModel = new SSVATCodeTableModel();
         iModel.addColumn(SSVATCodeTableModel.COLUMN_NAME);
@@ -63,7 +63,7 @@ public class SSAddAccountDialog extends SSDialog {
                     iAccount.setNumber(Integer.parseInt(iAccountNr.getText()));
                 }
                 catch(NumberFormatException ex){
-                    SSErrorDialog.showDialog(iDialog, "Felaktigt kontonummer", "Kontonummret får bara innehålla siffror.");
+                    SSErrorDialog.showDialog(iDialog, "Felaktigt kontonummer", "Kontonummret fÃ¥r bara innehÃ¥lla siffror.");
                     return;
                 }
 
@@ -76,7 +76,7 @@ public class SSAddAccountDialog extends SSDialog {
                         return;
                     }
                     else{
-                        int result = SSConfirmDialog.showDialog(iDialog, "Kontot inaktivt", "Kontot " + iAccount.getNumber() + " är inaktivt. Vill du aktivera det?");
+                        int result = SSConfirmDialog.showDialog(iDialog, "Kontot inaktivt", "Kontot " + iAccount.getNumber() + " Ã¤r inaktivt. Vill du aktivera det?");
                         if(result == JOptionPane.YES_OPTION){
                             iAccount.setActive(true);
                             SSDB.getInstance().updateAccountingYear(iCurrentYear);

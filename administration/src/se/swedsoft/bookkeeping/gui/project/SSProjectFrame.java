@@ -117,7 +117,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
         });
         iToolBar.add(iButton);
 
-        // Ändra projekt
+        // Ã„ndra projekt
         // ***************************
         iButton = new SSButton("ICON_EDITITEM", "projectframe.editbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {

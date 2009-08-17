@@ -201,7 +201,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
     };
 
     /**
-     * Projekt kr‰vs
+     * Projekt kr√§vs
      */
 
     public static SSTableColumn<SSAccount> COLUMN_PROJECT = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.7")) {
@@ -223,7 +223,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
     };
 
     /**
-     * Resultatenhet kr‰vs
+     * Resultatenhet kr√§vs
      */
 
     public static SSTableColumn<SSAccount> COLUMN_RESULTUNIT = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.8")) {

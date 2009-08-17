@@ -28,7 +28,7 @@ public class SSPeriodicInvoice implements Serializable {
     private Date iDate;
     // Antal fakturor
     private Integer iCount;
-    // Perioden i månader
+    // Perioden i mÃ¥nader
     private Integer iPeriod;
     // Beskrivning
     private String iDescription;
@@ -59,7 +59,7 @@ public class SSPeriodicInvoice implements Serializable {
         iPeriod          = 1;
         iAppendPeriod    = false;
         iAppendInformation = false;
-        iInformation = "Detta är faktura [FAK] av [TOT].";
+        iInformation = "Detta Ã¤r faktura [FAK] av [TOT].";
         iPeriodStart     = SSDateMath.getFirstDayInMonth(iDate);
         iPeriodEnd       = SSDateMath.getLastDayMonth   (iDate);
         iInvoices        = new LinkedList<SSInvoice>();

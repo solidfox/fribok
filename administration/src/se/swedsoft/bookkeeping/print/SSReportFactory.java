@@ -190,7 +190,7 @@ public class SSReportFactory {
     }
 
     public static void buildOwnReport(final SSMainFrame iMainFrame, final SSOwnReport iOwnReport){
-        SSPeriodSelectionDialog iDateDialog = new SSPeriodSelectionDialog(iMainFrame, "Välj period");
+        SSPeriodSelectionDialog iDateDialog = new SSPeriodSelectionDialog(iMainFrame, "VÃ¤lj period");
         SSNewAccountingYear iYear = SSDB.getInstance().getCurrentYear();
 
         iDateDialog.setFrom(iYear.getFrom());
@@ -1029,7 +1029,7 @@ public class SSReportFactory {
     }
 
     /**
-     * Försäljningsrapport
+     * FÃ¶rsÃ¤ljningsrapport
      *
      * @param iMainFrame
      */
@@ -1167,7 +1167,7 @@ public class SSReportFactory {
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
-                String iSubject = "Faktura " + iInvoice.getNumber() + " från " + SSDB.getInstance().getCurrentCompany().getName();
+                String iSubject = "Faktura " + iInvoice.getNumber() + " frÃ¥n " + SSDB.getInstance().getCurrentCompany().getName();
                 try {
                     if (!SSMail.sendMail(iInvoice.getCustomer().getEMail(), iSubject, iFileName)) {
                         return;
@@ -1271,7 +1271,7 @@ public class SSReportFactory {
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
-                String iSubject = "Kreditfaktura " + iCreditInvoice.getNumber() + " från " + SSDB.getInstance().getCurrentCompany().getName();
+                String iSubject = "Kreditfaktura " + iCreditInvoice.getNumber() + " frÃ¥n " + SSDB.getInstance().getCurrentCompany().getName();
                 try {
                     if (!SSMail.sendMail(iCreditInvoice.getCustomer().getEMail(), iSubject, iFileName)) {
                         return;
@@ -1347,7 +1347,7 @@ public class SSReportFactory {
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
-                String iSubject = "Order " + iOrder.getNumber() + " från " + SSDB.getInstance().getCurrentCompany().getName();
+                String iSubject = "Order " + iOrder.getNumber() + " frÃ¥n " + SSDB.getInstance().getCurrentCompany().getName();
                 try {
                     if(iOrder.getCustomer() != null) {
                         if (!SSMail.sendMail(iOrder.getCustomer().getEMail(), iSubject, iFileName)) {
@@ -1424,7 +1424,7 @@ public class SSReportFactory {
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
-                String iSubject = "Offert " + iTender.getNumber() + " från " + SSDB.getInstance().getCurrentCompany().getName();
+                String iSubject = "Offert " + iTender.getNumber() + " frÃ¥n " + SSDB.getInstance().getCurrentCompany().getName();
                 try {
                     if(iTender.getCustomer() != null){
                         if(!SSMail.sendMail(iTender.getCustomer().getEMail(),iSubject,iFileName)){
@@ -1559,7 +1559,7 @@ public class SSReportFactory {
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
-                String iSubject = "Inköpsorder " + iPurchaseOrder.getNumber() + " från " + SSDB.getInstance().getCurrentCompany().getName();
+                String iSubject = "InkÃ¶psorder " + iPurchaseOrder.getNumber() + " frÃ¥n " + SSDB.getInstance().getCurrentCompany().getName();
                 try {
                     if (!SSMail.sendMail(iPurchaseOrder.getSupplier().getEMail(), iSubject, iFileName)) {
                         return;
@@ -1625,7 +1625,7 @@ public class SSReportFactory {
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
-                String iSubject = "Förfrågan från " + SSDB.getInstance().getCurrentCompany().getName();
+                String iSubject = "FÃ¶rfrÃ¥gan frÃ¥n " + SSDB.getInstance().getCurrentCompany().getName();
                 try {
                     if (!SSMail.sendMail(iPurchaseOrder.getSupplier().getEMail(), iSubject, iFileName)) {
                         return;

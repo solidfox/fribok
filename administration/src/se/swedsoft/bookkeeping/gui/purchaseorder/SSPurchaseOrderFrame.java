@@ -177,7 +177,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
 
 
 
-        // Skapa leverantörsfaktura för inköpsorder
+        // Skapa leverantÃ¶rsfaktura fÃ¶r inkÃ¶psorder
         // ***************************
         iButton = new SSButton("ICON_INVOICE24", "purchaseorderframe.createorderbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {

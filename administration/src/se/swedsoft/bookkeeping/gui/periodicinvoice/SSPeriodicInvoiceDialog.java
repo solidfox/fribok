@@ -179,7 +179,7 @@ public class SSPeriodicInvoiceDialog {
                 SSPeriodicInvoice iPeriodicInvoice = iPanel.getPeriodicInvoice();
 
                 if(iPeriodicInvoice.getCount() < iInvoiceCount){
-                    SSErrorDialog.showDialog(iMainFrame, "Fˆr fÂ fakturor", "<html>" + iInvoiceCount + " fakturor ‰r redan fakturerade fˆr den h‰r periodfakturan.<br>Du kan inte ange ett l‰gre antal ‰n " + iInvoiceCount + ".");
+                    SSErrorDialog.showDialog(iMainFrame, "F√∂r f√• fakturor", "<html>" + iInvoiceCount + " fakturor √§r redan fakturerade f√∂r den h√§r periodfakturan.<br>Du kan inte ange ett l√§gre antal √§n " + iInvoiceCount + ".");
                     return;
                 }
                 for(int i=0; i<iInvoiceCount; i++){

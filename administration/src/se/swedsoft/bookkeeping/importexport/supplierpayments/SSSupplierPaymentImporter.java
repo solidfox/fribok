@@ -76,9 +76,9 @@ public class SSSupplierPaymentImporter {
 
 
                 iOutpayment = new SSOutpayment();
-                iOutpayment.setText("Leverantörsbetalning");
+                iOutpayment.setText("LeverantÃ¶rsbetalning");
                 iOutpayment.setDate( iPaymentDate );
-                iOutpayment.setText("Leverantörsbetalning " + iFormat.format(iPaymentDate));
+                iOutpayment.setText("LeverantÃ¶rsbetalning " + iFormat.format(iPaymentDate));
 
                 iOutpayments.add(iOutpayment);
             }

@@ -534,9 +534,9 @@ public class SSSupplierCreditInvoicePanel {
 
         // Standard konton
         iDefaultAccounts.setDefaultAccounts( this.iSupplierCreditInvoice.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iEntered.setSelected( this.iSupplierCreditInvoice.isEntered() );
-        // Lagerför
+        // LagerfÃ¶r
         isStockInfluencing.setSelected( this. iSupplierCreditInvoice.isStockInfluencing() );
 
         updateSumFields();
@@ -568,9 +568,9 @@ public class SSSupplierCreditInvoicePanel {
         iSupplierCreditInvoice.setRoundingSum(iRoundingSum.getValue());
         // Standard konton
         iSupplierCreditInvoice.setDefaultAccounts(iDefaultAccounts.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iSupplierCreditInvoice.setEntered( iEntered.isSelected() );
-        // Lagerför
+        // LagerfÃ¶r
         iSupplierCreditInvoice.setStockInfluencing( isStockInfluencing.isSelected() );
 
 

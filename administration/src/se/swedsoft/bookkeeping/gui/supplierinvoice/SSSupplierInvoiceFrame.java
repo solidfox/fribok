@@ -223,7 +223,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
         iToolBar.add(iButton);
         iToolBar.addSeparator();
 
-        // Skapa leverantörsbetalningar
+        // Skapa leverantÃ¶rsbetalningar
         // ***************************
         iButton = new SSButton("Task List 24", "supplierinvoiceframe.createsupplierpayment", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -378,7 +378,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
                     }
                 }
                 break;
-                // Förfallna
+                // FÃ¶rfallna
             case 2:
                 iFiltered = new LinkedList<SSSupplierInvoice>();
                 for (SSSupplierInvoice iInvoice : iInvoices) {

@@ -218,7 +218,7 @@ public class SSBudget implements Serializable  {
         pValue = pValue.setScale(2, BigDecimal.ROUND_HALF_UP);
         // Get the sum to be added per month
         BigDecimal sumPerMonth = pValue.divide( numMonths, BigDecimal.ROUND_FLOOR  );
-        // Get the last few ören that differs from the total sum
+        // Get the last few Ã¶ren that differs from the total sum
         BigDecimal remainder   = pValue.subtract( sumPerMonth.multiply( numMonths ) )  ;
 
 

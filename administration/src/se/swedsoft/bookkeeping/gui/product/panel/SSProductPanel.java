@@ -344,7 +344,7 @@ public class SSProductPanel {
         iSupplierProductNr.setText(iProduct.getSupplierProductNr());
         iSupplier         .setSelected(iProduct.getSupplier(SSDB.getInstance().getSuppliers()));
 
-        // Beskrivningar pÂ alternativa sprÂk
+        // Beskrivningar p√• alternativa spr√•k
         iDescriptions.setValues( iProduct.getDescriptions() );
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
@@ -404,15 +404,15 @@ public class SSProductPanel {
         iProduct.setUnit(iUnit             .getSelected());
         iProduct.setExpired(iExpired          .isSelected());
         iProduct.setStockProduct(iStockGoods       .isSelected());
-        // best‰llningsantal
+        // best√§llningsantal
         iProduct.setOrdercount(iOrdercount.getValue());
-        // Best‰llningspunkt
+        // Best√§llningspunkt
         iProduct.setOrderpoint(iOrderpoint.getValue() );
         iProduct.setWarehouseLocation(iWarehouseLocation .getText());
         iProduct.setSupplierProductNr(iSupplierProductNr.getText());
         iProduct.setSupplier(iSupplier.getSelected());
 
-        // Beskrivningar pÂ alternativa sprÂk
+        // Beskrivningar p√• alternativa spr√•k
         iProduct.setDescriptions( iDescriptions.getValues() );
 
         iProduct.setDefaultAccount(SSDefaultAccount.Purchases, iPurchaseAccount.getSelected());

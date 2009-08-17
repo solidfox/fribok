@@ -17,11 +17,11 @@ import java.util.*;
 public class SSStock {
 
 
-    // Antal på lagret
+    // Antal pÃ¥ lagret
     private Map<SSProduct, Integer> iQuantity;
     // Antal reserverade
     private Map<SSProduct, Integer> iReserved;
-    // Antal beställda
+    // Antal bestÃ¤llda
     private Map<SSProduct, Integer> iOrdered;
 
     /**
@@ -290,55 +290,55 @@ public class SSStock {
             Integer iReserved = 0;
             Integer iOrdered  = 0;
 
-            // Order: + reserverad om den ej är fakturerad
+            // Order: + reserverad om den ej Ã¤r fakturerad
             /*for (SSOrder iOrder : iOrders) {
                 iReserved = iReserved + SSOrderMath.getProductCount(iOrder, iProduct);
             }*/
             iReserved = iOrderCount.get(iProduct.getNumber()) == null ? iReserved : iReserved + iOrderCount.get(iProduct.getNumber());
 
-            // Faktura: - på lagret
+            // Faktura: - pÃ¥ lagret
             /*for (SSInvoice iInvoice : iInvoices) {
                 iQuantity = iQuantity - SSSaleMath.getProductCount(iInvoice, iProduct);
             }*/
             iQuantity = iInvoiceCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity - iInvoiceCount.get(iProduct.getNumber());
 
-            // Kreditfaktura: + på lagret
+            // Kreditfaktura: + pÃ¥ lagret
             /*for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
                 iQuantity = iQuantity + SSSaleMath.getProductCount(iCreditInvoice,  iProduct);
             }*/
             iQuantity = iCreditInvoiceCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity + iCreditInvoiceCount.get(iProduct.getNumber());
 
-            // Inköpsorder: + Ordered om ej fakturerad
+            // InkÃ¶psorder: + Ordered om ej fakturerad
             /*for (SSPurchaseOrder iPurchaseOrder : iPurchaseOrders) {
                 iOrdered = iOrdered + SSPurchaseOrderMath.getProductCount(iPurchaseOrder,  iProduct);
             }*/
             iOrdered = iPurchaseOrderCount.get(iProduct.getNumber()) == null ? iOrdered : iOrdered + iPurchaseOrderCount.get(iProduct.getNumber());
 
-            // Leverantörsfakturor: + på lagret
+            // LeverantÃ¶rsfakturor: + pÃ¥ lagret
             /*for (SSSupplierInvoice iSupplierInvoice : iSupplierInvoices) {
                 iQuantity = iQuantity + SSSupplierInvoiceMath.getProductCount(iSupplierInvoice,  iProduct);
             }*/
             iQuantity = iSupplierInvoiceCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity + iSupplierInvoiceCount.get(iProduct.getNumber());
 
-            // Leverantörskreditfaktura: - på lagret
+            // LeverantÃ¶rskreditfaktura: - pÃ¥ lagret
             /*for (SSSupplierCreditInvoice iSupplierCreditInvoice : iSupplierCreditInvoices) {
                 iQuantity = iQuantity - SSSupplierInvoiceMath.getProductCount(iSupplierCreditInvoice,  iProduct);
             }*/
             iQuantity = iSupplierCreditInvoiceCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity - iSupplierCreditInvoiceCount.get(iProduct.getNumber());
 
-            // Inventering + på lager
+            // Inventering + pÃ¥ lager
             /*for (SSInventory iInventory : iInventories) {
                 iQuantity = iQuantity + iInventory.getChange(iProduct);
             }*/
             iQuantity = iInventoryCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity + iInventoryCount.get(iProduct.getNumber());
 
-            // Inleverans + på lager
+            // Inleverans + pÃ¥ lager
             /*for (SSIndelivery iIndelivery : iIndeliveries) {
                 iQuantity = iQuantity + iIndelivery.getChange(iProduct);
             }*/
             iQuantity = iIndeliveryCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity + iIndeliveryCount.get(iProduct.getNumber());
 
-            // Utleverans - på lager
+            // Utleverans - pÃ¥ lager
             /*for (SSOutdelivery iOutdelivery : iOutdeliveries) {
                 iQuantity = iQuantity - iOutdelivery.getChange(iProduct);
             }*/

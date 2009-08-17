@@ -95,7 +95,7 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
             for(int i = 0; i < 84; i++){
                 iCharacters[i] = ' ';
             }
-            // Förtrykta fält
+            // FÃ¶rtrykta fÃ¤lt
            iCharacters[83] = 'H';
  /*            iCharacters[79] = '#';
             iCharacters[51] = '#';

@@ -50,7 +50,7 @@ public class LBinPostTK26 extends LBinPost {
         iLine.append(iOutpaymentNumber  , 5      ); // 7 ==> 11: Utbetalningsnummer
         iLine.append(" "                         ); // 12      : Checksiffra
         iLine.append(iName.toUpperCase(), 35     ); // 13 ==> 47: Mottagarens namn i versaler
-        iLine.append(""                 , 33     ); // 48 ==> 80: Extra namnf‰lt
+        iLine.append(""                 , 33     ); // 48 ==> 80: Extra namnf√§lt
     }
 
     /**

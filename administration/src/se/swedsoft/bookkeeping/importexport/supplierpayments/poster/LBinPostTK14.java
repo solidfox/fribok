@@ -51,7 +51,7 @@ public class LBinPostTK14 extends LBinPost {
         iLine.append( iValue    , 12          ); // 38 => 49: Belopp
         iLine.append( iDate     , 6, "yyMMdd" ); // 50 => 55: Betalningsdatum
         iLine.append( ""        , 5           ); // 56 => 60: Blanka
-        iLine.append( iInvoiceNr, 20          ); // 61 => 80: Användarinformation
+        iLine.append( iInvoiceNr, 20          ); // 61 => 80: AnvÃ¤ndarinformation
     }
 
     /**
@@ -62,7 +62,7 @@ public class LBinPostTK14 extends LBinPost {
         iNumber    = iLine.readString    (3 , 12);              // 3 => 12 : Postgiro eller utbet nr
         iReference = iLine.readString    (13, 37);              // 13 => 37: Referens
         iValue     = iLine.readBigDecimal(38, 49);              // 38 => 49: Belopp
-        iInvoiceNr = iLine.readInteger   (61, 80);              // 61 => 80: Användarinformation
+        iInvoiceNr = iLine.readInteger   (61, 80);              // 61 => 80: AnvÃ¤ndarinformation
 
       //  iDate      = iLine.readDate      (50, 55, "yyMMdd");    // 50 => 55: Betalningsdatum
 

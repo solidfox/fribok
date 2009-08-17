@@ -13,15 +13,15 @@ import java.rmi.server.UID;
  * User: Johan Gunnarsson
  * Date: 2007-jan-24
  * Time: 16:01:44
- * Denna klass används för att låsa öppnade företag, så att ett öppet företag
- * inte kan tas bort av en annan användare.
+ * Denna klass anvÃ¤nds fÃ¶r att lÃ¥sa Ã¶ppnade fÃ¶retag, sÃ¥ att ett Ã¶ppet fÃ¶retag
+ * inte kan tas bort av en annan anvÃ¤ndare.
  */
 public class SSYearLock {
 
 
     /**
-     * Låser systemår iYear så att flera instanser av programmet inte kan editera det samtidigt.
-     * @param iYear - Det år som ska låsas
+     * LÃ¥ser systemÃ¥r iYear sÃ¥ att flera instanser av programmet inte kan editera det samtidigt.
+     * @param iYear - Det Ã¥r som ska lÃ¥sas
      */
     public static boolean applyLock(SSNewAccountingYear iYear) {
         if (iYear == null) {
@@ -47,8 +47,8 @@ public class SSYearLock {
     }
 
     /**
-     * Låser upp året iYear. När detta är gjort är objektet öppet att editera igen
-     * @param iYear - Det objekt som ska låsas upp
+     * LÃ¥ser upp Ã¥ret iYear. NÃ¤r detta Ã¤r gjort Ã¤r objektet Ã¶ppet att editera igen
+     * @param iYear - Det objekt som ska lÃ¥sas upp
      */
     public static void removeLock(SSNewAccountingYear iYear) {
         if(iYear == null){
@@ -66,9 +66,9 @@ public class SSYearLock {
     }
 
     /**
-     * Kontrollerar om iYear är låst.
-     * @param iYear - Det företag som ska kontrolleras
-     * @return Företaget låst eller inte
+     * Kontrollerar om iYear Ã¤r lÃ¥st.
+     * @param iYear - Det fÃ¶retag som ska kontrolleras
+     * @return FÃ¶retaget lÃ¥st eller inte
      */
     public static boolean isLocked(SSNewAccountingYear iYear) {
 

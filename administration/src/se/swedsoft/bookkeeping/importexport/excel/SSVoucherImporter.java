@@ -192,7 +192,7 @@ public class SSVoucherImporter {
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
 
-        sb.append("Följande verifikationer kommer att importeras:<br>");
+        sb.append("FÃ¶ljande verifikationer kommer att importeras:<br>");
 
         sb.append("<ul>");
         for (SSVoucher iVoucher : iVouchers) {
@@ -202,7 +202,7 @@ public class SSVoucherImporter {
         }
         sb.append("</ul>");
 
-        sb.append("Fortsätt med importeringen ?");
+        sb.append("FortsÃ¤tt med importeringen ?");
         sb.append("</html>");
 
 

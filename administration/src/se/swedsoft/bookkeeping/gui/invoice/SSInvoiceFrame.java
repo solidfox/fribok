@@ -231,7 +231,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         iTable.addSelectionDependentComponent(iButton);
         toolBar.add(iButton);
 
-        // Skriv ut påminellse för valda fakturor
+        // Skriv ut pÃ¥minellse fÃ¶r valda fakturor
         // ***************************
         iButton = new SSButton("ICON_EXCLAMATION24", "invoiceframe.reminderbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -248,7 +248,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         toolBar.add(iButton);
 
 
-        // Skapa räntefakturor
+        // Skapa rÃ¤ntefakturor
         // ***************************
         iButton = new SSButton("ICON_INVOICE24", "invoiceframe.interestinvoicebutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
@@ -426,7 +426,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
                     }
                 }
                 break;
-                // Förfallna
+                // FÃ¶rfallna
             case 2:
                 iFiltered = new LinkedList<SSInvoice>();
                 for (SSInvoice iInvoice : iInvoices) {

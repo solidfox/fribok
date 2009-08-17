@@ -127,7 +127,7 @@ public class SSVATUtil {
         BigDecimal vatToPayOrRetrieve        = SSVATUtil.getVatToPayOrRetrieve       (debetMinusCreditSum);
         BigDecimal vatToPayOrRetrieveRounded = SSVATUtil.getVatToPayOrRetrieveRounded(debetMinusCreditSum);
 
-        // Add the account for ÷resutj‰mmning
+        // Add the account for √ñresutj√§mmning
         addAccount(accountA, accounts, creditMinusDebetSum, debetMinusCreditSum);
 
         // Check so the sum arent zero

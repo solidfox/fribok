@@ -34,7 +34,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
     private SSVoucher iVoucher;
     // Differensverifikation
     private SSVoucher iDifference;
-    // Bokförd
+    // BokfÃ¶rd
     private boolean iEntered;
 
     // Standard konton

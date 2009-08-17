@@ -19,7 +19,7 @@ public enum SSDefaultAccount implements Serializable {
     OutPayment(1930),
     // Kontant
     Cash(1910),
-    // Leverantörsskuld
+    // LeverantÃ¶rsskuld
     SupplierDebt(2440),
     // Moms 1
     Tax1(2611),
@@ -27,19 +27,19 @@ public enum SSDefaultAccount implements Serializable {
     Tax2(2621),
     // Moms 3
     Tax3(2631),
-    // Försäljning
+    // FÃ¶rsÃ¤ljning
     Sales(3051),
-    // Inköp
+    // InkÃ¶p
     Purchases(4010),
     // Valutakursvinst
     CurrencyProfit(3960),
-    // Valutakursförlust
+    // ValutakursfÃ¶rlust
     CurrencyLoss(7960),
-    // Öresavrundning
+    // Ã–resavrundning
     Rounding(3740),
-    //Ränteintäkt
+    //RÃ¤nteintÃ¤kt
     InterestProfit(8300),
-    // Ingående moms
+    // IngÃ¥ende moms
     IncommingTax(2640)
     ;
     private static final long serialVersionUID = 6209981489711135940L;

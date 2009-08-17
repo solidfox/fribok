@@ -150,7 +150,7 @@ public class BgMaxFile {
         sb.append("BgMaxFil: {\n");
         sb.append("  Layoutnamn    : ").append(iLayoutnamn   ).append("\n");
         sb.append("  Version       : ").append(iVersion      ).append("\n");
-        sb.append("  Tidsst‰mpel   : ").append(iTidsstampel  ).append("\n");
+        sb.append("  Tidsst√§mpel   : ").append(iTidsstampel  ).append("\n");
         sb.append("  Testmarkering : ").append(iTestmarkering).append("\n");
 
         for (BgMaxAvsnitt iCurrent : iAvsnitts) {
@@ -195,7 +195,7 @@ public class BgMaxFile {
 
 
     /**
-     * 1.4 ÷ppningsport (05)
+     * 1.4 √ñppningsport (05)
      *
      * @param iLine
      */
@@ -206,7 +206,7 @@ public class BgMaxFile {
     }
 
     /**
-     * 1.13 Ins‰ttningspost (15)
+     * 1.13 Ins√§ttningspost (15)
      *
      * @param iLine
      */

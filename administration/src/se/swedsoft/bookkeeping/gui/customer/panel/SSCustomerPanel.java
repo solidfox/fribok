@@ -160,7 +160,7 @@ public class SSCustomerPanel {
         iCustomer.setTelefax(iTelefax.getText());
         // Orginisationsnummer
         iCustomer.setRegistrationNumber(iOrginisationNumber.getText());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iCustomer.setOurContactPerson(iOurContactPerson.getText());
         // Er kontaktperson:
         iCustomer.setYourContactPerson(iYourContactPerson.getText());
@@ -175,13 +175,13 @@ public class SSCustomerPanel {
         iCustomer.setAccountNumber(iAccountNumber.getText());
         // Clearingnummer:
         iCustomer.setClearingNumber(iClearingNumber.getText());*/
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iCustomer.setEuSaleCommodity(iEuSaleCommodity.isSelected());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iCustomer.setEuSaleYhirdPartCommodity(iEuSaleYhirdPartCommodity.isSelected());
-        // Momsfri försäljning
+        // Momsfri fÃ¶rsÃ¤ljning
         iCustomer.setTaxFree(iVatFreeSale.isSelected());
-        //Göm enhetspris på följesedel
+        //GÃ¶m enhetspris pÃ¥ fÃ¶ljesedel
         iCustomer.setHideUnitprice(iHideUnitPrice.isSelected());
 
         // Fakureringsvaluta
@@ -190,10 +190,10 @@ public class SSCustomerPanel {
         iCustomer.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iCustomer.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iCustomer.setDeliveryWay(iDeliveryWay.getSelected());
 
-        // Kreditgräns
+        // KreditgrÃ¤ns
         iCustomer.setCreditLimit(iCreditLimit.getValue());
         // Rabatt
         iCustomer.setDiscount(iDiscount.getValue());
@@ -237,7 +237,7 @@ public class SSCustomerPanel {
         iTelefax.setText(iCustomer.getTelefax());
         // Orginisationsnummer
         iOrginisationNumber.setText(iCustomer.getRegistrationNumber());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOurContactPerson.setText(iCustomer.getOurContactPerson());
         // Er kontaktperson:
         iYourContactPerson.setText(iCustomer.getYourContactPerson());
@@ -252,13 +252,13 @@ public class SSCustomerPanel {
         iClearingNumber.setText(iCustomer.getClearingNumber());
         // Kontonummer:
         iAccountNumber.setText(iCustomer.getAccountNumber());*/
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iEuSaleCommodity.setSelected(iCustomer.getEuSaleCommodity());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iEuSaleYhirdPartCommodity.setSelected(iCustomer.getEuSaleYhirdPartCommodity());
-        // Momsfri försäljning
+        // Momsfri fÃ¶rsÃ¤ljning
         iVatFreeSale.setSelected(iCustomer.getTaxFree());
-        //Göm enhetspris på följesedel
+        //GÃ¶m enhetspris pÃ¥ fÃ¶ljesedel
         iHideUnitPrice.setSelected(iCustomer.getHideUnitprice());
         // Fakureringsvaluta
         iInvoiceCurrency.setSelected(iCustomer.getInvoiceCurrency());
@@ -266,10 +266,10 @@ public class SSCustomerPanel {
         iPaymentTerm.setSelected(iCustomer.getPaymentTerm());
         // Leveransvilkor
         iDeliveryTerm.setSelected(iCustomer.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iCustomer.getDeliveryWay());
 
-        // Kreditgräns
+        // KreditgrÃ¤ns
         iCreditLimit.setValue(iCustomer.getCreditLimit());
         // Rabatt
         iDiscount.setValue(iCustomer.getDiscount());

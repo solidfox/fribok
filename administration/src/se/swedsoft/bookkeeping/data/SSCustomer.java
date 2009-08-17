@@ -36,7 +36,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
     private String      iTelefax;
     // Orginisationsnummer
     private String      iRegistrationNumber;
-    // Vår kontaktperson:
+    // VÃ¥r kontaktperson:
     private String      iOurContactPerson;
     // Er kontaktperson:
     private String      iYourContactPerson;
@@ -53,13 +53,13 @@ public class SSCustomer implements Serializable, SSTableSearchable {
     // Clearingnummer:
     private String      iClearingNumber;
 
-    // EU-försäljning varor
+    // EU-fÃ¶rsÃ¤ljning varor
     private boolean        iEuSaleCommodity;
-    // EU-försäljning trepart varor
+    // EU-fÃ¶rsÃ¤ljning trepart varor
     private boolean        iEuSaleYhirdPartCommodity;
-    // Momsfri försäljning
+    // Momsfri fÃ¶rsÃ¤ljning
     private boolean        iVatFreeSale;
-    //Göm enhetspris på följesedel
+    //GÃ¶m enhetspris pÃ¥ fÃ¶ljesedel
     private boolean        iHideUnitprice;
 
     // Fakureringsvaluta
@@ -68,10 +68,10 @@ public class SSCustomer implements Serializable, SSTableSearchable {
     private SSPaymentTerm  iPaymentTerm;
     // Leveransvilkor
     private SSDeliveryTerm iDeliveryTerm;
-    // Leveranssätt
+    // LeveranssÃ¤tt
     private SSDeliveryWay  iDeliveryWay;
 
-    // Kreditgräns
+    // KreditgrÃ¤ns
     private BigDecimal iCreditLimit;
     // Rabatt
     private BigDecimal iDiscount;

@@ -172,13 +172,13 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
         BigDecimal iCreditSum = SSVoucherMath.getCreditSum(iVoucher);
 
         if( iDebetSum.subtract(iCreditSum).setScale(2, RoundingMode.HALF_UP).signum() != 0 ){
-            // Verifikationens differans är inte noll.
+            // Verifikationens differans Ã¤r inte noll.
             iError = bundle.getString("voucherframe.error.6");
             return false;
         }
 
         if( iDebetSum.setScale(2, RoundingMode.HALF_UP).signum() == 0 ){
-            // Omslutningen är noll
+            // Omslutningen Ã¤r noll
             for(SSVoucherRow iRow : iVoucher.getRows()){
                 if(!iRow.isCrossed()){
                     iError = bundle.getString("voucherframe.error.8");

@@ -32,7 +32,7 @@ import java.beans.PropertyVetoException;
 /**
  * This class implements a basic internal frame. <P>
  *
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public abstract class SSInternalFrame extends JInternalFrame {
     // The main frame.

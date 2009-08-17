@@ -344,7 +344,7 @@ public class SSInpaymentPanel {
         iInpayment.setText( iText.getText() );
         // Standardkonton
         iInpayment.setDefaultAccounts( iDefaultAccounts.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iInpayment.setEntered(iEntered.isSelected());
 
         // Generate the voucher
@@ -367,7 +367,7 @@ public class SSInpaymentPanel {
         iDate.setDate( iInpayment.getDate() );
         // Text
         iText.setText( iInpayment.getText());
-        // Bokförd
+        // BokfÃ¶rd
         iEntered.setSelected(iInpayment.isEntered());
         // Standardkonton
         iDefaultAccounts.setDefaultAccounts( this.iInpayment.getDefaultAccounts() );

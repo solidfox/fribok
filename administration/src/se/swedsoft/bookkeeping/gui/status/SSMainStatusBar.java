@@ -82,7 +82,7 @@ public class SSMainStatusBar {
                     public void run() {
                         while (true) {
 
-                            iMemLabel.setText("<html><b>Minnesanvändning hög. Starta om programmet!</b></html>");
+                            iMemLabel.setText("<html><b>MinnesanvÃ¤ndning hÃ¶g. Starta om programmet!</b></html>");
 
                             iMemLabel.setForeground(Color.RED);
                             iMemLabel.setVisible(true);
@@ -102,12 +102,12 @@ public class SSMainStatusBar {
                 });
                 blink.start();
 
-                /*iMemLabel.setText("Minnesanvändning hög. Starta om programmet!");
+                /*iMemLabel.setText("MinnesanvÃ¤ndning hÃ¶g. Starta om programmet!");
                 iMemLabel.setForeground(Color.RED);
                 SSMemoryWarning.setPercentageUsageThreshold(0.95);
                 double percentageUsed = ((double) usedMemory) / maxMemory;
                 if (percentageUsed > 0.95) {
-                    iMemLabel.setText("MINNESNIVÅ KRITISK! STARTA OM PROGRAMMET ANNARS KAN DATABASEN GÅ FÖRLORAD!");
+                    iMemLabel.setText("MINNESNIVÃ… KRITISK! STARTA OM PROGRAMMET ANNARS KAN DATABASEN GÃ… FÃ–RLORAD!");
                 } */
             //}
         //});

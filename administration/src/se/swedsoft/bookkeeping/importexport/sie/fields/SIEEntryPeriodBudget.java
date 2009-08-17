@@ -34,7 +34,7 @@ public class SIEEntryPeriodBudget extends SIEEntry {
      */
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
-        // #PBUDGET årsnr period konto {dimensionsnr objectkod} saldo [kvantitet]
+        // #PBUDGET Ã¥rsnr period konto {dimensionsnr objectkod} saldo [kvantitet]
         if(!iReader.hasFields(STRING, INT, INT, INT, ARRAY, FLOAT)) {
             throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
         }

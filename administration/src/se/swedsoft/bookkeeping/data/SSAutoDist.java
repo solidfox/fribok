@@ -27,7 +27,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
     // Belopp
     private BigDecimal iAmount;
 
-    // Automatfördelningsrader
+    // AutomatfÃ¶rdelningsrader
     private List<SSAutoDistRow> iRows;
 
     //Transient referens till kontot

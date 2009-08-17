@@ -108,31 +108,31 @@ public class SSVATReport2007Printer extends SSPrinter {
      */
     private String getVATCodesForGroup(Integer group){
         switch(group){
-            //  A. Momspliktig försäljning eller utag exklusive moms
+            //  A. Momspliktig fÃ¶rsÃ¤ljning eller utag exklusive moms
             case 5: return "MP1, MP2, MP3, PTOG";
             case 6: return "MU1, MU2, MU3";
             case 7: return "MBBU";
             case 8: return "MPFF";
 
-            // B. Utgående moms på försäljning eller uttag i ruta 5-8
+            // B. UtgÃ¥ende moms pÃ¥ fÃ¶rsÃ¤ljning eller uttag i ruta 5-8
             case 10: return "U1, UVL";
             case 11: return "U2";
             case 12: return "U3";
 
-            // C. Momspliktiga inköp där köparen är skalleskylding.
+            // C. Momspliktiga inkÃ¶p dÃ¤r kÃ¶paren Ã¤r skalleskylding.
             case 20: return "VFEU";
             case 21: return "TFEU";
             case 22: return "TFFU";
             case 23: return "IVIS";
             case 24: return "ITIS";
 
-            // D. Utgående moms på inköp i ruta 20 - 24
+            // D. UtgÃ¥ende moms pÃ¥ inkÃ¶p i ruta 20 - 24
             case 30: return "U1MI, UEU, UTFU";
             case 31: return "U2MI";
             case 32: return "U3MI";
 
-            // E. Försäljning m.m. som är undantagen från moms.
-            case 35: return "VTEU, ÖVEU";
+            // E. FÃ¶rsÃ¤ljning m.m. som Ã¤r undantagen frÃ¥n moms.
+            case 35: return "VTEU, Ã–VEU";
             case 36: return "E";
             case 37: return "3VEU";
             case 38: return "3FEU";
@@ -141,10 +141,10 @@ public class SSVATReport2007Printer extends SSPrinter {
             case 41: return "OMSS";
             case 42: return "MF";
 
-            // F. Ingående moms
+            // F. IngÃ¥ende moms
             case 48: return "I, IVL";
 
-            // G. Moms att betala eller få tillbaka.
+            // G. Moms att betala eller fÃ¥ tillbaka.
             case 49: return "R1, R2";
         }
         return null;
@@ -157,19 +157,19 @@ public class SSVATReport2007Printer extends SSPrinter {
     private BigDecimal getValueForGroup(Integer group){
 
         switch(group){
-            //  A. Momspliktig försäljning eller utag exklusive moms
+            //  A. Momspliktig fÃ¶rsÃ¤ljning eller utag exklusive moms
             case 5: return getSumForAccounts(iCreditMinusDebetSum, "MP1", "MP2", "MP3", "PTOG");
             case 6: return getSumForAccounts(iCreditMinusDebetSum, "MU1", "MU2", "MU3");
             case 7: return getSumForAccounts(iCreditMinusDebetSum, "MBBU");
             case 8: return getSumForAccounts(iCreditMinusDebetSum, "MPFF");
 
-                // B. Utgående moms på försäljning eller uttag i ruta 5-8
+                // B. UtgÃ¥ende moms pÃ¥ fÃ¶rsÃ¤ljning eller uttag i ruta 5-8
 
             case 10: return getSumForAccounts(iCreditMinusDebetSum, "U1", "UVL");
             case 11: return getSumForAccounts(iCreditMinusDebetSum, "U2");
             case 12: return getSumForAccounts(iCreditMinusDebetSum, "U3");
 
-                // C. Momspliktiga inköp där köparen är skatteskyldig.
+                // C. Momspliktiga inkÃ¶p dÃ¤r kÃ¶paren Ã¤r skatteskyldig.
 
             case 20: return getSumForAccounts(iDebetMinusCreditSum, "VFEU");
             case 21: return getSumForAccounts(iDebetMinusCreditSum, "TFEU");
@@ -177,13 +177,13 @@ public class SSVATReport2007Printer extends SSPrinter {
             case 23: return getSumForAccounts(iDebetMinusCreditSum, "IVIS");
             case 24: return getSumForAccounts(iDebetMinusCreditSum, "ITIS");
 
-                // D. Utgående moms på inköp i ruta 20 - 24
+                // D. UtgÃ¥ende moms pÃ¥ inkÃ¶p i ruta 20 - 24
             case 30: return getSumForAccounts(iCreditMinusDebetSum, "U1MI", "UEU", "UTFU");
             case 31: return getSumForAccounts(iCreditMinusDebetSum, "U2MI");
             case 32: return getSumForAccounts(iCreditMinusDebetSum, "U3MI");
 
-                // E. Försäljning m.m. som är undantagen från moms.
-            case 35: return getSumForAccounts(iCreditMinusDebetSum, "VTEU", "ÖVEU");
+                // E. FÃ¶rsÃ¤ljning m.m. som Ã¤r undantagen frÃ¥n moms.
+            case 35: return getSumForAccounts(iCreditMinusDebetSum, "VTEU", "Ã–VEU");
             case 36: return getSumForAccounts(iCreditMinusDebetSum, "E");
             case 37: return getSumForAccounts(iDebetMinusCreditSum, "3VEU");
             case 38: return getSumForAccounts(iCreditMinusDebetSum, "3FEU");
@@ -192,10 +192,10 @@ public class SSVATReport2007Printer extends SSPrinter {
             case 41: return getSumForAccounts(iCreditMinusDebetSum, "OMSS");
             case 42: return getSumForAccounts(iCreditMinusDebetSum, "MF");
 
-                // F. Ingående moms
+                // F. IngÃ¥ende moms
             case 48: return getSumForAccounts(iDebetMinusCreditSum, "I", "IVL");
 
-                // G. Moms att betala eller få tillbaka.
+                // G. Moms att betala eller fÃ¥ tillbaka.
             case 49:
                 BigDecimal iSum = new  BigDecimal(0);
 

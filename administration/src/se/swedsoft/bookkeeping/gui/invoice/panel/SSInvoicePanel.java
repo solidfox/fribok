@@ -535,11 +535,11 @@ public class SSInvoicePanel {
         }
         // Kund namn
         iCustomerName.setText(iInvoice.getCustomerName());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOurContactPerson.setText(iInvoice.getOurContactPerson());
         // Er kontaktperson:
         iYourContactPerson.setText(iInvoice.getYourContactPerson());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iDelayInterest.setValue(iInvoice.getDelayInterest());
         // OCR Nummer
         iOCRNumber.setText( iInvoice.getOCRNumber() );
@@ -550,11 +550,11 @@ public class SSInvoicePanel {
         iCurrencyRate.setValue( iInvoice.getCurrencyRate() );
         // Betalningsvilkor
         iPaymentTerm.setSelected(iInvoice.getPaymentTerm(), true);
-        // Förfallodag
+        // FÃ¶rfallodag
         iPaymentDay.setDate(iInvoice.getDueDate());
         // Leveransvilkor
         iDeliveryTerm.setSelected(iInvoice.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iInvoice.getDeliveryWay());
 
 
@@ -566,9 +566,9 @@ public class SSInvoicePanel {
         iTaxRate2.setValue( iInvoice.getTaxRate2() );
         // Momssats 3
         iTaxRate3.setValue( iInvoice.getTaxRate3() );
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iEuSaleCommodity.setSelected(iInvoice.getEuSaleCommodity());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iEuSaleYhirdPartCommodity.setSelected(iInvoice.getEuSaleThirdPartCommodity());
         // Offerttext
         iText.setText(iInvoice.getText());
@@ -579,13 +579,13 @@ public class SSInvoicePanel {
         iDeliveryAddress.setAdress(iInvoice.getDeliveryAddress());
         // Standard konton
         iDefaultAccounts.setDefaultAccounts( iInvoice.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iEntered.setSelected( iInvoice.isEntered() );
         // Utskriven
         iPrinted.setSelected( iInvoice.isPrinted() );
-        // Lagerför
+        // LagerfÃ¶r
         isStockInfluencing.setSelected( iInvoice.isStockInfluencing() );
-        // Räntefakturerad
+        // RÃ¤ntefakturerad
         iInterestInvoiced.setSelected( iInvoice.isInterestInvoiced() );
 
         updateSumFields();
@@ -613,11 +613,11 @@ public class SSInvoicePanel {
         iInvoice.setCustomerNr(iCustomer.getText());
         // Kund namn
         iInvoice.setCustomerName(iCustomerName.getText());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iInvoice.setOurContactPerson(iOurContactPerson.getText());
         // Er kontaktperson:
         iInvoice.setYourContactPerson(iYourContactPerson.getText());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iInvoice.setDelayInterest(iDelayInterest.getValue());
         // Erat ordernummer
         iInvoice.setYourOrderNumber( iYourOrderNumber.getText());
@@ -625,15 +625,15 @@ public class SSInvoicePanel {
         iInvoice.setCurrencyRate( iCurrencyRate.getValue() );
         // Betalningsvilkor
         iInvoice.setPaymentTerm(iPaymentTerm.getSelected());
-        // Förfallodag
+        // FÃ¶rfallodag
         iInvoice.setDueDate(iPaymentDay.getDate());
         // Leveransvilkor
         iInvoice.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iInvoice.setDeliveryWay(iDeliveryWay.getSelected());
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iInvoice.setEuSaleCommodity(iEuSaleCommodity.isSelected());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iInvoice.setEuSaleYhirdPartCommodity(iEuSaleYhirdPartCommodity.isSelected());
         // Valuta
         iInvoice.setCurrency(iCurrency.getSelected());
@@ -653,13 +653,13 @@ public class SSInvoicePanel {
 
         // Standard konton
         iInvoice.setDefaultAccounts(iDefaultAccounts.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iInvoice.setEntered( iEntered.isSelected() );
         // Utskriven
         iInvoice.setPrinted( iPrinted.isSelected( ) );
-        // Lagerför
+        // LagerfÃ¶r
         iInvoice.setStockInfluencing( isStockInfluencing.isSelected() );
-        // Räntefakturerad
+        // RÃ¤ntefakturerad
         iInvoice.setInterestInvoiced( iInterestInvoiced.isSelected() );
 
         // Generera verifikationen

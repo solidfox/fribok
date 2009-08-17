@@ -210,7 +210,7 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
     };
 
     /**
-     * Beräknad leverans
+     * BerÃ¤knad leverans
      */
     public static SSTableColumn<SSOrder> COLUMN_ESTIMATED_DELIVERY = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.7")) {
         public Object getValue(SSOrder iOrder) {
@@ -259,7 +259,7 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
 
 
     /**
-     * Inköpsorder
+     * InkÃ¶psorder
      */
     public static SSTableColumn<SSOrder> COLUMN_PURCHASEORDER = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.9")) {
         public Object getValue(SSOrder iOrder) {

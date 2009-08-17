@@ -180,7 +180,7 @@ public class SSMainMenu {
      */
     private void loadFileActions(){
 
-        // Öppna företag
+        // Ã–ppna fÃ¶retag
         // *****************************
         iMenuLoader.addActionListener("filemenu.companies", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -188,7 +188,7 @@ public class SSMainMenu {
             }
         });
 
-        // Företagsinställningar
+        // FÃ¶retagsinstÃ¤llningar
         // *****************************
         iMenuLoader.addActionListener("filemenu.companysettings", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -330,7 +330,7 @@ public class SSMainMenu {
             }
         });
 
-        // Nätverksinställningar
+        // NÃ¤tverksinstÃ¤llningar
         // *****************************
         iMenuLoader.addActionListener("filemenu.networksettings.db", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -480,7 +480,7 @@ public class SSMainMenu {
             }
         });
 
-        // Automatfördelning
+        // AutomatfÃ¶rdelning
         iMenuLoader.addActionListener("registermenu.autodist", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAutoDistFrame.showFrame(iMainFrame, 488, 360);
@@ -556,7 +556,7 @@ public class SSMainMenu {
                 SSInvoiceFrame.showFrame(iMainFrame, 880, 600);
             }
         });
-        // Inköpsorder
+        // InkÃ¶psorder
         // *****************************
         iMenuLoader.addActionListener("salemenu.purchaseorder", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -564,7 +564,7 @@ public class SSMainMenu {
             }
         });
 
-        // Leverantörsfaktura
+        // LeverantÃ¶rsfaktura
         // *****************************
         iMenuLoader.addActionListener("salemenu.supplierinvoice", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -572,7 +572,7 @@ public class SSMainMenu {
             }
         });
 
-        // Leverantörskreditfaktura
+        // LeverantÃ¶rskreditfaktura
         // *****************************
         iMenuLoader.addActionListener("salemenu.suppliercreditinvoice", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -588,7 +588,7 @@ public class SSMainMenu {
      * bgcmenu.bgmax
      */
     private void bgcmenuActions() {
-        // Importera från bgmax
+        // Importera frÃ¥n bgmax
         // *****************************
         iMenuLoader.addActionListener("bgcmenu.bgmax", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -631,7 +631,7 @@ public class SSMainMenu {
             }
         });
 
-        // Importera från lbin fil
+        // Importera frÃ¥n lbin fil
         // *****************************
         iMenuLoader.addActionListener("bgcmenu.lbin", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -691,7 +691,7 @@ public class SSMainMenu {
             }
         });
 
-        // Inköpsförslag
+        // InkÃ¶psfÃ¶rslag
         // *****************************
         iMenuLoader.addActionListener("stockmenu.purchasesuggestion", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -741,7 +741,7 @@ public class SSMainMenu {
             }
         });
 
-        // Lagervärde
+        // LagervÃ¤rde
         // *****************************
         iMenuLoader.addActionListener("stockmenu.stockvaluereport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -763,7 +763,7 @@ public class SSMainMenu {
      */
     private void loadBookkeepingActions() {
 
-        // Ingående balans
+        // IngÃ¥ende balans
         // *****************************
         iMenuLoader.addActionListener("bookkeepingmenu.startingamount", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1019,7 +1019,7 @@ public class SSMainMenu {
         });
 
 
-        // Räkenskapsschema
+        // RÃ¤kenskapsschema
         // *****************************
         iMenuLoader.addActionListener("reportmenu.accountdiagram", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1036,7 +1036,7 @@ public class SSMainMenu {
         });
 
 
-        // Förenklat årsbokslut
+        // FÃ¶renklat Ã¥rsbokslut
         // *****************************
         iMenuLoader.addActionListener("reportmenu.simplestatement", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1127,7 +1127,7 @@ public class SSMainMenu {
         });
 
 
-        // leverantörsfaktura journal
+        // leverantÃ¶rsfaktura journal
         // *****************************
         iMenuLoader.addActionListener("journalmenu.supplierinvoicejornal", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1135,7 +1135,7 @@ public class SSMainMenu {
             }
         });
 
-        // Leverantörskreditfaktura journal
+        // LeverantÃ¶rskreditfaktura journal
         // *****************************
         iMenuLoader.addActionListener("journalmenu.suppliercreditinvoicejornal", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1153,7 +1153,7 @@ public class SSMainMenu {
 
 
 
-        // Leverantörsreskontra
+        // LeverantÃ¶rsreskontra
         // *****************************
         iMenuLoader.addActionListener("reportmenu.accountspayable", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1162,7 +1162,7 @@ public class SSMainMenu {
         });
 
 
-        // Leverantörsskuld
+        // LeverantÃ¶rsskuld
         // *****************************
         iMenuLoader.addActionListener("reportmenu.supplierdept", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1170,7 +1170,7 @@ public class SSMainMenu {
             }
         });
 
-        // Försäljningsrapport
+        // FÃ¶rsÃ¤ljningsrapport
         // *****************************
         iMenuLoader.addActionListener("reportmenu.salereport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1178,7 +1178,7 @@ public class SSMainMenu {
             }
         });
 
-        // Försäljningsvärden
+        // FÃ¶rsÃ¤ljningsvÃ¤rden
         // *****************************
         iMenuLoader.addActionListener("reportmenu.salevalues",new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -1188,7 +1188,7 @@ public class SSMainMenu {
             }
         });
 
-        // Inköpsvärden
+        // InkÃ¶psvÃ¤rden
         // *****************************
         iMenuLoader.addActionListener("reportmenu.purchasevalues",new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -1207,7 +1207,7 @@ public class SSMainMenu {
      * helpmenu.about
      */
     private void loadHelpActions() {
-        // Hjälp
+        // HjÃ¤lp
         // *****************************
         iMenuLoader.addActionListener("helpmenu.help",new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -1247,7 +1247,7 @@ public class SSMainMenu {
             }
         });
 
-        // Ta bort postlås
+        // Ta bort postlÃ¥s
         // ***********************
         iMenuLoader.addActionListener("helpmenu.clearlocks", new ActionListener() {
             public void actionPerformed(ActionEvent e) {

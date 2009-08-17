@@ -171,7 +171,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
     /**
      * Supplier nr
      */
-    public static SSTableColumn<SSPurchaseOrderRow> COLUMN_UNITPRICE = new SSTableColumn<SSPurchaseOrderRow>("Inköpspris") {
+    public static SSTableColumn<SSPurchaseOrderRow> COLUMN_UNITPRICE = new SSTableColumn<SSPurchaseOrderRow>("InkÃ¶pspris") {
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getUnitPrice();
         }

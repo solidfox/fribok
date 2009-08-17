@@ -377,11 +377,11 @@ public class SSTenderPanel{
         iCustomer.setText(iTender.getCustomerNr());
         // Kund namn
         iCustomerName.setText(iTender.getCustomerName());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOurContactPerson.setText(iTender.getOurContactPerson());
         // Er kontaktperson:
         iYourContactPerson.setText(iTender.getYourContactPerson());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iDelayInterest.setValue(iTender.getDelayInterest());
 
         // Valuta
@@ -392,7 +392,7 @@ public class SSTenderPanel{
         iPaymentTerm.setSelected(iTender.getPaymentTerm());
         // Leveransvilkor
         iDeliveryTerm.setSelected(iTender.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iTender.getDeliveryWay());
 
         for (SSCustomer pCustomer : SSDB.getInstance().getCustomers()) {
@@ -409,9 +409,9 @@ public class SSTenderPanel{
         iTaxRate2.setValue( iTender.getTaxRate2() );
         // Momssats 3
         iTaxRate3.setValue( iTender.getTaxRate3() );
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iEuSaleCommodity            .setSelected(iTender.getEuSaleCommodity());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iEuSaleYhirdPartCommodity   .setSelected(iTender.getEuSaleThirdPartCommodity());
 
 
@@ -448,11 +448,11 @@ public class SSTenderPanel{
         iTender.setCustomerNr(iCustomer.getText());
         // Kund namn
         iTender.setCustomerName(iCustomerName.getText());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iTender.setOurContactPerson(iOurContactPerson.getText());
         // Er kontaktperson:
         iTender.setYourContactPerson(iYourContactPerson.getText());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iTender.setDelayInterest(iDelayInterest.getValue());
 
         // Valuta
@@ -463,11 +463,11 @@ public class SSTenderPanel{
         iTender.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iTender.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iTender.setDeliveryWay(iDeliveryWay.getSelected());
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iTender.setEuSaleCommodity(iEuSaleCommodity.isSelected());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iTender.setEuSaleYhirdPartCommodity(iEuSaleYhirdPartCommodity.isSelected());
 
         // Momsfritt

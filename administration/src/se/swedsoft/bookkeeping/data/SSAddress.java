@@ -18,7 +18,7 @@ package se.swedsoft.bookkeeping.data;
 import java.io.Serializable;
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSAddress implements Serializable {
 

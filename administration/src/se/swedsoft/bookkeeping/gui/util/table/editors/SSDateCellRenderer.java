@@ -26,7 +26,7 @@ import java.text.DateFormat;
  * This class implements a cell renderer that renders a Date using a DateFormat
  * with format DateFormat.SHORT. This will only display year-month-day. <P>
  *
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSDateCellRenderer extends DefaultTableCellRenderer {
 

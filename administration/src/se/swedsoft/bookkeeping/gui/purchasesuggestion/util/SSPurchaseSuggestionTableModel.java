@@ -156,7 +156,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     };
 
     /**
-     * Beställningspunktkolumn
+     * BestÃ¤llningspunktkolumn
      */
     public static SSTableColumn<Entry> COLUMN_ORDERPOINT = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.4")) {
         public Object getValue(Entry iEntry) {
@@ -198,7 +198,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     };
 
     /**
-     *  Väntas
+     *  VÃ¤ntas
      */
     public static SSTableColumn<Entry> COLUMN_INCOMMING = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.6")) {
         public Object getValue(Entry iEntry) {
@@ -217,7 +217,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         }
     };
     /**
-     *  Beställningsantal
+     *  BestÃ¤llningsantal
      */
     public static SSTableColumn<Entry> COLUMN_ORDER_VOLUME = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.7")) {
         public Object getValue(Entry iEntry) {
@@ -238,7 +238,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     };
 
     /**
-     *  Leverantör
+     *  LeverantÃ¶r
      */
     public static SSTableColumn<Entry> COLUMN_SUPPLIER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.8")) {
         public Object getValue(Entry iEntry) {

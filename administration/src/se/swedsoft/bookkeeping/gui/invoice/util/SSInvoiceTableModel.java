@@ -371,7 +371,7 @@ public class SSInvoiceTableModel extends SSTableModel<SSInvoice>{
     }
 
     /**
-     * Påminnelser
+     * PÃ¥minnelser
      */
     public static SSTableColumn<SSInvoice> COLUMN_REMINDERS = new SSTableColumn<SSInvoice>(SSBundle.getBundle().getString("invoicetable.column.12")) {
         public Object getValue(SSInvoice iInvoice) {

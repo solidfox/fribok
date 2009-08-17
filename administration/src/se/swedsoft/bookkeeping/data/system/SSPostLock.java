@@ -11,15 +11,15 @@ import java.util.Vector;
  * User: Johan Gunnarsson
  * Date: 2007-jan-24
  * Time: 16:01:44
- * Denna klass används för att låsa poster i databasen så att samma objekt
- * inte kan ändras samtidigt av olika instanser av programmet.
+ * Denna klass anvÃ¤nds fÃ¶r att lÃ¥sa poster i databasen sÃ¥ att samma objekt
+ * inte kan Ã¤ndras samtidigt av olika instanser av programmet.
  */
 public class SSPostLock {
 
 
     /**
-     * Låser objekt O så att flera instanser av programmet inte kan editera det samtidigt.
-     * @param O - Det objekt som ska låsas
+     * LÃ¥ser objekt O sÃ¥ att flera instanser av programmet inte kan editera det samtidigt.
+     * @param O - Det objekt som ska lÃ¥sas
      */
     public static boolean applyLock(Object O) {
         /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
@@ -38,7 +38,7 @@ public class SSPostLock {
                 if(oos!=null)
                     oos.close();
             } catch (IOException e) {
-                //Ingen felhantering då strömmarna ska stängas
+                //Ingen felhantering dÃ¥ strÃ¶mmarna ska stÃ¤ngas
             }
         }*/
         if (O == null) {
@@ -64,8 +64,8 @@ public class SSPostLock {
     }
 
     /**
-     * Låser upp objekt O. När detta är gjort är objektet öppet att editera igen
-     * @param O - Det objekt som ska låsas upp
+     * LÃ¥ser upp objekt O. NÃ¤r detta Ã¤r gjort Ã¤r objektet Ã¶ppet att editera igen
+     * @param O - Det objekt som ska lÃ¥sas upp
      */
     public static void removeLock(Object O) {
         /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
@@ -112,7 +112,7 @@ public class SSPostLock {
                 }
             } catch (FileNotFoundException e){
             } catch (IOException e) {
-                //Ingen felhantering då strömmarna ska stängas
+                //Ingen felhantering dÃ¥ strÃ¶mmarna ska stÃ¤ngas
             }
         }*/
         if(O == null){
@@ -130,10 +130,10 @@ public class SSPostLock {
     }
 
     /**
-     * Kontrollerar om O är låst. Läser från filen bookkeeping.db.postlock ända till
+     * Kontrollerar om O Ã¤r lÃ¥st. LÃ¤ser frÃ¥n filen bookkeeping.db.postlock Ã¤nda till
      * EOFException kastas.
      * @param O - Det objekt som ska kontrolleras
-     * @return Objektet låst eller inte
+     * @return Objektet lÃ¥st eller inte
      */
     public static boolean isLocked(Object O) {
         /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
@@ -170,7 +170,7 @@ public class SSPostLock {
                 if(fis!=null)
                     fis.close();
             } catch (IOException e) {
-                //Ingen felhantering då strömmarna ska stängas
+                //Ingen felhantering dÃ¥ strÃ¶mmarna ska stÃ¤ngas
             }
         }
         return false;*/

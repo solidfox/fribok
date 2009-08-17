@@ -19,7 +19,7 @@ import java.math.BigDecimal;
  * Date: 2006-jun-09
  * Time: 14:06:08
  *
- * Leverantörsfaktura
+ * LeverantÃ¶rsfaktura
  */
 public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     // Constant for serialization versioning.
@@ -30,13 +30,13 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     protected Integer iNumber;
     // Datum
     protected Date iDate;
-    // Förfallodatum
+    // FÃ¶rfallodatum
     protected Date iDueDate;
     //Betalningsvillkor
     protected SSPaymentTerm iPaymentTerm;
-    // Leverantörsnummer
+    // LeverantÃ¶rsnummer
     private String iSupplierNr;
-    // Leverantörsnamn
+    // LeverantÃ¶rsnamn
     private String iSupplierName;
     // OCR/ referensnummer
     private String iReferencenumber;
@@ -46,17 +46,17 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     protected BigDecimal iCurrencyRate;
     // Total Moms
     protected BigDecimal iTaxSum;
-    //Öresavrunding
+    //Ã–resavrunding
     protected BigDecimal iRoundingSum;
     // Kontering
     protected SSVoucher iVoucher;
     // manuell kontering
     protected SSVoucher iCorrection ;
-    // Bokförd
+    // BokfÃ¶rd
     protected boolean iEntered;
-    // Lagerför
+    // LagerfÃ¶r
     private boolean iStockInfluencing;
-    // Om leverantörsfakturan har fakturerats via bangirocentralen
+    // Om leverantÃ¶rsfakturan har fakturerats via bangirocentralen
     private boolean iBGCEntered;
 
     // The rows

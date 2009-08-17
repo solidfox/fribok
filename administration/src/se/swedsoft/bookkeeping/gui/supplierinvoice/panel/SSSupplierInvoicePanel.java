@@ -497,17 +497,17 @@ public class SSSupplierInvoicePanel implements ActionListener{
         iCurrency.setSelected(this.iSupplierInvoice.getCurrency());
         // Valutakurs
         iCurrencyRate.setValue( this.iSupplierInvoice.getCurrencyRate() );
-        // Förfallodag
+        // FÃ¶rfallodag
         iDueDate.setDate(this.iSupplierInvoice.getDueDate());
 
 
         // Standard konton
         iDefaultAccounts.setDefaultAccounts( this.iSupplierInvoice.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iEntered.setSelected( this.iSupplierInvoice.isEntered() );
         // Betald via bankgirocentralen
         iBGCEntered.setSelected( iSupplierInvoice.isBGCEntered() );
-        // lagerför
+        // lagerfÃ¶r
         isStockInfluencing.setSelected( this.iSupplierInvoice.isStockInfluencing() );
 
 
@@ -533,7 +533,7 @@ public class SSSupplierInvoicePanel implements ActionListener{
         iSupplierInvoice.setCurrency(iCurrency.getSelected());
         // Valutakurs
         iSupplierInvoice.setCurrencyRate( iCurrencyRate.getValue() );
-        // Förfallodag
+        // FÃ¶rfallodag
         iSupplierInvoice.setDueDate(iDueDate.getDate());
 
         iSupplierInvoice.setTaxSum(iTaxSum.getValue());
@@ -541,12 +541,12 @@ public class SSSupplierInvoicePanel implements ActionListener{
         iSupplierInvoice.setRoundingSum(iRoundingSum.getValue());
         // Standard konton
         iSupplierInvoice.setDefaultAccounts(iDefaultAccounts.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iSupplierInvoice.setEntered( iEntered.isSelected() );
         // Betald via bankgirocentralen
         iSupplierInvoice.setBGCEntered( iBGCEntered.isSelected() );
 
-        // Lagerför
+        // LagerfÃ¶r
         iSupplierInvoice.setStockInfluencing( isStockInfluencing.isSelected() );
 
         // Generera verifikationen

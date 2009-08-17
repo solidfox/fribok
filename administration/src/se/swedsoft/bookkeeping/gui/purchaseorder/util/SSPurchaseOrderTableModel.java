@@ -95,7 +95,7 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
     /**
      * Supplier nr
      */
-    public static SSTableColumn<SSPurchaseOrder> COLUMN_SUPPLIER_NR = new SSTableColumn<SSPurchaseOrder>("Leverantörsnummer") {
+    public static SSTableColumn<SSPurchaseOrder> COLUMN_SUPPLIER_NR = new SSTableColumn<SSPurchaseOrder>("LeverantÃ¶rsnummer") {
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getSupplierNr();
         }
@@ -114,7 +114,7 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
     /**
      * Supplier name
      */
-    public static SSTableColumn<SSPurchaseOrder> COLUMN_SUPPLIER_NAME = new SSTableColumn<SSPurchaseOrder>("Leverantörsnamn") {
+    public static SSTableColumn<SSPurchaseOrder> COLUMN_SUPPLIER_NAME = new SSTableColumn<SSPurchaseOrder>("LeverantÃ¶rsnamn") {
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getSupplierName();
         }
@@ -134,7 +134,7 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
     /**
      * Date column
      */
-    public static SSTableColumn<SSPurchaseOrder> COLUMN_DATE = new SSTableColumn<SSPurchaseOrder>("Inköpsdatum") {
+    public static SSTableColumn<SSPurchaseOrder> COLUMN_DATE = new SSTableColumn<SSPurchaseOrder>("InkÃ¶psdatum") {
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getDate();
         }
@@ -197,7 +197,7 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
 
     /**                                                                                                                                   * EstimatedDelivery column
      */
-    public static SSTableColumn<SSPurchaseOrder> COLUMN_ESTIMATED_DELIVERY = new SSTableColumn<SSPurchaseOrder>("Beräknad leverans") {
+    public static SSTableColumn<SSPurchaseOrder> COLUMN_ESTIMATED_DELIVERY = new SSTableColumn<SSPurchaseOrder>("BerÃ¤knad leverans") {
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getEstimatedDelivery();
         }

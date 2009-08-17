@@ -15,14 +15,14 @@ import java.math.BigDecimal;
  * Date: 2006-jun-09
  * Time: 14:06:08
  *
- * Leverantörsfaktura
+ * LeverantÃ¶rsfaktura
  */
 public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
 
 
-    // Nummret för leverantörsfakturan denna fakturan krediterar
+    // Nummret fÃ¶r leverantÃ¶rsfakturan denna fakturan krediterar
     protected Integer iCreditingNr;
 
     // The supplier

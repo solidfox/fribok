@@ -118,15 +118,15 @@ public class SIEDimension {
     public static List<SIEDimension> getDefaultDimensions(){
         List<SIEDimension> iDimensions = new LinkedList<SIEDimension>();
 
-        iDimensions.add(new SIEDimension( 1, true, "Kostnadsst‰lle / Resultatenhet") );
-        iDimensions.add(new SIEDimension( 2, true, "Kostnadsb‰rare") );
+        iDimensions.add(new SIEDimension( 1, true, "Kostnadsst√§lle / Resultatenhet") );
+        iDimensions.add(new SIEDimension( 2, true, "Kostnadsb√§rare") );
         iDimensions.add(new SIEDimension( 3, true, "Reseverad") );
         iDimensions.add(new SIEDimension( 4, true, "Reseverad") );
         iDimensions.add(new SIEDimension( 5, true, "Reseverad") );
         iDimensions.add(new SIEDimension( 6, true, "Projekt") );
-        iDimensions.add(new SIEDimension( 7, true, "Anst‰lld") );
+        iDimensions.add(new SIEDimension( 7, true, "Anst√§lld") );
         iDimensions.add(new SIEDimension( 8, true, "Kund") );
-        iDimensions.add(new SIEDimension( 9, true, "Leverantˆr") );
+        iDimensions.add(new SIEDimension( 9, true, "Leverant√∂r") );
         iDimensions.add(new SIEDimension(10, true, "Faktura") );
         iDimensions.add(new SIEDimension(11, true, "Reseverad") );
         iDimensions.add(new SIEDimension(12, true, "Reseverad") );

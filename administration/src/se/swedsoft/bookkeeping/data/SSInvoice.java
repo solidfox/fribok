@@ -27,22 +27,22 @@ public class SSInvoice extends SSSale {
     protected SSInvoiceType iType;
     // Valutakurs
     protected BigDecimal iCurrencyRate;
-    // Förfallodag
+    // FÃ¶rfallodag
     protected Date iPaymentDay;
     // Kontering
     protected SSVoucher iVoucher;
     // Ert order/avtalsnummer
     protected String iYourOrderNumber;
-    // OCR nummret om fakturan är utskriven som ocr faktura
+    // OCR nummret om fakturan Ã¤r utskriven som ocr faktura
     protected String iOCRNumber;
 
-    // Bokförd
+    // BokfÃ¶rd
     protected boolean iEntered;
-    // Antal påminnelser
+    // Antal pÃ¥minnelser
     protected int iNumReminders;
-    // Räntefakturerad
+    // RÃ¤ntefakturerad
     protected boolean iInterestInvoiced;
-    // Lagerför
+    // LagerfÃ¶r
     private boolean iStockInfluencing;
 
     private String iOrderNumbers;

@@ -15,7 +15,7 @@ import java.rmi.server.UID;
 import java.awt.*;
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSCompany implements Serializable {
 
@@ -64,11 +64,11 @@ public class SSCompany implements Serializable {
     private String      iSwift;
 
     private SSCurrency    iCurrency;
-    // Fördröjningsränta
+    // FÃ¶rdrÃ¶jningsrÃ¤nta
     private BigDecimal    iDelayintrest;
-    // Påminnelseavgift
+    // PÃ¥minnelseavgift
     private BigDecimal    iReminderfee;
-    // Beräknad leveranstid
+    // BerÃ¤knad leveranstid
     private String        iEstimatedDelivery;
 
     // Momssatser
@@ -98,7 +98,7 @@ public class SSCompany implements Serializable {
     private List<SSCurrency> iCurrencies;
     // Enheter
     private List<SSUnit> iUnits;
-    //  Leveranssätt
+    //  LeveranssÃ¤tt
     private List<SSDeliveryWay> iDeliveryWays;
     // Leveransvilkor
     private List<SSDeliveryTerm> iDeliveryTerms;
@@ -125,9 +125,9 @@ public class SSCompany implements Serializable {
     private List<SSProduct>         iProducts;
     // Kunder
     private List<SSCustomer>        iCustomers;
-    // Leverantörer
+    // LeverantÃ¶rer
     private List<SSSupplier>        iSuppliers;
-    //Automatfördelningar
+    //AutomatfÃ¶rdelningar
     private List<SSAutoDist>        iAutoDists;
 
     // Offerter
@@ -145,11 +145,11 @@ public class SSCompany implements Serializable {
     // Periodfakturor
     private List<SSPeriodicInvoice> iPeriodicInvoices;
 
-    // Inköpsordrar
+    // InkÃ¶psordrar
     private List<SSPurchaseOrder> iPurchaseOrders;
-    // Leverantörsfakturor
+    // LeverantÃ¶rsfakturor
     private List<SSSupplierInvoice> iSupplierInvoices;
-    // Leverantörskreditfakturor
+    // LeverantÃ¶rskreditfakturor
     private List<SSSupplierCreditInvoice> iSupplierCreditinvoices;
     // Inventeringar
     private List<SSInventory> iInventories;
@@ -159,7 +159,7 @@ public class SSCompany implements Serializable {
     private List<SSOutdelivery> iOutdeliveries;
 
 
-    // Autoräknare
+    // AutorÃ¤knare
     private SSAutoIncrement iAutoIncrement;
 
     //////////////////////////////////////////////////////

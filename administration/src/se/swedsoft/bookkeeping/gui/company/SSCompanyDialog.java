@@ -146,22 +146,22 @@ public class SSCompanyDialog {
         SSQueryDialog iQDialog = new SSQueryDialog(iMainFrame, SSBundle.getBundle(), "companyframe.replacecompany", iCompany.getName());
 
         if(iQDialog.getResponce() == JOptionPane.YES_OPTION){
-            //Lås upp det förra företaget
+            //LÃ¥s upp det fÃ¶rra fÃ¶retaget
             SSCompanyLock.removeLock(SSDB.getInstance().getCurrentCompany());
             SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
 
-            //Sätt det valda företaget som nuvarande företag
+            //SÃ¤tt det valda fÃ¶retaget som nuvarande fÃ¶retag
             SSDB.getInstance().setCurrentCompany(iCompany);
             SSDB.getInstance().init(true);
             SSDBConfig.setCompanyId(iCompany.getId());
 
-            //Lås det nya företaget
+            //LÃ¥s det nya fÃ¶retaget
             SSCompanyLock.applyLock(iCompany);
             SSDB.getInstance().setCurrentYear(null);
 
             pModel.fireTableDataChanged();
 
-            //Stäng alla fönster
+            //StÃ¤ng alla fÃ¶nster
             SSFrameManager.getInstance().close();
 
             SSAccountingYearFrame.showFrame(iMainFrame, 500, 300, true);

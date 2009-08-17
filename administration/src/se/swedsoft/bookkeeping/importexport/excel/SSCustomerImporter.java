@@ -219,7 +219,7 @@ public class SSCustomerImporter {
         // Generate the import dialog
         StringBuilder sb = new StringBuilder();
         sb.append("<html>");
-        sb.append("Följande kolumner har importerats från kundfilen:<br>");
+        sb.append("FÃ¶ljande kolumner har importerats frÃ¥n kundfilen:<br>");
         sb.append("<ul>");
         if(iColumns.containsKey(SSCustomerExporter.KUNDNUMMER               )) sb.append("<li>").append(SSCustomerExporter.KUNDNUMMER ).append("</li>");
         if(iColumns.containsKey(SSCustomerExporter.NAMN                     )) sb.append("<li>").append(SSCustomerExporter.NAMN ).append("</li>");
@@ -245,7 +245,7 @@ public class SSCustomerImporter {
         if(iColumns.containsKey(SSCustomerExporter.LEVERANSADRESS_LAND      )) sb.append("<li>").append(SSCustomerExporter.LEVERANSADRESS_LAND ).append("</li>");
 
         sb.append("</ul>");
-        sb.append("Följande kunder kommer att importeras:<br>");
+        sb.append("FÃ¶ljande kunder kommer att importeras:<br>");
 
         sb.append("<ul>");
         for (SSCustomer iCustomer : iCustomers) {
@@ -255,7 +255,7 @@ public class SSCustomerImporter {
         }
         sb.append("</ul>");
 
-        sb.append("Fortsätt med importeringen ?");
+        sb.append("FortsÃ¤tt med importeringen ?");
         sb.append("</html>");
 
 
@@ -278,12 +278,12 @@ public class SSCustomerImporter {
             iDoc.getDocumentElement().normalize ();
 
             if (!iDoc.getDocumentElement().getNodeName().equals("Customers")) {
-                throw new SSImportException("Filen innehåller inga kunder");
+                throw new SSImportException("Filen innehÃ¥ller inga kunder");
             }
 
             NodeList iCustomerList = iDoc.getElementsByTagName("Customer");
             if (iCustomerList.getLength() == 0) {
-                throw new SSImportException("Filen innehåller inga kunder");
+                throw new SSImportException("Filen innehÃ¥ller inga kunder");
             }
 
             for (int i = 0; i < iCustomerList.getLength() ; i++) {
@@ -324,7 +324,7 @@ public class SSCustomerImporter {
                     }
 
 
-                    // Vår kontaktperson
+                    // VÃ¥r kontaktperson
                     iCustomerAttList = iCustomerElement.getElementsByTagName("OurContactPerson");
                     iFirstCustomerAttElement = (Element)iCustomerAttList.item(0);
                     if (iFirstCustomerAttElement != null) {
@@ -360,7 +360,7 @@ public class SSCustomerImporter {
                         iCustomer.setDeliveryTerm(getDeliveryTerm(iValue));
                     }
 
-                    // Leveranssätt
+                    // LeveranssÃ¤tt
                     iCustomerAttList = iCustomerElement.getElementsByTagName("DeliveryMethod");
                     iFirstCustomerAttElement = (Element)iCustomerAttList.item(0);
                     if (iFirstCustomerAttElement != null) {
@@ -378,7 +378,7 @@ public class SSCustomerImporter {
                         iCustomer.setTaxFree(Boolean.valueOf(iValue));
                     }
 
-                    // EU-försäljning
+                    // EU-fÃ¶rsÃ¤ljning
                     iCustomerAttList = iCustomerElement.getElementsByTagName("EuSaleCommodity");
                     iFirstCustomerAttElement = (Element)iCustomerAttList.item(0);
                     if (iFirstCustomerAttElement != null) {
@@ -387,7 +387,7 @@ public class SSCustomerImporter {
                         iCustomer.setEuSaleCommodity(Boolean.valueOf(iValue));
                     }
 
-                    // EU-försäljning 3e-part
+                    // EU-fÃ¶rsÃ¤ljning 3e-part
                     iCustomerAttList = iCustomerElement.getElementsByTagName("EuSaleThirdPartCommodity");
                     iFirstCustomerAttElement = (Element)iCustomerAttList.item(0);
                     if (iFirstCustomerAttElement != null) {
@@ -564,7 +564,7 @@ public class SSCustomerImporter {
 
                     iCustomer.setDeliveryAddress(iDeliveryAddress);
 
-                    // Dölj enhetspris på följesedel
+                    // DÃ¶lj enhetspris pÃ¥ fÃ¶ljesedel
                     iCustomerAttList = iCustomerElement.getElementsByTagName("HideUnitPrice");
                     iFirstCustomerAttElement = (Element)iCustomerAttList.item(0);
                     if (iFirstCustomerAttElement != null) {
@@ -573,7 +573,7 @@ public class SSCustomerImporter {
                         iCustomer.setHideUnitprice(Boolean.valueOf(iValue));
                     }
 
-                    // Kreditgräns
+                    // KreditgrÃ¤ns
                     iCustomerAttList = iCustomerElement.getElementsByTagName("CreditLimit");
                     iFirstCustomerAttElement = (Element)iCustomerAttList.item(0);
                     if (iFirstCustomerAttElement != null) {
@@ -769,7 +769,7 @@ public class SSCustomerImporter {
                     iCustomerCount++;
                 }
                 else{
-                    iBadCustomers.add(iFields[0] + " - Fel antal fält");
+                    iBadCustomers.add(iFields[0] + " - Fel antal fÃ¤lt");
                 }
             }
 

@@ -29,7 +29,7 @@ import java.util.HashMap;
 // Java specific imports
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSDefaultJasperDataSource implements JRDataSource {
 

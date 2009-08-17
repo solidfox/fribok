@@ -43,7 +43,7 @@ public class LBinPostTK29 extends LBinPost {
      */
     public void write(LBinLine iLine){
         iLine.append("29");
-        iLine.append( iBankGiroNr           , 10, '0'      ); // 3 => 12 : Avsändarens bankgiro nr
+        iLine.append( iBankGiroNr           , 10, '0'      ); // 3 => 12 : AvsÃ¤ndarens bankgiro nr
         iLine.append( iSize                 ,  8           ); // 13 => 20: Antal poster
         iLine.append( iSum                  ,  12          ); // 21 => 32: Totalbelopp
         iLine.append( " "                   ,  1           ); // 33      : Minustecken om negativt
@@ -55,7 +55,7 @@ public class LBinPostTK29 extends LBinPost {
      * @param iLine
      */
     public void read(LBinLine iLine){
-        iBankGiroNr = iLine.readString    (3 , 12); // 3 => 12 : Avsändarens bankgiro nr
+        iBankGiroNr = iLine.readString    (3 , 12); // 3 => 12 : AvsÃ¤ndarens bankgiro nr
         iSize       = iLine.readInteger   (13, 20); // 13 => 20: Antal poster
         iSum        = iLine.readBigDecimal(21, 32); // 21 => 32: Totalbelopp
     }

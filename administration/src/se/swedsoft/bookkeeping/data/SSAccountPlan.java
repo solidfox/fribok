@@ -25,7 +25,7 @@ import java.util.*;
 // Java specific imports
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable {
 

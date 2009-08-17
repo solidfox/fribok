@@ -61,7 +61,7 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
 
         iPopup = new JPopupMenu();
 
-        iMenuItem = new JMenuItem("Lägg till...");
+        iMenuItem = new JMenuItem("LÃ¤gg till...");
         iMenuItem.setIcon        ( SSIcon.getIcon("ICON_NEW16", SSIcon.IconState.NORMAL ) );
         iMenuItem.setDisabledIcon( SSIcon.getIcon("ICON_NEW16", SSIcon.IconState.DISABLED ) );
         iMenuItem.setRolloverIcon( SSIcon.getIcon("ICON_NEW16", SSIcon.IconState.HIGHLIGHTED ) );
@@ -81,7 +81,7 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
         });
         iPopup.add(iMenuItem);
 
-        iMenuItem = new JMenuItem("Ändra...");
+        iMenuItem = new JMenuItem("Ã„ndra...");
         iMenuItem.setIcon        ( SSIcon.getIcon("ICON_EDIT16", SSIcon.IconState.NORMAL ) );
         iMenuItem.setDisabledIcon( SSIcon.getIcon("ICON_EDIT16", SSIcon.IconState.DISABLED ) );
         iMenuItem.setRolloverIcon( SSIcon.getIcon("ICON_EDIT16", SSIcon.IconState.HIGHLIGHTED ) );

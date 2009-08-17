@@ -10,7 +10,7 @@ import java.util.Date;
  * Date: 2006-aug-30
  * Time: 14:18:56
  *
- * Öppningspost
+ * Ã–ppningspost
  */
 public class LBinPostTK11 extends LBinPost {
 
@@ -35,7 +35,7 @@ public class LBinPostTK11 extends LBinPost {
         this.iBankGiroNr = SupplierPaymentConfig.getOurBankGiroAccount().replaceAll("-", "");
         this.iDate       = new Date();
         this.iCurrency   = iCurrency;
-        this.iText       = "LEVERANTÖRSBETALNINGAR";
+        this.iText       = "LEVERANTÃ–RSBETALNINGAR";
     }
 
     /**

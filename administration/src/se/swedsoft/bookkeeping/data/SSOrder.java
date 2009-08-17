@@ -21,7 +21,7 @@ public class SSOrder extends SSSale {
 
     // Ert order/avtalsnummer
     private String iYourOrderNumber;
-    // Beräknad leverans
+    // BerÃ¤knad leverans
     private String iEstimatedDelivery;
 
     // Faktura nummer
@@ -32,10 +32,10 @@ public class SSOrder extends SSSale {
         return iPurchaseOrderNr;
     }
 
-    // Inköpsorder nummer
+    // InkÃ¶psorder nummer
     private Integer iPurchaseOrderNr;
 
-    //Dölj enhetspris på följesedel
+    //DÃ¶lj enhetspris pÃ¥ fÃ¶ljesedel
     private boolean iHideUnitprice;
     // Transient sales
     private transient SSInvoice       iInvoice;

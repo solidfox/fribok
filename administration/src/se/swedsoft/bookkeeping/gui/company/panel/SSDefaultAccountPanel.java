@@ -40,7 +40,7 @@ public class SSDefaultAccountPanel extends JPanel {
     private SSTableComboBox<SSAccount> iOutPayment;
     // Kontant
     private SSTableComboBox<SSAccount> iCash;
-    // Leverantörsskuld
+    // LeverantÃ¶rsskuld
     private SSTableComboBox<SSAccount> iSupplierDebt;
     // Moms 1
     private SSTableComboBox<SSAccount> iTax1;
@@ -48,19 +48,19 @@ public class SSDefaultAccountPanel extends JPanel {
     private SSTableComboBox<SSAccount> iTax2;
     // Moms 3
     private SSTableComboBox<SSAccount> iTax3;
-    // Försäljning
+    // FÃ¶rsÃ¤ljning
     private SSTableComboBox<SSAccount> iSales;
-    // Inköp
+    // InkÃ¶p
     private SSTableComboBox<SSAccount> iPurchases;
     // Valutakursvinst
     private SSTableComboBox<SSAccount> iCurrencyProfit;
-    // Valutakursförlust
+    // ValutakursfÃ¶rlust
     private SSTableComboBox<SSAccount> iCurrencyLoss;
-    // Öresavrundning
+    // Ã–resavrundning
     private SSTableComboBox<SSAccount> iRounding;
-    //Ränteintäkt
+    //RÃ¤nteintÃ¤kt
     private SSTableComboBox<SSAccount> iInterestProfit;
-    // ingående moms
+    // ingÃ¥ende moms
     private SSTableComboBox<SSAccount> iIncommingTax;
 
 
@@ -72,7 +72,7 @@ public class SSDefaultAccountPanel extends JPanel {
     private JTextField iOutPaymentText;
     // Kontant
     private JTextField iCashText;
-    // Leverantörsskuld
+    // LeverantÃ¶rsskuld
     private JTextField iSupplierDebtText;
     // Moms 1
     private JTextField iTax1Text;
@@ -80,19 +80,19 @@ public class SSDefaultAccountPanel extends JPanel {
     private JTextField iTax2Text;
     // Moms 3
     private JTextField iTax3Text;
-    // Försäljning
+    // FÃ¶rsÃ¤ljning
     private JTextField iSalesText;
-    // Inköp
+    // InkÃ¶p
     private JTextField iPurchasesText;
     // Valutakursvinst
     private JTextField iCurrencyProfitText;
-    // Valutakursförlust
+    // ValutakursfÃ¶rlust
     private JTextField iCurrencyLossText;
-    // Öresavrundning
+    // Ã–resavrundning
     private JTextField iRoundingText;
-    //Ränteintäkt
+    //RÃ¤nteintÃ¤kt
     private JTextField iInterestProfitText;
-    // ingående moms
+    // ingÃ¥ende moms
     private JTextField iIncommingTaxText;
 
 
@@ -115,7 +115,7 @@ public class SSDefaultAccountPanel extends JPanel {
         iComboBoxes.put(SSDefaultAccount.OutPayment, iOutPayment);
         // Kontant
         iComboBoxes.put(SSDefaultAccount.Cash, iCash);
-        // Leverantörsskuld
+        // LeverantÃ¶rsskuld
         iComboBoxes.put(SSDefaultAccount.SupplierDebt, iSupplierDebt);
         // Moms 1
         iComboBoxes.put(SSDefaultAccount.Tax1, iTax1);
@@ -123,19 +123,19 @@ public class SSDefaultAccountPanel extends JPanel {
         iComboBoxes.put(SSDefaultAccount.Tax2, iTax2);
         // Moms 3
         iComboBoxes.put(SSDefaultAccount.Tax3, iTax3);
-        // Försäljning
+        // FÃ¶rsÃ¤ljning
         iComboBoxes.put(SSDefaultAccount.Sales, iSales);
-        // Inköp
+        // InkÃ¶p
         iComboBoxes.put(SSDefaultAccount.Purchases, iPurchases);
         // Valutakursvinst
         iComboBoxes.put(SSDefaultAccount.CurrencyProfit, iCurrencyProfit);
-        // Valutakursförlust
+        // ValutakursfÃ¶rlust
         iComboBoxes.put(SSDefaultAccount.CurrencyLoss, iCurrencyLoss);
-        // Öresavrundning
+        // Ã–resavrundning
         iComboBoxes.put(SSDefaultAccount.Rounding, iRounding);
-        //Ränteintäkt
+        //RÃ¤nteintÃ¤kt
         iComboBoxes.put(SSDefaultAccount.InterestProfit, iInterestProfit);
-        //Ingående moms
+        //IngÃ¥ende moms
         iComboBoxes.put(SSDefaultAccount.IncommingTax, iIncommingTax);
 
 
@@ -150,7 +150,7 @@ public class SSDefaultAccountPanel extends JPanel {
         iTextFields.put(SSDefaultAccount.OutPayment, iOutPaymentText);
         // Kontant
         iTextFields.put(SSDefaultAccount.Cash, iCashText);
-        // Leverantörsskuld
+        // LeverantÃ¶rsskuld
         iTextFields.put(SSDefaultAccount.SupplierDebt, iSupplierDebtText);
         // Moms 1
         iTextFields.put(SSDefaultAccount.Tax1, iTax1Text);
@@ -158,19 +158,19 @@ public class SSDefaultAccountPanel extends JPanel {
         iTextFields.put(SSDefaultAccount.Tax2, iTax2Text);
         // Moms 3
         iTextFields.put(SSDefaultAccount.Tax3, iTax3Text);
-        // Försäljning
+        // FÃ¶rsÃ¤ljning
         iTextFields.put(SSDefaultAccount.Sales, iSalesText);
-        // Inköp
+        // InkÃ¶p
         iTextFields.put(SSDefaultAccount.Purchases, iPurchasesText);
         // Valutakursvinst
         iTextFields.put(SSDefaultAccount.CurrencyProfit, iCurrencyProfitText);
-        // Valutakursförlust
+        // ValutakursfÃ¶rlust
         iTextFields.put(SSDefaultAccount.CurrencyLoss, iCurrencyLossText);
-        // Öresavrundning
+        // Ã–resavrundning
         iTextFields.put(SSDefaultAccount.Rounding, iRoundingText);
-        //Ränteintäkt
+        //RÃ¤nteintÃ¤kt
         iTextFields.put(SSDefaultAccount.InterestProfit, iInterestProfitText);
-        //Ingående moms
+        //IngÃ¥ende moms
         iTextFields.put(SSDefaultAccount.IncommingTax, iIncommingTaxText);
 
 

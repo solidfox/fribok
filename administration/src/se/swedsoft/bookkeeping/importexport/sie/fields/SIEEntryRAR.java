@@ -34,7 +34,7 @@ public class SIEEntryRAR extends SIEEntry {
      */
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
-        // #RAR årsnr från till
+        // #RAR Ã¥rsnr frÃ¥n till
         if(!iReader.hasFields(STRING, INT, INT, INT)) {
             throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
         }

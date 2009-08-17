@@ -20,7 +20,7 @@ import java.math.RoundingMode;
  * Date: 2006-mar-02
  * Time: 16:45:12
  *
- * Förenklat årsbokslut
+ * FÃ¶renklat Ã¥rsbokslut
  */
 public class SSSimpleStatementPrinter extends SSPrinter {
 

@@ -28,7 +28,7 @@ import java.awt.event.KeyEvent;
 /**
  * The default table model to use in this application.
  *
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
 

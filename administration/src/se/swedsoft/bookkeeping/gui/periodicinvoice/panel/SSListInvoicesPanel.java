@@ -62,13 +62,13 @@ public class SSListInvoicesPanel {
 
         // Nummer
         iNumber.setValue( iPeriodicInvoice.getNumber() );
-        // Första faktueringsdatum
+        // FÃ¶rsta faktueringsdatum
         iDate.setDate( iPeriodicInvoice.getDate() );
-        // Nästa fakturadatum
+        // NÃ¤sta fakturadatum
         iNext.setDate( iPeriodicInvoice.getNextDate() );
         // Antal fakturor
         iCount.setValue( iPeriodicInvoice.getCount() );
-        // Periodtid i månader
+        // Periodtid i mÃ¥nader
         iPeriod.setValue( iPeriodicInvoice.getPeriod() );
         // Beskrivning
         iDescription.setText( iPeriodicInvoice.getDescription() );

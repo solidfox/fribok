@@ -51,7 +51,7 @@ public class LBinPostTK54 extends LBinPost {
         iLine.append( iValue    , 12          ); // 38 => 49: Belopp
         iLine.append( iDate     , 6, "yyMMdd" ); // 50 => 55: Betalningsdatum
         iLine.append( ""        , 5           ); // 56 => 60: Blanka
-        iLine.append( iInvoiceNr, 20          ); // 61 => 80: Anv‰ndarinformation
+        iLine.append( iInvoiceNr, 20          ); // 61 => 80: Anv√§ndarinformation
     }
 
     /**
@@ -63,7 +63,7 @@ public class LBinPostTK54 extends LBinPost {
         iReference = iLine.readString    (13, 37          ); // 13 => 37: Referens
         iValue     = iLine.readBigDecimal(38, 49          ); // 38 => 49: Belopp
        // iDate      = iLine.readDate      (50, 55, "yyMMdd"); // 50 => 55: Betalningsdatum
-        iInvoiceNr = iLine.readInteger   (61, 80          ); // 61 => 80: Anv‰ndarinformation
+        iInvoiceNr = iLine.readInteger   (61, 80          ); // 61 => 80: Anv√§ndarinformation
     }
 
 

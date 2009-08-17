@@ -32,7 +32,7 @@ public class SSOutpaymentRow implements SSTableSearchable, Serializable {
 
     // Inbetalt belopp
     private BigDecimal iValue;
-    // Valutakursen för inbetalt belopp
+    // Valutakursen fÃ¶r inbetalt belopp
     private BigDecimal iCurrencyRate;
 
 

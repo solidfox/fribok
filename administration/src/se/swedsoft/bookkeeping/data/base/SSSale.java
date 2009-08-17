@@ -31,11 +31,11 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     protected String iCustomerNr;
     // Kund namn
     protected String iCustomerName;
-    // VÂr kontaktperson:
+    // V√•r kontaktperson:
     protected String iOurContactPerson;
     // Er kontaktperson:
     protected String iYourContactPerson;
-    // DrˆjsmÂlsr‰nta
+    // Dr√∂jsm√•lsr√§nta
     protected BigDecimal iDelayInterest;
     // Valuta
     protected SSCurrency iCurrency;
@@ -43,7 +43,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     protected SSPaymentTerm iPaymentTerm;
     // Leveransvilkor
     protected SSDeliveryTerm iDeliveryTerm;
-    // Leveranss‰tt
+    // Leveranss√§tt
     protected SSDeliveryWay iDeliveryWay;
     // Momsfritt
     protected boolean iTaxFree;
@@ -55,9 +55,9 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     protected BigDecimal iTaxRate2;
     // Moms 3
     protected BigDecimal iTaxRate3;
-    // EU-fˆrs‰ljning varor
+    // EU-f√∂rs√§ljning varor
     private boolean iEuSaleCommodity;
-    // EU-fˆrs‰ljning trepart varor
+    // EU-f√∂rs√§ljning trepart varor
     private boolean iEuSaleYhirdPartCommodity;
     // Fakturaadress
     protected SSAddress iInvoiceAddress;

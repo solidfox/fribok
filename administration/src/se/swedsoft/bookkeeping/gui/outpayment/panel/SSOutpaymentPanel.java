@@ -336,7 +336,7 @@ public class SSOutpaymentPanel {
         iOutpayment.setText( iText.getText() );
         // Standardkonton
         iOutpayment.setDefaultAccounts( iDefaultAccounts.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iOutpayment.setEntered(iEntered.isSelected());
 
         // Generate the voucher
@@ -358,7 +358,7 @@ public class SSOutpaymentPanel {
         iDate.setDate( iOutpayment.getDate() );
         // Text
         iText.setText( iOutpayment.getText());
-        // Bokförd
+        // BokfÃ¶rd
         iEntered.setSelected(iOutpayment.isEntered());
         // Standardkonton
         iDefaultAccounts.setDefaultAccounts( iOutpayment.getDefaultAccounts() );

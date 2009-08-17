@@ -94,7 +94,7 @@ public class SSSupplierPaymentDialog extends SSDialog {
 
                 SSFileChooser iFileChooser = new SSFileChooser( new SSFilterTXT() );
 
-                iFileChooser.setSelectedFile( new File("Leverantörsbetalning.txt"));
+                iFileChooser.setSelectedFile( new File("LeverantÃ¶rsbetalning.txt"));
                 int iResponce = iFileChooser.showSaveDialog(iMainFrame);
                 if( iResponce != SSFileChooser.APPROVE_OPTION){
                     return;

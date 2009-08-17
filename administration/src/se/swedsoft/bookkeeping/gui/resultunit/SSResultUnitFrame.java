@@ -110,7 +110,7 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         });
         iToolBar.add(iButton);
 
-        // Ändra resultatenhet
+        // Ã„ndra resultatenhet
         // ***************************
         iButton = new SSButton("ICON_EDITITEM", "resultunitframe.editbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {

@@ -13,15 +13,15 @@ import java.rmi.server.UID;
  * User: Johan Gunnarsson
  * Date: 2007-jan-24
  * Time: 16:01:44
- * Denna klass används för att låsa öppnade företag, så att ett öppet företag
- * inte kan tas bort av en annan användare.
+ * Denna klass anvÃ¤nds fÃ¶r att lÃ¥sa Ã¶ppnade fÃ¶retag, sÃ¥ att ett Ã¶ppet fÃ¶retag
+ * inte kan tas bort av en annan anvÃ¤ndare.
  */
 public class SSCompanyLock {
 
 
     /**
-     * Låser företag iCompany så att flera instanser av programmet inte kan editera det samtidigt.
-     * @param iCompany - Det företag som ska låsas
+     * LÃ¥ser fÃ¶retag iCompany sÃ¥ att flera instanser av programmet inte kan editera det samtidigt.
+     * @param iCompany - Det fÃ¶retag som ska lÃ¥sas
      */
     public static boolean applyLock(SSNewCompany iCompany) {
         if (iCompany == null) {
@@ -48,8 +48,8 @@ public class SSCompanyLock {
     }
 
     /**
-     * Låser upp företaget iCompany. När detta är gjort är objektet öppet att editera igen
-     * @param iCompany - Det objekt som ska låsas upp
+     * LÃ¥ser upp fÃ¶retaget iCompany. NÃ¤r detta Ã¤r gjort Ã¤r objektet Ã¶ppet att editera igen
+     * @param iCompany - Det objekt som ska lÃ¥sas upp
      */
     public static void removeLock(SSNewCompany iCompany) {
         if(iCompany == null){
@@ -67,10 +67,10 @@ public class SSCompanyLock {
     }
 
     /**
-     * Kontrollerar om iCompany är låst. Läser från filen bookkeeping.db.companylock ända till
+     * Kontrollerar om iCompany Ã¤r lÃ¥st. LÃ¤ser frÃ¥n filen bookkeeping.db.companylock Ã¤nda till
      * EOFException kastas.
-     * @param iCompany - Det företag som ska kontrolleras
-     * @return Företaget låst eller inte
+     * @param iCompany - Det fÃ¶retag som ska kontrolleras
+     * @return FÃ¶retaget lÃ¥st eller inte
      */
     public static boolean isLocked(SSNewCompany iCompany) {
         if(iCompany == null){

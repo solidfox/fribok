@@ -75,13 +75,13 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      * interestinvoicetable.column.1 = Fakturanr
      * interestinvoicetable.column.2 = Kundnummer
      * interestinvoicetable.column.3 = Kundnamn
-     * interestinvoicetable.column.4 = Förfallodatum
+     * interestinvoicetable.column.4 = FÃ¶rfallodatum
      * interestinvoicetable.column.5 = Slutbetald
      * interestinvoicetable.column.6 = Valuta
      * interestinvoicetable.column.7 = Fakturabelopp
-     * interestinvoicetable.column.8 = Ränta
-     * interestinvoicetable.column.9 = Räntasumma
-     * interestinvoicetable.column.10= Åtgärd
+     * interestinvoicetable.column.8 = RÃ¤nta
+     * interestinvoicetable.column.9 = RÃ¤ntasumma
+     * interestinvoicetable.column.10= Ã…tgÃ¤rd
      *
      * @param    rowIndex    the row whose value is to be queried
      * @param    columnIndex the column whose value is to be queried

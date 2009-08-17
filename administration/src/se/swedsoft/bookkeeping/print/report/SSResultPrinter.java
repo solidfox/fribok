@@ -279,7 +279,7 @@ public class SSResultPrinter extends SSPrinter {
 
         } else
         if(iShowPrevYear){
-            addParameter("column.text.1", bundle.getString("resultreport.column.6") );  // Föregående år
+            addParameter("column.text.1", bundle.getString("resultreport.column.6") );  // FÃ¶regÃ¥ende Ã¥r
             addParameter("column.text.2", bundle.getString("resultreport.column.1") );  // Perioden
             addParameter("column.text.3", bundle.getString("resultreport.column.5") );  // Avvikelse
 
@@ -288,7 +288,7 @@ public class SSResultPrinter extends SSPrinter {
             iColumn3 = iCalculator.getDeviation(iColumn1, iColumn2);
         } else {
             addParameter("column.text.2", bundle.getString("resultreport.column.1") ); // Perioden
-            addParameter("column.text.3", bundle.getString("resultreport.column.2") ); // Hela året
+            addParameter("column.text.3", bundle.getString("resultreport.column.2") ); // Hela Ã¥ret
 
             iColumn1 = null;
             iColumn2 = iCalculator.getChangePeriod();

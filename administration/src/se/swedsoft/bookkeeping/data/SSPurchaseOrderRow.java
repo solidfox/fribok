@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * Date: 2006-jun-15
  * Time: 10:42:37
  *
- * Rad för inköpsorder
+ * Rad fÃ¶r inkÃ¶psorder
  */
 public class SSPurchaseOrderRow implements Serializable {
 
@@ -26,9 +26,9 @@ public class SSPurchaseOrderRow implements Serializable {
     private String iProductNr;
     // Beskrivning
     private String iDescription;
-    // Leverantörens artikel nummer
+    // LeverantÃ¶rens artikel nummer
     private String iSupplierArticleNr;
-    // Inköpspris
+    // InkÃ¶pspris
     private BigDecimal iUnitprice;
     // Antal
     private Integer iQuantity;

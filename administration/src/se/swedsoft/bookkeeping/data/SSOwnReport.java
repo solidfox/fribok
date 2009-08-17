@@ -36,7 +36,7 @@ public class SSOwnReport implements Serializable {
 
     /**
      *
-     * @return iNumber - Nummret för rapporten
+     * @return iNumber - Nummret fÃ¶r rapporten
      */
     public Integer getId(){
         return iId;
@@ -48,7 +48,7 @@ public class SSOwnReport implements Serializable {
 
     /**
      *
-     * @return iName - Namnet på rapporten
+     * @return iName - Namnet pÃ¥ rapporten
      */
     public String getName() {
         return iName;
@@ -72,7 +72,7 @@ public class SSOwnReport implements Serializable {
 
     /**
      *
-     * @return iProjectNumber - Projekt för rapporten
+     * @return iProjectNumber - Projekt fÃ¶r rapporten
      */
     public String getProjectNr() {
         return iProjectNr;
@@ -84,7 +84,7 @@ public class SSOwnReport implements Serializable {
 
     /**
      *
-     * @return iResultUnitNumber - Resultatenhet för rapporten
+     * @return iResultUnitNumber - Resultatenhet fÃ¶r rapporten
      */
     public String getResultUnitNr() {
         return iResultUnitNr;

@@ -262,7 +262,7 @@ public class SSPurchaseOrderPanel {
         iSupplier.setSelected(iPurchaseOrder.getSupplier(SSDB.getInstance().getSuppliers()));
         // Kund namn
         iSupplierName.setText(iPurchaseOrder.getSupplierName());
-        // VÂr kontaktperson:
+        // V√•r kontaktperson:
         iOurContactPerson.setText(iPurchaseOrder.getOurContact());
         // Er kontaktperson:
         iYourContactPerson.setText(iPurchaseOrder.getYourContact());
@@ -275,14 +275,14 @@ public class SSPurchaseOrderPanel {
         iPaymentTerm.setSelected(iPurchaseOrder.getPaymentTerm());
         // Leveransvilkor
         iDeliveryTerm.setSelected(iPurchaseOrder.getDeliveryTerm());
-        // Leveranss‰tt
+        // Leveranss√§tt
         iDeliveryWay.setSelected(iPurchaseOrder.getDeliveryWay());
 
 
         // Offerttext
         iText.setText(iPurchaseOrder.getText());
 
-        // Leverantˆrens adress
+        // Leverant√∂rens adress
         iSupplierAddress.setAdress(iPurchaseOrder.getSupplierAddress());
         // Leveransadress
         iDeliveryAddress.setAdress(iPurchaseOrder.getDeliveryAddress());
@@ -309,7 +309,7 @@ public class SSPurchaseOrderPanel {
         iPurchaseOrder.setSupplier(iSupplier.getSelected());
         // Kund namn
         iPurchaseOrder.setSupplierName(iSupplierName.getText());
-        // VÂr kontaktperson:
+        // V√•r kontaktperson:
         iPurchaseOrder.setOurContact(iOurContactPerson.getText());
         // Er kontaktperson:
         iPurchaseOrder.setYourContact(iYourContactPerson.getText());
@@ -322,7 +322,7 @@ public class SSPurchaseOrderPanel {
         iPurchaseOrder.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iPurchaseOrder.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranss‰tt
+        // Leveranss√§tt
         iPurchaseOrder.setDeliveryWay(iDeliveryWay.getSelected());
 
 

@@ -219,7 +219,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
                     iItems = SSDB.getInstance().getSuppliers();
                 }
 
-                iFilechooser.setSelectedFile(new File("Leverantörslista.xls"));
+                iFilechooser.setSelectedFile(new File("LeverantÃ¶rslista.xls"));
 
                 if( iFilechooser.showSaveDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
 

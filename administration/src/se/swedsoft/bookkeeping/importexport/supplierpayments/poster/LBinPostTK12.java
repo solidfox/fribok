@@ -11,7 +11,7 @@ import java.util.Date;
  * Date: 2006-aug-30
  * Time: 14:18:56
  *
- * ÷ppningspost
+ * √ñppningspost
  */
 public class LBinPostTK12 extends LBinPost {
     private String iText;
@@ -45,7 +45,7 @@ public class LBinPostTK12 extends LBinPost {
     public void write(LBinLine iLine){
         iLine.append("12");
         iLine.append(iText       , 50            );  //  3 => 52: Informationstext
-        iLine.append(iDate       ,  6  , "yyMMdd");  // 53 => 58: Datum som anger hur l‰nge informationen skall visas
+        iLine.append(iDate       ,  6  , "yyMMdd");  // 53 => 58: Datum som anger hur l√§nge informationen skall visas
         iLine.append(""          , 22            );  // 59 => 80: Blanka
     }
 
@@ -55,7 +55,7 @@ public class LBinPostTK12 extends LBinPost {
      */
     public void read(LBinLine iLine){
         iText        = iLine.readString( 3, 52          ); //  3 => 52: Informationstext
-        iDate        = iLine.readDate  (53, 58, "yyMMdd"); // 53 => 58: Datum som anger hur l‰nge informationen skall visas
+        iDate        = iLine.readDate  (53, 58, "yyMMdd"); // 53 => 58: Datum som anger hur l√§nge informationen skall visas
     }
 
 }

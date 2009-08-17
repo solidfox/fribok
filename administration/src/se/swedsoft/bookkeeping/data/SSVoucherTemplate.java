@@ -31,7 +31,7 @@ import java.math.BigDecimal;
 // Java specific imports
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 

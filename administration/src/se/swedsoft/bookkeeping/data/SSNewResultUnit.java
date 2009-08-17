@@ -29,7 +29,7 @@ import java.math.BigDecimal;
 // Java specific imports
 
 /**
- * @author Roger Björnstedt
+ * @author Roger BjÃ¶rnstedt
  */
 public class SSNewResultUnit implements Serializable, SSTableSearchable {
 

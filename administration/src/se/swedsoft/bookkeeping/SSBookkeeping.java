@@ -26,7 +26,7 @@ import java.io.File;
 import java.util.List;
 import java.util.LinkedList;
 
-import com.incors.plaf.alloy.AlloyLookAndFeel;
+//import com.incors.plaf.alloy.AlloyLookAndFeel;
 
 
 /**
@@ -59,11 +59,11 @@ public class SSBookkeeping {
         try {
             String iServerAddress = SSDBConfig.getServerAddress();
             if (iServerAddress.equals("")) {
-                //Kör mot lokal databas! Ingen låsning m.m.
+                //Kï¿½r mot lokal databas! Ingen lï¿½sning m.m.
                 Connection iConnection = DriverManager.getConnection("jdbc:hsqldb:file:db"+File.separator+"JFSDB", "sa", "");
                 SSDB.getInstance().startupLocal(iConnection);
             } else {
-                //Kör mot en JFSServer specificerad i serveradressen.
+                //Kï¿½r mot en JFSServer specificerad i serveradressen.
                 Connection iConnection = DriverManager.getConnection("jdbc:hsqldb:hsql://"+iServerAddress+"/JFSDB", "sa", "");
                 SSDB.getInstance().startupRemote(iConnection, iServerAddress);
             }
@@ -92,12 +92,12 @@ public class SSBookkeeping {
      */
     public static void main(String[] args) {
 
-        AlloyLookAndFeel.setProperty("alloy.licenseCode"           , "4#JFS_Bokforing#m4zvft#5lkl8w");
-        AlloyLookAndFeel.setProperty("alloy.titlePaneTextAlignment", "left");
+        //AlloyLookAndFeel.setProperty("alloy.licenseCode"           , "4#JFS_Bokforing#m4zvft#5lkl8w");
+        //AlloyLookAndFeel.setProperty("alloy.titlePaneTextAlignment", "left");
 
         try {
-            AlloyLookAndFeel iAlloyLookAndFeel =  new AlloyLookAndFeel();
-            UIManager.setLookAndFeel( iAlloyLookAndFeel );
+            //AlloyLookAndFeel iAlloyLookAndFeel =  new AlloyLookAndFeel();
+            //UIManager.setLookAndFeel( iAlloyLookAndFeel );
 
             JDialog.setDefaultLookAndFeelDecorated(true);
             JFrame .setDefaultLookAndFeelDecorated(true);

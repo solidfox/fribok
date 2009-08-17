@@ -129,7 +129,7 @@ public class SSPeriodicInvoicePanel {
 
     private SSInputVerifier iInputVerifier;
 
-    // Periodfaktura fält
+    // Periodfaktura fÃ¤lt
     private SSDateChooser iDate;
 
     private SSIntegerTextField iCount;
@@ -535,17 +535,17 @@ public class SSPeriodicInvoicePanel {
         this.iPeriodicInvoice = iPeriodicInvoice;
         this.iInvoice         = iPeriodicInvoice.getTemplate();
 
-        // Första faktueringsdatum
+        // FÃ¶rsta faktueringsdatum
         iDate.setDate( iPeriodicInvoice.getDate() );
         // Antal fakturor
         iCount.setValue( iPeriodicInvoice.getCount() );
-        // Periodtid i månader
+        // Periodtid i mÃ¥nader
         iPeriod.setValue( iPeriodicInvoice.getPeriod() );
         // Beskrivning
         iDescription.setText( iPeriodicInvoice.getDescription() );
-        // Lägg till perioden som en rad i fakturan
+        // LÃ¤gg till perioden som en rad i fakturan
         iAppendPeriod .setSelected( iPeriodicInvoice.getAppendPeriod() );
-        // Första datum i perioden:
+        // FÃ¶rsta datum i perioden:
         iPeriodStart.setDate(iPeriodicInvoice.getPeriodStart() );
         // Sista datum i perioden:
         iPeriodEnd.setDate( iPeriodicInvoice.getPeriodEnd() );
@@ -573,11 +573,11 @@ public class SSPeriodicInvoicePanel {
         }
         // Kund namn
         iCustomerName.setText(iInvoice.getCustomerName());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iOurContactPerson.setText(iInvoice.getOurContactPerson());
         // Er kontaktperson:
         iYourContactPerson.setText(iInvoice.getYourContactPerson());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iDelayInterest.setValue(iInvoice.getDelayInterest());
 
         // Valuta
@@ -588,7 +588,7 @@ public class SSPeriodicInvoicePanel {
         iPaymentTerm.setSelected(iInvoice.getPaymentTerm(), true);
         // Leveransvilkor
         iDeliveryTerm.setSelected(iInvoice.getDeliveryTerm());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iDeliveryWay.setSelected(iInvoice.getDeliveryWay());
 
 
@@ -600,9 +600,9 @@ public class SSPeriodicInvoicePanel {
         iTaxRate2.setValue( iInvoice.getTaxRate2() );
         // Momssats 3
         iTaxRate3.setValue( iInvoice.getTaxRate3() );
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iEuSaleCommodity.setSelected(iInvoice.getEuSaleCommodity());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iEuSaleYhirdPartCommodity.setSelected(iInvoice.getEuSaleThirdPartCommodity());
         // Offerttext
         iText.setText(iInvoice.getText());
@@ -630,17 +630,17 @@ public class SSPeriodicInvoicePanel {
      * @return
      */
     public SSPeriodicInvoice getPeriodicInvoice() {
-        // Första faktueringsdatum
+        // FÃ¶rsta faktueringsdatum
         iPeriodicInvoice.setDate(iDate.getDate() );
         // Antal fakturor
         iPeriodicInvoice.setCount(iCount.getValue() );
-        // Periodtid i månader
+        // Periodtid i mÃ¥nader
         iPeriodicInvoice.setPeriod(iPeriod.getValue() );
         // Beskrivning
         iPeriodicInvoice.setDescription( iDescription.getText() );
-        //Lägg till perioden som en rad i fakturan
+        //LÃ¤gg till perioden som en rad i fakturan
         iPeriodicInvoice.setAppendPeriod( iAppendPeriod.isSelected() );
-        // Första datum i perioden:
+        // FÃ¶rsta datum i perioden:
         iPeriodicInvoice.setPeriodStart(iPeriodStart.getDate() );
         // Sista datum i perioden:
         iPeriodicInvoice.setPeriodEnd( iPeriodEnd.getDate() );
@@ -652,11 +652,11 @@ public class SSPeriodicInvoicePanel {
         iInvoice.setCustomerNr(iCustomer.getText());
         // Kund namn
         iInvoice.setCustomerName(iCustomerName.getText());
-        // Vår kontaktperson:
+        // VÃ¥r kontaktperson:
         iInvoice.setOurContactPerson(iOurContactPerson.getText());
         // Er kontaktperson:
         iInvoice.setYourContactPerson(iYourContactPerson.getText());
-        // Dröjsmålsränta
+        // DrÃ¶jsmÃ¥lsrÃ¤nta
         iInvoice.setDelayInterest(iDelayInterest.getValue());
         // Erat ordernummer
         iInvoice.setYourOrderNumber( iYourOrderNumber.getText());
@@ -668,13 +668,13 @@ public class SSPeriodicInvoicePanel {
         iInvoice.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
         iInvoice.setDeliveryTerm(iDeliveryTerm.getSelected());
-        // Leveranssätt
+        // LeveranssÃ¤tt
         iInvoice.setDeliveryWay(iDeliveryWay.getSelected());
         // Momsfritt
         iInvoice.setTaxFree(iTaxFree.isSelected());
-        // EU-försäljning varor
+        // EU-fÃ¶rsÃ¤ljning varor
         iInvoice.setEuSaleCommodity(iEuSaleCommodity.isSelected());
-        // EU-försäljning trepart varor
+        // EU-fÃ¶rsÃ¤ljning trepart varor
         iInvoice.setEuSaleYhirdPartCommodity(iEuSaleYhirdPartCommodity.isSelected());
 
         // Momssats 1
@@ -694,13 +694,13 @@ public class SSPeriodicInvoicePanel {
         iInvoice.setDeliveryAddress(iDeliveryAddress.getAddress());
         // Standard konton
         iInvoice.setDefaultAccounts(iDefaultAccounts.getDefaultAccounts());
-        // Bokförd
+        // BokfÃ¶rd
         iInvoice.setEntered( false );
         // Utskriven
         iInvoice.setPrinted( false );
-        // Lagerför
+        // LagerfÃ¶r
         iInvoice.setStockInfluencing( isStockInfluencing.isSelected() );
-        // Räntefakturerad
+        // RÃ¤ntefakturerad
         iInvoice.setInterestInvoiced( false );
 
         // Generera verifikationen

@@ -54,7 +54,7 @@ public class SSProjectResultPrinter extends SSResultPrinter {
      */
     protected void getColumns(SSResultCalculator iCalculator) {
         addParameter("column.text.2", bundle.getString("resultreport.column.1") ); // Perioden
-        addParameter("column.text.3", bundle.getString("resultreport.column.7") ); // Alla år
+        addParameter("column.text.3", bundle.getString("resultreport.column.7") ); // Alla Ã¥r
 
         iColumn1 = null;
         iColumn2 = iCalculator.getProjectChangePeriod();

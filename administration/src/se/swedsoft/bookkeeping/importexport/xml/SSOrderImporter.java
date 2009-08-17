@@ -62,17 +62,17 @@ public class SSOrderImporter {
             iDoc.getDocumentElement().normalize ();
 
             if (!iDoc.getDocumentElement().getNodeName().equals("Orders")) {
-                throw new SSImportException("Filen innehåller inga ordrar");
+                throw new SSImportException("Filen innehÃ¥ller inga ordrar");
             }
 
             NodeList iOrderList = iDoc.getElementsByTagName("Order");
             if (iOrderList.getLength() == 0) {
-                throw new SSImportException("Filen innehåller inga ordrar");
+                throw new SSImportException("Filen innehÃ¥ller inga ordrar");
             }
 
             for (int i = 0; i < iOrderList.getLength() ; i++) {
-                /** Nummren nedan har inget att göra med i, utan bara visar ordningen dom
-                 *  fälten förekommer i filen.
+                /** Nummren nedan har inget att gÃ¶ra med i, utan bara visar ordningen dom
+                 *  fÃ¤lten fÃ¶rekommer i filen.
                  * 0 = ORDERNR, 1 = ORDERDATE, 2 = CUSTOMERNR, 3 = CUSTOMERNAME
                  * 4 = OURCONTACTPERSON, 5 = YOURCONTACTPERSON, 6 = DELAYINTEREST
                  * 7 = CURRENCY, 8 = PAYMENTTERM, 9 = DELIVERYTERM, 10 = DELIVERYWAY
@@ -91,7 +91,7 @@ public class SSOrderImporter {
                     NodeList iTextOrderAttList = null;
                     String iValue = null;
                     Element iOrderElement = (Element)iOrderNode;
-                    // Ordernummer (Kommer ändras innan ordern sparas)
+                    // Ordernummer (Kommer Ã¤ndras innan ordern sparas)
                     NodeList iOrderAttList = iOrderElement.getElementsByTagName("SellerOrderNo");
                     Element iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                     if (iFirstOrderAttElement != null) {
@@ -114,7 +114,7 @@ public class SSOrderImporter {
                         }
                     }
 
-                    // Dröjsmålsränta
+                    // DrÃ¶jsmÃ¥lsrÃ¤nta
                     iOrderAttList = iOrderElement.getElementsByTagName("DelayInterest");
                     iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                     if (iFirstOrderAttElement != null) {
@@ -170,7 +170,7 @@ public class SSOrderImporter {
                         iCustomer = getCustomer(iValue);
                     }
                     if (iCustomer != null) {
-                        // Kunden finns. använd kunddatan från databasen
+                        // Kunden finns. anvÃ¤nd kunddatan frÃ¥n databasen
                         iOrder.setCustomer(iCustomer);
 
                         // Valuta
@@ -202,7 +202,7 @@ public class SSOrderImporter {
                             iOrder.setDeliveryTerm(getDeliveryTerm(iValue));
                         }
 
-                        // Leveranssätt
+                        // LeveranssÃ¤tt
                         iOrderAttList = iOrderElement.getElementsByTagName("DeliveryMethod");
                         iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                         if (iFirstOrderAttElement != null) {
@@ -212,7 +212,7 @@ public class SSOrderImporter {
                         }
 
                     } else {
-                        // Kunden finns inte. Skapa en ny med data från filen
+                        // Kunden finns inte. Skapa en ny med data frÃ¥n filen
                         iCustomer = new SSCustomer();
                         iCustomer.setNumber(iValue);
 
@@ -225,7 +225,7 @@ public class SSOrderImporter {
                             iCustomer.setName(iValue);
                         }
 
-                        // Vår kontaktperson
+                        // VÃ¥r kontaktperson
                         iOrderAttList = iOrderElement.getElementsByTagName("OurContactPerson");
                         iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                         if (iFirstOrderAttElement != null) {
@@ -271,7 +271,7 @@ public class SSOrderImporter {
                             iCustomer.setDeliveryTerm(getDeliveryTerm(iValue));
                         }
 
-                        // Leveranssätt
+                        // LeveranssÃ¤tt
                         iOrderAttList = iOrderElement.getElementsByTagName("DeliveryMethod");
                         iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                         if (iFirstOrderAttElement != null) {
@@ -289,7 +289,7 @@ public class SSOrderImporter {
                             iCustomer.setTaxFree(Boolean.valueOf(iValue));
                         }
 
-                        // EU-försäljning
+                        // EU-fÃ¶rsÃ¤ljning
                         iOrderAttList = iOrderElement.getElementsByTagName("EuSaleCommodity");
                         iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                         if (iFirstOrderAttElement != null) {
@@ -298,7 +298,7 @@ public class SSOrderImporter {
                             iCustomer.setEuSaleCommodity(Boolean.valueOf(iValue));
                         }
 
-                        // EU-försäljning 3e-part
+                        // EU-fÃ¶rsÃ¤ljning 3e-part
                         iOrderAttList = iOrderElement.getElementsByTagName("EuSaleThirdPartCommodity");
                         iFirstOrderAttElement = (Element)iOrderAttList.item(0);
                         if (iFirstOrderAttElement != null) {
@@ -525,7 +525,7 @@ public class SSOrderImporter {
                             }
 
                             if (iProduct != null) {
-                                // Produkten fanns i databasen, använd produktdata för raden
+                                // Produkten fanns i databasen, anvÃ¤nd produktdata fÃ¶r raden
                                 iRow.setProductOnly(iProduct);
 
                                 // Enhetspris
@@ -727,12 +727,12 @@ public class SSOrderImporter {
             Integer iOrderCount = 0;
 
             if(SSDB.getInstance().getProduct("frakt") == null/* && SSDB.getInstance().getProduct("frakt") == null && SSDB.getInstance().getProduct("FRAKT") == null*/){
-                SSErrorDialog.showDialog(SSMainFrame.getInstance(), "", "Du måste skapa en produkt med nummer \"Frakt\" innan du kan importera.");
+                SSErrorDialog.showDialog(SSMainFrame.getInstance(), "", "Du mÃ¥ste skapa en produkt med nummer \"Frakt\" innan du kan importera.");
                 return;
             }
 
             if(SSDB.getInstance().getProduct("avgift") == null){
-                SSErrorDialog.showDialog(SSMainFrame.getInstance(), "", "Du måste skapa en produkt med nummer \"Avgift\" innan du kan importera.");
+                SSErrorDialog.showDialog(SSMainFrame.getInstance(), "", "Du mÃ¥ste skapa en produkt med nummer \"Avgift\" innan du kan importera.");
                 return;
             }
             ArrayList<Integer> iOrderNumbers = new ArrayList<Integer>(iResult.keySet());
@@ -763,7 +763,7 @@ public class SSOrderImporter {
                         try {
                             iOrder.setDate(df.parse(iFields[1]));
                         } catch (ParseException e) {
-                            iBadOrders.add(iOrderNumber + " - Orderdatum är i fel format");
+                            iBadOrders.add(iOrderNumber + " - Orderdatum Ã¤r i fel format");
                             continue order;
                         }
                     }
@@ -843,7 +843,7 @@ public class SSOrderImporter {
                         iRow.setQuantity(1);
                         iOrder.getRows().add(iRow);
                     } catch (Exception e) {
-                        iBadOrders.add(iOrderNumber + " - Kunde inte skapa produktrad för avgift");
+                        iBadOrders.add(iOrderNumber + " - Kunde inte skapa produktrad fÃ¶r avgift");
                         continue;
                     }
                 }
@@ -857,7 +857,7 @@ public class SSOrderImporter {
                         iRow.setQuantity(1);
                         iOrder.getRows().add(iRow);
                     } catch (Exception e) {
-                        iBadOrders.add(iOrderNumber + " - Kunde inte skapa produktrad för frakt");
+                        iBadOrders.add(iOrderNumber + " - Kunde inte skapa produktrad fÃ¶r frakt");
                         continue;
                     }
                 }

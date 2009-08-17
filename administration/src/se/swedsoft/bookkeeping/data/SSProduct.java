@@ -28,27 +28,27 @@ public class SSProduct implements SSTableSearchable, Serializable {
     private String iNumber;
     // beskrivning
     private String iDescription;
-    // á-pris
+    // Ã¡-pris
     private BigDecimal iUnitprice;
     //Momskod
     private SSTaxCode iTaxCode;
     // Lagerplats
     private String iWarehouseLocation;
-    // Beställningspunkt
+    // BestÃ¤llningspunkt
     private Integer iOrderpoint;
-    // Beställningsantal
+    // BestÃ¤llningsantal
     private Integer iOrdercount;
-    // Inköpspris
+    // InkÃ¶pspris
     private BigDecimal iPurchasePrice;
     // Lagerpris
     private BigDecimal iStockPrice;
     // Enhetsfrakt
     private BigDecimal iFreight;
-    // Muvudleverantör
+    // MuvudleverantÃ¶r
     private String iSupplierNr;
-    // Leverantörens artikel nr
+    // LeverantÃ¶rens artikel nr
     private String iSupplierProductNr;
-    // Utgått
+    // UtgÃ¥tt
     private boolean iExpired;
     // Lagervara
     private boolean iStockGoods;
@@ -58,7 +58,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
     private BigDecimal iWeight;
     // Volum m^3
     private BigDecimal iVolume;
-    // Försäljningskonto och Inköpskonto
+    // FÃ¶rsÃ¤ljningskonto och InkÃ¶pskonto
     private Map<SSDefaultAccount, Integer> iDefaultAccounts;
 
     private Integer iProjectNr;
@@ -66,7 +66,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
 
     private Integer iResultUnitNr;
     private String iResultUnitNumber;
-    // Ingående produkter
+    // IngÃ¥ende produkter
     private List<SSProductRow> iProductRows;
 
     private transient SSSupplier iSupplier;
