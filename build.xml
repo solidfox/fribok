@@ -1,97 +1,81 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Id$ -->
 <project default="init" basedir="/home/ljo/bin/jfsbok/" >
   <property name="classes_dir" value="administration\classes" />
   <property name="source_dir"  value="administration\src" />
 
-  <property name="output_dir" value="dist"       />
-  <property name="res_dir"    value="res" />
+  <property name="output_dir" value="dist" />
+  <property name="res_dir" value="res" />
   
-
 
   <target name="Build version">
-     <delete file="${classes_dir}\se\swedsoft\bookkeeping\SSVersion.class"/>
-  
-     <mkdir dir="${res_dir}\se\swedsoft\bookkeeping\"/>
+    <delete file="${classes_dir}\se\swedsoft\bookkeeping\SSVersion.class"/>
+    
+    <mkdir dir="${res_dir}\se\swedsoft\bookkeeping\"/>
 
-     <javac srcdir="${res_dir}\se\swedsoft\bookkeeping\" destdir="${classes_dir}" fork="true" classpath="${res_dir}" >
-	<include name="**/SSVersion.java" />
-     </javac>
+    <javac srcdir="${res_dir}\se\swedsoft\bookkeeping\" destdir="${classes_dir}" fork="true" classpath="${res_dir}" >
+      <include name="**/SSVersion.java" />
+    </javac>
 
-     <delete dir="${res_dir}\se\swedsoft\bookkeeping\"/> 
+    <delete dir="${res_dir}\se\swedsoft\bookkeeping\"/> 
 
-   <delete file="${res_dir}\se\swedsoft\bookkeeping\SSVersion.java"/>
-
- 
-
+    <delete file="${res_dir}\se\swedsoft\bookkeeping\SSVersion.java"/>
   </target>
 
+  <target name="JFS BokfÃ¶ring">
+    <echo message="Bygger JFS BokfÃ¶ring"/>
 
-  <target name="JFS Bokföring">
-     <echo message="Bygger JFS Bokföring"/>
+    <copy file="${res_dir}/help_bok.jar"     tofile="${output_dir}/data/help.jar"     overwrite="true" />
+    <copy file="${res_dir}/MainMenu_bok.xml" tofile="${output_dir}/data/MainMenu.xml" overwrite="true" />
 
-     <copy file="${res_dir}/help_bok.jar"     tofile="${output_dir}/data/help.jar"     overwrite="true" />
-     <copy file="${res_dir}/MainMenu_bok.xml" tofile="${output_dir}/data/MainMenu.xml" overwrite="true" />
+    <!--antcall target="Build version" /-->
 
-     <!--antcall target="Build version" /-->
-
-     <jar destfile="${output_dir}/jfs.jar" basedir="${classes_dir}" />
+    <jar destfile="${output_dir}/jfs.jar" basedir="${classes_dir}" />
   </target>
 
   <target name="JFS Adminstration">
     <echo message="Bygger JFS Adminstration"/>
 
-     <copy file="${res_dir}/help_adm.jar"     tofile="${output_dir}/data/help.jar"     overwrite="true" />
-     <copy file="${res_dir}/MainMenu_adm.xml" tofile="${output_dir}/data/MainMenu.xml" overwrite="true" />
+    <copy file="${res_dir}/help_adm.jar"     tofile="${output_dir}/data/help.jar"     overwrite="true" />
+    <copy file="${res_dir}/MainMenu_adm.xml" tofile="${output_dir}/data/MainMenu.xml" overwrite="true" />
 
-     <!--antcall target="Build version" /-->
+    <!--antcall target="Build version" /-->
 
-     <jar destfile="${output_dir}/jfs.jar" basedir="${classes_dir}" />
+    <jar destfile="${output_dir}/jfs.jar" basedir="${classes_dir}" />
   </target>
-
 
   <target name="JFS Fakturering">
     <echo message="Bygger JFS Fakturering"/>
 
-     <copy file="${res_dir}/help_fak.jar"     tofile="${output_dir}/data/help.jar"     overwrite="true" />
-     <copy file="${res_dir}/MainMenu_fak.xml" tofile="${output_dir}/data/MainMenu.xml" overwrite="true" />
+    <copy file="${res_dir}/help_fak.jar"     tofile="${output_dir}/data/help.jar"     overwrite="true" />
+    <copy file="${res_dir}/MainMenu_fak.xml" tofile="${output_dir}/data/MainMenu.xml" overwrite="true" />
 
-     <!--antcall target="Build version" /-->
+    <!--antcall target="Build version" /-->
 
-     <jar destfile="${output_dir}/jfs.jar" basedir="${classes_dir}" />
+    <jar destfile="${output_dir}/jfs.jar" basedir="${classes_dir}" />
   </target>
 
-
-
-
-
-
-  <target name="JFS Bokföring Release">
-     <copy file="${res_dir}\SSVersion_bok.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
+  <target name="JFS BokfÃ¶ring Release">
+    <copy file="${res_dir}\SSVersion_bok.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
-  <target name="JFS Bokföring Demo">
-     <copy file="${res_dir}\SSVersion_bok_demo.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
+  <target name="JFS BokfÃ¶ring Dev">
+    <copy file="${res_dir}\SSVersion_bok_dev.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
   <target name="JFS Adminstration Release">
-     <copy file="${res_dir}\SSVersion_adm.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
+    <copy file="${res_dir}\SSVersion_adm.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
-  <target name="JFS Adminstration Demo" >
-     <copy file="${res_dir}\SSVersion_adm_demo.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
+  <target name="JFS Adminstration Dev" >
+    <copy file="${res_dir}\SSVersion_adm_dev.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
   <target name="JFS Fakturering Release">
-     <copy file="${res_dir}\SSVersion_fak.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
+    <copy file="${res_dir}\SSVersion_fak.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
-  <target name="JFS Fakturering Demo" >
-     <copy file="${res_dir}\SSVersion_fak_demo.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
+  <target name="JFS Fakturering Dev" >
+    <copy file="${res_dir}\SSVersion_fak_dev.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
-
-
-
-
-
 </project>

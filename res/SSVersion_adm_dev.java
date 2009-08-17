@@ -6,9 +6,9 @@ public interface SSVersion {
 
     public static final String app_package = "Administration";
 
-    public static final String app_version = "2.1a1";
+    public static final String app_version = "2.1-dev-$Rev$";
 
-    public static final String app_build   = "2009-08-17";
+    public static final String app_build   = "$Date$";
 
 
     // Toggles demo version

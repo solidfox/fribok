@@ -2,13 +2,13 @@ package se.swedsoft.bookkeeping;
 
 public interface SSVersion {
 
-    public static final String app_title   = "JFS Administration";
+    public static final String app_title   = "JFS Fakturering";
 
-    public static final String app_package = "Administration";
+    public static final String app_package = "Fakturering";
 
-    public static final String app_version = "2.1a1";
+    public static final String app_version = "1.1-dev-$Rev$";
 
-    public static final String app_build   = "2009-08-17";
+    public static final String app_build   = "$Date$";
 
 
     // Toggles demo version
