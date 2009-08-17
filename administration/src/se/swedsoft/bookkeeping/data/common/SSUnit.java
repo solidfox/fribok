@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.data.common;
 
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -126,10 +128,10 @@ public class SSUnit implements Serializable, SSTableSearchable {
      */
     public static List<SSUnit> getDefaultUnits() {
         List<SSUnit> iUnits = new LinkedList<SSUnit>();
-        iUnits.add( new SSUnit("st"  , "Styck"));
-        iUnits.add( new SSUnit("m"   , "Meter"));
-        iUnits.add( new SSUnit("H"   , "Timmar"));
-        iUnits.add( new SSUnit("pkt" , "Förpackningar"));
+        iUnits.add( new SSUnit("st"  , SSBundle.getBundle().getString("ssunit.unit.pcs")));
+        iUnits.add( new SSUnit("m"   , SSBundle.getBundle().getString("ssunit.unit.meter")));
+        iUnits.add(new SSUnit("H"   , SSBundle.getBundle().getString("ssunit.unit.hours")));
+        iUnits.add(new SSUnit("pkt" , SSBundle.getBundle().getString("ssunit.unit.frp")));
 
         return iUnits;
 
