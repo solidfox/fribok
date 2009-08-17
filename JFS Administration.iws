@@ -32,6 +32,11 @@
     <ignored path=".idea/workspace.xml" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="Commander">
+    <leftPanel />
+    <rightPanel />
+    <splitter proportion="0.5" />
+  </component>
   <component name="CompilerWorkspaceConfiguration">
     <option name="COMPILE_IN_BACKGROUND" value="false" />
   </component>
@@ -572,7 +577,43 @@
       <file leaf-file-name="SSInvoicePrinter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/print/report/sales/SSInvoicePrinter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="16" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.0">
+            <state line="119" column="34" selection-start="4577" selection-end="4578" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SSBookkeeping.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/SSBookkeeping.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="127" column="20" selection-start="4973" selection-end="4973" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SSDateChooser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/gui/util/datechooser/SSDateChooser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="338" column="14" selection-start="8968" selection-end="8968" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SSDayChooser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/gui/util/datechooser/panel/SSDayChooser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="244" column="42" selection-start="6745" selection-end="6745" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SSUnit.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/data/common/SSUnit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="134" column="53" selection-start="3228" selection-end="3228" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -596,10 +637,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.xml">
+      <file leaf-file-name="SIELabel.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/importexport/sie/util/SIELabel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="37" selection-start="319" selection-end="319" vertical-scroll-proportion="0.13981359">
+            <state line="15" column="13" selection-start="344" selection-end="344" vertical-scroll-proportion="0.019788919">
               <folding />
             </state>
           </provider>
@@ -711,6 +752,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveMembersDialog.RECENTS_KEY">
@@ -807,6 +849,9 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Profile ">
+        <option name="myExternalizedOptions" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -870,38 +915,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="29" width="1900" height="1142" extended-state="0" />
+    <frame x="1940" y="28" width="1900" height="1142" extended-state="1" />
     <editor active="false" />
     <layout>
-      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17440544" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18275487" sideWeight="0.8078471" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17404427" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29105324" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18812877" sideWeight="0.5" order="12" side_tool="false" />
+      <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18511066" sideWeight="0.5" order="12" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21793416" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.197411" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30694142" sideWeight="0.804829" order="0" side_tool="false" x="473" y="100" width="404" height="874" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30206072" sideWeight="0.8078471" order="0" side_tool="false" x="473" y="100" width="404" height="874" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" />
-      <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" />
+      <window_info id="Web Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20498301" sideWeight="0.5" order="2" side_tool="false" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20422535" sideWeight="0.5" order="2" side_tool="false" />
+      <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24939272" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18770227" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Favorites" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3317152" sideWeight="0.5" order="5" side_tool="false" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" />
       <window_info id="JProfiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291714" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="CVS" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" />
-      <window_info id="File View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24939272" sideWeight="0.5" order="2" side_tool="false" />
     </layout>
   </component>
   <component name="VCS.FileViewConfiguration">
@@ -980,15 +1026,15 @@
       <antCommandLine value="" />
       <runInBackground value="false" />
       <targetFilters>
-        <filter targetName="Build version" isVisible="false" />
+        <filter targetName="adm-dev" isVisible="false" />
+        <filter targetName="bok-dev" isVisible="false" />
+        <filter targetName="build" isVisible="false" />
+        <filter targetName="fak-dev" isVisible="false" />
         <filter targetName="JFS Adminstration" isVisible="true" />
-        <filter targetName="JFS Adminstration Demo" isVisible="true" />
         <filter targetName="JFS Adminstration Release" isVisible="true" />
         <filter targetName="JFS Bokföring" isVisible="true" />
-        <filter targetName="JFS Bokföring Demo" isVisible="true" />
         <filter targetName="JFS Bokföring Release" isVisible="true" />
         <filter targetName="JFS Fakturering" isVisible="true" />
-        <filter targetName="JFS Fakturering Demo" isVisible="true" />
         <filter targetName="JFS Fakturering Release" isVisible="true" />
       </targetFilters>
       <treeView value="true" />
@@ -997,48 +1043,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/resources/creditinvoicereport_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="32" selection-start="1578" selection-end="1578" vertical-scroll-proportion="0.020987654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/resources/deliverynotereport_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="32" selection-start="1285" selection-end="1285" vertical-scroll-proportion="0.020987654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/resources/inquiryreport_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="32" selection-start="987" selection-end="987" vertical-scroll-proportion="0.020987654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/print/report/sales/SSInvoicePrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="16" selection-start="1382" selection-end="1382" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jfs_administration.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jfs_administration.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/importexport/excel/SSProductImporter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1067,13 +1071,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/print/SSPrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="151" column="104" selection-start="3652" selection-end="3652" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JFS Administration.iws">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1088,6 +1085,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/data/system/SSYearLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="19" selection-start="437" selection-end="437" vertical-scroll-proportion="0.15873016">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="89" selection-start="1241" selection-end="1241" vertical-scroll-proportion="-26.59091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/print/report/sales/SSInvoicePrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="34" selection-start="4577" selection-end="4578" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/SSBookkeeping.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="20" selection-start="4973" selection-end="4973" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/gui/util/datechooser/SSDateChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="338" column="14" selection-start="8968" selection-end="8968" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/gui/util/datechooser/panel/SSDayChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="244" column="42" selection-start="6745" selection-end="6745" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/data/common/SSUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="134" column="53" selection-start="3228" selection-end="3228" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/print/SSPrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="104" selection-start="3652" selection-end="3652" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/print/report/SSResultUnitResultPrinter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="91" selection-start="2272" selection-end="2272" vertical-scroll-proportion="0.0">
@@ -1095,9 +1148,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/administration/src/se/swedsoft/bookkeeping/importexport/sie/util/SIELabel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="37" selection-start="319" selection-end="319" vertical-scroll-proportion="0.13981359">
+        <state line="15" column="13" selection-start="344" selection-end="344" vertical-scroll-proportion="0.019788919">
           <folding />
         </state>
       </provider>
@@ -1121,6 +1174,22 @@
               <option name="proportions">
                 <SplitterProportionsDataImpl />
               </option>
+            </UIState>
+          </value>
+        </entry>
+        <entry key="ProjectJDKs.UI">
+          <value>
+            <UIState>
+              <option name="proportions">
+                <SplitterProportionsDataImpl>
+                  <option name="proportions">
+                    <list>
+                      <option value="0.2" />
+                    </list>
+                  </option>
+                </SplitterProportionsDataImpl>
+              </option>
+              <option name="lastEditedConfigurable" value="1.6" />
             </UIState>
           </value>
         </entry>
@@ -1152,6 +1221,22 @@
               <option name="proportions">
                 <SplitterProportionsDataImpl />
               </option>
+            </UIState>
+          </value>
+        </entry>
+        <entry key="ProjectJDKs.UI">
+          <value>
+            <UIState>
+              <option name="proportions">
+                <SplitterProportionsDataImpl>
+                  <option name="proportions">
+                    <list>
+                      <option value="0.2" />
+                    </list>
+                  </option>
+                </SplitterProportionsDataImpl>
+              </option>
+              <option name="lastEditedConfigurable" value="1.6" />
             </UIState>
           </value>
         </entry>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
-<project default="init" basedir="/home/ljo/bin/jfsbok/" >
+<project default="adm-dev" name="JFS Adminstration" basedir="." >
   <property name="classes_dir" value="administration\classes" />
   <property name="source_dir"  value="administration\src" />
 
@@ -8,7 +8,7 @@
   <property name="res_dir" value="res" />
   
 
-  <target name="Build version">
+  <target name="build">
     <delete file="${classes_dir}\se\swedsoft\bookkeeping\SSVersion.class"/>
     
     <mkdir dir="${res_dir}\se\swedsoft\bookkeeping\"/>
@@ -59,7 +59,7 @@
     <copy file="${res_dir}\SSVersion_bok.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
-  <target name="JFS Bokföring Dev">
+  <target name="bok-dev">
     <copy file="${res_dir}\SSVersion_bok_dev.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
@@ -67,7 +67,7 @@
     <copy file="${res_dir}\SSVersion_adm.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
-  <target name="JFS Adminstration Dev" >
+  <target name="adm-dev">
     <copy file="${res_dir}\SSVersion_adm_dev.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
@@ -75,7 +75,7 @@
     <copy file="${res_dir}\SSVersion_fak.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 
-  <target name="JFS Fakturering Dev" >
+  <target name="fak-dev" >
     <copy file="${res_dir}\SSVersion_fak_dev.java" tofile="${source_dir}\se\swedsoft\bookkeeping\SSVersion.java" overwrite="true" />
   </target>
 </project>
