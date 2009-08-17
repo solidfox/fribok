@@ -6,7 +6,7 @@ package se.swedsoft.bookkeeping;
  */
 public interface SSVersion {
 
-    public static final String app_title   = "JFS Bokföring";
+    public static final String app_title   = "JFS BokfÃ¶ring";
 
     public static final String app_package = "Bookkeeping";
 
