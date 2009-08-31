@@ -18,7 +18,6 @@ package se.swedsoft.bookkeeping.gui;
 import se.swedsoft.bookkeeping.data.util.SSConfig;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSImage;
-import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 import se.swedsoft.bookkeeping.gui.status.SSStatusBar;
 import se.swedsoft.bookkeeping.gui.status.SSMainStatusBar;
 import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;

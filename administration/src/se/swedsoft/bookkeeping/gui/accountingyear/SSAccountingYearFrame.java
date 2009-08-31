@@ -16,7 +16,6 @@
 package se.swedsoft.bookkeeping.gui.accountingyear;
 
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.*;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
@@ -32,7 +31,6 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.frame.*;
 import se.swedsoft.bookkeeping.SSVersion;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
@@ -44,7 +42,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
-import java.sql.SQLException;
 
 
 /**

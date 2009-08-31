@@ -24,10 +24,8 @@ import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.system.SSSystemYear;
 import se.swedsoft.bookkeeping.data.system.SSYearLock;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.awt.*;

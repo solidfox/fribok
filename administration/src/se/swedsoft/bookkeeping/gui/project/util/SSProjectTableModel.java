@@ -20,9 +20,7 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSTableEditor;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;

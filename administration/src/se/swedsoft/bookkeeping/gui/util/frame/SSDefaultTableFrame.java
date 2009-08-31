@@ -19,8 +19,6 @@ import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 /**
  * This class should be the default class for internal frames in this application. <P>

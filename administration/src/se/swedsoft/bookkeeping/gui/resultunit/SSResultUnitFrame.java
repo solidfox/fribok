@@ -16,7 +16,6 @@
 package se.swedsoft.bookkeeping.gui.resultunit;
 
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
-import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -29,15 +28,11 @@ import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.components.SSMenuButton;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 import se.swedsoft.bookkeeping.print.report.SSResultUnitPrinter;
-import se.swedsoft.bookkeeping.print.report.SSProjectRevenuePrinter;
 import se.swedsoft.bookkeeping.print.report.SSResultUnitRevenuePrinter;
 import se.swedsoft.bookkeeping.print.dialog.SSPeriodSelectionDialog;
 
 import javax.swing.*;
-import javax.swing.event.InternalFrameAdapter;
-import javax.swing.event.InternalFrameEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;

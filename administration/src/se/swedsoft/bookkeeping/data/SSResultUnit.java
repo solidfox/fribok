@@ -15,14 +15,9 @@
  */
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.List;
-import java.text.DateFormat;
-import java.math.BigDecimal;
 
 // Trade Extensions specific imports
 

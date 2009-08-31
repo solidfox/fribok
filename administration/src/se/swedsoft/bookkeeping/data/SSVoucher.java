@@ -16,12 +16,10 @@
 package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 //import se.swedsoft.bookkeeping.gui.voucher.SSVoucherTableModel;
 
 import java.io.Serializable;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 import java.text.DateFormat;

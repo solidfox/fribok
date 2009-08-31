@@ -2,29 +2,16 @@ package se.swedsoft.bookkeeping;
 
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSConfirmDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSWarningDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 import se.swedsoft.bookkeeping.data.system.*;
 import se.swedsoft.bookkeeping.data.util.SSConfig;
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
-import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.util.SSLicenseInfo;
-import se.swedsoft.bookkeeping.gui.license.dialog.SSLicenseDialog;
-import se.swedsoft.bookkeeping.license.SSLicenseType;
-import se.swedsoft.bookkeeping.license.SSLicenseFactory;
 
 import javax.swing.*;
-import java.text.DateFormat;
-import java.lang.management.MemoryUsage;
 import java.sql.*;
 import java.io.File;
-import java.util.List;
-import java.util.LinkedList;
 
 //import com.incors.plaf.alloy.AlloyLookAndFeel;
 
@@ -124,36 +111,7 @@ public class SSBookkeeping {
         UIManager.put("InternalFrame.icon", SSIcon.getIcon("ICON_FRAME"));
         UIManager.put("InternalFrame.inactiveIcon", SSIcon.getIcon("ICON_FRAME"));
         startupDatabase();
-        if(SSVersion.LicenseRequired){
-            SSLicenseInfo iLicense = SSLicenseInfo.getLicense();
-
-            System.out.println("License: " + iLicense);
-
-            if(iLicense == null){
-                SSLicenseDialog.showDialog( iMainFrame );
-            } else {
-                // The license has expired
-                if(iLicense.expired()){
-                    DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-
-                    String iExpiresText = iFormat.format( iLicense.getExpires() );
-
-                    new SSInformationDialog(iMainFrame, "licenseframe.evaluationexpired", iExpiresText);
-
-                    SSLicenseDialog.showDialog( iMainFrame );
-                    //System.exit(0);
-                }
-
-                // This is a evaluation copy, show time left
-                if(iLicense.getType() == SSLicenseType.Evaluation){
-                    DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-
-                    String iExpiresText = iFormat.format( iLicense.getExpires() );
-
-                    new SSInformationDialog(iMainFrame, "licenseframe.evaluation", iExpiresText);
-                }
-            }
-        }
+        
         // Display the main frame.
         iMainFrame.setVisible(true);
 

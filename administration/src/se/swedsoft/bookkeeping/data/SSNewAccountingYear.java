@@ -23,11 +23,9 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import javax.swing.*;
 import java.util.*;
 import java.io.Serializable;
-import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DateFormat;
-import java.rmi.server.UID;
 
 
 /**

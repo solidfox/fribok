@@ -18,8 +18,6 @@ package se.swedsoft.bookkeeping.gui.util.table.editors;
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.TableCellEditor;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.NumberFormat;

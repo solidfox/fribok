@@ -16,7 +16,6 @@
 package se.swedsoft.bookkeeping.gui.resultunit.panel;
 
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

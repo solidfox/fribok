@@ -26,7 +26,6 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.print.report.SSBudgetPrinter;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

@@ -29,7 +29,6 @@ import se.swedsoft.bookkeeping.gui.util.frame.*;
 import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.print.report.SSStartingAmountPrinter;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -21,7 +21,6 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.util.List;
-import java.text.DateFormat;
 import java.math.BigDecimal;
 
 // Trade Extensions specific imports

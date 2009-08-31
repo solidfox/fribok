@@ -18,12 +18,10 @@ package se.swedsoft.bookkeeping.data;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import javax.swing.*;
 import java.util.*;
 import java.io.Serializable;
-import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DateFormat;

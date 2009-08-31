@@ -19,7 +19,6 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Date;
 import java.util.List;
 

@@ -2,7 +2,6 @@ package se.swedsoft.bookkeeping.gui.about.panel;
 
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.SSVersion;
-import se.swedsoft.bookkeeping.util.SSLicenseInfo;
 import se.swedsoft.bookkeeping.util.SSBrowserLaunch;
 
 import javax.swing.*;
@@ -31,16 +30,6 @@ public class SSAboutPanel {
         String iLicence = "";
 
         iEditorPane.setBackground( iPanel.getBackground() );
-
-        if(SSVersion.LicenseRequired){
-            SSLicenseInfo iInfo = SSLicenseInfo.getLicense();
-
-            iLicence = SSBundle.getBundle().getString("aboutframe.licencetext");
-
-            iLicence = iLicence.replace("{NAME}"   , iInfo.getName());
-            iLicence = iLicence.replace("{COMPANY}", iInfo.getCompany());
-        }
-
 
         iText = iText.replace("{TITLE}"  , SSVersion.app_title);
         iText = iText.replace("{VERSION}", SSVersion.app_version);

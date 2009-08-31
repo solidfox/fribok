@@ -16,8 +16,6 @@
 package se.swedsoft.bookkeeping.gui.util.table;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSorter;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 
 
 import javax.swing.table.TableModel;

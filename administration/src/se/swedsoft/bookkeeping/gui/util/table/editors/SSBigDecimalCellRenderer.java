@@ -17,7 +17,6 @@ package se.swedsoft.bookkeeping.gui.util.table.editors;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import java.text.NumberFormat;
-import java.math.BigDecimal;
 
 
 /**
