@@ -81,8 +81,8 @@ import java.text.SimpleDateFormat;
 import java.math.BigDecimal;
 
 /**
- * Date: 2006-feb-27
- * Time: 11:35:18
+ *
+ * $Id$
  */
 public class SSMainMenu {
 
@@ -344,8 +344,8 @@ public class SSMainMenu {
                 } catch (IOException ex){
                     SSQueryDialog iDialog = new SSQueryDialog(SSMainFrame.getInstance(),"noserverfound");
 
-                    if (SSDBConfig.getLicensekey() != null && !SSDBConfig.getLicensekey().equals("")) {
-                        SSDB.getInstance().removeLicense();
+                    if (SSDBConfig.getClientkey() != null && !SSDBConfig.getClientkey().equals("")) {
+                        SSDB.getInstance().removeClient();
                     }
                     if (iDialog.getResponce() == JOptionPane.YES_OPTION) {
                         if(SSDB.getInstance().getLocking()) {

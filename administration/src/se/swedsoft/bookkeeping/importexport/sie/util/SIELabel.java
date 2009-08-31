@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.LinkedList;
 
 /**
- * Date: 2006-feb-20
- * Time: 12:24:18
+ *
+ * $Id$
  */
 public enum SIELabel {
     // * = Frivillig

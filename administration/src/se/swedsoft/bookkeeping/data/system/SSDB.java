@@ -48,8 +48,8 @@ import java.net.SocketException;
 import java.sql.*;
 
 /**
- * Date: 2006-feb-24
- * Time: 15:55:03
+ * 
+ * $Id$
  */
 public class SSDB {
 
@@ -172,7 +172,7 @@ public class SSDB {
         PreparedStatement iStatement;
         ResultSet iResultSet;
 
-        String iKey = SSDBConfig.getLicensekey();
+        String iKey = SSDBConfig.getClientkey();
         try {
             if(iKey != null && !iKey.equals("")){
                 iStatement = iConnection.prepareStatement("INSERT INTO tbl_license VALUES(?)");
@@ -181,7 +181,7 @@ public class SSDB {
                 iStatement.close();
             }
         } catch (SQLException e) {
-            new SSErrorDialog(SSMainFrame.getInstance(),"license.duplicatekey");
+            new SSErrorDialog(SSMainFrame.getInstance(),"database.duplicateclient");
             System.exit(0);
         }
 
@@ -412,7 +412,7 @@ public class SSDB {
             iLocking = true;
             iConnection.setAutoCommit(false);
 
-            String iKey = SSDBConfig.getLicensekey();
+            String iKey = SSDBConfig.getClientkey();
             try {
                 if(iKey != null && !iKey.equals("")){
                     PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_license VALUES(?)");
@@ -422,7 +422,7 @@ public class SSDB {
                     iStatement.close();
                 }
             } catch (SQLException e) {
-                new SSErrorDialog(SSMainFrame.getInstance(),"license.duplicatekey");
+                new SSErrorDialog(SSMainFrame.getInstance(),"database.duplicateclient");
                 System.exit(0);
             }
 
@@ -480,13 +480,13 @@ public class SSDB {
 
     }
 
-    public void removeLicense() {
+    public void removeClient() {
         if(!iLocking || iConnection == null) return;
 
         PreparedStatement iStatement;
         try {
             iStatement = iConnection.prepareStatement("DELETE FROM tbl_license WHERE licensekey=?");
-            iStatement.setObject(1, SSDBConfig.getLicensekey());
+            iStatement.setObject(1, SSDBConfig.getClientkey());
             iStatement.executeUpdate();
             iStatement.close();
             iConnection.commit();

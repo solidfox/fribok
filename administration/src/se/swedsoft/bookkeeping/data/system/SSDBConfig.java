@@ -6,10 +6,13 @@ import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Date;
 import java.util.List;
 import java.util.LinkedList;
 import java.net.SocketAddress;
 import java.net.InetAddress;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
 
 import org.apache.xerces.parsers.DOMParser;
 import org.apache.xml.serialize.OutputFormat;
@@ -18,15 +21,14 @@ import org.xml.sax.InputSource;
 import org.w3c.dom.*;
 
 /**
- * User: Andreas Lago
- * Date: 2006-nov-23
- * Time: 11:02:27
+ *
+ * $Id$
  */
 public class SSDBConfig {
 
     private final static File CONFIG_FILE = new File(SSFileSystem.getApplicationDirectory() + "database.config");
 
-    private static String iLicenseKey;
+    private static String iClientKey;
 
     private static String iServerAddress;
 
@@ -154,12 +156,12 @@ public class SSDBConfig {
 
     }
 
-    public static void setLicenseKey(String iKey) {
-        iLicenseKey = iKey;
+    public static void setClientKey(String iKey) {
+        iClientKey = iKey;
         DOMParser iParser = new DOMParser();
         try {
             iParser.parse( new InputSource(new FileInputStream( CONFIG_FILE )) );
-            iParser.getDocument().getDocumentElement().setAttribute("licensekey",iLicenseKey == null ? "" : iLicenseKey);
+            iParser.getDocument().getDocumentElement().setAttribute("clientkey", iClientKey == null ? "" : iClientKey);
 
             //Write back the database path to the config file.
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
@@ -169,8 +171,8 @@ public class SSDBConfig {
     }
 
 
-    public static String getLicensekey() {
-        return iLicenseKey == null ? "" : iLicenseKey;
+    public static String getClientkey() {
+        return iClientKey == null ? "" : iClientKey;
     }
     static{
         load();
@@ -206,13 +208,14 @@ public class SSDBConfig {
                 iYearId = Integer.parseInt(iYear);
             }
 
-            if (iParser.getDocument().getDocumentElement().hasAttribute("licensekey")) {
-                iKey = iParser.getDocument().getDocumentElement().getAttribute("licensekey");
+            if (iParser.getDocument().getDocumentElement().hasAttribute("clientkey")) {
+                iKey = iParser.getDocument().getDocumentElement().getAttribute("clientkey");
             } else {
-                setLicenseKey("");
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm z");
+                setClientKey(dateFormat.format(new Date()));
             }
 
-            SSDBConfig.iLicenseKey = iKey;
+            SSDBConfig.iClientKey = iKey;
 
             SSDBConfig.iServerAddress = iServer;
 

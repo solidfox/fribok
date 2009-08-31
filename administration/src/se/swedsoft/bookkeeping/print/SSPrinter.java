@@ -28,8 +28,8 @@ import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
- * Date: 2006-feb-16
- * Time: 10:34:45
+ *
+ * $Id$
  */
 public abstract class SSPrinter {
 

@@ -17,8 +17,8 @@ import java.io.File;
 
 
 /**
- * Date: 2006-mar-13
- * Time: 09:04:23
+ * 
+ * $Id$
  */
 public class SSBookkeeping {
 
@@ -131,8 +131,8 @@ public class SSBookkeeping {
             public void run() {
                 SSFrameManager.getInstance().storeAllFrames();
 
-                if (SSDBConfig.getLicensekey() != null && !SSDBConfig.getLicensekey().equals("")) {
-                    SSDB.getInstance().removeLicense();
+                if (SSDBConfig.getClientkey() != null && !SSDBConfig.getClientkey().equals("")) {
+                    SSDB.getInstance().removeClient();
                 }
 
                 try {

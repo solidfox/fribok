@@ -12,6 +12,8 @@
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Trade Extensions.
+ *
+ * fixit! - är verkligen detta klarerat?
  */
 package se.swedsoft.bookkeeping.gui;
 
@@ -33,6 +35,7 @@ import java.util.ResourceBundle;
 /**
  * This class implements the main frame as well as the main program.
  *
+ * $Id$
  */
 public class SSMainFrame extends JFrame {
 
