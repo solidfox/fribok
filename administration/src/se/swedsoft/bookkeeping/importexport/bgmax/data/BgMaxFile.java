@@ -6,10 +6,17 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxAvsnitt;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.LinkedList;
 
 /**
+ * Class for storing the contents of a bgmax file read from disk, and responsible 
+ * for parsing the text from a read file.
+ * 
+ * Has fields for data about the whole bgmax file, and stors data about the 
+ * transactions in the file in the iAvsnitts collection.
+ * 
  * User: Andreas Lago
  * Date: 2006-aug-23
  * Time: 09:09:20
@@ -38,29 +45,65 @@ public class BgMaxFile {
     }
 
     /**
-     *
-     * @param iLines
+     * The entry point method for the b 
+     * Parses the lines of the BgMax-file, filling in the data in its own fields and
+     * creating BgMaxAvsnitt object in the iAvsnitts collection with parsed data.
+     *  
+     * @param iLines The raw lines of a BgMax-file read from disk
      */
     public void parse(List<String> iLines) throws SSImportException{
         iAvsnitts = new LinkedList<BgMaxAvsnitt>();
+        
+        boolean isEmptyLineRead = false;
 
         if( iLines.size() < 1 || ! isValid(iLines.get(0)) ) {
              throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.invalidfile");
         }
 
-        for (String iLine : iLines) {
+        Iterator<String> itr = iLines.iterator();
+        
+        while (itr.hasNext()) {
+        	
+        	String iLine = itr.next();
+        	
             try {
+            	
+            	if ( iLine.length() == 0) {
+            		
+            		// If an empty line is found, all the rest of the lines have
+            		// to be empty too
+            		if ( !isAllEmpty( itr ) ) {
+            			// Throw exc to bee caught a few lines down
+            			throw new RuntimeException( "Empty line found in other place than last in the file" );
+            		}
+            		
+            		break;  // Exit success
+            	}
+            	
                 BgMaxLine iBgMaxLine = new BgMaxLine(iLine);
-
                 parseLine(iBgMaxLine);
-            } catch (RuntimeException ex) {
-                ex.printStackTrace();
+            	
+            } catch (RuntimeException exc) {
+                exc.printStackTrace();
 
                 throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.parseerror");
             }
 
 
         }
+    }
+    
+    private static boolean isAllEmpty(Iterator<String> itr)
+    {
+    	if (itr == null) {
+    		throw new IllegalArgumentException( "Method can not take null argument" );
+    	}
+    	
+    	while ( itr.hasNext() ) {
+    		if ( itr.next().length() != 0 ) return false;
+    	}
+    	
+    	return true;
     }
 
     /**
