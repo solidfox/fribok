@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.calc.util;
 
 import java.io.Serializable;
-import java.util.Map;
 import java.util.HashMap;
 
 /**
@@ -13,7 +12,7 @@ public class SSAutoIncrement implements Serializable {
 
     private static final long serialVersionUID = 8382640246746989054L;
 
-    private Map<String, Integer> iNumbers;
+    private HashMap<String, Integer> iNumbers;
 
     /**
      *
