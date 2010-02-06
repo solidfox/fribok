@@ -3,17 +3,22 @@ package se.swedsoft.bookkeeping.calc;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 
 /**
+ * Generates unique OCR numbers from invoice numbers.
+ *
  * User: Andreas Lago
  * Date: 2006-aug-24
  * Time: 11:16:16
  */
 public class SSOCRNumber {
 
-
     /**
+     * Generate an OCR number from an invoice
      *
-     * @param iInvoice
-     * @return
+     * This is actually made from the invoice numer, and two checksum digits,
+     * one of which is based on the length of the invoice number.
+     *
+     * @param iInvoice the invoice for which to generate an OCR number
+     * @return the OCR number
      */
     public static String getOCRNumber(SSInvoice iInvoice){
         String strNumber = Integer.toString( iInvoice.getNumber() );
@@ -25,30 +30,25 @@ public class SSOCRNumber {
         return Integer.toString(iNumber) + iLengthSum + "" + iChecksum;
     }
 
-
-
     /**
+     * Generate a checksum digit for an arbitrary invoice number
      *
-     * @param iText
-     * @return
+     * @param iText the invoice number for which to generate a checksum
+     * @return the checksum digit
      */
     public static char getCheckSum(Integer iText){
         return getCheckSum( Integer.toString(iText) );
     }
+
     /**
+     * Generate a checksum digit for a specified invoice
      *
-     * @param iText
-     * @return
+     * @param iText the invoice for which to generate a checksum
+     * @return the checksum digit
      */
     public static char getCheckSum(String iText){
         int iChecksum = 0;
         int iWeight   = 2;
-       // 1212
-      //  /21212
-
-      //  char[] iChars = new char[iText.length()];
-
-     //   iText.getChars(0, 0, iChars, iChars.length);
 
         for(int i = iText.length() -1 ; i >=0; i--){
             char iChar = iText.charAt(i);
@@ -78,18 +78,19 @@ public class SSOCRNumber {
         } else {
             return Integer.toString( iChecksum ).charAt(0);
         }
-
     }
 
     /**
+     * Generate a number based on the length of the invoice number
      *
-     * @param iNumber
-     * @return
+     * The formula is (number of digits in number + 2) % 10
+     *
+     * @param iNumber the invoice number
+     * @return a number 0-9
      */
     private static char getLengthSum(int iNumber) {
         String iString = Integer.toString(iNumber);
 
         return Integer.toString((iString.length() + 2) % 10).charAt(0);
     }
-
 }
