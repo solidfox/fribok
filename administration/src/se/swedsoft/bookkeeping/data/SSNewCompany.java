@@ -3,6 +3,7 @@ package se.swedsoft.bookkeeping.data;
 import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.util.SSMailServer;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
@@ -105,9 +106,8 @@ public class SSNewCompany implements Serializable {
     private boolean iRoundingOff;
 
     private Integer iVatPeriod;
-
-
-
+    
+    private SSMailServer iMailServer;
 
     // Autoräknare
     private SSAutoIncrement iAutoIncrement;
@@ -196,6 +196,14 @@ public class SSNewCompany implements Serializable {
 
     //////////////////////////////////////////////////////
 
+    public SSMailServer getMailServer() {
+    	return iMailServer;
+    }
+    
+    public void setMailServer( SSMailServer server ) {
+    	iMailServer = server;
+    }
+    
     /**
      *
      * @return

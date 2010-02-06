@@ -2,18 +2,28 @@ package se.swedsoft.bookkeeping.gui.company.pages;
 
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSIntegerTextField;
+import se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
+import se.swedsoft.bookkeeping.data.util.SSMailServer;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.*;
+import java.util.ResourceBundle;
+
 
 /**
  * User: Andreas Lago
  * Date: 2006-aug-25
  * Time: 10:14:40
+ *
+ * $Id$
+ *
  */
-public class SSCompanyPageAdditional extends SSCompanyPage{
+public class SSCompanyPageAdditional extends SSCompanyPage {
 
     private SSNewCompany iCompany;
 
@@ -32,20 +42,26 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
     private JTextField iSMTPAddress;
     private JCheckBox iRoundingOff;
     private SSIntegerTextField iVatPeriod;
+    private JButton iEditMailServerButton;
+    private JTextField severField;
 
+    private SSMailServer iMailServer;
 
+    private SSMailServerDialog iMailDialog;
 
     /**
      * @param iDialog
      */
     public SSCompanyPageAdditional(JDialog iDialog) {
         super(iDialog);
+
+        iMailDialog = new SSMailServerDialog(iDialog);
+
         addKeyListeners();
     }
 
 
     /**
-     *
      * @return the name and title
      */
     public String getName() {
@@ -53,7 +69,6 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
     }
 
     /**
-     *
      * @return the panel
      */
     public JPanel getPanel() {
@@ -79,9 +94,20 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
         iPlusGiroNumber.setText(iCompany.getPlusGiroNumber());
         iSwiftCode.setText(iCompany.getBIC());
         iIBAN.setText(iCompany.getIBAN());
-        iSMTPAddress.setText(iCompany.getSMTP());
+//        iSMTPAddress.setText(iCompany.getSMTP());
         iRoundingOff.setSelected(iCompany.isRoundingOff());
         iVatPeriod.setValue(iCompany.getVatPeriod());
+
+        setMailServer(iCompany.getMailServer());
+    }
+
+    private void setMailServer(SSMailServer server) {
+        iMailServer = server;
+        if (iMailServer != null) {
+            severField.setText(iMailServer.getURI().getHost());
+        } else {
+            severField.setText("");
+        }
     }
 
     /**
@@ -90,25 +116,31 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
      * @return the company
      */
     public SSNewCompany getCompany() {
-        iCompany.setPhone( iPhone.getText() );
-        iCompany.setPhone2( iPhone2.getText() );
-        iCompany.setTelefax( iTelefax.getText() );
-        iCompany.setHomepage( iWebAddress.getText() );
-        iCompany.setEMail( iEMail.getText() );
-        iCompany.setContactPerson( iContactPerson.getText() );
-        iCompany.setBank( iBank.getText() );
-        iCompany.setBankGiroNumber( iBankGiroNumber.getText() );
-        iCompany.setPlusGiroNumber( iPlusGiroNumber.getText() );
-        iCompany.setBIC( iSwiftCode.getText() );
-        iCompany.setIBAN( iIBAN.getText() );
-        iCompany.setSMTP(iSMTPAddress.getText());
+        iCompany.setPhone(iPhone.getText());
+        iCompany.setPhone2(iPhone2.getText());
+        iCompany.setTelefax(iTelefax.getText());
+        iCompany.setHomepage(iWebAddress.getText());
+        iCompany.setEMail(iEMail.getText());
+        iCompany.setContactPerson(iContactPerson.getText());
+        iCompany.setBank(iBank.getText());
+        iCompany.setBankGiroNumber(iBankGiroNumber.getText());
+        iCompany.setPlusGiroNumber(iPlusGiroNumber.getText());
+        iCompany.setBIC(iSwiftCode.getText());
+        iCompany.setIBAN(iIBAN.getText());
+//        iCompany.setSMTP(iSMTPAddress.getText());
         iCompany.setRoundingOff(iRoundingOff.isSelected());
         iCompany.setVatPeriod(iVatPeriod.getValue());
+
+        iCompany.setMailServer(iMailServer);
 
         return iCompany;
     }
 
-    public void addKeyListeners(){
+    /**
+     * Adds listeners for going to next field when enter key is pressed.
+     */
+    public void addKeyListeners() {
+
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -116,10 +148,17 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iContactPerson.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iEditMailServerButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setMailServer(new SSMailServerDialog(null).showServerQuery(iMailServer));
+            }
+        });
+
+
+        iContactPerson.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPhone.requestFocusInWindow();
                         }
@@ -128,10 +167,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iPhone.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iPhone.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPhone2.requestFocusInWindow();
                         }
@@ -140,10 +179,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iPhone2.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iPhone2.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTelefax.requestFocusInWindow();
                         }
@@ -152,10 +191,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iTelefax.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iTelefax.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iEMail.requestFocusInWindow();
                         }
@@ -164,10 +203,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iEMail.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iEMail.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iWebAddress.requestFocusInWindow();
                         }
@@ -176,34 +215,50 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iWebAddress.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+
+        iWebAddress.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
-                            iSMTPAddress.requestFocusInWindow();
+                            iEditMailServerButton.requestFocusInWindow();
                         }
                     });
                 }
             }
         });
 
-        iSMTPAddress.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            iBank.requestFocusInWindow();
-                        }
-                    });
-                }
-            }
-        });
 
-        iBank.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        // iSMTPAddress removed and replaced by the editMailServer button.
+//        iWebAddress.addKeyListener(new KeyAdapter() {
+//            public void keyPressed(KeyEvent e) {
+//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+//                    SwingUtilities.invokeLater(new Runnable() {
+//                        public void run() {
+//                            iSMTPAddress.requestFocusInWindow();
+//                        }
+//                    });
+//                }
+//            }
+//        });
+
+        // iSMTPAddress removed and replaced by the editMailServer button.
+//        iSMTPAddress.addKeyListener(new KeyAdapter() {
+//            public void keyPressed(KeyEvent e) {
+//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+//                    SwingUtilities.invokeLater(new Runnable() {
+//                        public void run() {
+//                            iBank.requestFocusInWindow();
+//                        }
+//                    });
+//                }
+//            }
+//        });
+
+        iBank.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iBankGiroNumber.requestFocusInWindow();
                         }
@@ -212,10 +267,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iBankGiroNumber.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iBankGiroNumber.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPlusGiroNumber.requestFocusInWindow();
                         }
@@ -224,10 +279,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iPlusGiroNumber.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iPlusGiroNumber.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iSwiftCode.requestFocusInWindow();
                         }
@@ -236,10 +291,10 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
             }
         });
 
-        iSwiftCode.addKeyListener(new KeyAdapter(){
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+        iSwiftCode.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iIBAN.requestFocusInWindow();
                         }
@@ -249,5 +304,5 @@ public class SSCompanyPageAdditional extends SSCompanyPage{
         });
 
     }
-
+    
 }
