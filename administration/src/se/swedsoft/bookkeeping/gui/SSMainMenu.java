@@ -208,10 +208,6 @@ public class SSMainMenu {
         // *****************************
         iMenuLoader.addActionListener("filemenu.import.sie", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(SSVersion.DemoVersion){
-                    new SSInformationDialog(iMainFrame, "notindemodialog");
-                    return;
-                }
                 SSNewCompany iCurrentCompany = SSDB.getInstance().getCurrentCompany();
                 SSPostLock.applyLock("sieimport"+iCurrentCompany.getId());
                 SSCompanyLock.removeLock(iCurrentCompany);

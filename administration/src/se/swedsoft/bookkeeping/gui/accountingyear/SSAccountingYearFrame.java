@@ -152,13 +152,9 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         // ***************************
         iButton = new SSButton("ICON_NEWITEM", "accountingyearframe.newbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if(SSVersion.DemoVersion){
-                    new SSInformationDialog(getMainFrame(), "notindemodialog");
-                }  else {
-                    updateFrame();
-                    SSNewAccountingYearDialog.showDialog(getMainFrame(), iModel);
-                    updateFrame();
-                }
+                updateFrame();
+                SSNewAccountingYearDialog.showDialog(getMainFrame(), iModel);
+                updateFrame();
             }
         });
         iButton.setEnabled(true);

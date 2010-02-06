@@ -112,12 +112,8 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
         // ***************************
         iButton = new SSButton("ICON_NEWITEM", "companyframe.newbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if(SSVersion.DemoVersion){
-                    new SSInformationDialog(getMainFrame(), "notindemodialog");
-                }  else {
-                    updateFrame();
-                    SSCompanyDialog.newDialog(getMainFrame(), iModel);
-                }
+                updateFrame();
+                SSCompanyDialog.newDialog(getMainFrame(), iModel);
             }
         });
         iButton.setEnabled(true);

@@ -11,9 +11,6 @@ public interface SSVersion {
     public static final String app_build   = "$Date$";
 
 
-    // Toggles demo version
-    public static final boolean DemoVersion = false;
-
     // Togles if a isValid license is required
     public static final boolean LicenseRequired = false;
 

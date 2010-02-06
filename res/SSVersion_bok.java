@@ -3,6 +3,9 @@ package se.swedsoft.bookkeeping;
 /**
  * Date: 2006-mar-14
  * Time: 14:21:50
+ *
+ * $Id$
+ *
  */
 public interface SSVersion {
 
@@ -13,10 +16,6 @@ public interface SSVersion {
     public static final String app_version = "2.1a1";
 
     public static final String app_build   = "2009-08-17";
-
-
-    // Toggles demo version
-    public static final boolean DemoVersion = false;
 
     // Togles if a isValid license is required
     public static final boolean LicenseRequired = false;
