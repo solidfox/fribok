@@ -1233,16 +1233,6 @@ public class SSMainMenu {
             }
         });
 
-// Registera produkt
-// *****************************
-        iMenuLoader.addActionListener("helpmenu.register", new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String iSupportURL =  SSBundle.getBundle().getString("application.url.register") ;
-
-                SSBrowserLaunch.openURL( iSupportURL );
-            }
-        });
-
         // Ta bort postlås
         // ***********************
         iMenuLoader.addActionListener("helpmenu.clearlocks", new ActionListener() {
