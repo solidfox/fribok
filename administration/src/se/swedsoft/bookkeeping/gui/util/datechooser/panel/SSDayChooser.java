@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
-//import com.incors.plaf.alloy.AlloyCommonUtilities;
-
 import javax.swing.*;
 import java.util.*;
 import java.util.List;
@@ -12,17 +10,19 @@ import java.text.DateFormatSymbols;
 import java.text.DateFormat;
 
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-//import com.incors.plaf.alloy.AlloyCommonUtilities;
 
 
 /**
  * User: Andreas Lago
  * Date: 2006-apr-04
  * Time: 09:58:55
+ *
+ * $Id$
+ * 
  */
 public class SSDayChooser implements ActionListener {
 
-       private static Color WEEK_COLOR = new Color(100, 100, 100);
+    private static Color WEEK_COLOR = new Color(100, 100, 100);
 
     private static Color BACKGROUND_COLOR = new Color(210, 228, 238);
 
@@ -241,7 +241,6 @@ public class SSDayChooser implements ActionListener {
                 iButton.setDate       ( iCurrentDate );
 
                 if( iCurrentDate.equals( iDate )){
-                    //AlloyCommonUtilities.set3DBackground(iButton, SELECTED_COLOR);
                     iButton.setBackground(SELECTED_COLOR);
                 } else {
                     iButton.setBackground(  new JButton().getBackground() );
