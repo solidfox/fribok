@@ -12,7 +12,7 @@ import java.text.DateFormatSymbols;
 import java.text.DateFormat;
 
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-import com.incors.plaf.alloy.AlloyCommonUtilities;
+//import com.incors.plaf.alloy.AlloyCommonUtilities;
 
 
 /**
