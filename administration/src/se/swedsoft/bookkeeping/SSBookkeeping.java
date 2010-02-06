@@ -13,9 +13,6 @@ import javax.swing.*;
 import java.sql.*;
 import java.io.File;
 
-//import com.incors.plaf.alloy.AlloyLookAndFeel;
-
-
 /**
  * 
  * $Id$
@@ -78,14 +75,7 @@ public class SSBookkeeping {
      * @param args The arguments to the program.
      */
     public static void main(String[] args) {
-
-        //AlloyLookAndFeel.setProperty("alloy.licenseCode"           , "4#JFS_Bokforing#m4zvft#5lkl8w");
-        //AlloyLookAndFeel.setProperty("alloy.titlePaneTextAlignment", "left");
-
         try {
-            //AlloyLookAndFeel iAlloyLookAndFeel =  new AlloyLookAndFeel();
-            //UIManager.setLookAndFeel( iAlloyLookAndFeel );
-
             JDialog.setDefaultLookAndFeelDecorated(true);
             JFrame .setDefaultLookAndFeelDecorated(true);
         } catch (Exception e) {

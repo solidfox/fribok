@@ -15,8 +15,6 @@ import java.util.*;
 import java.util.List;
 import java.text.SimpleDateFormat;
 
-//import com.incors.plaf.alloy.AlloyLookAndFeel;
-
 /**
  * User: Andreas Lago
  * Date: 2006-apr-04
@@ -332,12 +330,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
     }
 
     public static void main(String[] args) {
-        //AlloyLookAndFeel.setProperty("alloy.licenseCode"           , "4#JFS_Bokforing#m4zvft#5lkl8w");
-        //AlloyLookAndFeel.setProperty("alloy.titlePaneTextAlignment", "left");
-
         try {
-            //UIManager.setLookAndFeel( new AlloyLookAndFeel() );
-
             JDialog.setDefaultLookAndFeelDecorated(true);
             JFrame .setDefaultLookAndFeelDecorated(true);
         } catch (Exception e) {
