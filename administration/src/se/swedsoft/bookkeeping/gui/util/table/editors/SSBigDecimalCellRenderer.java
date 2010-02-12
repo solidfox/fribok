@@ -1,17 +1,6 @@
 /*
- * @(#)SSBigDecimalCellRenderer.java                v 1.0 2005-sep-24
- *
- * Time-stamp: <2005-sep-24 11:48:24 Hasse>
- *
- * Copyright (c) Trade Extensions TradeExt AB, Sweden.
- * www.tradeextensions.com, info@tradeextensions.com
- * All rights reserved.
- *
- * This software is the confidential and proprietary information of
- * Trade Extensions ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Trade Extensions.
+ * 2005-2010
+ * $Id$
  */
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 

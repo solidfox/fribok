@@ -1,19 +1,6 @@
 /*
- * @(#)SSBundle.java                v 1.0 2005-jul-06
- *
- * Time-stamp: <2009-08-17 12:40:35 ljo>
- *
- * Copyright (c) Trade Extensions TradeExt AB, Sweden.
- * www.tradeextensions.com, info@tradeextensions.com
- * All rights reserved.
- *
- * todo - is this resolved?
- *
- * This software is the confidential and proprietary information of
- * Trade Extensions ("Confidential Information"). You shall not
- * disclose such Confidential Information and shall use it only in
- * accordance with the terms of the license agreement you entered into
- * with Trade Extensions.
+ * 2005-2010
+ * $Id$
  */
 package se.swedsoft.bookkeeping.gui.util;
 
