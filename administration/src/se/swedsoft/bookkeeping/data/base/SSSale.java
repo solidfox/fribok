@@ -626,9 +626,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      */
     public void setRows(SSSaleRow ... iRows) {
         this.iRows = new LinkedList<SSSaleRow>();
-        for (SSSaleRow iRow : iRows) {
-            this.iRows.add( iRow );
-        }
+        this.iRows.addAll(Arrays.asList(iRows));
     }
 
     ////////////////////////////////////////////////////

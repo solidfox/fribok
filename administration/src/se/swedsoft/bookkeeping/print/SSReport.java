@@ -377,39 +377,29 @@ public class SSReport {
 
             // Add all parameters
             if( iReport.getParameters() != null ){
-                for(JRParameter iParameter: iReport.getParameters() ){
-                    pParameters.add(  iParameter );
-                }
+                pParameters.addAll(Arrays.asList(iReport.getParameters()));
             }
 
             // Add all fields
             if( iReport.getFields() != null ){
-                for(JRField iField: iReport.getFields() ){
-                    pFields.add( iField );
-                }
+                pFields.addAll(Arrays.asList(iReport.getFields()));
             }
 
             // Add all variables
             if( iReport.getVariables() != null ){
-                for(JRVariable iVariable: iReport.getVariables() ){
-                    pVariables.add(  iVariable );
-                }
+                pVariables.addAll(Arrays.asList(iReport.getVariables()));
             }
 
             // Add all groups
             if( iReport.getGroups() != null ){
 
-                for(JRGroup iGroup: iReport.getGroups() ){
-                    pGroups.add(  iGroup );
-                }
+                pGroups.addAll(Arrays.asList(iReport.getGroups()));
             }
 
             // Add all fonts
             if( iReport.getFonts() != null ){
 
-                for(JRReportFont iFont: iReport.getFonts() ){
-                    pFonts.add(  iFont );
-                }
+                pFonts.addAll(Arrays.asList(iReport.getFonts()));
             }
 
 

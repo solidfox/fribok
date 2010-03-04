@@ -59,9 +59,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
         iColumns = new LinkedList<String>();
         iObjects = new LinkedList<T     >();
 
-        for(T iObject : pObjects){
-            iObjects.add(iObject);
-        }
+        iObjects.addAll(Arrays.asList(pObjects));
     }
 
     /**
@@ -103,9 +101,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      */
     public void setObjects(T ... pObjects) {
         iObjects = new LinkedList<T>();
-        for(T iObject: pObjects){
-            iObjects.add(iObject);
-        }
+        iObjects.addAll(Arrays.asList(pObjects));
     }
 
     /**

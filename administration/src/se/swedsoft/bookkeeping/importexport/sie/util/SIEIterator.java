@@ -45,9 +45,7 @@ public class SIEIterator  implements Iterator<String> {
     public SIEIterator(String ... pValues){
         iIndex  = 0;
         iValues = new LinkedList<String>();
-        for(String iValue : pValues){
-            iValues.add(iValue);
-        }
+        iValues.addAll(Arrays.asList(pValues));
     }
 
     /**

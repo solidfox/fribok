@@ -9,6 +9,7 @@ import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -53,9 +54,7 @@ public class SSVoucherPrinter extends SSPrinter {
         this(pVoucher, pTitle);
 
         iMarkedAccounts = new LinkedList<SSAccount>();
-        for(SSAccount iAccount: pMarkedAccounts){
-            iMarkedAccounts.add(iAccount);
-        }
+        iMarkedAccounts.addAll(Arrays.asList(pMarkedAccounts));
    }
 
     /**

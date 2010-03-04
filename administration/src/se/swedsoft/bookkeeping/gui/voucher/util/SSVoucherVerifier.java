@@ -12,6 +12,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Arrays;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -53,9 +54,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
         iOnUpdate   = null;
         iValid      = false;
 
-        for(JComponent iComponent: pComponents ){
-            iComponents.add(iComponent);
-        }
+        iComponents.addAll(Arrays.asList(pComponents));
     }
 
     /**
@@ -69,9 +68,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
         iError      = null;
         iOnUpdate   = null;
 
-        for(JComponent iComponent: pComponents ){
-            iComponents.add(iComponent);
-        }
+        iComponents.addAll(Arrays.asList(pComponents));
     }
 
     /**

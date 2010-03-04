@@ -106,7 +106,7 @@ public class SSMailServerDialog extends SSDialog {
         addressText.setText(server.getURI().getHost());
         authCheckbox.setSelected(server.isAuth());
         usernameText.setText(server.getUsername());
-        passwordField.setText(SSMail.crypter.decrypt(server.getPassword().toString()));
+        passwordField.setText(SSMail.crypter.decrypt(server.getPassword()));
         portField.setText(Integer.toString(server.getURI().getPort()));
 
         onNewAuthState(server.isAuth());

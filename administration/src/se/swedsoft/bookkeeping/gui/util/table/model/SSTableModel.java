@@ -65,9 +65,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     public SSTableModel(T ... pObjects) {
         this();
 
-        for(T iObject : pObjects){
-            iObjects.add(iObject);
-        }
+        iObjects.addAll(Arrays.asList(pObjects));
     }
 
     //////////////////////////////////////////////////////////////
@@ -93,9 +91,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      */
     public void setObjects(T ... pObjects) {
         iObjects = new LinkedList<T>();
-        for(T iObject: pObjects){
-            iObjects.add(iObject);
-        }
+        iObjects.addAll(Arrays.asList(pObjects));
         fireTableDataChanged();
     }
 
