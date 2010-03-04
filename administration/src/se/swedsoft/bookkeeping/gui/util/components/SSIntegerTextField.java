@@ -79,7 +79,7 @@ public class SSIntegerTextField extends JFormattedTextField {
         }
 
         if( iValue instanceof Number) {
-            return new Integer( ((Number)iValue).intValue() );
+            return ((Number) iValue).intValue();
         }
 
         return null;

@@ -194,7 +194,7 @@ public class SSBackupFactory {
      * @param iBackup
      * @param iRestoredCompany
      */
-    private static void restoreBackup(String pFilename, SSBackup iBackup, SSSystemCompany iRestoredCompany) throws IOException {
+    private static void restoreBackup(String pFilename, SSBackup iBackup, SSSystemCompany iRestoredCompany) {
         SSInternalFrame.closeAllFrames();
 
         // Get the database directory

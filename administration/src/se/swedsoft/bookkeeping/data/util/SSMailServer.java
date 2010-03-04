@@ -56,7 +56,7 @@ public class SSMailServer implements Serializable
     }
 
 
-    public SSMailServer(String name, URI address, boolean isAuth, String username, String password ) throws SSMailServerException {
+    public SSMailServer(String name, URI address, boolean isAuth, String username, String password ) {
 
         SSUtil.verifyNotNull("argument to SSMailServer constructor", name, address);
         

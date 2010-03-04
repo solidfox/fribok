@@ -493,7 +493,7 @@ public class SSDB {
 
         } catch (SQLException e) {}
     }
-    public void restart() throws Exception {
+    public void restart() {
 
     }
 

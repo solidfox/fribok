@@ -100,7 +100,7 @@ public class SSMonth  implements Serializable {
      */
     public boolean equals(Object obj) {
         if(obj instanceof SSMonth){
-            return ((SSMonth)obj).hashCode() == hashCode();
+            return obj.hashCode() == hashCode();
         }
         return super.equals(obj);
     }
