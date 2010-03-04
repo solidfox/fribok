@@ -298,14 +298,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iAccountYearTo = iCalTo.getTime();
 
         Date iCurrent=iModel.getDate();
-        if(iCurrent.before(iAccountYearFrom)||iCurrent.after(iAccountYearTo))
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return !(iCurrent.before(iAccountYearFrom) || iCurrent.after(iAccountYearTo));
     }
 
     /**

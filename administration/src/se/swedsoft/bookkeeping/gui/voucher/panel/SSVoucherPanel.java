@@ -362,7 +362,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
 
                 int iRow = l.getFirstRow();
                 SSVoucherRow iVoucherRow = iModel.getObject(iRow);
-                if (iAccountChanged == true) {
+                if (iAccountChanged) {
                     iAccountChanged = false;
                     SSAutoDist iAutoDist = getAutoDistForAccount(iVoucherRow);
                     if(iAutoDist != null){
@@ -373,7 +373,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                         }
                     }
                 }
-                else if (iDebetChanged == true) {
+                else if (iDebetChanged) {
                     iDebetChanged = false;
                     SSAutoDist iAutoDist = getAutoDistForAccount(iVoucherRow);
                     if(iAutoDist != null){
@@ -382,7 +382,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                         }
                     }
                 }
-                else if (iCreditChanged == true) {
+                else if (iCreditChanged) {
                     iCreditChanged = false;
                     SSAutoDist iAutoDist = getAutoDistForAccount(iVoucherRow);
                     if(iAutoDist != null){
