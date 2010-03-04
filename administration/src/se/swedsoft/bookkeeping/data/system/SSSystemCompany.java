@@ -150,10 +150,9 @@ public class SSSystemCompany implements Serializable {
      */
     public SSSystemYear getCurrentYear() {
 
-        for (int i = 0; i < iYears.size(); i++) {
-            SSSystemYear iYear = iYears.get(i);
+        for (SSSystemYear iYear : iYears) {
             if (iYear.isCurrent()) {
-                return iYears.get(i);
+                return iYear;
             }
         }
         return null;

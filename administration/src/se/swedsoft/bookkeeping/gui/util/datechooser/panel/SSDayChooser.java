@@ -313,9 +313,8 @@ public class SSDayChooser implements ActionListener {
         for(DayButton iDayButton:iDayButtons)
         {
             ActionListener[] iActionListeners = iDayButton.getActionListeners();
-            for(int i=0;i<iActionListeners.length;i++)
-            {
-                iDayButton.removeActionListener(iActionListeners[i]);
+            for (ActionListener iActionListener : iActionListeners) {
+                iDayButton.removeActionListener(iActionListener);
             }
         }
 

@@ -73,9 +73,8 @@ public class SSOrderMath extends SSTenderMath{
      */
     public static void removeInvoice(List<SSOrder> iOrders, SSInvoice iInvoice) {
 
-        for(int i=0; i<iOrders.size();i++){
-            SSOrder iOrder = iOrders.get(i);
-            if(iOrder.hasInvoice(iInvoice) ){
+        for (SSOrder iOrder : iOrders) {
+            if (iOrder.hasInvoice(iInvoice)) {
                 iOrder.setInvoice(null);
                 SSDB.getInstance().updateOrder(iOrder);
             }

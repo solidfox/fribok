@@ -355,9 +355,8 @@ public class SSSupplierCreditInvoicePanel {
         iVoucherTable=null;
         iVoucherTableModel=null;
         ActionListener[] iActionListeners = iRefreshVoucher.getActionListeners();
-        for(int i=0;i<iActionListeners.length;i++)
-        {
-            iRefreshVoucher.removeActionListener(iActionListeners[i]);
+        for (ActionListener iActionListener : iActionListeners) {
+            iRefreshVoucher.removeActionListener(iActionListener);
         }
         iRefreshVoucher=null;
         iInputVerifier=null;
