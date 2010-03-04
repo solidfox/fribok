@@ -101,7 +101,7 @@ public class SSAccountPlanDialog {
     public static void editDialog(final SSMainFrame iMainFrame, SSAccountPlan iAccountPlan, final AbstractTableModel iModel) {
         final String lockString = "accountplan"+iAccountPlan.getId();
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog(iMainFrame, "accountplanframe.accountplanopen", iAccountPlan.getName());;
+            new SSErrorDialog(iMainFrame, "accountplanframe.accountplanopen", iAccountPlan.getName());
             return;
         }
         final String iName = iAccountPlan.getName();

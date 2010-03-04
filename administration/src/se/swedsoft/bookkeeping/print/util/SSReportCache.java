@@ -39,7 +39,7 @@ public class SSReportCache {
 
         if( cInstance == null){
             cInstance = new SSReportCache();
-        };
+        }
         return cInstance;
     }
 

@@ -310,20 +310,23 @@ public class SSReport {
             for(JRReportFont iFont: theFonts ){
                 try{
                     iDesign.addFont(iFont);
-                } catch(JRException ignored){;}
+                } catch(JRException ignored){
+                }
             }
 
             // Add all fields to the design
             for(JRField iField: theFields ){
                 try{
                     iDesign.addField(iField);
-                } catch(JRException ignored){;}
+                } catch(JRException ignored){
+                }
             }
             // Add all parameters to the design
             for(JRParameter iParameter: theParameters ){
                 try{
                     iDesign.addParameter(iParameter);
-                } catch(JRException ignored){;}
+                } catch(JRException ignored){
+                }
             }
 
             // Add all groups to the desgin
@@ -334,7 +337,8 @@ public class SSReport {
                     iDesign.getMainDesignDataset().getGroupsList().add(iGroup);
                     iDesign.getMainDesignDataset().getGroupsMap ().put(iGroup.getName(), iGroup);
 
-                } catch(Exception ignored){;}
+                } catch(Exception ignored){
+                }
             }
 
             // Add all variables to the design
@@ -347,7 +351,8 @@ public class SSReport {
 
 
 
-                } catch(Exception ignored){;}
+                } catch(Exception ignored){
+                }
             }
 
 

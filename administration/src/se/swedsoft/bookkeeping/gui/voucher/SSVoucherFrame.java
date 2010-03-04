@@ -324,7 +324,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getVoucher(iSelected);
-                } else {;
+                } else {
                     return;
                 }
                 if (iSelected != null) {

@@ -146,7 +146,8 @@ public class SSMainFrame extends JFrame {
 
         try {
             SSCompanyFrame.getInstance().setSelected(true);
-        } catch (PropertyVetoException e) {;  }
+        } catch (PropertyVetoException e) {
+        }
 
 
     }

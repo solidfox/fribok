@@ -227,7 +227,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
 
         switch (columnIndex) {
             case COL_ACCOUNT:
-                if(aValue instanceof SSAccount) iVoucherRow.setAccount((SSAccount)aValue);;
+                if(aValue instanceof SSAccount) iVoucherRow.setAccount((SSAccount)aValue);
 
 
                 /*
