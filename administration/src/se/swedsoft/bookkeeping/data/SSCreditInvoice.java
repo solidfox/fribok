@@ -239,7 +239,7 @@ public class SSCreditInvoice extends SSInvoice {
      * @return
      */
     public boolean isCrediting(Integer iCrediting){
-        return iCrediting != null && iCrediting == iCreditingNr;
+        return iCrediting != null && iCrediting.equals(iCreditingNr);
     }
 
 

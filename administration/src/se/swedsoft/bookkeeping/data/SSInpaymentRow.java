@@ -266,7 +266,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @return if the row is paying the sales
      */
     public boolean isPaying(Integer iInvoice){
-        return iInvoice != null && iInvoice == iInvoiceNr;
+        return iInvoice != null && iInvoice.equals(iInvoiceNr);
     }
 
 

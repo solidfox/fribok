@@ -347,7 +347,7 @@ public class SSOrder extends SSSale {
     public SSPurchaseOrder getPurchaseOrder(List<SSPurchaseOrder> iPurchaseOrders) {
         if(iPurchaseOrder == null && iPurchaseOrderNr != null){
             for (SSPurchaseOrder iCurrent : iPurchaseOrders) {
-                if(iPurchaseOrderNr == iCurrent.getNumber()){
+                if(iPurchaseOrderNr.equals(iCurrent.getNumber())){
                     iPurchaseOrder = iCurrent;
                 }
             }
