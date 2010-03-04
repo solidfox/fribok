@@ -300,6 +300,7 @@ public class SSMenuLoader   {
          * @param iAttributes
          * @throws SAXException
          */
+        @Override
         public void startElement(String uri, String localName, String qName, Attributes iAttributes) throws SAXException {
 
             if( localName.equalsIgnoreCase("MenuBar") ){
@@ -330,6 +331,7 @@ public class SSMenuLoader   {
          * @param qName
          * @throws SAXException
          */
+        @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
             if( localName.equalsIgnoreCase("MenuBar") ){
                 iMenuBar = null;

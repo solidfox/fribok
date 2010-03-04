@@ -58,6 +58,7 @@ public class SSAccountdiagramPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("accountdiagramreport.title");
     }
@@ -65,6 +66,7 @@ public class SSAccountdiagramPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iAccountingYear.getFrom() );
         addParameter("dateTo"  , iAccountingYear.getTo()   );
@@ -80,6 +82,7 @@ public class SSAccountdiagramPrinter extends SSPrinter {
 
 
         SSDefaultTableModel<AccountDiagramGroup> iModel = new SSDefaultTableModel<AccountDiagramGroup>() {
+            @Override
             public Class getType() {
                 return AccountDiagramGroup.class;
             }

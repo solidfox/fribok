@@ -35,6 +35,7 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
     /**
      * Implements the <code>TableCellEditor</code> interface.
      */
+    @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
         Component c =  super.getTableCellEditorComponent(table, value, isSelected, row, column);
 

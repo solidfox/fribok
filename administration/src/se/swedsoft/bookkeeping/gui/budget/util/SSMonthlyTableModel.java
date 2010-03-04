@@ -28,6 +28,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      *
      * @return Class
      */
+    @Override
     public Class<?> getType() {
         return SSMonth.class;
     }
@@ -36,6 +37,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      * @param columnIndex
      * @return Class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
             case 0:
@@ -75,6 +77,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      * @param columnIndex
      * @return boolean
      */
+    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return (iAccount != null) && (columnIndex == 1);
     }
@@ -85,6 +88,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      * @param rowIndex
      * @param columnIndex
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSMonth month = getObject(rowIndex);
 

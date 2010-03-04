@@ -210,6 +210,7 @@ public class SSAddress implements Serializable {
      *
      * @return a clone of this instance.
      */
+    @Override
     protected SSAddress clone() {
         return new SSAddress(this);
     }

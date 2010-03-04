@@ -67,6 +67,7 @@ public class SSTable extends JTable{
         iColorReadOnly        = false;
 
         addMouseListener(new MouseAdapter() {
+            @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 2)  notifyDblClickListeners();
             }
@@ -111,6 +112,7 @@ public class SSTable extends JTable{
      *
      * @see #getModel
      */
+    @Override
     public void setModel(TableModel dataModel) {
         if(iColumnSortingEnabled){
             SSTableSorter sorter = new SSTableSorter(dataModel);
@@ -127,6 +129,7 @@ public class SSTable extends JTable{
      *
      * @return the index of the first selected row
      */
+    @Override
     public int getSelectedRow() {
         if(iColumnSortingEnabled){
             int selectedRow = super.getSelectedRow();
@@ -147,6 +150,7 @@ public class SSTable extends JTable{
      *
      * @see #getSelectedRow
      */
+    @Override
     public int[] getSelectedRows() {
         if(iColumnSortingEnabled){
             int[] viewSelected = super.getSelectedRows();
@@ -178,6 +182,7 @@ public class SSTable extends JTable{
      *
      * @return A boolean.
      */
+    @Override
     public boolean getScrollableTracksViewportHeight() {
         if (getParent() instanceof JViewport) {
             return ((getParent()).getHeight() > getPreferredSize().height);
@@ -202,6 +207,7 @@ public class SSTable extends JTable{
      *
      * @return Component
      */
+    @Override
     public Component prepareRenderer(TableCellRenderer renderer, int row, int col) {
         Component c = super.prepareRenderer(renderer, row, col);
 

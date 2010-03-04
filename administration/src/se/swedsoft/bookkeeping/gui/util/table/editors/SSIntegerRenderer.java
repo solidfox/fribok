@@ -38,6 +38,7 @@ public class SSIntegerRenderer extends DefaultTableCellRenderer {
      *
      * @param value
      */
+    @Override
     protected void setValue(Object value) {
         NumberFormat iFormat = NumberFormat.getNumberInstance();
         iFormat.setMinimumFractionDigits(0);

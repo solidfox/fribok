@@ -85,6 +85,7 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
         });
 
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
             }
         });

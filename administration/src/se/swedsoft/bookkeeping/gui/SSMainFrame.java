@@ -76,6 +76,7 @@ public class SSMainFrame extends JFrame {
         setExtendedState(iExtendedsState);
 
         addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 saveSizeAndLocation();
             }

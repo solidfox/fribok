@@ -74,6 +74,7 @@ public class SSAccountPlanDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()){
                     return;
@@ -142,6 +143,7 @@ public class SSAccountPlanDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()){
                     SSPostLock.removeLock(lockString);
@@ -210,6 +212,7 @@ public class SSAccountPlanDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()){
                     return;
@@ -273,6 +276,7 @@ public class SSAccountPlanDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()){
                     SSPostLock.removeLock(lockString);

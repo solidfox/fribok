@@ -19,6 +19,7 @@ public class SSDefaultFilter extends FileFilter {
      * @param f
      * @return Accept all files.
      */
+    @Override
     public boolean accept(File f) {
         return true;
 
@@ -27,6 +28,7 @@ public class SSDefaultFilter extends FileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return bundle.getString("filechooser.default.filter");
     }

@@ -52,6 +52,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      * @return the number of rows in the model
      * @see #getColumnCount
      */
+    @Override
     public int getRowCount() {
         return super.getRowCount() + 1;
     }
@@ -62,6 +63,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      * @param row The row to get the object from.
      * @return An Object.
      */
+    @Override
     public T getObject(int row) {
 
         if( row == super.getRowCount() ) {
@@ -78,6 +80,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
@@ -95,6 +98,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      *
      * @param pObjects The objects to display.
      */
+    @Override
     public void setObjects(List<T> pObjects) {
         super.setObjects(pObjects);
         iEditing = newObject();
@@ -105,6 +109,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      *
      * @param pObjects The objects to display.
      */
+    @Override
     public void setObjects(T... pObjects) {
         super.setObjects(pObjects);
         iEditing = newObject();

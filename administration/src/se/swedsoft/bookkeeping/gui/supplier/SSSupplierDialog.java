@@ -86,6 +86,7 @@ public class SSSupplierDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()) {
                     SSPostLock.removeLock("importsupplier");
@@ -156,6 +157,7 @@ public class SSSupplierDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
@@ -237,6 +239,7 @@ public class SSSupplierDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(!iPanel.isValid()){
                     SSPostLock.removeLock("importsupplier");

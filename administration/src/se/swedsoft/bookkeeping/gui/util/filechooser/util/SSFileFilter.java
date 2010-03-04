@@ -30,6 +30,7 @@ public abstract class SSFileFilter extends FileFilter {
      * @param pFile
      * @return Accept all directories and all gif, jpg, tiff, or png files.
      */
+    @Override
     public final boolean accept(File pFile) {
         if (pFile.isDirectory()) {
             return true;
@@ -67,6 +68,7 @@ public abstract class SSFileFilter extends FileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public abstract String getDescription();
 
 }

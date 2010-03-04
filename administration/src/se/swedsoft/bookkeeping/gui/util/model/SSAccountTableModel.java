@@ -37,6 +37,7 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSAccount.class;
     }
@@ -83,18 +84,22 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *  Nummer
      */
     public static SSTableColumn<SSAccount> COLUMN_NUMBER = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.1")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getNumber();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setNumber((Integer)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 60;
         }
@@ -105,18 +110,22 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *  beskrivning
      */
     public static SSTableColumn<SSAccount> COLUMN_DESCRIPTION = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.2")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getDescription();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setDescription((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 300;
         }
@@ -126,18 +135,22 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *  Aktivt
      */
     public static SSTableColumn<SSAccount> COLUMN_ACTIVE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.3")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.isActive();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setActive((Boolean)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 16;
         }
@@ -147,18 +160,22 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *  Momskod
      */
     public static SSTableColumn<SSAccount> COLUMN_VATCODE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.4")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getVATCode();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setVATCode((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -168,18 +185,22 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *  SRU
      */
     public static SSTableColumn<SSAccount> COLUMN_SRUCODE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.5")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getSRUCode();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setSRUCode((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -189,18 +210,22 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
      *  Rapportkod
      */
     public static SSTableColumn<SSAccount> COLUMN_REPORTCODE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.6")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getReportCode();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setReportCode((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }

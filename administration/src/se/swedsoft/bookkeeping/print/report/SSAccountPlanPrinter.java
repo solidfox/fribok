@@ -45,6 +45,7 @@ public class SSAccountPlanPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("accountplanreport.title");
     }
@@ -54,6 +55,7 @@ public class SSAccountPlanPrinter extends SSPrinter {
      *
      * @return The sub title
      */
+    @Override
     protected  String getSubTitle(){
         return iAccountPlan.getName();
     }
@@ -63,10 +65,12 @@ public class SSAccountPlanPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>() {
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

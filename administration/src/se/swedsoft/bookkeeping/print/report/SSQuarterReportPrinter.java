@@ -130,6 +130,7 @@ public class SSQuarterReportPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return iBundle.getString("quarterreport.title");
     }
@@ -194,11 +195,13 @@ public class SSQuarterReportPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         SSDefaultTableModel<SSCustomer> iModel = new SSDefaultTableModel<SSCustomer>() {
 
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

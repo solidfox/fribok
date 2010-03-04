@@ -173,6 +173,7 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
      *
      * @param enabled
      */
+    @Override
     public void setEnabled(boolean enabled) {
         iComboBox     .setEnabled(enabled);
         iEditButton    .setEnabled (enabled);

@@ -44,11 +44,13 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSCurrency.class;
     }
 
 
+    @Override
     public SSCurrencyTableModel getDropdownmodel() {
         return getDropDownModel(SSDB.getInstance().getCurrencies());
     }
@@ -79,18 +81,22 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
      *  Name
      */
     public static SSTableColumn<SSCurrency> COLUMN_NAME = new SSTableColumn<SSCurrency>(SSBundle.getBundle().getString("currencytable.column.1")) {
+        @Override
         public Object getValue(SSCurrency iCurrency) {
             return iCurrency.getName();
         }
 
+        @Override
         public void setValue(SSCurrency iCurrency, Object iValue) {
             iCurrency.setName((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -101,18 +107,22 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
      *  Description
      */
     public static SSTableColumn<SSCurrency> COLUMN_DESCRIPTION = new SSTableColumn<SSCurrency>(SSBundle.getBundle().getString("currencytable.column.2")) {
+        @Override
         public Object getValue(SSCurrency iCurrency) {
             return iCurrency.getDescription();
         }
 
+        @Override
         public void setValue(SSCurrency iCurrency, Object iValue) {
             iCurrency.setDescription((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }
@@ -124,18 +134,22 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
      *  Description
      */
     public static SSTableColumn<SSCurrency> COLUMN_EXCHANGERATE = new SSTableColumn<SSCurrency>(SSBundle.getBundle().getString("currencytable.column.3")) {
+        @Override
         public Object getValue(SSCurrency iCurrency) {
             return iCurrency.getExchangeRate();
         }
 
+        @Override
         public void setValue(SSCurrency iCurrency, Object iValue) {
             iCurrency.setExchangeRate((BigDecimal)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -143,6 +157,7 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
         /**
          * @return
          */
+        @Override
         public TableCellRenderer getCellRenderer() {
             return new SSBigDecimalCellRenderer(8);
         }

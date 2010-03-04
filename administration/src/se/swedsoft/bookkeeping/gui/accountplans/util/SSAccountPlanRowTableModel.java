@@ -20,6 +20,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      *
      * @return
      */
+    @Override
     public SSAccount newObject() {
         return new SSAccount();
     }
@@ -30,6 +31,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSAccount.class;
     }
@@ -40,18 +42,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      * Aktivt
      */
     public static SSTableColumn<SSAccount> COLUMN_ACTIVE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.3")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getNumber() != null && iAccount.isActive();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
            iAccount.setActive((Boolean)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 55;
         }
@@ -62,18 +68,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      * Nummer
      */
     public static SSTableColumn<SSAccount> COLUMN_NUMBER = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.1")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getNumber();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setNumber((Integer)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 60;
         }
@@ -83,18 +93,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      * Beskrivning
      */
     public static SSTableColumn<SSAccount> COLUMN_DESCRIPTION = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.2")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getDescription();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setDescription((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 230;
         }
@@ -104,6 +118,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      * Beskrivning
      */
     public static SSTableColumn<SSAccount> COLUMN_VATCODE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.4")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
 
             SSVATCode iVATCode = SSVATCode.decode(iAccount.getVATCode());
@@ -115,6 +130,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
             }
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             if( iValue instanceof SSVATCode){
                 SSVATCode iVATCode = (SSVATCode) iValue;
@@ -129,6 +145,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
          *
          * @return
          */
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
@@ -137,6 +154,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
          *
          * @return
          */
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -144,6 +162,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
         /**
          * @return
          */
+        @Override
         public TableCellEditor getCellEditor() {
             return new SSVATCellEditor();
         }
@@ -151,6 +170,7 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
         /**
          * @return
          */
+        @Override
         public TableCellRenderer getCellRenderer() {
             return new SSVATCellRenderer();
         }
@@ -161,18 +181,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      * Beskrivning
      */
     public static SSTableColumn<SSAccount> COLUMN_SRUCODE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.5")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getSRUCode();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setSRUCode((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -183,18 +207,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      * Rapportkod
      */
     public static SSTableColumn<SSAccount> COLUMN_REPORTCODE = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.6")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getReportCode();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
             iAccount.setReportCode((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -205,18 +233,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      */
 
     public static SSTableColumn<SSAccount> COLUMN_PROJECT = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.7")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getNumber() != null && iAccount.isProjectRequired();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
            iAccount.setProjectRequired((Boolean)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 55;
         }
@@ -227,18 +259,22 @@ public class SSAccountPlanRowTableModel extends SSEditableTableModel<SSAccount> 
      */
 
     public static SSTableColumn<SSAccount> COLUMN_RESULTUNIT = new SSTableColumn<SSAccount>(SSBundle.getBundle().getString("accounttable.column.8")) {
+        @Override
         public Object getValue(SSAccount iAccount) {
             return iAccount.getNumber() != null && iAccount.isResultUnitRequired();
         }
 
+        @Override
         public void setValue(SSAccount iAccount, Object iValue) {
            iAccount.setResultUnitRequired((Boolean)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }

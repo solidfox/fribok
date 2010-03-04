@@ -44,6 +44,7 @@ public class SSResultUnitPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("resultunitreport.title");
     }
@@ -52,10 +53,12 @@ public class SSResultUnitPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         SSDefaultTableModel<SSNewResultUnit> iModel = new SSDefaultTableModel<SSNewResultUnit>() {
 
+            @Override
             public Class getType() {
                 return SSNewResultUnit.class;
             }

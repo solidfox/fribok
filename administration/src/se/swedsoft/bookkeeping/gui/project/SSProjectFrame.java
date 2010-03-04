@@ -84,6 +84,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
@@ -158,6 +159,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
      *
      * @return The main content for this frame.
      */
+    @Override
     public JComponent getMainContent() {
         iTable = new SSTable();
 
@@ -216,6 +218,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -225,6 +228,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isCompanyFrame() {
         return true;
     }
@@ -234,6 +238,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isYearDataFrame() {
         return false;
     }

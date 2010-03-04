@@ -42,11 +42,13 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSPaymentTerm.class;
     }
 
 
+    @Override
     public SSPaymentTermTableModel getDropdownmodel() {
         return getDropDownModel();
     }
@@ -70,17 +72,21 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
      *  Name
      */
     public static SSTableColumn<SSPaymentTerm> COLUMN_NAME = new SSTableColumn<SSPaymentTerm>(SSBundle.getBundle().getString("currencytable.column.1")) {
+        @Override
         public Object getValue(SSPaymentTerm iCurrency) {
             return iCurrency.getName();
         }
 
+        @Override
         public void setValue(SSPaymentTerm iCurrency, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -91,17 +97,21 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
      *  Description
      */
     public static SSTableColumn<SSPaymentTerm> COLUMN_DESCRIPTION = new SSTableColumn<SSPaymentTerm>(SSBundle.getBundle().getString("currencytable.column.2")) {
+        @Override
         public Object getValue(SSPaymentTerm iCurrency) {
             return iCurrency.getDescription();
         }
 
+        @Override
         public void setValue(SSPaymentTerm iCurrency, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }

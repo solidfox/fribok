@@ -52,6 +52,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return Entry.class;
     }
@@ -95,18 +96,22 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      */
     public SSTableColumn<Entry> getSelectionColumn(){
         return new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.1")) {
+            @Override
             public Object getValue(Entry iEntry) {
                 return iEntry.iSelected;
             }
 
+            @Override
             public void setValue(Entry iEntry, Object iValue) {
                 iEntry.iSelected = (Boolean)iValue;
             }
 
+            @Override
             public Class getColumnClass() {
                 return Boolean.class;
             }
 
+            @Override
             public int getDefaultWidth() {
                 return 60;
             }
@@ -117,17 +122,21 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      * Number column
      */
     public static SSTableColumn<Entry> COLUMN_NUMBER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.2")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iProduct.getNumber();
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -137,19 +146,23 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      * Description column
      */
     public static SSTableColumn<Entry> COLUMN_DESCRIPTION = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.3")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iProduct.getDescription();
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
             iEntry.iProduct.setDescription((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 275;
         }
@@ -159,17 +172,21 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      * Beställningspunktkolumn
      */
     public static SSTableColumn<Entry> COLUMN_ORDERPOINT = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.4")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iProduct.getOrderpoint() == null ? 0 : iEntry.iProduct.getOrderpoint();
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 120;
         }
@@ -180,18 +197,22 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      *  Lagerantal
      */
     public static SSTableColumn<Entry> COLUMN_STOCK_QUANTITY = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.5")) {
+        @Override
         public Object getValue(Entry iEntry) {
 
             return iStock.getQuantity(iEntry.iProduct) == null ? 0 : iStock.getQuantity(iEntry.iProduct);
         }
 
+        @Override
         public void setValue(Entry iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -201,17 +222,21 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      *  Väntas
      */
     public static SSTableColumn<Entry> COLUMN_INCOMMING = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.6")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return SSPurchaseOrderMath.getNumberOfIncommingProducts(iEntry.iProduct);
         }
 
+        @Override
         public void setValue(Entry iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -220,18 +245,22 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      *  Beställningsantal
      */
     public static SSTableColumn<Entry> COLUMN_ORDER_VOLUME = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.7")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iOrderVolume == null ? 0 : iEntry.iOrderVolume;
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
             iEntry.iOrderVolume = (Integer) iValue;
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 120;
         }
@@ -241,24 +270,29 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      *  Leverantör
      */
     public static SSTableColumn<Entry> COLUMN_SUPPLIER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.8")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iSupplier;
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
             if(iValue instanceof SSSupplier){
                 iEntry.iSupplier = (SSSupplier) iValue;
             }
         }
 
+        @Override
         public Class getColumnClass() {
             return SSSupplier.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return true;
         }

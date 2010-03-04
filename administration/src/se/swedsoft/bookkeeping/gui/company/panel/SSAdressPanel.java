@@ -216,6 +216,7 @@ public class SSAdressPanel extends JPanel{
      *
      * @param enabled
      */
+    @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
         iName   .setEditable(enabled);
@@ -228,6 +229,7 @@ public class SSAdressPanel extends JPanel{
 
     public void addKeyListeners(){
         iName.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -240,6 +242,7 @@ public class SSAdressPanel extends JPanel{
         });
 
         iAddress.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -252,6 +255,7 @@ public class SSAdressPanel extends JPanel{
         });
 
         iStreet.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -264,6 +268,7 @@ public class SSAdressPanel extends JPanel{
         });
 
         iZipCode.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -276,6 +281,7 @@ public class SSAdressPanel extends JPanel{
         });
 
         iCity.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {

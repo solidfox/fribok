@@ -46,6 +46,7 @@ public class LBinPostTK27 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("27");
         iLine.append("0000"                 , 4, '0' ); // 3 ==> 6: Text
@@ -61,6 +62,7 @@ public class LBinPostTK27 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iOutpaymentNumber = iLine.readInteger(3 , 11); // 7 ==> 11: Utbetalningsnummer
         iAddress1         = iLine.readString (13, 47); // 13 ==> 47: Mottagarens gatuaddress i versaler

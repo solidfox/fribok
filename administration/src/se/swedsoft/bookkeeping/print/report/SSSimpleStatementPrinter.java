@@ -82,6 +82,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("simplestatement.title");
     }
@@ -197,6 +198,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("date.from", iDateFrom );
         addParameter("date.to"  , iDateTo);
@@ -218,6 +220,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
 
         SSDefaultTableModel<Integer> iModel = new SSDefaultTableModel<Integer>() {
 
+            @Override
             public Class getType() {
                 return String.class;
             }
@@ -289,6 +292,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<String>(  ) {
 
+                @Override
                 public Class getType() {
                     return Integer.class;
                 }
@@ -339,6 +343,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -348,6 +353,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

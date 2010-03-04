@@ -148,6 +148,7 @@ public class SSSupplierPaymentDialog extends SSDialog {
         });
 
         addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
                 SSPostLock.removeLock("supplierpayment"+SSDB.getInstance().getCurrentCompany().getId());
             }

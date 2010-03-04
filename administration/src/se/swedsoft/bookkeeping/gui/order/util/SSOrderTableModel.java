@@ -52,6 +52,7 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSOrder.class;
     }
@@ -63,17 +64,21 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      *  Utskriven
      */
     public static SSTableColumn<SSOrder> COLUMN_PRINTED = new SSTableColumn<SSOrder>("") {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return iOrder.isPrinted() ? SSIcon.getIcon("ICON_PROPERTIES16", SSIcon.IconState.NORMAL ) : null;
         }
 
+        @Override
         public void setValue(SSOrder iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return ImageIcon.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 20;
         }
@@ -84,19 +89,23 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      *  Ordernummer
      */
     public static SSTableColumn<SSOrder> COLUMN_NUMBER = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.1")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return iOrder.getNumber();
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
             iOrder.setNumber((Integer)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -108,18 +117,22 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      *  Kund nummer
      */
     public static SSTableColumn<SSOrder> COLUMN_CUSTOMER_NR = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.2")) {
+        @Override
         public Object getValue(SSOrder iInvoice) {
             return iInvoice.getCustomerNr();
         }
 
+        @Override
         public void setValue(SSOrder iInvoice, Object iValue) {
             iInvoice.setCustomerNr((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -128,18 +141,22 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      *  Kund namn
      */
     public static SSTableColumn<SSOrder> COLUMN_CUSTOMER_NAME = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.3")) {
+        @Override
         public Object getValue(SSOrder iInvoice) {
             return iInvoice.getCustomerName();
         }
 
+        @Override
         public void setValue(SSOrder iInvoice, Object iValue) {
             iInvoice.setCustomerName((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -151,18 +168,22 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      * Datum
      */
     public static SSTableColumn<SSOrder> COLUMN_DATE = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.4")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return iOrder.getDate();
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
             iOrder.setDate((Date)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -172,17 +193,21 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      * Nettosyumma
      */
     public static SSTableColumn<SSOrder> COLUMN_NET_SUM = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.5")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return SSOrderMath.getNetSum(iOrder);
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -192,18 +217,22 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      * Valuta
      */
     public static SSTableColumn<SSOrder> COLUMN_CURRENCY = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.6")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return iOrder.getCurrency();
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
             iOrder.setCurrency((SSCurrency)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 50;
         }
@@ -213,18 +242,22 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      * Beräknad leverans
      */
     public static SSTableColumn<SSOrder> COLUMN_ESTIMATED_DELIVERY = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.7")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return iOrder.getEstimatedDelivery();
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
             iOrder.setEstimatedDelivery((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -235,6 +268,7 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      * Faktura
      */
     public static SSTableColumn<SSOrder> COLUMN_INVOICE = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.8")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             if(iOrder.getInvoiceNr() != null)
                 return iOrder.getInvoiceNr().toString();
@@ -244,14 +278,17 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
                 return null;
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
             //iOrder.setInvoice((SSInvoice)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -262,18 +299,22 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
      * Inköpsorder
      */
     public static SSTableColumn<SSOrder> COLUMN_PURCHASEORDER = new SSTableColumn<SSOrder>(SSBundle.getBundle().getString("ordertable.column.9")) {
+        @Override
         public Object getValue(SSOrder iOrder) {
             return iOrder.getPurchaseOrderNr();
         }
 
+        @Override
         public void setValue(SSOrder iOrder, Object iValue) {
             //iOrder.setPurchaseOrder((SSPurchaseOrder)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }

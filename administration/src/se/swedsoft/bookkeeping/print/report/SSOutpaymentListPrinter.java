@@ -52,6 +52,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("outpaymentlistreport.title");
     }
@@ -59,6 +60,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         iPrinter = new SSOutpaymentRowPrinter();
@@ -73,6 +75,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -146,6 +149,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<SSOutpaymentRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSOutpaymentRow.class;
                 }
@@ -194,6 +198,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -203,6 +208,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

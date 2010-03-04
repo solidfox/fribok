@@ -56,6 +56,7 @@ public class SSTenderListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("tenderlistreport.title");
     }
@@ -63,6 +64,7 @@ public class SSTenderListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         iPrinter = new SSTenderRowPrinter();
@@ -77,6 +79,7 @@ public class SSTenderListPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -158,6 +161,7 @@ public class SSTenderListPrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<SSSaleRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -209,6 +213,7 @@ public class SSTenderListPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -218,6 +223,7 @@ public class SSTenderListPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

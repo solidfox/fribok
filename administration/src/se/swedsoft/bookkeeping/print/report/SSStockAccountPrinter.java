@@ -74,6 +74,7 @@ public class SSStockAccountPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("stockaccountreport.title");
     }
@@ -81,6 +82,7 @@ public class SSStockAccountPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
 
@@ -88,6 +90,7 @@ public class SSStockAccountPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

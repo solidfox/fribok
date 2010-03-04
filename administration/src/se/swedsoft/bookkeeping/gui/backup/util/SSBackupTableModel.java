@@ -33,6 +33,7 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSBackup.class;
     }
@@ -44,17 +45,21 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
      *  Date
      */
     public static SSTableColumn<SSBackup> COLUMN_DATE= new SSTableColumn<SSBackup>(SSBundle.getBundle().getString("backuptable.column.1")) {
+        @Override
         public Object getValue(SSBackup iBackup) {
             return iBackup.getDate();
         }
 
+        @Override
         public void setValue(SSBackup iBackup, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 120;
         }
@@ -62,6 +67,7 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
         /**
          * @return
          */
+        @Override
         public TableCellRenderer getCellRenderer() {
             return new SSDateTimeCellRenderer();
         }
@@ -74,17 +80,21 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
      *  Date
      */
     public static SSTableColumn<SSBackup> COLUMN_FILENAME = new SSTableColumn<SSBackup>(SSBundle.getBundle().getString("backuptable.column.2")) {
+        @Override
         public Object getValue(SSBackup iBackup) {
             return iBackup.getFilename();
         }
 
+        @Override
         public void setValue(SSBackup iBackup, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 240;
         }
@@ -95,6 +105,7 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
      *  Type
      */
     public static SSTableColumn<SSBackup> COLUMN_TYPE = new SSTableColumn<SSBackup>(SSBundle.getBundle().getString("backuptable.column.3")) {
+        @Override
         public Object getValue(SSBackup iBackup) {
             if( iBackup.getType() == SSBackupType.COMPANY  ){
                 return null;
@@ -103,13 +114,16 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
             }
         }
 
+        @Override
         public void setValue(SSBackup iBackup, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 240;
         }

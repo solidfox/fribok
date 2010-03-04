@@ -147,6 +147,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         };
         // Listener for textfield
         iTextField.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(KeyEvent e) {
                 // Dont do anything if disabled
                 if(!isEnabled()) return;
@@ -211,6 +212,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      */
     private SSDefaultTableModel<T> createDefaultModel() {
         return new SSDefaultTableModel<T>() {
+            @Override
             public Class getType() {
                 return null;
             }
@@ -498,6 +500,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      *         was enabled
      * @since 1.3
      */
+    @Override
     protected boolean processKeyBinding(KeyStroke ks, KeyEvent e, int condition, boolean pressed) {
         super.processKeyBinding(ks, e, condition, pressed);
 
@@ -548,6 +551,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      *
      * @param enabled
      */
+    @Override
     public void setEnabled(boolean enabled) {
         iTextField     .setEditable(enabled);
         iDropdownButton.setEnabled (enabled);
@@ -652,6 +656,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          * @param    column the column of the cell being edited
          * @return the component for editing
          */
+        @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             iCurrentTable = table;
             iCurrentRow          = row;
@@ -690,6 +695,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          *
          * @return the editor <code>Component</code>
          */
+        @Override
         public Component getComponent() {
             return  iComboBox.iTextField;
         }
@@ -699,6 +705,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          *
          * @return the value contained in the editor
          */
+        @Override
         public Object getCellEditorValue() {
             if(iComboBox.getSelected() == null && iComboBox.doAllowCustomValues()){
                 return iComboBox.getText();
@@ -720,6 +727,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          * @return true if editing can be started
          * @see #shouldSelectCell
          */
+        @Override
         public boolean isCellEditable(EventObject anEvent) {
 
             if (anEvent == null) {
@@ -756,6 +764,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          * otherwise returns false
          * @see #isCellEditable
          */
+        @Override
         public boolean shouldSelectCell(EventObject anEvent) {
             return true;
         }
@@ -763,6 +772,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          *
          * @return
          */
+        @Override
         public boolean stopCellEditing() {
             iComboBox.iPopup.setVisible(false);
             return super.stopCellEditing();
@@ -771,6 +781,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         /**
          *
          */
+        @Override
         public void cancelCellEditing() {
             iComboBox.iPopup.setVisible(false);
             super.fireEditingCanceled();

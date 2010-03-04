@@ -62,6 +62,7 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
     /**
      *
      */
+    @Override
     public void doAutoIncrecement() {
         List<SSSupplierCreditInvoice> iInvoices = SSDB.getInstance().getSupplierCreditInvoices();
 
@@ -254,6 +255,7 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      *
      * @return The searchable string
      */
+    @Override
     public String toRenderString() {
         return iNumber == null ? "" : iNumber.toString();
     }
@@ -262,6 +264,7 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      *
      * @return
      */
+    @Override
     public SSVoucher generateVoucher() {
         iVoucher = new SSVoucher();
         String iDescription = SSBundle.getBundle().getString("suppliercreditinvoiceframe.voucherdescription");

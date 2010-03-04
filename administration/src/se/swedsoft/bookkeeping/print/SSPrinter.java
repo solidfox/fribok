@@ -342,6 +342,7 @@ public abstract class SSPrinter {
            /**
             * Invoked when an internal frame has been closed.
             */
+           @Override
            public void internalFrameClosed(InternalFrameEvent e) {
                ActionEvent iEvent = new ActionEvent(e.getSource(), e.getID(), "close");
 

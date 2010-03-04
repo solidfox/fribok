@@ -36,6 +36,7 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSAutoDist.class;
     }
@@ -46,19 +47,23 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
      *  Kontonummer
      */
     public static SSTableColumn<SSAutoDist> COLUMN_NUMBER = new SSTableColumn<SSAutoDist>(SSBundle.getBundle().getString("autodisttable.column.1")) {
+        @Override
         public Object getValue(SSAutoDist iAutoDist) {
             return iAutoDist.getNumber();
         }
 
+        @Override
         public void setValue(SSAutoDist iAutoDist, Object iValue) {
             iAutoDist.setAccountNumber((Integer)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -70,18 +75,22 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
      *  Beskrivning
      */
     public static SSTableColumn<SSAutoDist> COLUMN_DESCRIPTION = new SSTableColumn<SSAutoDist>(SSBundle.getBundle().getString("autodisttable.column.2")) {
+        @Override
         public Object getValue(SSAutoDist iAutoDist) {
             return iAutoDist.getDescription();
         }
 
+        @Override
         public void setValue(SSAutoDist iInvoice, Object iValue) {
             iInvoice.setDescrition((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 400;
         }

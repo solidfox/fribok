@@ -50,6 +50,7 @@ public class SSBundle extends ResourceBundle {
     /**
      * Returns an enumeration of the keys.
      */
+    @Override
     public Enumeration<String> getKeys() {
         return iBundle.getKeys();
     }
@@ -81,6 +82,7 @@ public class SSBundle extends ResourceBundle {
      *
      * @throws NullPointerException if <code>key</code> is <code>null</code>
      */
+    @Override
     protected Object handleGetObject(String key) {
 
         Object o = null;

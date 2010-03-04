@@ -39,6 +39,7 @@ public class SSHeadingTypeTableModel extends SSTableModel<SSHeadingType> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSHeadingType.class;
     }
@@ -55,18 +56,22 @@ public class SSHeadingTypeTableModel extends SSTableModel<SSHeadingType> {
      * Moms
      */
     public static SSTableColumn<SSHeadingType> COLUMN_TYPE = new SSTableColumn<SSHeadingType>(SSBundle.getBundle().getString("ownreport.headingtable.column.1")) {
+        @Override
         public Object getValue(SSHeadingType iObject) {
             return iObject.toString();
         }
 
+        @Override
         public void setValue(SSHeadingType iObject, Object iValue) {
             //iObject.setType((SSHeadingType)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 60;
         }

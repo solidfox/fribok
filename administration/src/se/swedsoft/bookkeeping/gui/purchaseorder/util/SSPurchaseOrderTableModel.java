@@ -44,6 +44,7 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSPurchaseOrder.class;
     }
@@ -52,17 +53,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      *  Utskriven
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_PRINTED = new SSTableColumn<SSPurchaseOrder>("") {
+        @Override
         public Object getValue(SSPurchaseOrder iPurchaseOrder) {
             return iPurchaseOrder.isPrinted() ? SSIcon.getIcon("ICON_PROPERTIES16", SSIcon.IconState.NORMAL ) : null;
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iPurchaseOrder, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return ImageIcon.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 20;
         }
@@ -73,17 +78,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Number column
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_NUMBER = new SSTableColumn<SSPurchaseOrder>("Ordernr") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getNumber();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -96,16 +105,20 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Supplier nr
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_SUPPLIER_NR = new SSTableColumn<SSPurchaseOrder>("Leverantörsnummer") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getSupplierNr();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -115,17 +128,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Supplier name
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_SUPPLIER_NAME = new SSTableColumn<SSPurchaseOrder>("Leverantörsnamn") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getSupplierName();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
             iObject.setSupplierName((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -135,17 +152,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Date column
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_DATE = new SSTableColumn<SSPurchaseOrder>("Inköpsdatum") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getDate();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 110;
         }
@@ -157,17 +178,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Sum column
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_SUM = new SSTableColumn<SSPurchaseOrder>("Belopp") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getSum();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -178,17 +203,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Currency column
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_CURRENCY = new SSTableColumn<SSPurchaseOrder>("Valuta") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getCurrency();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 50;
         }
@@ -198,17 +227,21 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
     /**                                                                                                                                   * EstimatedDelivery column
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_ESTIMATED_DELIVERY = new SSTableColumn<SSPurchaseOrder>("Beräknad leverans") {
+        @Override
         public Object getValue(SSPurchaseOrder iObject) {
             return iObject.getEstimatedDelivery();
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 110;
         }
@@ -220,18 +253,22 @@ public class SSPurchaseOrderTableModel extends SSTableModel<SSPurchaseOrder> {
      * Faktura
      */
     public static SSTableColumn<SSPurchaseOrder> COLUMN_INVOICE = new SSTableColumn<SSPurchaseOrder>(SSBundle.getBundle().getString("purchaseordertable.column.8")) {
+        @Override
         public Object getValue(SSPurchaseOrder iOrder) {
             return iOrder.getInvoiceNr( );
         }
 
+        @Override
         public void setValue(SSPurchaseOrder iOrder, Object iValue) {
             //iOrder.setInvoice((SSSupplierInvoice)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;//SSSupplierInvoice.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }

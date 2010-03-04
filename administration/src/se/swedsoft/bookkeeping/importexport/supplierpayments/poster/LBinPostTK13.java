@@ -32,6 +32,7 @@ public class LBinPostTK13 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("13");
         iLine.append(iReferenceText   , 25 );  //  3 => 27: Rubrik för betalningspecifikation
@@ -43,6 +44,7 @@ public class LBinPostTK13 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iReferenceText      = iLine.readString( 3, 27); //  3 => 27: Rubrik för betalningspecifikation
         iValueText          = iLine.readString(28, 39); // 28 => 39: Rubrik för belopp

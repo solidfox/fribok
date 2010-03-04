@@ -86,6 +86,7 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
@@ -149,6 +150,7 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
      *
      * @return The main content for this frame.
      */
+    @Override
     public JComponent getMainContent() {
         SSBudget iBudget = new SSBudget( SSDB.getInstance().getCurrentYear().getBudget() );
         iBudgetMainPanel =  new SSBudgetMainPanel(iBudget);
@@ -163,6 +165,7 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -172,6 +175,7 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
      *
      * @return boolean
      */
+    @Override
     public boolean isCompanyFrame() {
         return true;
     }
@@ -180,6 +184,7 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
      *
      * @return boolean
      */
+    @Override
     public boolean isYearDataFrame() {
         return true;
     }

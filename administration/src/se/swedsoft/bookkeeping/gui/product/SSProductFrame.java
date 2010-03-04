@@ -102,6 +102,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
@@ -317,6 +318,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
      */
 
 
+    @Override
     public JComponent getMainContent() {
 
 
@@ -373,6 +375,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -382,6 +385,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isCompanyFrame() {
         return true;
     }
@@ -391,6 +395,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isYearDataFrame() {
         return false;
     }

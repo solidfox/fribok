@@ -38,6 +38,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSNewProject.class;
     }
@@ -46,6 +47,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *
      * @param iTable
      */
+    @Override
     public void setupTable(SSTable iTable) {
         iTable.setModel(this);
         iTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -99,19 +101,23 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *  Nummer
      */
     public static SSTableColumn<SSNewProject> COLUMN_NUMBER = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.1")) {
+        @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getNumber();
         }
 
+        @Override
         public void setValue(SSNewProject iProject, Object iValue) {
             iProject.setNumber((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -121,19 +127,23 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *  Nummer
      */
     public static SSTableColumn<SSNewProject> COLUMN_NAME = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.2")) {
+        @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getName();
         }
 
+        @Override
         public void setValue(SSNewProject iProject, Object iValue) {
             iProject.setName((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }
@@ -143,19 +153,23 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *  Beskrivning
      */
     public static SSTableColumn<SSNewProject> COLUMN_DESCRIPTION = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.3")) {
+        @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getDescription();
         }
 
+        @Override
         public void setValue(SSNewProject iProject, Object iValue) {
             iProject.setDescription((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 400;
         }
@@ -166,19 +180,23 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *  Beskrivning
      */
     public static SSTableColumn<SSNewProject> COLUMN_CONCLUDED = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.4")) {
+        @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getConcluded();
         }
 
+        @Override
         public void setValue(SSNewProject iProject, Object iValue) {
             iProject.setConcluded((Boolean)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }

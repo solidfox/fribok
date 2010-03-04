@@ -320,6 +320,7 @@ public class SSCustomerPanel {
         });
 
         iCustomerNr.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -332,6 +333,7 @@ public class SSCustomerPanel {
         });
 
         iName.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -344,6 +346,7 @@ public class SSCustomerPanel {
         });
 
         iEMail.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -356,6 +359,7 @@ public class SSCustomerPanel {
         });
 
         iOrginisationNumber.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -368,6 +372,7 @@ public class SSCustomerPanel {
         });
 
         iVATNumber.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -380,6 +385,7 @@ public class SSCustomerPanel {
         });
 
         iOurContactPerson.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -392,6 +398,7 @@ public class SSCustomerPanel {
         });
 
         iYourContactPerson.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -404,6 +411,7 @@ public class SSCustomerPanel {
         });
 
         iTelefax.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -416,6 +424,7 @@ public class SSCustomerPanel {
         });
 
         iPhone.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -428,6 +437,7 @@ public class SSCustomerPanel {
         });
 
         iPhone2.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -440,6 +450,7 @@ public class SSCustomerPanel {
         });
 
         iEuSaleCommodity.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -452,6 +463,7 @@ public class SSCustomerPanel {
         });
 
         iEuSaleYhirdPartCommodity.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -464,6 +476,7 @@ public class SSCustomerPanel {
         });
 
         iVatFreeSale.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -476,6 +489,7 @@ public class SSCustomerPanel {
         });
 
         iHideUnitPrice.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -488,6 +502,7 @@ public class SSCustomerPanel {
         });
 
         iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -500,6 +515,7 @@ public class SSCustomerPanel {
         });
 
         iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -512,6 +528,7 @@ public class SSCustomerPanel {
         });
 
         iInvoiceCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -524,6 +541,7 @@ public class SSCustomerPanel {
         });
 
         iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -536,6 +554,7 @@ public class SSCustomerPanel {
         });
 
         iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -548,6 +567,7 @@ public class SSCustomerPanel {
         });
 
         iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -560,6 +580,7 @@ public class SSCustomerPanel {
         });
 
         iCreditLimit.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -572,6 +593,7 @@ public class SSCustomerPanel {
         });
 
         iDiscount.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -584,6 +606,7 @@ public class SSCustomerPanel {
         });
 
         iBankAccountNumber.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -596,6 +619,7 @@ public class SSCustomerPanel {
         });
 
         iPlusAccountNumber.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {

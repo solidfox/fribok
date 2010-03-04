@@ -68,6 +68,7 @@ public class SSIndeliveryPanel {
         iTable.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
 
         new SSDeleteAction(iTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSIndeliveryRow iSelected = iModel.getSelectedRow(iTable);
 
@@ -90,6 +91,7 @@ public class SSIndeliveryPanel {
         });
 
         iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -102,6 +104,7 @@ public class SSIndeliveryPanel {
         });
 
         iText.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -115,6 +118,7 @@ public class SSIndeliveryPanel {
         });
 
         iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -127,6 +131,7 @@ public class SSIndeliveryPanel {
         });
 
         iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {

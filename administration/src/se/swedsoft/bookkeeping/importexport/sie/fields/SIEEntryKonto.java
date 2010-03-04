@@ -33,6 +33,7 @@ public class SIEEntryKonto extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
@@ -61,6 +62,7 @@ public class SIEEntryKonto extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iYearData) throws SSExportException {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();

@@ -42,6 +42,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSInpaymentRow.class;
     }
@@ -56,6 +57,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * @return the number of rows in the model
      * @see #getColumnCount
      */
+    @Override
     public int getRowCount() {
         return super.getRowCount() + 1;
     }
@@ -67,6 +69,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * @param row The row to get the object from.
      * @return An Object.
      */
+    @Override
     public SSInpaymentRow getObject(int row) {
         if( row == super.getRowCount()){
             return iEditing;
@@ -84,6 +87,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
@@ -99,18 +103,22 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Supplier invoice column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_INVOICE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.1")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getInvoice(SSDB.getInstance().getInvoices());
         }
 
+        @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
             iObject.setInvoice((SSInvoice)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSInvoice.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -120,18 +128,22 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Currency column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCY = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.2")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getInvoiceCurrency();
         }
 
+        @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
             iObject.setInvoiceCurrency((SSCurrency)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -142,19 +154,23 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Currencyrate column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_INVOICE_CURRENCYRATE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.3")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getInvoiceCurrencyRate();
         }
 
+        @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
             iObject.setCurrencyRate((BigDecimal)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -162,6 +178,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         /**
          * @return
          */
+        @Override
         public TableCellEditor getCellEditor() {
             return new SSBigDecimalCellEditor(5);
         }
@@ -169,6 +186,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         /**
          * @return
          */
+        @Override
         public TableCellRenderer getCellRenderer() {
             return  new SSBigDecimalCellRenderer(5);
         }
@@ -179,18 +197,22 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Value column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_VALUE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.4")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getValue();
         }
 
+        @Override
         public void setValue(SSInpaymentRow iOutpaymentRow, Object iValue) {
             iOutpaymentRow.setValue((BigDecimal)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 130;
         }
@@ -200,18 +222,22 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Value column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCYRATE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.5")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getCurrencyRate();
         }
 
+        @Override
         public void setValue(SSInpaymentRow iOutpaymentRow, Object iCurrencyRate) {
             iOutpaymentRow.setCurrencyRate((BigDecimal)iCurrencyRate);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -219,6 +245,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         /**
          * @return
          */
+        @Override
         public TableCellEditor getCellEditor() {
             return new SSBigDecimalCellEditor(5);
         }
@@ -226,6 +253,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         /**
          * @return
          */
+        @Override
         public TableCellRenderer getCellRenderer() {
             return  new SSBigDecimalCellRenderer(5);
         }
@@ -236,19 +264,23 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Payed column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_PAYED = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.6")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getLocalValue();
         }
 
+        @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
             iObject.setLocalValue((BigDecimal)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 130;
         }
@@ -258,17 +290,21 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
      * Value column
      */
     public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCYRATEDIFFERENCE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.7")) {
+        @Override
         public Object getValue(SSInpaymentRow iObject) {
             return SSInpaymentMath.getCurrencyRateDifference(iObject);
         }
 
+        @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }

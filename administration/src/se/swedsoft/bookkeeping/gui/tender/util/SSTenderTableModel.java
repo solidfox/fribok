@@ -49,6 +49,7 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSTender.class;
     }
@@ -60,17 +61,21 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      *  Utskriven
      */
     public static SSTableColumn<SSTender> COLUMN_PRINTED = new SSTableColumn<SSTender>("") {
+        @Override
         public Object getValue(SSTender iTender) {
             return iTender.isPrinted() ? SSIcon.getIcon("ICON_PROPERTIES16", SSIcon.IconState.NORMAL ) : null;
         }
 
+        @Override
         public void setValue(SSTender iTender, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return ImageIcon.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 20;
         }
@@ -81,19 +86,23 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      *  Ordernummer
      */
     public static SSTableColumn<SSTender> COLUMN_NUMBER = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.1")) {
+        @Override
         public Object getValue(SSTender iTender) {
             return iTender.getNumber();
         }
 
+        @Override
         public void setValue(SSTender iTender, Object iValue) {
             iTender.setNumber((Integer)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -105,18 +114,22 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      *  Kund nummer
      */
     public static SSTableColumn<SSTender> COLUMN_CUSTOMER_NR = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.2")) {
+        @Override
         public Object getValue(SSTender iInvoice) {
             return iInvoice.getCustomerNr();
         }
 
+        @Override
         public void setValue(SSTender iInvoice, Object iValue) {
             iInvoice.setCustomerNr((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -125,18 +138,22 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      *  Kund namn
      */
     public static SSTableColumn<SSTender> COLUMN_CUSTOMER_NAME = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.3")) {
+        @Override
         public Object getValue(SSTender iInvoice) {
             return iInvoice.getCustomerName();
         }
 
+        @Override
         public void setValue(SSTender iInvoice, Object iValue) {
             iInvoice.setCustomerName((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -148,18 +165,22 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      * Datum
      */
     public static SSTableColumn<SSTender> COLUMN_DATE = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.4")) {
+        @Override
         public Object getValue(SSTender iTender) {
             return iTender.getDate();
         }
 
+        @Override
         public void setValue(SSTender iTender, Object iValue) {
             iTender.setDate((Date)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -169,17 +190,21 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      * Nettosyumma
      */
     public static SSTableColumn<SSTender> COLUMN_NET_SUM = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.5")) {
+        @Override
         public Object getValue(SSTender iTender) {
             return SSTenderMath.getNetSum(iTender);
         }
 
+        @Override
         public void setValue(SSTender iTender, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -189,18 +214,22 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      * Valuta
      */
     public static SSTableColumn<SSTender> COLUMN_CURRENCY = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.6")) {
+        @Override
         public Object getValue(SSTender iTender) {
             return iTender.getCurrency();
         }
 
+        @Override
         public void setValue(SSTender iTender, Object iValue) {
             iTender.setCurrency((SSCurrency)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 50;
         }
@@ -212,18 +241,22 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
      * Faktura
      */
     public static SSTableColumn<SSTender> COLUMN_ORDER = new SSTableColumn<SSTender>(SSBundle.getBundle().getString("tendertable.column.7")) {
+        @Override
         public Object getValue(SSTender iTender) {
             return iTender.getOrderNr();//iTender.getOrder( SSDB.getInstance().getOrders() );
         }
 
+        @Override
         public void setValue(SSTender iTender, Object iValue) {
             //iTender.setOrder((SSOrder)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;//SSOrder.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }

@@ -51,6 +51,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return String.format(iBundle.getString("outpaymentjournal.title"), iNumber);
     }
@@ -58,6 +59,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         iPrinter = new SSOutpaymentjournalPrinter.SSVoucherPrinter();
         iPrinter.generateReport();
@@ -79,6 +81,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSInvoice.class;
             }
@@ -145,6 +148,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+                @Override
                 public Class getType() {
                     return SSVoucherRow.class;
                 }
@@ -194,6 +198,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -203,6 +208,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

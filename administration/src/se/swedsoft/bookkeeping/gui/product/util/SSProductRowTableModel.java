@@ -53,6 +53,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSProduct.class;
     }
@@ -102,6 +103,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSProductRow iRow  = getObject(rowIndex);
 
@@ -135,6 +137,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @return the number of rows in the model
      * @see #getColumnCount
      */
+    @Override
     public int getRowCount() {
         return super.getRowCount()+1;
     }
@@ -145,6 +148,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
             case 0:
@@ -167,6 +171,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @param columnIndex the column being queried
      * @return false
      */
+    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         SSProduct iProduct = getObject(rowIndex).getProduct( SSDB.getInstance().getProducts() );
 
@@ -179,6 +184,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @param row The row to get the object from.
      * @return An Object.
      */
+    @Override
     public SSProductRow getObject(int row) {
         if( row == super.getRowCount()){
             return iEditingRow;
@@ -190,6 +196,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     /**
      * @param iObject
      */
+    @Override
     public void deleteRow(SSProductRow iObject) {
         if(iObject == iEditingRow){
             iEditingRow = new SSProductRow();
@@ -233,6 +240,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
          *              <code>null</code> it sets the text value to an empty string
          * @see javax.swing.JLabel#setText
          */
+        @Override
         protected void setValue(SSProduct value) {
             if(value != null){
                 super.setValue(value.getNumber());
@@ -263,6 +271,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
             SSDefaultTableModel< SSProduct> model = new SSDefaultTableModel<SSProduct>( iFiltered ) {
 
+                @Override
                 public Class getType() {
                     return SSProduct.class;
                 }

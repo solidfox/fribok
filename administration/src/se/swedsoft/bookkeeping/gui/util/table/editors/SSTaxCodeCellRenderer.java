@@ -44,6 +44,7 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value
      */
+    @Override
     public void setValue(Object value) {
         NumberFormat iFormat = new DecimalFormat("0");
 

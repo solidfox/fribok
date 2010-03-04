@@ -36,6 +36,7 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSVATCode.class;
     }
@@ -67,18 +68,22 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      *  Name
      */
     public static SSTableColumn<SSVATCode> COLUMN_NAME = new SSTableColumn<SSVATCode>(SSBundle.getBundle().getString("vatcodetable.column.1")) {
+        @Override
         public Object getValue(SSVATCode iVATCode) {
             return iVATCode.getName();
         }
 
+        @Override
         public void setValue(SSVATCode iVATCode, Object iValue) {
             iVATCode.setName((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -89,18 +94,22 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      *  Description
      */
     public static SSTableColumn<SSVATCode> COLUMN_DESCRIPTION = new SSTableColumn<SSVATCode>(SSBundle.getBundle().getString("vatcodetable.column.1")) {
+        @Override
         public Object getValue(SSVATCode iVATCode) {
             return iVATCode.getDescription();
         }
 
+        @Override
         public void setValue(SSVATCode iVATCode, Object iValue) {
             iVATCode.setDescription((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 350;
         }

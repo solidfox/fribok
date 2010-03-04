@@ -29,6 +29,7 @@ public class SSTextField extends JTextField {
      *         was enabled
      * @since 1.3
      */
+    @Override
     public boolean processKeyBinding(KeyStroke ks, KeyEvent e, int condition, boolean pressed) {
         return super.processKeyBinding(ks, e, condition, pressed);
     }

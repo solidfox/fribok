@@ -103,6 +103,7 @@ public class SSVoucherDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "voucherframe.saveonclose") != JOptionPane.OK_OPTION ){
                     SSPostLock.removeLock(lockString);
@@ -200,6 +201,7 @@ public class SSVoucherDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if( ! iPanel.isValid() || SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "voucherframe.saveonclose") != JOptionPane.OK_OPTION ) {
                     SSPostLock.removeLock(lockString);
@@ -332,6 +334,7 @@ public class SSVoucherDialog {
 
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if( ! iPanel.isValid() || SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "voucherframe.saveonclose") != JOptionPane.OK_OPTION ) {
                     SSPostLock.removeLock(lockString);

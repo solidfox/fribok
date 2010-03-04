@@ -76,6 +76,7 @@ public class SSCurrencyDialog extends SSDialog{
      *
      * @return
      */
+    @Override
     public String getName() {
         return iName.getText();
     }
@@ -84,6 +85,7 @@ public class SSCurrencyDialog extends SSDialog{
      *
      * @param iName
      */
+    @Override
     public void setName(String iName) {
         this.iName.setText(iName);
     }

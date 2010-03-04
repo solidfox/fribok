@@ -38,6 +38,7 @@ public class SSDateCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value The value to format.
      */
+    @Override
     public void setValue(Object value) {
         if (iFormat == null) {
             iFormat = DateFormat.getDateInstance(DateFormat.SHORT);

@@ -76,6 +76,7 @@ public class SSOrderDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     return;
@@ -143,6 +144,7 @@ public class SSOrderDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ){
                     SSPostLock.removeLock(lockString);
@@ -208,6 +210,7 @@ public class SSOrderDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if (! iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
@@ -277,6 +280,7 @@ public class SSOrderDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if (! iPanel.isValid()){
                     return;

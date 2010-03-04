@@ -33,6 +33,7 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSSystemYear.class;
     }
@@ -75,6 +76,7 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
 
         switch (columnIndex) {

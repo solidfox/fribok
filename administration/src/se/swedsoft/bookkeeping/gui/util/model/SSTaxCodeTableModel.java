@@ -59,6 +59,7 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSTaxCode.class;
     }
@@ -110,6 +111,7 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
             super("");
         }
 
+        @Override
         public Object getValue(SSTaxCode iTaxCode) {
             BigDecimal iValue = iValues.get(iTaxCode);
 
@@ -118,13 +120,16 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
             return iFormat.format(iValue) + "%";
         }
 
+        @Override
         public void setValue(SSTaxCode iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 250;
         }

@@ -107,6 +107,7 @@ public class SSCreditInvoice extends SSInvoice {
     /**
      * Auto increment the number
      */
+    @Override
     public void doAutoIncrecement() {
         List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
 
@@ -146,6 +147,7 @@ public class SSCreditInvoice extends SSInvoice {
      *
      * @return
      */
+    @Override
     public BigDecimal getCurrencyRate() {
         return iCurrencyRate;
     }
@@ -154,6 +156,7 @@ public class SSCreditInvoice extends SSInvoice {
      *
      * @param iCurrencyRate
      */
+    @Override
     public void setCurrencyRate(BigDecimal iCurrencyRate) {
         this.iCurrencyRate = iCurrencyRate;
     }
@@ -165,6 +168,7 @@ public class SSCreditInvoice extends SSInvoice {
      *
      * @return
      */
+    @Override
     public SSVoucher getVoucher() {
         return iVoucher;
     }
@@ -173,6 +177,7 @@ public class SSCreditInvoice extends SSInvoice {
      *
      * @param iVoucher
      */
+    @Override
     public void setVoucher(SSVoucher iVoucher) {
         this.iVoucher = iVoucher;
     }
@@ -244,6 +249,7 @@ public class SSCreditInvoice extends SSInvoice {
     /**
      *
      */
+    @Override
     public SSVoucher generateVoucher(){
        String iDescription = SSBundle.getBundle().getString("creditinvoiceframe.voucherdescription");
 

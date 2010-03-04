@@ -66,6 +66,7 @@ public class SSResultPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return bundle.getString("resultreport.title");
     }
@@ -102,6 +103,7 @@ public class SSResultPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         addParameter("dateFrom", iDateFrom );
@@ -151,6 +153,7 @@ public class SSResultPrinter extends SSPrinter {
 
         SSDefaultTableModel<ResultRow> iModel = new SSDefaultTableModel<ResultRow>(){
 
+            @Override
             public Class getType() {
                 return ResultRow.class;
 

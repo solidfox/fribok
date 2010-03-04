@@ -67,6 +67,7 @@ public class SSProgressDialog extends SSDialog {
         dialog.setVisible();
 
         new SwingWorker() {
+            @Override
             public Object construct() {
                 try{
                     iAction.run();
@@ -102,6 +103,7 @@ public class SSProgressDialog extends SSDialog {
         dialog.setVisible();
 
         new SwingWorker() {
+            @Override
             public Object construct() {
                 try{
                     iAction.run();

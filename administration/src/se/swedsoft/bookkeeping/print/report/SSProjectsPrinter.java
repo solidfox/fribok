@@ -45,6 +45,7 @@ public class SSProjectsPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("projectreport.title");
     }
@@ -53,12 +54,14 @@ public class SSProjectsPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         final DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         SSDefaultTableModel<SSNewProject> iModel = new SSDefaultTableModel<SSNewProject>() {
 
+            @Override
             public Class getType() {
                 return SSNewProject.class;
             }

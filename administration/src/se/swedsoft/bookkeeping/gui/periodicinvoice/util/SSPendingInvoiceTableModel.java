@@ -52,6 +52,7 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return Entry.class;
     }
@@ -96,18 +97,22 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      */
     public SSTableColumn<Entry> getSelectionColumn(){
         return new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.5")) {
+            @Override
             public Object getValue(Entry iEntry) {
                 return iEntry.iSelected;
             }
 
+            @Override
             public void setValue(Entry iEntry, Object iValue) {
                 iEntry.iSelected = (Boolean)iValue;
             }
 
+            @Override
             public Class getColumnClass() {
                 return Boolean.class;
             }
 
+            @Override
             public int getDefaultWidth() {
                 return 60;
             }
@@ -118,17 +123,21 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      * Number column
      */
     public static SSTableColumn<Entry> COLUMN_NUMBER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.1")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iPeriodicInvoice.getNumber();
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -138,19 +147,23 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      * Description column
      */
     public static SSTableColumn<Entry> COLUMN_DESCRIPTION = new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.2")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iPeriodicInvoice.getDescription();
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
             iEntry.iPeriodicInvoice.setDescription((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 250;
         }
@@ -160,17 +173,21 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      * Date column
      */
     public static SSTableColumn<Entry> COLUMN_DATE = new SSTableColumn<Entry>(SSBundle.getBundle().getString("invoicetable.column.5")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iInvoice.getDate();
         }
 
+        @Override
         public void setValue(Entry iEntry, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -181,17 +198,21 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      *  Kund nummer
      */
     public static SSTableColumn<Entry> COLUMN_CUSTOMER_NR = new SSTableColumn<Entry>(SSBundle.getBundle().getString("invoicetable.column.3")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iInvoice.getCustomerNr();
         }
 
+        @Override
         public void setValue(Entry iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -200,17 +221,21 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      *  Kund namn
      */
     public static SSTableColumn<Entry> COLUMN_CUSTOMER_NAME = new SSTableColumn<Entry>(SSBundle.getBundle().getString("invoicetable.column.4")) {
+        @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iInvoice.getCustomerName();
         }
 
+        @Override
         public void setValue(Entry iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }

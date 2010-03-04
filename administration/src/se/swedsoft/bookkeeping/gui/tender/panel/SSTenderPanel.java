@@ -189,6 +189,7 @@ public class SSTenderPanel{
         });
 
         new SSTraversalAction(iTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 4) {
                     iPosition.x = iPosition.x + 1;
@@ -209,6 +210,7 @@ public class SSTenderPanel{
         };
 
         new SSDeleteAction(iTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSSaleRow iSelected = iModel.getSelectedRow(iTable);
 
@@ -677,6 +679,7 @@ public class SSTenderPanel{
         });
 
         iCustomer.getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -689,6 +692,7 @@ public class SSTenderPanel{
         });
 
         iCustomerName.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -701,6 +705,7 @@ public class SSTenderPanel{
         });
 
         iOurContactPerson.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -713,6 +718,7 @@ public class SSTenderPanel{
         });
 
         iYourContactPerson.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -725,6 +731,7 @@ public class SSTenderPanel{
         });
 
         iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -737,6 +744,7 @@ public class SSTenderPanel{
         });
 
         iExpires.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -749,6 +757,7 @@ public class SSTenderPanel{
         });
 
         iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -761,6 +770,7 @@ public class SSTenderPanel{
         });
 
         iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -773,6 +783,7 @@ public class SSTenderPanel{
         });
 
         iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -785,6 +796,7 @@ public class SSTenderPanel{
         });
 
         iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -797,6 +809,7 @@ public class SSTenderPanel{
         });
 
         iCurrencyRate.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -810,6 +823,7 @@ public class SSTenderPanel{
         });
 
         iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -822,6 +836,7 @@ public class SSTenderPanel{
         });
 
         iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -834,6 +849,7 @@ public class SSTenderPanel{
         });
 
         iNumber.addFocusListener(new FocusAdapter(){
+            @Override
             public void focusGained(FocusEvent e){
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
@@ -888,6 +904,7 @@ public class SSTenderPanel{
          * @param iRow
          * @return the value
          */
+        @Override
         public Object getValue(SSSaleRow iRow) {
             SSProduct iProduct   = iRow.getProduct();
 
@@ -906,14 +923,17 @@ public class SSTenderPanel{
             }
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
 
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }

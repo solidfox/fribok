@@ -42,6 +42,7 @@ public class LBinPostTK11 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("11");
         iLine.append(iBankGiroNr , 10, '0'       ); //  3 => 12: Bakngiro
@@ -57,6 +58,7 @@ public class LBinPostTK11 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iBankGiroNr  = iLine.readString(3 , 12          ); //  3 => 12: Bakngiro
         iDate        = iLine.readDate  (13, 18, "yyMMdd"); // 13 => 18: Skrivdatum

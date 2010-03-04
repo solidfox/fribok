@@ -87,6 +87,7 @@ public class SSSaleReportPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("salereport.title");
     }
@@ -94,6 +95,7 @@ public class SSSaleReportPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iFrom );
         addParameter("dateTo"  , iTo);
@@ -104,6 +106,7 @@ public class SSSaleReportPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSProduct> iModel = new SSDefaultTableModel<SSProduct>() {
 
+            @Override
             public Class getType() {
                 return SSProduct.class;
             }

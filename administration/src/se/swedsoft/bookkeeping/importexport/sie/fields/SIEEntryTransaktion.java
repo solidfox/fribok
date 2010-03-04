@@ -38,6 +38,7 @@ public class SIEEntryTransaktion extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         throw new RuntimeException("Must be called within a voucher.");
     }
@@ -51,6 +52,7 @@ public class SIEEntryTransaktion extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         throw new RuntimeException("Must be called within a voucher.");
     }

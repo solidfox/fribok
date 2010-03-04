@@ -33,6 +33,7 @@ public class LBinPostTK12 extends LBinPost {
     /**
      * @return
      */
+    @Override
     public boolean isEmpty() {
         return SupplierPaymentConfig.getMessage() == null || SupplierPaymentConfig.getMessage().length() == 0;
     }
@@ -42,6 +43,7 @@ public class LBinPostTK12 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("12");
         iLine.append(iText       , 50            );  //  3 => 52: Informationstext
@@ -53,6 +55,7 @@ public class LBinPostTK12 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iText        = iLine.readString( 3, 52          ); //  3 => 52: Informationstext
         iDate        = iLine.readDate  (53, 58, "yyMMdd"); // 53 => 58: Datum som anger hur länge informationen skall visas

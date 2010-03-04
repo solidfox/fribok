@@ -30,6 +30,7 @@ public class SSBudgetTableModels {
              *
              * @return Class
              */
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -39,6 +40,7 @@ public class SSBudgetTableModels {
              * @param columnIndex
              * @return Class
              */
+            @Override
             public Class<?> getColumnClass(int columnIndex) {
                 switch (columnIndex) {
                     case 0:
@@ -83,6 +85,7 @@ public class SSBudgetTableModels {
              * @param rowIndex
              * @param columnIndex
              */
+            @Override
             public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
                 SSAccount account = getObject(rowIndex);
 
@@ -99,6 +102,7 @@ public class SSBudgetTableModels {
              * @param columnIndex
              * @return
              */
+            @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return columnIndex == 2;
             }

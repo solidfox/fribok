@@ -192,6 +192,7 @@ public class SSMainBookDialog extends SSDialog implements ActionListener {
     /**
      * Invoked when an action occurs.
      */
+    @Override
     public void actionPerformed(ActionEvent e) {
         iProject   .setEnabled( iCheckProject   .isSelected() );
         iResultunit.setEnabled( iCheckResultunit.isSelected() );

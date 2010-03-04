@@ -59,6 +59,7 @@ public class SSReminderPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         addParameter("title.number"   , iBundle.getString("reminderreport.title.date") );
 
@@ -118,6 +119,7 @@ public class SSReminderPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         final SSPrinter iPrinter = new SSReminderPrinter.SSRowReport(  );
 
@@ -131,6 +133,7 @@ public class SSReminderPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>(  ) {
 
+            @Override
             public Class getType() {
                 return SSInvoice.class;
             }
@@ -173,9 +176,11 @@ public class SSReminderPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -241,6 +246,7 @@ public class SSReminderPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

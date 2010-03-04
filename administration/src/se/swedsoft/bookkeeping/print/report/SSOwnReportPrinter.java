@@ -68,6 +68,7 @@ public class SSOwnReportPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return iOwnReport.getName();
     }
@@ -107,6 +108,7 @@ public class SSOwnReportPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         addParameter("dateFrom", iDateFrom );
@@ -165,6 +167,7 @@ public class SSOwnReportPrinter extends SSPrinter {
 
         SSDefaultTableModel<ResultRow> iModel = new SSDefaultTableModel<ResultRow>(){
 
+            @Override
             public Class getType() {
                 return ResultRow.class;
 

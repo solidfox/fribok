@@ -19,6 +19,7 @@ public class SSFilterZIP extends SSFileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return SSFilterZIP.bundle.getString("filechooser.zip.filter");
     }

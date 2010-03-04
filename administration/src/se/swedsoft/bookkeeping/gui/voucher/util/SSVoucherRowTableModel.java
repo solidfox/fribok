@@ -39,6 +39,7 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      *
      * @return
      */
+    @Override
     public SSVoucherRow newObject() {
 
         if (iReadOnlyCount > 0 && getEditObject() != null) {
@@ -54,6 +55,7 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSVoucherRow.class;
     }
@@ -106,12 +108,14 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Account column
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_ACCOUNT = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.1")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             SSAccount iAccount = iVoucherRow.getAccount(SSDB.getInstance().getAccounts());
 
             return iAccount != null ? iAccount : iVoucherRow.getAccountNr();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             if(iValue instanceof SSAccount){
                 SSVoucherPanel.iAccountChanged = true;
@@ -119,14 +123,17 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
             }
         }
 
+        @Override
         public Class getColumnClass() {
             return SSAccount.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 60;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return iRow >= ((SSVoucherRowTableModel)getModel()).iReadOnlyCount;
         }
@@ -138,24 +145,29 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Account column
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_DESCRIPTION = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.2")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             SSAccount iAccount = iVoucherRow.getAccount(SSDB.getInstance().getAccounts());
 
             return  iAccount != null ? iAccount.getDescription() : null;
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             // Read only
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 260;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return false;
         }
@@ -166,24 +178,29 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Debet column
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_DEBET = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.3")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             return iVoucherRow.getDebet();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             SSVoucherPanel.iDebetChanged = true;
             iVoucherRow.setDebet ((BigDecimal)iValue);
             iVoucherRow.setCredit(null);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 85;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return iRow >= ((SSVoucherRowTableModel)getModel()).iReadOnlyCount;
         }
@@ -196,24 +213,29 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Credit column
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_CREDIT = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.4")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             return iVoucherRow.getCredit();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             SSVoucherPanel.iCreditChanged = true;
             iVoucherRow.setDebet (null);
             iVoucherRow.setCredit((BigDecimal)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 85;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return iRow >= ((SSVoucherRowTableModel)getModel()).iReadOnlyCount;
         }
@@ -223,22 +245,27 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Project column
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_PROJECT = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.5")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             return iVoucherRow.getProject();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             iVoucherRow.setProject((SSNewProject)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSNewProject.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return iRow >= ((SSVoucherRowTableModel)getModel()).iReadOnlyCount;
         }
@@ -248,22 +275,27 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Result unit column
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_RESULTUNIT = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.6")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             return  iVoucherRow.getResultUnit();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             iVoucherRow.setResultUnit((SSNewResultUnit)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSNewResultUnit.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return iRow >= ((SSVoucherRowTableModel)getModel()).iReadOnlyCount;
         }
@@ -274,21 +306,26 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Edited date
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_EDITED_DATE = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.7")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             return  iVoucherRow.getEditedDate();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 75;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return false;
         }
@@ -298,22 +335,27 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Edited signature
      */
     public static SSTableColumn<SSVoucherRow> COLUMN_EDITED_SIGNATURE = new SSTableColumn<SSVoucherRow>(SSBundle.getBundle().getString("voucherrowtable.column.8")) {
+        @Override
         public Object getValue(SSVoucherRow iVoucherRow) {
             return  iVoucherRow.getEditedSignature();
         }
 
+        @Override
         public void setValue(SSVoucherRow iVoucherRow, Object iValue) {
             iVoucherRow.setEditedSignature((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 75;
         }
 
+        @Override
         public boolean isEditable(int iRow) {
             return true;
         }

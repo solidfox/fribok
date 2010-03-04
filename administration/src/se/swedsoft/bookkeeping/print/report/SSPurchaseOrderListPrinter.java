@@ -58,6 +58,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("purchaseorderlistreport.title");
     }
@@ -65,6 +66,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         iPrinter = new SSPurchaseOrderListPrinter.SSOrderRowPrinter();
@@ -79,6 +81,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -163,6 +166,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<SSPurchaseOrderRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -214,6 +218,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -223,6 +228,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

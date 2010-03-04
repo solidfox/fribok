@@ -27,6 +27,7 @@ public class SSHeadingTypeCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value
      */
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSHeadingType){
             SSHeadingType iType = (SSHeadingType) value;

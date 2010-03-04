@@ -91,6 +91,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * @return the number of rows in the model
      * @see #getColumnCount
      */
+    @Override
     public int getRowCount() {
         if(iReadOnly){
             return super.getRowCount();
@@ -105,6 +106,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * @param row The row to get the object from.
      * @return An Object.
      */
+    @Override
     public SSVoucherRow getObject(int row) {
         if( row >= super.getRowCount() ){
             return iEditingRow;
@@ -121,6 +123,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      *
      * @return false
      */
+    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         SSVoucherRow iRow = getObject(rowIndex);
 
@@ -148,6 +151,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSVoucherRow.class;
     }
@@ -216,6 +220,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
         SSVoucherRow iVoucherRow = getObject(rowIndex);
@@ -276,6 +281,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * @return the number of columns in the model
      * @see #getRowCount
      */
+    @Override
     public int getColumnCount() {
         int count = super.getColumnCount();
 
@@ -289,6 +295,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      *
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
 
         switch (columnIndex) {
@@ -317,6 +324,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      *
      * @param iSelected
      */
+    @Override
     public void deleteRow(SSVoucherRow iSelected){
         // Dont do anything here
         if(iReadOnly) return;

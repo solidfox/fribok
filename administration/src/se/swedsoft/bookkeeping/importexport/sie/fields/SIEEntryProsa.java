@@ -22,6 +22,7 @@ public class SIEEntryProsa extends SIEEntry {
      *
      * @param iReader
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         return false;
     }
@@ -31,6 +32,7 @@ public class SIEEntryProsa extends SIEEntry {
      *
      * @param iWriter
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         String iComment = iExporter.getComment();
 

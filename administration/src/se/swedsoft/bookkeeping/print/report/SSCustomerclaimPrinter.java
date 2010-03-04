@@ -47,6 +47,7 @@ public class SSCustomerclaimPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return iBundle.getString("customerclaimreport.title");
     }
@@ -54,6 +55,7 @@ public class SSCustomerclaimPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         // Get all invoices
         List<SSInvoice> iInvoices = new LinkedList<SSInvoice>( iSaldos.keySet() );
@@ -70,6 +72,7 @@ public class SSCustomerclaimPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSInvoice.class;
             }

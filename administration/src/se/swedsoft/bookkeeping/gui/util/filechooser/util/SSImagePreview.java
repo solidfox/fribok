@@ -82,6 +82,7 @@ public class SSImagePreview extends JComponent implements PropertyChangeListener
      *
      * @param g
      */
+    @Override
     protected void paintComponent(Graphics g) {
         if (iThumbnail == null) {
             loadImage();

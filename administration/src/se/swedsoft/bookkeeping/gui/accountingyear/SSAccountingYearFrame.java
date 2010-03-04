@@ -106,6 +106,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
     private SSAccountingYearFrame(SSMainFrame pMainFrame, int width, int height) {
         super(pMainFrame, SSBundle.getBundle().getString("accountingyearframe.title"), width, height);
         addInternalFrameListener(new InternalFrameAdapter() {
+            @Override
             public void internalFrameActivated(InternalFrameEvent e){
                 updateFrame();
             }
@@ -120,6 +121,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
@@ -181,6 +183,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return The main content for this frame.
      */
+    @Override
     public JComponent getMainContent() {
         iModel = new SSSystemYearDataModel();
 
@@ -229,6 +232,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -258,6 +262,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isCompanyFrame() {
         return true;
     }
@@ -267,6 +272,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isYearDataFrame() {
         return false;
     }

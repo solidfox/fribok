@@ -82,6 +82,7 @@ public class SSSupplierCreditInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     return;
@@ -144,6 +145,7 @@ public class SSSupplierCreditInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if (! iPanel.isValid()) {
                     return;
@@ -205,6 +207,7 @@ public class SSSupplierCreditInvoiceDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ){
                     return;
@@ -271,6 +274,7 @@ public class SSSupplierCreditInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ){
                     return;

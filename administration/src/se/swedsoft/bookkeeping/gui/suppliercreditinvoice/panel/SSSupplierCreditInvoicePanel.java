@@ -135,6 +135,7 @@ public class SSSupplierCreditInvoicePanel {
         SSVoucherRowTableModelOld.setupTable(iVoucherTable, iVoucherTableModel);
 
         iCorrectionTableModel = new SSVoucherRowTableModelOld(false, false){
+            @Override
             public int getColumnCount() {
                 // Hide the project and result unit columns
                 return 4;
@@ -145,6 +146,7 @@ public class SSSupplierCreditInvoicePanel {
         SSVoucherRowTableModelOld.setupTable(iCorrectionTable, iCorrectionTableModel);
 
         new SSDeleteAction(iCorrectionTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSVoucherRow iSelected = iCorrectionTableModel.getSelectedRow(iCorrectionTable);
 
@@ -157,6 +159,7 @@ public class SSSupplierCreditInvoicePanel {
         };
 
         new SSTraversalAction(iCorrectionTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
 
                 if (iPosition.x == 0) {
@@ -203,6 +206,7 @@ public class SSSupplierCreditInvoicePanel {
 
 
         new SSTraversalAction(iTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 4) {
                     iPosition.x = iPosition.x + 1;
@@ -223,6 +227,7 @@ public class SSSupplierCreditInvoicePanel {
         };
 
         new SSDeleteAction(iTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSSupplierInvoiceRow iSelected = iModel.getSelectedRow(iTable);
 
@@ -384,6 +389,7 @@ public class SSSupplierCreditInvoicePanel {
         });
 
         iReferenceNumber.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -397,6 +403,7 @@ public class SSSupplierCreditInvoicePanel {
 
 
         iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -409,6 +416,7 @@ public class SSSupplierCreditInvoicePanel {
         });
 
         iTaxSum.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -421,6 +429,7 @@ public class SSSupplierCreditInvoicePanel {
         });
 
         iRoundingSum.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -434,6 +443,7 @@ public class SSSupplierCreditInvoicePanel {
         });
 
         iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -446,6 +456,7 @@ public class SSSupplierCreditInvoicePanel {
         });
 
         iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -458,6 +469,7 @@ public class SSSupplierCreditInvoicePanel {
         });
 
         iNumber.addFocusListener(new FocusAdapter(){
+            @Override
             public void focusGained(FocusEvent e){
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {

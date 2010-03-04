@@ -19,6 +19,7 @@ public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
     }
 
 
+    @Override
     public Class getType() {
         return SSNewCompany.class;
     }
@@ -45,6 +46,7 @@ public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
      *
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
 
         switch (columnIndex) {

@@ -209,6 +209,7 @@ public class SSPeriodicInvoicePanel {
             }
         });
         new SSTraversalAction(iTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 4) {
                     iPosition.x = iPosition.x + 1;
@@ -229,6 +230,7 @@ public class SSPeriodicInvoicePanel {
         };
 
         new SSDeleteAction(iTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSSaleRow iSelected = iModel.getSelectedRow(iTable);
 
@@ -796,6 +798,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iCustomer.getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -808,6 +811,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iCustomerName.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -820,6 +824,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iOurContactPerson.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -832,6 +837,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iYourContactPerson.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -845,6 +851,7 @@ public class SSPeriodicInvoicePanel {
 
 
         iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -857,6 +864,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -869,6 +877,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -881,6 +890,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -893,6 +903,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iCurrencyRate.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -906,6 +917,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -918,6 +930,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -930,6 +943,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iNumber.addFocusListener(new FocusAdapter(){
+            @Override
             public void focusGained(FocusEvent e){
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
@@ -940,6 +954,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -952,6 +967,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iDescription.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -964,6 +980,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iPeriod.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -976,6 +993,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iCount.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -988,6 +1006,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iAppendPeriod.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -1000,6 +1019,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iPeriodStart.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -1012,6 +1032,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iPeriodEnd.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -1024,6 +1045,7 @@ public class SSPeriodicInvoicePanel {
         });
 
         iAddInfo.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     SwingUtilities.invokeLater(new Runnable() {

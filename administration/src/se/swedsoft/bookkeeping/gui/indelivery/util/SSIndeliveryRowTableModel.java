@@ -26,6 +26,7 @@ public class SSIndeliveryRowTableModel extends SSEditableTableModel<SSIndelivery
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSInventory.class;
     }
@@ -33,6 +34,7 @@ public class SSIndeliveryRowTableModel extends SSEditableTableModel<SSIndelivery
     /**
      * @return
      */
+    @Override
     public SSIndeliveryRow newObject() {
         return new SSIndeliveryRow();
     }
@@ -41,18 +43,22 @@ public class SSIndeliveryRowTableModel extends SSEditableTableModel<SSIndelivery
      * Product
      */
     public static SSTableColumn<SSIndeliveryRow> COLUMN_PRODUCT = new SSTableColumn<SSIndeliveryRow>(SSBundle.getBundle().getString("indeliveryrowtable.column.1")) {
+        @Override
         public Object getValue(SSIndeliveryRow iRow) {
             return iRow.getProduct();
         }
 
+        @Override
         public void setValue(SSIndeliveryRow iRow, Object iValue) {
             if(iValue instanceof SSProduct) iRow.setProduct((SSProduct)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSProduct.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -62,20 +68,24 @@ public class SSIndeliveryRowTableModel extends SSEditableTableModel<SSIndelivery
      * Product beskrivning
      */
     public static SSTableColumn<SSIndeliveryRow> COLUMN_DESCRIPTION = new SSTableColumn<SSIndeliveryRow>(SSBundle.getBundle().getString("indeliveryrowtable.column.2")) {
+        @Override
         public Object getValue(SSIndeliveryRow iRow) {
             SSProduct iProduct = iRow.getProduct();
 
             return iProduct == null ? null : iProduct.getDescription();
         }
 
+        @Override
         public void setValue(SSIndeliveryRow iRow, Object iValue) {
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 400;
         }
@@ -85,18 +95,22 @@ public class SSIndeliveryRowTableModel extends SSEditableTableModel<SSIndelivery
      * Skillnad
      */
     public static SSTableColumn<SSIndeliveryRow> COLUMN_CHANGE = new SSTableColumn<SSIndeliveryRow>(SSBundle.getBundle().getString("indeliveryrowtable.column.3")) {
+        @Override
         public Object getValue(SSIndeliveryRow iRow) {
             return iRow.getChange();
         }
 
+        @Override
         public void setValue(SSIndeliveryRow iRow, Object iValue) {
             iRow.setChange((Integer)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 120;
         }

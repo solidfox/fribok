@@ -65,6 +65,7 @@ public class SSProductListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("productlistreport.title");
     }
@@ -72,6 +73,7 @@ public class SSProductListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         iPrinter = new SSProductListPrinter.SSParcelPrinter();
@@ -86,6 +88,7 @@ public class SSProductListPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -181,6 +184,7 @@ public class SSProductListPrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<SSProductRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSProductRow.class;
                 }
@@ -223,6 +227,7 @@ public class SSProductListPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -232,6 +237,7 @@ public class SSProductListPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

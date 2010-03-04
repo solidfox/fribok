@@ -64,6 +64,7 @@ public class SSImagePanel extends JPanel {
      *
      * @param g
      */
+    @Override
     protected void paintComponent(Graphics g) {
 
         if (iPaint != null) {

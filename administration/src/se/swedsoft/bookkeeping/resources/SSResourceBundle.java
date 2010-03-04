@@ -30,6 +30,7 @@ public class SSResourceBundle extends ResourceBundle {
      *
      * @param parent this bundle's parent bundle.
      */
+    @Override
     public void setParent(ResourceBundle parent) {
         super.setParent(parent);
     }
@@ -38,6 +39,7 @@ public class SSResourceBundle extends ResourceBundle {
     /**
      * Returns an enumeration of the keys.
      */
+    @Override
     public Enumeration<String> getKeys() {
         return iBundle.getKeys();
     }
@@ -70,6 +72,7 @@ public class SSResourceBundle extends ResourceBundle {
      *
      * @throws NullPointerException if <code>key</code> is <code>null</code>
      */
+    @Override
     protected Object handleGetObject(String key) {
 
         Object iObject;

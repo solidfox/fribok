@@ -70,6 +70,7 @@ public class SSBudgetMainPanel {
              *
              * @return The current data type.
              */
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

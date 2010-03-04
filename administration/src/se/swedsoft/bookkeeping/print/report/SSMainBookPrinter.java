@@ -65,6 +65,7 @@ public class SSMainBookPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("mainbookreport.title");
     }
@@ -73,6 +74,7 @@ public class SSMainBookPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
        final DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -106,6 +108,7 @@ public class SSMainBookPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSMainBookRow> iModel = new SSDefaultTableModel<SSMainBookRow>(){
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
 

@@ -28,6 +28,7 @@ public class SIEEntryForetagsAdress extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         return false;
     }
@@ -41,6 +42,7 @@ public class SIEEntryForetagsAdress extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iYear) throws SSExportException {
          SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 

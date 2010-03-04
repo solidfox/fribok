@@ -119,6 +119,7 @@ public class SSOwnReportPanel {
         });
         iProjectComboBox.setSelected(SSDB.getInstance().getProject(iOwnReport.getProjectNr()));
         iProjectComboBox.getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyReleased(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
                     iProjectComboBox.setSelected(null);
@@ -138,6 +139,7 @@ public class SSOwnReportPanel {
         });
         iResultUnitComboBox.setSelected(SSDB.getInstance().getResultUnit(iOwnReport.getResultUnitNr()));
         iResultUnitComboBox.getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyReleased(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
                     iResultUnitComboBox.setSelected(null);
@@ -184,6 +186,7 @@ public class SSOwnReportPanel {
 
 
         new SSDeleteAction(iHeadingTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSOwnReportRow iSelected = iHeadingTableModel.getSelectedRow(iHeadingTable);
 
@@ -200,6 +203,7 @@ public class SSOwnReportPanel {
         };
 
         new SSDeleteAction(iAccountTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSOwnReportAccountRow iSelected = iAccountTableModel.getSelectedRow(iAccountTable);
 

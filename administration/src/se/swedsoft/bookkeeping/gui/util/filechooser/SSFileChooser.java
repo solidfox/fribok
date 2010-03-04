@@ -68,6 +68,7 @@ public class SSFileChooser extends JFileChooser  {
      * @see java.awt.GraphicsEnvironment#isHeadless
      * @see #showDialog
      */
+    @Override
     public int showSaveDialog(Component parent) throws HeadlessException {
         int iResult =  super.showSaveDialog(parent);
 

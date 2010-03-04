@@ -62,6 +62,7 @@ public class SSCurrencyTextField extends JFormattedTextField {
      *
      * @return Last isValid value
      */
+    @Override
     public BigDecimal getValue() {
         Object iValue = super.getValue();
 

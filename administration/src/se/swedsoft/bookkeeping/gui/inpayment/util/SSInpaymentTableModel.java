@@ -47,6 +47,7 @@ public class SSInpaymentTableModel extends SSDefaultTableModel<SSInpayment> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSProduct.class;
     }
@@ -88,6 +89,7 @@ public class SSInpaymentTableModel extends SSDefaultTableModel<SSInpayment> {
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
             case 0:

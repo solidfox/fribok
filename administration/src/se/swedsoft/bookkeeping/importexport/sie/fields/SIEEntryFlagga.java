@@ -27,6 +27,7 @@ public class SIEEntryFlagga extends SIEEntry {
      *
      * @param iReader
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
          if(! iReader.hasNextInteger()){
             throw new SSImportException(SIELabel.SIE_FLAGGA + " Missing parameter");
@@ -43,6 +44,7 @@ public class SIEEntryFlagga extends SIEEntry {
      *
      * @param iWriter
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         iWriter.append(SIELabel.SIE_FLAGGA);
         iWriter.append(0);

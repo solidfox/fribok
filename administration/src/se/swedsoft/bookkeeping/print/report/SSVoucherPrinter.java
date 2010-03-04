@@ -72,6 +72,7 @@ public class SSVoucherPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return iTitle;
     }
@@ -82,6 +83,7 @@ public class SSVoucherPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         iPrinter = new SSVoucherRowPrinter();
         iPrinter.generateReport();
@@ -94,6 +96,7 @@ public class SSVoucherPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSInvoice.class;
             }
@@ -170,6 +173,7 @@ public class SSVoucherPrinter extends SSPrinter {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+                @Override
                 public Class getType() {
                     return SSVoucherRow.class;
                 }
@@ -230,6 +234,7 @@ public class SSVoucherPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -239,6 +244,7 @@ public class SSVoucherPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

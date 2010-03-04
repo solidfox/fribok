@@ -42,6 +42,7 @@ public class SSPercentCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value
      */
+    @Override
     protected void setValue(Object value) {
         NumberFormat format = NumberFormat.getNumberInstance();
         format.setMinimumFractionDigits(iFractionDigits);

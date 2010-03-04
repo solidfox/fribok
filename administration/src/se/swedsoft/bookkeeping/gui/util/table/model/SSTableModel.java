@@ -162,6 +162,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      *
      * @return a string containing the default name of <code>column</code>
      */
+    @Override
     public String getColumnName(int column) {
         // Inside the bounds ?
         if(column >= 0 && column < iColumns.size() ) {
@@ -199,6 +200,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSTableColumn<T> iColumn = iColumns.get(columnIndex);
 
@@ -217,6 +219,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      * @param columnIndex the column being queried
      * @return false
      */
+    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         SSTableColumn<T> iColumn = iColumns.get(columnIndex);
 
@@ -340,6 +343,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
         SSTableColumn iColumn = iColumns.get(columnIndex);
 

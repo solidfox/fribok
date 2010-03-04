@@ -31,6 +31,7 @@ public class SIEEntryOutBalance extends SIEEntry {
      * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         return false;
     }
@@ -44,6 +45,7 @@ public class SIEEntryOutBalance extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 

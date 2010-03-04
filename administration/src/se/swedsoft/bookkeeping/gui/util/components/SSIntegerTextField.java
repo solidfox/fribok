@@ -70,6 +70,7 @@ public class SSIntegerTextField extends JFormattedTextField {
      *
      * @return Last isValid value
      */
+    @Override
     public Integer getValue() {
         Object iValue = super.getValue();
 

@@ -66,6 +66,7 @@ public class SSDocumentPanel {
 
     private class ImagePanel extends JPanel{
 
+         @Override
          protected void paintComponent(Graphics g) {
             g.drawImage(iImage, 1, 1, this);
         }

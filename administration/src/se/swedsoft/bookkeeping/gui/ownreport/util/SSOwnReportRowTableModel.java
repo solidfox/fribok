@@ -30,6 +30,7 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
      *
      * @return
      */
+    @Override
     public SSOwnReportRow newObject() {
         return  new SSOwnReportRow();
     }
@@ -44,29 +45,35 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSOwnReportRow.class;
     }
 
     public static SSTableColumn<SSOwnReportRow> COLUMN_TYPE = new SSTableColumn<SSOwnReportRow>(SSBundle.getBundle().getString("ownreport.headingtable.column.1")) {
+        @Override
         public Object getValue(SSOwnReportRow iObject) {
             return iObject.getType();
         }
 
+        @Override
         public void setValue(SSOwnReportRow iObject, Object iValue) {
             if(iValue instanceof SSHeadingType){
                 iObject.setType((SSHeadingType)iValue);
             }
         }
 
+        @Override
         public Class getColumnClass() {
             return SSHeadingType.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 75;
         }
 
+        @Override
         public TableCellEditor getCellEditor() {
             return new SSHeadingTypeCellEditor();
         }
@@ -74,24 +81,29 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
         /**
          * @return
          */
+        @Override
         public TableCellRenderer getCellRenderer() {
             return new SSHeadingTypeCellRenderer();
         }
     };
 
     public static SSTableColumn<SSOwnReportRow> COLUMN_HEADING = new SSTableColumn<SSOwnReportRow>(SSBundle.getBundle().getString("ownreport.headingtable.column.2")) {
+        @Override
         public Object getValue(SSOwnReportRow iObject) {
             return iObject.getHeading();
         }
 
+        @Override
         public void setValue(SSOwnReportRow iObject, Object iValue) {
             iObject.setHeading((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 300;
         }

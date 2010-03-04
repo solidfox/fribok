@@ -67,6 +67,7 @@ public class SSInventoryBasisPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("inventorybasisreport.title");
     }
@@ -74,6 +75,7 @@ public class SSInventoryBasisPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("image.check", SSImage.getImage("Check.png"));
 
@@ -81,6 +83,7 @@ public class SSInventoryBasisPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

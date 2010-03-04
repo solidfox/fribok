@@ -28,6 +28,7 @@ public class SSTriggerHandler extends Thread implements Trigger {
         }
     }
 
+    @Override
     public void run() {
         try {
             PrintWriter iOut = new PrintWriter(new OutputStreamWriter(iSocket.getOutputStream()), true);

@@ -97,6 +97,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         //System.gc();
     }
 
+    @Override
     public void dispose()
     {
         this.removeAll();

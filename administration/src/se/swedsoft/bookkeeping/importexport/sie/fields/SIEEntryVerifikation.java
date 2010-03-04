@@ -36,6 +36,7 @@ public class SIEEntryVerifikation extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         // #VER serie vernr [verdatum] [vertext] [regdatum]
         if(!iReader.hasFields(STRING, STRING, STRING )) {
@@ -86,6 +87,7 @@ public class SIEEntryVerifikation extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         List<SSVoucher> iVouchers = SSDB.getInstance().getVouchers();
 

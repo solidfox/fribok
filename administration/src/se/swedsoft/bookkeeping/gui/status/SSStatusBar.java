@@ -123,6 +123,7 @@ public class SSStatusBar extends JPanel {
      *
      * @param g the <code>Graphics</code> context in which to paint
      */
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
 
@@ -166,6 +167,7 @@ public class SSStatusBar extends JPanel {
          *
          * @param g the <code>Graphics</code> context in which to paint
          */
+        @Override
         public void paint(Graphics g) {
             g.setColor(cColor1);
             g.drawLine(4, 0 , 4, getHeight() );
@@ -194,6 +196,7 @@ public class SSStatusBar extends JPanel {
          * @param width  the width of the painted border
          * @param height the height of the painted border
          */
+        @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             Color oldColor = g.getColor();
 
@@ -217,6 +220,7 @@ public class SSStatusBar extends JPanel {
          * @param c the component for which this border insets value applies
          * @return the new <code>Insets</code> object initialized to 0
          */
+        @Override
         public Insets getBorderInsets(Component c) {
             return new Insets(2,4,2,12);
         }
@@ -228,6 +232,7 @@ public class SSStatusBar extends JPanel {
          * @param insets the object to be reinitialized
          * @return the <code>insets</code> object
          */
+        @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             insets.left   = 4;
             insets.top    = 2;

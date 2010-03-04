@@ -57,6 +57,7 @@ public class SSOrderPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         addParameter("title.date"     , iBundle.getString("orderreport.title.date") );
         addParameter("title.number"   , iBundle.getString("orderreport.title.number") );
@@ -133,6 +134,7 @@ public class SSOrderPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         final SSPrinter iPrinter = new SSOrderPrinter.SSRowReport(  );
 
@@ -146,6 +148,7 @@ public class SSOrderPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSOrder> iModel = new SSDefaultTableModel<SSOrder>(  ) {
 
+            @Override
             public Class getType() {
                 return SSOrder.class;
             }
@@ -190,9 +193,11 @@ public class SSOrderPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             SSDefaultTableModel<SSSaleRow> iModel = new SSDefaultTableModel<SSSaleRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -248,6 +253,7 @@ public class SSOrderPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

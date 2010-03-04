@@ -89,6 +89,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
@@ -182,6 +183,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return The main content for this frame.
      */
+    @Override
     public JComponent getMainContent() {
         iDatabase = SSBackupDatabase.getInstance();
 
@@ -215,6 +217,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -268,6 +271,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return boolean
      */
+    @Override
     public boolean isCompanyFrame() {
         return false;
     }
@@ -276,6 +280,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return boolean
      */
+    @Override
     public boolean isYearDataFrame() {
         return false;
     }

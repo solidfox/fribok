@@ -98,6 +98,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
@@ -298,6 +299,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      * @return The main content for this frame.
      */
+    @Override
     public JComponent getMainContent() {
         iTable = new SSTable();
 
@@ -350,6 +352,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -359,6 +362,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isCompanyFrame() {
         return true;
     }
@@ -368,6 +372,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isYearDataFrame() {
         return true;
     }
@@ -461,6 +466,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
             iRenderer = new SSVoucherCellRenderer();
         }
 
+        @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             if(value != null){
                 final SSVoucher iVoucher   = (SSVoucher)value;
@@ -496,6 +502,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
             return super.getTableCellEditorComponent(table, value, isSelected, row, column);
         }
 
+        @Override
         public boolean isCellEditable(EventObject anEvent) {
             return true;
         }
@@ -508,6 +515,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
             super();
         }
 
+        @Override
         protected void setValue(Object value) {
             if(value != null){
                 SSVoucher iVoucher = (SSVoucher)value;

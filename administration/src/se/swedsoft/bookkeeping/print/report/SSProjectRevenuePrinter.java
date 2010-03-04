@@ -58,6 +58,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("projectrevenue.title");
     }
@@ -65,6 +66,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iDateFrom );
         addParameter("dateTo"  , iDateTo    );
@@ -78,6 +80,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
         SSDefaultTableModel<SSNewProject> iModel = new SSDefaultTableModel<SSNewProject>() {
+            @Override
             public Class getType() {
                 return SSNewProject.class;
             }
@@ -215,6 +218,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<SSMonth>( SSMonth.splitYearIntoMonths(iFrom,iTo) ) {
 
+                @Override
                 public Class getType() {
                     return SSMonth.class;
                 }
@@ -257,6 +261,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -266,6 +271,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

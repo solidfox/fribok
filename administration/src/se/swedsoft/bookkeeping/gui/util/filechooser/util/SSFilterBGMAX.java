@@ -21,6 +21,7 @@ public class SSFilterBGMAX extends SSFileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return SSFilterBGMAX.bundle.getString("filechooser.bgmax.filter");
     }

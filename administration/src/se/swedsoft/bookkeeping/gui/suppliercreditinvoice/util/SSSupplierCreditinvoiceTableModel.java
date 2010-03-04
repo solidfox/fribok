@@ -30,6 +30,7 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSSupplierCreditInvoice.class;
     }
@@ -39,16 +40,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      * Supplier nr
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_NUMBER = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.1")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getNumber();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -58,16 +63,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      * Crediting
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_CREDITNING = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.9")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getCreditingNr();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -77,16 +86,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      * Supplier nr
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_SUPPLIER_NUMBER = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.2")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getSupplierNr();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -96,16 +109,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      * Supplier name
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_SUPPLIER_NAME = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.3")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getSupplierName();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -116,16 +133,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      * Supplier name
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_DATE = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.4")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getDate();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -135,16 +156,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      * Supplier name
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_DUEDATE = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.5")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getDueDate();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -154,16 +179,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      *
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_NETSUM = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.6")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return SSSupplierInvoiceMath.getNetSum(iObject);
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -174,16 +203,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      *
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_CURRENCY = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.7")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return iObject.getCurrency();
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 50;
         }
@@ -193,16 +226,20 @@ public class SSSupplierCreditinvoiceTableModel extends SSTableModel<SSSupplierCr
      *
      */
     public static SSTableColumn<SSSupplierCreditInvoice> COLUMN_TOTALSUM = new SSTableColumn<SSSupplierCreditInvoice>(SSBundle.getBundle().getString("suppliercreditinvoicetable.column.8")) {
+        @Override
         public Object getValue(SSSupplierCreditInvoice iObject) {
             return SSSupplierInvoiceMath.getTotalSum(iObject);
         }
 
+        @Override
         public void setValue(SSSupplierCreditInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 90;
         }

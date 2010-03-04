@@ -35,6 +35,7 @@ public class SSCompanyPageTax extends SSCompanyPage{
      *
      * @return the name and title
      */
+    @Override
     public String getName() {
         return SSBundle.getBundle().getString("companyframe.pages.tax");
     }
@@ -43,6 +44,7 @@ public class SSCompanyPageTax extends SSCompanyPage{
      *
      * @return the panel
      */
+    @Override
     public JPanel getPanel() {
         return iPanel;
     }
@@ -52,6 +54,7 @@ public class SSCompanyPageTax extends SSCompanyPage{
      *
      * @param iCompany
      */
+    @Override
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
 
@@ -65,6 +68,7 @@ public class SSCompanyPageTax extends SSCompanyPage{
      *
      * @return the company
      */
+    @Override
     public SSNewCompany getCompany() {
         iCompany.setTaxrate1( iTaxRate1.getValue() );
         iCompany.setTaxrate2( iTaxRate2.getValue() );
@@ -81,6 +85,7 @@ public class SSCompanyPageTax extends SSCompanyPage{
         });
 
         iTaxRate1.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -93,6 +98,7 @@ public class SSCompanyPageTax extends SSCompanyPage{
         });
 
         iTaxRate2.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {

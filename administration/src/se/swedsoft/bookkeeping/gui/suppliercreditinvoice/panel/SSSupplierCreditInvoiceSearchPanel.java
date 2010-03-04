@@ -41,6 +41,7 @@ public class SSSupplierCreditInvoiceSearchPanel extends JPanel {
 
 
         iTextField.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(KeyEvent e) {
                 ApplyFilter();
             }

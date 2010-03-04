@@ -70,6 +70,7 @@ public class SSVATReport2007Printer extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("vatreport2007.title");
     }
@@ -220,6 +221,7 @@ public class SSVATReport2007Printer extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iDateFrom );
         addParameter("dateTo"  , iDateTo);
@@ -235,6 +237,7 @@ public class SSVATReport2007Printer extends SSPrinter {
 
         SSDefaultTableModel<String> iModel = new SSDefaultTableModel<String>() {
 
+            @Override
             public Class getType() {
                 return String.class;
             }
@@ -293,6 +296,7 @@ public class SSVATReport2007Printer extends SSPrinter {
 
             iModel = new SSDefaultTableModel<Integer>(  ) {
 
+                @Override
                 public Class getType() {
                     return Integer.class;
                 }
@@ -332,6 +336,7 @@ public class SSVATReport2007Printer extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -341,6 +346,7 @@ public class SSVATReport2007Printer extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

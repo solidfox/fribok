@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class SSCurrencyCellRenderer extends DefaultTableCellRenderer {
 
 
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSCurrency){
             SSCurrency iCurrency = (SSCurrency) value;

@@ -46,6 +46,7 @@ public class SSSupplierListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("supplierlistreport.title");
     }
@@ -53,6 +54,7 @@ public class SSSupplierListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
 
@@ -60,6 +62,7 @@ public class SSSupplierListPrinter extends SSPrinter {
         SSDefaultTableModel<SSSupplier> iModel = new SSDefaultTableModel<SSSupplier>() {
 
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

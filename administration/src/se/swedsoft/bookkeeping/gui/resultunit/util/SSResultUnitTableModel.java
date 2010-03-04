@@ -32,6 +32,7 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSNewResultUnit.class;
     }
@@ -70,19 +71,23 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
      *  Nummer
      */
     public static SSTableColumn<SSNewResultUnit> COLUMN_NUMBER = new SSTableColumn<SSNewResultUnit>(SSBundle.getBundle().getString("resultunittable.column.1")) {
+        @Override
         public Object getValue(SSNewResultUnit iResultUnit) {
             return iResultUnit.getNumber();
         }
 
+        @Override
         public void setValue(SSNewResultUnit iResultUnit, Object iValue) {
             iResultUnit.setNumber((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }
@@ -92,19 +97,23 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
      *  Nummer
      */
     public static SSTableColumn<SSNewResultUnit> COLUMN_NAME = new SSTableColumn<SSNewResultUnit>(SSBundle.getBundle().getString("resultunittable.column.2")) {
+        @Override
         public Object getValue(SSNewResultUnit iResultUnit) {
             return iResultUnit.getName();
         }
 
+        @Override
         public void setValue(SSNewResultUnit iResultUnit, Object iValue) {
             iResultUnit.setName((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }
@@ -114,19 +123,23 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
      *  Beskrivning
      */
     public static SSTableColumn<SSNewResultUnit> COLUMN_DESCRIPTION = new SSTableColumn<SSNewResultUnit>(SSBundle.getBundle().getString("resultunittable.column.3")) {
+        @Override
         public Object getValue(SSNewResultUnit iResultUnit) {
             return iResultUnit.getDescription();
         }
 
+        @Override
         public void setValue(SSNewResultUnit iResultUnit, Object iValue) {
             iResultUnit.setDescription((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 400;
         }

@@ -53,6 +53,7 @@ public class SSPickingslipPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         addParameter("title.date"     , iBundle.getString("pickingslipreport.title.date") );
         addParameter("title.number"   , iBundle.getString("pickingslipreport.title.number") );
@@ -112,6 +113,7 @@ public class SSPickingslipPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         final SSPrinter iPrinter = new SSPickingslipPrinter.SSRowReport(  );
 
@@ -125,6 +127,7 @@ public class SSPickingslipPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSOrder> iModel = new SSDefaultTableModel<SSOrder>(  ) {
 
+            @Override
             public Class getType() {
                 return SSOrder.class;
             }
@@ -170,11 +173,13 @@ public class SSPickingslipPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             final List<SSProduct> iProducts = SSDB.getInstance().getProducts();
 
             SSDefaultTableModel<SSSaleRow> iModel = new SSDefaultTableModel<SSSaleRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -262,6 +267,7 @@ public class SSPickingslipPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

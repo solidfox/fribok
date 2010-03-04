@@ -36,6 +36,7 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSIndelivery.class;
     }
@@ -46,18 +47,22 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
      *  Inventerings nummer
      */
     public static SSTableColumn<SSIndelivery> COLUMN_NUMBER = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.1")) {
+        @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return iIndelivery.getNumber();
         }
 
+        @Override
         public void setValue(SSIndelivery iInvoice, Object iValue) {
             iInvoice.setNumber((Integer)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -67,18 +72,22 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
      * Datum
      */
     public static SSTableColumn<SSIndelivery> COLUMN_DATE = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.2")) {
+        @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return iIndelivery.getDate();
         }
 
+        @Override
         public void setValue(SSIndelivery iIndelivery, Object iValue) {
             iIndelivery.setDate((Date)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -88,18 +97,22 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
      * Text
      */
     public static SSTableColumn<SSIndelivery> COLUMN_TEXT = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.3")) {
+        @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return iIndelivery.getText();
         }
 
+        @Override
         public void setValue(SSIndelivery iIndelivery, Object iValue) {
             iIndelivery.setText((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 400;
         }
@@ -111,18 +124,22 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
      * Totalt antal
      */
     public static SSTableColumn<SSIndelivery> COLUMN_TOTALCOUNT = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.4")) {
+        @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return SSIndeliveryMath.getTotalCount(iIndelivery);
         }
 
+        @Override
         public void setValue(SSIndelivery iIndelivery, Object iValue) {
             iIndelivery.setText((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 120;
         }

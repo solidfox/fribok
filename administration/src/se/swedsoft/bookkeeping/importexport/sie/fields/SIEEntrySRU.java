@@ -28,6 +28,7 @@ public class SIEEntrySRU extends SIEEntry {
      * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
@@ -65,6 +66,7 @@ public class SIEEntrySRU extends SIEEntry {
      * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter,SSNewAccountingYear iYearData) throws SSExportException {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();

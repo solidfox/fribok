@@ -63,6 +63,7 @@ public class SSEditAccountingYearDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 SSPostLock.removeLock(pAccountingYear.getId());
             }

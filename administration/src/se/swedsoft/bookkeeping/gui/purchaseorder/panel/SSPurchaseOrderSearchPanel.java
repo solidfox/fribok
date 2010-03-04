@@ -41,6 +41,7 @@ public class SSPurchaseOrderSearchPanel extends JPanel {
 
 
         iTextField.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(KeyEvent e) {
                 ApplyFilter(SSDB.getInstance().getPurchaseOrders());
             }

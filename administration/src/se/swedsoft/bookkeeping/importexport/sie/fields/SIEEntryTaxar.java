@@ -31,6 +31,7 @@ public class SIEEntryTaxar extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #TAXAR taxeringsår
@@ -60,6 +61,7 @@ public class SIEEntryTaxar extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
 
         if( iCurrentYearData != null && iCurrentYearData.getAccountPlan() != null){

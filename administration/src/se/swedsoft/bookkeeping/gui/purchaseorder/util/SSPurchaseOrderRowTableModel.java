@@ -35,6 +35,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSPurchaseOrderRow.class;
     }
@@ -49,6 +50,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * @return the number of rows in the model
      * @see #getColumnCount
      */
+    @Override
     public int getRowCount() {
         return super.getRowCount() + 1;
     }
@@ -60,6 +62,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * @param row The row to get the object from.
      * @return An Object.
      */
+    @Override
     public SSPurchaseOrderRow getObject(int row) {
         if( row == super.getRowCount()){
             return iEditing;
@@ -77,6 +80,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
@@ -93,6 +97,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Number column
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_PRODUCT = new SSTableColumn<SSPurchaseOrderRow>("Produkt nr") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             SSProduct iProduct = iObject.getProduct(SSDB.getInstance().getProducts());
 
@@ -100,6 +105,7 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
 
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
             if(iValue instanceof SSProduct){
                 iObject.setProduct((SSProduct)iValue);
@@ -113,10 +119,12 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
 
         }
 
+        @Override
         public Class getColumnClass() {
             return SSProduct.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -126,10 +134,12 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Date column
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_DESCRIPTION = new SSTableColumn<SSPurchaseOrderRow>("Beskrivning") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getDescription();
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
             iObject.setDescription((String)iValue);
 
@@ -138,10 +148,12 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
             if(iObject.getUnit()    == null) iObject.setUnit   ( iCompany.getStandardUnit() );
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -152,17 +164,21 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Supplier name
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_SUPPLIER_ARTICLE_NR = new SSTableColumn<SSPurchaseOrderRow>("Lev art nr") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getSupplierArticleNr();
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
             iObject.setSupplierArticleNr((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -172,17 +188,21 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Supplier nr
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_UNITPRICE = new SSTableColumn<SSPurchaseOrderRow>("Inköpspris") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getUnitPrice();
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
             iObject.setUnitPrice((BigDecimal)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -193,17 +213,21 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Supplier nr
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_QUANTITY = new SSTableColumn<SSPurchaseOrderRow>("Antal") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getQuantity();
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
             iObject.setQuantity((Integer)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -214,17 +238,21 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Supplier nr
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_UNIT = new SSTableColumn<SSPurchaseOrderRow>("Enhet") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getUnit();
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
             iObject.setUnit((SSUnit)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSUnit.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 60;
         }
@@ -235,16 +263,20 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
      * Supplier nr
      */
     public static SSTableColumn<SSPurchaseOrderRow> COLUMN_SUM = new SSTableColumn<SSPurchaseOrderRow>("Summa") {
+        @Override
         public Object getValue(SSPurchaseOrderRow iObject) {
             return iObject.getSum();
         }
 
+        @Override
         public void setValue(SSPurchaseOrderRow iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 100;
         }

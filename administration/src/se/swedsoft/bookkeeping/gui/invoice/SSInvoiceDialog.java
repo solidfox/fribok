@@ -74,6 +74,7 @@ public class SSInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     return;
@@ -133,6 +134,7 @@ public class SSInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     SSPostLock.removeLock(lockString);
@@ -205,6 +207,7 @@ public class SSInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     return;
@@ -288,6 +291,7 @@ public class SSInvoiceDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     SSPostLock.removeLock(lockString);

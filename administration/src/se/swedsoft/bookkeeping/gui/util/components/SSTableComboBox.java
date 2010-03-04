@@ -146,6 +146,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
         };
         // Listener for textfield
         iTextField.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyReleased(KeyEvent e) {
                 // Dont do anything if disabled
                 if(!isEnabled()) return;
@@ -212,9 +213,11 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
      */
     private SSTableModel<T> createDefaultModel() {
         return new SSTableModel<T>() {
+            @Override
             public Class getType() {
                 return null;
             }
+            @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
                 return null;
             }
@@ -515,6 +518,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
      *         was enabled
      * @since 1.3
      */
+    @Override
     protected boolean processKeyBinding(KeyStroke ks, KeyEvent e, int condition, boolean pressed) {
         super.processKeyBinding(ks, e, condition, pressed);
 
@@ -562,6 +566,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
      *
      * @param enabled
      */
+    @Override
     public void setEnabled(boolean enabled) {
         iTextField     .setEditable(enabled);
         iDropdownButton.setEnabled (enabled);
@@ -774,6 +779,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
          * @return true if editing can be started
          * @see #shouldSelectCell
          */
+        @Override
         public boolean isCellEditable(EventObject anEvent) {
             if (anEvent instanceof MouseEvent) {
                 return ((MouseEvent)anEvent).getClickCount() >= 2;
@@ -798,6 +804,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
          * otherwise returns false
          * @see #isCellEditable
          */
+        @Override
         public boolean shouldSelectCell(EventObject anEvent) {
             return true;
         }
@@ -815,6 +822,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
          *
          * @return
          */
+        @Override
         public boolean stopCellEditing() {
             iComboBox.iPopup.setVisible(false);
             fireEditingStopped();
@@ -824,6 +832,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
         /**
          *
          */
+        @Override
         public void cancelCellEditing() {
             iComboBox.iPopup.setVisible(false);
             fireEditingCanceled();

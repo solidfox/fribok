@@ -44,6 +44,7 @@ public class LBinPostTK54 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("54");
         iLine.append( iPlusGiro , 10, '0'     ); // 3 => 12  : Plusgiro
@@ -58,6 +59,7 @@ public class LBinPostTK54 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iPlusGiro  = iLine.readString    (3 , 12          ); // 3 => 12  : Plusgiro
         iReference = iLine.readString    (13, 37          ); // 13 => 37: Referens

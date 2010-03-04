@@ -34,6 +34,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSAccount.class;
     }
@@ -76,6 +77,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSAccount iAccount = getObject(rowIndex);
 
@@ -96,6 +98,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
 
         switch (columnIndex) {
@@ -117,6 +120,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
      * @param columnIndex the column being queried
      * @return false
      */
+    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return columnIndex == 2;
     }

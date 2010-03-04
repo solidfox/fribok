@@ -33,6 +33,7 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      *
      * @return
      */
+    @Override
     public SSSaleRow newObject() {
         return  new SSSaleRow();
     }
@@ -43,6 +44,7 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSSaleRow.class;
     }
@@ -57,12 +59,14 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Product column
      */
     public static SSTableColumn<SSSaleRow> COLUMN_PRODUCT = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.1")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             SSProduct iProduct = iObject.getProduct(SSDB.getInstance().getProducts());
 
             return iProduct != null ? iProduct : iObject.getProductNr();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             if(iValue instanceof SSProduct){
                 iObject.setProduct((SSProduct)iValue);
@@ -97,10 +101,12 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
             }
         }
 
+        @Override
         public Class getColumnClass() {
             return SSProduct.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -110,10 +116,12 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Description column
      */
     public static SSTableColumn<SSSaleRow> COLUMN_DESCRIPTION = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.2")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getDescription();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setDescription((String)iValue);
 
@@ -123,10 +131,12 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
             if(iObject.getUnit()    == null) iObject.setUnit    ( iCompany.getStandardUnit() );
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -137,18 +147,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Unit price
      */
     public static SSTableColumn<SSSaleRow> COLUMN_UNITPRICE = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.3")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getUnitprice();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setUnitprice((BigDecimal)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -162,18 +176,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Quantity
      */
     public static SSTableColumn<SSSaleRow> COLUMN_QUANTITY = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.4")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getQuantity();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setQuantity((Integer)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 60;
         }
@@ -183,18 +201,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Quantity
      */
     public static SSTableColumn<SSSaleRow> COLUMN_UNIT = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.5")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getUnit();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setUnit((SSUnit)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSUnit.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 40;
         }
@@ -204,18 +226,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Sum
      */
     public static SSTableColumn<SSSaleRow> COLUMN_DISCOUNT = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.6")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getDiscount();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setDiscount((BigDecimal)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -226,18 +252,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Sum
      */
     public static SSTableColumn<SSSaleRow> COLUMN_SUM = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.7")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getSum();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
 
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -247,18 +277,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Moms
      */
     public static SSTableColumn<SSSaleRow> COLUMN_TAX = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.8")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getTaxCode();
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setTaxCode((SSTaxCode)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSTaxCode.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -269,10 +303,12 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Account
      */
     public static SSTableColumn<SSSaleRow> COLUMN_ACCOUNT = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.9")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getAccount( SSDB.getInstance().getAccounts() );
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             if(iValue instanceof SSAccount){
                 iObject.setAccount((SSAccount)iValue);
@@ -280,10 +316,12 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
 
         }
 
+        @Override
         public Class getColumnClass() {
             return SSAccount.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 60;
         }
@@ -293,18 +331,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Account
      */
     public static SSTableColumn<SSSaleRow> COLUMN_RESULTUNIT = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.10")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getResultUnit( SSDB.getInstance().getResultUnits() );
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setResultUnit((SSNewResultUnit)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSNewResultUnit.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -314,18 +356,22 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
      * Project
      */
     public static SSTableColumn<SSSaleRow> COLUMN_PROJECT = new SSTableColumn<SSSaleRow>(SSBundle.getBundle().getString("salerowtable.column.11")) {
+        @Override
         public Object getValue(SSSaleRow iObject) {
             return iObject.getProject( SSDB.getInstance().getProjects() );
         }
 
+        @Override
         public void setValue(SSSaleRow iObject, Object iValue) {
             iObject.setProject((SSNewProject)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return SSNewProject.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }

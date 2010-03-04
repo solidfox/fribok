@@ -33,6 +33,7 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSPeriodicInvoice.class;
     }
@@ -42,19 +43,23 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      * Number column
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_NUMBER = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("periodicinvoicetable.column.1")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iObject) {
             return iObject.getNumber();
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iObject, Object iValue) {
             iObject.setNumber((Integer)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -64,19 +69,23 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      * Description column
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_DESCRIPTION = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("periodicinvoicetable.column.2")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iObject) {
             return iObject.getDescription();
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iObject, Object iValue) {
             iObject.setDescription((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 250;
         }
@@ -86,19 +95,23 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      * Date column
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_DATE = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("periodicinvoicetable.column.3")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iObject) {
             return iObject.getDate();
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iObject, Object iValue) {
             iObject.setDate((Date)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -108,6 +121,7 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      * Date column
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_NEXT = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("periodicinvoicetable.column.4")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iObject) {
             Date iNext = iObject.getNextDate();
 
@@ -116,13 +130,16 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
             return iNext != null ? iFormat.format(iNext) : SSBundle.getBundle().getString("periodicinvoiceframe.concluded");
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -133,17 +150,21 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      *  Kund nummer
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_CUSTOMER_NR = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("invoicetable.column.3")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iInvoice) {
             return iInvoice.getTemplate().getCustomerNr();
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -152,17 +173,21 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      *  Kund namn
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_CUSTOMER_NAME = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("invoicetable.column.4")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iInvoice) {
             return iInvoice.getTemplate().getCustomerName();
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 150;
         }
@@ -173,17 +198,21 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      * Total summa
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_TOTAL_SUM = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("invoicetable.column.10")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iInvoice) {
             return SSInvoiceMath.getTotalSum(iInvoice.getTemplate());
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 90;
         }
@@ -194,17 +223,21 @@ public class SSPeriodicInvoiceTableModel extends SSTableModel<SSPeriodicInvoice>
      * Valuta
      */
     public static SSTableColumn<SSPeriodicInvoice> COLUMN_CURRENCY = new SSTableColumn<SSPeriodicInvoice>(SSBundle.getBundle().getString("invoicetable.column.8")) {
+        @Override
         public Object getValue(SSPeriodicInvoice iInvoice) {
             return iInvoice.getTemplate().getCurrency();
         }
 
+        @Override
         public void setValue(SSPeriodicInvoice iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 50;
         }

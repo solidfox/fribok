@@ -16,6 +16,7 @@ public class SSAccountCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value
      */
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSAccount){
             SSAccount iAccount = (SSAccount) value;

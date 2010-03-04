@@ -25,6 +25,7 @@ public class SSAccountPlanTypeModel extends SSTableModel<SSAccountPlanType> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSAccountPlanType.class;
     }
@@ -45,18 +46,22 @@ public class SSAccountPlanTypeModel extends SSTableModel<SSAccountPlanType> {
      * Namn
      */
     public static SSTableColumn<SSAccountPlanType> COLUMN_NAME = new SSTableColumn<SSAccountPlanType>("") {
+        @Override
         public Object getValue(SSAccountPlanType iAccountPlanType) {
             return iAccountPlanType.getName();
         }
 
+        @Override
         public void setValue(SSAccountPlanType iAccountPlanType, Object iValue) {
             iAccountPlanType.setName((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 300;
         }

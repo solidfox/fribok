@@ -41,6 +41,7 @@ public class LBinPostTK29 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("29");
         iLine.append( iBankGiroNr           , 10, '0'      ); // 3 => 12 : Avsändarens bankgiro nr
@@ -54,6 +55,7 @@ public class LBinPostTK29 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iBankGiroNr = iLine.readString    (3 , 12); // 3 => 12 : Avsändarens bankgiro nr
         iSize       = iLine.readInteger   (13, 20); // 13 => 20: Antal poster

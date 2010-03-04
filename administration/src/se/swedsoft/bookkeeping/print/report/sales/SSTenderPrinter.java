@@ -58,6 +58,7 @@ public class SSTenderPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         addParameter("title.date"     , iBundle.getString("tenderreport.title.date") );
         addParameter("title.number"   , iBundle.getString("tenderreport.title.number") );
@@ -132,6 +133,7 @@ public class SSTenderPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         final SSPrinter iPrinter = new SSTenderPrinter.SSRowReport(  );
 
@@ -145,6 +147,7 @@ public class SSTenderPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSTender> iModel = new SSDefaultTableModel<SSTender>(  ) {
 
+            @Override
             public Class getType() {
                 return SSTender.class;
             }
@@ -191,9 +194,11 @@ public class SSTenderPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             SSDefaultTableModel<SSSaleRow> iModel = new SSDefaultTableModel<SSSaleRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -249,6 +254,7 @@ public class SSTenderPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

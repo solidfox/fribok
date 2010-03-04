@@ -130,6 +130,7 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
      * @param e an event object
      * @return true
      */
+    @Override
     public boolean isCellEditable(EventObject e) {
         if (e instanceof MouseEvent) {
             MouseEvent iMouseEvent = (MouseEvent) e;

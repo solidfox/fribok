@@ -38,6 +38,7 @@ public class SIEEntryObjekt extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
 
         // The standard says STRING, INT, STRING STING, but as we only supports integer values
@@ -92,6 +93,7 @@ public class SIEEntryObjekt extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         List<SSNewResultUnit> iResultUnits = SSDB.getInstance().getResultUnits();
         List<SSNewProject   > iProjects    = SSDB.getInstance().getProjects();

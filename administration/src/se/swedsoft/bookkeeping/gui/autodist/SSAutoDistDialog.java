@@ -78,6 +78,7 @@ public class SSAutoDistDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
 
                 if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "autodistframe.saveonclose") != JOptionPane.OK_OPTION){
@@ -142,6 +143,7 @@ public class SSAutoDistDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
 
                 if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "autodistframe.saveonclose") != JOptionPane.OK_OPTION) {
@@ -197,6 +199,7 @@ public class SSAutoDistDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
 
                 if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "autodistframe.saveonclose") != JOptionPane.OK_OPTION){

@@ -32,6 +32,7 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
      *
      * @return
      */
+    @Override
     public SSOwnReportAccountRow newObject() {
         return  new SSOwnReportAccountRow();
     }
@@ -41,6 +42,7 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSOwnReportAccountRow.class;
     }
@@ -50,22 +52,27 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
      * Account column
      */
     public static SSTableColumn<SSOwnReportAccountRow> COLUMN_ACCOUNT = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.1")) {
+        @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
             return iObject.getAccount() == null ? "" : (iObject.getAccount().getNumber() == null ? "" : iObject.getAccount().getNumber().toString());
         }
 
+        @Override
         public void setValue(SSOwnReportAccountRow iObject, Object iValue) {
             iObject.setAccount((SSAccount)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 75;
         }
 
+        @Override
         public TableCellEditor getCellEditor() {
             return new SSAccountCellEditor();
         }
@@ -75,17 +82,21 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
      * Description column
      */
     public static SSTableColumn<SSOwnReportAccountRow> COLUMN_DESCRIPTION = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.2")) {
+        @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
             return iObject.getAccount() == null ? null : iObject.getAccount().getDescription();
         }
 
+        @Override
         public void setValue(SSOwnReportAccountRow iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 300;
         }
@@ -96,6 +107,7 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
      * Unit price
      */
     public static SSTableColumn<SSOwnReportAccountRow> COLUMN_BUDGET = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.3")) {
+        @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
             BigDecimal iSum = new BigDecimal(0);
 
@@ -107,14 +119,17 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
 
         }
 
+        @Override
         public void setValue(SSOwnReportAccountRow iObject, Object iValue) {
             iObject.setYearBudget((BigDecimal) iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }

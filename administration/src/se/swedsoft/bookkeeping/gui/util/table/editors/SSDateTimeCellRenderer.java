@@ -35,6 +35,7 @@ public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value The value to format.
      */
+    @Override
     public void setValue(Object value) {
         if(value == null){
             setText("");

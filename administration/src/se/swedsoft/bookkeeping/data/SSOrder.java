@@ -71,6 +71,7 @@ public class SSOrder extends SSSale {
         }
     }
 
+    @Override
     public void setCustomer(SSCustomer iCustomer){
         super.setCustomer(iCustomer);
         this.iCurrencyRate = this.iCurrency.getExchangeRate();
@@ -134,6 +135,7 @@ public class SSOrder extends SSSale {
     /**
      * Sets the number of this sale as the maxinum mumber + 1
      */
+    @Override
     public void doAutoIncrecement() {
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 

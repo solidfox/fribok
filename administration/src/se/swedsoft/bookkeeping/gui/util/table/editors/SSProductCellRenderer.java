@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class SSProductCellRenderer extends DefaultTableCellRenderer {
 
 
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSProduct){
             SSProduct iProduct = (SSProduct) value;

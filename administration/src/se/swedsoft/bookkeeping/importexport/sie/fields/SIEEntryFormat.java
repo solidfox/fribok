@@ -22,6 +22,7 @@ public class SIEEntryFormat extends SIEEntry  {
      *
      * @param iReader
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         String iFormat = iReader.next();
 
@@ -36,6 +37,7 @@ public class SIEEntryFormat extends SIEEntry  {
      *
      * @param iWriter
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iYear) throws SSExportException {
         iWriter.append(SIELabel.SIE_FORMAT);
         iWriter.append("PC8");

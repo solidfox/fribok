@@ -19,6 +19,7 @@ public class SSFilterTXT extends SSFileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return SSFilterTXT.bundle.getString("filechooser.txt.filter");
     }

@@ -23,6 +23,7 @@ public class SIEEntryGenererat extends SIEEntry {
      *
      * @param iReader
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         return true;
     }
@@ -32,6 +33,7 @@ public class SIEEntryGenererat extends SIEEntry {
      *
      * @param iWriter
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iYear) throws SSExportException {
         iWriter.append(SIELabel.SIE_GEN);
         iWriter.append( new Date() );

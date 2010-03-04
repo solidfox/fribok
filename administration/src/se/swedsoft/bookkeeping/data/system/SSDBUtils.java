@@ -378,6 +378,7 @@ public class SSDBUtils {
          * This function is to make the database forward compatible
          *
          */
+        @Override
         protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
 
             // This is the old SSStandardText class

@@ -73,6 +73,7 @@ public class SSInventoryDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
                 if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "inventoryframe.saveonclose") != JOptionPane.OK_OPTION){
                     return;
@@ -129,6 +130,7 @@ public class SSInventoryDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
                 if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "inventoryframe.saveonclose") != JOptionPane.OK_OPTION){
                     SSPostLock.removeLock(lockString);

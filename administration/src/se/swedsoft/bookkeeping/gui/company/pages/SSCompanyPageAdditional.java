@@ -64,6 +64,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
     /**
      * @return the name and title
      */
+    @Override
     public String getName() {
         return SSBundle.getBundle().getString("companyframe.pages.additional");
     }
@@ -71,6 +72,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
     /**
      * @return the panel
      */
+    @Override
     public JPanel getPanel() {
         return iPanel;
     }
@@ -80,6 +82,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
      *
      * @param iCompany
      */
+    @Override
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
 
@@ -115,6 +118,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
      *
      * @return the company
      */
+    @Override
     public SSNewCompany getCompany() {
         iCompany.setPhone(iPhone.getText());
         iCompany.setPhone2(iPhone2.getText());
@@ -156,6 +160,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
 
 
         iContactPerson.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -168,6 +173,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iPhone.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -180,6 +186,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iPhone2.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -192,6 +199,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iTelefax.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -204,6 +212,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iEMail.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -217,6 +226,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
 
 
         iWebAddress.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -256,6 +266,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
 //        });
 
         iBank.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -268,6 +279,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iBankGiroNumber.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -280,6 +292,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iPlusGiroNumber.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -292,6 +305,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
         iSwiftCode.addKeyListener(new KeyAdapter() {
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {

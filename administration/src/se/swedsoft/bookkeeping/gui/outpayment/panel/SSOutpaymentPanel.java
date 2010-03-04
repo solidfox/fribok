@@ -93,6 +93,7 @@ public class SSOutpaymentPanel {
         iTable.setSingleSelect();
 
         iVoucherTableModel = new SSVoucherRowTableModelOld(false, true){
+            @Override
             public int getColumnCount() {
                 // Hide the project and result unit columns
                 return 4;
@@ -104,6 +105,7 @@ public class SSOutpaymentPanel {
         SSVoucherRowTableModelOld.setupTable(iVoucherTable, iVoucherTableModel);
 
         iDifferenceTableModel = new SSVoucherRowTableModelOld(false, false){
+            @Override
             public int getColumnCount() {
                 // Hide the project and result unit columns
                 return 4;
@@ -114,6 +116,7 @@ public class SSOutpaymentPanel {
         SSVoucherRowTableModelOld.setupTable(iDifferenceTable, iDifferenceTableModel);
 
         new SSTraversalAction(iTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 2) {
                     iPosition.x = 3;
@@ -137,6 +140,7 @@ public class SSOutpaymentPanel {
         };
 
         new SSDeleteAction(iTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSOutpaymentRow iSelected = iModel.getSelectedRow(iTable);
 
@@ -153,6 +157,7 @@ public class SSOutpaymentPanel {
         };
 
         new SSDeleteAction(iDifferenceTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSVoucherRow iSelected = iDifferenceTableModel.getSelectedRow(iDifferenceTable);
 
@@ -165,6 +170,7 @@ public class SSOutpaymentPanel {
         };
 
         new SSTraversalAction(iDifferenceTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
 
                 if (iPosition.x == 0) {
@@ -213,6 +219,7 @@ public class SSOutpaymentPanel {
         });
 
         iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -225,6 +232,7 @@ public class SSOutpaymentPanel {
         });
 
         iText.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -238,6 +246,7 @@ public class SSOutpaymentPanel {
         });
 
         iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -250,6 +259,7 @@ public class SSOutpaymentPanel {
         });
 
         iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {

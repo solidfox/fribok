@@ -52,6 +52,7 @@ public class SSCustomerListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("customerlistreport.title");
     }
@@ -59,6 +60,7 @@ public class SSCustomerListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
 
@@ -66,6 +68,7 @@ public class SSCustomerListPrinter extends SSPrinter {
         SSDefaultTableModel<SSCustomer> iModel = new SSDefaultTableModel<SSCustomer>() {
 
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }

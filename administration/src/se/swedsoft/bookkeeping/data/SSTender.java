@@ -77,6 +77,7 @@ public class SSTender extends SSSale {
     /**
      * Sets the number of this sale as the maxinum mumber + 1
      */
+    @Override
     public void doAutoIncrecement() {
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 

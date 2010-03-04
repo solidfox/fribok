@@ -49,6 +49,7 @@ public class SSSupplierdebtPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return iBundle.getString("supplierdebtreport.title");
     }
@@ -56,6 +57,7 @@ public class SSSupplierdebtPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         // Get all invoices
         List<SSSupplierInvoice> iInvoices = new LinkedList<SSSupplierInvoice>( iSaldos.keySet() );
@@ -72,6 +74,7 @@ public class SSSupplierdebtPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSSupplierInvoice.class;
             }

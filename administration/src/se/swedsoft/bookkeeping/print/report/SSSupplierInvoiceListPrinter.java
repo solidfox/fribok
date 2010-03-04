@@ -58,6 +58,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("supplierinvoicelistreport.title");
     }
@@ -65,6 +66,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         iPrinter = new SSSupplierInvoiceListPrinter.SSInvoiceRowPrinter();
@@ -79,6 +81,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -176,6 +179,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
 
             iModel = new SSDefaultTableModel<SSSupplierInvoiceRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -223,6 +227,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -232,6 +237,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

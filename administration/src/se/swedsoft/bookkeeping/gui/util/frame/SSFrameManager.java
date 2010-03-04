@@ -230,6 +230,7 @@ public class SSFrameManager {
         /**
          * Invoked when an internal frame has been opened.
          */
+        @Override
         public void internalFrameOpened(InternalFrameEvent e) {
             restoreFrame(iFrame);
         }
@@ -238,6 +239,7 @@ public class SSFrameManager {
          * Invoked when an internal frame is in the process of being closed.
          * The close operation can be overridden at this point.
          */
+        @Override
         public void internalFrameClosing(InternalFrameEvent e) {
             storeFrame(iFrame);
         }
@@ -246,6 +248,7 @@ public class SSFrameManager {
         /**
          * Invoked when an internal frame has been closed.
          */
+        @Override
         public void internalFrameClosed(InternalFrameEvent e) {
             removeFrame(iFrame);
 

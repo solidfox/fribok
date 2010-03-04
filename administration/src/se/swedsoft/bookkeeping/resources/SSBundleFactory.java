@@ -92,6 +92,7 @@ public class SSBundleFactory {
          * @return the object for the given key, or null
          * @throws NullPointerException if <code>key</code> is <code>null</code>
          */
+        @Override
         protected Object handleGetObject(String key) {
             try {
                 return iBundle.getObject(key);
@@ -103,6 +104,7 @@ public class SSBundleFactory {
         /**
          * Returns an enumeration of the keys.
          */
+        @Override
         public Enumeration<String> getKeys() {
             return iBundle.getKeys();
         }

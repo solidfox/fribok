@@ -60,6 +60,7 @@ public class SSCreditinvoicePrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         addParameter("title.date"     , iBundle.getString("creditinvoicereport.title.date") );
         addParameter("title.number"   , iBundle.getString("creditinvoicereport.title.number") );
@@ -149,6 +150,7 @@ public class SSCreditinvoicePrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         final SSPrinter iPrinter = new SSCreditinvoicePrinter.SSRowReport(  );
 
@@ -162,6 +164,7 @@ public class SSCreditinvoicePrinter extends SSPrinter {
 
         SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>(  ) {
 
+            @Override
             public Class getType() {
                 return SSInvoice.class;
             }
@@ -207,9 +210,11 @@ public class SSCreditinvoicePrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             SSDefaultTableModel<SSSaleRow> iModel = new SSDefaultTableModel<SSSaleRow>(  ) {
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -265,6 +270,7 @@ public class SSCreditinvoicePrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

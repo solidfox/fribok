@@ -21,6 +21,7 @@ public class SSFilterPDF extends SSFileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return bundle.getString("filechooser.pdf.filter");
     }

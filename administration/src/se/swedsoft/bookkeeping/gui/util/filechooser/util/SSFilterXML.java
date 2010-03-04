@@ -21,6 +21,7 @@ public class SSFilterXML extends SSFileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return bundle.getString("filechooser.xml.filter");
     }

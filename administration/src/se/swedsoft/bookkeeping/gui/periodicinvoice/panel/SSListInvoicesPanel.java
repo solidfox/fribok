@@ -91,17 +91,21 @@ public class SSListInvoicesPanel {
         public AddedColumn(){
             super(SSBundle.getBundle().getString("periodicinvoicetable.column.6"));
         }
+        @Override
         public Object getValue(SSInvoice iInvoice) {
             return iPeriodicInvoice.isAdded( iInvoice );
         }
 
+        @Override
         public void setValue(SSInvoice iInvoice, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return Boolean.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 80;
         }

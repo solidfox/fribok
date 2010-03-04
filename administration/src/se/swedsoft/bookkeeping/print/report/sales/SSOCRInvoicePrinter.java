@@ -69,6 +69,7 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
     /**
      *
      */
+    @Override
     protected void addParameters() {
         super.addParameters();
         addParameter("number"               , Integer.decode(iInvoice.getOCRNumber() ) );

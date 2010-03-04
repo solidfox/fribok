@@ -44,6 +44,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
         });
         iTextField.addMouseListener(new MouseInputAdapter() {
             // implements java.awt.event.MouseListener
+            @Override
             public void mouseClicked(MouseEvent e) {
                   iTextField.selectAll();
             }
@@ -122,6 +123,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
      * @param e an event object
      * @return true
      */
+    @Override
     public boolean isCellEditable(EventObject e) {
          if (e instanceof MouseEvent) {
              MouseEvent iMouseEvent = (MouseEvent) e;

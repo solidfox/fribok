@@ -389,6 +389,7 @@ public class SSReportFactory {
                     /**
                      * Invoked when an internal frame has been closed.
                      */
+                    @Override
                     public void internalFrameClosed(InternalFrameEvent e) {
                         // Ask the user if he wants to generate a vatVoucher
                         SSReportFactory.dialogVATVoucher(iMainFrame, iVoucher, iAccountingYear, localFrom, localTo);
@@ -1660,6 +1661,7 @@ public class SSReportFactory {
             /**
              * Invoked when an internal frame has been closed.
              */
+            @Override
             public void internalFrameClosed(InternalFrameEvent e) {
                 if(SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "invoiceframe.registerremainder") != JOptionPane.OK_OPTION) return;
                 for (SSInvoice iInvoice : iInvoices) {

@@ -86,6 +86,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("accountsrecievablereport.title");
     }
@@ -93,6 +94,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
 
@@ -107,6 +109,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
 
         SSDefaultTableModel<SSCustomer> iModel = new SSDefaultTableModel<SSCustomer>() {
 
+            @Override
             public Class getType() {
                 return SSCustomer.class;
             }
@@ -193,6 +196,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+                @Override
                 public Class getType() {
                     return SSSaleRow.class;
                 }
@@ -254,6 +258,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -263,6 +268,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

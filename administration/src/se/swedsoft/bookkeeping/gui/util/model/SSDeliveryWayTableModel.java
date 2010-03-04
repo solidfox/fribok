@@ -42,11 +42,13 @@ public class SSDeliveryWayTableModel extends SSTableModel<SSDeliveryWay> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSDeliveryWay.class;
     }
 
 
+    @Override
     public SSDeliveryWayTableModel getDropdownmodel() {
         return getDropDownModel();
     }
@@ -70,17 +72,21 @@ public class SSDeliveryWayTableModel extends SSTableModel<SSDeliveryWay> {
      *  Name
      */
     public static SSTableColumn<SSDeliveryWay> COLUMN_NAME = new SSTableColumn<SSDeliveryWay>(SSBundle.getBundle().getString("currencytable.column.1")) {
+        @Override
         public Object getValue(SSDeliveryWay iCurrency) {
             return iCurrency.getName();
         }
 
+        @Override
         public void setValue(SSDeliveryWay iCurrency, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -91,17 +97,21 @@ public class SSDeliveryWayTableModel extends SSTableModel<SSDeliveryWay> {
      *  Description
      */
     public static SSTableColumn<SSDeliveryWay> COLUMN_DESCRIPTION = new SSTableColumn<SSDeliveryWay>(SSBundle.getBundle().getString("currencytable.column.2")) {
+        @Override
         public Object getValue(SSDeliveryWay iCurrency) {
             return iCurrency.getDescription();
         }
 
+        @Override
         public void setValue(SSDeliveryWay iCurrency, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }

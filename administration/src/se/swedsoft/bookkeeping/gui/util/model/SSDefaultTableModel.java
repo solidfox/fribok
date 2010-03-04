@@ -134,6 +134,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      *
      * @return a string containing the default name of <code>column</code>
      */
+    @Override
     public String getColumnName(int column) {
         return column < iColumns.size() ? iColumns.get(column) : super.getColumnName(column);
     }

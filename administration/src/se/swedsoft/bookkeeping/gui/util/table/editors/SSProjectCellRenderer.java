@@ -16,6 +16,7 @@ public class SSProjectCellRenderer extends DefaultTableCellRenderer {
      *
      * @param value
      */
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSNewProject){
             SSNewProject iProject = (SSNewProject) value;

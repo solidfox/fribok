@@ -178,6 +178,7 @@ public class SSViewer extends JPanel{
      * @param pProperty
      * @param pPropertyChangeListener
      */
+    @Override
     public void addPropertyChangeListener(String pProperty, PropertyChangeListener pPropertyChangeListener) {
 
         List<PropertyChangeListener> iPropertyChangeListeners = iListenerMap.get(pProperty);

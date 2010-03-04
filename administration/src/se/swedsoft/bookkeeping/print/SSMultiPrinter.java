@@ -52,6 +52,7 @@ public class SSMultiPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
        if(iSubReports.size() > 0){
            SSSubReport iSubReport  = iSubReports.get(0);
@@ -65,9 +66,11 @@ public class SSMultiPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
 
         SSDefaultTableModel <SSSubReport>iModel = new SSDefaultTableModel<SSSubReport>() {
+            @Override
             public Class getType() {
                 return String.class;
             }

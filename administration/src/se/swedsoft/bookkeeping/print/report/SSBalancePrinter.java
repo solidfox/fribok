@@ -62,6 +62,7 @@ public class SSBalancePrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("balancereport.title");
     }
@@ -72,6 +73,7 @@ public class SSBalancePrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iDateFrom );
         addParameter("dateTo"  , iDateTo);
@@ -106,6 +108,7 @@ public class SSBalancePrinter extends SSPrinter {
 
         SSDefaultTableModel<BalanceRow> iModel = new SSDefaultTableModel<BalanceRow>() {
 
+            @Override
             public Class getType() {
                 return BalanceRow.class;
             }

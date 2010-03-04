@@ -165,6 +165,7 @@ public class SSMail {
         // Create Authenticator if it should be used
         if (server.isAuth()) {
             auth = new Authenticator() {
+                @Override
                 public PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication(server.getUsername(), SSMail.crypter.decrypt(server.getPassword()));
                 }

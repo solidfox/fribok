@@ -65,6 +65,7 @@ public class SSResultUnitDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
 
                 if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "resultunitframe.saveonclose") != JOptionPane.OK_OPTION) {
@@ -117,6 +118,7 @@ public class SSResultUnitDialog {
             }
         });
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
 
                 if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "resultunitframe.saveonclose") != JOptionPane.OK_OPTION) {

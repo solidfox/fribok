@@ -70,6 +70,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
      *
      * @return A JToolBar or null.
      */
+    @Override
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
@@ -172,6 +173,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
      *
      * @return The main content for this frame.
      */
+    @Override
     public JComponent getMainContent() {
         iTable = new SSTable();
 
@@ -194,6 +196,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
      *
      * @return The content for the status bar or null if none is wanted.
      */
+    @Override
     public JComponent getStatusBar() {
         return null;
     }
@@ -203,6 +206,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isCompanyFrame() {
         return true;
     }
@@ -212,6 +216,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
      *
      * @return A boolean value.
      */
+    @Override
     public boolean isYearDataFrame() {
         return true;
     }

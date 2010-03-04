@@ -59,6 +59,7 @@ public abstract class SSInternalFrame extends JInternalFrame {
      * @param aFlag true to make the component visible; false to
      *              make it invisible
      */
+    @Override
     public void setVisible(boolean aFlag) {
         if(! aFlag){
             SSFrameManager.getInstance().removeFrame(this);
@@ -88,6 +89,7 @@ public abstract class SSInternalFrame extends JInternalFrame {
      */
     public void addCloseListener(final ActionListener iListener){
         addInternalFrameListener(new InternalFrameAdapter(){
+            @Override
             public void internalFrameClosing(InternalFrameEvent e) {
                 iListener.actionPerformed( new ActionEvent(this, e.getID(), null) );
                 

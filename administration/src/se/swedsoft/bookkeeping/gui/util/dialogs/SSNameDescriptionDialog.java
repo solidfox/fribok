@@ -82,6 +82,7 @@ public class SSNameDescriptionDialog extends SSDialog{
      *
      * @return
      */
+    @Override
     public String getName() {
         return iName.getText();
     }
@@ -90,6 +91,7 @@ public class SSNameDescriptionDialog extends SSDialog{
      *
      * @param iName
      */
+    @Override
     public void setName(String iName) {
         this.iName.setText(iName);
     }
@@ -114,6 +116,7 @@ public class SSNameDescriptionDialog extends SSDialog{
      *
      * @return
      */
+    @Override
     public int showDialog(){
         setVisible(true);
         return iModalResult;

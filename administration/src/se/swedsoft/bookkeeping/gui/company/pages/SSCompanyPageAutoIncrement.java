@@ -64,6 +64,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
      *
      * @return the name and title
      */
+    @Override
     public String getName() {
         return SSBundle.getBundle().getString("companyframe.pages.autoincrement");
     }
@@ -72,6 +73,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
      *
      * @return the panel
      */
+    @Override
     public JPanel getPanel() {
         return iPanel;
     }
@@ -81,6 +83,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
      *
      * @param iCompany
      */
+    @Override
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
 
@@ -103,6 +106,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
      *
      * @return the company
      */
+    @Override
     public SSNewCompany getCompany() {
 
         iCompany.getAutoIncrement().setNumber("invoice"              , ((Number)iInvoice.getValue()).intValue() );
@@ -140,6 +144,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iTender.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -152,6 +157,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iOrder.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -164,6 +170,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iInvoice.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -176,6 +183,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iCreditInvoice.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -188,6 +196,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iInpayment.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -200,6 +209,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iPurchaseOrder.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -212,6 +222,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iSupplierInvoice.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -224,6 +235,7 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
         });
 
         iSupplierCreditInvoice.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {

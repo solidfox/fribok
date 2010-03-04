@@ -20,6 +20,7 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
      *              <code>null</code> it sets the text value to an empty string
      * @see javax.swing.JLabel#setText
      */
+    @Override
     protected void setValue(Object value) {
         if(value instanceof SSTableSearchable){
             setValue( (T)value  );

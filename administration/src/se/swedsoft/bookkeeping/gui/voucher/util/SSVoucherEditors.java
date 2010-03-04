@@ -51,6 +51,7 @@ public class SSVoucherEditors {
          *
          * @return the default table cell renderer
          */
+        @Override
         public Component getTableCellRendererComponent(JTable table,  Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
@@ -69,6 +70,7 @@ public class SSVoucherEditors {
             return c;
         }
 
+        @Override
         protected void setValue(Object value) {
             if(value instanceof SSTableSearchable){
                 setValue( value  );
@@ -91,6 +93,7 @@ public class SSVoucherEditors {
 
     public static DefaultTableCellRenderer createAccountRenderer(SSDefaultTableModel<SSVoucherRow> pModel){
         return new SSDefaultVoucherRowRenderer<SSAccount>(pModel){
+            @Override
             public void setValue(SSAccount value) {
                 if( value != null){
                     setText( Integer.toString( value.getNumber() ) );
@@ -123,6 +126,7 @@ public class SSVoucherEditors {
 
     public static DefaultTableCellRenderer createResultUnitRenderer(SSDefaultTableModel<SSVoucherRow> pModel){
         return new SSDefaultVoucherRowRenderer(pModel){
+            @Override
             public void setValue(Object value) {
                 setText((value == null) ? "" : ((SSNewResultUnit)value).getNumber());
             }
@@ -131,6 +135,7 @@ public class SSVoucherEditors {
 
     public static DefaultTableCellRenderer createProjectRenderer(SSDefaultTableModel<SSVoucherRow> pModel){
         return new SSDefaultVoucherRowRenderer(pModel){
+            @Override
             public void setValue(Object value) {
                 setText((value == null) ? "" : ((SSNewProject)value).getNumber());
             }
@@ -139,6 +144,7 @@ public class SSVoucherEditors {
 
     public static DefaultTableCellRenderer createBigDecimalRenderer(SSDefaultTableModel<SSVoucherRow> pModel){
         DefaultTableCellRenderer iEditor = new SSDefaultVoucherRowRenderer(pModel){
+            @Override
             protected void setValue(Object value) {
                 NumberFormat format = NumberFormat.getNumberInstance();
                 format.setMinimumFractionDigits(2);
@@ -156,6 +162,7 @@ public class SSVoucherEditors {
     public static DefaultTableCellRenderer createDateRenderer(SSDefaultTableModel<SSVoucherRow> pModel){
 
         return new SSDefaultVoucherRowRenderer(pModel){
+            @Override
             protected void setValue(Object value) {
                 DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -168,6 +175,7 @@ public class SSVoucherEditors {
 
     public static TableCellEditor createAccountEditor() {
         SSDefaultTableModel<SSAccount> model = new SSDefaultTableModel<SSAccount>( SSDB.getInstance().getCurrentYear().getActiveAccounts() ) {
+            @Override
             public Class getType() {
                 return SSAccount.class;
             }
@@ -204,6 +212,7 @@ public class SSVoucherEditors {
 
         SSDefaultTableModel<SSNewProject> model = new SSDefaultTableModel<SSNewProject>(SSDB.getInstance().getProjects()) {
 
+            @Override
             public Class getType() {
                 return SSNewProject.class;
             }
@@ -239,6 +248,7 @@ public class SSVoucherEditors {
 
     public static TableCellEditor createResultUnitEditor() {
         SSDefaultTableModel<SSNewResultUnit> model = new SSDefaultTableModel<SSNewResultUnit>(SSDB.getInstance().getResultUnits()) {
+            @Override
             public Class getType() {
                 return SSNewResultUnit.class;
             }

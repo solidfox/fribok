@@ -153,6 +153,7 @@ public class SSInvoice extends SSSale {
     /**
      * Auto increment the sales number
      */
+    @Override
     public void doAutoIncrecement(){
         int iNumber =  SSDB.getInstance().getAutoIncrement().getNumber("invoice");
 

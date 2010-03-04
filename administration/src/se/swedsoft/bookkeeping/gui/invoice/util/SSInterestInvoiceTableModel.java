@@ -64,6 +64,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSInvoice.class;
     }
@@ -139,6 +140,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
             case 0:
@@ -172,6 +174,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      * @param columnIndex the column being queried
      * @return false
      */
+    @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return columnIndex == 9;
     }
@@ -184,6 +187,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      * @param rowIndex    row of cell
      * @param columnIndex column of cell
      */
+    @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSInvoice iInvoice = getObject(rowIndex);
 
@@ -374,6 +378,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
 
             iComboBox.setModel( new DefaultComboBoxModel( InterestAction.values() ) );
             iComboBox.setRenderer(new DefaultListCellRenderer(){
+                @Override
                 public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                     super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
@@ -393,6 +398,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
 
     private static class InterestActionCellRenderer extends DefaultTableCellRenderer {
 
+        @Override
         public void setValue(Object value) {
             if(value instanceof InterestAction){
                 InterestAction iAction = (InterestAction) value;

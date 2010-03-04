@@ -39,11 +39,13 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSUnit.class;
     }
 
 
+    @Override
     public SSUnitTableModel getDropdownmodel() {
         return getDropDownModel();
     }
@@ -67,17 +69,21 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
      *  Name
      */
     public static SSTableColumn<SSUnit> COLUMN_NAME = new SSTableColumn<SSUnit>(SSBundle.getBundle().getString("currencytable.column.1")) {
+        @Override
         public Object getValue(SSUnit iCurrency) {
             return iCurrency.getName();
         }
 
+        @Override
         public void setValue(SSUnit iCurrency, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -88,17 +94,21 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
      *  Description
      */
     public static SSTableColumn<SSUnit> COLUMN_DESCRIPTION = new SSTableColumn<SSUnit>(SSBundle.getBundle().getString("currencytable.column.2")) {
+        @Override
         public Object getValue(SSUnit iCurrency) {
             return iCurrency.getDescription();
         }
 
+        @Override
         public void setValue(SSUnit iCurrency, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 200;
         }

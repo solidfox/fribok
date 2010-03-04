@@ -25,12 +25,14 @@ public class SSFilterALL extends FileFilter {
     /**
      * Whether the given file is accepted by this filter.
      */
+    @Override
     public boolean accept(File f) {
         return true;    }
 
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return SSFilterALL.bundle.getString("filechooser.all.filter");
     }

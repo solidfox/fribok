@@ -42,6 +42,7 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSSupplier.class;
     }
@@ -64,17 +65,21 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      * Number column
      */
     public static SSTableColumn<SSSupplier> COLUMN_NUMBER = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.1")) {
+        @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getNumber();
         }
 
+        @Override
         public void setValue(SSSupplier iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -87,16 +92,20 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      * Name
      */
     public static SSTableColumn<SSSupplier> COLUMN_NAME = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.2")) {
+        @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getName();
         }
 
+        @Override
         public void setValue(SSSupplier iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 142;
         }
@@ -106,17 +115,21 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      * Your contact
      */
     public static SSTableColumn<SSSupplier> COLUMN_YOUR_CONTACT = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.3")) {
+        @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getYourContact();
         }
 
+        @Override
         public void setValue(SSSupplier iObject, Object iValue) {
             iObject.setYourContact((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
+        @Override
         public int getDefaultWidth() {
             return 142;
         }
@@ -127,18 +140,22 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      * Date column
      */
     public static SSTableColumn<SSSupplier> COLUMN_PHONE = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.4")) {
+        @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getPhone1();
         }
 
+        @Override
         public void setValue(SSSupplier iObject, Object iValue) {
             iObject.setPhone1((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 110;
         }
@@ -150,18 +167,22 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      * Our customer nr
      */
     public static SSTableColumn<SSSupplier> COLUMN_OUR_CUSTOMER_NR = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.5")) {
+        @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getOurCustomerNr();
         }
 
+        @Override
         public void setValue(SSSupplier iObject, Object iValue) {
             iObject.setOurCustomerNr((String)iValue);
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -172,6 +193,7 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      * Supplier debt
      */
     public static SSTableColumn<SSSupplier> COLUMN_SUPPLIERDEBT = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.6")) {
+        @Override
         public Object getValue(SSSupplier iObject) {
             List<SSSupplierInvoice> iInvoices = SSSupplierMath.iInvoicesForSuppliers.get(iObject.getNumber());
             if(iInvoices == null) return new BigDecimal(0.0);
@@ -185,13 +207,16 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
             return iTotalSum;
         }
 
+        @Override
         public void setValue(SSSupplier iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }

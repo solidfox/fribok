@@ -44,6 +44,7 @@ public class LBinPostTK14 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void write(LBinLine iLine){
         iLine.append("14");
         iLine.append( iNumber   , 10, '0'     ); // 3 => 12 : Postgiro eller utbet nr
@@ -58,6 +59,7 @@ public class LBinPostTK14 extends LBinPost {
      *
      * @param iLine
      */
+    @Override
     public void read(LBinLine iLine){
         iNumber    = iLine.readString    (3 , 12);              // 3 => 12 : Postgiro eller utbet nr
         iReference = iLine.readString    (13, 37);              // 13 => 37: Referens

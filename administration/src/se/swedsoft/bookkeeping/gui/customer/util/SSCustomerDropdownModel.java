@@ -38,6 +38,7 @@ public class SSCustomerDropdownModel extends SSDefaultTableModel<SSCustomer> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSCustomer.class;
     }
@@ -72,6 +73,7 @@ public class SSCustomerDropdownModel extends SSDefaultTableModel<SSCustomer> {
      * @param columnIndex the column being queried
      * @return the Object.class
      */
+    @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
             case 0:

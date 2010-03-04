@@ -109,6 +109,7 @@ public class SSBigDecimalTextField extends JFormattedTextField {
      *
      * @return Last isValid value
      */
+    @Override
     public BigDecimal getValue() {
         Object iValue = super.getValue();
 
@@ -135,6 +136,7 @@ public class SSBigDecimalTextField extends JFormattedTextField {
      *
      * @param t the new text to be set
      */
+    @Override
     public void setText(String t) {
         if(iAppendText != null){
             super.setText(t + " " + iAppendText);

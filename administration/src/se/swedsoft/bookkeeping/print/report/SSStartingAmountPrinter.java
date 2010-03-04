@@ -60,6 +60,7 @@ public class SSStartingAmountPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("inbalancereport.title");
     }
@@ -68,6 +69,7 @@ public class SSStartingAmountPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iFrom );
         addParameter("dateTo"  , iTo);
@@ -81,6 +83,7 @@ public class SSStartingAmountPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>(){
 
+            @Override
             public Class getType() {
                 return SSAccount.class;
 

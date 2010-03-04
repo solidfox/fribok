@@ -45,11 +45,13 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSProduct.class;
     }
 
 
+    @Override
     public void setupTable(SSTable iTable) {
         iTable.setModel(this);
         iTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -99,17 +101,21 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *  Utskriven
      */
     public static SSTableColumn<SSProduct> COLUMN_PARCEL = new SSTableColumn<SSProduct>("") {
+        @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.isParcel() ? SSIcon.getIcon("ICON_PARCEL16", SSIcon.IconState.NORMAL ) : null;
         }
 
+        @Override
         public void setValue(SSProduct iProduct, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return ImageIcon.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 20;
         }
@@ -119,19 +125,23 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *  Produkt nr
      */
     public static SSTableColumn<SSProduct> COLUMN_NUMBER = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.1")) {
+        @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getNumber();
         }
 
+        @Override
         public void setValue(SSProduct iProduct, Object iValue) {
             iProduct.setNumber((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 125;
         }
@@ -142,19 +152,23 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *  Produkt nr
      */
     public static SSTableColumn<SSProduct> COLUMN_DESCRIPTION = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.2")) {
+        @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getDescription();
         }
 
+        @Override
         public void setValue(SSProduct iProduct, Object iValue) {
             iProduct.setDescription((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 225;
         }
@@ -166,19 +180,23 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *  Enhetspris
      */
     public static SSTableColumn<SSProduct> COLUMN_PRICE = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.3")) {
+        @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getSellingPrice();
         }
 
+        @Override
         public void setValue(SSProduct iProduct, Object iValue) {
             iProduct.setSellingPrice((BigDecimal)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -189,19 +207,23 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *  Enhet
      */
     public static SSTableColumn<SSProduct> COLUMN_UNIT = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.4")) {
+        @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getUnit();
         }
 
+        @Override
         public void setValue(SSProduct iProduct, Object iValue) {
             iProduct.setUnit((SSUnit)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return SSUnit.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -212,19 +234,23 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *  Enhet
      */
     public static SSTableColumn<SSProduct> COLUMN_WAREHOUSE_LOCATION = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.5")) {
+        @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getWarehouseLocation();
         }
 
+        @Override
         public void setValue(SSProduct iProduct, Object iValue) {
             iProduct.setWarehouseLocation((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 70;
         }
@@ -238,6 +264,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      */
     public static SSTableColumn<SSProduct> getStockQuantityColumn(final SSStock iStock) {
         return new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.6")) {
+            @Override
             public Object getValue(SSProduct iProduct) {
 
                 if(iProduct.isParcel()) return null;
@@ -245,13 +272,16 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
                 return iStock.getQuantity(iProduct);
             }
 
+            @Override
             public void setValue(SSProduct iObject, Object iValue) {
             }
 
+            @Override
             public Class<?> getColumnClass() {
                 return Integer.class;
             }
 
+            @Override
             public int getDefaultWidth() {
                 return 90;
             }
@@ -260,19 +290,23 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
     public static SSTableColumn<SSProduct> getStockAvaiableColumn(final SSStock iStock) {
         return new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.7")) {
+            @Override
             public Object getValue(SSProduct iProduct) {
                 if(iProduct.isParcel()) return null;
 
                 return iStock.getAvaiable(iProduct);
             }
 
+            @Override
             public void setValue(SSProduct iObject, Object iValue) {
             }
 
+            @Override
             public Class<?> getColumnClass() {
                 return Integer.class;
             }
 
+            @Override
             public int getDefaultWidth() {
                 return 90;
             }

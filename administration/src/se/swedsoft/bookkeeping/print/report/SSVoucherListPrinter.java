@@ -43,6 +43,7 @@ public class SSVoucherListPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("voucherlistreport.title");
     }
@@ -51,6 +52,7 @@ public class SSVoucherListPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         iPrinter = new SSVoucherRowPrinter();
         iPrinter.generateReport();
@@ -65,6 +67,7 @@ public class SSVoucherListPrinter extends SSPrinter {
 
             DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+            @Override
             public Class getType() {
                 return SSInvoice.class;
             }
@@ -144,6 +147,7 @@ public class SSVoucherListPrinter extends SSPrinter {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
+                @Override
                 public Class getType() {
                     return SSVoucherRow.class;
                 }
@@ -200,6 +204,7 @@ public class SSVoucherListPrinter extends SSPrinter {
          *
          * @return SSDefaultTableModel
          */
+        @Override
         protected SSDefaultTableModel getModel() {
             return iModel;
         }
@@ -209,6 +214,7 @@ public class SSVoucherListPrinter extends SSPrinter {
          *
          * @return The title
          */
+        @Override
         public String getTitle() {
             return null;
         }

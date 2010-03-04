@@ -54,6 +54,7 @@ public class SSOwnReportDialog {
         iPanel.addCancelAction(iCancelAction);
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     return;
@@ -105,6 +106,7 @@ public class SSOwnReportDialog {
         iPanel.addCancelAction(iCancelAction);
 
         iDialog.addWindowListener(new WindowAdapter() {
+            @Override
             public void windowClosing(WindowEvent e) {
                 if(! iPanel.isValid() ) {
                     SSPostLock.removeLock(lockString);

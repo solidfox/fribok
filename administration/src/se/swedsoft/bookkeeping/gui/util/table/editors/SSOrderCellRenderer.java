@@ -16,6 +16,7 @@ import java.util.List;
 public class SSOrderCellRenderer extends DefaultTableCellRenderer {
 
 
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSOrder){
             SSOrder iOrder = (SSOrder) value;

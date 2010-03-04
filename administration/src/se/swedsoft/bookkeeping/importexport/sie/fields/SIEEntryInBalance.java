@@ -33,6 +33,7 @@ public class SIEEntryInBalance extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         if(!iReader.hasFields(STRING, INT, INT, FLOAT )) {
@@ -62,6 +63,7 @@ public class SIEEntryInBalance extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 

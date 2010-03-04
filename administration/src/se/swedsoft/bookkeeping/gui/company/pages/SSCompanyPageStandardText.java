@@ -30,6 +30,7 @@ public class SSCompanyPageStandardText extends SSCompanyPage{
      *
      * @return the name and title
      */
+    @Override
     public String getName() {
         return SSBundle.getBundle().getString("companyframe.pages.standardtexts");
     }
@@ -38,6 +39,7 @@ public class SSCompanyPageStandardText extends SSCompanyPage{
      *
      * @return the panel
      */
+    @Override
     public JPanel getPanel() {
         return iPanel;
     }
@@ -47,6 +49,7 @@ public class SSCompanyPageStandardText extends SSCompanyPage{
      *
      * @param iCompany
      */
+    @Override
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
 
@@ -58,6 +61,7 @@ public class SSCompanyPageStandardText extends SSCompanyPage{
      *
      * @return the company
      */
+    @Override
     public SSNewCompany getCompany() {
         iStandardTextPanel.getData( iCompany.getStandardTexts() );
 

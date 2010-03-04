@@ -26,6 +26,7 @@ public class SIEEntryTyp extends SIEEntry {
      *
      * @param iReader
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
 
         // #SIETYP typ
@@ -44,6 +45,7 @@ public class SIEEntryTyp extends SIEEntry {
      *
      * @param iWriter
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter , SSNewAccountingYear iCurrentYearData) throws SSExportException {
         iWriter.append( SIELabel.SIE_SIETYP   );
         iWriter.append( iExporter.getType() );

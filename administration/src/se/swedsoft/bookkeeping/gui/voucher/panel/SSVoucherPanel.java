@@ -145,6 +145,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         });
 
         iDescription.getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     iDescription.cancelCellEditing();
@@ -160,6 +161,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
 
 
         new SSTraversalAction(iTable){
+            @Override
             protected Point doTraversal(Point iPosition) {
 
                 if (iPosition.x == 0) {
@@ -190,6 +192,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         };
 
         new SSDeleteAction(iTable){
+            @Override
             protected Point doDelete(Point iPosition) {
                 SSVoucherRow iSelected = iModel.getSelectedRow(iTable);
 
@@ -250,6 +253,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         });
 
         iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
@@ -262,6 +266,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         });
 
         iAddAccountButton.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -274,6 +279,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         });
 
         iOkButton.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_RIGHT){
                     SwingUtilities.invokeLater(new Runnable() {
@@ -286,6 +292,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         });
 
         iCancelButton.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_LEFT){
                     SwingUtilities.invokeLater(new Runnable() {

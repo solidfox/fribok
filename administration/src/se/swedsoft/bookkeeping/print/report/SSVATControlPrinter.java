@@ -43,6 +43,7 @@ public class SSVATControlPrinter extends SSPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("vatcontrolreport.title");
     }
@@ -53,6 +54,7 @@ public class SSVATControlPrinter extends SSPrinter {
     /**
      * @return SSDefaultTableModel
      */
+    @Override
     protected SSDefaultTableModel getModel() {
         addParameter("dateFrom", iDateFrom );
         addParameter("dateTo"  , iDateTo);
@@ -66,6 +68,7 @@ public class SSVATControlPrinter extends SSPrinter {
 
         SSDefaultTableModel<SSVATControlGroup> iModel = new SSDefaultTableModel<SSVATControlGroup>() {
 
+            @Override
             public Class getType() {
                 return SSVATControlGroup.class;
             }

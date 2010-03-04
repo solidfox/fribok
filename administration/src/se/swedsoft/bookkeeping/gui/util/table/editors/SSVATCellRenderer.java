@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class SSVATCellRenderer extends DefaultTableCellRenderer {
 
 
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSVATCode){
             SSVATCode iVATCode = (SSVATCode) value;

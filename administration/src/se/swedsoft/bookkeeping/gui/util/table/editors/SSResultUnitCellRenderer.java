@@ -16,6 +16,7 @@ public class SSResultUnitCellRenderer extends DefaultTableCellRenderer {
      * 
      * @param value
      */
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSNewResultUnit){
             SSNewResultUnit iResultUnit = (SSNewResultUnit) value;

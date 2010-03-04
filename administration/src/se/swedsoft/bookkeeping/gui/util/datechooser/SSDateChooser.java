@@ -60,6 +60,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iCalendarField    = Calendar.DAY_OF_MONTH;
 
         iModel = new SpinnerDateModel(){
+            @Override
             public void setCalendarField(int calendarField) {
                 // Always use the prefered calendar field
                 super.setCalendarField(iCalendarField);
@@ -149,6 +150,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iPopup.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         iPopup.setAlwaysOnTop(true);
         iPopup.addWindowListener( new WindowAdapter() {
+            @Override
             public void windowDeactivated(WindowEvent e) {
                 iPopup.setVisible(false);
             }
@@ -320,6 +322,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      *
      * @param enabled
      */
+    @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
 

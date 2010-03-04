@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class SSUnitCellRenderer extends DefaultTableCellRenderer {
 
 
+    @Override
     public void setValue(Object value) {
         if(value != null && value instanceof SSUnit){
             setText( ((SSUnit)value).getName()  );

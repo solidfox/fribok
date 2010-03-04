@@ -79,6 +79,7 @@ public class SSInterestInvoiceDialog {
         });
 
         iDialog.addWindowListener(new WindowAdapter(){
+            @Override
             public void windowClosing(WindowEvent e) {
                 SSPostLock.removeLock(lockString);
             }

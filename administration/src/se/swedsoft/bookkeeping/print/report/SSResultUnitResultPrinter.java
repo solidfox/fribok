@@ -45,6 +45,7 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
      *
      * @return
      */
+    @Override
     public String getTitle() {
         return SSBundle.getBundle().getString("resultreport.resultunit.title");
     }
@@ -53,6 +54,7 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
      *
      * @return
      */
+    @Override
     protected SSResultCalculator getCalculator() {
        return new SSResultCalculator(iYearData, iDateFrom, iDateTo, null, iResultUnit );
     }
@@ -60,6 +62,7 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
     /**
      * @param iCalculator
      */
+    @Override
     protected void getColumns(SSResultCalculator iCalculator) {
         addParameter("column.text.2", bundle.getString("resultreport.column.1") ); // Perioden
         addParameter("column.text.3", bundle.getString("resultreport.column.7") ); // Hela året

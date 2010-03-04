@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class SSInvoiceCellRenderer extends DefaultTableCellRenderer {
 
 
+    @Override
     public void setValue(Object value) {
         if(value instanceof SSInvoice){
             SSInvoice iInvoice = (SSInvoice) value;

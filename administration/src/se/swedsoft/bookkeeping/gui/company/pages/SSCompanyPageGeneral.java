@@ -90,6 +90,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
      *
      * @return the name and title
      */
+    @Override
     public String getName() {
         return SSBundle.getBundle().getString("companyframe.pages.general");
     }
@@ -98,6 +99,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
      *
      * @return the panel
      */
+    @Override
     public JPanel getPanel() {
         return iPanel;
     }
@@ -107,6 +109,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
      *
      * @param iCompany
      */
+    @Override
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
         iName             .setText    ( iCompany.getName());
@@ -132,6 +135,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
      *
      * @return the company
      */
+    @Override
     public SSNewCompany getCompany() {
         iCompany.setName             ( iName                  .getText());
         iCompany.setResidence        ( iResidence             .getText());
@@ -163,6 +167,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iName.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -175,6 +180,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iResidence.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -187,6 +193,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iCorporateID.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -199,6 +206,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iVATNumber.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -211,6 +219,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iDelayintrest.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -223,6 +232,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iReminderfee.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -235,6 +245,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -247,6 +258,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -259,6 +271,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -271,6 +284,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -283,6 +297,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iEstimatedDelivery.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -295,6 +310,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iVolumeUnit.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -307,6 +323,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iWeightUnit.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {
@@ -319,6 +336,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });
 
         iStandardUnit.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e){
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                      SwingUtilities.invokeLater(new Runnable() {

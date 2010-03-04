@@ -28,6 +28,7 @@ public class SIEEntryOmfattn extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         return false;
     }
@@ -41,6 +42,7 @@ public class SIEEntryOmfattn extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         Date iPrevious = SSVoucherMath.getNextVoucherDate();
 

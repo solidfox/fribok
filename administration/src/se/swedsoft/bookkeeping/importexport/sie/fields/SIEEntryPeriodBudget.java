@@ -32,6 +32,7 @@ public class SIEEntryPeriodBudget extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #PBUDGET årsnr period konto {dimensionsnr objectkod} saldo [kvantitet]
@@ -68,6 +69,7 @@ public class SIEEntryPeriodBudget extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 

@@ -30,6 +30,7 @@ public class SIEEntryUnderDimension extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         List<SIEDimension> iDimensions = iImporter.getDimensions();
 
@@ -61,6 +62,7 @@ public class SIEEntryUnderDimension extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         // We only need to use the standard dimensions,
         // 1 for resultunit and

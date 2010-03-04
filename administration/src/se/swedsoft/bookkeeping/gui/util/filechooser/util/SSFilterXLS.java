@@ -21,6 +21,7 @@ public class SSFilterXLS extends SSFileFilter {
     /**
      * @return The description of this filter
      */
+    @Override
     public String getDescription() {
         return bundle.getString("filechooser.xls.filter");
     }

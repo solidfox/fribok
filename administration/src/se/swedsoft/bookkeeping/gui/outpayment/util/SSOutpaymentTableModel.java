@@ -34,6 +34,7 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
      *
      * @return The current data type.
      */
+    @Override
     public Class getType() {
         return SSOutpayment.class;
     }
@@ -43,19 +44,23 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
      * Number column
      */
     public static SSTableColumn<SSOutpayment> COLUMN_NUMBER = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.1")) {
+        @Override
         public Object getValue(SSOutpayment iObject) {
             return iObject.getNumber();
         }
 
+        @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
             iObject.setNumber((Integer)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Integer.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -65,19 +70,23 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
      * Date column
      */
     public static SSTableColumn<SSOutpayment> COLUMN_DATE = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.2")) {
+        @Override
         public Object getValue(SSOutpayment iObject) {
             return iObject.getDate();
         }
 
+        @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
             iObject.setDate((Date)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return Date.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 100;
         }
@@ -87,19 +96,23 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
      * Date column
      */
     public static SSTableColumn<SSOutpayment> COLUMN_TEXT = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.3")) {
+        @Override
         public Object getValue(SSOutpayment iObject) {
             return iObject.getText();
         }
 
+        @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
             iObject.setText((String)iValue);
 
         }
 
+        @Override
         public Class getColumnClass() {
             return String.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 450;
         }
@@ -109,17 +122,21 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
      * Sum column
      */
     public static SSTableColumn<SSOutpayment> COLUMN_SUM = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.4")) {
+        @Override
         public Object getValue(SSOutpayment iObject) {
             return SSOutpaymentMath.getSum(iObject);
         }
 
+        @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
         }
 
+        @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
 
+        @Override
         public int getDefaultWidth() {
             return 120;
         }

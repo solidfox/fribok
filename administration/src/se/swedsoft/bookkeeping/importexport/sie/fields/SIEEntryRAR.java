@@ -32,6 +32,7 @@ public class SIEEntryRAR extends SIEEntry {
      * @throws SSImportException
      *
      */
+    @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #RAR årsnr från till
@@ -61,6 +62,7 @@ public class SIEEntryRAR extends SIEEntry {
      * @throws SSExportException
      *
      */
+    @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 
