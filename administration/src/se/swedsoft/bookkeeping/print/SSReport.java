@@ -8,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.util.SSException;
 
+import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
