@@ -1,17 +1,22 @@
 package se.swedsoft.bookkeeping;
 
+import se.swedsoft.bookkeeping.data.system.SSCompanyLock;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.system.SSDBConfig;
+import se.swedsoft.bookkeeping.data.system.SSYearLock;
+import se.swedsoft.bookkeeping.data.util.SSConfig;
+import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
-import se.swedsoft.bookkeeping.data.system.*;
-import se.swedsoft.bookkeeping.data.util.SSConfig;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 
 import javax.swing.*;
-import java.sql.*;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * 

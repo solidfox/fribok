@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.calc.math;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.SSNewCompany;
+import se.swedsoft.bookkeeping.data.SSStandardText;
+import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 /**

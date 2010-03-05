@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
-import se.swedsoft.bookkeeping.gui.util.model.SSVATCodeTableModel;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.model.SSVATCodeTableModel;
 
 import java.util.List;
 

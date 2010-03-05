@@ -1,16 +1,15 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.Date;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * User: Andreas Lago

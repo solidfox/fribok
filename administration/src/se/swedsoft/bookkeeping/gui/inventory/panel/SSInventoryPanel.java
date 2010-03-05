@@ -1,27 +1,27 @@
 package se.swedsoft.bookkeeping.gui.inventory.panel;
 
+import se.swedsoft.bookkeeping.calc.math.SSProductMath;
+import se.swedsoft.bookkeeping.data.SSInventory;
+import se.swedsoft.bookkeeping.data.SSInventoryRow;
+import se.swedsoft.bookkeeping.data.SSProduct;
+import se.swedsoft.bookkeeping.data.SSStock;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.inventory.util.SSInventoryRowTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.actions.SSDeleteAction;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSProductCellEditor;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-import se.swedsoft.bookkeeping.gui.inventory.util.SSInventoryRowTableModel;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.data.SSInventory;
-import se.swedsoft.bookkeeping.data.SSStock;
-import se.swedsoft.bookkeeping.data.SSProduct;
-import se.swedsoft.bookkeeping.data.SSInventoryRow;
-import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
 
 /**
  * User: Andreas Lago

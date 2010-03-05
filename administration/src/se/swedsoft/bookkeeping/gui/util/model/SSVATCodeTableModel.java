@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.model;
 
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.List;
 

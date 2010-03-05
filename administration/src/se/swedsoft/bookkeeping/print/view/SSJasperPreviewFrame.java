@@ -1,33 +1,31 @@
 package se.swedsoft.bookkeeping.print.view;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSJasperFileChooser;
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterPDF;
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterHTM;
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterRTF;
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterXLS;
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor;
+import net.sf.jasperreports.view.save.JRRtfSaveContributor;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.status.SSStatusBar;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSButton;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSJasperFileChooser;
+import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterHTM;
+import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterPDF;
+import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterRTF;
+import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterXLS;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
 import se.swedsoft.bookkeeping.print.SSReport;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
-
-import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor;
-import net.sf.jasperreports.view.save.JRRtfSaveContributor;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.beans.PropertyChangeListener;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.io.File;
 import java.util.ResourceBundle;
 
 /**

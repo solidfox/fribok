@@ -1,38 +1,38 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.read.biff.BiffException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+import se.swedsoft.bookkeeping.data.SSAddress;
+import se.swedsoft.bookkeeping.data.SSCustomer;
+import se.swedsoft.bookkeeping.data.common.SSCurrency;
+import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
+import se.swedsoft.bookkeeping.data.common.SSDeliveryWay;
+import se.swedsoft.bookkeeping.data.common.SSPaymentTerm;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.data.SSCustomer;
-import se.swedsoft.bookkeeping.data.SSAddress;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
-import se.swedsoft.bookkeeping.data.common.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelSheet;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelRow;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelCell;
 import se.swedsoft.bookkeeping.importexport.dialog.SSImportReportDialog;
-
-import java.util.*;
-import java.io.*;
-import java.math.BigDecimal;
-
-import jxl.WorkbookSettings;
-import jxl.Workbook;
-import jxl.Sheet;
-import jxl.read.biff.BiffException;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelCell;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelRow;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelSheet;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import javax.swing.*;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Date: 2006-feb-13

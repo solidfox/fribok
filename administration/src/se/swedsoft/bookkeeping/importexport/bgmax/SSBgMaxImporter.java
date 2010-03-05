@@ -1,28 +1,28 @@
 package se.swedsoft.bookkeeping.importexport.bgmax;
 
-import se.swedsoft.bookkeeping.data.SSInpayment;
-import se.swedsoft.bookkeeping.data.SSInvoice;
-import se.swedsoft.bookkeeping.data.SSInpaymentRow;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.importexport.bgmax.dialog.BgMaxSelectInvoiceDialog;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxAvsnitt;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxFile;
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
+import se.swedsoft.bookkeeping.data.SSInpayment;
+import se.swedsoft.bookkeeping.data.SSInpaymentRow;
+import se.swedsoft.bookkeeping.data.SSInvoice;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxAvsnitt;
+import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
+import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxFile;
+import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
+import se.swedsoft.bookkeeping.importexport.bgmax.dialog.BgMaxSelectInvoiceDialog;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import javax.swing.*;
-import java.io.File;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
-import java.util.LinkedList;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

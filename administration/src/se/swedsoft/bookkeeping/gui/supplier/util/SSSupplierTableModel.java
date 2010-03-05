@@ -1,16 +1,16 @@
 package se.swedsoft.bookkeeping.gui.supplier.util;
 
+import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
+import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
-import java.util.List;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * User: Andreas Lago

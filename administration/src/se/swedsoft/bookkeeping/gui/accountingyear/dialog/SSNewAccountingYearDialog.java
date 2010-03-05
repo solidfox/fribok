@@ -4,22 +4,22 @@
  */
 package se.swedsoft.bookkeeping.gui.accountingyear.dialog;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.accountingyear.panel.SSAccountingYearPanel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.system.SSYearLock;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
+import se.swedsoft.bookkeeping.data.system.SSYearLock;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.accountingyear.panel.SSAccountingYearPanel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
 
 public class SSNewAccountingYearDialog {

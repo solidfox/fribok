@@ -5,13 +5,13 @@ import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.util.Map;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Date;
-import java.io.Serializable;
+import java.util.Map;
 
 /**
  * User: Johan Gunnarsson

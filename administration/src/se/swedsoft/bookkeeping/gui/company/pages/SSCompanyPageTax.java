@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
+import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 /**
  * User: Andreas Lago

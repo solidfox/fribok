@@ -1,20 +1,20 @@
 package se.swedsoft.bookkeeping.gui.supplier.panel;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox;
-import se.swedsoft.bookkeeping.gui.util.components.SSIntegerTextField;
-import se.swedsoft.bookkeeping.gui.util.model.SSCurrencyTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSDeliveryWayTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSDeliveryTermTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSPaymentTermTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
-import se.swedsoft.bookkeeping.data.common.SSPaymentTerm;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryWay;
+import se.swedsoft.bookkeeping.data.common.SSPaymentTerm;
+import se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
+import se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.components.SSIntegerTextField;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSCurrencyTableModel;
+import se.swedsoft.bookkeeping.gui.util.model.SSDeliveryTermTableModel;
+import se.swedsoft.bookkeeping.gui.util.model.SSDeliveryWayTableModel;
+import se.swedsoft.bookkeeping.gui.util.model.SSPaymentTermTableModel;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

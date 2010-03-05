@@ -1,25 +1,24 @@
 package se.swedsoft.bookkeeping.gui.voucher.dialogs;
 
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
-import se.swedsoft.bookkeeping.gui.util.model.SSVATCodeTableModel;
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSConfirmDialog;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
-
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSConfirmDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSVATCodeTableModel;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
-import java.util.List;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
+import java.util.List;
 
 
 /**

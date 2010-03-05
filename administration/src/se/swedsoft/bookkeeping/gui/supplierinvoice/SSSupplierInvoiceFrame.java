@@ -1,39 +1,41 @@
 package se.swedsoft.bookkeeping.gui.supplierinvoice;
 
-import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.util.components.SSTabbedPanePanel;
-import se.swedsoft.bookkeeping.gui.util.components.SSMenuButton;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.outpayment.SSOutpaymentDialog;
-import se.swedsoft.bookkeeping.gui.outpayment.SSOutpaymentFrame;
-import se.swedsoft.bookkeeping.gui.supplierpayments.SSSupplierPaymentDialog;
-import se.swedsoft.bookkeeping.gui.suppliercreditinvoice.SSSupplierCreditInvoiceDialog;
-import se.swedsoft.bookkeeping.gui.suppliercreditinvoice.SSSupplierCreditInvoiceFrame;
-import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceTableModel;
-import se.swedsoft.bookkeeping.gui.supplierinvoice.panel.SSSupplierInvoiceSearchPanel;
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
+import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
+import se.swedsoft.bookkeeping.data.SSOutpayment;
+import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
+import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.outpayment.SSOutpaymentDialog;
+import se.swedsoft.bookkeeping.gui.outpayment.SSOutpaymentFrame;
+import se.swedsoft.bookkeeping.gui.suppliercreditinvoice.SSSupplierCreditInvoiceDialog;
+import se.swedsoft.bookkeeping.gui.suppliercreditinvoice.SSSupplierCreditInvoiceFrame;
+import se.swedsoft.bookkeeping.gui.supplierinvoice.panel.SSSupplierInvoiceSearchPanel;
+import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceTableModel;
+import se.swedsoft.bookkeeping.gui.supplierpayments.SSSupplierPaymentDialog;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSButton;
+import se.swedsoft.bookkeeping.gui.util.components.SSMenuButton;
+import se.swedsoft.bookkeeping.gui.util.components.SSTabbedPanePanel;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.print.SSReportFactory;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Collections;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

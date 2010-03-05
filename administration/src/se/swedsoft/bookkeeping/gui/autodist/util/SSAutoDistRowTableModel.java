@@ -1,10 +1,14 @@
 package se.swedsoft.bookkeeping.gui.autodist.util;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSAutoDistRow;
+import se.swedsoft.bookkeeping.data.SSNewProject;
+import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
+
 import java.math.BigDecimal;
 
 /**

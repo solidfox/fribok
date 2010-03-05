@@ -7,8 +7,8 @@ package se.swedsoft.bookkeeping.data;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.text.DateFormat;
+import java.util.Date;
 
 
 /**

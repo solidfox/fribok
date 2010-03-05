@@ -4,15 +4,15 @@
  */
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Date;
-import java.text.DateFormat;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
 
 
 /**

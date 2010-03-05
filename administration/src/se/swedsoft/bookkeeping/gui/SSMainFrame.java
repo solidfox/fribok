@@ -4,18 +4,18 @@
  */
 package se.swedsoft.bookkeeping.gui;
 
+import se.swedsoft.bookkeeping.SSVersion;
 import se.swedsoft.bookkeeping.data.util.SSConfig;
+import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
+import se.swedsoft.bookkeeping.gui.status.SSMainStatusBar;
+import se.swedsoft.bookkeeping.gui.status.SSStatusBar;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSImage;
-import se.swedsoft.bookkeeping.gui.status.SSStatusBar;
-import se.swedsoft.bookkeeping.gui.status.SSMainStatusBar;
-import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
-import se.swedsoft.bookkeeping.SSVersion;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.beans.PropertyVetoException;
 import java.util.ResourceBundle;
 

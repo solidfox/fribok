@@ -1,24 +1,17 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
+import se.swedsoft.bookkeeping.data.system.SSMail;
+import se.swedsoft.bookkeeping.data.util.SSMailServer;
+import se.swedsoft.bookkeeping.data.util.SSMailServerException;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
-import javax.swing.JCheckBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
-import se.swedsoft.bookkeeping.data.system.SSMail;
-import se.swedsoft.bookkeeping.data.util.SSMailServerException;
-import se.swedsoft.bookkeeping.data.util.SSMailServer;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 
 
 

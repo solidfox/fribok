@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.data.common;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;

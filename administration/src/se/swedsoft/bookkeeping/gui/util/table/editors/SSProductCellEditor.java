@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.product.util.SSProductTableModel;
 import se.swedsoft.bookkeeping.data.SSProduct;
+import se.swedsoft.bookkeeping.gui.product.util.SSProductTableModel;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 
 import java.util.List;
 

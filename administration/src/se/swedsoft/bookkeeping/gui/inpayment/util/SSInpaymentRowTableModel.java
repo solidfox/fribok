@@ -1,14 +1,15 @@
 package se.swedsoft.bookkeeping.gui.inpayment.util;
 
+import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.data.SSInpaymentRow;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellEditor;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.table.editors.*;
-import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;

@@ -1,8 +1,11 @@
 package se.swedsoft.bookkeeping.data.system;
 
-import javax.management.*;
+import javax.management.Notification;
+import javax.management.NotificationEmitter;
+import javax.management.NotificationListener;
 import java.lang.management.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * This memory warning system will call the listener when we

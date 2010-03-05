@@ -1,20 +1,19 @@
 package se.swedsoft.bookkeeping.importexport.sie;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.importexport.sie.util.*;
-import se.swedsoft.bookkeeping.importexport.sie.fields.SIEEntry;
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
-import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.importexport.sie.util.SIEFile;
+import se.swedsoft.bookkeeping.data.SSNewCompany;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
+import se.swedsoft.bookkeeping.importexport.sie.fields.SIEEntry;
+import se.swedsoft.bookkeeping.importexport.sie.util.*;
+import se.swedsoft.bookkeeping.importexport.util.SSExportException;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-20

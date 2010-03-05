@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.data.system;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * User: Johan Gunnarsson

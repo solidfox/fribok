@@ -1,15 +1,15 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.data;
 
-import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
-import se.swedsoft.bookkeeping.data.SSSupplier;
-import se.swedsoft.bookkeeping.data.SSAddress;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
+import se.swedsoft.bookkeeping.data.SSAddress;
+import se.swedsoft.bookkeeping.data.SSSupplier;
+import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

@@ -1,15 +1,15 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.data.SSStandardText;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.HashMap;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 /**

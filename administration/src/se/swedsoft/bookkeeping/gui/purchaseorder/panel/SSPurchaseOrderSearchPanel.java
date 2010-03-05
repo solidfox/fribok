@@ -1,16 +1,15 @@
 package se.swedsoft.bookkeeping.gui.purchaseorder.panel;
 
-import se.swedsoft.bookkeeping.gui.purchaseorder.SSPurchaseOrderFrame;
-import se.swedsoft.bookkeeping.gui.purchaseorder.util.SSPurchaseOrderTableModel;
-import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
 import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.purchaseorder.SSPurchaseOrderFrame;
+import se.swedsoft.bookkeeping.gui.purchaseorder.util.SSPurchaseOrderTableModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

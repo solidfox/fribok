@@ -2,8 +2,8 @@ package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-13

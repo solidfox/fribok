@@ -1,14 +1,14 @@
 package se.swedsoft.bookkeeping.gui.product.panel;
 
-import se.swedsoft.bookkeeping.gui.product.util.SSProductTableModel;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.product.util.SSProductTableModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

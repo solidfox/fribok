@@ -1,13 +1,13 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice.dialog;
 
+import se.swedsoft.bookkeeping.data.SSInvoice;
+import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPendingInvoiceTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
-import se.swedsoft.bookkeeping.data.SSInvoice;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

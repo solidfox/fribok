@@ -4,9 +4,9 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFileFilter;
 
 import javax.swing.*;
-import java.util.ResourceBundle;
 import java.awt.*;
 import java.io.File;
+import java.util.ResourceBundle;
 
 
 

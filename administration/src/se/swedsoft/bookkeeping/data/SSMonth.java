@@ -1,9 +1,12 @@
 package se.swedsoft.bookkeeping.data;
 
 import java.io.Serializable;
-import java.util.*;
 import java.text.DateFormat;
 import java.text.DateFormatSymbols;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-jan-27

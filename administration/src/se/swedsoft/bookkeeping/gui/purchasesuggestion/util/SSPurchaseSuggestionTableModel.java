@@ -1,13 +1,16 @@
 package se.swedsoft.bookkeeping.gui.purchasesuggestion.util;
 
+import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
+import se.swedsoft.bookkeeping.data.SSProduct;
+import se.swedsoft.bookkeeping.data.SSStock;
+import se.swedsoft.bookkeeping.data.SSSupplier;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

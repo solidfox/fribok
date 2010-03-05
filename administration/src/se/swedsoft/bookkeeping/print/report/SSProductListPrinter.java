@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
-import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
+import se.swedsoft.bookkeeping.SSVersion;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSProductRow;
@@ -9,12 +8,13 @@ import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.print.SSPrinter;
+import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 
-import java.util.List;
+import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.text.DateFormat;
+import java.util.List;
 
 /**
  * Date: 2006-mar-03

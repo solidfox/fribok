@@ -1,21 +1,20 @@
 package se.swedsoft.bookkeeping.data.backup.util;
 
+import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
-import se.swedsoft.bookkeeping.data.system.SSSystemCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.system.SSSystemCompany;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.frame.SSInternalFrame;
+import se.swedsoft.bookkeeping.util.SSException;
 
-import java.util.Date;
-import java.util.List;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
-
-import se.swedsoft.bookkeeping.util.SSException;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.frame.SSInternalFrame;
+import java.util.Date;
+import java.util.List;
 
 import static se.swedsoft.bookkeeping.data.backup.util.SSBackupZip.ArchiveFile;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 /**
  * Date: 2006-mar-03

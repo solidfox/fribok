@@ -1,11 +1,11 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.base.SSSale;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.math.BigDecimal;
 
 /**
  * User: Andreas Lago

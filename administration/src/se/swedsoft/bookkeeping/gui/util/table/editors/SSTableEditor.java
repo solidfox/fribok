@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.data.common.SSUnit;
-import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.common.SSCurrency;
+import se.swedsoft.bookkeeping.data.common.SSUnit;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -1,23 +1,23 @@
 package se.swedsoft.bookkeeping.gui.voucher.util;
 
-import se.swedsoft.bookkeeping.data.SSVoucherRow;
-import se.swedsoft.bookkeeping.data.SSVoucher;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
+import se.swedsoft.bookkeeping.data.SSVoucher;
+import se.swedsoft.bookkeeping.data.SSVoucherRow;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import java.beans.PropertyChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Arrays;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Tests if a voucher is isValid

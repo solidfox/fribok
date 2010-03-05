@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
 import jxl.Cell;
-import jxl.NumberCell;
 import jxl.DateCell;
+import jxl.NumberCell;
 
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Date: 2006-feb-14

@@ -1,29 +1,29 @@
 package se.swedsoft.bookkeeping.gui.invoice;
 
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.invoice.panel.SSInvoicePanel;
-import se.swedsoft.bookkeeping.gui.invoice.dialog.SSInvoiceTypeDialog;
-import se.swedsoft.bookkeeping.gui.invoice.util.SSInvoiceTableModel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.invoice.dialog.SSInvoiceTypeDialog;
+import se.swedsoft.bookkeeping.gui.invoice.panel.SSInvoicePanel;
+import se.swedsoft.bookkeeping.gui.invoice.util.SSInvoiceTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 
-import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
-import java.awt.event.ActionListener;
+import javax.swing.table.AbstractTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.*;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: Andreas Lago

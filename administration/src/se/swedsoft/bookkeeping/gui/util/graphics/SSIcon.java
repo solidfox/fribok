@@ -2,12 +2,12 @@ package se.swedsoft.bookkeeping.gui.util.graphics;
 
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 
-import javax.swing.*;
 import javax.imageio.ImageIO;
-import java.util.Map;
-import java.util.HashMap;
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Date: 2006-feb-02

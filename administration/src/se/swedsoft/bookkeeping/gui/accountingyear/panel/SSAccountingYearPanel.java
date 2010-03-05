@@ -1,20 +1,20 @@
 package se.swedsoft.bookkeeping.gui.accountingyear.panel;
 
 
+import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.SSAccountPlan;
+import se.swedsoft.bookkeeping.gui.accountplans.util.SSAccountPlanTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.accountplans.util.SSAccountPlanTableModel;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Date: 2006-feb-15

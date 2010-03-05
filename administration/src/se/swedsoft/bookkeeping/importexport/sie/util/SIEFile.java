@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.importexport.sie.util;
 
-import java.util.List;
-import java.util.LinkedList;
 import java.io.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-20

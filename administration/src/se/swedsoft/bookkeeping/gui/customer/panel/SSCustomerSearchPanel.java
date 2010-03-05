@@ -5,11 +5,11 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.customer.util.SSCustomerTableModel;
 
 import javax.swing.*;
-import java.util.LinkedList;
-import java.util.List;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**

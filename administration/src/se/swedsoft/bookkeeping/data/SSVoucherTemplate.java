@@ -4,16 +4,16 @@
  */
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
-import java.io.Serializable;
 import java.io.IOException;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Date;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 // Trade Extensions specific imports
 

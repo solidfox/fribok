@@ -1,15 +1,14 @@
 package se.swedsoft.bookkeeping.gui.inpayment.panel;
 
-import se.swedsoft.bookkeeping.gui.inpayment.util.SSInpaymentTableModel;
-import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.inpayment.util.SSInpaymentTableModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

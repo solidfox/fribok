@@ -1,27 +1,24 @@
 package se.swedsoft.bookkeeping.print;
 
-import se.swedsoft.bookkeeping.print.view.SSJasperPreviewFrame;
-import se.swedsoft.bookkeeping.print.util.SSReportCache;
-import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignBand;
+import net.sf.jasperreports.engine.design.JRDesignExpression;
+import net.sf.jasperreports.engine.design.JRDesignTextField;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.view.JasperViewer;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
+import se.swedsoft.bookkeeping.print.util.SSReportCache;
+import se.swedsoft.bookkeeping.print.view.SSJasperPreviewFrame;
 import se.swedsoft.bookkeeping.util.SSException;
 
-import java.util.Arrays;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.LinkedList;
-import java.awt.*;
-
-
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.*;
-import net.sf.jasperreports.view.JasperViewer;
-
-import javax.swing.event.InternalFrameListener;
 import javax.swing.*;
+import javax.swing.event.InternalFrameListener;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 /**
  * Date: 2006-feb-16

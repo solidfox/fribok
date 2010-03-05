@@ -5,30 +5,33 @@
 package se.swedsoft.bookkeeping.gui.accountingyear;
 
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.system.*;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.system.SSDBConfig;
+import se.swedsoft.bookkeeping.data.system.SSYearLock;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.dialog.SSEditAccountingYearDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.dialog.SSNewAccountingYearDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.util.SSSystemYearDataModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.util.*;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
+import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer;
-import se.swedsoft.bookkeeping.gui.util.frame.*;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
-import java.util.Date;
-import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
 
 
 /**

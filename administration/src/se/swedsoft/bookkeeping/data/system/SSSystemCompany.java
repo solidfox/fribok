@@ -3,10 +3,10 @@ package se.swedsoft.bookkeeping.data.system;
 
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 
-import java.io.*;
-import java.util.List;
-import java.util.LinkedList;
+import java.io.Serializable;
 import java.rmi.server.UID;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-24

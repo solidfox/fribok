@@ -2,8 +2,8 @@ package se.swedsoft.bookkeeping.gui.help.panel;
 
 import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 
-import javax.swing.*;
 import javax.help.*;
+import javax.swing.*;
 import java.awt.*;
 
 /**

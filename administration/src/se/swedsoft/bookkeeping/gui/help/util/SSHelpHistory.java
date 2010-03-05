@@ -1,13 +1,13 @@
 package se.swedsoft.bookkeeping.gui.help.util;
 
+import javax.help.InvalidHelpSetContextException;
+import javax.help.JHelpContentViewer;
 import javax.help.event.HelpModelEvent;
 import javax.help.event.HelpModelListener;
-import javax.help.JHelpContentViewer;
-import javax.help.InvalidHelpSetContextException;
-import java.util.List;
-import java.util.LinkedList;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-mar-06

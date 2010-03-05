@@ -1,15 +1,14 @@
 package se.swedsoft.bookkeeping.gui.creditinvoice.panel;
 
-import se.swedsoft.bookkeeping.gui.creditinvoice.util.SSCreditInvoiceTableModel;
-import se.swedsoft.bookkeeping.data.SSCreditInvoice;
 import se.swedsoft.bookkeeping.data.SSCreditInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.creditinvoice.util.SSCreditInvoiceTableModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

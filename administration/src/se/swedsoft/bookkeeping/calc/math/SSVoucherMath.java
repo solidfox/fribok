@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.math.BigDecimal;

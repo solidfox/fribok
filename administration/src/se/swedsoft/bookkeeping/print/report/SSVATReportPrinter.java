@@ -1,15 +1,14 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
+import se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator;
+import se.swedsoft.bookkeeping.print.SSPrinter;
 
-import java.util.List;
-import java.util.Date;
 import java.math.RoundingMode;
-
+import java.util.Date;
+import java.util.List;
 
 import static se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator.SSVATReportGroup;
 

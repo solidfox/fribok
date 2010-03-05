@@ -1,23 +1,22 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
-import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.format.Colour;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet;
+import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.List;
-
-import jxl.WorkbookSettings;
-import jxl.Workbook;
-import jxl.format.Colour;
-import jxl.write.WritableWorkbook;
-import jxl.write.WritableSheet;
-import jxl.write.WriteException;
-import jxl.write.WritableCellFormat;
+import java.util.Locale;
 
 /**
  * User: Andreas Lago

@@ -1,18 +1,18 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+import se.swedsoft.bookkeeping.data.SSNewResultUnit;
+import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
-import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import java.util.Date;
-import java.awt.event.ActionListener;
+import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  * Date: 2006-feb-08

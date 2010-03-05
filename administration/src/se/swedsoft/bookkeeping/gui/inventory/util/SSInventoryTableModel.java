@@ -2,12 +2,12 @@ package se.swedsoft.bookkeeping.gui.inventory.util;
 
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 /**
  * User: Andreas Lago

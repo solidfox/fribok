@@ -1,18 +1,18 @@
 package se.swedsoft.bookkeeping.calc;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
+import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
 import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSVoucher;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Map;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2006-mar-09

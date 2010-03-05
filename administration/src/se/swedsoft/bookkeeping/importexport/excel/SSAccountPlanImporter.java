@@ -1,24 +1,24 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
-import se.swedsoft.bookkeeping.data.SSAccountPlan;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.read.biff.BiffException;
 import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelSheet;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelRow;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelCell;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelCell;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelRow;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelSheet;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
-import java.io.*;
-import java.util.ResourceBundle;
+import java.io.File;
+import java.io.IOException;
 import java.util.Locale;
-
-import jxl.read.biff.BiffException;
-import jxl.Workbook;
-import jxl.Sheet;
-import jxl.WorkbookSettings;
+import java.util.ResourceBundle;
 
 /**
  * Date: 2006-feb-13

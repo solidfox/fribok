@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.calc.math;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.SSIndelivery;
+import se.swedsoft.bookkeeping.data.SSIndeliveryRow;
+import se.swedsoft.bookkeeping.data.SSProduct;
 
 import java.util.Date;
-import java.util.Map;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * User: Andreas Lago

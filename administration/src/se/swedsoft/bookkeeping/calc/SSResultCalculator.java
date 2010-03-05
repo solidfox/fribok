@@ -1,10 +1,10 @@
 package se.swedsoft.bookkeeping.calc;
 
+import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
+import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
+import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
-import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 
 import java.math.BigDecimal;
 import java.util.*;

@@ -1,22 +1,25 @@
 package se.swedsoft.bookkeeping.gui.voucher.util;
 
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSNewProject;
+import se.swedsoft.bookkeeping.data.SSNewResultUnit;
+import se.swedsoft.bookkeeping.data.SSVoucherRow;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.util.*;
-import se.swedsoft.bookkeeping.gui.util.table.editors.*;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
-import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.table.editors.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
 import java.awt.*;
-import java.text.NumberFormat;
-import java.text.DateFormat;
-import java.util.*;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.util.Date;
 
 /**
  * User: Fredrik Stigsson

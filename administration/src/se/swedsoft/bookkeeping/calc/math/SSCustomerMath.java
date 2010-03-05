@@ -5,9 +5,9 @@ import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

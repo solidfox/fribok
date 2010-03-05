@@ -1,16 +1,19 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments;
 
-import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.PaymentMethod;
+import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.poster.*;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 
-import java.io.*;
-import java.util.List;
-import java.util.LinkedList;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

@@ -6,7 +6,8 @@ package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;

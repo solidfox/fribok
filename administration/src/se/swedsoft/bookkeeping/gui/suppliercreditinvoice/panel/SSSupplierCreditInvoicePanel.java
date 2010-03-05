@@ -1,41 +1,41 @@
 package se.swedsoft.bookkeeping.gui.suppliercreditinvoice.panel;
 
+import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel;
+import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
+import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceRowTableModel;
+import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
 import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.model.SSCurrencyTableModel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.actions.SSTraversalAction;
-import se.swedsoft.bookkeeping.gui.util.table.actions.SSDeleteAction;
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 import se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField;
 import se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel;
-import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceRowTableModel;
-import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceTableModel;
+import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSCurrencyTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.actions.SSDeleteAction;
+import se.swedsoft.bookkeeping.gui.util.table.actions.SSTraversalAction;
 import se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherRowTableModelOld;
-import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
-import javax.swing.event.TableModelListener;
-import javax.swing.event.TableModelEvent;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.math.BigDecimal;
-import java.util.List;
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  * User: Andreas Lago

@@ -1,16 +1,15 @@
 package se.swedsoft.bookkeeping.gui.tender.panel;
 
-import se.swedsoft.bookkeeping.gui.tender.util.SSTenderTableModel;
-import se.swedsoft.bookkeeping.gui.tender.SSTenderFrame;
-import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.tender.SSTenderFrame;
+import se.swedsoft.bookkeeping.gui.tender.util.SSTenderTableModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

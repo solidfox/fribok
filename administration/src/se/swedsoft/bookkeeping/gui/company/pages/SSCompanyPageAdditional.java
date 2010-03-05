@@ -1,16 +1,16 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.components.SSIntegerTextField;
-import se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.util.SSMailServer;
+import se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSIntegerTextField;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 /**

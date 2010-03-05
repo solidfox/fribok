@@ -1,17 +1,19 @@
 package se.swedsoft.bookkeeping.gui.help;
 
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.help.panel.SSHelpPanel;
+import se.swedsoft.bookkeeping.gui.help.util.SSHelpHistory;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.help.util.SSHelpHistory;
-import se.swedsoft.bookkeeping.gui.help.panel.SSHelpPanel;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
+import javax.help.HelpSet;
+import javax.help.InvalidHelpSetContextException;
+import javax.help.JHelpContentViewer;
 import javax.swing.*;
-import javax.help.*;
-import java.net.URL;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 /**
  * Date: 2006-mar-06

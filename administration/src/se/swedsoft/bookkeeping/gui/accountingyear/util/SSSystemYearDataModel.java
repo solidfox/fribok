@@ -1,10 +1,10 @@
 package se.swedsoft.bookkeeping.gui.accountingyear.util;
 
-import se.swedsoft.bookkeeping.data.system.SSSystemYear;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.system.SSSystemYear;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import java.util.Date;
 import java.util.ResourceBundle;

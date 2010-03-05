@@ -1,15 +1,14 @@
 package se.swedsoft.bookkeeping.data.util;
 
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
+import org.apache.xerces.utils.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.xerces.utils.Base64;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Convinence class to make it easy to encrypt and decrypt using a symetric algorithm. 

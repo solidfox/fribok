@@ -3,10 +3,10 @@ package se.swedsoft.bookkeeping.gui.util.model;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryWay;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSNameDescriptionDialog;
 import se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSNameDescriptionDialog;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import javax.swing.*;
 import java.util.List;

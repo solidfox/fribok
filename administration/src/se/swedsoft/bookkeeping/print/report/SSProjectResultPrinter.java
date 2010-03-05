@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.print.report;
 
 import se.swedsoft.bookkeeping.calc.SSResultCalculator;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewProject;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.util.Date;
 import java.util.ResourceBundle;

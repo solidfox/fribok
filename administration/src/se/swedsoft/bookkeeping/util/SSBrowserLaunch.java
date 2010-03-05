@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.util;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.io.IOException;
-import javax.swing.JOptionPane;
 
 /**
  * User: Andreas Lago

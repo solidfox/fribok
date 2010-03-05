@@ -3,9 +3,9 @@ package se.swedsoft.bookkeeping.gui.util.table.actions;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 /**
  * User: Andreas Lago

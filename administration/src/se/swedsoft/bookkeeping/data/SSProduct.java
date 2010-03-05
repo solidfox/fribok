@@ -1,10 +1,10 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.common.SSUnit;
-import se.swedsoft.bookkeeping.data.common.SSTaxCode;
-import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
+import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
+import se.swedsoft.bookkeeping.data.common.SSTaxCode;
+import se.swedsoft.bookkeeping.data.common.SSUnit;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;

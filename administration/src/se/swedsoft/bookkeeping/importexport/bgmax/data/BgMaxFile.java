@@ -1,11 +1,11 @@
 package se.swedsoft.bookkeeping.importexport.bgmax.data;
 
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.util.Iterator;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class for storing the contents of a bgmax file read from disk, and responsible 

@@ -4,38 +4,41 @@
  */
 package se.swedsoft.bookkeeping.gui.ownreport.panel;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellEditor;
-import se.swedsoft.bookkeeping.gui.util.table.actions.SSDeleteAction;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.common.SSHeadingType;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow;
+import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountTableModel;
+import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportMonthlyTableModel;
+import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportRowTableModel;
+import se.swedsoft.bookkeeping.gui.project.util.SSProjectTableModel;
+import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
-import se.swedsoft.bookkeeping.gui.util.model.SSAccountTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportRowTableModel;
-import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountTableModel;
-import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow;
-import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportMonthlyTableModel;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
-import se.swedsoft.bookkeeping.gui.project.util.SSProjectTableModel;
-import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.common.SSHeadingType;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSAccountTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.actions.SSDeleteAction;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellEditor;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import java.awt.event.*;
-import java.awt.Point;
-import java.util.List;
-import java.util.LinkedList;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *

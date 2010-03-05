@@ -2,13 +2,13 @@ package se.swedsoft.bookkeeping.importexport.sie.util;
 
 import se.swedsoft.bookkeeping.data.SSMonth;
 
-import java.util.*;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.math.BigInteger;
 import java.math.BigDecimal;
-import java.text.ParseException;
+import java.math.BigInteger;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Date: 2006-feb-23

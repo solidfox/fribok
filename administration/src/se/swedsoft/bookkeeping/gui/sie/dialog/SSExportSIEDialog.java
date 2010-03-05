@@ -1,23 +1,21 @@
 package se.swedsoft.bookkeeping.gui.sie.dialog;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSSIEFileChooser;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.sie.panel.SSExportSIEPanel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSSIEFileChooser;
+import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
+import se.swedsoft.bookkeeping.importexport.sie.util.SIEType;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 
-import java.util.ResourceBundle;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.io.File;
-
-import se.swedsoft.bookkeeping.importexport.sie.util.SIEType;
-import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
-
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ResourceBundle;
 
 /**
  * Date: 2006-feb-13

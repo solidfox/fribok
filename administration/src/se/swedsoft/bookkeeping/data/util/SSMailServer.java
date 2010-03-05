@@ -1,10 +1,10 @@
 package se.swedsoft.bookkeeping.data.util;
 
+import se.swedsoft.bookkeeping.util.SSUtil;
+
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import se.swedsoft.bookkeeping.util.SSUtil;
 
 /**
  * Class to store data about a mail server. Immutable.

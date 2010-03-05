@@ -1,16 +1,15 @@
 package se.swedsoft.bookkeeping.gui.company;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.company.panel.SSCompanySettingsDialog;
-import se.swedsoft.bookkeeping.gui.accountingyear.SSAccountingYearFrame;
-
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.*;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.accountingyear.SSAccountingYearFrame;
+import se.swedsoft.bookkeeping.gui.company.panel.SSCompanySettingsDialog;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import javax.swing.*;
 import java.util.ResourceBundle;

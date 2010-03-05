@@ -1,13 +1,13 @@
 package se.swedsoft.bookkeeping.calc.data;
 
+import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSOwnReport;
 import se.swedsoft.bookkeeping.data.SSOwnReportRow;
-import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
 import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Johan Gunnarsson

@@ -1,18 +1,19 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
-import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
+import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
+import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
+import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
 import se.swedsoft.bookkeeping.importexport.sie.types.SIEDimension;
 import se.swedsoft.bookkeeping.importexport.sie.util.SIEReader;
 import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.util.List;
+
+import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
+import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
 
 /**
  * Date: 2006-feb-23

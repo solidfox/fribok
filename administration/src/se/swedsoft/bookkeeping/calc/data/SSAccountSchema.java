@@ -1,20 +1,19 @@
 package se.swedsoft.bookkeeping.calc.data;
 
-import org.xml.sax.XMLReader;
-import org.xml.sax.SAXException;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
-import org.xml.sax.helpers.XMLReaderFactory;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
-
-import java.util.*;
-import java.io.IOException;
-import java.io.Serializable;
-import java.io.FileInputStream;
-import java.io.File;
-
+import org.xml.sax.helpers.XMLReaderFactory;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * Date: 2006-feb-27

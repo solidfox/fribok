@@ -1,21 +1,21 @@
 package se.swedsoft.bookkeeping.gui.accountingyear.panel;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellEditor;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.gui.accountingyear.util.SSStartingAmountTableModel;
 import se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.accountingyear.util.SSStartingAmountTableModel;
-import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellEditor;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.awt.*;
 import java.math.BigDecimal;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2006-feb-15

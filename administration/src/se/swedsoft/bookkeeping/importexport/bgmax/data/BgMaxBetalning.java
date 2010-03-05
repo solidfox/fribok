@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.importexport.bgmax.data;
 
-import java.util.List;
-import java.util.LinkedList;
 import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

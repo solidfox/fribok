@@ -3,9 +3,9 @@ package se.swedsoft.bookkeeping.gui.status;
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
-import java.util.List;
-import java.util.LinkedList;
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

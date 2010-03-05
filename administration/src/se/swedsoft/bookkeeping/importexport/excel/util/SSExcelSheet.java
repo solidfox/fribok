@@ -2,8 +2,8 @@ package se.swedsoft.bookkeeping.importexport.excel.util;
 
 import jxl.Sheet;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-14

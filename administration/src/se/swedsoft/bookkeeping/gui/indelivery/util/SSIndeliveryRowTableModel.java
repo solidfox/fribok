@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.gui.indelivery.util;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.SSIndeliveryRow;
+import se.swedsoft.bookkeeping.data.SSInventory;
+import se.swedsoft.bookkeeping.data.SSProduct;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 /**
  * User: Andreas Lago

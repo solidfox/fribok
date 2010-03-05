@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.data.backup;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-mar-03

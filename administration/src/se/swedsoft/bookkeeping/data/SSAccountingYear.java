@@ -4,17 +4,17 @@
  */
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import javax.swing.*;
-import java.util.*;
-import java.io.Serializable;
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.rmi.server.UID;
+import java.text.DateFormat;
+import java.util.*;
 
 
 /**

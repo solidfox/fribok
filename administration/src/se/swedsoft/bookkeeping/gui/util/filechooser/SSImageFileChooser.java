@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser;
 
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSImagePreview;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSImageFilter;
+import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSImagePreview;
 
 /**
  * Date: 2006-feb-10

@@ -1,14 +1,15 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
-import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
+import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.print.SSPrinter;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Date: 2006-mar-03

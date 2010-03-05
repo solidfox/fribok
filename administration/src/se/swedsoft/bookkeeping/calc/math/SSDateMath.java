@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.calc.math;
 
-import java.util.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Date: 2006-mar-09

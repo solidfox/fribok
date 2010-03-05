@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui.inventory.util;
 
 import se.swedsoft.bookkeeping.data.SSInventory;
+import se.swedsoft.bookkeeping.data.SSInventoryRow;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSStock;
-import se.swedsoft.bookkeeping.data.SSInventoryRow;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 
 /**
  * User: Andreas Lago

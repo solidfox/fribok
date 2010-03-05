@@ -5,19 +5,19 @@
 package se.swedsoft.bookkeeping.gui.util.table;
 
 
-import javax.swing.table.TableModel;
-import javax.swing.table.TableCellRenderer;
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
-import java.util.List;
-import java.util.Arrays;
-import java.util.LinkedList;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * This should be the deafult table for most applications in this application.

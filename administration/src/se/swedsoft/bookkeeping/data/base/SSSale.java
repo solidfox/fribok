@@ -1,13 +1,13 @@
 package se.swedsoft.bookkeeping.data.base;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * Base class that tender, orders and invouces inherit from

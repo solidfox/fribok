@@ -1,17 +1,15 @@
 package se.swedsoft.bookkeeping.gui.order.panel;
 
-import se.swedsoft.bookkeeping.gui.order.util.SSOrderTableModel;
-import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
-import se.swedsoft.bookkeeping.gui.order.util.SSOrderTableModel;
-import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
+import se.swedsoft.bookkeeping.gui.order.util.SSOrderTableModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.util.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**

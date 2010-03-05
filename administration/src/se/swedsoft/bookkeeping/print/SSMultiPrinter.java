@@ -1,15 +1,14 @@
 package se.swedsoft.bookkeeping.print;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JasperReport;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.JRDataSource;
 
 /**
  * Date: 2006-mar-02

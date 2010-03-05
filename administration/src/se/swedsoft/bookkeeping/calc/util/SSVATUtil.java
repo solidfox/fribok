@@ -1,15 +1,19 @@
 package se.swedsoft.bookkeeping.calc.util;
 
-import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSVoucher;
+import se.swedsoft.bookkeeping.data.SSVoucherRow;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.*;
 import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2006-jan-26

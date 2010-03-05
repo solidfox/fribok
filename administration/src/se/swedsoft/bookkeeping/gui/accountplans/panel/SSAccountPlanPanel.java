@@ -1,30 +1,33 @@
 package se.swedsoft.bookkeeping.gui.accountplans.panel;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSAccountPlan;
+import se.swedsoft.bookkeeping.data.SSAccountPlanType;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.accountplans.dialog.SSImportAccountplanDialog;
 import se.swedsoft.bookkeeping.gui.accountplans.util.SSAccountPlanRowTableModel;
 import se.swedsoft.bookkeeping.gui.accountplans.util.SSAccountPlanTypeModel;
-import se.swedsoft.bookkeeping.gui.accountplans.dialog.SSImportAccountplanDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
-import se.swedsoft.bookkeeping.data.SSAccountPlan;
-import se.swedsoft.bookkeeping.data.SSAccount;
-import se.swedsoft.bookkeeping.data.SSAccountPlanType;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.ListSelectionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
-import java.util.*;
+import java.awt.event.KeyEvent;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Date: 2006-feb-13

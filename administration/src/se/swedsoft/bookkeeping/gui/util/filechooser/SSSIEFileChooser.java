@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser;
 
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterSIE;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterSIE;
 
 import java.io.File;
 

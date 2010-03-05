@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.calc;
 
+import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
+import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
-import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow;
 
 import java.math.BigDecimal;

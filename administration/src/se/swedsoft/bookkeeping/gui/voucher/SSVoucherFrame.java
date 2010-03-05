@@ -1,34 +1,36 @@
 package se.swedsoft.bookkeeping.gui.voucher;
 
-import se.swedsoft.bookkeeping.gui.util.*;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSSIEFileChooser;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSExcelFileChooser;
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.*;
-import se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherTableModel;
+import se.swedsoft.bookkeeping.SSVersion;
 import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.print.report.SSVoucherListPrinter;
-import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
-import se.swedsoft.bookkeeping.importexport.util.SSExportException;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSButton;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSProgressDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSExcelFileChooser;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSSIEFileChooser;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherTableModel;
 import se.swedsoft.bookkeeping.importexport.excel.SSVoucherExporter;
 import se.swedsoft.bookkeeping.importexport.excel.SSVoucherImporter;
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
+import se.swedsoft.bookkeeping.importexport.util.SSExportException;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
+import se.swedsoft.bookkeeping.print.report.SSVoucherListPrinter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.*;
-import java.util.*;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.EventObject;
+import java.util.List;
 
 /**
  * Date: 2006-feb-07

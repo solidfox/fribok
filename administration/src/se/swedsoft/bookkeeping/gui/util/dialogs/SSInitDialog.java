@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
+import com.sun.java.help.impl.SwingWorker;
+
 import javax.swing.*;
 import java.awt.*;
-
-import com.sun.java.help.impl.SwingWorker;
 
 /**
  * User: Fredrik Stigsson

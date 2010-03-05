@@ -2,10 +2,10 @@ package se.swedsoft.bookkeeping.data.common;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
-import java.math.BigDecimal;
 import java.io.Serializable;
-import java.util.List;
+import java.math.BigDecimal;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-13

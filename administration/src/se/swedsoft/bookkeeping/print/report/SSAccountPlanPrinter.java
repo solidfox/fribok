@@ -1,11 +1,11 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.print.SSPrinter;
 
 
 /**

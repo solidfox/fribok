@@ -1,30 +1,29 @@
 package se.swedsoft.bookkeeping.print;
 
+import net.sf.jasperreports.engine.JRParameter;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 
-import javax.swing.event.InternalFrameListener;
+import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
-import javax.swing.*;
+import javax.swing.event.InternalFrameListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Locale;
-import java.text.DateFormat;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JRParameter;
 
 import static se.swedsoft.bookkeeping.print.SSReport.ReportField.*;
-import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
-import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 
 /**
  *

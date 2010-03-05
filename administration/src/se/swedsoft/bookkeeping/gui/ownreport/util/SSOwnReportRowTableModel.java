@@ -1,14 +1,13 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
 import se.swedsoft.bookkeeping.data.SSOwnReportRow;
-import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSHeadingTypeCellEditor;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSHeadingTypeCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSHeadingTypeCellEditor;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSHeadingTypeCellRenderer;
 
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;

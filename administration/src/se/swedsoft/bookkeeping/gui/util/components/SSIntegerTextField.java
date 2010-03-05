@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 import javax.swing.text.DefaultFormatterFactory;
-import java.text.NumberFormat;
+import javax.swing.text.NumberFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
+import java.text.NumberFormat;
 
 /**
  * Date: 2006-feb-03

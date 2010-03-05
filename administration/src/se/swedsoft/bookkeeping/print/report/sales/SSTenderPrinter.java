@@ -1,19 +1,19 @@
 package se.swedsoft.bookkeeping.print.report.sales;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
+import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
+import se.swedsoft.bookkeeping.calc.math.SSSaleMath;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSSaleMath;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.print.SSPrinter;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Map;
 import java.math.BigDecimal;
+import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 /**
  * Date: 2006-mar-03

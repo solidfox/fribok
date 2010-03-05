@@ -1,16 +1,16 @@
 package se.swedsoft.bookkeeping.gui.voucher.util;
 
+import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.*;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.data.*;
 
 import javax.swing.*;
+import java.awt.*;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.LinkedList;
-import java.math.BigDecimal;
-import java.awt.*;
 
 /**
  * Date: 2006-feb-06

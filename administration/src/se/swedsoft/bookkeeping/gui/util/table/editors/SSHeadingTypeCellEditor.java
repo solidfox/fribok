@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.ownreport.util.SSHeadingTypeTableModel;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
+import se.swedsoft.bookkeeping.gui.ownreport.util.SSHeadingTypeTableModel;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 
 /**
  * User: Andreas Lago

@@ -1,10 +1,11 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSAccountCellEditor;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.table.editors.*;
 
 import javax.swing.table.TableCellEditor;
 import java.math.BigDecimal;

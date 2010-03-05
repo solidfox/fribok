@@ -3,9 +3,9 @@ package se.swedsoft.bookkeeping.gui.supplierinvoice.util;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 
 import java.math.BigDecimal;
 

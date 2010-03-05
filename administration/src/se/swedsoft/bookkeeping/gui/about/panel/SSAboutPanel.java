@@ -1,14 +1,14 @@
 package se.swedsoft.bookkeeping.gui.about.panel;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.util.SSBrowserLaunch;
 
 import javax.swing.*;
-import javax.swing.event.HyperlinkListener;
 import javax.swing.event.HyperlinkEvent;
-import java.awt.event.ActionListener;
+import javax.swing.event.HyperlinkListener;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Date: 2006-mar-14

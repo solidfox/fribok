@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui.accountingyear.util;
 
 import se.swedsoft.bookkeeping.data.SSAccount;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
-import java.util.ResourceBundle;
-import java.util.Map;
 import java.math.BigDecimal;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 /**
  * Date: 2006-feb-15

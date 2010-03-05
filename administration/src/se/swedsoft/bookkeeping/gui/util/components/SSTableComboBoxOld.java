@@ -1,20 +1,20 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.Document;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.EventObject;
-import java.awt.event.*;
+import javax.swing.text.Document;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.EventObject;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-jan-30

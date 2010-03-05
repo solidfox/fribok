@@ -2,8 +2,9 @@ package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
 
 import javax.swing.*;
-import java.beans.*;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 
 /**

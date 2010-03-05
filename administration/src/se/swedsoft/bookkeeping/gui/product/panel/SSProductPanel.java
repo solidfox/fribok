@@ -1,39 +1,39 @@
 package se.swedsoft.bookkeeping.gui.product.panel;
 
+import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.common.SSUnit;
-import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
+import se.swedsoft.bookkeeping.data.common.SSTaxCode;
+import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.product.util.SSProductRowTableModel;
+import se.swedsoft.bookkeeping.gui.project.util.SSProjectTableModel;
+import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
+import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
+import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
+import se.swedsoft.bookkeeping.gui.util.components.*;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSAccountTableModel;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel;
+import se.swedsoft.bookkeeping.gui.util.model.SSUnitTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSProductCellEditor;
-import se.swedsoft.bookkeeping.gui.util.components.*;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSAccountTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSUnitTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
-import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.product.util.SSProductRowTableModel;
-import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
-import se.swedsoft.bookkeeping.gui.project.util.SSProjectTableModel;
-import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
-import se.swedsoft.bookkeeping.calc.math.SSProductMath;
-import se.swedsoft.bookkeeping.SSVersion;
 
 import javax.swing.*;
-import javax.swing.text.NumberFormatter;
 import javax.swing.text.DefaultFormatterFactory;
-import java.awt.event.ActionListener;
+import javax.swing.text.NumberFormatter;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
-import java.util.Locale;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * User: Andreas Lago

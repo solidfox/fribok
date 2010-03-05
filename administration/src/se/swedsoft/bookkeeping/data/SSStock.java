@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.*;
-import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
+import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.util.*;
 

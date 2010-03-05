@@ -1,13 +1,12 @@
 package se.swedsoft.bookkeeping.data.common;
 
+import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

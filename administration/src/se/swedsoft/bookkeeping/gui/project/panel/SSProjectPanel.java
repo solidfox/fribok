@@ -8,8 +8,8 @@ import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 
 import javax.swing.*;
-import java.util.Date;
 import java.awt.event.*;
+import java.util.Date;
 
 /**
  * @author

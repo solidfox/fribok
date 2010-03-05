@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 
 /**

@@ -4,8 +4,8 @@ import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**

@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
+import se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.*;
 

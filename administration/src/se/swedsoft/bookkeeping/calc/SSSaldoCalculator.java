@@ -1,13 +1,12 @@
 package se.swedsoft.bookkeeping.calc;
 
-import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
+import se.swedsoft.bookkeeping.data.*;
 
 import java.math.BigDecimal;
-import java.util.Map;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2006-feb-23

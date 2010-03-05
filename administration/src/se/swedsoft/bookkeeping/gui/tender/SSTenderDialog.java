@@ -1,25 +1,25 @@
 package se.swedsoft.bookkeeping.gui.tender;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.tender.panel.SSTenderPanel;
-import se.swedsoft.bookkeeping.gui.tender.util.SSTenderTableModel;
+import se.swedsoft.bookkeeping.calc.math.SSTenderMath;
 import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.calc.math.SSTenderMath;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.tender.panel.SSTenderPanel;
+import se.swedsoft.bookkeeping.gui.tender.util.SSTenderTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 
 import javax.swing.*;
-import java.util.ResourceBundle;
-import java.util.Date;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * User: Andreas Lago

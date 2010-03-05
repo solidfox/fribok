@@ -1,14 +1,16 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
 import jxl.format.CellFormat;
-import jxl.write.*;
+import jxl.write.Label;
 import jxl.write.Number;
+import jxl.write.WritableSheet;
+import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-14

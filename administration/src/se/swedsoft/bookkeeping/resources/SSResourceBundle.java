@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.resources;
 
-import java.util.ResourceBundle;
 import java.util.Enumeration;
 import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 /**
  * User: Andreas Lago

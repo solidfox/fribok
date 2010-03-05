@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+import se.swedsoft.bookkeeping.data.SSAddress;
+import se.swedsoft.bookkeeping.data.SSCustomer;
+import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.base.SSSale;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.gui.customer.SSCustomerFrame;
 import se.swedsoft.bookkeeping.gui.product.SSProductFrame;
 

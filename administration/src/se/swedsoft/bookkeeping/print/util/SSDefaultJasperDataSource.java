@@ -9,9 +9,9 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
-import java.util.Map;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 // Trade Extensions specific imports
 

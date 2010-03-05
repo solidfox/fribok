@@ -1,17 +1,17 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
-import java.util.Date;
-import java.util.List;
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

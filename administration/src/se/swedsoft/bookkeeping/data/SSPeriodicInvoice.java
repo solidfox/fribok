@@ -1,15 +1,15 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
-import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
+import se.swedsoft.bookkeeping.data.base.SSSaleRow;
+import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
+import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.io.Serializable;
-import java.util.*;
 import java.text.DateFormat;
+import java.util.*;
 
 /**
  * User: Andreas Lago

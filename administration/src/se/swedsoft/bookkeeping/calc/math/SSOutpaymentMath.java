@@ -1,12 +1,14 @@
 package se.swedsoft.bookkeeping.calc.math;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.SSOutpayment;
+import se.swedsoft.bookkeeping.data.SSOutpaymentRow;
+import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * User: Andreas Lago

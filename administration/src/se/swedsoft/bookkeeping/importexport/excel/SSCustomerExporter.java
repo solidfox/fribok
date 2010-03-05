@@ -1,32 +1,31 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
-import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet;
-import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
-import se.swedsoft.bookkeeping.data.SSCustomer;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.util.Locale;
-import java.util.List;
-
-import jxl.WorkbookSettings;
 import jxl.Workbook;
+import jxl.WorkbookSettings;
 import jxl.format.Colour;
-import jxl.write.WritableWorkbook;
-import jxl.write.WritableSheet;
-import jxl.write.WriteException;
 import jxl.write.WritableCellFormat;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.Document;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 import org.apache.xerces.dom.DocumentImpl;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import se.swedsoft.bookkeeping.data.SSCustomer;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
+import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet;
+import se.swedsoft.bookkeeping.importexport.util.SSExportException;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * User: Andreas Lago

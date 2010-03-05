@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
 import se.swedsoft.bookkeeping.data.SSSupplier;
+import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 
 /**
  * User: Andreas Lago

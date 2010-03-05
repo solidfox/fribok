@@ -4,8 +4,8 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

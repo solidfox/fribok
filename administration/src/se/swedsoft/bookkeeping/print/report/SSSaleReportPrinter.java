@@ -1,20 +1,20 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
+import se.swedsoft.bookkeeping.calc.math.SSDateMath;
+import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
+import se.swedsoft.bookkeeping.calc.math.SSProductMath;
+import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.math.SSProductMath;
-import se.swedsoft.bookkeeping.calc.math.SSDateMath;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
+import se.swedsoft.bookkeeping.print.SSPrinter;
 
-import java.util.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.math.MathContext;
+import java.math.RoundingMode;
+import java.util.*;
 
 /**
  * Date: 2007-mar-21

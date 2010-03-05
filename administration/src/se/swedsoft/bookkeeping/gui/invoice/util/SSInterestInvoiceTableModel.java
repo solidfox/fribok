@@ -1,27 +1,27 @@
 package se.swedsoft.bookkeeping.gui.invoice.util;
 
-import se.swedsoft.bookkeeping.data.SSInvoice;
+import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
+import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
-import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.*;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import java.awt.*;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.List;
-import java.math.BigDecimal;
-import java.awt.*;
 
 /**
  * User: Andreas Lago

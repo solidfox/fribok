@@ -1,16 +1,15 @@
 package se.swedsoft.bookkeeping.print.util;
 
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JRException;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Date;
-import java.io.*;
-
-import se.swedsoft.bookkeeping.util.SSException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperReport;
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.util.SSException;
+
+import java.io.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Date: 2006-feb-14

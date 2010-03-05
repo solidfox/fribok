@@ -1,13 +1,16 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.calc.SSOwnReportCalculator;
+import se.swedsoft.bookkeeping.calc.data.SSOwnReportAccountGroup;
+import se.swedsoft.bookkeeping.calc.data.SSOwnReportAccountSchema;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSNewProject;
+import se.swedsoft.bookkeeping.data.SSNewResultUnit;
+import se.swedsoft.bookkeeping.data.SSOwnReport;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.SSOwnReportCalculator;
-import se.swedsoft.bookkeeping.calc.data.SSOwnReportAccountSchema;
-import se.swedsoft.bookkeeping.calc.data.SSOwnReportAccountGroup;
+import se.swedsoft.bookkeeping.print.SSPrinter;
 
 import java.math.BigDecimal;
 import java.util.*;

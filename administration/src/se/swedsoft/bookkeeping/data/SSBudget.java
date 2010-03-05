@@ -2,10 +2,12 @@ package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.*;
-import java.io.*;
 import java.text.DateFormat;
+import java.util.*;
 
 /**
  * User: Fredrik Stigsson

@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow;
+import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
-import java.util.List;
-import java.util.LinkedList;
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Johan Gunnarsson

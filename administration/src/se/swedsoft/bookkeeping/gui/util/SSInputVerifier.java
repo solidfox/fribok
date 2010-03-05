@@ -1,15 +1,15 @@
 package se.swedsoft.bookkeeping.gui.util;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
 
 import javax.swing.*;
-import javax.swing.event.DocumentListener;
 import javax.swing.event.DocumentEvent;
-import java.util.List;
-import java.util.LinkedList;
-import java.awt.event.ActionListener;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

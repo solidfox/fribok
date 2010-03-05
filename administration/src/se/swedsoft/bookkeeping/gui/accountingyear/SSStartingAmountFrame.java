@@ -4,27 +4,29 @@
  */
 package se.swedsoft.bookkeeping.gui.accountingyear;
 
-import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
+import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
+import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSProgressDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.panel.SSStartingAmountPanel;
-import se.swedsoft.bookkeeping.gui.util.*;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.util.frame.*;
-import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
-import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSProgressDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
 import se.swedsoft.bookkeeping.print.report.SSStartingAmountPrinter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
-import java.util.*;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Map;
 
 
 /**

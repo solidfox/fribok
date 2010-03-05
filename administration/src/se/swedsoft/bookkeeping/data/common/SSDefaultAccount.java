@@ -3,8 +3,8 @@ package se.swedsoft.bookkeeping.data.common;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 
-import java.util.List;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Date: 2006-mar-28

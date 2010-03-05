@@ -3,8 +3,8 @@ package se.swedsoft.bookkeeping.gui.util;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * User: Andreas Lago

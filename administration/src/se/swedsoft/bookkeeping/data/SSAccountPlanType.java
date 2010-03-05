@@ -2,11 +2,11 @@ package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.HashMap;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Date: 2006-feb-15

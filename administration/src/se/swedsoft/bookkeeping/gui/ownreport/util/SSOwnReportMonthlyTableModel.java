@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.SSAccount;
+import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.SSOwnReportRow;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

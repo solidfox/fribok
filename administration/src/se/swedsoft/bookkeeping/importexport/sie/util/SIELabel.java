@@ -2,10 +2,10 @@ package se.swedsoft.bookkeeping.importexport.sie.util;
 
 import se.swedsoft.bookkeeping.importexport.sie.fields.*;
 
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEType.*;
-
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
+
+import static se.swedsoft.bookkeeping.importexport.sie.util.SIEType.*;
 
 /**
  *

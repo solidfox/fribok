@@ -2,8 +2,8 @@ package se.swedsoft.bookkeeping.calc.util;
 
 import se.swedsoft.bookkeeping.data.SSAccount;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Date: 2006-feb-15

@@ -7,11 +7,11 @@ package se.swedsoft.bookkeeping.gui.util.model;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 
-import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
-import java.util.*;
+import javax.swing.table.AbstractTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.*;
 
 
 /**

@@ -1,15 +1,15 @@
 package se.swedsoft.bookkeeping.gui.supplier.panel;
 
-import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
 
 import javax.swing.*;
-import java.util.List;
-import java.util.LinkedList;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**

@@ -1,36 +1,34 @@
 package se.swedsoft.bookkeeping.print;
 
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import se.swedsoft.bookkeeping.calc.SSOCRNumber;
+import se.swedsoft.bookkeeping.calc.math.*;
+import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
+import se.swedsoft.bookkeeping.calc.util.SSVATUtil;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.data.system.SSMail;
-import se.swedsoft.bookkeeping.print.dialog.*;
-import se.swedsoft.bookkeeping.print.report.*;
-import se.swedsoft.bookkeeping.print.report.sales.SSOCRInvoicePrinter;
-import se.swedsoft.bookkeeping.print.report.journals.*;
-import se.swedsoft.bookkeeping.print.report.sales.*;
-import se.swedsoft.bookkeeping.gui.util.*;
+import se.swedsoft.bookkeeping.data.system.SSPostLock;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.*;
 import se.swedsoft.bookkeeping.gui.voucher.SSVoucherFrame;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.calc.util.SSVATUtil;
-import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
-import se.swedsoft.bookkeeping.calc.math.*;
-import se.swedsoft.bookkeeping.calc.SSOCRNumber;
+import se.swedsoft.bookkeeping.print.dialog.*;
+import se.swedsoft.bookkeeping.print.report.*;
+import se.swedsoft.bookkeeping.print.report.journals.*;
+import se.swedsoft.bookkeeping.print.report.sales.*;
 
 import javax.swing.*;
-import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.text.DateFormat;
 import java.util.*;
 import java.util.List;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.text.DateFormat;
-import java.io.File;
-
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JRException;
 
 /**
  * Date: 2006-jan-25

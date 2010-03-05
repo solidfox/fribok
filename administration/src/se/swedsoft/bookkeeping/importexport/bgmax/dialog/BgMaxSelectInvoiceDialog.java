@@ -1,19 +1,19 @@
 package se.swedsoft.bookkeeping.importexport.bgmax.dialog;
 
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField;
-import se.swedsoft.bookkeeping.gui.invoice.util.SSInvoiceTableModel;
+import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
+import se.swedsoft.bookkeeping.gui.invoice.util.SSInvoiceTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
+import se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField;
+import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * User: Andreas Lago

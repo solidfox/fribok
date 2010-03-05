@@ -1,9 +1,9 @@
 package se.swedsoft.bookkeeping.data.system;
 
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 
 import java.io.*;
 import java.net.SocketException;

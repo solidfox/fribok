@@ -1,31 +1,33 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice;
 
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.invoice.SSInvoiceFrame;
-import se.swedsoft.bookkeeping.gui.periodicinvoice.panel.SSPeriodicInvoicePanel;
-import se.swedsoft.bookkeeping.gui.periodicinvoice.dialog.SSPendingPeriodicInvoiceDialog;
-import se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPeriodicInvoiceTableModel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
-import se.swedsoft.bookkeeping.data.SSInvoice;
-import se.swedsoft.bookkeeping.data.SSOrder;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSPeriodicInvoiceMath;
+import se.swedsoft.bookkeeping.data.SSInvoice;
+import se.swedsoft.bookkeeping.data.SSOrder;
+import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.data.system.SSPostLock;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.invoice.SSInvoiceFrame;
+import se.swedsoft.bookkeeping.gui.periodicinvoice.dialog.SSPendingPeriodicInvoiceDialog;
+import se.swedsoft.bookkeeping.gui.periodicinvoice.panel.SSPeriodicInvoicePanel;
+import se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPeriodicInvoiceTableModel;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 
-import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * User: Andreas Lago

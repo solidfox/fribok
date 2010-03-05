@@ -4,9 +4,9 @@ import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
-import java.util.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.*;
 
 /**
  * User: Andreas Lago

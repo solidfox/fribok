@@ -1,18 +1,18 @@
 package se.swedsoft.bookkeeping.gui.inpayment.util;
 
-import se.swedsoft.bookkeeping.data.SSProduct;
-import se.swedsoft.bookkeeping.data.SSInpayment;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer;
-import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
+import se.swedsoft.bookkeeping.data.SSInpayment;
+import se.swedsoft.bookkeeping.data.SSProduct;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
+import se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer;
 
-import java.util.List;
-import java.util.Date;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * User: Andreas Lago

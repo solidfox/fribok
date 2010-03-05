@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel;
-import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 
 import java.math.BigDecimal;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: Andreas Lago

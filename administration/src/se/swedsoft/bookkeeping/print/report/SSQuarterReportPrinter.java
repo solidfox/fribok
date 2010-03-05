@@ -1,16 +1,16 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.print.SSPrinter;
-import se.swedsoft.bookkeeping.print.report.sales.SSSalePrinterUtils;
+import se.swedsoft.bookkeeping.calc.math.SSCreditInvoiceMath;
+import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSCreditInvoiceMath;
+import se.swedsoft.bookkeeping.print.SSPrinter;
+import se.swedsoft.bookkeeping.print.report.sales.SSSalePrinterUtils;
 
-import java.util.*;
-import java.text.DateFormatSymbols;
 import java.math.BigDecimal;
+import java.text.DateFormatSymbols;
+import java.util.*;
 
 /**
  * Date: 2006-mar-03

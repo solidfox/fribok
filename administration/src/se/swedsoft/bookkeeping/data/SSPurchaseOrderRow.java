@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
+import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;

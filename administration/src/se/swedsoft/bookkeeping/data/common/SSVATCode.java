@@ -1,19 +1,17 @@
 package se.swedsoft.bookkeeping.data.common;
 
+import org.apache.xerces.parsers.DOMParser;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 
-import java.io.FileInputStream;
 import java.io.File;
-import java.util.List;
+import java.io.FileInputStream;
 import java.util.LinkedList;
-
-
-import org.apache.xerces.parsers.DOMParser;
-import org.xml.sax.InputSource;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
+import java.util.List;
 
 
 /**

@@ -5,13 +5,13 @@
 package se.swedsoft.bookkeeping.gui.util.table;
 
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.*;
 
 // Trade Extensions specific imports

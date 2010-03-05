@@ -1,12 +1,11 @@
 package se.swedsoft.bookkeeping;
 
 import org.hsqldb.Trigger;
-
-import java.net.Socket;
-import java.io.*;
-
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
+
+import java.io.*;
+import java.net.Socket;
 
 /**
  * User: Andreas Lago

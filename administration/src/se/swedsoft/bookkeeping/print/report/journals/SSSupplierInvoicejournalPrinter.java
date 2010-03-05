@@ -1,19 +1,19 @@
 package se.swedsoft.bookkeeping.print.report.journals;
 
+import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
+import se.swedsoft.bookkeeping.data.SSInvoice;
+import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
+import se.swedsoft.bookkeeping.data.SSVoucherRow;
+import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.print.SSPrinter;
 import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
-import se.swedsoft.bookkeeping.data.SSInvoice;
-import se.swedsoft.bookkeeping.data.SSVoucherRow;
-import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 
-import java.util.List;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.text.DateFormat;
-import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Date: 2006-mar-03

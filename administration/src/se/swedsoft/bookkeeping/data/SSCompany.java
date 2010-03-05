@@ -1,17 +1,19 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.common.*;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
-import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
+import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
+import se.swedsoft.bookkeeping.data.base.SSSaleRow;
+import se.swedsoft.bookkeeping.data.common.*;
 
 import javax.imageio.ImageIO;
-import java.io.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.rmi.server.UID;
 import java.util.*;
 import java.util.List;
-import java.rmi.server.UID;
-import java.awt.*;
 
 /**
  * @author Roger Björnstedt

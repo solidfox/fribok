@@ -4,29 +4,30 @@
  */
 package se.swedsoft.bookkeeping.gui.backup;
 
-import se.swedsoft.bookkeeping.gui.util.*;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
-import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
-import se.swedsoft.bookkeeping.gui.backup.util.SSBackupTableModel;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
+import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupFactory;
 import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.SSMainFrame;
+import se.swedsoft.bookkeeping.gui.backup.util.SSBackupTableModel;
+import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.components.SSButton;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
+import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
+import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
+import se.swedsoft.bookkeeping.gui.util.table.SSTable;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.util.SSException;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 

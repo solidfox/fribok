@@ -1,11 +1,11 @@
 package se.swedsoft.bookkeeping.gui.util;
 
 import javax.swing.*;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Collections;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

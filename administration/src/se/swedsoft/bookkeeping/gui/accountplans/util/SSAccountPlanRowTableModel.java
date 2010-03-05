@@ -2,11 +2,11 @@ package se.swedsoft.bookkeeping.gui.accountplans.util;
 
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSVATCellEditor;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSVATCellRenderer;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
+import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;

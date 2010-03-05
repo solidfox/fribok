@@ -1,17 +1,17 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
-import se.swedsoft.bookkeeping.data.common.SSTaxCode;
-import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
-import se.swedsoft.bookkeeping.data.base.SSSale;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
+import se.swedsoft.bookkeeping.data.base.SSSale;
+import se.swedsoft.bookkeeping.data.base.SSSaleRow;
+import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
+import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
+import se.swedsoft.bookkeeping.data.common.SSTaxCode;
+import se.swedsoft.bookkeeping.data.system.SSDB;
+import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
-import java.util.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 /**
  * User: Andreas Lago

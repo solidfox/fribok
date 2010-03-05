@@ -2,8 +2,8 @@ package se.swedsoft.bookkeeping.data.backup;
 
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupType;
 
-import java.util.Date;
 import java.io.*;
+import java.util.Date;
 
 /**
  * Date: 2006-mar-03

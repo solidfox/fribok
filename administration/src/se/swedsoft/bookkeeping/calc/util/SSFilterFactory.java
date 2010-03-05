@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.calc.util;
 
-import java.util.List;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago

@@ -7,8 +7,8 @@ package se.swedsoft.bookkeeping.gui.util.frame;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;
-import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
