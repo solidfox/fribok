@@ -27,15 +27,12 @@ public class SSAboutPanel {
      */
     public SSAboutPanel() {
         String iText    = SSBundle.getBundle().getString("aboutframe.abouttext");
-        String iLicence = "";
 
         iEditorPane.setBackground( iPanel.getBackground() );
 
         iText = iText.replace("{TITLE}"  , SSVersion.app_title);
         iText = iText.replace("{VERSION}", SSVersion.app_version);
         iText = iText.replace("{BUILD}"  , SSVersion.app_build);
-        iText = iText.replace("{LICENCE}", iLicence);
-
 
         iEditorPane.setText(iText);
 
