@@ -873,7 +873,7 @@ public class SSOrderImporter {
                     bw.newLine();
                 }
                 bw.close();
-                new SSInformationDialog(SSMainFrame.getInstance(), "orderframe.import.errors",iOrderCount.toString(), "" + iBadOrders.size());
+                new SSInformationDialog(SSMainFrame.getInstance(), "orderframe.import.errors",iOrderCount.toString(), String.valueOf(iBadOrders.size()));
             }
             else{
                 new SSInformationDialog(SSMainFrame.getInstance(), "orderframe.import.noerrors",iOrderCount.toString());

@@ -17,7 +17,7 @@ public class SSOrderCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSOrder){
             SSOrder iOrder = (SSOrder) value;
 
-            setText( "" +  iOrder.getNumber()  );
+            setText(String.valueOf(iOrder.getNumber()));
         }  else {
             setText( "" );
         }

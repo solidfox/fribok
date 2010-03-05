@@ -24,7 +24,7 @@ public class SSHeadingTypeCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSHeadingType){
             SSHeadingType iType = (SSHeadingType) value;
 
-            setText( "" + iType.toString()  );
+            setText(iType.toString());
         }  else {
             setText( "" );
         }

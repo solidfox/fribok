@@ -54,7 +54,7 @@ public class SSNewProject implements Serializable, SSTableSearchable {
     }
 
     public SSNewProject(SSProject iOld) {
-        iNumber = ""+iOld.getNumber();
+        iNumber = String.valueOf(iOld.getNumber());
         iName = iOld.getName();
         iDescription = iOld.getDescription();
         iConcluded = iOld.getConcluded();

@@ -27,7 +27,7 @@ public class SSOCRNumber {
         char iLengthSum = getLengthSum(iNumber);
         char iChecksum  = getCheckSum(strNumber + iLengthSum);
 
-        return Integer.toString(iNumber) + iLengthSum + "" + iChecksum;
+        return Integer.toString(iNumber) + iLengthSum + iChecksum;
     }
 
     /**
@@ -55,7 +55,7 @@ public class SSOCRNumber {
 
             int iValue = 0;
             try {
-                iValue = Integer.decode("" + iChar);
+                iValue = Integer.decode(String.valueOf(iChar));
             } catch (NumberFormatException e) {
 
             }

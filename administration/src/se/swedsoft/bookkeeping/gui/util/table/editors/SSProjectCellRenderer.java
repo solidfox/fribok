@@ -20,7 +20,7 @@ public class SSProjectCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSNewProject){
             SSNewProject iProject = (SSNewProject) value;
 
-            setText( "" + iProject.getNumber()  );
+            setText(iProject.getNumber());
         }  else {
             setText( "" );
         }

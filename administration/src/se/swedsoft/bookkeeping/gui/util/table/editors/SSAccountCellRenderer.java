@@ -20,7 +20,7 @@ public class SSAccountCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSAccount){
             SSAccount iAccount = (SSAccount) value;
 
-            setText( "" + iAccount.getNumber()  );
+            setText(String.valueOf(iAccount.getNumber()));
         }  else {
             setText( "" );
         }

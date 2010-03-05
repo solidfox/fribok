@@ -278,7 +278,7 @@ public class SSOutpaymentRow implements SSTableSearchable, Serializable {
      * @return The searchable string
      */
     public String toRenderString() {
-        return "" + iInvoiceNr;
+        return String.valueOf(iInvoiceNr);
     }
 
 }

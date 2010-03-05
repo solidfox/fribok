@@ -17,7 +17,7 @@ public class SSInvoiceCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSInvoice){
             SSInvoice iInvoice = (SSInvoice) value;
 
-            setText( "" +  iInvoice.getNumber()  );
+            setText(String.valueOf(iInvoice.getNumber()));
         }  else {
             setText( "" );
         }

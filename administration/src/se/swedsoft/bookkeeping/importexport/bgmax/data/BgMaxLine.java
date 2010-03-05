@@ -39,7 +39,7 @@ public class BgMaxLine {
      * @return
      */
     public String getField(int iStart){
-        return "" + iChars[iStart];
+        return String.valueOf(iChars[iStart]);
 
     }
 

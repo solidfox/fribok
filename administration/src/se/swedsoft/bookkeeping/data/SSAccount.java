@@ -231,7 +231,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      * @return The searchable string
      */
     public String toRenderString() {
-        return "" + iNumber;
+        return String.valueOf(iNumber);
     }
 
 

@@ -255,6 +255,6 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
      * @return The searchable string
      */
     public String toRenderString() {
-        return "" + iAccountNr;
+        return String.valueOf(iAccountNr);
     }
 }

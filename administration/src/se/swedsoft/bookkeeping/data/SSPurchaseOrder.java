@@ -712,7 +712,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      * @return The searchable string
      */
     public String toRenderString() {
-        return "" + iNumber;
+        return String.valueOf(iNumber);
     }
 
     /**

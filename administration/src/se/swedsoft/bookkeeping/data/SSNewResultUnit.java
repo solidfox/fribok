@@ -56,7 +56,7 @@ public class SSNewResultUnit implements Serializable, SSTableSearchable {
 
 
     public SSNewResultUnit(SSResultUnit iOld) {
-        iNumber = ""+iOld.getNumber();
+        iNumber = String.valueOf(iOld.getNumber());
         iName = iOld.getName();
         iDescription = iOld.getDescription();
     }

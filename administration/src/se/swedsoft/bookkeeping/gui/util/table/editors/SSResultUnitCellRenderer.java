@@ -20,7 +20,7 @@ public class SSResultUnitCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSNewResultUnit){
             SSNewResultUnit iResultUnit = (SSNewResultUnit) value;
 
-             setText( "" + iResultUnit.getNumber()  );
+             setText(iResultUnit.getNumber());
         }  else {
             setText( "" );
         }

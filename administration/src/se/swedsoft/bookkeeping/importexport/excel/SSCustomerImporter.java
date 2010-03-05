@@ -771,7 +771,7 @@ public class SSCustomerImporter {
                     bw.newLine();
                 }
                 bw.close();
-                new SSInformationDialog(SSMainFrame.getInstance(), "customerframe.import.errors",iCustomerCount.toString(), "" + iBadCustomers.size());
+                new SSInformationDialog(SSMainFrame.getInstance(), "customerframe.import.errors",iCustomerCount.toString(), String.valueOf(iBadCustomers.size()));
             }
             else{
                 new SSInformationDialog(SSMainFrame.getInstance(), "customerframe.import.noerrors",iCustomerCount.toString());

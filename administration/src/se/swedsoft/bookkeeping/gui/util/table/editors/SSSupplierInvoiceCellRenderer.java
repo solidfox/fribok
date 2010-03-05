@@ -17,7 +17,7 @@ public class SSSupplierInvoiceCellRenderer extends DefaultTableCellRenderer {
         if(value instanceof SSSupplierInvoice){
             SSSupplierInvoice iSupplierInvoice = (SSSupplierInvoice) value;
 
-            setText( "" + iSupplierInvoice.getNumber()  );
+            setText(String.valueOf(iSupplierInvoice.getNumber()));
         }  else {
             setText( "" );
         }

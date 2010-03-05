@@ -470,9 +470,9 @@ public class SSPeriodicInvoice implements Serializable {
             if(iAppendInformation){
                 String iInformationText = iInformation;
                 if(iInformationText.contains("[FAK]"))
-                    iInformationText = iInformationText.replace("[FAK]", "" + (i+1));
+                    iInformationText = iInformationText.replace("[FAK]", String.valueOf((i + 1)));
                 if(iInformationText.contains("[TOT]"))
-                    iInformationText = iInformationText.replace("[TOT]", "" + iCount);
+                    iInformationText = iInformationText.replace("[TOT]", String.valueOf(iCount));
 
                 SSSaleRow iRow = new SSSaleRow();
                 iRow.setDescription( iInformationText );

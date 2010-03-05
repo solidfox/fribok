@@ -177,7 +177,7 @@ public class LBinLine {
      * @return
      */
     public String readString(int iStart){
-        return "" + iChars[iStart - 1];
+        return String.valueOf(iChars[iStart - 1]);
 
     }
 
