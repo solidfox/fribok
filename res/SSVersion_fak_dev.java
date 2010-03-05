@@ -10,10 +10,6 @@ public interface SSVersion {
 
     public static final String app_build   = "$Date$";
 
-
-    // Togles if a isValid license is required
-    public static final boolean LicenseRequired = false;
-
     // Toggles if the user can remove vouchers
     public static final boolean iAllowVoucherDeletion = false;
 }

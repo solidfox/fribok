@@ -125,7 +125,6 @@
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-digester-1.7.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jsearch.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/data/help.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/LicenseLib.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/mail.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/activation.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/hsqldb.jar"/>
@@ -154,7 +153,6 @@
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-digester-1.7.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jsearch.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/data/help.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/LicenseLib.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/mail.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/activation.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/hsqldb.jar"/>
