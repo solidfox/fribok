@@ -262,7 +262,7 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
             if(iOrder.getInvoiceNr() != null)
                 return iOrder.getInvoiceNr().toString();
             else if(iOrder.getPeriodicInvoiceNr() != null)
-                return "P" + iOrder.getPeriodicInvoiceNr().toString();
+                return 'P' + iOrder.getPeriodicInvoiceNr().toString();
             else
                 return null;
         }

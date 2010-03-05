@@ -192,7 +192,7 @@ public class SSDayChooser implements ActionListener {
             int iWeekNumber = iCalendar.get(Calendar.WEEK_OF_YEAR);
 
             if (iWeekNumber < 10) {
-                iLabel.setText( "0" +  Integer.toString(iWeekNumber) );
+                iLabel.setText('0' +  Integer.toString(iWeekNumber) );
             } else {
                 iLabel.setText( Integer.toString(iWeekNumber) );
             }

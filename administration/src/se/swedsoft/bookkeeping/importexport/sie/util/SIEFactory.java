@@ -130,9 +130,9 @@ public class SIEFactory {
             sb.append(iLabel);
             sb.append(" = ");
             sb.append( iEntry == null ? "null" : iEntry.getClass().getName() );
-            sb.append("\n");
+            sb.append('\n');
         }
-        sb.append("}");
+        sb.append('}');
 
         return sb.toString();
     }

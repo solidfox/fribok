@@ -55,12 +55,12 @@ public class SIEWriter {
      */
     public void append(String pValue){
         if(pValue != null && pValue.contains(" ")){
-            iStringBuilder.append("\"");
+            iStringBuilder.append('\"');
             iStringBuilder.append(pValue);
             iStringBuilder.append("\" ");
         } else {
             iStringBuilder.append(pValue);
-            iStringBuilder.append(" ");
+            iStringBuilder.append(' ');
         }
     }
 
@@ -70,7 +70,7 @@ public class SIEWriter {
      */
     public void append(Object pValue) {
         iStringBuilder.append(pValue);
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
 
@@ -79,7 +79,7 @@ public class SIEWriter {
      * @param pValues
      */
     public void append(Object ... pValues) {
-        iStringBuilder.append("{");
+        iStringBuilder.append('{');
         for(Object iObject: pValues){
             if(iObject != null) append(iObject);
         }
@@ -91,7 +91,7 @@ public class SIEWriter {
      * @param pValues
      */
     public void append(List<Object> pValues) {
-        iStringBuilder.append("{");
+        iStringBuilder.append('{');
         for(Object iObject: pValues){
             if(iObject != null) append(iObject);
         }
@@ -112,7 +112,7 @@ public class SIEWriter {
             iValue= "000000";
         }
         iStringBuilder.append(iValue);
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
     /**
@@ -121,7 +121,7 @@ public class SIEWriter {
      */
     public void append(SIELabel pValue) {
         iStringBuilder.append(pValue.getName());
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
     /**
@@ -136,7 +136,7 @@ public class SIEWriter {
             iValue = "00000000";
         }
         iStringBuilder.append(iValue);
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
     /**
      *
@@ -144,7 +144,7 @@ public class SIEWriter {
      */
     public void append(Integer pValue) {
         iStringBuilder.append(pValue);
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
     /**
@@ -174,7 +174,7 @@ public class SIEWriter {
         iValue = iValue.replace(",", ".");
 
         iStringBuilder.append( iValue );
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
     /**
@@ -183,7 +183,7 @@ public class SIEWriter {
      */
     public void append(Boolean pValue) {
         iStringBuilder.append(pValue);
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
     /**
@@ -192,7 +192,7 @@ public class SIEWriter {
      */
     public void append(BigInteger pValue) {
         iStringBuilder.append(pValue);
-        iStringBuilder.append(" ");
+        iStringBuilder.append(' ');
     }
 
     /**

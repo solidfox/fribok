@@ -376,9 +376,9 @@ public class SIEReader implements Iterator<String> {
 
             sb.append("  ");
             sb.append(iIterator);
-            sb.append("\n");
+            sb.append('\n');
         }
-        sb.append("}");
+        sb.append('}');
 
         return sb.toString();
     }

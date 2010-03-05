@@ -756,9 +756,9 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         for(SSSaleRow iRow : iRows){
             sb.append("  ");
             sb.append(iRow);
-            sb.append("\n");
+            sb.append('\n');
         }
-        sb.append("}");
+        sb.append('}');
 
         return sb.toString();
     }

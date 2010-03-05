@@ -308,7 +308,7 @@ public class SIEIterator  implements Iterator<String> {
 
         if(iValue != null && iValue.length() == 8) {
 
-            iValue = iValue.substring(0,4) + "-" + iValue.substring(4,6) + "-" + iValue.substring(6,8);
+            iValue = iValue.substring(0,4) + '-' + iValue.substring(4,6) + '-' + iValue.substring(6,8);
 
             try{
                 return iFormat.parse(iValue);
@@ -328,7 +328,7 @@ public class SIEIterator  implements Iterator<String> {
 
         if(iValue != null && iValue.length() == 6) {
 
-            iValue = iValue.substring(0,4) + "-" + iValue.substring(4,6) + "-01";
+            iValue = iValue.substring(0,4) + '-' + iValue.substring(4,6) + "-01";
 
             try{
                 return new SSMonth(iFormat.parse(iValue));
@@ -425,7 +425,7 @@ public class SIEIterator  implements Iterator<String> {
                 }
                 String iString = pLine.substring(iStart, iIndex);
 
-                iValues.add("{" + iString.trim() + "}");
+                iValues.add('{' + iString.trim() + '}');
             }
             // Start of token, any char exept "
             else{
@@ -463,9 +463,9 @@ public class SIEIterator  implements Iterator<String> {
         for(String iValue: iValues){
             sb.append("  ");
             sb.append(iValue);
-            sb.append("\n");
+            sb.append('\n');
         }
-        sb.append("}");
+        sb.append('}');
 
         return sb.toString();
     }

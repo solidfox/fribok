@@ -188,19 +188,19 @@ public class BgMaxFile {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("BgMaxFil: {\n");
-        sb.append("  Layoutnamn    : ").append(iLayoutnamn   ).append("\n");
-        sb.append("  Version       : ").append(iVersion      ).append("\n");
-        sb.append("  Tidsstämpel   : ").append(iTidsstampel  ).append("\n");
-        sb.append("  Testmarkering : ").append(iTestmarkering).append("\n");
+        sb.append("  Layoutnamn    : ").append(iLayoutnamn   ).append('\n');
+        sb.append("  Version       : ").append(iVersion      ).append('\n');
+        sb.append("  Tidsstämpel   : ").append(iTidsstampel  ).append('\n');
+        sb.append("  Testmarkering : ").append(iTestmarkering).append('\n');
 
         for (BgMaxAvsnitt iCurrent : iAvsnitts) {
             sb.append(iCurrent);
         }
 
-        sb.append("  iAntalBetalningsPoster    : ").append(iAntalBetalningsPoster   ).append("\n");
-        sb.append("  iAntalAvdragsPoster       : ").append(iAntalAvdragsPoster      ).append("\n");
-        sb.append("  iAntalExtraReferensPoster : ").append(iAntalExtraReferensPoster).append("\n");
-        sb.append("  iAntalInsattningsPoster   : ").append(iAntalInsattningsPoster  ).append("\n");
+        sb.append("  iAntalBetalningsPoster    : ").append(iAntalBetalningsPoster   ).append('\n');
+        sb.append("  iAntalAvdragsPoster       : ").append(iAntalAvdragsPoster      ).append('\n');
+        sb.append("  iAntalExtraReferensPoster : ").append(iAntalExtraReferensPoster).append('\n');
+        sb.append("  iAntalInsattningsPoster   : ").append(iAntalInsattningsPoster  ).append('\n');
         sb.append("}\n");
 
         return sb.toString();
@@ -290,7 +290,7 @@ public class BgMaxFile {
     public static void readAvdragsPost(BgMaxLine iLine, BgMaxBetalning iBetalning){
         iBetalning.iBankgiroNummer     = iLine.getField( 3, 12);
         iBetalning.iReferens           = iLine.getField(13, 37);
-        iBetalning.iBelopp             = "-" + iLine.getField(38, 55);
+        iBetalning.iBelopp             = '-' + iLine.getField(38, 55);
         iBetalning.iReferensKod        = iLine.getField(56);
         iBetalning.iBetalningsKanalKod = iLine.getField(57);
         iBetalning.iBGCLopnummer       = iLine.getField(58, 69);

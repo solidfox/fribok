@@ -40,7 +40,7 @@ public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
         if(value == null){
             setText("");
         } else {
-            setText( iDateFormat.format(value) + " " + iTimeFormat.format(value));
+            setText( iDateFormat.format(value) + ' ' + iTimeFormat.format(value));
         }
     }
 

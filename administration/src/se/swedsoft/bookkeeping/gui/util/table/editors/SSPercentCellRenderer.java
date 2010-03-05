@@ -47,10 +47,10 @@ public class SSPercentCellRenderer extends DefaultTableCellRenderer {
         format.setGroupingUsed(true);
 
         if(value != null){
-            setText( format.format(value) + "%" );
+            setText( format.format(value) + '%');
         } else{
             if(iShowNullValues){
-                setText( format.format(0) + "%" );
+                setText( format.format(0) + '%');
             } else {
                 setText("");
             }

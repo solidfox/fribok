@@ -139,7 +139,7 @@ public class SSBigDecimalTextField extends JFormattedTextField {
     @Override
     public void setText(String t) {
         if(iAppendText != null){
-            super.setText(t + " " + iAppendText);
+            super.setText(t + ' ' + iAppendText);
         } else {
             super.setText(t);
         }

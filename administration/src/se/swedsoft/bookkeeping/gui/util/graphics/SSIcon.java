@@ -260,7 +260,7 @@ public class SSIcon {
      * @param pIconFile The name of the icon file
      */
     private static void loadIcon(String pName, IconState pState, String pIconFile){
-        loadIcon(pName + "_" + pState.getName(), pIconFile);
+        loadIcon(pName + '_' + pState.getName(), pIconFile);
     }
 
     /**
@@ -289,7 +289,7 @@ public class SSIcon {
      * @return The icon
      */
     public static boolean hasIcon(String pName, IconState pState){
-        String iIconName = pName + "_" + pState.getName();
+        String iIconName = pName + '_' + pState.getName();
 
         return iIcons.containsKey(iIconName);
     }
@@ -301,7 +301,7 @@ public class SSIcon {
      * @return The icon
      */
     public static ImageIcon getIcon(String pName, IconState pState){
-        String iIconName = pName + "_" + pState.getName();
+        String iIconName = pName + '_' + pState.getName();
 
         if(!iIcons.containsKey(iIconName) ){
             System.out.println("(SSIcon): Icon not found: "+ iIconName );

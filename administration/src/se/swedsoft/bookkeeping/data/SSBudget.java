@@ -417,7 +417,7 @@ public class SSBudget implements Serializable  {
                 b.append("    Sum:" );
                 b.append("    ");
                 b.append( iBudget.get(iMonth).get(iAccount) );
-                b.append("\n");
+                b.append('\n');
             }
             b.append("}\n");
         }

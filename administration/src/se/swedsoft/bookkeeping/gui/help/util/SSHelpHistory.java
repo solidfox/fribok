@@ -212,7 +212,7 @@ public class SSHelpHistory {
             sb.append(iEvent.getID());
             sb.append(", ");
             sb.append(iEvent.getHistoryName());
-            sb.append("\n");
+            sb.append('\n');
 
             iCounter++;
         }

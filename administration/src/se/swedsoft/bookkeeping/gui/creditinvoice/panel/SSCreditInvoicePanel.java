@@ -767,9 +767,9 @@ public class SSCreditInvoicePanel {
         iRenderer.setValue(SSTaxCode.TAXRATE_2, iTaxRate2);
         iRenderer.setValue(SSTaxCode.TAXRATE_3, iTaxRate3);
 
-        iTaxLabel1.setText( iTaxText + " " + iFormat.format(iTaxRate1) + "%" );
-        iTaxLabel2.setText( iTaxText + " " + iFormat.format(iTaxRate2) + "%" );
-        iTaxLabel3.setText( iTaxText + " " + iFormat.format(iTaxRate3) + "%" );
+        iTaxLabel1.setText( iTaxText + ' ' + iFormat.format(iTaxRate1) + '%');
+        iTaxLabel2.setText( iTaxText + ' ' + iFormat.format(iTaxRate2) + '%');
+        iTaxLabel3.setText( iTaxText + ' ' + iFormat.format(iTaxRate3) + '%');
 
         iTable.setDefaultEditor  (SSTaxCode.class, iEditor);
         iTable.setDefaultRenderer(SSTaxCode.class, iRenderer);

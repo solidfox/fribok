@@ -69,7 +69,7 @@ public class SSAutoIncrement implements Serializable {
         StringBuilder sb = new StringBuilder();
 
         for (String iName : iNumbers.keySet() ) {
-            sb.append(iName).append(" ").append(iNumbers.get(iName)).append("\n");
+            sb.append(iName).append(' ').append(iNumbers.get(iName)).append('\n');
         }
         return sb.toString();
     }

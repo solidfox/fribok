@@ -36,14 +36,14 @@ public class BgMaxReferens {
 
         sb.append("    Referens:\n");
         sb.append("    {\n");
-        sb.append("        iBankgiroNummer     : ").append(iBankgiroNummer).append("\n");
-        sb.append("        iReferens           : ").append(iReferens).append("\n");
-        sb.append("        iBelopp             : ").append(iBelopp).append("\n");
-        sb.append("        iReferensKod        : ").append(iReferensKod).append("\n");
-        sb.append("        iBetalningsKanalKod : ").append(iBetalningsKanalKod).append("\n");
-        sb.append("        iBGCLopnummer       : ").append(iBGCLopnummer).append("\n");
-        sb.append("        iBankgiroNummer     : ").append(iBankgiroNummer).append("\n");
-        sb.append("        iAvibildmarkering   : ").append(iAvibildmarkering).append("\n");
+        sb.append("        iBankgiroNummer     : ").append(iBankgiroNummer).append('\n');
+        sb.append("        iReferens           : ").append(iReferens).append('\n');
+        sb.append("        iBelopp             : ").append(iBelopp).append('\n');
+        sb.append("        iReferensKod        : ").append(iReferensKod).append('\n');
+        sb.append("        iBetalningsKanalKod : ").append(iBetalningsKanalKod).append('\n');
+        sb.append("        iBGCLopnummer       : ").append(iBGCLopnummer).append('\n');
+        sb.append("        iBankgiroNummer     : ").append(iBankgiroNummer).append('\n');
+        sb.append("        iAvibildmarkering   : ").append(iAvibildmarkering).append('\n');
         sb.append("    }\n");
 
         return sb.toString();

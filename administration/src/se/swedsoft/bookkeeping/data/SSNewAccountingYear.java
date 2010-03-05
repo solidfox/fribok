@@ -263,9 +263,9 @@ public class SSNewAccountingYear implements Serializable, SSTableSearchable {
         StringBuilder sb = new StringBuilder();
 
         sb.append(iFormat.format(iFrom));
-        sb.append( " " );
+        sb.append(' ');
         sb.append( SSBundle.getBundle().getString("date.seperator") );
-        sb.append( " " );
+        sb.append(' ');
         sb.append(iFormat.format(iTo));
 
         return sb.toString();

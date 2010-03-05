@@ -547,7 +547,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
 
         StringBuffer b = new StringBuffer();
         if( iCrossed ){
-            b.append("-");
+            b.append('-');
         }
         b.append(iAccountNr);
         b.append(", D=");

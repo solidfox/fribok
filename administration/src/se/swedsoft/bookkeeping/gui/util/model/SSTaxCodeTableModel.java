@@ -114,7 +114,7 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
 
             NumberFormat iFormat = new DecimalFormat("0");
 
-            return iFormat.format(iValue) + "%";
+            return iFormat.format(iValue) + '%';
         }
 
         @Override

@@ -47,7 +47,7 @@ public enum SSTaxCode implements SSTableSearchable {
             if( this == TAXRATE_2 ) iValue = iCompany.getTaxRate2();
             if( this == TAXRATE_3 ) iValue = iCompany.getTaxRate3();
 
-            if(iValue != null)  return iFormat.format(iValue) + "%";
+            if(iValue != null)  return iFormat.format(iValue) + '%';
         }
 
         return iName;
@@ -62,7 +62,7 @@ public enum SSTaxCode implements SSTableSearchable {
      */
     public static SSTaxCode decode(String iValue){
         // Append a % if not
-        if(!iValue.endsWith("%") ) iValue = iValue + "%";
+        if(!iValue.endsWith("%") ) iValue = iValue + '%';
 
         if(iValue.equals( TAXRATE_1.toRenderString() ) ) return TAXRATE_1;
         if(iValue.equals( TAXRATE_2.toRenderString() ) ) return TAXRATE_2;
@@ -73,7 +73,7 @@ public enum SSTaxCode implements SSTableSearchable {
 
     public static SSTaxCode decode2(String iValue){
         // Append a % if not
-        if(!iValue.endsWith("%") ) iValue = iValue + "%";
+        if(!iValue.endsWith("%") ) iValue = iValue + '%';
 
         if(iValue.equals( TAXRATE_0.toRenderString() ) ) return TAXRATE_0;
         if(iValue.equals( TAXRATE_2.toRenderString() ) ) return TAXRATE_2;

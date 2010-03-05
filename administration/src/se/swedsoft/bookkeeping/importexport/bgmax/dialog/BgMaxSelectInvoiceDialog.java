@@ -124,12 +124,12 @@ public class BgMaxSelectInvoiceDialog extends SSDialog {
 
         String iText = iBetalning.iReferens;
 
-        if(iText != null && iText.trim().length() > 0) sb.append( iText ).append("\n");
+        if(iText != null && iText.trim().length() > 0) sb.append( iText ).append('\n');
 
         for (BgMaxReferens iReferens : iBetalning.iReferenser) {
             iText = iReferens.iReferens;
 
-            if(iText != null && iText.trim().length() > 0) sb.append( iText ).append("\n");
+            if(iText != null && iText.trim().length() > 0) sb.append( iText ).append('\n');
         }
        return sb.toString();
     }

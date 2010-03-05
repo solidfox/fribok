@@ -53,7 +53,7 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
             BigDecimal iValue = iValues.get(iTaxCode);
 
             if(iValue != null){
-                setText( iFormat.format(iValue) + "%" );
+                setText( iFormat.format(iValue) + '%');
             } else {
                 setText( "" );
             }

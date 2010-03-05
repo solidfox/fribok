@@ -86,7 +86,7 @@ public class SIEDimension {
      * @param pDimension
      */
     public void setSuperDimension(Integer pDimension) {
-        System.out.println("SIEDimension.setSuperDimension(" + pDimension + ")");
+        System.out.println("SIEDimension.setSuperDimension(" + pDimension + ')');
     }
     
     /**

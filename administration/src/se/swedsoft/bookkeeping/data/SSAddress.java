@@ -199,7 +199,7 @@ public class SSAddress implements Serializable {
      * @return
      */
     public String getPostalAddress() {
-        return iZipCode + " " + iCity;
+        return iZipCode + ' ' + iCity;
     }
 
     //////////////////////////////////////////////////////
@@ -248,23 +248,23 @@ public class SSAddress implements Serializable {
         sb.append("Address: \n");
         sb.append("  ");
         sb.append(iName);
-        sb.append("\n");
+        sb.append('\n');
 
         sb.append("  ");
         sb.append(iAddress);
-        sb.append(" ");
+        sb.append(' ');
         sb.append(iStreet);
-        sb.append("\n");
+        sb.append('\n');
 
         sb.append("  ");
         sb.append(iZipCode);
-        sb.append(" ");
+        sb.append(' ');
         sb.append(iCity);
-        sb.append("\n");
+        sb.append('\n');
 
-        sb.append(" ");
+        sb.append(' ');
         sb.append(iCountry);
-        sb.append("\n");
+        sb.append('\n');
 
         return sb.toString();
     }

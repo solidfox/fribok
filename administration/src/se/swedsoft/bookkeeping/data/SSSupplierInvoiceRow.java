@@ -462,11 +462,11 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         sb.append(iUnitprice);
         sb.append(", ");
         sb.append(iQuantity);
-        sb.append(" ");
+        sb.append(' ');
         sb.append(iUnit);
         sb.append(" (");
         sb.append(iProduct);
-        sb.append(")");
+        sb.append(')');
         return sb.toString();
     }
     /**

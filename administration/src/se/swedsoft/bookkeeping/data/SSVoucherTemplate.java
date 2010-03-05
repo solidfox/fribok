@@ -163,7 +163,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
         StringBuffer b = new StringBuffer();
         b.append(iDescription);
-        b.append("\n");
+        b.append('\n');
 
         return b.toString();
     }

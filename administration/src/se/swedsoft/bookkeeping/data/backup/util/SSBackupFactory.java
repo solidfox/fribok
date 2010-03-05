@@ -32,7 +32,7 @@ public class SSBackupFactory {
         DateFormat iDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         DateFormat iTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
 
-        String iFileName = "backup." + iDateFormat.format(iDate) + "." + iTimeFormat.format(iDate)+".zip";
+        String iFileName = "backup." + iDateFormat.format(iDate) + '.' + iTimeFormat.format(iDate)+".zip";
 
         iFileName = iFileName.replace(":", "");
         iFileName = iFileName.replace("-", "");
@@ -51,7 +51,7 @@ public class SSBackupFactory {
         DateFormat iDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         DateFormat iTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
 
-        String iFileName = "backup." + iCompany.getName() + "." + iDateFormat.format(iDate) + "." + iTimeFormat.format(iDate)+".zip";
+        String iFileName = "backup." + iCompany.getName() + '.' + iDateFormat.format(iDate) + '.' + iTimeFormat.format(iDate)+".zip";
 
         iFileName = iFileName.replace(":", "");
         iFileName = iFileName.replace("-", "");

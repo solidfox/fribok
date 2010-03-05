@@ -495,7 +495,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         sb.append(iUnitprice);
         sb.append(", ");
         sb.append(iCount);
-        sb.append(" ");
+        sb.append(' ');
         sb.append(iUnit);
         sb.append(", ");
         sb.append(iDiscount);
@@ -503,7 +503,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         sb.append(iTaxCode);
         sb.append(" (");
         sb.append(iProduct);
-        sb.append(")");
+        sb.append(')');
         return sb.toString();
     }
     /**

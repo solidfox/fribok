@@ -197,7 +197,7 @@ public class SSAccountGroup implements Serializable {
             }
             sb.append("  }\n");
         }
-        sb.append("\n");
+        sb.append('\n');
         return sb.toString();
     }
 

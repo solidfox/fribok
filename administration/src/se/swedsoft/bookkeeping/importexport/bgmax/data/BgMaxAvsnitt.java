@@ -48,21 +48,21 @@ public class BgMaxAvsnitt {
         StringBuilder sb = new StringBuilder();
         sb.append("  Avsnitt:\n");
         sb.append("  {\n");
-        sb.append("    iBankgiroNummer  : ").append(iBankgiroNummer).append("\n");
-        sb.append("    iPlusgiroNummer  : ").append(iPlusgiroNummer).append("\n");
-        sb.append("    iValuta          : ").append(iValuta        ).append("\n");
+        sb.append("    iBankgiroNummer  : ").append(iBankgiroNummer).append('\n');
+        sb.append("    iPlusgiroNummer  : ").append(iPlusgiroNummer).append('\n');
+        sb.append("    iValuta          : ").append(iValuta        ).append('\n');
 
         for (BgMaxBetalning iBetalning : iBetalningar) {
             sb.append(iBetalning);
         }
 
-        sb.append("    iBankKontoNummer : ").append(iBankKontoNummer).append("\n");
-        sb.append("    iBetalningsdag   : ").append(iBetalningsdag  ).append("\n");
-        sb.append("    iLopnummer       : ").append(iLopnummer      ).append("\n");
-        sb.append("    iBelopp          : ").append(iBelopp         ).append("\n");
-        sb.append("    iValuta          : ").append(iValuta         ).append("\n");
-        sb.append("    iAntal           : ").append(iAntal          ).append("\n");
-        sb.append("    iTyp             : ").append(iTyp            ).append("\n");
+        sb.append("    iBankKontoNummer : ").append(iBankKontoNummer).append('\n');
+        sb.append("    iBetalningsdag   : ").append(iBetalningsdag  ).append('\n');
+        sb.append("    iLopnummer       : ").append(iLopnummer      ).append('\n');
+        sb.append("    iBelopp          : ").append(iBelopp         ).append('\n');
+        sb.append("    iValuta          : ").append(iValuta         ).append('\n');
+        sb.append("    iAntal           : ").append(iAntal          ).append('\n');
+        sb.append("    iTyp             : ").append(iTyp            ).append('\n');
         sb.append("  }\n");
 
         return sb.toString();

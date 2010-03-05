@@ -162,7 +162,7 @@ public class SSQuarterReportPrinter extends SSPrinter {
         String iMonth = Integer.toString( iCalendar.get(Calendar.MONTH) / 3 + 1 );
 
 
-        return iYear + "-" + iMonth;
+        return iYear + '-' + iMonth;
     }
 
     /**
@@ -184,7 +184,7 @@ public class SSQuarterReportPrinter extends SSPrinter {
 
         String iYear = Integer.toString(iCalendar.get(Calendar.YEAR));
 
-        return iMonthFrom + " - " + iMonthTo + " " + iYear;
+        return iMonthFrom + " - " + iMonthTo + ' ' + iYear;
 
     }
 
