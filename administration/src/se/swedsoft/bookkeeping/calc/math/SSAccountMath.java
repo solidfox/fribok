@@ -258,11 +258,11 @@ public class SSAccountMath {
      */
     public static BigDecimal getSumByVATCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String ... pVatCodes ) {
         BigDecimal sum = new BigDecimal(0.0);
-        for(SSAccount iAccount : pSums.keySet() ){
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()){
 
             for(String iVatCode : pVatCodes){
-                if( iVatCode.equals( iAccount.getVATCode() ) ) {
-                    sum = sum.add( pSums.get(iAccount) );
+                if( iVatCode.equals(ssAccountBigDecimalEntry.getKey().getVATCode() ) ) {
+                    sum = sum.add(ssAccountBigDecimalEntry.getValue());
                     break;
                 }
             }
@@ -411,11 +411,11 @@ public class SSAccountMath {
     public static BigDecimal getSumBySRUCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String ... pSruCodes ) {
 
         BigDecimal sum = new BigDecimal(0.0);
-        for(SSAccount iAccount : pSums.keySet() ){
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()){
 
             for(String iSruCode : pSruCodes){
-                if( iSruCode.equals( iAccount.getSRUCode() ) ) {
-                    sum = sum.add( pSums.get(iAccount) );
+                if( iSruCode.equals(ssAccountBigDecimalEntry.getKey().getSRUCode() ) ) {
+                    sum = sum.add(ssAccountBigDecimalEntry.getValue());
                     break;
                 }
             }

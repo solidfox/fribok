@@ -81,17 +81,17 @@ public class SIEEntryPeriodBudget extends SIEEntry {
 
             Map<SSMonth, Map<SSAccount, BigDecimal>> iBudgetData = iBudget.getBudget();
 
-            for(SSMonth iMonth: iBudgetData.keySet() ){
-                Map<SSAccount, BigDecimal> iAccounts = iBudgetData.get(iMonth);
-                for(SSAccount iAccount: iAccounts.keySet() ){
-                    BigDecimal iSaldo = iAccounts.get(iAccount);
+            for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudgetData.entrySet()){
+                Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
+                for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+                    BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
                     if(iSaldo == null) continue;
                     
                     iWriter.append( SIELabel.SIE_PBUDGET);
                     iWriter.append( -1);
-                    iWriter.append( iMonth );
-                    iWriter.append( iAccount.getNumber());
+                    iWriter.append(ssMonthMapEntry.getKey());
+                    iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
                     iWriter.append( "{}");
                     iWriter.append( iSaldo.negate()  );
                     iWriter.newLine();
@@ -106,17 +106,17 @@ public class SIEEntryPeriodBudget extends SIEEntry {
 
             Map<SSMonth, Map<SSAccount, BigDecimal>> iBudgetData = iBudget.getBudget();
 
-            for(SSMonth iMonth: iBudgetData.keySet() ){
-                Map<SSAccount, BigDecimal> iAccounts = iBudgetData.get(iMonth);
-                for(SSAccount iAccount: iAccounts.keySet() ){
-                    BigDecimal iSaldo = iAccounts.get(iAccount);
+            for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudgetData.entrySet()){
+                Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
+                for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+                    BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
                     if(iSaldo == null) continue;
 
                     iWriter.append( SIELabel.SIE_PBUDGET);
                     iWriter.append( 0);
-                    iWriter.append( iMonth );
-                    iWriter.append( iAccount.getNumber());
+                    iWriter.append(ssMonthMapEntry.getKey());
+                    iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
                     iWriter.append( "{}");
                     iWriter.append( iSaldo.negate()  );
                     iWriter.newLine();

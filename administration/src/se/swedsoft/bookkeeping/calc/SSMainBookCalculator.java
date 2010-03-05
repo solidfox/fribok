@@ -158,8 +158,8 @@ public class SSMainBookCalculator {
         iInBalance = iYearData.getInBalance();
 
         // Add the inbalance to the insaldo
-        for(SSAccount iAccount : iInBalance.keySet() ){
-            iInSaldo.put(iAccount,  iInBalance.get(iAccount));
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+            iInSaldo.put(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
         }
 
 

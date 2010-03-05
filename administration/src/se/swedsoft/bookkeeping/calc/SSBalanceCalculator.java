@@ -64,8 +64,8 @@ public class SSBalanceCalculator {
 
 
         // Add the inbalance to the insaldo
-        for(SSAccount iAccount: iInBalance.keySet()) {
-            iInSaldo.put(iAccount, iInBalance.get(iAccount)  );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry2 : iInBalance.entrySet()) {
+            iInSaldo.put(ssAccountBigDecimalEntry2.getKey(), ssAccountBigDecimalEntry2.getValue());
         }
 
         // Loop through all vouchers
@@ -102,13 +102,13 @@ public class SSBalanceCalculator {
 
         }
         // Add the period change to the sum
-        for(SSAccount iAccount: iChangePeriod.keySet()) {
-            addValueToMap(iOutSaldo, iAccount, iChangePeriod.get(iAccount) );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry1 : iChangePeriod.entrySet()) {
+            addValueToMap(iOutSaldo, ssAccountBigDecimalEntry1.getKey(), ssAccountBigDecimalEntry1.getValue());
         }
 
         // Add the insaldo to the sum
-        for(SSAccount iAccount: iInSaldo.keySet()) {
-            addValueToMap(iOutSaldo, iAccount, iInSaldo.get(iAccount) );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInSaldo.entrySet()) {
+            addValueToMap(iOutSaldo, ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
         }
 
     }
@@ -214,9 +214,9 @@ public class SSBalanceCalculator {
         Map<SSAccount, BigDecimal> iInBalance  = pYearData.getInBalance();
 
         // Add the inbalance to the out balance
-        for(SSAccount iAccount: iInBalance.keySet()) {
-            if( SSAccountMath.isBalanceAccount(iAccount, pYearData) ){
-                iOutBalance.put(iAccount, iInBalance.get(iAccount)  );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()) {
+            if( SSAccountMath.isBalanceAccount(ssAccountBigDecimalEntry.getKey(), pYearData) ){
+                iOutBalance.put(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
             }
         }
 

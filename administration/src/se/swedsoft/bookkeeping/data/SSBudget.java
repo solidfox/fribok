@@ -56,12 +56,12 @@ public class SSBudget implements Serializable  {
 
         Map<SSMonth, Map<SSAccount, BigDecimal>> iSource =  pSource.getBudget();
 
-        for(SSMonth iMonth : iSource.keySet()){
+        for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iSource.entrySet()){
             Map<SSAccount, BigDecimal> iMonthlyBudget = new HashMap<SSAccount, BigDecimal>();
 
-            iMonthlyBudget.putAll( iSource.get(iMonth) );
+            iMonthlyBudget.putAll(ssMonthMapEntry.getValue());
 
-            iBudget.put(iMonth, iMonthlyBudget);
+            iBudget.put(ssMonthMapEntry.getKey(), iMonthlyBudget);
         }
 
     }
@@ -260,8 +260,8 @@ public class SSBudget implements Serializable  {
     public BigDecimal getSumForAccount(SSAccount pAccount){
         BigDecimal iSum = new BigDecimal(0.0);
 
-        for(SSMonth iMonth: iBudget.keySet()){
-            BigDecimal iValue = iBudget.get(iMonth).get(pAccount);
+        for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudget.entrySet()){
+            BigDecimal iValue = ssMonthMapEntry.getValue().get(pAccount);
 
             if(iValue == null) continue;
 
@@ -282,10 +282,10 @@ public class SSBudget implements Serializable  {
     public BigDecimal getSumForAccount(SSAccount pAccount, Date pFrom, Date pTo){
         BigDecimal iSum = new BigDecimal(0.0);
 
-        for(SSMonth iMonth: iBudget.keySet()){
-            BigDecimal iValue = iBudget.get(iMonth).get(pAccount);
+        for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudget.entrySet()){
+            BigDecimal iValue = ssMonthMapEntry.getValue().get(pAccount);
 
-            if(iValue == null || !iMonth.isBetween(pFrom, pTo)) continue;
+            if(iValue == null || !ssMonthMapEntry.getKey().isBetween(pFrom, pTo)) continue;
 
             iSum = iSum.add(iValue);
         }
@@ -380,8 +380,8 @@ public class SSBudget implements Serializable  {
         }
 
         // Set the sums
-        for(SSAccount iAccount: iSum.keySet() ){
-            setSumForAccount(iAccount, iSum.get(iAccount));
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iSum.entrySet()){
+            setSumForAccount(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
         }
         return iNewBudget;
     }

@@ -79,8 +79,8 @@ public class SSStartingAmountPanel {
         iInBalance.clear();
 
         // Copy all ammounts
-        for(SSAccount iAccount: pInBalance.keySet() ){
-            iInBalance.put( iAccount, new BigDecimal( pInBalance.get(iAccount).doubleValue() ) );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pInBalance.entrySet()){
+            iInBalance.put(ssAccountBigDecimalEntry.getKey(), new BigDecimal(ssAccountBigDecimalEntry.getValue().doubleValue() ) );
         }
 
         iModel.setObjects( pBalanceAccounts );
@@ -95,8 +95,8 @@ public class SSStartingAmountPanel {
         iInBalance.clear();
 
         // Copy all ammounts
-        for(SSAccount iAccount: pInBalance.keySet() ){
-            iInBalance.put( iAccount, new BigDecimal( pInBalance.get(iAccount).doubleValue() ) );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pInBalance.entrySet()){
+            iInBalance.put(ssAccountBigDecimalEntry.getKey(), new BigDecimal(ssAccountBigDecimalEntry.getValue().doubleValue() ) );
         }
         updateSumField();
     }
@@ -108,10 +108,10 @@ public class SSStartingAmountPanel {
     public Map<SSAccount, BigDecimal> getInBalance( ){
         Map<SSAccount, BigDecimal> iResult = new HashMap<SSAccount, BigDecimal>();
 
-        for(SSAccount iAccount:  iInBalance.keySet()){
-            BigDecimal iValue =  iInBalance.get(iAccount);
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+            BigDecimal iValue = ssAccountBigDecimalEntry.getValue();
             if((iValue != null ) && (iValue.signum() != 0)){
-                iResult.put(iAccount, iValue);
+                iResult.put(ssAccountBigDecimalEntry.getKey(), iValue);
             }
         }
 
@@ -127,11 +127,11 @@ public class SSStartingAmountPanel {
         BigDecimal iSum = new BigDecimal(0.0);
 
         // Copy all ammounts
-        for(SSAccount iAccount: iInBalance.keySet() ){
-            BigDecimal iVal = iInBalance.get(iAccount);
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+            BigDecimal iVal = ssAccountBigDecimalEntry.getValue();
             if(iVal == null) {
                 iVal = new BigDecimal(0.0);
-                iInBalance.put(iAccount, iVal);
+                iInBalance.put(ssAccountBigDecimalEntry.getKey(), iVal);
             }
             iSum = iSum.add(  iVal  );
         }

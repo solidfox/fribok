@@ -1686,10 +1686,10 @@ public class SSReportFactory {
                 SSMultiPrinter iMultiPrinter = new SSMultiPrinter();
 
 // Get the invoices for the customer
-                for( SSCustomer iCustomer : iInvoicesPerCustomer.keySet()) {
-                    List<SSInvoice> iInvoicesForCustomer = iInvoicesPerCustomer.get(iCustomer);
+                for(Map.Entry<SSCustomer, List<SSInvoice>> ssCustomerListEntry : iInvoicesPerCustomer.entrySet()) {
+                    List<SSInvoice> iInvoicesForCustomer = ssCustomerListEntry.getValue();
 
-                    SSReminderPrinter iPrinter = new SSReminderPrinter(iInvoicesForCustomer, iCustomer, iLanguage );
+                    SSReminderPrinter iPrinter = new SSReminderPrinter(iInvoicesForCustomer, ssCustomerListEntry.getKey(), iLanguage );
 
                     iMultiPrinter.addReport(iPrinter);
                 }

@@ -52,11 +52,11 @@ public class SIEEntryOutBalance extends SIEEntry {
         if( iPreviousYearData != null ){
             Map<SSAccount, BigDecimal> iOutBalance = SSBalanceCalculator.getOutBalance(iPreviousYearData);
 
-            for(SSAccount iAccount : iOutBalance.keySet() ){
+            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iOutBalance.entrySet()){
                 iWriter.append( SIELabel.SIE_UB);
                 iWriter.append( -1);
-                iWriter.append( iAccount.getNumber());
-                iWriter.append( iOutBalance.get(iAccount)  );
+                iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
+                iWriter.append(ssAccountBigDecimalEntry.getValue());
                 iWriter.newLine();
                 iHasData = true;
             }
@@ -64,11 +64,11 @@ public class SIEEntryOutBalance extends SIEEntry {
         if( iCurrentYearData != null ){
             Map<SSAccount, BigDecimal> iOutBalance = SSBalanceCalculator.getOutBalance(iCurrentYearData);
 
-            for(SSAccount iAccount : iOutBalance.keySet() ){
+            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iOutBalance.entrySet()){
                 iWriter.append( SIELabel.SIE_UB);
                 iWriter.append( 0);
-                iWriter.append( iAccount.getNumber());
-                iWriter.append( iOutBalance.get(iAccount)  );
+                iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
+                iWriter.append(ssAccountBigDecimalEntry.getValue());
                 iWriter.newLine();
                 iHasData = true;
             }

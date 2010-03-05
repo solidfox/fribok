@@ -236,14 +236,14 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
                     SSPurchaseOrder iPurchaseOrder = new SSPurchaseOrder();
 
-                    for (SSProduct iProduct : iProductCount.keySet()) {
+                    for (Map.Entry<SSProduct, Integer> ssProductIntegerEntry : iProductCount.entrySet()) {
 
-                        if(iProduct.isParcel()) {
-                            for (SSProductRow iParcelRow : iProduct.getParcelRows()) {
+                        if(ssProductIntegerEntry.getKey().isParcel()) {
+                            for (SSProductRow iParcelRow : ssProductIntegerEntry.getKey().getParcelRows()) {
                                 SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
 
                                 iRow.setProduct ( iParcelRow.getProduct(SSDB.getInstance().getProducts()));
-                                iRow.setQuantity( iProductCount.get(iProduct) * iParcelRow.getQuantity()  );
+                                iRow.setQuantity(ssProductIntegerEntry.getValue() * iParcelRow.getQuantity()  );
 
                                 iPurchaseOrder.getRows().add(iRow);
                             }
@@ -251,8 +251,8 @@ public class SSOrderFrame extends SSDefaultTableFrame {
                         } else {
                             SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
 
-                            iRow.setProduct ( iProduct );
-                            iRow.setQuantity( iProductCount.get(iProduct)  );
+                            iRow.setProduct (ssProductIntegerEntry.getKey());
+                            iRow.setQuantity(ssProductIntegerEntry.getValue());
 
                             iPurchaseOrder.getRows().add(iRow);
                         }

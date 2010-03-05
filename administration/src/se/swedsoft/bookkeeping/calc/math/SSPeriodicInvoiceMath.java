@@ -43,8 +43,8 @@ public class SSPeriodicInvoiceMath {
     public static boolean hasPendingPeriodicInvoices(){
         Map<SSPeriodicInvoice, List<SSInvoice>> iPeriodicInvoices = getPeriodicInvoices();
 
-        for (SSPeriodicInvoice iPeriodicInvoice : iPeriodicInvoices.keySet()) {
-            List<SSInvoice> iInvoices = iPeriodicInvoices.get(iPeriodicInvoice);
+        for (Map.Entry<SSPeriodicInvoice, List<SSInvoice>> ssPeriodicInvoiceListEntry : iPeriodicInvoices.entrySet()) {
+            List<SSInvoice> iInvoices = ssPeriodicInvoiceListEntry.getValue();
 
             if(!iInvoices.isEmpty()) return true;
         }

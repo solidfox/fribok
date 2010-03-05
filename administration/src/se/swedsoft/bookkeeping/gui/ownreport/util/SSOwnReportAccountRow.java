@@ -79,8 +79,8 @@ public class SSOwnReportAccountRow implements Serializable {
 
     public BigDecimal getSum(){
         BigDecimal iSum = new BigDecimal(0);
-        for(SSMonth iMonth : iBudget.keySet()){
-            iSum = iSum.add(iBudget.get(iMonth));
+        for(Map.Entry<SSMonth, BigDecimal> ssMonthBigDecimalEntry : iBudget.entrySet()){
+            iSum = iSum.add(ssMonthBigDecimalEntry.getValue());
         }
         return iSum;
     }

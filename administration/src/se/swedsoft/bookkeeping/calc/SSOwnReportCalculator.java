@@ -178,12 +178,12 @@ public class SSOwnReportCalculator {
 
         Map<SSAccount, BigDecimal> iResult = new HashMap<SSAccount, BigDecimal>();
 
-        for(SSAccount iAccount: b.keySet()){
-            iResult.put(iAccount, b.get(iAccount));
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry1 : b.entrySet()){
+            iResult.put(ssAccountBigDecimalEntry1.getKey(), ssAccountBigDecimalEntry1.getValue());
         }
 
-        for(SSAccount iAccount: a.keySet()){
-            subtractValueToMap(iResult, iAccount,  a.get(iAccount) );
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : a.entrySet()){
+            subtractValueToMap(iResult, ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
         }
 
         return iResult;

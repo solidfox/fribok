@@ -51,11 +51,11 @@ public class SIEEntryResult extends SIEEntry {
         if( iPreviousYearData != null ){
             Map<SSAccount, BigDecimal> iResult = SSResultCalculator.getResult(iPreviousYearData);
 
-            for(SSAccount iAccount : iResult.keySet() ){
+            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iResult.entrySet()){
                 iWriter.append( SIELabel.SIE_RES);
                 iWriter.append( -1);
-                iWriter.append( iAccount.getNumber());
-                iWriter.append( iResult.get(iAccount)  );
+                iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
+                iWriter.append(ssAccountBigDecimalEntry.getValue());
                 iWriter.newLine();
                 iHasData = true;
             }
@@ -63,11 +63,11 @@ public class SIEEntryResult extends SIEEntry {
         if( iYear != null ){
             Map<SSAccount, BigDecimal> iResult = SSResultCalculator.getResult((iYear));
 
-            for(SSAccount iAccount : iResult.keySet() ){
+            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iResult.entrySet()){
                 iWriter.append( SIELabel.SIE_RES);
                 iWriter.append( 0);
-                iWriter.append( iAccount.getNumber());
-                iWriter.append( iResult.get(iAccount)  );
+                iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
+                iWriter.append(ssAccountBigDecimalEntry.getValue());
                 iWriter.newLine();
                 iHasData = true;
             }

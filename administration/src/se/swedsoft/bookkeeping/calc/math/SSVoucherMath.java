@@ -211,13 +211,13 @@ public class SSVoucherMath {
         Map<SSAccount, BigDecimal> iSums      = getCreditMinusDebetSum(pVouchers);
         Map<SSAccount, BigDecimal> iInBalance = pAccountingYear.getInBalance();
 
-        for(SSAccount iAccount: iInBalance.keySet()){
-            BigDecimal s = iSums.get(iAccount);
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+            BigDecimal s = iSums.get(ssAccountBigDecimalEntry.getKey());
 
             if(s == null){
-                iSums.put(iAccount,       iInBalance.get(iAccount));
+                iSums.put(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
             } else {
-                iSums.put(iAccount, s.add(iInBalance.get(iAccount)));
+                iSums.put(ssAccountBigDecimalEntry.getKey(), s.add(ssAccountBigDecimalEntry.getValue()));
             }
         }
         return iSums;
@@ -233,13 +233,13 @@ public class SSVoucherMath {
         Map<SSAccount, BigDecimal> iSums     = getDebetMinusCreditSum(pVouchers);
         Map<SSAccount, BigDecimal> iInBalance = pAccountingYear.getInBalance();
 
-        for(SSAccount iAccount: iInBalance.keySet()){
-            BigDecimal s = iSums.get(iAccount);
+        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+            BigDecimal s = iSums.get(ssAccountBigDecimalEntry.getKey());
 
             if(s == null){
-                iSums.put(iAccount,       iInBalance.get(iAccount));
+                iSums.put(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
             } else {
-                iSums.put(iAccount, s.add(iInBalance.get(iAccount)));
+                iSums.put(ssAccountBigDecimalEntry.getKey(), s.add(ssAccountBigDecimalEntry.getValue()));
             }
         }
         return iSums;
