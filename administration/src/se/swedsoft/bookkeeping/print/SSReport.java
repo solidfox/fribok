@@ -186,7 +186,7 @@ public class SSReport {
 
             iPrinter = JasperFillManager.fillReport(iReport, iParameters, iDataSource);
 
-            if( iPrinter.getPages().size() == 0 ) {
+            if(iPrinter.getPages().isEmpty()) {
                 iPrinter = getNoPagesReport();
             }
 

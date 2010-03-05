@@ -54,7 +54,7 @@ public class SSMultiPrinter extends SSPrinter {
      */
     @Override
     public String getTitle() {
-       if(iSubReports.size() > 0){
+       if(!iSubReports.isEmpty()){
            SSSubReport iSubReport  = iSubReports.get(0);
 
            return iSubReport.iName;

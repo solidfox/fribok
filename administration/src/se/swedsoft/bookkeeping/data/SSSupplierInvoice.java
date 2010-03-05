@@ -189,7 +189,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     public Date getLastDate(){
         List<SSSupplierInvoice> iSupplierInvoices = SSDB.getInstance().getSupplierInvoices();
         Date iMax = null;
-        if(iSupplierInvoices.size() > 0){
+        if(!iSupplierInvoices.isEmpty()){
             iMax = iSupplierInvoices.get(0).getDate();
             for(SSSupplierInvoice iInvoice : iSupplierInvoices){
                 if(iInvoice.getDate().after(iMax)){

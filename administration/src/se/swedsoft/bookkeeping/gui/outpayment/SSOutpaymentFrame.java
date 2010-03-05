@@ -240,7 +240,7 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelected(List<SSOutpayment> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "outpaymentframe.delete");

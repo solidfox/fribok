@@ -867,7 +867,7 @@ public class SSOrderImporter {
                 iOrderCount++;
                 SSDB.getInstance().addOrder(iOrder);
             }
-            if(iBadOrders.size() > 0){
+            if(!iBadOrders.isEmpty()){
                 BufferedWriter bw = new BufferedWriter(new PrintWriter(SSFileSystem.getApplicationDirectory() + "orderimport.txt"));
                 for(String iBadOrder:iBadOrders){
                     bw.write(iBadOrder);

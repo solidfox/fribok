@@ -43,7 +43,7 @@ public class SSPeriodicInvoiceMath {
         for (SSPeriodicInvoice iPeriodicInvoice : iPeriodicInvoices.keySet()) {
             List<SSInvoice> iInvoices = iPeriodicInvoices.get(iPeriodicInvoice);
 
-            if(iInvoices.size() > 0) return true;
+            if(!iInvoices.isEmpty()) return true;
         }
         return false;
     }

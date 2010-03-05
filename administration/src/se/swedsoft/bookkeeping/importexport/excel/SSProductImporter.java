@@ -462,7 +462,7 @@ public class SSProductImporter {
                         }
 
                     }
-                    if(iRows.size()>0)
+                    if(!iRows.isEmpty())
                         iProduct.setParcelRows(iRows);
                     
                     iProducts.add(iProduct);

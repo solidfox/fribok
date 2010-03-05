@@ -201,7 +201,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
                     List<SSSupplierInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
                     iSelected = getSupplierInvoices(iSelected);
                     SSOutpayment iOutpayment  = new SSOutpayment();
-                    if (iSelected.size() > 0) {
+                    if (!iSelected.isEmpty()) {
                         iOutpayment.addInvoices(iSelected);
 
                         if (SSOutpaymentFrame.getInstance() != null) {
@@ -229,7 +229,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
 
                 List<SSSupplierInvoice> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getSupplierInvoices(iSelected);
-                if(iSelected.size() == 0) {
+                if(iSelected.isEmpty()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -438,7 +438,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
      * 
      */
     private void deleteSelected(List<SSSupplierInvoice> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "supplierinvoiceframe.delete");

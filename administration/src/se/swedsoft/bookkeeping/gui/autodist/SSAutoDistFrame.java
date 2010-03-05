@@ -245,7 +245,7 @@ public class SSAutoDistFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedAutoDists(java.util.List<SSAutoDist> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

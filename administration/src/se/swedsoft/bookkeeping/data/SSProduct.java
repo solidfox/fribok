@@ -680,7 +680,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
      * @return
      */
     public boolean isParcel(){
-        return getParcelRows().size() > 0;
+        return !getParcelRows().isEmpty();
     }
 
 

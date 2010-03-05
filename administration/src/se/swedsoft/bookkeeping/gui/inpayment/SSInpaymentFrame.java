@@ -238,7 +238,7 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedInpayment(List<SSInpayment> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "inpaymentframe.delete");

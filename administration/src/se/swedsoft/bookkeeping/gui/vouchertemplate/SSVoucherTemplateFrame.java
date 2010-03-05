@@ -232,7 +232,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
      *
      */
     private void deleteSelectedTemplates(List<SSVoucherTemplate> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

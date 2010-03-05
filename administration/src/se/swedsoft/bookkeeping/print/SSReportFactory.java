@@ -530,7 +530,7 @@ public class SSReportFactory {
         List<SSAccount> iAccounts  = SSDB.getInstance().getAccounts();
 
         List<SSAccount> iAccountsWithoutSRUCode =  SSAccountMath.getAccountsWithoutSRUCode(iAccounts);
-        if( iAccountsWithoutSRUCode.size() != 0 ){
+        if(!iAccountsWithoutSRUCode.isEmpty()){
             new SSWarningDialog( iMainFrame, "accountdiagramreport.dialogmissingSRUCode");
         }
 

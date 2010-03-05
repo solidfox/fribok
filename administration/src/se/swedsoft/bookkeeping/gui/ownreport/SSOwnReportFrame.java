@@ -238,7 +238,7 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedOwnReport(List<SSOwnReport> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "ownreportframe.delete");

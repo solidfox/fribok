@@ -42,7 +42,7 @@ public class SSInterestInvoiceDialog {
 
         List<SSInvoice> iRows = SSInterestInvoicePanel.getRows();
 
-        if(iRows.size() == 0){
+        if(iRows.isEmpty()){
             SSPostLock.removeLock(lockString);
             new SSInformationDialog(iMainFrame, "interestinvoice.noinvoices");
             return;

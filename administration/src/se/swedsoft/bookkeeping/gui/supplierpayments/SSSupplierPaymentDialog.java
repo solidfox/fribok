@@ -84,7 +84,7 @@ public class SSSupplierPaymentDialog extends SSDialog {
 
                 }
                 iModel.setObjects(iSupplierPayments);
-                if(iSupplierPayments.size() == 0){
+                if(iSupplierPayments.isEmpty()){
                     new SSErrorDialog( iMainFrame, "supplierinvoiceframe.nosupplierpayments");
                     return;
                 }
@@ -106,7 +106,7 @@ public class SSSupplierPaymentDialog extends SSDialog {
 
                 }
                 iModel.setObjects(iSupplierPayments);
-                if(iSupplierPayments.size() == 0){
+                if(iSupplierPayments.isEmpty()){
                     new SSErrorDialog( iMainFrame, "supplierinvoiceframe.nosupplierpayments");
                     return;
                 }

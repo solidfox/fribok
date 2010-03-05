@@ -72,6 +72,6 @@ public class SIEEntryKonto extends SIEEntry {
             iWriter.newLine();
         }
 
-        return iAccountPlan.getAccounts().size() > 0;
+        return !iAccountPlan.getAccounts().isEmpty();
     }
 }

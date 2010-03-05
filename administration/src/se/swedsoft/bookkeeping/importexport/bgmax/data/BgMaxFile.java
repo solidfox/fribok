@@ -130,7 +130,7 @@ public class BgMaxFile {
             iAvsnitts.add(iAvsnitt);
         } else {
 
-            if(iAvsnitts.size() > 0){
+            if(!iAvsnitts.isEmpty()){
                 iAvsnitt = iAvsnitts.get( iAvsnitts.size()-1 );
             } else {
                 iAvsnitt = null;
@@ -146,7 +146,7 @@ public class BgMaxFile {
                 iAvsnitt.iBetalningar.add(iBetalning);
             } else {
 
-                if( iAvsnitt.iBetalningar.size() > 0){
+                if(!iAvsnitt.iBetalningar.isEmpty()){
                     iBetalning = iAvsnitt.iBetalningar.get(  iAvsnitt.iBetalningar.size()-1 );
                 } else {
                     iBetalning = null;

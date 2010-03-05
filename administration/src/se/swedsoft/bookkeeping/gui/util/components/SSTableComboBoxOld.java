@@ -368,7 +368,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      * @return The first object
      */
     public T getFirst(){
-        if(iObjects.size() > 0){
+        if(!iObjects.isEmpty()){
             return iObjects.get(0);
         } else {
             return null;
@@ -431,7 +431,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         iModel.setObjects(iVisible);
         iModel.fireTableDataChanged();
 
-        return iVisible.size() > 0;
+        return !iVisible.isEmpty();
     }
 
     /**

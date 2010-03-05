@@ -292,7 +292,7 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedInvoice(List<SSPeriodicInvoice> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

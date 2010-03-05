@@ -260,7 +260,7 @@ public class SSIndeliveryFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelected(List<SSIndelivery> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "indeliveryframe.delete");

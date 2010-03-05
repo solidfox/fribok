@@ -68,7 +68,7 @@ public class SSPendingPeriodicInvoiceDialog extends SSDialog {
                 setVisible(false);
             }
         });
-        iButtonPanel.getOkButton().setEnabled( iInvoices.size() > 0 );
+        iButtonPanel.getOkButton().setEnabled(!iInvoices.isEmpty());
 
         setPanel(iPanel);
     }

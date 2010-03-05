@@ -54,7 +54,7 @@ public class SIEReader implements Iterator<String> {
     private void reset() {
         iIndex    = 0;
 
-        if( iLines.size() == 0 ) return;
+        if(iLines.isEmpty()) return;
 
         String iLine = iLines.get(0);
 

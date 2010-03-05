@@ -327,7 +327,7 @@ public class SSVoucherMath {
      */
     public static SSVoucher getFirst(List<SSVoucher> iVouchers){
 
-        if( iVouchers.size() == 0) return null;
+        if(iVouchers.isEmpty()) return null;
 
         SSVoucher iCurrent = iVouchers.get(0);
 
@@ -347,7 +347,7 @@ public class SSVoucherMath {
      */
     public static SSVoucher getLast(List<SSVoucher> iVouchers){
 
-        if( iVouchers.size() == 0) return null;
+        if(iVouchers.isEmpty()) return null;
 
         SSVoucher iCurrent = iVouchers.get(0);
 
@@ -577,7 +577,7 @@ public class SSVoucherMath {
                 return iDate2.compareTo(iDate1);
             }
         });
-        if(iVouchers.size() != 0){
+        if(!iVouchers.isEmpty()){
             Date iDate = iVouchers.get(0).getDate();
             if(iDate != null) return iDate;
         }

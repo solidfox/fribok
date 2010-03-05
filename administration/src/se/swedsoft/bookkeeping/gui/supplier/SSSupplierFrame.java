@@ -342,7 +342,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedSuppliers(java.util.List<SSSupplier> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

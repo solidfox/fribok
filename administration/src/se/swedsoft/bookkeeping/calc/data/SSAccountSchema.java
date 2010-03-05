@@ -197,7 +197,7 @@ public class SSAccountSchema implements Serializable {
          * @param pGroup
          */
         private void add(SSAccountGroup pGroup){
-            if(iLevelTwo.size() == 0 ){
+            if(iLevelTwo.isEmpty()){
                 iLevelOne.add(pGroup);
             } else {
                 iLevelTwo.peek().addAccountGroup(pGroup);

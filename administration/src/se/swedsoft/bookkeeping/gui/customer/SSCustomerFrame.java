@@ -291,7 +291,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
                 } else {
                     iItems = SSDB.getInstance().getCustomers();
                 }
-                if (iItems.size() > 0) {
+                if (!iItems.isEmpty()) {
 
                     SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
                     iFilechooser.setSelectedFile(new File("Kundlista.xml"));
@@ -346,7 +346,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         }
         List<SSCustomer> iSelected = iModel.getSelectedRows(iTable);
         iSelected = getCustomers(iSelected);
-        if(iSelected.size() == 0) {
+        if(iSelected.isEmpty()) {
             SSPostLock.removeLock(lockString);
             return;
         }
@@ -460,7 +460,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedCustomers(List<SSCustomer> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

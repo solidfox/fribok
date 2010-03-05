@@ -720,7 +720,7 @@ public class SSSupplierInvoicePanel implements ActionListener{
     private String getPurchaseOrderNumbers(SSSupplierInvoice iInvoice) {
          List<SSPurchaseOrder> iOrders = SSPurchaseOrderMath.getOrdersForInvoice(iInvoice);
 
-        if(iOrders.size() == 0){
+        if(iOrders.isEmpty()){
             return "Fakturan har inga ordrar";
         }
 

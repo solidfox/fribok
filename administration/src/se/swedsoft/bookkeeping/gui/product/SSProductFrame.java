@@ -263,7 +263,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
                 } else {
                     iItems = SSDB.getInstance().getProducts();
                 }
-                if (iItems.size() > 0) {
+                if (!iItems.isEmpty()) {
 
                     SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
                     iFilechooser.setSelectedFile(new File("Produktlista.xml"));
@@ -402,7 +402,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedProducts(List<SSProduct> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

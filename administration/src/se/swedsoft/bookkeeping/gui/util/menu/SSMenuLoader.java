@@ -270,7 +270,7 @@ public class SSMenuLoader   {
          * @param iAttributes
          */
         private void createSeperator(Attributes iAttributes){
-            if(iMenuStack.size() > 0){
+            if(!iMenuStack.isEmpty()){
                 JMenu iParent = iMenuStack.peek();
                 iParent.addSeparator();
             }
@@ -281,7 +281,7 @@ public class SSMenuLoader   {
          * @param iComponent
          */
         private void add(JComponent iComponent){
-            if(iMenuStack.size() > 0){
+            if(!iMenuStack.isEmpty()){
                 JMenu iParent = iMenuStack.peek();
 
                 iParent.add(iComponent);

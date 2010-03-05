@@ -1314,7 +1314,7 @@ public class SSMainMenu {
                                 }
                                 iInpayment.setRows(iSavedRows);
 
-                                if(iInpayment.getRows().size() == 0)
+                                if(iInpayment.getRows().isEmpty())
                                     SSDB.getInstance().deleteInpayment(iInpayment);
                                 else
                                     SSDB.getInstance().updateInpayment(iInpayment);
@@ -1367,7 +1367,7 @@ public class SSMainMenu {
                                 }
                                 iOutpayment.setRows(iSavedRows);
 
-                                if(iOutpayment.getRows().size() == 0)
+                                if(iOutpayment.getRows().isEmpty())
                                     SSDB.getInstance().deleteOutpayment(iOutpayment);
                                 else
                                     SSDB.getInstance().updateOutpayment(iOutpayment);

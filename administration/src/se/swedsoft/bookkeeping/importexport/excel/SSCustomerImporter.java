@@ -764,7 +764,7 @@ public class SSCustomerImporter {
             }
 
 
-            if(iBadCustomers.size() > 0){
+            if(!iBadCustomers.isEmpty()){
                 BufferedWriter bw = new BufferedWriter(new PrintWriter(SSFileSystem.getApplicationDirectory() + "kundimport.txt"));
                 for(String iBadOrder:iBadCustomers){
                     bw.write(iBadOrder);

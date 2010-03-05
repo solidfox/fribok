@@ -250,7 +250,7 @@ public class SSInventoryFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelected(List<SSInventory> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "inventoryframe.delete");

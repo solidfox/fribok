@@ -83,7 +83,7 @@ public class SSSIEExporter {
 
             if( iEntry.exportEntry(this, iWriter, iYearData) ){
 
-                if( iWriter.getLines().size() == 0 ){
+                if(iWriter.getLines().isEmpty()){
                     throw new RuntimeException("Entry reported data but no lines found: " + iEntry);
                 }
 

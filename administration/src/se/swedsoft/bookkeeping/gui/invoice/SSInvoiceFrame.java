@@ -186,7 +186,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
                     List<SSInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
                     iSelected = getInvoices(iSelected);
                     SSInpayment iInpayment  = new SSInpayment();
-                    if (iSelected.size() > 0) {
+                    if (!iSelected.isEmpty()) {
                         iInpayment.addInvoices(iSelected);
 
                         if (SSInpaymentFrame.getInstance() != null) {
@@ -232,7 +232,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
                 iSelected = getInvoices(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.ReminderReport(getMainFrame(), iSelected);
                     //updateFrame();
                 }
@@ -262,7 +262,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getInvoices(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.InvoiceReport(getMainFrame(), iSelected);
                 }
             }
@@ -284,7 +284,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
                 iSelected = getInvoices(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.ReminderReport(getMainFrame(), iSelected);
                 }
             }
@@ -296,7 +296,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getInvoices(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.OCRInvoiceReport(getMainFrame(), iSelected);
                 }
             }
@@ -485,7 +485,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      *
      */
     private void deleteSelectedInvoice(List<SSInvoice> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

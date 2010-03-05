@@ -76,7 +76,7 @@ public class SSSupplierPaymentExporter {
         List<LBinPost> iPosts = new LinkedList<LBinPost>();
 
         // Cant add empty sections
-        if( iPayments.size() == 0 ) return iPosts;
+        if(iPayments.isEmpty()) return iPosts;
 
         iPosts.add( new LBinPostTK11( iCurrency ) );
         iPosts.add( new LBinPostTK12(  ) );

@@ -294,7 +294,7 @@ public class SSPurchaseOrderDialog {
      */
     public static void createInvoiceDialog(final SSMainFrame iMainFrame, List<SSPurchaseOrder> iPurchaseOrders, final AbstractTableModel iModel) {
         // Empty, exit
-        if(iPurchaseOrders.size() == 0) return;
+        if(iPurchaseOrders.isEmpty()) return;
 
         // Get the supplier from the first selected purchase order
         SSSupplier iSupplier = iPurchaseOrders.get(0).getSupplier();

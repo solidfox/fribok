@@ -386,7 +386,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedVouchers(java.util.List<SSVoucher> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "voucherframe.delete");

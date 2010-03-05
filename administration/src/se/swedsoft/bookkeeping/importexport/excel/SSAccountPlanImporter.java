@@ -154,7 +154,7 @@ public class SSAccountPlanImporter {
 
         }
 
-        if(pAccountPlan.getAccounts().size() == 0){
+        if(pAccountPlan.getAccounts().isEmpty()){
             throw new SSImportException(cBundle, "importaccountplan.fileempty");
         }
     }

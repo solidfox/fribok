@@ -90,7 +90,7 @@ public class SSBgMaxImporter {
 
                 SSInvoice iInvoice = SSInvoiceMath.getInvoiceByReference(iBetalning.iReferens);
 
-                if(iInvoice == null && iBetalning.iReferenser.size() > 0){
+                if(iInvoice == null && !iBetalning.iReferenser.isEmpty()){
                     for (BgMaxReferens iReferens : iBetalning.iReferenser) {
                          iInvoice = SSInvoiceMath.getInvoiceByReference(iReferens.iReferens);
                     }

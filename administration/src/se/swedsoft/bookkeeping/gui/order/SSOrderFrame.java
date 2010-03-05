@@ -177,7 +177,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSOrderDialog.invoiceDialog(getMainFrame(), iSelected, iModel);
                 }
             }
@@ -186,7 +186,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSOrderDialog.cashReceiptDialog(getMainFrame(), iSelected, iModel);
                 }
             }
@@ -195,7 +195,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSOrderDialog.periodicInvoiceDialog(getMainFrame(), iSelected, iModel);
                 }
             }
@@ -335,7 +335,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
                 } else {
                     iItems = SSDB.getInstance().getOrders();
                 }
-                if (iItems.size() > 0) {
+                if (!iItems.isEmpty()) {
 
                     SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
                     iFilechooser.setSelectedFile(new File("Orderlista.xml"));
@@ -357,7 +357,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.OrderReport(getMainFrame(), iSelected);
                 }
             }
@@ -379,7 +379,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.DeliverynoteReport(getMainFrame(), iSelected);
                 }
             }
@@ -389,7 +389,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.PickingslipReport(getMainFrame(), iSelected);
                 }
             }
@@ -559,7 +559,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedOrder(List<SSOrder> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

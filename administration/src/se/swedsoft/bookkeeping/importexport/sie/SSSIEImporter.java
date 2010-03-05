@@ -57,7 +57,7 @@ public class SSSIEImporter {
         // Read the contents of the file
         readFile(iFile);
 
-        if(iLines.size() == 0) return;
+        if(iLines.isEmpty()) return;
 
         // Clear all active data
 
@@ -117,7 +117,7 @@ public class SSSIEImporter {
         final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();
         readFile(iFile);
 
-        if(iLines.size() == 0){
+        if(iLines.isEmpty()){
             SSPostLock.removeLock(lockString);
             return;
         }

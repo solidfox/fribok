@@ -245,7 +245,7 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelectedResultUnits(List<SSNewResultUnit> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "resultunitframe.delete");

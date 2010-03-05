@@ -78,7 +78,7 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
                 setVisible(false);
             }
         });
-        iButtonPanel.getOkButton().setEnabled( iProducts.size() > 0 );
+        iButtonPanel.getOkButton().setEnabled(!iProducts.isEmpty());
 
         setPanel(iPanel);
     }
@@ -159,7 +159,7 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
                     iUseForPurchaseOrder.add(iProduct);
                 }
             }
-            if(iUseForPurchaseOrder.size()>0){
+            if(!iUseForPurchaseOrder.isEmpty()){
                 if(iAddedOrders.length() != 0) iAddedOrders += ", ";
                 SSPurchaseOrder iPurchaseOrder = new SSPurchaseOrder(iUseForPurchaseOrder, iSupplier);
                 SSDB.getInstance().addPurchaseOrder(iPurchaseOrder);

@@ -162,7 +162,7 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSCreditInvoice> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getCreditInvoices(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.CreditInvoiceReport(getMainFrame(), iSelected);
                 }
             }
@@ -307,7 +307,7 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
     }*/
 
     private void deleteSelectedInvoice(List<SSCreditInvoice> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
 

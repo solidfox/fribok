@@ -701,7 +701,7 @@ public class SSInvoicePanel {
 
         if(iOrderNumbers == null){
             List<SSOrder> iOrders = SSInvoiceMath.getOrdersForInvoice(iInvoice);
-            if(iOrders.size() == 0){
+            if(iOrders.isEmpty()){
                 return "Fakturan har inga ordrar";
             }
 

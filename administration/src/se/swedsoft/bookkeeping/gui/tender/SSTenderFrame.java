@@ -208,7 +208,7 @@ public class SSTenderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSTender> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getTenders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.TenderReport(getMainFrame(), iSelected);
                 }
             }
@@ -380,7 +380,7 @@ public class SSTenderFrame extends SSDefaultTableFrame {
     }
 
     private void deleteSelectedTender(List<SSTender> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "tenderframe.delete");

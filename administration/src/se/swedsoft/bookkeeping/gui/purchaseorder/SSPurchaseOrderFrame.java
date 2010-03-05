@@ -175,7 +175,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSPurchaseOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getPurchaseOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSPurchaseOrderDialog.createInvoiceDialog(getMainFrame(), iSelected, iModel);
                 }
             }
@@ -194,7 +194,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSPurchaseOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getPurchaseOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.PurchaseOrderReport(getMainFrame(), iSelected);
                 }
             }
@@ -216,7 +216,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
             public void actionPerformed(ActionEvent e) {
                 List<SSPurchaseOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getPurchaseOrders(iSelected);
-                if (iSelected.size() > 0) {
+                if (!iSelected.isEmpty()) {
                     SSReportFactory.InquiryReport(getMainFrame(), iSelected);
                 }
             }
@@ -392,7 +392,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
 
 
     private void deleteSelected(List<SSPurchaseOrder> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "purchaseorderframe.delete");

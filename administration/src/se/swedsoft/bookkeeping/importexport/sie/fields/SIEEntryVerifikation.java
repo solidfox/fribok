@@ -104,6 +104,6 @@ public class SIEEntryVerifikation extends SIEEntry {
             iWriter.newLine("}");
         }
 
-        return iVouchers.size() > 0;
+        return !iVouchers.isEmpty();
     }
 }

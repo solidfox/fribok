@@ -273,7 +273,7 @@ public class SSSupplierCreditInvoiceFrame extends SSDefaultTableFrame {
      *
      */
     private void deleteSelected(List<SSSupplierCreditInvoice> delete) {
-        if (delete.size() == 0) {
+        if (delete.isEmpty()) {
             return;
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "suppliercreditinvoiceframe.delete");

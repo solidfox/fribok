@@ -208,7 +208,7 @@ public class SSBudget implements Serializable  {
         }
 
         // If we have no months we cannot set any sum
-        if( iMonths.size() == 0 ){
+        if(iMonths.isEmpty()){
             return;
         }
         // Get the number of months as a bigdecimal for our calculations

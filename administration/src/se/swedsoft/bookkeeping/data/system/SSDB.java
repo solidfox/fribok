@@ -6269,7 +6269,7 @@ public class SSDB {
                     }
                     setCurrentCompany(null);
                 }
-                if (iData.getAccountPlans().size() > 0) {
+                if (!iData.getAccountPlans().isEmpty()) {
                     try {
                         PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_accountplan");
                         iStatement.executeUpdate();

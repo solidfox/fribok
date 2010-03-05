@@ -115,6 +115,6 @@ public class SIEEntryObjekt extends SIEEntry {
             iWriter.newLine();
         }
 
-        return iResultUnits.size() > 0 || iProjects.size() > 0;
+        return !iResultUnits.isEmpty() || !iProjects.isEmpty();
     }
 }

@@ -120,7 +120,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
             return false;
         }
 
-        if( iVoucher.getRows().size() == 0){
+        if(iVoucher.getRows().isEmpty()){
             // Verifikationen saknar rader.
             iError = bundle.getString("voucherframe.error.2");
             return false;
