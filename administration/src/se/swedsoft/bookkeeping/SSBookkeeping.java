@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping;
 
+import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
 import se.swedsoft.bookkeeping.data.system.SSCompanyLock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
@@ -81,8 +82,7 @@ public class SSBookkeeping {
      */
     public static void main(String[] args) {
         try {
-            JDialog.setDefaultLookAndFeelDecorated(true);
-            JFrame .setDefaultLookAndFeelDecorated(true);
+            UIManager.setLookAndFeel(new Plastic3DLookAndFeel());
         } catch (Exception e) {
             e.printStackTrace();
         }

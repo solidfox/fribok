@@ -113,7 +113,7 @@
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils-core.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/poi.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging-api.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/looks-1.2.2.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/looks-2.3.1.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jhall.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-collections-3.1.jar"/>
@@ -141,7 +141,7 @@
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils-core.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/poi.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging-api.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/looks-1.2.2.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/looks-2.3.1.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jhall.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging.jar"/>
     <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-collections-3.1.jar"/>
