@@ -14,9 +14,9 @@ public class SSFilterSIE extends SSFileFilter {
 
     public SSFilterSIE(){
         super();
-        addExtention("sie");
-        addExtention("si");
-        addExtention("se");
+        addExtension("sie");
+        addExtension("si");
+        addExtension("se");
     }
     /**
      * @return The description of this filter

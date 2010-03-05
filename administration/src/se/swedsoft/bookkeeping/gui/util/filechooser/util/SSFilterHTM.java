@@ -14,8 +14,8 @@ public class SSFilterHTM extends SSFileFilter {
 
     public SSFilterHTM(){
         super();
-        addExtention("htm");
-        addExtention("html");
+        addExtension("htm");
+        addExtension("html");
     }
     /**
      * @return The description of this filter

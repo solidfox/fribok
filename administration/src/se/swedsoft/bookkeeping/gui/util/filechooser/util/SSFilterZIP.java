@@ -14,7 +14,7 @@ public class SSFilterZIP extends SSFileFilter {
 
     public SSFilterZIP(){
         super();
-        addExtention("zip");
+        addExtension("zip");
     }
     /**
      * @return The description of this filter

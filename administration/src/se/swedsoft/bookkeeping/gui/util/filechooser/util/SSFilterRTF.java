@@ -14,7 +14,7 @@ public class SSFilterRTF extends SSFileFilter {
 
     public SSFilterRTF(){
         super();
-        addExtention("rff");
+        addExtension("rff");
     }
     /**
      * @return The description of this filter

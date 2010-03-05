@@ -14,7 +14,7 @@ public class SSFilterDB extends SSFileFilter {
 
     public SSFilterDB(){
         super();
-        addExtention("db");
+        addExtension("db");
     }
     /**
      * @return The description of this filter

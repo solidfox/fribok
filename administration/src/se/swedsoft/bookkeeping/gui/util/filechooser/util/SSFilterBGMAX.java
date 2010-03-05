@@ -14,8 +14,8 @@ public class SSFilterBGMAX extends SSFileFilter {
 
     public SSFilterBGMAX(){
         super();
-        addExtention("out");
-        addExtention("ut");
+        addExtension("out");
+        addExtension("ut");
     }
     /**
      * @return The description of this filter

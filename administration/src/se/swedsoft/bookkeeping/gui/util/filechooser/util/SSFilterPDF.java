@@ -14,7 +14,7 @@ public class SSFilterPDF extends SSFileFilter {
 
     public SSFilterPDF(){
         super();
-        addExtention("pdf");
+        addExtension("pdf");
     }
     /**
      * @return The description of this filter

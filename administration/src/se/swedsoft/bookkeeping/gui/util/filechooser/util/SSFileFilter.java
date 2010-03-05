@@ -11,18 +11,18 @@ import java.util.LinkedList;
  */
 public abstract class SSFileFilter extends FileFilter {
 
-    private List<String> iExtentions;
+    private List<String> iExtensions;
 
     public SSFileFilter(){
-        iExtentions = new LinkedList<String>();
+        iExtensions = new LinkedList<String>();
     }
 
     /**
      *
-     * @param pExtention
+     * @param pExtension
      */
-    protected void addExtention(String pExtention){
-        iExtentions.add( pExtention.toLowerCase() );
+    protected void addExtension(String pExtension){
+        iExtensions.add( pExtension.toLowerCase() );
     }
 
     /**
@@ -36,12 +36,12 @@ public abstract class SSFileFilter extends FileFilter {
             return true;
         }
 
-        String iExtention = getExtension(pFile);
+        String iExtension = getExtension(pFile);
 
-        if( iExtention == null )  return false;
+        if( iExtension == null )  return false;
 
-        for(String iCurrent : iExtentions ){
-            if( iCurrent.equals( iExtention ) ) return true;
+        for(String iCurrent : iExtensions ){
+            if( iCurrent.equals( iExtension ) ) return true;
         }
 
         return false;

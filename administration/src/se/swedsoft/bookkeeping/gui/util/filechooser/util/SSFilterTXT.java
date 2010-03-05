@@ -14,7 +14,7 @@ public class SSFilterTXT extends SSFileFilter {
 
     public SSFilterTXT(){
         super();
-        addExtention("txt");
+        addExtension("txt");
     }
     /**
      * @return The description of this filter

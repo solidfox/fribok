@@ -19,10 +19,10 @@ public class SSImageFilter extends SSFileFilter {
 
     public SSImageFilter(){
         super();
-        addExtention(gif );
-        addExtention(jpeg);
-        addExtention(jpg );
-        addExtention(png );
+        addExtension(gif );
+        addExtension(jpeg);
+        addExtension(jpg );
+        addExtension(png );
     }
     /**
      * @return The description of this filter

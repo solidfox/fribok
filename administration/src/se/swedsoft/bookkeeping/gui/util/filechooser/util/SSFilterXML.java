@@ -14,7 +14,7 @@ public class SSFilterXML extends SSFileFilter {
 
     public SSFilterXML(){
         super();
-        addExtention("xml");
+        addExtension("xml");
     }
     /**
      * @return The description of this filter

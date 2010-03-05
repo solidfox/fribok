@@ -14,7 +14,7 @@ public class SSFilterXLS extends SSFileFilter {
 
     public SSFilterXLS(){
         super();
-        addExtention("xls");
+        addExtension("xls");
     }
     /**
      * @return The description of this filter
