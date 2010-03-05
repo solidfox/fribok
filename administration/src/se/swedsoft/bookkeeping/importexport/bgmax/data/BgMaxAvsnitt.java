@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.importexport.bgmax.data;
 
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
-
 import java.util.List;
 import java.util.LinkedList;
 

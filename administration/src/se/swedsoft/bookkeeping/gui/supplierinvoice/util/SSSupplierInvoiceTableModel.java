@@ -8,7 +8,6 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.Date;
 import java.util.List;

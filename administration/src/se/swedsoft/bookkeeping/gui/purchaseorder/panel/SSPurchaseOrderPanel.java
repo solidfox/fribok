@@ -32,7 +32,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.beans.PropertyChangeListener;
 
 /**
  * User: Andreas Lago

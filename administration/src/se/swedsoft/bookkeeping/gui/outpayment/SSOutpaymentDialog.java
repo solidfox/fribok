@@ -1,22 +1,15 @@
 package se.swedsoft.bookkeeping.gui.outpayment;
 
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.inpayment.SSInpaymentFrame;
 import se.swedsoft.bookkeeping.gui.supplierinvoice.SSSupplierInvoiceFrame;
-import se.swedsoft.bookkeeping.gui.invoice.SSInvoiceFrame;
 import se.swedsoft.bookkeeping.gui.outpayment.panel.SSOutpaymentPanel;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
-import se.swedsoft.bookkeeping.data.SSInvoice;
-import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;

@@ -1,13 +1,9 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.poster;
 
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPaymentConfig;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.data.SSAddress;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-
-import java.util.Date;
 
 /**
  * User: Andreas Lago

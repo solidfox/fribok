@@ -1,8 +1,5 @@
 package se.swedsoft.bookkeeping.importexport.bgmax.data;
 
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxAvsnitt;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 

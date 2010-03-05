@@ -2,7 +2,6 @@ package se.swedsoft.bookkeeping.importexport.supplierpayments.poster;
 
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
-import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxLine;
 
 import java.math.BigDecimal;
 import java.util.Date;

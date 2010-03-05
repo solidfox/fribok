@@ -5,13 +5,8 @@ import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.TableCellEditor;
-import javax.swing.table.DefaultTableCellRenderer;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.text.DateFormat;
-import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;

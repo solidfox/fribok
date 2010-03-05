@@ -9,7 +9,6 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 /**

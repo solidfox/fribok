@@ -1,12 +1,9 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.LinkedList;
 
 /**
  * User: Andreas Lago

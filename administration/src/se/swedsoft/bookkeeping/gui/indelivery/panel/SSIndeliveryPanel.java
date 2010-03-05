@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.gui.indelivery.panel;
 
 import se.swedsoft.bookkeeping.data.SSIndelivery;
-import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSIndeliveryRow;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;

@@ -6,37 +6,29 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSWarningDialog;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.components.SSTabbedPanePanel;
 import se.swedsoft.bookkeeping.gui.util.components.SSMenuButton;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.inpayment.SSInpaymentDialog;
 import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
 import se.swedsoft.bookkeeping.gui.order.SSOrderDialog;
 import se.swedsoft.bookkeeping.gui.tender.util.SSTenderTableModel;
 import se.swedsoft.bookkeeping.gui.tender.panel.SSTenderSearchPanel;
 import se.swedsoft.bookkeeping.data.SSTender;
-import se.swedsoft.bookkeeping.data.SSOrder;
-import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.data.system.SSMail;
 import se.swedsoft.bookkeeping.print.SSReportFactory;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.InternalFrameAdapter;
-import javax.swing.event.InternalFrameEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * User: Andreas Lago

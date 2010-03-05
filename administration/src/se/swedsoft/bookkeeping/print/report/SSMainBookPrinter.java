@@ -12,7 +12,6 @@ import java.util.*;
 import java.text.DateFormat;
 
 import static se.swedsoft.bookkeeping.calc.SSMainBookCalculator.SSMainBookRow;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  * Date: 2006-feb-17

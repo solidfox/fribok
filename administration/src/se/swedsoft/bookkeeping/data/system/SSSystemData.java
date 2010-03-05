@@ -1,13 +1,10 @@
 package se.swedsoft.bookkeeping.data.system;
 
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.common.*;
 
 import java.io.*;
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Date: 2006-feb-24

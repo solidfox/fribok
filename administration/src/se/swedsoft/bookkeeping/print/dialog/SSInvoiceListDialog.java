@@ -13,7 +13,6 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;

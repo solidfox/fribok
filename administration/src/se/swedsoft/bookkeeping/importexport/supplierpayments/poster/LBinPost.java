@@ -1,9 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.poster;
 
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
-
-import java.util.List;
 
 /**
  * User: Andreas Lago

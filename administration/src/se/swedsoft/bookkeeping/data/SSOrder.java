@@ -2,8 +2,6 @@ package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.base.SSSale;
-import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.Date;
 import java.util.List;

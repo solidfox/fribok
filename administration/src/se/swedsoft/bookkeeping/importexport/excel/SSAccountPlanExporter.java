@@ -8,20 +8,16 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.excel.util.*;
 
 import java.util.ResourceBundle;
-import java.util.List;
 import java.util.Iterator;
 import java.util.Locale;
 import java.io.File;
 import java.io.IOException;
 
 import jxl.Workbook;
-import jxl.Sheet;
 import jxl.WorkbookSettings;
-import jxl.biff.CountryCode;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import jxl.write.WritableSheet;
-import jxl.read.biff.BiffException;
 
 /**
  * Date: 2006-feb-13

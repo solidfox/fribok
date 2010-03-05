@@ -1,12 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterHTM;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterPDF;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterRTF;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterXLS;
-
-import java.util.ResourceBundle;
 
 /**
  * Date: 2006-feb-20

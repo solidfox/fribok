@@ -14,7 +14,6 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

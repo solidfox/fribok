@@ -6,15 +6,12 @@ import se.swedsoft.bookkeeping.importexport.sie.util.SIEReader;
 import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
 import se.swedsoft.bookkeeping.importexport.sie.util.SIELabel;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
+
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
-import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  * Date: 2006-feb-22

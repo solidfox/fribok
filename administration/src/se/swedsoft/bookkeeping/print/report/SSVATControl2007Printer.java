@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
 import se.swedsoft.bookkeeping.print.SSPrinter;
-import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSVoucher;

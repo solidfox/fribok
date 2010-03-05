@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outpayment.panel;
 
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
@@ -18,7 +17,6 @@ import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.outpayment.util.SSOutpaymentRowTableModel;
 import se.swedsoft.bookkeeping.calc.math.SSOutpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;

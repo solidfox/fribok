@@ -33,7 +33,6 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.util.SSUtil;
-import sun.security.action.GetBooleanAction;
 
 /**
  * Utility methods for sending mail

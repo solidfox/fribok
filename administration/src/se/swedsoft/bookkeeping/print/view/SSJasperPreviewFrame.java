@@ -13,11 +13,8 @@ import se.swedsoft.bookkeeping.gui.status.SSStatusBar;
 import se.swedsoft.bookkeeping.print.SSReport;
 
 import javax.swing.*;
-import javax.swing.event.InternalFrameListener;
-import javax.swing.event.InternalFrameEvent;
 import javax.swing.filechooser.FileFilter;
 
-import net.sf.jasperreports.view.JasperViewer;
 import net.sf.jasperreports.view.save.JRMultipleSheetsXlsSaveContributor;
 import net.sf.jasperreports.view.save.JRRtfSaveContributor;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -32,7 +29,6 @@ import java.io.File;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.util.ResourceBundle;
-import java.util.Map;
 
 /**
  * Date: 2006-jan-20

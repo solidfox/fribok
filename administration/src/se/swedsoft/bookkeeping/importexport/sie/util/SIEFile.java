@@ -1,11 +1,8 @@
 package se.swedsoft.bookkeeping.importexport.sie.util;
 
-import se.swedsoft.bookkeeping.importexport.util.SSImportException;
-
 import java.util.List;
 import java.util.LinkedList;
 import java.io.*;
-import java.nio.charset.CharsetDecoder;
 
 /**
  * Date: 2006-feb-20

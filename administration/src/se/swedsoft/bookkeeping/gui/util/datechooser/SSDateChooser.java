@@ -4,7 +4,6 @@ import se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSCalendar;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
@@ -13,7 +12,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import java.util.List;
-import java.text.SimpleDateFormat;
 
 /**
  * User: Andreas Lago

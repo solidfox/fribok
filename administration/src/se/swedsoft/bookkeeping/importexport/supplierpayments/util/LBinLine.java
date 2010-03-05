@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.util;
 
-import javax.swing.*;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

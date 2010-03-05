@@ -3,9 +3,6 @@ package se.swedsoft.bookkeeping.gui.util.menu;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.*;
-import java.util.ResourceBundle;
-import java.util.MissingResourceException;
-import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 
 /**

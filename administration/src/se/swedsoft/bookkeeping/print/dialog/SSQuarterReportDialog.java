@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 import se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSQuaterChooser;
 import se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSYearChooser;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;

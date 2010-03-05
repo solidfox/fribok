@@ -1,8 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util;
 
 import javax.swing.*;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Collections;

@@ -1,35 +1,20 @@
 package se.swedsoft.bookkeeping.gui.exportbgcadmission;
 
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSFileChooser;
-import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterTXT;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.exportbgcadmission.util.SSExportBGCAdmissionTableModel;
-import se.swedsoft.bookkeeping.gui.supplierpayments.util.SSSupplierPaymentTableModel;
-import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.importexport.supplierpayments.SSSupplierPaymentExporter;
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPaymentConfig;
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
-import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.util.List;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Collections;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 
 /**
  * User: Andreas Lago

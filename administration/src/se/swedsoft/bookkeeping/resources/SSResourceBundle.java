@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.resources;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-
 import java.util.ResourceBundle;
 import java.util.Enumeration;
 import java.util.MissingResourceException;

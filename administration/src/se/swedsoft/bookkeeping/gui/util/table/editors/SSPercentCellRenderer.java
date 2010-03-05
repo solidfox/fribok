@@ -1,9 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.data.common.SSUnit;
-
 import javax.swing.table.DefaultTableCellRenderer;
-import java.math.BigDecimal;
 import java.text.NumberFormat;
 
 /**

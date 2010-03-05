@@ -1,9 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outpayment.util;
 
-import se.swedsoft.bookkeeping.data.SSOutpaymentRow;
-import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
-import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;

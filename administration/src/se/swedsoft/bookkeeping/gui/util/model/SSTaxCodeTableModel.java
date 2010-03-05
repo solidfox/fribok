@@ -1,17 +1,11 @@
 package se.swedsoft.bookkeeping.gui.util.model;
 
-import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSNameDescriptionDialog;
-import se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
-import javax.swing.*;
 import java.util.*;
 import java.math.BigDecimal;
 import java.text.NumberFormat;

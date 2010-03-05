@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.gui.purchasesuggestion.dialog;
 
-import se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPendingInvoiceTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
@@ -9,22 +8,16 @@ import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSSupplierCellEditor;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.purchaseorder.SSPurchaseOrderFrame;
 import se.swedsoft.bookkeeping.gui.purchasesuggestion.util.SSPurchaseSuggestionTableModel;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.calc.math.SSProductMath;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
 import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
 import java.util.List;
-import java.util.Map;
 import java.util.LinkedList;
 
 /**

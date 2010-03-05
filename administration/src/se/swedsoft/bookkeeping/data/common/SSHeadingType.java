@@ -1,13 +1,6 @@
 package se.swedsoft.bookkeeping.data.common;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-
-import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.text.DecimalFormat;
 
 /**
  * User: Andreas Lago

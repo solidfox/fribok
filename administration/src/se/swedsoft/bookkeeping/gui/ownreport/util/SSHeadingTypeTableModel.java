@@ -1,26 +1,9 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
-import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
-import se.swedsoft.bookkeeping.data.base.SSSale;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.common.SSUnit;
-import se.swedsoft.bookkeeping.data.common.SSTaxCode;
-import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.table.editors.*;
-import se.swedsoft.bookkeeping.calc.math.SSProductMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.LinkedList;
 
 /**
  * User: Andreas Lago

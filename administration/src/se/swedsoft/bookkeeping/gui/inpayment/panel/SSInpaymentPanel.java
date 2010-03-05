@@ -2,8 +2,6 @@ package se.swedsoft.bookkeeping.gui.inpayment.panel;
 
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSInvoiceCellEditor;
@@ -17,10 +15,8 @@ import se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherRowTableModelOld;
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;
@@ -28,8 +24,6 @@ import javax.swing.event.TableModelEvent;
 import java.awt.event.*;
 import java.awt.*;
 import java.math.BigDecimal;
-import java.util.*;
-import java.rmi.server.UID;
 
 /**
  * User: Andreas Lago

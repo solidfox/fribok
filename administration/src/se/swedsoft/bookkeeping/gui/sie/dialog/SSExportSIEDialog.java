@@ -16,8 +16,6 @@ import java.io.File;
 
 import se.swedsoft.bookkeeping.importexport.sie.util.SIEType;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import javax.swing.*;
 

@@ -1,14 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util;
 
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
 import java.awt.*;
-import java.beans.PropertyChangeListener;
 
 /**
  * User: Andreas Lago

@@ -7,7 +7,6 @@ import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,12 +14,9 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Locale;
 import java.util.List;
-import java.util.LinkedList;
-import java.awt.*;
 
 import jxl.WorkbookSettings;
 import jxl.Workbook;
-import jxl.format.CellFormat;
 import jxl.format.Colour;
 import jxl.write.WritableWorkbook;
 import jxl.write.WritableSheet;

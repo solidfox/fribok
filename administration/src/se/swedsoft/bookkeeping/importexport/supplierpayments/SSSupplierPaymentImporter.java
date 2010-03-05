@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments;
 
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
-import se.swedsoft.bookkeeping.importexport.supplierpayments.data.PaymentMethod;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.poster.*;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
@@ -16,7 +14,6 @@ import java.io.*;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Date;
-import java.math.BigDecimal;
 import java.text.DateFormat;
 
 /**

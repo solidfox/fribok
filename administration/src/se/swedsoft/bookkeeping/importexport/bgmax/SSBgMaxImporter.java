@@ -3,9 +3,7 @@ package se.swedsoft.bookkeeping.importexport.bgmax;
 import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSInpaymentRow;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.importexport.bgmax.dialog.BgMaxSelectInvoiceDialog;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
@@ -13,7 +11,6 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxAvsnitt;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxFile;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.io.File;

@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static se.swedsoft.bookkeeping.data.backup.util.SSBackupZip.ArchiveFile;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  * Date: 2006-mar-03

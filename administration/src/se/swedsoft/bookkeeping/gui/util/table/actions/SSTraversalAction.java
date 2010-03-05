@@ -1,16 +1,11 @@
 package se.swedsoft.bookkeeping.gui.util.table.actions;
 
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.*;
-
-import com.lowagie.text.Table;
 
 /**
  * User: Andreas Lago

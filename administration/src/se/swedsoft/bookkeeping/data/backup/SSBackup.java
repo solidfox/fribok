@@ -1,8 +1,6 @@
 package se.swedsoft.bookkeeping.data.backup;
 
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupType;
-import se.swedsoft.bookkeeping.data.system.SSSystemCompany;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import java.util.Date;
 import java.io.*;

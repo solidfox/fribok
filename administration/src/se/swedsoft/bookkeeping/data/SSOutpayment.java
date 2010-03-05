@@ -6,7 +6,6 @@ import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSOutpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.io.Serializable;
 import java.util.*;

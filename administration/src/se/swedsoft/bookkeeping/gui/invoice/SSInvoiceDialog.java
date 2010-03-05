@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.gui.invoice;
 
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
 import se.swedsoft.bookkeeping.gui.invoice.panel.SSInvoicePanel;
 import se.swedsoft.bookkeeping.gui.invoice.dialog.SSInvoiceTypeDialog;
 import se.swedsoft.bookkeeping.gui.invoice.util.SSInvoiceTableModel;
@@ -15,8 +14,6 @@ import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;

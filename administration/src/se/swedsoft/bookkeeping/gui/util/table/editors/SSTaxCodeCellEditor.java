@@ -1,13 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel;
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 
-import javax.swing.table.DefaultTableCellRenderer;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.HashMap;

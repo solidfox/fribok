@@ -9,7 +9,6 @@ import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDefaultTableCellRenderer;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.List;
 import java.util.LinkedList;

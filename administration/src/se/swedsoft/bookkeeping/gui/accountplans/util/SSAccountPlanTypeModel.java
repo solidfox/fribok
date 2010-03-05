@@ -1,11 +1,8 @@
 package se.swedsoft.bookkeeping.gui.accountplans.util;
 
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.data.SSAccountPlanType;
-
-import java.util.List;
 
 /**
  * Date: 2006-feb-14

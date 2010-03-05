@@ -1,19 +1,15 @@
 package se.swedsoft.bookkeeping.print.report.sales;
 
-import se.swedsoft.bookkeeping.print.report.sales.SSInvoicePrinter;
 import se.swedsoft.bookkeeping.data.SSInvoice;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.SSOCRNumber;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSImage;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 
 /**
  * User: Andreas Lago

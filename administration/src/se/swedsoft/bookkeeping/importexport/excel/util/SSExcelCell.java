@@ -1,10 +1,8 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
-import jxl.Sheet;
 import jxl.Cell;
 import jxl.NumberCell;
 import jxl.DateCell;
-import jxl.write.biff.NumberRecord;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;

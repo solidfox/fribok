@@ -1,9 +1,5 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
-import se.swedsoft.bookkeeping.gui.util.components.SSButton;
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

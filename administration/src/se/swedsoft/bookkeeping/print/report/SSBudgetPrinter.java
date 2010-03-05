@@ -10,7 +10,6 @@ import se.swedsoft.bookkeeping.data.SSBudget;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.*;
 

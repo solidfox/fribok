@@ -15,14 +15,9 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
-import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
-import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
-import se.swedsoft.bookkeeping.calc.util.SSFilter;
 
 import java.util.Date;
-import java.util.List;
-import java.util.LinkedList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

@@ -6,12 +6,8 @@ import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.math.SSProductMath;
-import se.swedsoft.bookkeeping.calc.math.SSDateMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.*;
-import java.math.BigDecimal;
 
 /**
  * Date: 2007-mar-21

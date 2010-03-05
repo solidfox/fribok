@@ -5,7 +5,6 @@ import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 import javax.swing.*;
 import javax.help.*;
 import java.awt.*;
-import java.net.MalformedURLException;
 
 /**
  * Date: 2006-mar-06

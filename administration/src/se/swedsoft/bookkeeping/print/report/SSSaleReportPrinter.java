@@ -10,7 +10,6 @@ import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.*;
 import java.math.BigDecimal;

@@ -1,18 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.table.model;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSTableEditor;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableColumn;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.*;
-import javax.swing.event.TableModelListener;
 import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;

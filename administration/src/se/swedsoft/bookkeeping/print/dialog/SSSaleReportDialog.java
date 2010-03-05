@@ -14,7 +14,6 @@ import java.util.Date;
 import static se.swedsoft.bookkeeping.print.report.SSSaleReportPrinter.SortingMode;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  * User: Andreas Lago

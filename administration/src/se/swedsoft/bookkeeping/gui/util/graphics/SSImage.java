@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 import java.util.Map;
 import java.util.HashMap;
 import java.awt.image.BufferedImage;
-import java.net.URL;
 import java.io.IOException;
 import java.io.File;
 

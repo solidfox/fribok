@@ -2,11 +2,6 @@ package se.swedsoft.bookkeeping.calc.math;
 
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-
-import java.util.List;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * User: Andreas Lago

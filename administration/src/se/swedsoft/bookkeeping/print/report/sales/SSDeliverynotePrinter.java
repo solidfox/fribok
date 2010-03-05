@@ -8,12 +8,10 @@ import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.List;
-import java.util.LinkedList;
 import java.math.BigDecimal;
 
 /**

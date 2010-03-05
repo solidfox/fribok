@@ -6,8 +6,7 @@ import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
 import se.swedsoft.bookkeeping.importexport.sie.util.SIEType;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.ARRAY;
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.FLOAT;
+
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;

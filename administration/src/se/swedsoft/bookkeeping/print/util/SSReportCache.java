@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Date;
 import java.io.*;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.util.SSException;
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 

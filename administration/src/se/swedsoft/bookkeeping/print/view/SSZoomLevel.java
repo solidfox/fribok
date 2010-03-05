@@ -1,8 +1,5 @@
 package se.swedsoft.bookkeeping.print.view;
 
-import java.util.List;
-import java.util.LinkedList;
-
 /**
  * Date: 2006-feb-20
  * Time: 09:43:16

@@ -4,7 +4,6 @@ import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import java.io.*;
-import java.rmi.server.UID;
 import java.util.Vector;
 
 /**

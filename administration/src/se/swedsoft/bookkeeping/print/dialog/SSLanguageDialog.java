@@ -2,7 +2,6 @@ package se.swedsoft.bookkeeping.print.dialog;
 
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;

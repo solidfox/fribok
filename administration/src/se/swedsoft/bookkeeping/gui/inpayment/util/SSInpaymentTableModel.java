@@ -9,7 +9,6 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.List;
 import java.util.Date;

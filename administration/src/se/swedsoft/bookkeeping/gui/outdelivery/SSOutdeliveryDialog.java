@@ -7,15 +7,11 @@ import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.data.SSOutdelivery;
-import se.swedsoft.bookkeeping.data.SSProduct;
-import se.swedsoft.bookkeeping.data.SSOutdeliveryRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
-import java.util.List;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

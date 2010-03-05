@@ -10,8 +10,6 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.SSVersion;
 
-import java.util.Date;
-
 /**
  * Date: 2006-feb-20
  * Time: 15:59:24

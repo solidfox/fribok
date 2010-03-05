@@ -3,10 +3,7 @@ package se.swedsoft.bookkeeping;
 import org.hsqldb.Trigger;
 
 import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.InetSocketAddress;
 import java.io.*;
-import java.awt.event.ActionEvent;
 
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;

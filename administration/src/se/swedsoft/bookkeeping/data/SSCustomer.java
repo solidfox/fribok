@@ -1,11 +1,8 @@
 package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.data.common.*;
-import se.swedsoft.bookkeeping.data.SSAddress;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 
 import java.io.Serializable;

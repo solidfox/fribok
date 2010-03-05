@@ -2,24 +2,14 @@ package se.swedsoft.bookkeeping.gui.status;
 
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.backup.SSBackup;
-import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
-import se.swedsoft.bookkeeping.data.backup.util.SSBackupFactory;
 import se.swedsoft.bookkeeping.data.system.*;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSWarningDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.SSVersion;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.SimpleAttributeSet;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
-import java.io.File;
-import java.util.Date;
 
 /**
  * User: Andreas Lago

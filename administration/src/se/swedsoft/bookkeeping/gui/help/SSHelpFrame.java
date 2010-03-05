@@ -8,8 +8,6 @@ import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;
 import javax.help.*;
-import javax.help.event.HelpModelListener;
-import javax.help.event.HelpModelEvent;
 import java.net.URL;
 import java.awt.*;
 import java.awt.event.ActionListener;

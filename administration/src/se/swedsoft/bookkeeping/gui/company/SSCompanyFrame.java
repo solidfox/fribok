@@ -9,7 +9,6 @@ import se.swedsoft.bookkeeping.gui.accountingyear.SSAccountingYearFrame;
 import se.swedsoft.bookkeeping.gui.company.util.SSCompanyTableModel;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.*;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
@@ -17,8 +16,6 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
 import se.swedsoft.bookkeeping.gui.util.frame.SSInternalFrame;
 import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
-import se.swedsoft.bookkeeping.SSVersion;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
@@ -26,7 +23,6 @@ import javax.swing.event.InternalFrameEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-import java.sql.SQLException;
 
 
 /**

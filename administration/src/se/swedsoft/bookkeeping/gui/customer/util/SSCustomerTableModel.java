@@ -8,7 +8,6 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.calc.math.SSCustomerMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.List;
 import java.math.BigDecimal;

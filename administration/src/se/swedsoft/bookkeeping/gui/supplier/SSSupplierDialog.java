@@ -9,12 +9,10 @@ import se.swedsoft.bookkeeping.gui.supplier.panel.SSSupplierPanel;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;
-import java.util.ResourceBundle;
 import java.util.LinkedList;
 import java.awt.*;
 import java.awt.event.ActionListener;

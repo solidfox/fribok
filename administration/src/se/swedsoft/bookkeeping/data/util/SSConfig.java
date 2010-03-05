@@ -2,7 +2,6 @@ package se.swedsoft.bookkeeping.data.util;
 
 
 import java.io.*;
-import java.util.Date;
 import java.util.Map;
 import java.util.HashMap;
 

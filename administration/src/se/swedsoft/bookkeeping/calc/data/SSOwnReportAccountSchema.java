@@ -8,8 +8,6 @@ import se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow;
 
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.HashMap;
 
 /**
  * User: Johan Gunnarsson

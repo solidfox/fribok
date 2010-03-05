@@ -2,11 +2,6 @@ package se.swedsoft.bookkeeping.gui.util.filechooser;
 
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSImagePreview;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSImageFilter;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.ResourceBundle;
 
 /**
  * Date: 2006-feb-10

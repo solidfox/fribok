@@ -1,16 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.data.SSNewProject;
-import se.swedsoft.bookkeeping.data.SSAccount;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
-import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 
 import javax.swing.table.DefaultTableCellRenderer;
-import java.math.BigDecimal;
-import java.util.Map;
-import java.util.HashMap;
 
 public class SSHeadingTypeCellRenderer extends DefaultTableCellRenderer {
     /**

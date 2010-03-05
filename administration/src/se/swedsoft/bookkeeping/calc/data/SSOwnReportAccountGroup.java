@@ -1,9 +1,7 @@
 package se.swedsoft.bookkeeping.calc.data;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.data.SSAccount;
 
-import java.util.ResourceBundle;
 import java.util.List;
 import java.util.LinkedList;
 

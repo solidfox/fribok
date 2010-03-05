@@ -4,13 +4,11 @@ package se.swedsoft.bookkeeping.data.system;
 
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.*;
 import java.rmi.server.UID;
-import java.util.List;
 import java.util.Date;
 import java.text.DateFormat;
 

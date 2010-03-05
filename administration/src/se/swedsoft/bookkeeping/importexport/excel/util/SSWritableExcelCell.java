@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
-import jxl.Sheet;
-import jxl.Cell;
 import jxl.write.WritableSheet;
 import jxl.write.Label;
 import jxl.write.Number;

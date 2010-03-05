@@ -9,13 +9,11 @@ import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 import se.swedsoft.bookkeeping.SSVersion;
 
 import java.util.List;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
 import java.text.DateFormat;
 
 /**

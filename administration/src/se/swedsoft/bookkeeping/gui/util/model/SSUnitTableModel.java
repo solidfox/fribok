@@ -7,7 +7,6 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSNameDescriptionDialog;
 import se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.util.List;

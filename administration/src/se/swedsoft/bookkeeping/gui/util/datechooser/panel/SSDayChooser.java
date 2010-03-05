@@ -9,8 +9,6 @@ import java.awt.event.ActionEvent;
 import java.text.DateFormatSymbols;
 import java.text.DateFormat;
 
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-
 
 /**
  * User: Andreas Lago

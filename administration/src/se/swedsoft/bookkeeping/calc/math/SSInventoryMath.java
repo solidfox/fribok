@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 
 import java.util.Date;
 import java.util.Map;

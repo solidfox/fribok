@@ -9,7 +9,6 @@ import se.swedsoft.bookkeeping.data.system.*;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.dialog.SSEditAccountingYearDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.dialog.SSNewAccountingYearDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.util.SSSystemYearDataModel;
@@ -19,7 +18,6 @@ import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.frame.*;
-import se.swedsoft.bookkeeping.SSVersion;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;

@@ -16,7 +16,6 @@ import se.swedsoft.bookkeeping.gui.util.frame.SSInternalFrame;
 
 import static se.swedsoft.bookkeeping.data.backup.util.SSBackupZip.ArchiveFile;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  * Date: 2006-mar-03

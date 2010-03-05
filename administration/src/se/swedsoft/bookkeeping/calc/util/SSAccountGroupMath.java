@@ -3,7 +3,6 @@ package se.swedsoft.bookkeeping.calc.util;
 import se.swedsoft.bookkeeping.data.SSAccount;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**

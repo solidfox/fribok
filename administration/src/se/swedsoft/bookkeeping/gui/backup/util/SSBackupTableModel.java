@@ -1,9 +1,7 @@
 package se.swedsoft.bookkeeping.gui.backup.util;
 
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
-import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupType;
-import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;

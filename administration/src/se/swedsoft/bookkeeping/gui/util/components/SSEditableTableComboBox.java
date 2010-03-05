@@ -2,16 +2,11 @@ package se.swedsoft.bookkeeping.gui.util.components;
 
 import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
-import se.swedsoft.bookkeeping.gui.util.SSValueListener;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.*;
-import java.util.List;
-import java.util.LinkedList;
 
 /**
  * User: Andreas Lago

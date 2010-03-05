@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
-import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.SSProduct;
 
 import javax.swing.table.DefaultTableCellRenderer;

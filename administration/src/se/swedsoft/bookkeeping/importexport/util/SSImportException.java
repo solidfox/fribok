@@ -1,7 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.util;
 
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.util.ResourceBundle;
 

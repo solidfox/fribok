@@ -2,8 +2,6 @@ package se.swedsoft.bookkeeping.gui.util.table.model;
 
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import java.math.BigDecimal;
 
 /**
  * User: Andreas Lago

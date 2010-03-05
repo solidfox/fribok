@@ -10,11 +10,7 @@ import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataTyp
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-
-import java.util.Date;
 
 /**
  * Date: 2006-feb-22

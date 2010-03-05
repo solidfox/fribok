@@ -9,7 +9,6 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.sie.util.SIEFile;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.io.File;
 import java.io.FileNotFoundException;

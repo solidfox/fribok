@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
-
 import javax.swing.*;
 import java.awt.*;
 

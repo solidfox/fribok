@@ -22,7 +22,6 @@ import jxl.read.biff.BiffException;
 import javax.swing.*;
 
 import static se.swedsoft.bookkeeping.data.SSVoucherTemplate.*;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  * Date: 2006-feb-13

@@ -1,15 +1,11 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
-import jxl.Sheet;
-import jxl.Cell;
 import jxl.write.*;
 import jxl.write.Number;
 import jxl.write.biff.RowsExceededException;
 
 import java.util.List;
 import java.util.LinkedList;
-
-import se.swedsoft.bookkeeping.data.SSAccount;
 
 /**
  * Date: 2006-feb-14

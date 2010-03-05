@@ -16,13 +16,10 @@ import se.swedsoft.bookkeeping.importexport.supplierpayments.SSSupplierPaymentEx
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPaymentConfig;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.util.List;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.Collections;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;

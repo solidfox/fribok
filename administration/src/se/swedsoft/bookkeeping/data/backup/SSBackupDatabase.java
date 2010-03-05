@@ -1,15 +1,9 @@
 package se.swedsoft.bookkeeping.data.backup;
 
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
-import se.swedsoft.bookkeeping.data.system.SSSystemData;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.system.SSSystemCompany;
-import se.swedsoft.bookkeeping.data.system.SSSystemYear;
-import se.swedsoft.bookkeeping.data.backup.util.SSBackupZip;
 
 import java.io.*;
 import java.util.List;
-import java.util.LinkedList;
 
 /**
  * Date: 2006-mar-03

@@ -2,9 +2,7 @@ package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
-import javax.swing.filechooser.FileFilter;
 import java.util.ResourceBundle;
-import java.io.File;
 
 /**
  * Date: 2006-feb-13

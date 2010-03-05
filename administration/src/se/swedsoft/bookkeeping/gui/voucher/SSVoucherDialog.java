@@ -4,7 +4,6 @@ import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.voucher.panel.SSVoucherPanel;
 import se.swedsoft.bookkeeping.gui.voucher.dialogs.SSCopyReversedVoucherDialog;
 import se.swedsoft.bookkeeping.gui.voucher.dialogs.SSAddAccountDialog;
-import se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherRowTableModelOld;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
@@ -16,7 +15,6 @@ import se.swedsoft.bookkeeping.data.SSVoucherTemplate;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;

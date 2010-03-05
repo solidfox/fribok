@@ -10,11 +10,9 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.*;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * Date: 2006-mar-02

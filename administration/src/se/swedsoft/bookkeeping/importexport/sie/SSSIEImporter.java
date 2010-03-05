@@ -2,17 +2,13 @@ package se.swedsoft.bookkeeping.importexport.sie;
 
 import se.swedsoft.bookkeeping.importexport.sie.util.*;
 import se.swedsoft.bookkeeping.importexport.sie.fields.SIEEntry;
-import se.swedsoft.bookkeeping.importexport.sie.fields.SIEEntryVerifikation;
 import se.swedsoft.bookkeeping.importexport.sie.types.SIEDimension;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.data.*;
-import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-import se.swedsoft.bookkeeping.SSTriggerHandler;
 
 import java.io.File;
 import java.io.FileNotFoundException;

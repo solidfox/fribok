@@ -11,7 +11,6 @@ import se.swedsoft.bookkeeping.data.SSAutoDist;
 import se.swedsoft.bookkeeping.data.SSAutoDistRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import java.util.ResourceBundle;

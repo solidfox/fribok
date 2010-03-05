@@ -1,14 +1,11 @@
 package se.swedsoft.bookkeeping.importexport.sie.util;
 
 import se.swedsoft.bookkeeping.importexport.sie.fields.SIEEntry;
-import se.swedsoft.bookkeeping.importexport.sie.util.SIELabel;
 
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.LinkedList;
-
-import static se.swedsoft.bookkeeping.importexport.sie.util.SIEType.*;
 
 /**
  * Date: 2006-feb-20

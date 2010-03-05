@@ -6,12 +6,10 @@ import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.io.Serializable;
 import java.util.*;
 import java.math.BigDecimal;
-import java.rmi.server.UID;
 
 /**
  * User: Andreas Lago

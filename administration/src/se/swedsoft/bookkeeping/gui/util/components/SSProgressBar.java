@@ -1,8 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 /**
  * User: Fredrik Stigsson

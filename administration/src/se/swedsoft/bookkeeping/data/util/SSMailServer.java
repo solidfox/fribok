@@ -3,13 +3,7 @@ package se.swedsoft.bookkeeping.data.util;
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
-import java.util.TreeMap;
 
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-
-import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.util.SSUtil;
 
 /**

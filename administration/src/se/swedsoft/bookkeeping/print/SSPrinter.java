@@ -25,7 +25,6 @@ import net.sf.jasperreports.engine.JRParameter;
 import static se.swedsoft.bookkeeping.print.SSReport.ReportField.*;
 import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 /**
  *

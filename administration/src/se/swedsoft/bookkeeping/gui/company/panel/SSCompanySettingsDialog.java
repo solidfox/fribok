@@ -2,7 +2,6 @@ package se.swedsoft.bookkeeping.gui.company.panel;
 
 import se.swedsoft.bookkeeping.gui.company.pages.*;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.SSInputVerifier;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;

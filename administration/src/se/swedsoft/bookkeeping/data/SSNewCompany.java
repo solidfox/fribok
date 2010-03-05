@@ -6,14 +6,12 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.util.SSMailServer;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
 
 import javax.imageio.ImageIO;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.List;
-import java.rmi.server.UID;
 import java.awt.*;
 
 /**

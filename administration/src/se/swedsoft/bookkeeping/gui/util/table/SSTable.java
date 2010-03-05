@@ -4,8 +4,6 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table;
 
-import se.swedsoft.bookkeeping.gui.util.table.SSTableSorter;
-
 
 import javax.swing.table.TableModel;
 import javax.swing.table.TableCellRenderer;

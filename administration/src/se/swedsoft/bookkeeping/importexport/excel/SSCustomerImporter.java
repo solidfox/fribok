@@ -1,18 +1,11 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.customer.SSCustomerFrame;
-import se.swedsoft.bookkeeping.gui.product.SSProductFrame;
-import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
 import se.swedsoft.bookkeeping.data.SSCustomer;
-import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.SSAddress;
-import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
@@ -20,12 +13,9 @@ import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelSheet;
 import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelRow;
 import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelCell;
 import se.swedsoft.bookkeeping.importexport.dialog.SSImportReportDialog;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.*;
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import java.math.BigDecimal;
 
 import jxl.WorkbookSettings;

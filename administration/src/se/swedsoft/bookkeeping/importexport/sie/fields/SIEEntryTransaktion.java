@@ -12,12 +12,9 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.calc.math.SSResultUnitMath;
 import se.swedsoft.bookkeeping.calc.math.SSProjectMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.List;
 import java.util.LinkedList;

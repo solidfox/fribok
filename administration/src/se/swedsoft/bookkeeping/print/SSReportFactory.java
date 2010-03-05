@@ -13,7 +13,6 @@ import se.swedsoft.bookkeeping.gui.util.*;
 import se.swedsoft.bookkeeping.gui.util.dialogs.*;
 import se.swedsoft.bookkeeping.gui.voucher.SSVoucherFrame;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.invoice.SSInvoiceFrame;
 import se.swedsoft.bookkeeping.calc.util.SSVATUtil;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.calc.math.*;
@@ -30,8 +29,6 @@ import java.awt.event.ActionEvent;
 import java.text.DateFormat;
 import java.io.File;
 
-import se.swedsoft.bookkeeping.print.SSMultiPrinter;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JRException;
 

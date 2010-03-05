@@ -10,7 +10,6 @@ import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.components.SSTabbedPanePanel;
 import se.swedsoft.bookkeeping.gui.util.components.SSMenuButton;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.tender.SSTenderFrame;
 import se.swedsoft.bookkeeping.gui.purchaseorder.SSPurchaseOrderDialog;
 import se.swedsoft.bookkeeping.gui.purchaseorder.SSPurchaseOrderFrame;
 import se.swedsoft.bookkeeping.gui.order.util.SSOrderTableModel;
@@ -21,36 +20,20 @@ import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.data.system.SSMail;
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.print.SSReportFactory;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 import se.swedsoft.bookkeeping.SSVersion;
 import se.swedsoft.bookkeeping.importexport.xml.SSOrderExporter;
 import se.swedsoft.bookkeeping.importexport.xml.SSOrderImporter;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.InternalFrameAdapter;
-import javax.swing.event.InternalFrameEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.File;
-import java.io.IOException;
-
-import org.apache.xerces.parsers.DOMParser;
-import org.apache.xerces.dom.DocumentImpl;
-import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
-import org.xml.sax.InputSource;
-import org.w3c.dom.Element;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  * User: Andreas Lago

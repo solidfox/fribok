@@ -10,10 +10,6 @@ import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.components.SSTabbedPanePanel;
 import se.swedsoft.bookkeeping.gui.util.components.SSMenuButton;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
-import se.swedsoft.bookkeeping.gui.tender.SSTenderDialog;
-import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
-import se.swedsoft.bookkeeping.gui.periodicinvoice.SSPeriodicInvoiceFrame;
 import se.swedsoft.bookkeeping.gui.periodicinvoice.SSPeriodicInvoiceDialog;
 import se.swedsoft.bookkeeping.gui.creditinvoice.SSCreditInvoiceFrame;
 import se.swedsoft.bookkeeping.gui.creditinvoice.SSCreditInvoiceDialog;
@@ -30,7 +26,6 @@ import se.swedsoft.bookkeeping.data.system.SSMail;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.*;
 import se.swedsoft.bookkeeping.print.SSReportFactory;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -40,7 +35,6 @@ import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Vector;
 
 /**
  * User: Andreas Lago

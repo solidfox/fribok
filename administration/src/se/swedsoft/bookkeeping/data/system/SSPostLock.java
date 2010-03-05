@@ -1,11 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
-import se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
-
 import java.io.*;
-import java.util.Vector;
 
 /**
  * User: Johan Gunnarsson

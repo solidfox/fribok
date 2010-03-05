@@ -1,13 +1,9 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
 import jxl.Sheet;
-import jxl.Cell;
-import jxl.write.WritableSheet;
 
 import java.util.List;
 import java.util.LinkedList;
-
-import se.swedsoft.bookkeeping.data.SSAccount;
 
 /**
  * Date: 2006-feb-14

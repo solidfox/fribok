@@ -13,7 +13,6 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.math.BigDecimal;
 import java.util.Map;

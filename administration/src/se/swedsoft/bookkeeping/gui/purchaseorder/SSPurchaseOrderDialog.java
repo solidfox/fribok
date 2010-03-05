@@ -6,8 +6,6 @@ import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
-import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
-import se.swedsoft.bookkeeping.gui.supplierinvoice.panel.SSSupplierInvoicePanel;
 import se.swedsoft.bookkeeping.gui.supplierinvoice.SSSupplierInvoiceFrame;
 import se.swedsoft.bookkeeping.gui.supplierinvoice.SSSupplierInvoiceDialog;
 import se.swedsoft.bookkeeping.gui.purchaseorder.panel.SSPurchaseOrderPanel;
@@ -15,7 +13,6 @@ import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
 import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import javax.swing.table.AbstractTableModel;
 import javax.swing.*;

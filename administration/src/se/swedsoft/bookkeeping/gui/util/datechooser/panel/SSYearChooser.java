@@ -1,19 +1,15 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
-import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
-
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
-import javax.swing.border.EmptyBorder;
 import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 

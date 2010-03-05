@@ -5,10 +5,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet;
 import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
 import se.swedsoft.bookkeeping.data.SSCustomer;
-import se.swedsoft.bookkeeping.data.SSOrder;
-import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +13,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Locale;
 import java.util.List;
-import java.text.SimpleDateFormat;
 
 import jxl.WorkbookSettings;
 import jxl.Workbook;

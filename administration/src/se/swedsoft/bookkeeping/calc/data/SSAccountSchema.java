@@ -15,7 +15,6 @@ import java.io.File;
 
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.util.SSFileSystem;
-import se.swedsoft.bookkeeping.calc.data.SSAccountGroup;
 
 /**
  * Date: 2006-feb-27

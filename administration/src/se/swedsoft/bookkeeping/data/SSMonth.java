@@ -1,7 +1,5 @@
 package se.swedsoft.bookkeeping.data;
 
-import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-
 import java.io.Serializable;
 import java.util.*;
 import java.text.DateFormat;

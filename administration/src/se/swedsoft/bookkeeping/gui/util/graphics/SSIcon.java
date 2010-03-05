@@ -6,8 +6,6 @@ import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.util.Map;
 import java.util.HashMap;
-import java.net.URL;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 

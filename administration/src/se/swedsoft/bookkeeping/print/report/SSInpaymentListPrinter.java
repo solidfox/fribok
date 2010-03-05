@@ -10,7 +10,6 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
-import se.swedsoft.bookkeeping.SSBookkeeping;
 
 import java.util.List;
 import java.util.Collections;

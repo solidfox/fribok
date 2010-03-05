@@ -7,14 +7,11 @@ import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
-import se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
-import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 
 import java.util.*;
 import java.math.RoundingMode;
 import java.math.BigDecimal;
-import java.text.DateFormat;
 
 /**
  * Date: 2006-mar-02

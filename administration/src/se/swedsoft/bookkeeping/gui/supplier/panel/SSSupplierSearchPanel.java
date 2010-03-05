@@ -1,8 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplier.panel;
 
-import se.swedsoft.bookkeeping.gui.customer.util.SSCustomerTableModel;
 import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
-import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 

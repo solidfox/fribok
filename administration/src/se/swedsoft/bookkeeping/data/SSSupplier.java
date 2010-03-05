@@ -1,22 +1,14 @@
 package se.swedsoft.bookkeeping.data;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
-import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.common.SSPaymentTerm;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryWay;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.SSBookkeeping;
-import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
-import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
 
-import javax.swing.*;
 import java.io.Serializable;
-import java.util.List;
-import java.util.LinkedList;
-import java.awt.*;
 import java.math.BigDecimal;
 
 /**
