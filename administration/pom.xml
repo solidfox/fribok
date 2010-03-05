@@ -139,6 +139,13 @@
 			<version>2.9.1</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.fribok</groupId>
+			<artifactId>help</artifactId>
+			<version>0.1</version>
+			<scope>system</scope>
+                        <systemPath>${basedir}/data/help.jar</systemPath>
+		</dependency>
 <!-- test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
