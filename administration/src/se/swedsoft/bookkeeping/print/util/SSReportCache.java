@@ -14,31 +14,28 @@ import java.util.Map;
 /**
  * Date: 2006-feb-14
  * Time: 17:01:15
+ * @version $Id$
  */
 public class SSReportCache {
+    private static final File REPORT_DIR   = new File(SSPath.get(SSPath.APP_DATA), "report");
+    private static final File COMPILED_DIR = new File(REPORT_DIR, "compiled");
 
-    private static final File cReportDirectory   = SSPath.get(SSPath.USER_REPORTS);
-    private static final File cCompiledDirectory = SSPath.get(SSPath.USER_REPORTS);
+    // The report cache with compiled report definitions.
+    private Map<String, JasperReport> iReportCache;
 
     // our instance
     private static SSReportCache cInstance;
 
     /**
      * Get the instance of this class
-     *
      * @return The instance
      */
     public static SSReportCache getInstance(){
-
-        if( cInstance == null){
+        if (cInstance == null) {
             cInstance = new SSReportCache();
         }
         return cInstance;
     }
-
-
-    // The report cache with compiled report definitions.
-    private Map<String, JasperReport> iReportCache;
 
     /**
      *
@@ -58,64 +55,35 @@ public class SSReportCache {
     public JasperReport getReport(String pReportName) throws SSException{
         // Try to get the report from cache
         JasperReport pReport = iReportCache.get(pReportName);
-
-        if(pReport == null) {
-
-            try{
+        if (pReport == null) {
+            try {
                 pReport = loadReport(pReportName);
-            } catch(FileNotFoundException ex){
+            } catch(FileNotFoundException ex) {
                 throw new SSException( ex.getLocalizedMessage() );
             }
-
             iReportCache.put(pReportName, pReport);
-
         }
         return pReport;
     }
 
-
     /**
-     *
-     * @param pReportName
-     *
-     * @return  The file of the compiled report
-     */
-    private File getCompiledFile(String pReportName){
-        return new File( cCompiledDirectory, pReportName.replace(".jrxml", ".jasperreport") );
-    }
-
-
-    /**
-     *
-     * @param pReportName
-     *
-     * @return The file of the report
-     */
-    private File getReportFile(String pReportName){
-        return new File( cReportDirectory, pReportName );
-    }
-
-
-    /**
-     *
+     * 
      * @param pReportName
      * @return
      */
-    private JasperReport loadReport(String pReportName) throws FileNotFoundException{
+    private JasperReport loadReport(String pReportName) throws FileNotFoundException {
+        File iReportFile   = new File(REPORT_DIR,   pReportName);
+        File iCompiledFile = new File(COMPILED_DIR, pReportName.replace(".jrxml", ".jasperreport"));
+
         try {
-            File iReportFile   = getReportFile  (pReportName);
-            File iCompiledFile = getCompiledFile(pReportName);
-
             // If the report exists on disk, load it...
-            if( iCompiledFile.exists()  ){
-
+            if (iCompiledFile.exists()) {
                 Date iReportDate   =  new Date(iReportFile  .lastModified());
                 Date iCompiledDate =  new Date(iCompiledFile.lastModified());
 
-
                 // if the report file hasnt been changes since the last compile,
                 // load the compiled file, else fall through to the compile code
-                if( iReportDate.compareTo( iCompiledDate ) <= 0){
+                if (iReportDate.compareTo( iCompiledDate ) <= 0) {
                     System.out.printf("Loading precompiled report %s from disk...\n", iCompiledFile);
 
                     return loadCompiledReport(iCompiledFile);
@@ -135,8 +103,6 @@ public class SSReportCache {
             iCompiledFile.getParentFile().mkdirs();
 
             return saveCompiledReport(iCompiledFile, iReport);
-
-
         } catch (JRException ex) {
             ex.printStackTrace();
         }
@@ -149,7 +115,7 @@ public class SSReportCache {
      *
      * @return The report
      */
-    private JasperReport loadCompiledReport(File pCompiledFile){
+    private JasperReport loadCompiledReport(File pCompiledFile) {
         try{
             FileInputStream iFileInputStream = new FileInputStream(pCompiledFile);
 
@@ -172,7 +138,7 @@ public class SSReportCache {
      *
      * @return The report
      */
-    private JasperReport saveCompiledReport(File pCompiledFile, JasperReport pReport){
+    private JasperReport saveCompiledReport(File pCompiledFile, JasperReport pReport) {
         try{
             FileOutputStream iFileOutputStream = new FileOutputStream(pCompiledFile);
 

@@ -41,8 +41,6 @@ public enum SSPath {
     APP_ICONS,
     /** The application image directory */
     APP_IMAGES,
-    /** The user report directory */
-    USER_REPORTS,
     /** The user configuration directory */
     USER_CONF,
     /** The user data directory */
@@ -72,7 +70,6 @@ public enum SSPath {
             path.put(USER_DATA, new File(userData, JFS_SUBDIR));
             path.put(USER_CONF, new File(userConf, JFS_SUBDIR));
         }
-        path.put(USER_REPORTS, new File(path.get(USER_DATA), "report"));
     }
 
     /**
