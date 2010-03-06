@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.gui;
 
 import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.*;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.about.dialog.SSAboutDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.SSAccountingYearFrame;
 import se.swedsoft.bookkeeping.gui.accountingyear.SSStartingAmountFrame;
@@ -84,9 +84,7 @@ import java.util.*;
  */
 public class SSMainMenu {
 
-    private static final String cDirectory = SSFileSystem.getDataDirectory();
-
-    private static final File cMenuFile = new File(cDirectory , "MainMenu.xml");
+    private static final File cMenuFile = new File(SSPath.get(SSPath.APP_DATA), "MainMenu.xml");
 
     private static final ResourceBundle bundle = SSBundle.getBundle();
 
@@ -104,7 +102,7 @@ public class SSMainMenu {
         iMainFrame  = pMainFrame;
         iMenuLoader = new SSMenuLoader();
 
-        System.out.println("Loading main meny from: " + cMenuFile);
+        System.out.println("Loading main menu from: " + cMenuFile);
 
         iMenuLoader.loadMenus(cMenuFile);
 

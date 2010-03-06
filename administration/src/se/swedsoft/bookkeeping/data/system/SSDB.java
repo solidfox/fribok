@@ -1,6 +1,7 @@
 package se.swedsoft.bookkeeping.data.system;
 
 import se.swedsoft.bookkeeping.SSTriggerHandler;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.calc.math.*;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.data.*;
@@ -8,7 +9,6 @@ import se.swedsoft.bookkeeping.data.backup.util.SSBackupZip;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupZip.ArchiveFile;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.common.*;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.autodist.SSAutoDistFrame;
 import se.swedsoft.bookkeeping.gui.creditinvoice.SSCreditInvoiceFrame;
@@ -6236,7 +6236,7 @@ public class SSDB {
      * zippas ner.
      */
     public void readOldDatabase() {
-        final File iFile = new File(SSFileSystem.getApplicationDirectory()+"db"+File.separator+"bookkeeper.db");
+        final File iFile = new File(SSPath.get(SSPath.APP_BASE), "db/bookkeeper.db");
         if(!iFile.exists()) return;
 
         SSInitDialog.runProgress(SSMainFrame.getInstance(),"Konverterar databasen", new Runnable(){
@@ -6286,7 +6286,7 @@ public class SSDB {
                 }
 
                 try {
-                    SSBackupZip.compressFiles(SSFileSystem.getApplicationDirectory()+"db"+File.separator+"databas_v1.zip",iFiles);
+                    SSBackupZip.compressFiles(SSPath.get(SSPath.APP_BASE) + "/db/databas_v1.zip", iFiles);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -6465,7 +6465,7 @@ public class SSDB {
         iFileName = iFileName.replace(":", ".");
         iFileName = iFileName.replace("-", ".");
 
-        return new File( new File(SSFileSystem.getApplicationDirectory()+"db"+File.separator) , iFileName + ".data");
+        return new File(SSPath.get(SSPath.APP_BASE), "db/" + iFileName + ".data");
     }
 
     public void createNewTables(){

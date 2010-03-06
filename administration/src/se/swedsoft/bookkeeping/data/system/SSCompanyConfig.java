@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.data.system;
 
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 
 import java.io.*;
 import java.util.Vector;
@@ -14,7 +14,7 @@ import java.util.Vector;
 public class SSCompanyConfig {
 
     public static void saveLastOpenCompany(SSSystemCompany iLastCompany) {
-        File iFile = new File(SSFileSystem.getApplicationDirectory() + "lastcompanyopen.config");
+        File iFile = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
         if(iFile.exists())
             iFile.delete();
         FileOutputStream fos = null;
@@ -43,7 +43,7 @@ public class SSCompanyConfig {
     public static SSSystemCompany openLastOpenCompany() {
         SSSystemCompany iSystemCompany = null;
         SSSystemYear iSystemYear = null;
-        File iFile = new File(SSFileSystem.getApplicationDirectory() + "lastcompanyopen.config");
+        File iFile = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
         if(!iFile.exists())
             return null;
 
@@ -87,7 +87,7 @@ public class SSCompanyConfig {
         if(iCompany == null)
             return;
         
-        File iFile = new File(SSFileSystem.getApplicationDirectory() + "companysettings.config");
+        File iFile = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
 
         FileOutputStream fos = null;
         FileInputStream fis = null;
@@ -142,7 +142,7 @@ public class SSCompanyConfig {
     public static SSSystemCompany openCompanySetting(SSSystemCompany iCompany) {
         SSSystemCompany iSystemCompany = null;
         SSSystemYear iSystemYear = null;
-        File iFile = new File(SSFileSystem.getApplicationDirectory() + "companysettings.config");
+        File iFile = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
         if(!iFile.exists())
             return null;
 
@@ -198,8 +198,8 @@ public class SSCompanyConfig {
     }
 
     public static void deleteFiles() {
-        File iFile1 = new File(SSFileSystem.getApplicationDirectory() + "lastcompanyopen.config");
-        File iFile2 = new File(SSFileSystem.getApplicationDirectory() + "companysettings.config");
+        File iFile1 = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
+        File iFile2 = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
 
         if (iFile1.exists()) {
             iFile1.delete();

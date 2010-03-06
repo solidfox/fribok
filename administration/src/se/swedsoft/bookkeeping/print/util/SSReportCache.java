@@ -3,7 +3,7 @@ package se.swedsoft.bookkeeping.print.util;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.util.SSException;
 
 import java.io.*;
@@ -17,16 +17,11 @@ import java.util.Map;
  */
 public class SSReportCache {
 
-    private static final String cReportDirectory   =  SSFileSystem.getReportDirectory();
-
-    private static final String cCompiledDirectory =  SSFileSystem.getReportDirectory() + "compiled" + File.separator ;
-
+    private static final File cReportDirectory   = SSPath.get(SSPath.USER_REPORTS);
+    private static final File cCompiledDirectory = SSPath.get(SSPath.USER_REPORTS);
 
     // our instance
     private static SSReportCache cInstance;
-
-
-
 
     /**
      * Get the instance of this class
@@ -53,7 +48,8 @@ public class SSReportCache {
     }
 
     /**
-     * This function will load a report, either from the runtime cache, a precompiled version or from the report source.
+     * This function will load a report, either from the runtime cache, a
+     * precompiled version or from the report source.
      *
      * @param pReportName The name of the report to load, ie vatcontrol.jrxml.
      *
@@ -85,7 +81,7 @@ public class SSReportCache {
      * @return  The file of the compiled report
      */
     private File getCompiledFile(String pReportName){
-        return new File( cCompiledDirectory + pReportName.replace(".jrxml", ".jasperreport") );
+        return new File( cCompiledDirectory, pReportName.replace(".jrxml", ".jasperreport") );
     }
 
 
@@ -96,7 +92,7 @@ public class SSReportCache {
      * @return The file of the report
      */
     private File getReportFile(String pReportName){
-        return new File( cReportDirectory + pReportName );
+        return new File( cReportDirectory, pReportName );
     }
 
 
@@ -117,8 +113,8 @@ public class SSReportCache {
                 Date iCompiledDate =  new Date(iCompiledFile.lastModified());
 
 
-                // if the report file hasnt been changes since the last compile, load the compiled file, else fall
-                // through to the compile code
+                // if the report file hasnt been changes since the last compile,
+                // load the compiled file, else fall through to the compile code
                 if( iReportDate.compareTo( iCompiledDate ) <= 0){
                     System.out.printf("Loading precompiled report %s from disk...\n", iCompiledFile);
 
@@ -146,9 +142,6 @@ public class SSReportCache {
         }
         return null;
     }
-
-
-
 
     /**
      *
@@ -194,6 +187,4 @@ public class SSReportCache {
         }
         return null;
     }
-
-
 }

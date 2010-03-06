@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping;
 
 import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.system.SSCompanyLock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
 import se.swedsoft.bookkeeping.data.system.SSYearLock;
 import se.swedsoft.bookkeeping.data.util.SSConfig;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
@@ -21,18 +21,11 @@ import java.sql.SQLException;
 
 /**
  * 
- * $Id$
+ * @version $Id$
  */
 public class SSBookkeeping {
 
     public static boolean iRunning;
-
-    /**
-     *
-     */
-    private static void printDataBaseInfo(){
-
-    }
 
     /**
      *
@@ -87,21 +80,47 @@ public class SSBookkeeping {
             e.printStackTrace();
         }
         iRunning = true;
+
+        // Print information to ease debugging
         System.out.println("Starting up...");
         System.out.println("Title     : " + SSVersion.app_title);
         System.out.println("Version   : " + SSVersion.app_version);
         System.out.println("Build     : " + SSVersion.app_build);
-        System.out.println("Directory : " + SSFileSystem.getApplicationDirectory());
+        System.out.println("Directory : " + SSPath.get(SSPath.APP_BASE));
         System.out.println("");
         System.out.println("Operating system: " + System.getProperty("os.name"));
         System.out.println("Architecture    : " + System.getProperty("os.arch"));
-        System.out.println("Java version    : " + System.getProperty("java.version"));
+        System.out.println("Java version     : " + System.getProperty("java.version"));
         System.out.println("");
+        System.out.println("Paths:");
+        for (SSPath name : SSPath.values())
+            System.out.printf("   %-12s = %s\n", name, SSPath.get(name));
 
-
+        String warning = null;
+        // Create paths as needed, warning the user on failure
+        for (SSPath name : SSPath.values()) {
+            File dir = SSPath.get(name);
+            if (!dir.exists()) {
+                try {
+                    if (dir.mkdirs()) {
+                        System.out.println("Created " + dir);
+                    } else {
+                        warning = "unable to create";
+                    }
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (!dir.isDirectory()) {
+                warning = "exists but is not a directory";
+            }
+            if (warning != null) {
+                System.out.println(" !! WARNING: " + dir + " " + warning);
+                warning = null;
+            }
+        }
 
         // Create and display the main iMainFrame.
-
         SSMainFrame iMainFrame = SSMainFrame.getInstance();
         UIManager.put("InternalFrame.icon", SSIcon.getIcon("ICON_FRAME"));
         UIManager.put("InternalFrame.inactiveIcon", SSIcon.getIcon("ICON_FRAME"));

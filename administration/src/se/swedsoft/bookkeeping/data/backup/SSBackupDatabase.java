@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.backup;
 
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.app.SSPath;
 
 import java.io.*;
 import java.util.List;
@@ -10,9 +10,7 @@ import java.util.List;
  * Time: 09:39:32
  */
 public class SSBackupDatabase {
-
-    private final static String iFilename = SSFileSystem.getBackupDirectory() + "backup.history";
-
+    private final static File iFile = new File (SSPath.get(SSPath.USER_DATA), "backup.history");
 
     private static SSBackupDatabase cInstance;
 
@@ -21,7 +19,7 @@ public class SSBackupDatabase {
      * @return
      */
     public static SSBackupDatabase getInstance(){
-        if(cInstance == null){
+        if (cInstance == null) {
             cInstance = new SSBackupDatabase();
         }
         return cInstance;
@@ -33,9 +31,7 @@ public class SSBackupDatabase {
      *
      */
     private SSBackupDatabase(){
-        File iFile = new File(iFilename);
-
-        if(iFile.exists()){
+        if (iFile.exists()) {
             loadDatabase();
         }  else {
             newDatabase();
@@ -67,7 +63,7 @@ public class SSBackupDatabase {
      */
     private void loadDatabase()  {
         try {
-            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(iFilename)));
+            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(iFile)));
 
             try{
                 iData = (SSBackupData)iObjectInputStream.readObject();
@@ -88,7 +84,7 @@ public class SSBackupDatabase {
      */
     private void storeDatabase() {
         try {
-            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFilename)));
+            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFile)));
 
             iObjectOutputStream.writeObject(iData);
             iObjectOutputStream.flush();

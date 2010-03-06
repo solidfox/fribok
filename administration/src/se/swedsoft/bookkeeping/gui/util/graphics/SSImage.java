@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.graphics;
 
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.app.SSPath;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -15,8 +15,7 @@ import java.util.Map;
  */
 public class SSImage {
 
-    // Standard location for graphics
-    public static final String cImageDirectory = SSFileSystem.getImageDirectory();
+    public static final File cImageDirectory = SSPath.get(SSPath.APP_IMAGES);
 
     // Library of all graphics
     private static Map<String, BufferedImage> iGraphics = new HashMap<String, BufferedImage>();
@@ -32,9 +31,8 @@ public class SSImage {
         SSImage.loadImage("ICON_LOGO","Logo_Icon16.png");
     }
 
-
     /**
-     * Loads an icon from the disk
+     * Loads an image from the disk
      *
      * @param pName     Unique name of the image
      * @param pImageFile The name of the image file
@@ -46,7 +44,7 @@ public class SSImage {
             return;
         }
 
-        BufferedImage iImage = loadImage(cImageDirectory + pImageFile);
+        BufferedImage iImage = loadImage(new File(cImageDirectory, pImageFile));
 
         if(iImage == null){
             System.out.println("(SSImage): Failed to load image: "+ cImageDirectory + pImageFile );
@@ -56,7 +54,7 @@ public class SSImage {
     }
 
     /**
-     *   Gets the icon by the specified name
+     *   Gets the image by the specified name
      *
      * @param pName The unique name of the image
      * @return if image exists
@@ -66,7 +64,7 @@ public class SSImage {
     }
 
     /**
-     *   Gets the icon by the specified name
+     *   Gets the image by the specified name
      *
      * @param pName The unique name of the image
      * @return The image
@@ -78,16 +76,12 @@ public class SSImage {
         return iGraphics.get(pName);
     }
 
-
-
     /**
      *
-     * @param pImageFile
+     * @param iImageFile
      * @return The Image
      */
-    private static BufferedImage loadImage(String pImageFile) {
-        File iImageFile = new File(pImageFile);
-
+    private static BufferedImage loadImage(File iImageFile) {
         if( !iImageFile.exists() ) return null;
 
         try {

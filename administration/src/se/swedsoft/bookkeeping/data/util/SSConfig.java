@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.util;
 
-
+import se.swedsoft.bookkeeping.app.SSPath;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +22,8 @@ public class SSConfig implements Serializable {
      * @return
      */
     public static SSConfig getInstance(){
-
-        if(cInstance == null){
-            File iFile = new File(iFilename);
-
-            if(iFile.exists()){
+        if (cInstance == null) {
+            if (iFile.exists()) {
                 loadConfig();
             }  else {
                 newConfig();
@@ -35,8 +32,8 @@ public class SSConfig implements Serializable {
         return cInstance;
     }
 
-    // The filename of the settings
-    private static String iFilename = SSFileSystem.getApplicationDirectory() + "bookkeeping.config";
+    // The settings file
+    private static File iFile = new File(SSPath.get(SSPath.APP_BASE), "bookkeeping.config");
 
     private Map<String, Object> iSettings;
 
@@ -98,7 +95,7 @@ public class SSConfig implements Serializable {
      */
     private synchronized static void loadConfig()  {
         try {
-            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(iFilename)));
+            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(iFile)));
 
             try{
                 cInstance = (SSConfig)iObjectInputStream.readObject();
@@ -118,7 +115,7 @@ public class SSConfig implements Serializable {
      */
     private synchronized static void storeConfig()  {
         try {
-            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFilename)));
+            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFile)));
 
             iObjectOutputStream.writeObject(cInstance);
             iObjectOutputStream.flush();

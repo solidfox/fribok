@@ -7,8 +7,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +23,7 @@ import java.util.Date;
  */
 public class SSDBConfig {
 
-    private final static File CONFIG_FILE = new File(SSFileSystem.getApplicationDirectory() + "database.config");
+    private final static File CONFIG_FILE = new File(SSPath.get(SSPath.APP_BASE), "database.config");
 
     private static String iClientKey;
 

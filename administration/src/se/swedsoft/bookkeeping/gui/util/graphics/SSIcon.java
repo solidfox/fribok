@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.graphics;
 
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.app.SSPath;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,10 +14,7 @@ import java.util.Map;
  * Time: 10:11:34
  */
 public class SSIcon {
-
-    // Standard location for graphics
-    public static final String cIconDirectory = SSFileSystem.getIconDirectory();
-
+    public static final File cIconDirectory = SSPath.get(SSPath.APP_ICONS);
 
     public enum IconState {
         NORMAL     ("NORMAL"     ),
@@ -244,7 +241,7 @@ public class SSIcon {
             return;
         }
 
-        ImageIcon iIcon = loadIcon(cIconDirectory + pIconFile);
+        ImageIcon iIcon = loadIcon(new File(cIconDirectory, pIconFile));
 
         if(iIcon == null){
             System.out.println("(SSIcon): Failed to load icon: "+ cIconDirectory + pIconFile );
@@ -315,12 +312,10 @@ public class SSIcon {
 
     /**
      *
-     * @param pIconFile
+     * @param iImageFile
      * @return The icon
      */
-    private static ImageIcon loadIcon(String pIconFile) {
-        File iImageFile = new File(pIconFile);
-
+    private static ImageIcon loadIcon(File iImageFile) {
         if( !iImageFile.exists() ) return null;
 
         try {

@@ -9,6 +9,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.SSAddress;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
@@ -16,7 +17,6 @@ import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryWay;
 import se.swedsoft.bookkeeping.data.common.SSPaymentTerm;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
@@ -765,7 +765,7 @@ public class SSCustomerImporter {
 
 
             if(!iBadCustomers.isEmpty()){
-                BufferedWriter bw = new BufferedWriter(new PrintWriter(SSFileSystem.getApplicationDirectory() + "kundimport.txt"));
+                BufferedWriter bw = new BufferedWriter(new PrintWriter(new File(SSPath.get(SSPath.APP_BASE), "kundimport.txt")));
                 for(String iBadOrder:iBadCustomers){
                     bw.write(iBadOrder);
                     bw.newLine();

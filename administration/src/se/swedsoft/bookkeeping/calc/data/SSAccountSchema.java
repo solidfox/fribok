@@ -6,8 +6,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -81,9 +81,6 @@ public class SSAccountSchema implements Serializable {
         return sb.toString();
     }
 
-
-
-
     private static Map<String, SSAccountSchema> iSchemaCache = new HashMap<String, SSAccountSchema>();
 
     /**
@@ -97,8 +94,7 @@ public class SSAccountSchema implements Serializable {
         if( iSchemaCache.containsKey(iSchema) ){
             iAccountSchema = iSchemaCache.get(iSchema);
         } else {
-            iAccountSchema = SSAccountSchema.createAccountSchema( new File(SSFileSystem.getDataDirectory() , iSchema));
-
+            iAccountSchema = SSAccountSchema.createAccountSchema(new File(SSPath.get(SSPath.APP_DATA), iSchema));
 
             iSchemaCache.put(iSchema, iAccountSchema);
         }
@@ -116,8 +112,6 @@ public class SSAccountSchema implements Serializable {
 
         return getAccountSchema(iSchema);
     }
-
-
 
     /**
      *

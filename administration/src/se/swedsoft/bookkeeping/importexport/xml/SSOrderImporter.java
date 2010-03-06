@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.SSAddress;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSOrder;
@@ -12,7 +13,6 @@ import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSInformationDialog;
@@ -867,7 +867,7 @@ public class SSOrderImporter {
                 SSDB.getInstance().addOrder(iOrder);
             }
             if(!iBadOrders.isEmpty()){
-                BufferedWriter bw = new BufferedWriter(new PrintWriter(SSFileSystem.getApplicationDirectory() + "orderimport.txt"));
+                BufferedWriter bw = new BufferedWriter(new PrintWriter(new File(SSPath.get(SSPath.APP_BASE), "orderimport.txt")));
                 for(String iBadOrder:iBadOrders){
                     bw.write(iBadOrder);
                     bw.newLine();

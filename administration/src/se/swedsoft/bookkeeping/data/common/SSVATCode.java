@@ -4,7 +4,7 @@ import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-import se.swedsoft.bookkeeping.data.util.SSFileSystem;
+import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
@@ -121,15 +121,11 @@ public class SSVATCode implements SSTableSearchable {
         return false;
     }
 
-
     public static SSVATCode VAT_NULL = new SSVATCode();
 
+    private static List<SSVATCode> iValues;
 
-
-    private static  List<SSVATCode> iValues;
-
-    private static File VATCODE_FILE = new File(SSFileSystem.getDataDirectory() + "vatcodes.xml");
-
+    private static File VATCODE_FILE = new File(SSPath.get(SSPath.APP_DATA), "vatcodes.xml");
 
     /**
      *
