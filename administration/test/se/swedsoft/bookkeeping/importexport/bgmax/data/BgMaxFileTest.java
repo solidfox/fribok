@@ -20,27 +20,23 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
 
 /**
  * Tests for BGMax.
- *
  * @author jensli
- *
- * $Id$
- *
+ * @version $Id$
  */
 public class BgMaxFileTest {
  
     public BgMaxFile File4;
  
-    public final String FILE_NAME = "BgMaxTestFile", 
-        FILE_ENDING = "ut", 
-        DIR = "data";
+    public final String FILE_NAME   = "BgMaxTestFile";
+    public final String FILE_ENDING = "ut";
+    public final String DIR         = "data";
 
     public final int NR_FILES = 4;
 
     public List<TestFile> fileList = new ArrayList<TestFile>();
  
     @Before
-        public void setUp() throws Exception {
-  
+    public void setUp() throws Exception {
   
         for ( int i = 0; i < NR_FILES; i++ ) {
             TestFile file = new TestFile( FILE_NAME + i + 1 + "." + FILE_ENDING, DIR );
@@ -62,16 +58,14 @@ public class BgMaxFileTest {
 
  
     @After
-        public void tearDown() throws Exception {}
+    public void tearDown() throws Exception {}
 
     @Test
-        public void testParse()
-    {
+    public void testParse() {
         testParseFile4();
     }
  
-    public void testParseFile4( )
-    {
+    public void testParseFile4() {
         TestFile testFile = fileList.get( 3 );  
         BgMaxFile bgMaxFile = new BgMaxFile();
   
@@ -132,7 +126,6 @@ public class BgMaxFileTest {
         assertEquals( "iBGCLopnummer", "000120000018", ref1.iBGCLopnummer );
         assertEquals( "iAvibildmarkering", "0", ref1.iAvibildmarkering );
     }
- 
  
     public class TestFile
     {
