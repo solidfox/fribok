@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * Date: 2006-mar-13
  * Time: 09:11:46
+ * @version $Id$
  */
 public class SSConfig implements Serializable {
 
@@ -23,7 +24,7 @@ public class SSConfig implements Serializable {
      */
     public static SSConfig getInstance(){
         if (cInstance == null) {
-            if (iFile.exists()) {
+            if (CONFIG_FILE.exists()) {
                 loadConfig();
             }  else {
                 newConfig();
@@ -33,13 +34,12 @@ public class SSConfig implements Serializable {
     }
 
     // The settings file
-    private static File iFile = new File(SSPath.get(SSPath.APP_BASE), "bookkeeping.config");
+    private static File CONFIG_FILE = new File(SSPath.get(SSPath.USER_CONF), "bookkeeping.config");
 
     private Map<String, Object> iSettings;
 
-
     /**
-     *
+     * Constructor
      */
     private SSConfig(){
         iSettings                 = new HashMap<String, Object>();
@@ -78,8 +78,6 @@ public class SSConfig implements Serializable {
         storeConfig();
     }
 
-
-
     //////////////////////////////////////////////////////////////////////////////
 
     /**
@@ -95,7 +93,7 @@ public class SSConfig implements Serializable {
      */
     private synchronized static void loadConfig()  {
         try {
-            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(iFile)));
+            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(CONFIG_FILE)));
 
             try{
                 cInstance = (SSConfig)iObjectInputStream.readObject();
@@ -115,7 +113,7 @@ public class SSConfig implements Serializable {
      */
     private synchronized static void storeConfig()  {
         try {
-            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFile)));
+            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(CONFIG_FILE)));
 
             iObjectOutputStream.writeObject(cInstance);
             iObjectOutputStream.flush();
