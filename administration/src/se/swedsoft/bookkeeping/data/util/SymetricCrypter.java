@@ -11,7 +11,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Convinence class to make it easy to encrypt and decrypt using a symetric algorithm. 
+ * Convenience class to make it easy to encrypt and decrypt using a symetric algorithm. 
  * Just construct with a password and call the encrypt/decrypt methods.
  */
 public class SymetricCrypter
@@ -66,7 +66,7 @@ public class SymetricCrypter
             onError(e);
         }
 
-        return null; // Should never happend
+        return null; // Should never happen
     }
 
     public static class CrypterException extends RuntimeException

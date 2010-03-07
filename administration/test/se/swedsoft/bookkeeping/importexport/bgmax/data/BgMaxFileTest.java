@@ -83,7 +83,7 @@ public class BgMaxFileTest {
  
     /**
      * Tests if the right data has been read to bgFile. Is supposed to
-     * be called with a bgFile where .parse has allready been called.
+     * be called with a bgFile where .parse has already been called.
      */
     public void testParsedFile4( BgMaxFile bgFile, TestFile testFile )
     {
