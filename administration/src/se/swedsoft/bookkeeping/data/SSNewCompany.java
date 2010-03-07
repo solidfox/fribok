@@ -199,11 +199,11 @@ public class SSNewCompany implements Serializable {
     //////////////////////////////////////////////////////
 
     public SSMailServer getMailServer() {
-    	return iMailServer;
+        return iMailServer;
     }
     
     public void setMailServer( SSMailServer server ) {
-    	iMailServer = server;
+        iMailServer = server;
     }
     
     /**

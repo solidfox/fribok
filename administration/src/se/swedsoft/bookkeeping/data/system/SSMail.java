@@ -34,7 +34,7 @@ public class SSMail {
     
     // Used to encrypt password
     public static SymetricCrypter crypter = new SymetricCrypter( new byte[] { 0x4f,0x53,-0x71,-0x28,0x0d,0x21,0x1c,-0x1c} );
-	
+
     // Change this to get detailed debug info form JavaMail
     private static final boolean SHOULD_DEBUG_PRINT = false; 
 

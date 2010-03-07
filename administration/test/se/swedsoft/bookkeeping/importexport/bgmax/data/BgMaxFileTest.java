@@ -27,66 +27,66 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
  *
  */
 public class BgMaxFileTest {
-	
-	public BgMaxFile File4;
-	
-	public final String FILE_NAME = "BgMaxTestFile", 
-		FILE_ENDING = "ut", 
-		DIR = "data";
+ 
+    public BgMaxFile File4;
+ 
+    public final String FILE_NAME = "BgMaxTestFile", 
+        FILE_ENDING = "ut", 
+        DIR = "data";
 
-	public final int NR_FILES = 4;
+    public final int NR_FILES = 4;
 
-	public List<TestFile> fileList = new ArrayList<TestFile>();
-	
-	@Before
-	public void setUp() throws Exception {
-		
-		
-		for ( int i = 0; i < NR_FILES; i++ ) {
-			TestFile file = new TestFile( FILE_NAME + i + 1 + "." + FILE_ENDING, DIR );
-			fileList.add( file );
-			
-			BufferedReader reader = new BufferedReader( new FileReader( file.dir + File.separator + file.name ) );
-			file.lines = new ArrayList<String>();
-			
-			while ( true ) {
-				String line = reader.readLine();
-				
-				if ( line == null ) break;
-				
-				file.lines.add( line );
-			}
-			
-		}
-	}
+    public List<TestFile> fileList = new ArrayList<TestFile>();
+ 
+    @Before
+        public void setUp() throws Exception {
+  
+  
+        for ( int i = 0; i < NR_FILES; i++ ) {
+            TestFile file = new TestFile( FILE_NAME + i + 1 + "." + FILE_ENDING, DIR );
+            fileList.add( file );
+   
+            BufferedReader reader = new BufferedReader( new FileReader( file.dir + File.separator + file.name ) );
+            file.lines = new ArrayList<String>();
+   
+            while ( true ) {
+                String line = reader.readLine();
+    
+                if ( line == null ) break;
+    
+                file.lines.add( line );
+            }
+   
+        }
+    }
 
-	
-	@After
-	public void tearDown() throws Exception {}
+ 
+    @After
+        public void tearDown() throws Exception {}
 
-	@Test
-	public void testParse()
-	{
-		testParseFile4();
-	}
-	
-	public void testParseFile4( )
-	{
-		TestFile testFile = fileList.get( 3 );  
-		BgMaxFile bgMaxFile = new BgMaxFile();
-		
-		bgMaxFile.parse(  testFile.lines );
-		
-		testParsedFile4( bgMaxFile, testFile );
-	}
-	
-	
-	/**
-	 * Tests if the right data has been read to bgFile. Is supposed to
-	 * be called with a bgFile where .parse has allready been called.
-	 */
-	public void testParsedFile4( BgMaxFile bgFile, TestFile testFile )
-	{
+    @Test
+        public void testParse()
+    {
+        testParseFile4();
+    }
+ 
+    public void testParseFile4( )
+    {
+        TestFile testFile = fileList.get( 3 );  
+        BgMaxFile bgMaxFile = new BgMaxFile();
+  
+        bgMaxFile.parse(  testFile.lines );
+  
+        testParsedFile4( bgMaxFile, testFile );
+    }
+ 
+ 
+    /**
+     * Tests if the right data has been read to bgFile. Is supposed to
+     * be called with a bgFile where .parse has allready been called.
+     */
+    public void testParsedFile4( BgMaxFile bgFile, TestFile testFile )
+    {
         assertEquals( "layout name after reading ", "BGMAX", bgFile.iLayoutnamn );
         assertEquals( "iVersion", "01", bgFile.iVersion );
         assertEquals( "iTidsstampel", "20040525173035010331", bgFile.iTidsstampel );
@@ -131,21 +131,21 @@ public class BgMaxFileTest {
         assertEquals( "iBetalningsKanalKod", "2", ref1.iBetalningsKanalKod );
         assertEquals( "iBGCLopnummer", "000120000018", ref1.iBGCLopnummer );
         assertEquals( "iAvibildmarkering", "0", ref1.iAvibildmarkering );
-	}
-	
-	
-	public class TestFile
-	{
-		public String name, dir;
-		public File file;
-		
-		public List<String> lines = new LinkedList<String>();
+    }
+ 
+ 
+    public class TestFile
+    {
+        public String name, dir;
+        public File file;
 
-		public TestFile( String name, String dir ) {
-	        this.name = name;
-	        this.dir = dir;
-	        this.file = new File( dir + File.pathSeparator + this.name );
+        public List<String> lines = new LinkedList<String>();
+
+        public TestFile( String name, String dir ) {
+            this.name = name;
+            this.dir = dir;
+            this.file = new File( dir + File.pathSeparator + this.name );
         }
-	}
+    }
 
 }

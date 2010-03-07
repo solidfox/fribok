@@ -28,7 +28,7 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
         iPanel = new JPanel();
 
         JCheckBox checkBox = (JCheckBox)getComponent();
-	    checkBox.setHorizontalAlignment(JCheckBox.CENTER);
+        checkBox.setHorizontalAlignment(JCheckBox.CENTER);
     }
 
 

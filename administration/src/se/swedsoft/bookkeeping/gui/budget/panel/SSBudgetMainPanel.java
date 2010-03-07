@@ -83,9 +83,9 @@ public class SSBudgetMainPanel {
              * Returns the value for the cell at <code>columnIndex</code> and
              * <code>rowIndex</code>.
              *
-             * @param	rowIndex	the row whose value is to be queried
-             * @param	columnIndex the column whose value is to be queried
-             * @return	the value Object at the specified cell
+             * @param   rowIndex    the row whose value is to be queried
+             * @param   columnIndex the column whose value is to be queried
+             * @return  the value Object at the specified cell
              */
             public Object getValueAt(int rowIndex, int columnIndex) {
 

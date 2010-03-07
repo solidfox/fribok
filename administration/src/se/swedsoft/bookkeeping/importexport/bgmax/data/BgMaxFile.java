@@ -30,8 +30,6 @@ public class BgMaxFile {
     public String iAntalAvdragsPoster;
     public String iAntalInsattningsPoster;
 
-
-
     public List<BgMaxAvsnitt> iAvsnitts;
 
     /**
@@ -54,53 +52,50 @@ public class BgMaxFile {
         boolean isEmptyLineRead = false;
 
         if( iLines.size() < 1 || ! isValid(iLines.get(0)) ) {
-             throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.invalidfile");
+            throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.invalidfile");
         }
 
         Iterator<String> itr = iLines.iterator();
         
         while (itr.hasNext()) {
-        	
-        	String iLine = itr.next();
-        	
+
+            String iLine = itr.next();
+
             try {
-            	
-            	if ( iLine.length() == 0) {
-            		
-            		// If an empty line is found, all the rest of the lines have
-            		// to be empty too
-            		if ( !isAllEmpty( itr ) ) {
-            			// Throw exc to bee caught a few lines down
-            			throw new RuntimeException( "Empty line found in other place than last in the file" );
-            		}
-            		
-            		break;  // Exit success
-            	}
-            	
+                if (iLine.length() == 0) {
+
+                    // If an empty line is found, all the rest of the lines have
+                    // to be empty too
+                    if ( !isAllEmpty( itr ) ) {
+                        // Throw exc to bee caught a few lines down
+                        throw new RuntimeException( "Empty line found in other place than last in the file" );
+                    }
+              
+                    break;  // Exit success
+                }
+             
                 BgMaxLine iBgMaxLine = new BgMaxLine(iLine);
                 parseLine(iBgMaxLine);
-            	
+             
             } catch (RuntimeException exc) {
                 exc.printStackTrace();
 
                 throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.parseerror");
             }
-
-
         }
     }
     
     private static boolean isAllEmpty(Iterator<String> itr)
     {
-    	if (itr == null) {
-    		throw new IllegalArgumentException( "Method can not take null argument" );
-    	}
-    	
-    	while ( itr.hasNext() ) {
-    		if ( itr.next().length() != 0 ) return false;
-    	}
-    	
-    	return true;
+        if (itr == null) {
+            throw new IllegalArgumentException( "Method can not take null argument" );
+        }
+     
+        while ( itr.hasNext() ) {
+            if ( itr.next().length() != 0 ) return false;
+        }
+     
+        return true;
     }
 
     /**
@@ -111,7 +106,6 @@ public class BgMaxFile {
     private boolean isValid(String iFirstLine) throws RuntimeException {
         return iFirstLine.length() == 80 && iFirstLine.startsWith("01BGMAX");
     }
-
 
     /**
      * TransaktionsKod 1 - 2
@@ -158,22 +152,20 @@ public class BgMaxFile {
         }
 
         // B
-        if( iTransaktionsKod.equals("01") ) readStartPost       (iLine, this); else
-        if( iTransaktionsKod.equals("70") ) readSlutPost        (iLine, this); else
-
-        if( iTransaktionsKod.equals("05") ) readOppningsPost    (iLine, iAvsnitt); else
-        if( iTransaktionsKod.equals("15") ) readInsattningsPost (iLine, iAvsnitt); else
-
-        if( iTransaktionsKod.equals("20") ) readBetalningsPost   (iLine, iBetalning); else
-        if( iTransaktionsKod.equals("21") ) readAvdragsPost      (iLine, iBetalning); else
-        if( iTransaktionsKod.equals("22") ) readExtraReferensPost(iLine, iBetalning, false); else
-        if( iTransaktionsKod.equals("23") ) readExtraReferensPost(iLine, iBetalning, true ); else
-        if( iTransaktionsKod.equals("25") ) readInformationsPost (iLine, iBetalning); else
-        if( iTransaktionsKod.equals("26") ) readNamnPost         (iLine, iBetalning); else
-        if( iTransaktionsKod.equals("27") ) readAddressPost1     (iLine, iBetalning); else
-        if( iTransaktionsKod.equals("28") ) readAddressPost2     (iLine, iBetalning); else
-        if( iTransaktionsKod.equals("29") ) readOrgnummerPost    (iLine, iBetalning); else
-            System.out.println("No reader for: " + iTransaktionsKod);
+        if( iTransaktionsKod.equals("01") ) readStartPost       (iLine, this);
+        else if( iTransaktionsKod.equals("70") ) readSlutPost        (iLine, this);
+        else if( iTransaktionsKod.equals("05") ) readOppningsPost    (iLine, iAvsnitt);
+        else if( iTransaktionsKod.equals("15") ) readInsattningsPost (iLine, iAvsnitt);
+        else if( iTransaktionsKod.equals("20") ) readBetalningsPost   (iLine, iBetalning);
+        else if( iTransaktionsKod.equals("21") ) readAvdragsPost      (iLine, iBetalning);
+        else if( iTransaktionsKod.equals("22") ) readExtraReferensPost(iLine, iBetalning, false);
+        else if( iTransaktionsKod.equals("23") ) readExtraReferensPost(iLine, iBetalning, true );
+        else if( iTransaktionsKod.equals("25") ) readInformationsPost (iLine, iBetalning);
+        else if( iTransaktionsKod.equals("26") ) readNamnPost         (iLine, iBetalning);
+        else if( iTransaktionsKod.equals("27") ) readAddressPost1     (iLine, iBetalning);
+        else if( iTransaktionsKod.equals("28") ) readAddressPost2     (iLine, iBetalning);
+        else if( iTransaktionsKod.equals("29") ) readOrgnummerPost    (iLine, iBetalning);
+        else System.out.println("No reader for: " + iTransaktionsKod);
     }
 
     /**
@@ -205,8 +197,6 @@ public class BgMaxFile {
 
         return sb.toString();
     }
-
-
 
     /**
      * 1.3 Start post (01)
@@ -260,13 +250,6 @@ public class BgMaxFile {
         iAvsnitt.iTyp             = iLine.getField(80);
     }
 
-
-
-
-
-
-
-
     /**
      * 1.5 Betalningspost (20)
      *
@@ -296,8 +279,6 @@ public class BgMaxFile {
         iBetalning.iBGCLopnummer       = iLine.getField(58, 69);
         iBetalning.iAvibildmarkering   = iLine.getField(70);
     }
-
-
 
     /**
      * 1.7 Extra referensnummerpost (22 / 23)
@@ -376,9 +357,5 @@ public class BgMaxFile {
      */
     private static void readOrgnummerPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
         iBetalning. iBetalarensOrganisationsnr  = iLine.getField(3, 14);
-
     }
-
-
-
 }

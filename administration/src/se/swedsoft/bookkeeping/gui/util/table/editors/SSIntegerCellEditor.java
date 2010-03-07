@@ -131,7 +131,7 @@ public class SSIntegerCellEditor extends AbstractCellEditor implements TableCell
              MouseEvent iMouseEvent = (MouseEvent) e;
 
              return iMouseEvent.getClickCount() >= 2;
-	    }
+         }
         return super.isCellEditable(e);
     }
 

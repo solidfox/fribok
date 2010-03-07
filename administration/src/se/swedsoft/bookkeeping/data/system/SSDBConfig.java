@@ -52,7 +52,7 @@ public class SSDBConfig {
             //Write back the database path to the config file.
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
-			serializer.serialize(iParser.getDocument());
+            serializer.serialize(iParser.getDocument());
         } catch (Exception ex) { }
     }
 
@@ -90,7 +90,7 @@ public class SSDBConfig {
             //Write back the database path to the config file.
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
-			serializer.serialize(iParser.getDocument());
+            serializer.serialize(iParser.getDocument());
 
         } catch (Exception ex) { }
     }
@@ -146,7 +146,7 @@ public class SSDBConfig {
             //Write back the database path to the config file.
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
-			serializer.serialize(iParser.getDocument());
+            serializer.serialize(iParser.getDocument());
 
         } catch (Exception ex) {
         }
@@ -163,7 +163,7 @@ public class SSDBConfig {
             //Write back the database path to the config file.
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
-			serializer.serialize(iParser.getDocument());
+            serializer.serialize(iParser.getDocument());
         } catch (Exception ex) { }
     }
 
