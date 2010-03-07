@@ -46,7 +46,7 @@ public class BgMaxFileTest {
             TestFile file = new TestFile( FILE_NAME + i + 1 + "." + FILE_ENDING, DIR );
             fileList.add( file );
    
-            BufferedReader reader = new BufferedReader( new FileReader( new File(file.dir, file.name) );
+            BufferedReader reader = new BufferedReader( new FileReader( new File(file.dir, file.name) ) );
             file.lines = new ArrayList<String>();
    
             while ( true ) {
