@@ -1,24 +1,60 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <!-- POM Relationships -->
   <groupId>jfs</groupId>
   <artifactId>administration</artifactId>
-  <packaging>jar</packaging>
-  <name>JFS administration</name>
   <version>0.1-SNAPSHOT</version>
+  <!-- Project Information -->
+  <name>JFS administration</name>
+  <description>
+    JFS Administration is a free software bookkeeping package aimed at non-profit
+    organizations and small companies.
+  </description>
   <url>https://sourceforge.net/projects/jfsaccounting/</url>
+  <!-- Build Settings -->
+  <packaging>jar</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
-	<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-compiler-plugin</artifactId>
-	<version>2.0.2</version>
-	<configuration>
-	  <source>1.5</source>
-	  <target>1.5</target>
-	</configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- NOTE: We don't need a groupId specification because the group is
+             org.apache.maven.plugins ...which is assumed by default.
+         -->
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2-beta-5</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <dependencySets>
+            <dependencySet>
+              <unpack>true</unpack>
+              <scope>runtime</scope>
+            </dependencySet>
+          </dependencySets>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>se.swedsoft.bookkeeping.SSBookkeeping</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -111,9 +147,7 @@
     <dependency>
       <groupId>com.jgoodies</groupId>
       <artifactId>looks</artifactId>
-      <version>2.3.1</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/lib/looks-2.3.1.jar</systemPath>
+      <version>[2.2.2,)</version>
     </dependency>
     <dependency>
       <groupId>javax.mail</groupId>
