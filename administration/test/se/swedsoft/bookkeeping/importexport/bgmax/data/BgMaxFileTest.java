@@ -24,45 +24,41 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
  * @version $Id$
  */
 public class BgMaxFileTest {
- 
-    public BgMaxFile File4;
- 
-    public final String FILE_NAME   = "BgMaxTestFile";
-    public final String FILE_ENDING = "ut";
-    public final String DIR         = "data";
 
-    public final int NR_FILES = 4;
+    private final String FILE_NAME   = "BgMaxTestFile";
+    private final String FILE_ENDING = "ut";
+    private final String DIR         = "test/resources/se/swedsoft/bookkeeping/importexport/bgmax/data";
 
-    public List<TestFile> fileList = new ArrayList<TestFile>();
+    private final int NR_FILES = 4;
+
+    private List<TestFile> fileList = new ArrayList<TestFile>();
  
-    // @Before
-    // public void setUp() throws Exception {
-  
-    //     for ( int i = 0; i < NR_FILES; i++ ) {
-    //         TestFile file = new TestFile( FILE_NAME + i + 1 + "." + FILE_ENDING, DIR );
-    //         fileList.add( file );
+    @Before
+    public void setUp() throws Exception {
+        for ( int i = 0; i < NR_FILES; i++ ) {
+            TestFile file = new TestFile( FILE_NAME + (i + 1) + "." + FILE_ENDING, DIR );
+            fileList.add( file );
    
-    //         BufferedReader reader = new BufferedReader( new FileReader( new File(file.dir, file.name) ) );
-    //         file.lines = new ArrayList<String>();
+            BufferedReader reader = new BufferedReader( new FileReader( new File(file.dir, file.name) ) );
+            file.lines = new ArrayList<String>();
    
-    //         while ( true ) {
-    //             String line = reader.readLine();
+            while ( true ) {
+                String line = reader.readLine();
     
-    //             if ( line == null ) break;
+                if ( line == null ) break;
     
-    //             file.lines.add( line );
-    //         }
+                file.lines.add( line );
+            }
    
-    //     }
-    // }
+        }
+    }
 
- 
     @After
     public void tearDown() throws Exception {}
 
     @Test
     public void testParse() {
-        // testParseFile4();
+        testParseFile4();
     }
  
     public void testParseFile4() {
@@ -73,7 +69,6 @@ public class BgMaxFileTest {
   
         testParsedFile4( bgMaxFile, testFile );
     }
- 
  
     /**
      * Tests if the right data has been read to bgFile. Is supposed to
@@ -113,7 +108,7 @@ public class BgMaxFileTest {
         assertEquals( "iBetalningsdag", "20040525", avs1.iBetalningsdag );
         assertEquals( "iLopnummer", "00056", avs1.iLopnummer );
         
-        assertEquals( "iBelopp", "000000000000370000", avs1.iBelopp );
+        assertEquals( "iBelopp", "000000000000370", avs1.iBelopp );
         assertEquals( "iValuta", "SEK", avs1.iValuta );
         assertEquals( "iAntal", "00000002", avs1.iAntal );
         
