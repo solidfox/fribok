@@ -78,7 +78,7 @@ public class SSInventoryBasisPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        addParameter("image.check", SSImage.getImage("Check.png"));
+        addParameter("image.check", SSImage.getImage("CHECK"));
 
         SSDefaultTableModel<SSProduct> iModel = new SSDefaultTableModel<SSProduct>() {
 
