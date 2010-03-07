@@ -22,7 +22,7 @@ public class SSImage {
 
     // Standard graphics
     static{
-        SSImage.loadImage("BACKGROUND" , "Background.gif" );
+        SSImage.loadImage("BACKGROUND" , "Background.png" );
         SSImage.loadImage("LOGO"       , "logo.png" );
         SSImage.loadImage("OCRAVI"     , "OCRAvi.png" );
         SSImage.loadImage("OCRBackground" , "OCRBackground.png" );
