@@ -92,18 +92,21 @@ public class SSConfig implements Serializable {
      *
      */
     private synchronized static void loadConfig()  {
+        ObjectInputStream iObjectInputStream = null;
         try {
-            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(CONFIG_FILE)));
-
-            try{
-                cInstance = (SSConfig)iObjectInputStream.readObject();
-            } finally{
-                iObjectInputStream.close();
-            }
+            iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(CONFIG_FILE)));
+            cInstance = (SSConfig)iObjectInputStream.readObject();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            if (iObjectInputStream != null)
+                try {
+                    iObjectInputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
         }
     }
 
