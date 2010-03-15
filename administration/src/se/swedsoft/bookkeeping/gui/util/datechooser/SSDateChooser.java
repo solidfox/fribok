@@ -19,10 +19,9 @@ import java.util.List;
  * User: Andreas Lago
  * Date: 2006-apr-04
  * Time: 09:58:31
+ * @version $Id$
  */
 public class SSDateChooser extends JPanel implements ActionListener, ChangeListener {
-
-
 
     private JSpinner iSpinner;
 
@@ -47,7 +46,6 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
     protected boolean isDateSelected;
 
     private JPanel iPanel;
-
 
     /**
      * Creates a new <code>JPanel</code> with a double buffer
@@ -135,7 +133,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
     }
 
     /**
-     *
+     * @param invoker
      */
     private void createPopup(Component invoker){
         JDialog iDialog = getDialog(invoker);
@@ -324,46 +322,6 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iEditor        .setEnabled(enabled);
 
     }
-
-    public static void main(String[] args) {
-        try {
-            JDialog.setDefaultLookAndFeelDecorated(true);
-            JFrame .setDefaultLookAndFeelDecorated(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        final SSDateChooser iDateChooser = new SSDateChooser();
-
-        JFrame iFrame = new JFrame();
-
-        JButton iButton = new JButton();
-        iButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(iDateChooser.getDate());
-
-
-
-            }
-        });
-
-        iFrame.setLayout(new BorderLayout());
-//   iFrame.add( new SSDayChooser  ().getPanel(), BorderLayout.CENTER );
-//  iFrame.add( new SSMonthChooser().getPanel(), BorderLayout.NORTH );
-// iFrame.add( new SSYearChooser ().getPanel(), BorderLayout.SOUTH );
-
-//   iFrame.add( new SSCalendar  ().getPanel(), BorderLayout.CENTER );
-
-        iFrame.add(iDateChooser, BorderLayout.NORTH );
-        iFrame.add(iButton     , BorderLayout.SOUTH );
-
-
-        iFrame.pack();
-        iFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        iFrame.setLocationRelativeTo(null);
-        iFrame.setVisible(true);
-
-    }
-
 
     /**
      * Used to clean up references making sure the garbage collector
