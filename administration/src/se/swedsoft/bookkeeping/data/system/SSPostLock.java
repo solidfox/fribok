@@ -25,8 +25,8 @@ public class SSPostLock {
             oos = appendableObjectOutputStream(iFile);
             oos.writeObject(O);
 
-        } catch (FileNotFoundException e){
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,8 +85,10 @@ public class SSPostLock {
             }
 
         } catch (IOException e) {
-
-        } catch (ClassNotFoundException e){}
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         finally{
             try {
                 if(iObjects.size()>0)

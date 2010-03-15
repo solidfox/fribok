@@ -306,10 +306,9 @@ public class SSReport {
 
             // Add all fields to the design
             for(JRReportFont iFont: theFonts ){
-                try{
+                try {
                     iDesign.addFont(iFont);
-                } catch(JRException ignored){
-                }
+                } catch (JRException ignored) {}
             }
 
             // Add all fields to the design

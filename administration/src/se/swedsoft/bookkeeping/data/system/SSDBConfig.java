@@ -53,7 +53,9 @@ public class SSDBConfig {
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
             serializer.serialize(iParser.getDocument());
-        } catch (Exception ex) { }
+        } catch (Exception ex) {
+            ex.printStackTrace();                    
+        }
     }
 
     public static Integer getYearId() {
@@ -92,7 +94,9 @@ public class SSDBConfig {
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
             serializer.serialize(iParser.getDocument());
 
-        } catch (Exception ex) { }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static SSNewAccountingYear loadCompanySetting(Integer pCompanyId) {
@@ -149,6 +153,7 @@ public class SSDBConfig {
             serializer.serialize(iParser.getDocument());
 
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }
@@ -164,7 +169,9 @@ public class SSDBConfig {
             OutputFormat iFormat = new OutputFormat(iParser.getDocument());
             XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE), iFormat);
             serializer.serialize(iParser.getDocument());
-        } catch (Exception ex) { }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 
@@ -217,6 +224,7 @@ public class SSDBConfig {
             SSDBConfig.iServerAddress = iServer;
 
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 }

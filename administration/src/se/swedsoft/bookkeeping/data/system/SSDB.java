@@ -489,8 +489,9 @@ public class SSDB {
             iStatement.executeUpdate();
             iStatement.close();
             iConnection.commit();
-
-        } catch (SQLException e) {}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void restart() {
 
@@ -557,6 +558,7 @@ public class SSDB {
                 return true;
             }
         } catch (SocketException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
             return false;

@@ -339,16 +339,8 @@ public class SSVoucherEditors {
             } else {
                 pTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_DESCRIPTION ).setPreferredWidth(376);
             }
-        } catch(Exception ignored){
-
-        }
-
+        } catch (Exception ignored) {}
     }
-
-
-
-
-
 }
 
 

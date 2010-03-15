@@ -27,8 +27,8 @@ public class SSDBUtils {
             }
             fis.close();
             fos.close();
-        } catch (FileNotFoundException e){
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 

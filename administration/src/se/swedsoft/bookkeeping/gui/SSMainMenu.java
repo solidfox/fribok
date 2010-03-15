@@ -292,8 +292,8 @@ public class SSMainMenu {
                     } catch (SSExportException ex ) {
                         new SSErrorDialog(iMainFrame, "exportexceptiondialog", ex.getMessage());
                     } catch (Exception ex) {
+                        ex.printStackTrace();
                     }
-
                 }
             }
         });

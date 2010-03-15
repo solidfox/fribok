@@ -186,6 +186,7 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
             iModel.setValue(iValue);
 
         } catch (NumberFormatException e1) {
+            e1.printStackTrace();
         }
     }
 

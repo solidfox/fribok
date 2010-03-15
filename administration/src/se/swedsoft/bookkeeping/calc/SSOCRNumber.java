@@ -57,7 +57,7 @@ public class SSOCRNumber {
             try {
                 iValue = Integer.decode(String.valueOf(iChar));
             } catch (NumberFormatException e) {
-
+                e.printStackTrace();
             }
 
             int iSum =(iValue * iWeight);

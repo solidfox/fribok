@@ -421,9 +421,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
             } else {
                 iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_DESCRIPTION ).setPreferredWidth(376);
             }
-        } catch(Exception ignored){
-
-        }
+        } catch (Exception ignored) {}
     }
 
 }

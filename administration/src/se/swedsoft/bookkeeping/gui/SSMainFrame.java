@@ -147,20 +147,9 @@ public class SSMainFrame extends JFrame {
         try {
             SSCompanyFrame.getInstance().setSelected(true);
         } catch (PropertyVetoException e) {
+            e.printStackTrace();
         }
-
-
     }
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Returns the desktop pane for the application. <P>

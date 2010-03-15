@@ -73,11 +73,9 @@ public abstract class SSInternalFrame extends JInternalFrame {
      *
      */
     public void deIconize(){
-        try{
+        try {
             setIcon(false);
-        } catch (PropertyVetoException ignored){
-
-        }
+        } catch (PropertyVetoException ignored) {}
         toFront();
 
         requestFocus();
