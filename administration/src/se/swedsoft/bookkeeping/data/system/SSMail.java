@@ -238,7 +238,7 @@ public class SSMail {
     
     private static class MailValidationException extends Exception
     {
-        private String resourceName;
+        private final String resourceName;
         
         public MailValidationException(String message, String resourceName) {
             super(message);

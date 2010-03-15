@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
  */
 public class SSCalculatorException  extends RuntimeException{
 
-    private String iMesssage;
+    private final String iMesssage;
 
     /**
      *
