@@ -393,7 +393,7 @@ public class SSDB {
                 iConnection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-                try { iConnection.rollback(); } catch (SQLException e1) {}
+                try { iConnection.rollback(); } catch (SQLException ignored) {}
                 SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
             }
         }
@@ -433,7 +433,7 @@ public class SSDB {
             iTriggerHandler.start();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -506,7 +506,7 @@ public class SSDB {
             iConnection.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         File iPropFile = new File("db"+File.separator+"JFSDB.properties");
@@ -660,7 +660,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iCompanies;
@@ -686,7 +686,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -727,7 +727,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -746,7 +746,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -892,7 +892,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -914,7 +914,7 @@ public class SSDB {
                 iStatement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-                try { iConnection.rollback(); } catch (SQLException e1) {}
+                try { iConnection.rollback(); } catch (SQLException ignored) {}
                 SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
             }
         }
@@ -938,7 +938,7 @@ public class SSDB {
                 iStatement.close();
             } catch (SQLException e) {
                 e.printStackTrace();
-                try { iConnection.rollback(); } catch (SQLException e1) {}
+                try { iConnection.rollback(); } catch (SQLException ignored) {}
                 SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
             }
         }
@@ -964,7 +964,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -1003,7 +1003,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1027,7 +1027,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1050,7 +1050,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1110,7 +1110,7 @@ public class SSDB {
                 return iAccountingYear;
             } catch (SQLException e) {
                 e.printStackTrace();
-                try { iConnection.rollback(); } catch (SQLException e1) {}
+                try { iConnection.rollback(); } catch (SQLException ignored) {}
                 SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
             }
         }
@@ -1193,7 +1193,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iVouchers;
@@ -1226,7 +1226,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iVoucherList;
@@ -1252,7 +1252,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -1278,7 +1278,7 @@ public class SSDB {
             return iVouchers;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -1316,7 +1316,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1340,7 +1340,7 @@ public class SSDB {
             return iNumber;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return 0;
@@ -1360,7 +1360,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1378,7 +1378,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1401,7 +1401,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iVoucherTemplates;
@@ -1428,7 +1428,7 @@ public class SSDB {
             return iVoucherTemplates;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -1448,7 +1448,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1466,7 +1466,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1504,7 +1504,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iAccountPlans;
@@ -1528,7 +1528,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -1564,7 +1564,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1583,7 +1583,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1600,7 +1600,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1621,7 +1621,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iUnits;
@@ -1639,7 +1639,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1657,7 +1657,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1674,7 +1674,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1700,7 +1700,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iCurrencies;
@@ -1722,7 +1722,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iUpdatedCurrency;
@@ -1740,7 +1740,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1758,7 +1758,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1775,7 +1775,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1802,7 +1802,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iDeliveryWays;
@@ -1820,7 +1820,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1838,7 +1838,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1855,7 +1855,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1881,7 +1881,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iDeliveryTerms;
@@ -1899,7 +1899,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1917,7 +1917,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1934,7 +1934,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1961,7 +1961,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iPaymentTerms;
@@ -1979,7 +1979,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -1997,7 +1997,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2014,7 +2014,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2038,7 +2038,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iResultUnits;
@@ -2064,7 +2064,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -2090,7 +2090,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -2117,7 +2117,7 @@ public class SSDB {
             return iResultUnits;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -2137,7 +2137,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2156,7 +2156,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2174,7 +2174,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2198,7 +2198,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iProjects;
@@ -2224,7 +2224,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -2250,7 +2250,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -2277,7 +2277,7 @@ public class SSDB {
             return iProjects;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -2297,7 +2297,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2316,7 +2316,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -2334,7 +2334,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3019,7 +3019,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iProducts;
@@ -3045,7 +3045,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3070,7 +3070,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3105,7 +3105,7 @@ public class SSDB {
             return iProducts;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3125,7 +3125,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3144,7 +3144,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3162,7 +3162,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3204,7 +3204,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iCustomers;
@@ -3230,7 +3230,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3255,7 +3255,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3290,7 +3290,7 @@ public class SSDB {
             return iCustomers;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3310,7 +3310,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3329,7 +3329,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3347,7 +3347,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3389,7 +3389,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iSuppliers;
@@ -3414,7 +3414,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3449,7 +3449,7 @@ public class SSDB {
             return iSuppliers;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3468,7 +3468,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3487,7 +3487,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3505,7 +3505,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3548,7 +3548,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iAutoDists;
@@ -3573,7 +3573,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3608,7 +3608,7 @@ public class SSDB {
             return iAutoDists;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3627,7 +3627,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3647,7 +3647,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3666,7 +3666,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3708,7 +3708,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iTenders;
@@ -3733,7 +3733,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3769,7 +3769,7 @@ public class SSDB {
             return iTenders;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3811,7 +3811,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3830,7 +3830,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3848,7 +3848,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -3886,7 +3886,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iOrders;
@@ -3911,7 +3911,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3946,7 +3946,7 @@ public class SSDB {
             return iOrders;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -3988,7 +3988,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4007,7 +4007,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4025,7 +4025,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4069,7 +4069,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iInvoices;
@@ -4094,7 +4094,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4129,7 +4129,7 @@ public class SSDB {
             return iInvoices;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4171,7 +4171,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4190,7 +4190,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4208,7 +4208,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4252,7 +4252,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iInpayments;
@@ -4277,7 +4277,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4319,7 +4319,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4338,7 +4338,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4356,7 +4356,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4397,7 +4397,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iOutpayments;
@@ -4422,7 +4422,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4464,7 +4464,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4483,7 +4483,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4501,7 +4501,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4544,7 +4544,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iCreditInvoices;
@@ -4569,7 +4569,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4604,7 +4604,7 @@ public class SSDB {
             return iCreditInvoices;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4646,7 +4646,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4665,7 +4665,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4683,7 +4683,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4728,7 +4728,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iPeriodicInvoices;
@@ -4753,7 +4753,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4795,7 +4795,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4814,7 +4814,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4832,7 +4832,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4876,7 +4876,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iPurchaseOrders;
@@ -4901,7 +4901,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4936,7 +4936,7 @@ public class SSDB {
             return iPurchaseOrders;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -4978,7 +4978,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -4997,7 +4997,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5015,7 +5015,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5057,7 +5057,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iSupplierInvoices;
@@ -5082,7 +5082,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5117,7 +5117,7 @@ public class SSDB {
             return iSupplierInvoices;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5159,7 +5159,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5178,7 +5178,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5196,7 +5196,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5238,7 +5238,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iSupplierCreditInvoices;
@@ -5263,7 +5263,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5305,7 +5305,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5324,7 +5324,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5342,7 +5342,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5384,7 +5384,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iInventories;
@@ -5409,7 +5409,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5451,7 +5451,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5470,7 +5470,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5488,7 +5488,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5529,7 +5529,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iIndeliveries;
@@ -5554,7 +5554,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5596,7 +5596,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5615,7 +5615,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5633,7 +5633,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5674,7 +5674,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iOutdeliveries;
@@ -5699,7 +5699,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5741,7 +5741,7 @@ public class SSDB {
         } catch (SQLException e) {
             e.printStackTrace();
             UnlockDatabase();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5760,7 +5760,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5778,7 +5778,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5815,7 +5815,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return iOwnReports;
@@ -5841,7 +5841,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5866,7 +5866,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5901,7 +5901,7 @@ public class SSDB {
             return iOwnReports;
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
         return null;
@@ -5943,7 +5943,7 @@ public class SSDB {
             iStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5962,7 +5962,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -5980,7 +5980,7 @@ public class SSDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            try { iConnection.rollback(); } catch (SQLException e1) {}
+            try { iConnection.rollback(); } catch (SQLException ignored) {}
             SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
         }
     }
@@ -6278,7 +6278,7 @@ public class SSDB {
                         iConnection.commit();
                     } catch (SQLException e) {
                         e.printStackTrace();
-                        try { iConnection.rollback(); } catch (SQLException e1) {}
+                        try { iConnection.rollback(); } catch (SQLException ignored) {}
                         SSErrorDialog.showDialog(SSMainFrame.getInstance(),"SQL Error", e.getMessage());
                     }
                 }
