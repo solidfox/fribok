@@ -1,0 +1,19 @@
+JFS Accounting is a project for a free accounting software developed in
+Java. This accounting software includes the cycles of sale, purchasing,
+inventory and accounting.
+
+See file `COPYING' for copying conditions.
+See file `INSTALL' for building and installation instructions.
+
+IntelliJ IDEA forms are used to generate parts of the GUI.  We would like to get
+rid of this dependency.  For now, we recommend people to use the free software
+community edition of the IDE.  It is available from: http://www.jetbrains.org/
+
+The software was originally developed for use in Sweden, and the
+internationalization might be less than satisfactory.  Let us know if you run
+into problems.
+
+The primary source directory can be found in `administration/src'.
+
+The website can be found at http://sourceforge.net/projects/jfsaccounting
+

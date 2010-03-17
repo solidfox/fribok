@@ -1,0 +1,49 @@
+JFS Administration, INSTALL file
+
+TODO: Add izpack instructions here.
+
+Build requirements:
+* IntelliJ IDEA
+* Maven (incomplete stand-alone build support)
+
+We recommend people to use the free software community edition of the IDE.  It
+is available from: http://www.jetbrains.org/
+
+1. Start IntelliJ IDEA.
+
+2. Open the IntelliJ IDEA project, located in `JFS Administration.ipr'.
+
+    IDEA will now rebuild it's index.
+
+2. Choose the menu option `Build' -> `Make project'
+
+3. Choose the menu option `Run' -> `Edit configurations'
+
+4. Add a new configuration as `Application', using SSBookkeeping as main class
+   and `administration' as working dir. Make sure to specify an SDK to use.
+
+5. Now you can run the program.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DISCLAIMER: The information below may or may not work. We are working on
+;; providing support for building the project entirely in Maven, but this is
+;; unfinished. Specifically, we don't have support for IntelliJ IDEA Forms yet.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+The preferred way of building JFS Administration is to use the Maven POM-file.
+
+$ mvn assembly:assembly
+[output...]
+
+$ java -jar target/administration-x.x-SNAPSHOT-jar-with-dependencies.jar
+
+Other things to try:
+
+$ mvn compile
+[output...]
+
+$ mvn test
+[output...]
+
+IntelliJ IDEA forms are used to generate parts of the GUI.  We would like to get
+rid of this dependency.  For now, use the community version to edit forms.
