@@ -47,7 +47,7 @@ public class SSSaleMath {
         Date iDate = iSale.getDate();
         Date iTo   = SSDateMath.ceil (pTo);
 
-        return  (iDate.getTime() <= iTo.getTime());
+        return iDate.getTime() <= iTo.getTime();
     }
 
     /**
@@ -197,7 +197,7 @@ public class SSSaleMath {
             iSum = iNetSum.add(iTaxSum1).add(iTaxSum2).add(iTaxSum3);
         }
         if(!SSDB.getInstance().getCurrentCompany().isRoundingOff())
-            return (iSum.setScale(0, RoundingMode.HALF_UP)).subtract(iSum);
+            return iSum.setScale(0, RoundingMode.HALF_UP).subtract(iSum);
         else
             return new BigDecimal(0.0);
         //return iSum.subtract( iSum.setScale(0, RoundingMode.HALF_UP) );

@@ -497,7 +497,7 @@ public class SSSupplierInvoicePanel implements ActionListener{
 
         iTaxSum.setValue( iSupplierInvoice.getTaxSum() );
 
-        iRoundingSum.setValue((iSupplierInvoice.getRoundingSum() == null ? new BigDecimal(0) : iSupplierInvoice.getRoundingSum()));
+        iRoundingSum.setValue(iSupplierInvoice.getRoundingSum() == null ? new BigDecimal(0) : iSupplierInvoice.getRoundingSum());
         // OCR/Referens nummer
         iReferencenumber.setText(this.iSupplierInvoice.getReferencenumber());
 

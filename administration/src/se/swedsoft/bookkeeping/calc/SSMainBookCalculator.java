@@ -186,8 +186,8 @@ public class SSMainBookCalculator {
                 if( !iVoucherRow.isValid()  ) continue;
 
 
-                if( iProject    != null && (!iProject.equals(iRowProject) )) continue;
-                if( iResultUnit != null && (!iResultUnit.equals(iRowResultUnit) )) continue;
+                if( iProject    != null && !iProject.equals(iRowProject)) continue;
+                if( iResultUnit != null && !iResultUnit.equals(iRowResultUnit)) continue;
 
                 BigDecimal iRowSaldo = SSVoucherMath.getDebetMinusCredit(iVoucherRow);
 

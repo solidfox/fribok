@@ -186,7 +186,7 @@ public class SSCreditInvoicePanel {
                     iCreditInvoice.setCustomer(selected);
                     if(selected.getDiscount() != null){
                         for (SSSaleRow iRow : iModel.getObjects()) {
-                            iRow.setDiscount(selected.getDiscount().doubleValue() == (new BigDecimal(0.0)).doubleValue() ? null : selected.getDiscount());
+                            iRow.setDiscount(selected.getDiscount().doubleValue() == new BigDecimal(0.0).doubleValue() ? null : selected.getDiscount());
                         }
                     }
                     setCreditInvoice(iCreditInvoice);

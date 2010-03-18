@@ -66,7 +66,7 @@ public class SSBooleanCellRenderer extends JPanel implements TableCellRenderer{
                iCheckBox.setBorder(noFocusBorder);
             }
 
-            iCheckBox.setSelected( ((Boolean)value) );
+            iCheckBox.setSelected((Boolean)value);
 
             return iCheckBox;
         }

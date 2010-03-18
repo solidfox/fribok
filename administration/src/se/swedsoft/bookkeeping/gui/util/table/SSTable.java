@@ -182,7 +182,7 @@ public class SSTable extends JTable{
     @Override
     public boolean getScrollableTracksViewportHeight() {
         if (getParent() instanceof JViewport) {
-            return ((getParent()).getHeight() > getPreferredSize().height);
+            return getParent().getHeight() > getPreferredSize().height;
         }
         return false;
     }

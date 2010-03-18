@@ -42,7 +42,7 @@ public class SSVoucherMath {
         Date iDate = iVoucher.getDate();
         Date iTo   = SSDateMath.ceil (pTo);
 
-        return  (iDate.getTime() <= iTo.getTime());
+        return iDate.getTime() <= iTo.getTime();
     }
 
 

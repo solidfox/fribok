@@ -1210,7 +1210,7 @@ public class SSCompany implements Serializable {
             if (iMonth.isDateInMonth(iTenderDate)) {
                 for (SSSaleRow iRow : iTender.getRows()) {
                     if(iRow.getSum() != null){
-                        sum+=(iRow.getSum().doubleValue())*iTender.getCurrencyRate().doubleValue();
+                        sum+= iRow.getSum().doubleValue() *iTender.getCurrencyRate().doubleValue();
                     }
                 }
 
@@ -1261,7 +1261,7 @@ public class SSCompany implements Serializable {
             if (iMonth.isDateInMonth(iOrderDate)) {
                 for (SSSaleRow iRow : iOrder.getRows()) {
                     if(iRow.getSum() != null){
-                        sum+=(iRow.getSum().doubleValue())*iOrder.getCurrencyRate().doubleValue();
+                        sum+= iRow.getSum().doubleValue() *iOrder.getCurrencyRate().doubleValue();
                     }
                 }
             }
@@ -1305,7 +1305,7 @@ public class SSCompany implements Serializable {
             if (iMonth.isDateInMonth(iInvoiceDate)) {
                 for (SSSaleRow iRow : iInvoice.getRows()) {
                     if(iRow.getSum() != null){
-                        suminvoices+=(iRow.getSum().doubleValue())*iInvoice.getCurrencyRate().doubleValue();
+                        suminvoices+= iRow.getSum().doubleValue() *iInvoice.getCurrencyRate().doubleValue();
                     }
                 }
 
@@ -1317,7 +1317,7 @@ public class SSCompany implements Serializable {
             if (iMonth.isDateInMonth(iCreditInvoiceDate)) {
                 for (SSSaleRow iRow : iCreditInvoice.getRows()) {
                     if(iRow.getSum() != null){
-                        sumcreditinvoices+=(iRow.getSum().doubleValue())*iCreditInvoice.getCurrencyRate().doubleValue();
+                        sumcreditinvoices+= iRow.getSum().doubleValue() *iCreditInvoice.getCurrencyRate().doubleValue();
                     }
                 }
 

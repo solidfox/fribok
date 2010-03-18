@@ -260,7 +260,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
 
         fireTableCellUpdated(rowIndex, columnIndex);
 
-        if( (iVoucherRow == iEditingRow) && (aValue != null) && (!"".equals(aValue)) ) {
+        if( (iVoucherRow == iEditingRow) && (aValue != null) && !"".equals(aValue)) {
 
             if (iEdit) {
                 iEditingRow.setAdded     (null);

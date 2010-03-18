@@ -316,7 +316,7 @@ public class SSProductImporter {
                     if (iFirstProductAttElement != null) {
                         iTextProductAttList = iFirstProductAttElement.getChildNodes();
                         iValue = iTextProductAttList.item(0) == null ? null : iTextProductAttList.item(0).getNodeValue().trim();
-                        iProduct.setPurchasePrice((iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue)));
+                        iProduct.setPurchasePrice(iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue));
                     }
 
                     iProductAttList = iProductElement.getElementsByTagName("UnitFreight");
@@ -324,7 +324,7 @@ public class SSProductImporter {
                     if (iFirstProductAttElement != null) {
                         iTextProductAttList = iFirstProductAttElement.getChildNodes();
                         iValue = iTextProductAttList.item(0) == null ? null : iTextProductAttList.item(0).getNodeValue().trim();
-                        iProduct.setUnitFreight((iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue)));
+                        iProduct.setUnitFreight(iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue));
                     }
 
                     iProductAttList = iProductElement.getElementsByTagName("Unit");
@@ -340,7 +340,7 @@ public class SSProductImporter {
                     if (iFirstProductAttElement != null) {
                         iTextProductAttList = iFirstProductAttElement.getChildNodes();
                         iValue = iTextProductAttList.item(0) == null ? null : iTextProductAttList.item(0).getNodeValue().trim();
-                        iProduct.setWeight((iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue)));
+                        iProduct.setWeight(iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue));
                     }
 
                     iProductAttList = iProductElement.getElementsByTagName("Volume");
@@ -348,7 +348,7 @@ public class SSProductImporter {
                     if (iFirstProductAttElement != null) {
                         iTextProductAttList = iFirstProductAttElement.getChildNodes();
                         iValue = iTextProductAttList.item(0) == null ? null : iTextProductAttList.item(0).getNodeValue().trim();
-                        iProduct.setVolume((iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue)));
+                        iProduct.setVolume(iValue == null ? new BigDecimal("0.0") : new BigDecimal(iValue));
                     }
 
                     iProductAttList = iProductElement.getElementsByTagName("SaleAccount");

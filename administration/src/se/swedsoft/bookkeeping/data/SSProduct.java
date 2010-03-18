@@ -774,6 +774,6 @@ public class SSProduct implements SSTableSearchable, Serializable {
                 }
             }
         }
-        return(new BigDecimal(iInvoiceSum-iCreditInvoiceSum));
+        return new BigDecimal(iInvoiceSum-iCreditInvoiceSum);
     }
 }

@@ -61,7 +61,7 @@ public class SIEEntryResult extends SIEEntry {
             }
         }
         if( iYear != null ){
-            Map<SSAccount, BigDecimal> iResult = SSResultCalculator.getResult((iYear));
+            Map<SSAccount, BigDecimal> iResult = SSResultCalculator.getResult(iYear);
 
             for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iResult.entrySet()){
                 iWriter.append( SIELabel.SIE_RES);

@@ -60,7 +60,7 @@ public class SSOCRNumber {
                 e.printStackTrace();
             }
 
-            int iSum =(iValue * iWeight);
+            int iSum = iValue * iWeight;
 
             if( iSum > 9){
                 iChecksum += iSum - 9;

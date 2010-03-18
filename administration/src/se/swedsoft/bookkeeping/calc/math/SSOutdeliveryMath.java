@@ -26,7 +26,7 @@ public class SSOutdeliveryMath {
         Date iDate = iInventory.getDate();
         Date iTo   = SSDateMath.ceil (pTo);
 
-        return  (iDate.getTime() <= iTo.getTime());
+        return iDate.getTime() <= iTo.getTime();
 
     }
 

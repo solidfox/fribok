@@ -143,7 +143,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
                 return false;
             }
 
-            if( (iRow.getDebet() == null && iRow.getCredit() == null ) /*|| (iRow.getDebet() != null && iRow.getDebet().signum() == 0) || (iRow.getCredit() != null && iRow.getCredit().signum() == 0)*/ ){
+            if(iRow.getDebet() == null && iRow.getCredit() == null /*|| (iRow.getDebet() != null && iRow.getDebet().signum() == 0) || (iRow.getCredit() != null && iRow.getCredit().signum() == 0)*/ ){
                 // Raden saknar debit eller credit.
                 iError = bundle.getString("voucherframe.error.4");
                 return false;

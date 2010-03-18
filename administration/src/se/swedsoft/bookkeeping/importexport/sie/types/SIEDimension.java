@@ -109,7 +109,7 @@ public class SIEDimension {
      */
     public boolean equals(Object obj) {
         if(obj instanceof SIEDimension){
-            SIEDimension iObject = ((SIEDimension)obj);
+            SIEDimension iObject = (SIEDimension)obj;
 
             return iObject.getNumber().equals(iNumber);
         }

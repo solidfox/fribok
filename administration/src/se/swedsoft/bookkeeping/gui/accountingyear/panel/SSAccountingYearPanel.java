@@ -142,8 +142,8 @@ public class SSAccountingYearPanel {
             calendarTo  .add(Calendar.DAY_OF_MONTH, 1);
 
             // Get the length for the last year
-            int diffYear  = (calendarTo.get(Calendar.YEAR        ) - calendarFrom.get(Calendar.YEAR        ));
-            int diffMonth = (calendarTo.get(Calendar.MONTH       ) - calendarFrom.get(Calendar.MONTH       ));
+            int diffYear  = calendarTo.get(Calendar.YEAR        ) - calendarFrom.get(Calendar.YEAR        );
+            int diffMonth = calendarTo.get(Calendar.MONTH       ) - calendarFrom.get(Calendar.MONTH       );
 
             calendarTo  .add(Calendar.DAY_OF_MONTH, -1);
 

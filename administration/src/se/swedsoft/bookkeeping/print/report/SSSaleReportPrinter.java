@@ -305,10 +305,10 @@ public class SSSaleReportPrinter extends SSPrinter {
                         if(iProduct == null || iRow.getQuantity() == null) continue;
                         if(iRow.getSum() != null){
                             if(iAverageSellingPrice.containsKey(iProduct.getNumber())){
-                                iAverageSellingPrice.put(iProduct.getNumber(), iAverageSellingPrice.get(iProduct.getNumber()).add((SSInvoiceMath.convertToLocal(iInvoice,iRow.getSum()))));
+                                iAverageSellingPrice.put(iProduct.getNumber(), iAverageSellingPrice.get(iProduct.getNumber()).add(SSInvoiceMath.convertToLocal(iInvoice,iRow.getSum())));
                             }
                             else{
-                                iAverageSellingPrice.put(iProduct.getNumber(),(SSInvoiceMath.convertToLocal(iInvoice,iRow.getSum())));
+                                iAverageSellingPrice.put(iProduct.getNumber(), SSInvoiceMath.convertToLocal(iInvoice,iRow.getSum()));
                             }
                         }
 
@@ -345,7 +345,7 @@ public class SSSaleReportPrinter extends SSPrinter {
                             iCount.put(iProduct.getNumber(), iCount.get(iProduct.getNumber()) + (iRow.getQuantity() * -1));
                         }
                         else{
-                            iCount.put(iProduct.getNumber(), (iRow.getQuantity() * -1));
+                            iCount.put(iProduct.getNumber(), iRow.getQuantity() * -1);
                         }
                     }
                 }

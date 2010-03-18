@@ -151,9 +151,9 @@ public class SSOwnReportPrinter extends SSPrinter {
             for(ResultRow iRow: iCurrentRows){
                 SSAccount iAccount = iRow.iAccount;
 
-                boolean isColumn1 = (iColumn1 != null && iColumn1.containsKey(iAccount));
-                boolean isColumn2 = (iColumn2 != null && iColumn2.containsKey(iAccount));
-                boolean isColumn3 = (iColumn3 != null && iColumn3.containsKey(iAccount));
+                boolean isColumn1 = iColumn1 != null && iColumn1.containsKey(iAccount);
+                boolean isColumn2 = iColumn2 != null && iColumn2.containsKey(iAccount);
+                boolean isColumn3 = iColumn3 != null && iColumn3.containsKey(iAccount);
 
                 // Only add the row if any field from the result report is not null
                 if(isColumn1 || isColumn2 || isColumn3 ){

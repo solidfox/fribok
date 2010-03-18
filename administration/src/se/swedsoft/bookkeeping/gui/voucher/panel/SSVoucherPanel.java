@@ -231,7 +231,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                                 }
                             }
                         }
-                        BigDecimal iTotalSum = iInbalanceSum.add((iDebetSum.subtract(iCreditSum)));
+                        BigDecimal iTotalSum = iInbalanceSum.add(iDebetSum.subtract(iCreditSum));
                         iTotalSum = iTotalSum.setScale(2, RoundingMode.HALF_UP);
                         iSaldo.setValue(iTotalSum);
                     }
@@ -429,10 +429,10 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
             if (iAutoDistRow.getPercentage() != null && iValue != null) {
                 if (iAutoDistRow.getPercentage().doubleValue() < 0.0) {
                     BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1.0));
-                    iCredit = (iPercent.divide(new BigDecimal(100.0))).multiply(iValue);
+                    iCredit = iPercent.divide(new BigDecimal(100.0)).multiply(iValue);
                     iDebet = null;
                 } else if (iAutoDistRow.getPercentage().doubleValue() > 0.0) {
-                    iDebet = (iAutoDistRow.getPercentage().divide(new BigDecimal(100.0))).multiply(iValue);
+                    iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100.0)).multiply(iValue);
                     iCredit = null;
                 }
             }
@@ -480,18 +480,18 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                 if (iAutoDistRow.getPercentage().doubleValue() < 0.0) {
                     BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1.0));
                     if (iAutoDist.getAmount().doubleValue() < 0.0) {
-                        iCredit = (iPercent.divide(new BigDecimal(100.0))).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1.0)));
+                        iCredit = iPercent.divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1.0)));
                         iDebet = null;
                     } else {
-                        iCredit = (iPercent.divide(new BigDecimal(100.0))).multiply(iAutoDist.getAmount());
+                        iCredit = iPercent.divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount());
                         iDebet = null;
                     }
                 } else if (iAutoDistRow.getPercentage().doubleValue() > 0.0) {
                     if (iAutoDist.getAmount().doubleValue() < 0.0) {
-                        iDebet = (iAutoDistRow.getPercentage().divide(new BigDecimal(100.0))).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1.0)));
+                        iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1.0)));
                         iCredit = null;
                     } else {
-                        iDebet = (iAutoDistRow.getPercentage().divide(new BigDecimal(100.0))).multiply(iAutoDist.getAmount());
+                        iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount());
                         iCredit = null;
                     }
                 }

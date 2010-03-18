@@ -132,7 +132,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
             public void propertyChange(PropertyChangeEvent event) {
                 String iEvent = event.getPropertyName();
 
-                if ((iEvent.equals(JOptionPane.VALUE_PROPERTY) || iEvent.equals(JOptionPane.INPUT_VALUE_PROPERTY))) {
+                if (iEvent.equals(JOptionPane.VALUE_PROPERTY) || iEvent.equals(JOptionPane.INPUT_VALUE_PROPERTY)) {
 
                     if( pOptionPane.getValue() instanceof Integer ){
                         Integer iModalresult = (Integer) pOptionPane.getValue();

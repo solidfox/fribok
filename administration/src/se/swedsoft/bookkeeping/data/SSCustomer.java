@@ -711,7 +711,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
                 }
             }
         }
-        return(new BigDecimal(iInvoiceSum-iCreditInvoiceSum));
+        return new BigDecimal(iInvoiceSum-iCreditInvoiceSum);
     }
 
 

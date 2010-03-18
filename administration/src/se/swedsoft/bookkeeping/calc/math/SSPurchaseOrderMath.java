@@ -36,7 +36,7 @@ public class SSPurchaseOrderMath {
         Date iDate = iPurchaseOrder.getDate();
         Date iTo   = SSDateMath.ceil (pTo);
 
-        return  (iDate.getTime() <= iTo.getTime());
+        return iDate.getTime() <= iTo.getTime();
     }
 
 

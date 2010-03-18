@@ -101,7 +101,7 @@ public class SSVATReportDialog extends SSDialog  {
 
         Calendar iCalendar = Calendar.getInstance();
         if(iCurrentCompany.getVatPeriod() != null && iCurrentCompany.getVatPeriod() != 0){
-            iCalendar.add(Calendar.MONTH, (iCurrentCompany.getVatPeriod()*-1));
+            iCalendar.add(Calendar.MONTH, iCurrentCompany.getVatPeriod()*-1);
         }
         else{
             iCalendar.add(Calendar.MONTH, -1);

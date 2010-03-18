@@ -121,7 +121,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
                 break;
         }
 
-        if(iRow == iEditingRow && aValue != null  && (!"".equals(aValue))){
+        if(iRow == iEditingRow && aValue != null  && !"".equals(aValue)){
             add(iEditingRow);
             iEditingRow = new SSProductRow();
         }

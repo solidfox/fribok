@@ -173,7 +173,7 @@ public class SSResultCalculator {
      * @return
      */
     private boolean inProject(SSNewProject pRowProject, SSNewProject pProject){
-        return (pRowProject != null) && !pRowProject.isConcluded( iTo ) && ((pProject == null) || (pRowProject.equals(pProject)));
+        return (pRowProject != null) && !pRowProject.isConcluded( iTo ) && ((pProject == null) || pRowProject.equals(pProject));
     }
 
     /**
@@ -183,7 +183,7 @@ public class SSResultCalculator {
      * @return
      */
     private boolean inResultUnit(SSNewResultUnit pRowResultUnit, SSNewResultUnit pResultUnit){
-        return (pRowResultUnit != null) && ((pResultUnit == null) || (pRowResultUnit.equals(pResultUnit)));
+        return (pRowResultUnit != null) && ((pResultUnit == null) || pRowResultUnit.equals(pResultUnit));
     }
 
 

@@ -19,7 +19,7 @@ public class SSAccountGroupMath {
      */
     @Deprecated
     public static boolean isBalanceAccount(SSAccount iAccount){
-        return (iAccount.getNumber() >= 1000 && iAccount.getNumber() <= 2999);
+        return iAccount.getNumber() >= 1000 && iAccount.getNumber() <= 2999;
     }
 
     /**

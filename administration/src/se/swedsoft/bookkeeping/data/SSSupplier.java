@@ -551,7 +551,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
                 }
             }
         }
-        return(new BigDecimal(iSupplierInvoiceSum-iSupplierCreditInvoiceSum));
+        return new BigDecimal(iSupplierInvoiceSum-iSupplierCreditInvoiceSum);
     }
 
 }

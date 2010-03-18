@@ -75,7 +75,7 @@ public class SSMonth  implements Serializable {
      * @return boolean
      */
     public boolean isBetween(Date pFrom, Date pTo){
-        return (pFrom.compareTo(iFrom) <= 0 && pTo.compareTo(iFrom) >= 0);
+        return pFrom.compareTo(iFrom) <= 0 && pTo.compareTo(iFrom) >= 0;
     }
 
     /**

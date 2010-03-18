@@ -267,7 +267,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @param iDebet
          */
         public void setDebet(BigDecimal iDebet) {
-            this.iDebet = (iDebet != null);
+            this.iDebet = iDebet != null;
         }
 
         /**
@@ -275,7 +275,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @param iCredit
          */
         public void setCredit(BigDecimal iCredit) {
-            this.iDebet = (iCredit == null);
+            this.iDebet = iCredit == null;
         }
 
 

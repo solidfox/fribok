@@ -43,7 +43,7 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
     public static SSTableColumn<SSOwnReportAccountRow> COLUMN_ACCOUNT = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.1")) {
         @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
-            return iObject.getAccount() == null ? "" : (iObject.getAccount().getNumber() == null ? "" : iObject.getAccount().getNumber().toString());
+            return iObject.getAccount() == null ? "" : iObject.getAccount().getNumber() == null ? "" : iObject.getAccount().getNumber().toString();
         }
 
         @Override

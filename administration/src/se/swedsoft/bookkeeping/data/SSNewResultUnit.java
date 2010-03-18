@@ -132,7 +132,7 @@ public class SSNewResultUnit implements Serializable, SSTableSearchable {
      */
     public boolean equals(Object obj) {
         if(obj instanceof SSNewResultUnit)
-            return (((SSNewResultUnit)obj).iNumber).equals(iNumber);
+            return ((SSNewResultUnit)obj).iNumber.equals(iNumber);
 
         return super.equals(obj);
     }
@@ -192,7 +192,7 @@ public class SSNewResultUnit implements Serializable, SSTableSearchable {
                 }
             }
         }
-        return(new BigDecimal(iInvoiceSum-iCreditInvoiceSum));
+        return new BigDecimal(iInvoiceSum-iCreditInvoiceSum);
     }
 
 

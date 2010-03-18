@@ -84,7 +84,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
         // If we're editing the last row and the value is set add a new row
-        if( (rowIndex == super.getRowCount()) && (aValue != null) && (!EMPTY_STRING.equals(aValue)) ) {
+        if( (rowIndex == super.getRowCount()) && (aValue != null) && !EMPTY_STRING.equals(aValue)) {
             add(iEditing);
 
             iEditing = newObject();
