@@ -15,12 +15,6 @@ public class BgMaxReferens {
     public String iBGCLopnummer;
     public String iAvibildmarkering;
 
-    /**
-     *
-     */
-    public BgMaxReferens() {
-    }
-
 
     /**
      * Returns a string representation of the object. In general, the

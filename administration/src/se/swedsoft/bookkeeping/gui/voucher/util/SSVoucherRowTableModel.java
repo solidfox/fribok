@@ -29,13 +29,6 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
 
 
     /**
-     * Default constructor.
-     */
-    public SSVoucherRowTableModel() {
-        super();
-    }
-
-    /**
      *
      * @return
      */

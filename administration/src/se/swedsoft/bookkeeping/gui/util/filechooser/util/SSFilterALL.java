@@ -15,14 +15,6 @@ public class SSFilterALL extends FileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     /**
-     * 
-     */
-    public SSFilterALL(){
-        super();
-
-    }
-
-    /**
      * Whether the given file is accepted by this filter.
      */
     @Override

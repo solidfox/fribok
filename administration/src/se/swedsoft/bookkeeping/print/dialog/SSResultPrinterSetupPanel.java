@@ -28,15 +28,6 @@ public class SSResultPrinterSetupPanel {
 
 
     /**
-     * Default constructor.
-     */
-    public SSResultPrinterSetupPanel() {
-
-
-    }
-
-
-    /**
      *
      * @return
      */

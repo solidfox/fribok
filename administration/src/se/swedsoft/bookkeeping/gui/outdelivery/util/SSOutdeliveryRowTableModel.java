@@ -16,14 +16,6 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
 
 
     /**
-     * Default constructor.
-     */
-    public SSOutdeliveryRowTableModel() {
-        super();
-    }
-
-
-    /**
      * Returns the type of data in this model.
      *
      * @return The current data type.

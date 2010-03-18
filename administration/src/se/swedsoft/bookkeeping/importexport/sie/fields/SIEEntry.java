@@ -14,13 +14,6 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
  */
 public abstract class SIEEntry {
 
-    /**
-     * Default constructor
-     *
-     */
-    public SIEEntry(){
-    }
-
 
     /**
      * Imports the entry

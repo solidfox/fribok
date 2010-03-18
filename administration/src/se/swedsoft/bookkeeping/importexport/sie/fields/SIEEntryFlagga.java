@@ -17,12 +17,6 @@ public class SIEEntryFlagga extends SIEEntry {
 
 
     /**
-     */
-    public SIEEntryFlagga() {
-    }
-
-
-    /**
      * Imports the field
      *
      * @param iReader

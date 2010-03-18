@@ -59,10 +59,6 @@ public class BaseDirs {
         private final String mSystemPathsDefault;
     }
 
-    public BaseDirs()
-    {
-    }
-
     public String getUserPath( Resource resource )
     {
         if ( mUserPaths == null ) mUserPaths = new String[ Resource.values().length ];

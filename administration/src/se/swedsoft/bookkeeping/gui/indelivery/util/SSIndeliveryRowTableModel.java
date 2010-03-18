@@ -16,14 +16,6 @@ public class SSIndeliveryRowTableModel extends SSEditableTableModel<SSIndelivery
 
 
     /**
-     * Default constructor.
-     */
-    public SSIndeliveryRowTableModel() {
-        super();
-    }
-
-
-    /**
      * Returns the type of data in this model.
      *
      * @return The current data type.

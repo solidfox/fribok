@@ -22,14 +22,6 @@ public class SSImagePanel extends JPanel {
     private Integer iImageHeight;
 
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
-     * and a flow layout.
-     */
-    public SSImagePanel() {
-        super();
-    }
-
-    /**
      *
      * @return
      */
