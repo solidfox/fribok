@@ -24,7 +24,7 @@ import java.util.Date;
  * Date: 2006-feb-07
  * Time: 16:14:10
  */
-public class SSMainBookDialog extends SSDialog implements ActionListener {
+public class SSMainBookDialog extends SSDialog {
 
     private JPanel iPanel;
 

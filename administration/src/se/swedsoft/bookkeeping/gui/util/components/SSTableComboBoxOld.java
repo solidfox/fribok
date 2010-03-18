@@ -597,7 +597,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     /**
      *
      */
-    public static class CellEditor<T extends SSTableSearchable> extends DefaultCellEditor implements TableCellEditor{
+    public static class CellEditor<T extends SSTableSearchable> extends DefaultCellEditor {
         // The combobox were using
         private SSTableComboBoxOld<T> iComboBox;
 
