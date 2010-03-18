@@ -35,7 +35,6 @@ public class SSExchangeRateDialog extends SSDialog{
 
     /**
      * @param iDialog
-     * @param title
      */
     public SSExchangeRateDialog(JDialog iDialog) {
         super(iDialog, SSBundle.getBundle().getString("tenderframe.currencycalculator"));

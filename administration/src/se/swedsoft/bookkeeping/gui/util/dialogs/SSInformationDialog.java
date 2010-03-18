@@ -126,7 +126,7 @@ public class SSInformationDialog {
      *  Tle     = bundleName.title<br>
      *
      * @param iFrame
-     * @param bundleName
+     * @param pBundleName
      */
     public static void showDialog(JFrame iFrame, String pBundleName){
         new SSInformationDialog(iFrame, pBundleName);

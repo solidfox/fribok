@@ -52,9 +52,12 @@ public class SSVATUtil {
 
 
     /**
-     * @param accountR1 The account with the VAT code R1
-     * @param accountR2 The account with the VAT code R2
-     * @param accountA The account with the VAT code A
+     * @param name
+     * @param iDateFrom
+     * @param iDateTo
+     * @param iAccountR1 The account with the VAT code R1
+     * @param iAccountR2 The account with the VAT code R2
+     * @param iAccountA The account with the VAT code A
      *
      * @return The voucher
      */

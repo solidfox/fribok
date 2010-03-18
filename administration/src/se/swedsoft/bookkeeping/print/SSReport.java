@@ -366,7 +366,9 @@ public class SSReport {
      * @param pField
      * @param pFields
      * @param pParameters
-     * @param theFonts
+     * @param pVariables
+     * @param pGroups
+     * @param pFonts
      * @return
      */
     private JRBand getField(ReportField pField, List<JRField> pFields, List<JRParameter> pParameters, List<JRVariable> pVariables, List<JRGroup> pGroups, List<JRReportFont> pFonts) throws SSException{
