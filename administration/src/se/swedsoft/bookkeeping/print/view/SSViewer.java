@@ -38,7 +38,7 @@ public class SSViewer extends JPanel{
 
     private int  iZoom = 100;
 
-    private int  iPageIndex = 0;
+    private int  iPageIndex;
 
     private float iScale = 1.0f;
 

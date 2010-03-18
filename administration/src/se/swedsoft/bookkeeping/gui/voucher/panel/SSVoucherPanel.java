@@ -84,9 +84,9 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
 
     private JCheckBox iReopenDialog;
 
-    public static boolean iAccountChanged = false;
-    public static boolean iDebetChanged = false;
-    public static boolean iCreditChanged = false;
+    public static boolean iAccountChanged;
+    public static boolean iDebetChanged;
+    public static boolean iCreditChanged;
     private SSBigDecimalTextField iSaldo;
     private JTextField textField1;
     private SSBigDecimalTextField SSBigDecimalTextField1;

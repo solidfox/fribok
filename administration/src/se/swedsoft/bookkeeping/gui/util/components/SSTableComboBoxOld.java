@@ -52,7 +52,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
 
     private List<SSSelectionListener> iSelectionListeners;
     // Our current editor
-    protected CellEditor iEditor = null;
+    protected CellEditor iEditor;
 
 
 

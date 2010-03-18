@@ -13,8 +13,8 @@ import java.io.File;
  */
 public class SSImagePreview extends JComponent implements PropertyChangeListener {
 
-    private ImageIcon iThumbnail = null;
-    private File      iFile      = null;
+    private ImageIcon iThumbnail;
+    private File      iFile;
 
     /**
      *

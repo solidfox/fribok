@@ -47,7 +47,7 @@ public class SSMailServerDialog extends SSDialog {
 
     private SSMailServer iMailServer;
 
-    private boolean shouldSave = false;
+    private boolean shouldSave;
 
     public SSMailServerDialog(JDialog iParent) {
 

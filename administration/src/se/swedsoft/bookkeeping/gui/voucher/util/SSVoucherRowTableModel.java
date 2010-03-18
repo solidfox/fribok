@@ -25,7 +25,7 @@ import java.util.List;
 public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
 
 
-    private int iReadOnlyCount = 0;
+    private int iReadOnlyCount;
 
 
     /**

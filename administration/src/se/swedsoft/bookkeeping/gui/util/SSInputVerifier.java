@@ -25,7 +25,7 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
     private List<SSVerifierListener> iListeners;
 
     // The component that failed the validation
-    private JComponent iCurrentComponent = null;
+    private JComponent iCurrentComponent;
 
     /**
      *

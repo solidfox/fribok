@@ -134,7 +134,7 @@ public class SSButtonGroup implements ActionListener {
 
 
 
-    boolean iUpdating = false;
+    boolean iUpdating;
 
     /**
      *

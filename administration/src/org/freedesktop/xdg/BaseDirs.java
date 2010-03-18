@@ -161,6 +161,6 @@ public class BaseDirs {
         }
     }
 
-    private String[]   mUserPaths   = null;
-    private String[][] mSystemPaths = null;
+    private String[]   mUserPaths;
+    private String[][] mSystemPaths;
 }
