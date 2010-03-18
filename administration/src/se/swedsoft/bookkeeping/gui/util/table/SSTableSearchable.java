@@ -11,6 +11,6 @@ public interface SSTableSearchable {
      * 
      * @return The searchable string
      */
-    public String toRenderString();
+    String toRenderString();
 
 }

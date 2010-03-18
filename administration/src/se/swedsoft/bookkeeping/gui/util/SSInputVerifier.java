@@ -218,8 +218,8 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
     /**
      * Interface for the listeners
      */
-    public static interface SSVerifierListener{
-        public void updated(SSInputVerifier iVerifier, boolean iValid);
+    public interface SSVerifierListener{
+        void updated(SSInputVerifier iVerifier, boolean iValid);
 
 
     }

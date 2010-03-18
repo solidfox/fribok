@@ -5,6 +5,6 @@ package se.swedsoft.bookkeeping.gui.util;
  * Time: 13:16:45
  */
 public interface SSSelectionListener <T extends se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable>  {
-    public void selected(T selected);
+    void selected(T selected);
 
 }

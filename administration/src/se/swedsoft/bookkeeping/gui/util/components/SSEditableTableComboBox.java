@@ -16,13 +16,13 @@ import java.awt.event.ActionListener;
 public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel {
 
 
-    public static interface EditingFactory<T extends SSTableSearchable> {
+    public interface EditingFactory<T extends SSTableSearchable> {
 
-        public T newAction();
+        T newAction();
 
-        public void editAction(T iSelected);
+        void editAction(T iSelected);
 
-        public void deleteAction(T iSelected);
+        void deleteAction(T iSelected);
     }
 
 

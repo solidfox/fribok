@@ -29,7 +29,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
     private static ResourceBundle bundle = SSBundle.getBundle();
 
     public interface OnUpdate {
-        public void update(boolean valid, String Error);
+        void update(boolean valid, String Error);
     }
 
     private SSVoucher iVoucher;

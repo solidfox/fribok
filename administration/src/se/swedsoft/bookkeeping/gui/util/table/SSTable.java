@@ -28,8 +28,8 @@ public class SSTable extends JTable{
     /**
      *
      */
-    public static interface SSCustomPainter{
-        public void update(JTable iTable, Component c, int row, int col, boolean selected, boolean editable);
+    public interface SSCustomPainter{
+        void update(JTable iTable, Component c, int row, int col, boolean selected, boolean editable);
     }
 
     private List<ActionListener> iDblClickListeners;

@@ -7,6 +7,6 @@ package se.swedsoft.bookkeeping.calc.util;
  */
 public interface SSFilter<T> {
 
-    public boolean applyFilter(T iObject);
+    boolean applyFilter(T iObject);
 
 }

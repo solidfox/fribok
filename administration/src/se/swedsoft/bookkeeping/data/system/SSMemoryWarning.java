@@ -18,7 +18,7 @@ public class SSMemoryWarning {
         new ArrayList<Listener>();
 
     public interface Listener {
-        public void memoryUsageLow(long usedMemory, long maxMemory);
+        void memoryUsageLow(long usedMemory, long maxMemory);
     }
 
     public SSMemoryWarning() {
