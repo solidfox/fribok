@@ -32,7 +32,7 @@ public class SSSaleReportPrinter extends SSPrinter {
 
         private String iDescription;
 
-        private SortingMode(String iDescription) {
+        SortingMode(String iDescription) {
 
             this.iDescription = iDescription;
         }

@@ -20,7 +20,7 @@ public enum SSZoomLevel {
 
     private String iName;
 
-    private SSZoomLevel(int pZoom, String pName){
+    SSZoomLevel(int pZoom, String pName){
         iZoom = pZoom;
         iName = pName;
     }

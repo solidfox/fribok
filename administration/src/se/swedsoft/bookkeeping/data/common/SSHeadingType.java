@@ -18,7 +18,7 @@ public enum SSHeadingType implements SSTableSearchable {
      *
      * @param iName
      */
-    private SSHeadingType(String iName) {
+    SSHeadingType(String iName) {
         this.iName = iName;
     }
 

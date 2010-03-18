@@ -50,7 +50,7 @@ public enum SSDefaultAccount implements Serializable {
      *
      * @param pDefaultAccountNumber
      */
-    private SSDefaultAccount(int pDefaultAccountNumber) {
+    SSDefaultAccount(int pDefaultAccountNumber) {
         iDefaultAccountNumber = pDefaultAccountNumber;
     }
 

@@ -24,7 +24,7 @@ public enum SSTaxCode implements SSTableSearchable {
      *
      * @param iName
      */
-    private SSTaxCode(String iName) {
+    SSTaxCode(String iName) {
         this.iName = iName;
     }
 

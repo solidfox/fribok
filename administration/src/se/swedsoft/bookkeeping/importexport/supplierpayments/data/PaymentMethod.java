@@ -19,7 +19,7 @@ public enum PaymentMethod {
      *
      * @param iBundleName
      */
-    private PaymentMethod(String iBundleName) {
+    PaymentMethod(String iBundleName) {
         this.iBundleName = iBundleName;
     }
 

@@ -344,7 +344,7 @@ public enum SIELabel {
      * @param pEntry
      * @param pFormats
      */
-    private SIELabel(String pName, SIEEntry pEntry, SIEType ... pFormats){
+    SIELabel(String pName, SIEEntry pEntry, SIEType ... pFormats){
         iName    = pName;
         iEntry   = pEntry;
         iFormats = pFormats;

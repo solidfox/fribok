@@ -342,7 +342,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
          *
          * @param iBundleName
          */
-        private InterestAction(String iBundleName) {
+        InterestAction(String iBundleName) {
             this.iBundleName = iBundleName;
         }
 

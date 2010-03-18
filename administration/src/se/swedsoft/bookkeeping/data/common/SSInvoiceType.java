@@ -23,7 +23,7 @@ public enum SSInvoiceType {
      *
      * @param iResouceName
      */
-    private SSInvoiceType(String iResouceName) {
+    SSInvoiceType(String iResouceName) {
        this.iResouceName = iResouceName;
    }
 

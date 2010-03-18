@@ -23,7 +23,7 @@ public enum SIEType {
      *
      * @param pValue
      */
-    private SIEType(String pValue){
+    SIEType(String pValue){
         iValue = pValue;
     }
 
