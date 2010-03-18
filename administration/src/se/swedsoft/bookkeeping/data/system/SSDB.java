@@ -2579,7 +2579,7 @@ public class SSDB {
                     SSCustomerMath.iInvoicesForCustomers.get(iInvoice.getCustomerNr()).add(iInvoice);
                 }
                 else {
-                    LinkedList<SSInvoice> iNumbers = new LinkedList<SSInvoice>();
+                    List<SSInvoice> iNumbers = new LinkedList<SSInvoice>();
                     iNumbers.add(iInvoice);
                     SSCustomerMath.iInvoicesForCustomers.put(iInvoice.getCustomerNr(),iNumbers);
                 }
@@ -2776,7 +2776,7 @@ public class SSDB {
                     SSSupplierMath.iInvoicesForSuppliers.get(iSupplierInvoice.getSupplierNr()).add(iSupplierInvoice);
                 }
                 else {
-                    LinkedList<SSSupplierInvoice> iNumbers = new LinkedList<SSSupplierInvoice>();
+                    List<SSSupplierInvoice> iNumbers = new LinkedList<SSSupplierInvoice>();
                     iNumbers.add(iSupplierInvoice);
                     SSSupplierMath.iInvoicesForSuppliers.put(iSupplierInvoice.getSupplierNr(),iNumbers);
                 }

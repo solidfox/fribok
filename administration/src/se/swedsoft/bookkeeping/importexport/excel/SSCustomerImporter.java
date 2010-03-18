@@ -666,8 +666,8 @@ public class SSCustomerImporter {
         {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(iFile),"Windows-1252"));
             String text = null;
-            ArrayList<String> al = new ArrayList<String>();
-            ArrayList<String> iBadCustomers = new ArrayList<String>();
+            Collection<String> al = new ArrayList<String>();
+            Collection<String> iBadCustomers = new ArrayList<String>();
             Integer iCustomerCount = 0;
             while((text = br.readLine()) != null) {
                 al.add(text);

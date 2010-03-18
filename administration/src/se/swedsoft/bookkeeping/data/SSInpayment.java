@@ -322,7 +322,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
     }
 
     public List<SSInvoice> getInvoices() {
-        LinkedList<SSInvoice> iInvoices = new LinkedList<SSInvoice>();
+        List<SSInvoice> iInvoices = new LinkedList<SSInvoice>();
         for (SSInpaymentRow iRow : iRows) {
             if(iRow.getInvoice(SSDB.getInstance().getInvoices())!=null)
                 iInvoices.add(iRow.getInvoice(SSDB.getInstance().getInvoices()));

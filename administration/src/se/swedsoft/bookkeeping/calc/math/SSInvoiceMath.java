@@ -117,7 +117,7 @@ public class SSInvoiceMath extends SSSaleMath{
     }
 
     public static Map<Integer, BigDecimal> getSaldos(Date iDate){
-        HashMap<Integer,BigDecimal> iSaldos = new HashMap<Integer,BigDecimal>();
+        Map<Integer, BigDecimal> iSaldos = new HashMap<Integer,BigDecimal>();
 
         HashMap<Integer,BigDecimal> iInpaymentSum = SSInpaymentMath.getSumsForInvoices(iDate);
 

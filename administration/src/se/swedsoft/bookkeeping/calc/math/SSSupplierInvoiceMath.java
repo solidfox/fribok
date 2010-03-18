@@ -190,7 +190,7 @@ public class SSSupplierInvoiceMath {
     }
 
     public static Map<Integer, BigDecimal> getSaldos(Date iDate){
-        HashMap<Integer,BigDecimal> iSaldos = new HashMap<Integer,BigDecimal>();
+        Map<Integer, BigDecimal> iSaldos = new HashMap<Integer,BigDecimal>();
 
         HashMap<Integer,BigDecimal> iOutpaymentSum = SSOutpaymentMath.getSumsForSupplierInvoices(iDate);
 

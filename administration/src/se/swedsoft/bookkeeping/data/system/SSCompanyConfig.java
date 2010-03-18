@@ -4,6 +4,7 @@ import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.Vector;
 
 /**
@@ -95,7 +96,7 @@ public class SSCompanyConfig {
         ObjectOutputStream oos =null;
         ObjectInputStream ois = null;
 
-        Vector<Object> iVector = new Vector<Object>();
+        Collection<Object> iVector = new Vector<Object>();
         iVector.add(iCompany);
         //iVector.add(iCompany.getCurrentYear());
         try {

@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Class to launch browsers.
@@ -59,7 +60,7 @@ public class SSBrowserLaunch {
     }
 
     private static String getUnixBrowser() throws IOException, InterruptedException {
-        ArrayList<String> browsers = new ArrayList<String>();
+        Collection<String> browsers = new ArrayList<String>();
         // respect the user's preferences
         String env = System.getenv("BROWSER");
         if (env != null)

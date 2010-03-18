@@ -692,7 +692,7 @@ public class SSOrderImporter {
         {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(iFile),"Windows-1252"));
             String text = null;
-            ArrayList<String> al = new ArrayList<String>();
+            Collection<String> al = new ArrayList<String>();
             HashMap<Integer,ArrayList<String>> iResult = new HashMap<Integer,ArrayList<String>>();
             while((text = br.readLine()) != null) {
                 al.add(text);
@@ -715,7 +715,7 @@ public class SSOrderImporter {
                 }
             }
 
-            LinkedList<String> iBadOrders = new LinkedList<String>();
+            Collection<String> iBadOrders = new LinkedList<String>();
             Integer iOrderCount = 0;
 
             if(SSDB.getInstance().getProduct("frakt") == null/* && SSDB.getInstance().getProduct("frakt") == null && SSDB.getInstance().getProduct("FRAKT") == null*/){
@@ -727,11 +727,11 @@ public class SSOrderImporter {
                 SSErrorDialog.showDialog(SSMainFrame.getInstance(), "", "Du måste skapa en produkt med nummer \"Avgift\" innan du kan importera.");
                 return;
             }
-            ArrayList<Integer> iOrderNumbers = new ArrayList<Integer>(iResult.keySet());
+            List<Integer> iOrderNumbers = new ArrayList<Integer>(iResult.keySet());
             Collections.sort(iOrderNumbers);
             order:for(Integer iOrderNumber : iOrderNumbers){
                 SSOrder iOrder = new SSOrder();
-                ArrayList<String> iAl = iResult.get(iOrderNumber);
+                Iterable<String> iAl = iResult.get(iOrderNumber);
                 String iFeeString = "";
                 String iFreightString = "";
                 String iPaymentString = "";

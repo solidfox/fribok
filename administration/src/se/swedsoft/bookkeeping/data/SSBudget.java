@@ -302,7 +302,7 @@ public class SSBudget implements Serializable  {
      * @return The sum
      */
     public Map<SSAccount, BigDecimal> getSumForAccounts(){
-        HashMap<SSAccount, BigDecimal> sum = new HashMap<SSAccount, BigDecimal>();
+        Map<SSAccount, BigDecimal> sum = new HashMap<SSAccount, BigDecimal>();
 
         for(SSAccount account: getAccounts() ){
             sum.put(account, getSumForAccount(account) );
@@ -318,7 +318,7 @@ public class SSBudget implements Serializable  {
      * @return The sum
      */
     public Map<SSAccount, BigDecimal> getSumForAccounts(Date pFrom, Date pTo){
-        HashMap<SSAccount, BigDecimal> sum = new HashMap<SSAccount, BigDecimal>();
+        Map<SSAccount, BigDecimal> sum = new HashMap<SSAccount, BigDecimal>();
 
         for(SSAccount account: getAccounts() ){
             sum.put(account, getSumForAccount(account, pFrom, pTo) );

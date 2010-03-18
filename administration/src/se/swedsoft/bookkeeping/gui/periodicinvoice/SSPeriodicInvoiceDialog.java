@@ -315,7 +315,7 @@ public class SSPeriodicInvoiceDialog {
         if( iSelected == null) {
             return true;
         }
-        HashMap<SSPeriodicInvoice,List<SSInvoice>> iTemp = new HashMap<SSPeriodicInvoice,List<SSInvoice>>(iSelected);
+        Map<SSPeriodicInvoice, List<SSInvoice>> iTemp = new HashMap<SSPeriodicInvoice,List<SSInvoice>>(iSelected);
         for (SSPeriodicInvoice iPeriodicInvoice : iSelected.keySet()) {
 
             if(SSPostLock.isLocked("periodicinvoice"+iPeriodicInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId())){
