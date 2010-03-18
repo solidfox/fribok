@@ -28,9 +28,9 @@ public class SSOutdelivery implements Serializable {
      *
      */
     public SSOutdelivery() {
-        this.iDate  = new Date();
-        this.iText  = null;
-        this.iRows  = new LinkedList<SSOutdeliveryRow>();
+        iDate = new Date();
+        iText = null;
+        iRows = new LinkedList<SSOutdeliveryRow>();
 
         doAutoIncrement();
     }
@@ -67,10 +67,10 @@ public class SSOutdelivery implements Serializable {
      * @param iOutdelivery
      */
     public void copyFrom(SSOutdelivery iOutdelivery){
-        this.iNumber = iOutdelivery.iNumber;
-        this.iDate   = iOutdelivery.iDate;
-        this.iText   = iOutdelivery.iText;
-        this.iRows   = new LinkedList<SSOutdeliveryRow>();
+        iNumber = iOutdelivery.iNumber;
+        iDate   = iOutdelivery.iDate;
+        iText   = iOutdelivery.iText;
+        iRows   = new LinkedList<SSOutdeliveryRow>();
 
         for (SSOutdeliveryRow iRow : iOutdelivery.getRows()) {
             iRows.add( new SSOutdeliveryRow(iRow) );

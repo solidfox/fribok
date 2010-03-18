@@ -169,7 +169,7 @@ public class SSIndeliveryPanel {
      * @param iInventory
      */
     public void setIndelivery(SSIndelivery iInventory) {
-        this.iIndelivery = iInventory;
+        iIndelivery = iInventory;
 
         iModel.setObjects(iInventory.getRows());
 

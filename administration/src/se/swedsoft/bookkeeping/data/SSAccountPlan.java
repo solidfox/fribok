@@ -158,7 +158,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      * @param iAccountPlan
      */
     public void setBasePlan(SSAccountPlan iAccountPlan){
-        this.iBaseName = iAccountPlan == null ? null : iAccountPlan.getName();
+        iBaseName = iAccountPlan == null ? null : iAccountPlan.getName();
     }
 
     ///////////////////////////////////////////////////////////////////////////

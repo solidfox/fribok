@@ -127,9 +127,9 @@ public class SSMainFrame extends JFrame {
      *
      */
     public void saveSizeAndLocation(){
-        Integer iExtendedsState = SSMainFrame.this.getExtendedState();
-        Integer iWidth          = SSMainFrame.this.getWidth();
-        Integer iHeight         = SSMainFrame.this.getHeight();
+        Integer iExtendedsState = getExtendedState();
+        Integer iWidth          = getWidth();
+        Integer iHeight         = getHeight();
 
         SSConfig.getInstance().set("mainframe.extendedstate", iExtendedsState);
         SSConfig.getInstance().set("mainframe.width"        , iWidth);

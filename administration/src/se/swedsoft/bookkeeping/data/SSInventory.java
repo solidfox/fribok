@@ -29,10 +29,10 @@ public class SSInventory implements Serializable {
      *
      */
     public SSInventory() {
-        this.iNumber = 0;
-        this.iDate  = new Date();
-        this.iText  = "";
-        this.iRows  = new LinkedList<SSInventoryRow>();
+        iNumber = 0;
+        iDate   = new Date();
+        iText   = "";
+        iRows   = new LinkedList<SSInventoryRow>();
 
         doAutoIncrement();
     }
@@ -68,10 +68,10 @@ public class SSInventory implements Serializable {
      * @param iInventory
      */
     public void copyFrom(SSInventory iInventory){
-        this.iNumber = iInventory.iNumber;
-        this.iDate   = iInventory.iDate;
-        this.iText   = iInventory.iText;
-        this.iRows   = new LinkedList<SSInventoryRow>();
+        iNumber = iInventory.iNumber;
+        iDate   = iInventory.iDate;
+        iText   = iInventory.iText;
+        iRows   = new LinkedList<SSInventoryRow>();
 
         for (SSInventoryRow iRow : iInventory.getRows()) {
             iRows.add( new SSInventoryRow(iRow) );

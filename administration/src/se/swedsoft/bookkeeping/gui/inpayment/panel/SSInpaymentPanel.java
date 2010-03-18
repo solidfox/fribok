@@ -366,7 +366,7 @@ public class SSInpaymentPanel {
      */
     public void setInpayment(SSInpayment pInpayment) {
 
-        this.iInpayment = pInpayment;
+        iInpayment = pInpayment;
 
         // Inbetalningsnummer
         iNumber.setValue( iInpayment.getNumber() );
@@ -377,7 +377,7 @@ public class SSInpaymentPanel {
         // Bokförd
         iEntered.setSelected(iInpayment.isEntered());
         // Standardkonton
-        iDefaultAccounts.setDefaultAccounts( this.iInpayment.getDefaultAccounts() );
+        iDefaultAccounts.setDefaultAccounts(iInpayment.getDefaultAccounts() );
         // Kontering
         iVoucherTableModel.setVoucher( iInpayment.getVoucher() );
         // Differens verifikation

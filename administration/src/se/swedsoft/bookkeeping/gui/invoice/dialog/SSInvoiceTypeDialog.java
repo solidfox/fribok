@@ -36,23 +36,23 @@ public class SSInvoiceTypeDialog extends SSDialog {
         add(iPanel, BorderLayout.CENTER);
         pack();
 
-        this.iInvoiceType = null;
+        iInvoiceType = null;
 
         iType1Button .addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSInvoiceTypeDialog.this.iInvoiceType = iInvoiceType = SSInvoiceType.NORMAL;
-                SSInvoiceTypeDialog.this.setModalResult(JOptionPane.OK_OPTION, true);
+                iInvoiceType = iInvoiceType = SSInvoiceType.NORMAL;
+                setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
         iType2Button .addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSInvoiceTypeDialog.this.iInvoiceType = iInvoiceType = SSInvoiceType.CASH;
-                SSInvoiceTypeDialog.this.setModalResult(JOptionPane.OK_OPTION, true);
+                iInvoiceType = iInvoiceType = SSInvoiceType.CASH;
+                setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
         iCancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSInvoiceTypeDialog.this.setModalResult(JOptionPane.CANCEL_OPTION, true);
+                setModalResult(JOptionPane.CANCEL_OPTION, true);
             }
         });
     }

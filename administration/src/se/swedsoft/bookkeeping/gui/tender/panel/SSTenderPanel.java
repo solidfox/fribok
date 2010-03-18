@@ -365,7 +365,7 @@ public class SSTenderPanel{
      * @param pTender
      */
     public void setTender(SSTender pTender) {
-        this.iTender = pTender;
+        iTender = pTender;
 
 
         iModel.setObjects(pTender.getRows());
@@ -557,10 +557,10 @@ public class SSTenderPanel{
         BigDecimal                 iRounding = SSTenderMath.getRounding  (iTender);
 
         this.iNetSum     .setValue(iNetSum );
-        this.iTaxSum1    .setValue(iTaxSum.get(SSTaxCode.TAXRATE_1));
-        this.iTaxSum2    .setValue(iTaxSum.get(SSTaxCode.TAXRATE_2));
-        this.iTaxSum3    .setValue(iTaxSum.get(SSTaxCode.TAXRATE_3));
-        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff()) this.iRoundingSum.setValue(iRounding);
+        iTaxSum1.setValue(iTaxSum.get(SSTaxCode.TAXRATE_1));
+        iTaxSum2.setValue(iTaxSum.get(SSTaxCode.TAXRATE_2));
+        iTaxSum3.setValue(iTaxSum.get(SSTaxCode.TAXRATE_3));
+        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff()) iRoundingSum.setValue(iRounding);
         this.iTotalSum   .setValue(iTotalSum);
     }
 

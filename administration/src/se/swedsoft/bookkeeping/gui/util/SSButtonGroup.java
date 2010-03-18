@@ -145,7 +145,7 @@ public class SSButtonGroup implements ActionListener {
 
         if( iUpdating && iNewUpdating ) return true;
 
-        this.iUpdating = iNewUpdating;
+        iUpdating = iNewUpdating;
 
         return false;
     }

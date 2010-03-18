@@ -50,7 +50,7 @@ public class SSVATReport2007Printer extends SSPrinter {
         this.iAccountingYear   = iAccountingYear;
         this.iDateFrom       = iDateFrom;
         this.iDateTo         = iDateTo;
-        this.iAccounts       = iAccountingYear.getAccounts();
+        iAccounts = iAccountingYear.getAccounts();
 
         setPageHeader  ("header_period.jrxml");
         setColumnHeader("vatreport2007.jrxml");

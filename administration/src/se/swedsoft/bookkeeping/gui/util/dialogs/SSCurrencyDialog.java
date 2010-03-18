@@ -36,13 +36,13 @@ public class SSCurrencyDialog extends SSDialog{
 
         iButtonPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSCurrencyDialog.this.closeDialog(JOptionPane.OK_OPTION);
+                closeDialog(JOptionPane.OK_OPTION);
             }
         });
 
         iButtonPanel.addCancelActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSCurrencyDialog.this.closeDialog(JOptionPane.CANCEL_OPTION);
+                closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
         setLocationRelativeTo(iFrame);
@@ -58,13 +58,13 @@ public class SSCurrencyDialog extends SSDialog{
 
         iButtonPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSCurrencyDialog.this.closeDialog(JOptionPane.OK_OPTION);
+                closeDialog(JOptionPane.OK_OPTION);
             }
         });
 
         iButtonPanel.addCancelActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSCurrencyDialog.this.closeDialog(JOptionPane.CANCEL_OPTION);
+                closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
         setLocationRelativeTo(iDialog);

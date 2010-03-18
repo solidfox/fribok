@@ -55,8 +55,8 @@ public class SSSupplierExporter {
      * @param iFile
      */
     public SSSupplierExporter(File iFile){
-      this.iFile = iFile;
-      this.iSuppliers = SSDB.getInstance().getSuppliers();
+        this.iFile = iFile;
+        iSuppliers = SSDB.getInstance().getSuppliers();
     }
 
     /**

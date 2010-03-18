@@ -84,15 +84,15 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      * @param iAutoDist
      */
     public void copyFrom(SSAutoDist iAutoDist) {
-        this.iAccountNumber    = iAutoDist.iAccountNumber;
-        this.iAccount          = iAutoDist.iAccount;
-        this.iDescription      = iAutoDist.iDescription;
-        this.iAmount           = iAutoDist.iAmount;
-        this.iRows             = new LinkedList<SSAutoDistRow>();
+        iAccountNumber = iAutoDist.iAccountNumber;
+        iAccount       = iAutoDist.iAccount;
+        iDescription   = iAutoDist.iDescription;
+        iAmount        = iAutoDist.iAmount;
+        iRows          = new LinkedList<SSAutoDistRow>();
 
         // Copy all rows
         for(SSAutoDistRow iRow : iAutoDist.iRows){
-            this.iRows.add( new SSAutoDistRow(iRow) );
+            iRows.add( new SSAutoDistRow(iRow) );
         }
     }
 
@@ -112,7 +112,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      * @param iNumber
      */
     public void setAccountNumber(Integer iNumber) {
-        this.iAccountNumber = iNumber;
+        iAccountNumber = iNumber;
     }
 
     ////////////////////////////////////////////////////
@@ -130,7 +130,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      * @param iText
      */
     public void setDescrition(String iText) {
-        this.iDescription = iText;
+        iDescription = iText;
     }
 
     ////////////////////////////////////////////////////
@@ -186,7 +186,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
     public void setAccount(SSAccount iAccount) {
         if(iAccount == null) return;
         this.iAccount = iAccount;
-        this.iAccountNumber = iAccount.getNumber();
+        iAccountNumber = iAccount.getNumber();
     }
 
     /**

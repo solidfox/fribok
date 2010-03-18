@@ -81,27 +81,27 @@ public class SSPeriodicInvoice implements Serializable {
      * @param iPeriodicInvoice
      */
     public void copyFrom(SSPeriodicInvoice iPeriodicInvoice) {
-        this.iNumber           = iPeriodicInvoice.iNumber;
-        this.iPeriod           = iPeriodicInvoice.iPeriod;
-        this.iDate             = iPeriodicInvoice.iDate;
-        this.iCount            = iPeriodicInvoice.iCount;
-        this.iDescription      = iPeriodicInvoice.iDescription;
-        this.iPeriodStart      = iPeriodicInvoice.iPeriodStart;
-        this.iPeriodEnd        = iPeriodicInvoice.iPeriodEnd;
-        this.iAppendPeriod     = iPeriodicInvoice.iAppendPeriod;
-        this.iAppendInformation = iPeriodicInvoice.iAppendInformation;
-        this.iInformation      = iPeriodicInvoice.iInformation;
-        this.iTemplate         = new SSInvoice(iPeriodicInvoice.iTemplate);
-        this.iInvoices         = new LinkedList<SSInvoice>();
-        this.iAdded            = new HashMap<Integer, Boolean>();
-        this.iTemplate.setCurrency(iPeriodicInvoice.getTemplate().getCurrency());
-        this.iTemplate.setCurrencyRate(iPeriodicInvoice.getTemplate().getCurrencyRate());
+        iNumber            = iPeriodicInvoice.iNumber;
+        iPeriod            = iPeriodicInvoice.iPeriod;
+        iDate              = iPeriodicInvoice.iDate;
+        iCount             = iPeriodicInvoice.iCount;
+        iDescription       = iPeriodicInvoice.iDescription;
+        iPeriodStart       = iPeriodicInvoice.iPeriodStart;
+        iPeriodEnd         = iPeriodicInvoice.iPeriodEnd;
+        iAppendPeriod      = iPeriodicInvoice.iAppendPeriod;
+        iAppendInformation = iPeriodicInvoice.iAppendInformation;
+        iInformation       = iPeriodicInvoice.iInformation;
+        iTemplate          = new SSInvoice(iPeriodicInvoice.iTemplate);
+        iInvoices          = new LinkedList<SSInvoice>();
+        iAdded             = new HashMap<Integer, Boolean>();
+        iTemplate.setCurrency(iPeriodicInvoice.getTemplate().getCurrency());
+        iTemplate.setCurrencyRate(iPeriodicInvoice.getTemplate().getCurrencyRate());
 
         for (SSInvoice iInvoice : iPeriodicInvoice.iInvoices) {
             boolean isAdded = iPeriodicInvoice.isAdded(iInvoice);
 
-            this.iInvoices.add( new SSInvoice(iInvoice) );
-            this.iAdded   .put( iInvoice.getNumber(), isAdded);
+            iInvoices.add( new SSInvoice(iInvoice) );
+            iAdded.put( iInvoice.getNumber(), isAdded);
         }
     }
 
@@ -181,7 +181,7 @@ public class SSPeriodicInvoice implements Serializable {
      * @param iValue
      */
     public void setDate(Date iValue) {
-        this.iDate = iValue;
+        iDate = iValue;
 
         //createInvoices();
     }
@@ -201,7 +201,7 @@ public class SSPeriodicInvoice implements Serializable {
      * @param iValue
      */
     public void setCount(Integer iValue) {
-        this.iCount = iValue;
+        iCount = iValue;
 
         //createInvoices();
     }
@@ -221,7 +221,7 @@ public class SSPeriodicInvoice implements Serializable {
      * @param iValue
      */
     public void setPeriod(Integer iValue) {
-        this.iPeriod = iValue;
+        iPeriod = iValue;
         //createInvoices();
     }
 

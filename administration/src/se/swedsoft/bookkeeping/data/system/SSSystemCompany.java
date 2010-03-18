@@ -123,7 +123,7 @@ public class SSSystemCompany implements Serializable {
      */
     public void setData(SSNewCompany iCompany) {
         if(iCompany != null)
-            this.iName = iCompany.getName();
+            iName = iCompany.getName();
         
         this.iCompany = iCompany;
     }

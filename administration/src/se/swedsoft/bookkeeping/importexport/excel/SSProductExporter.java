@@ -63,7 +63,7 @@ public class SSProductExporter {
      */
     public SSProductExporter(File iFile) {
         this.iFile = iFile;
-        this.iProducts = SSDB.getInstance().getProducts();
+        iProducts = SSDB.getInstance().getProducts();
     }
 
     /**

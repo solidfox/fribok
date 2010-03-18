@@ -168,7 +168,7 @@ public class SSOutdeliveryPanel {
      * @param iInventory
      */
     public void setOutdelivery(SSOutdelivery iInventory) {
-        this.iOutdelivery = iInventory;
+        iOutdelivery = iInventory;
 
         iModel.setObjects(iInventory.getRows());
 

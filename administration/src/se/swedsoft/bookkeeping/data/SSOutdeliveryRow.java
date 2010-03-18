@@ -42,19 +42,18 @@ public class SSOutdeliveryRow implements Serializable {
      * @param iChange
      */
     public SSOutdeliveryRow(SSProduct iProduct, int iChange) {
-        this.iChange    = iChange;
-        this.iProduct   = iProduct;
-        this.iProductNr = iProduct == null ? null : iProduct.getNumber();
+        this.iChange  = iChange;
+        this.iProduct = iProduct;
+        iProductNr    = iProduct == null ? null : iProduct.getNumber();
 
     }
 
     /////////////////////////////////////////////////////////////////////////////
 
-
     public void copyFrom(SSOutdeliveryRow iOutdeliveryRow) {
-        this.iProductNr = iOutdeliveryRow.iProductNr;
-        this.iChange    = iOutdeliveryRow.iChange;
-        this.iProduct   = iOutdeliveryRow.iProduct;
+        iProductNr = iOutdeliveryRow.iProductNr;
+        iChange    = iOutdeliveryRow.iChange;
+        iProduct   = iOutdeliveryRow.iProduct;
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -117,8 +116,8 @@ public class SSOutdeliveryRow implements Serializable {
      * @param iProduct
      */
     public void setProduct(SSProduct iProduct) {
-        this.iProduct   = iProduct;
-        this.iProductNr = iProduct == null ? null : iProduct.getNumber();
+        this.iProduct = iProduct;
+        iProductNr    = iProduct == null ? null : iProduct.getNumber();
     }
 
     /////////////////////////////////////////////////////////////////////////////

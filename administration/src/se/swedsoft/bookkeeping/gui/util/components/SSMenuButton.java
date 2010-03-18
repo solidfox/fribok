@@ -49,7 +49,7 @@ public class SSMenuButton<T extends JButton> extends SSButton {
         addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                iPopup.show(SSMenuButton.this, 0, SSMenuButton.this.getHeight() );
+                iPopup.show(SSMenuButton.this, 0, getHeight() );
             }
         });
     }

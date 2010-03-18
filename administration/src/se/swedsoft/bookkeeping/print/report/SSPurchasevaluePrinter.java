@@ -33,7 +33,7 @@ public class SSPurchasevaluePrinter extends SSPrinter {
         this.iFrom       = iFrom;
         this.iTo          = iTo;
 
-        this.iMonths    = SSMonth.splitYearIntoMonths(iFrom,iTo);
+        iMonths = SSMonth.splitYearIntoMonths(iFrom,iTo);
 
         setPageHeader  ("header_period.jrxml");
         setColumnHeader("purchasevalues.jrxml");

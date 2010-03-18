@@ -215,7 +215,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
 
         iTable.addDblClickListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                SSAccountingYearFrame.this.openSelectedAccountingYear();
+                openSelectedAccountingYear();
             }
         });
 

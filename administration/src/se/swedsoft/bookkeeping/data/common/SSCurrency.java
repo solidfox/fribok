@@ -38,9 +38,9 @@ public class SSCurrency implements Serializable, SSTableSearchable {
      * @param iDescription
      */
     public SSCurrency( String iCode, String iDescription){
-        this.iCode         = iCode;
-        this.iDescription  = iDescription;
-        this.iExchangeRate = new BigDecimal(1.00);
+        this.iCode        = iCode;
+        this.iDescription = iDescription;
+        iExchangeRate     = new BigDecimal(1.00);
     }
 
     /**
@@ -60,9 +60,9 @@ public class SSCurrency implements Serializable, SSTableSearchable {
      * @param iCurrency
      */
     public void copyFrom(SSCurrency iCurrency) {
-        this.iCode         = iCurrency.iCode;
-        this.iDescription  = iCurrency.iDescription;
-        this.iExchangeRate = iCurrency.iExchangeRate;
+        iCode         = iCurrency.iCode;
+        iDescription  = iCurrency.iDescription;
+        iExchangeRate = iCurrency.iExchangeRate;
     }
 
 
@@ -79,7 +79,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
      * @param pCode
      */
     public void setName(String pCode) {
-        this.iCode = pCode;
+        iCode = pCode;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public void setDescription(String pDescription) {
-        this.iDescription = pDescription;
+        iDescription = pDescription;
     }
 
     ///////////////////////////////////////////////////////////////////////////

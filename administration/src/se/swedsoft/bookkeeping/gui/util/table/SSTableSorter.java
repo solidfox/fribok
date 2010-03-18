@@ -101,8 +101,8 @@ public class SSTableSorter extends AbstractTableModel {
     private List sortingColumns = new ArrayList();
 
     public SSTableSorter() {
-        this.mouseListener = new SSMouseHandler();
-        this.tableModelListener = new TableModelHandler();
+        mouseListener = new SSMouseHandler();
+        tableModelListener = new TableModelHandler();
     }
 
     public SSTableSorter(TableModel tableModel) {
@@ -303,7 +303,7 @@ public class SSTableSorter extends AbstractTableModel {
         private int modelIndex;
 
         public Row(int index) {
-            this.modelIndex = index;
+            modelIndex = index;
         }
 
         public int compareTo(Object o) {

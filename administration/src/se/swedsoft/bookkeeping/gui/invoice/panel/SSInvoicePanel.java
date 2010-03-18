@@ -516,7 +516,7 @@ public class SSInvoicePanel {
      * @param pOrder
      */
     public void setInvoice(SSInvoice pOrder) {
-        this.iInvoice = pOrder;
+        iInvoice = pOrder;
 
 
         iVoucherTableModel.setVoucher(iInvoice.getVoucher());
@@ -785,10 +785,10 @@ public class SSInvoicePanel {
         BigDecimal                 iRounding = SSInvoiceMath.getRounding  (iInvoice);
 
         this.iNetSum     .setValue(iNetSum );
-        this.iTaxSum1    .setValue(iTaxSum.get(SSTaxCode.TAXRATE_1));
-        this.iTaxSum2    .setValue(iTaxSum.get(SSTaxCode.TAXRATE_2));
-        this.iTaxSum3    .setValue(iTaxSum.get(SSTaxCode.TAXRATE_3));
-        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff()) this.iRoundingSum.setValue(iRounding);
+        iTaxSum1.setValue(iTaxSum.get(SSTaxCode.TAXRATE_1));
+        iTaxSum2.setValue(iTaxSum.get(SSTaxCode.TAXRATE_2));
+        iTaxSum3.setValue(iTaxSum.get(SSTaxCode.TAXRATE_3));
+        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff()) iRoundingSum.setValue(iRounding);
         this.iTotalSum   .setValue(iTotalSum);
     }
 

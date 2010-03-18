@@ -177,14 +177,14 @@ public class SSAdressPanel extends JPanel{
      * @param iAddress
      */
     public void setAdress(SSAddress iAddress) {
-        this.iAdress = iAddress;
+        iAdress = iAddress;
 
-        this.iName   .setText(iAddress.getName());
-        this.iAddress.setText(iAddress.getAddress1());
-        this.iStreet .setText(iAddress.getAddress2());
-        this.iCountry.setText(iAddress.getCountry());
-        this.iCity   .setText(iAddress.getCity());
-        this.iZipCode.setText(iAddress.getZipCode());
+        iName         .setText(iAddress.getName());
+        this.iAddress .setText(iAddress.getAddress1());
+        iStreet       .setText(iAddress.getAddress2());
+        iCountry      .setText(iAddress.getCountry());
+        iCity         .setText(iAddress.getCity());
+        iZipCode      .setText(iAddress.getZipCode());
     }
 
     /**

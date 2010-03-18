@@ -135,8 +135,8 @@ public class SSTenderListDialog extends SSDialog {
         }
         // Filter by date
         if(iCheckDate.isSelected() ){
-            final Date iDateFrom = this.iFromDate.getDate();
-            final Date iDateTo   = this.iToDate  .getDate();
+            final Date iDateFrom = iFromDate.getDate();
+            final Date iDateTo   = iToDate.getDate();
 
             iFactory.applyFilter(new SSFilter<SSTender>() {
                 public boolean applyFilter(SSTender iTender) {

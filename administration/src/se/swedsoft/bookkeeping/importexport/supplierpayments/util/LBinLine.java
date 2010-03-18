@@ -33,8 +33,8 @@ public class LBinLine {
      * @param iChars
      */
     public LBinLine(char[] iChars) {
-        this.iChars    = iChars;
-        this.iPosition = 0;
+        this.iChars = iChars;
+        iPosition   = 0;
     }
 
     /**

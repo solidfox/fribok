@@ -480,12 +480,12 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
 
                 iButton.addActionListener(new ActionListener(){
                     public void actionPerformed(ActionEvent e) {
-                        int index = SSVoucherFrame.this.iModel.indexOf(iVoucher );
+                        int index = iModel.indexOf(iVoucher );
 
-                        SSVoucherFrame.this.iTable.editCellAt(-1, -1);
+                        iTable.editCellAt(-1, -1);
                         if(index >= 0){
-                            SSVoucherFrame.this.iTable.setRowSelectionInterval(index, index);
-                            SSVoucherFrame.this.iTable.scrollRectToVisible(SSVoucherFrame.this.iTable.getCellRect(index, 0, true));
+                            iTable.setRowSelectionInterval(index, index);
+                            iTable.scrollRectToVisible(iTable.getCellRect(index, 0, true));
                         }
                     }
                 });

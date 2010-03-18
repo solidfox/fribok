@@ -25,8 +25,8 @@ public class SSIntegerTextField extends JFormattedTextField {
               public void actionPerformed(ActionEvent e) {
                   FocusEvent event = new FocusEvent(SSIntegerTextField.this, FocusEvent.FOCUS_LOST, false, SSIntegerTextField.this);
 
-                  SSIntegerTextField.this.processFocusEvent(event);
-                  SSIntegerTextField.this.requestFocus();
+                  processFocusEvent(event);
+                  requestFocus();
               }
           };
           getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "SETVALUE");

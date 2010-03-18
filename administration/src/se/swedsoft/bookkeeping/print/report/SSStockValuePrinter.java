@@ -37,10 +37,10 @@ public class SSStockValuePrinter extends SSPrinter {
      */
     public SSStockValuePrinter() {
         // Get all orders
-        this.iProducts    = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        this.iStock       = new SSStock();
-        this.iDate        = null;
-        this.iInprices    = SSProductMath.getInprices(iProducts);
+        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iStock    = new SSStock();
+        iDate     = null;
+        iInprices = SSProductMath.getInprices(iProducts);
 
         iStock.update();
 
@@ -56,10 +56,10 @@ public class SSStockValuePrinter extends SSPrinter {
      */
     public SSStockValuePrinter(Date iDate){
         // Get all orders
-        this.iProducts    = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        this.iStock       = new SSStock();
-        this.iDate        = iDate;
-        this.iInprices    = SSProductMath.getInprices(iProducts, iDate);
+        iProducts  = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iStock     = new SSStock();
+        this.iDate = iDate;
+        iInprices  = SSProductMath.getInprices(iProducts, iDate);
 
         iStock.update(iDate);
 

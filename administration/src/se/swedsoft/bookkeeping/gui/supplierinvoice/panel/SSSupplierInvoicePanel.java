@@ -751,7 +751,7 @@ public class SSSupplierInvoicePanel implements ActionListener{
             iOrdersForInvoice += iOrder.getNumber() + ", ";
         }
         iOrdersForInvoice = iOrdersForInvoice.substring(0,iOrdersForInvoice.lastIndexOf(", "));
-        this.iPurchaseOrder.setText(iOrdersForInvoice);
+        iPurchaseOrder.setText(iOrdersForInvoice);
     }
     /**
      *

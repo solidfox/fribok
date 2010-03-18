@@ -45,10 +45,10 @@ public class SSVATControl2007Printer extends SSPrinter {
      * @param iDateTo
      */
     public SSVATControl2007Printer(SSNewAccountingYear iAccountingYear, Date iDateFrom, Date iDateTo ){
-        this.iAccountingYear   = iAccountingYear;
+        this.iAccountingYear = iAccountingYear;
         this.iDateFrom       = iDateFrom;
         this.iDateTo         = iDateTo;
-        this.iAccounts       = iAccountingYear.getAccounts();
+        iAccounts            = iAccountingYear.getAccounts();
 
         setPageHeader  ("header_period.jrxml");
         setColumnHeader("vatcontrol2007.jrxml");

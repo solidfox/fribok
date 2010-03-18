@@ -106,23 +106,23 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @param iPurchaseOrder
      */
     public SSSupplierInvoice(SSPurchaseOrder iPurchaseOrder) {
-        this.iDate = getLastDate();
-        this.iSupplier        = iPurchaseOrder.iSupplier;
-        this.iNumber          = iPurchaseOrder.iNumber;
-        this.iSupplier        = iPurchaseOrder.iSupplier;
-        this.iSupplierNr      = iPurchaseOrder.iSupplierNr;
-        this.iSupplierName    = iPurchaseOrder.iSupplierName;
-        this.iCurrency        = iPurchaseOrder.iCurrency;
-        this.iCurrencyRate    = iPurchaseOrder.getCurrencyRate();
-        this.iVoucher         = new SSVoucher();
-        this.iCorrection      = new SSVoucher();
-        this.iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
-        this.iRows            = new LinkedList<SSSupplierInvoiceRow>();
-        this.iRoundingSum     = new BigDecimal(0);
+        iDate            = getLastDate();
+        iSupplier        = iPurchaseOrder.iSupplier;
+        iNumber          = iPurchaseOrder.iNumber;
+        iSupplier        = iPurchaseOrder.iSupplier;
+        iSupplierNr      = iPurchaseOrder.iSupplierNr;
+        iSupplierName    = iPurchaseOrder.iSupplierName;
+        iCurrency        = iPurchaseOrder.iCurrency;
+        iCurrencyRate    = iPurchaseOrder.getCurrencyRate();
+        iVoucher         = new SSVoucher();
+        iCorrection      = new SSVoucher();
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        iRows            = new LinkedList<SSSupplierInvoiceRow>();
+        iRoundingSum     = new BigDecimal(0);
 
         // Copy all default accounts
         for (SSDefaultAccount iDefaultAccount : iPurchaseOrder.getDefaultAccounts().keySet()) {
-            this.iDefaultAccounts.put(iDefaultAccount, iPurchaseOrder.getDefaultAccounts().get(iDefaultAccount));
+            iDefaultAccounts.put(iDefaultAccount, iPurchaseOrder.getDefaultAccounts().get(iDefaultAccount));
         }
 
 
@@ -136,33 +136,33 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @param iSupplierInvoice
      */
     public void copyFrom(SSSupplierInvoice iSupplierInvoice) {
-        this.iNumber           = iSupplierInvoice.iNumber;
-        this.iDate             = iSupplierInvoice.iDate;
-        this.iPaymentTerm      = iSupplierInvoice.iPaymentTerm;
-        this.iDueDate          = iSupplierInvoice.iDueDate;
-        this.iSupplierNr       = iSupplierInvoice.iSupplierNr;
-        this.iSupplierName     = iSupplierInvoice.iSupplierName;
-        this.iReferencenumber  = iSupplierInvoice.iReferencenumber;
-        this.iCurrency         = iSupplierInvoice.iCurrency;
-        this.iCurrencyRate     = iSupplierInvoice.iCurrencyRate;
-        this.iTaxSum           = iSupplierInvoice.iTaxSum;
-        this.iRoundingSum      = iSupplierInvoice.iRoundingSum;
-        this.iStockInfluencing = iSupplierInvoice.iStockInfluencing;
-        this.iEntered          = iSupplierInvoice.iEntered;
-        this.iBGCEntered       = iSupplierInvoice.iBGCEntered;
+        iNumber           = iSupplierInvoice.iNumber;
+        iDate             = iSupplierInvoice.iDate;
+        iPaymentTerm      = iSupplierInvoice.iPaymentTerm;
+        iDueDate          = iSupplierInvoice.iDueDate;
+        iSupplierNr       = iSupplierInvoice.iSupplierNr;
+        iSupplierName     = iSupplierInvoice.iSupplierName;
+        iReferencenumber  = iSupplierInvoice.iReferencenumber;
+        iCurrency         = iSupplierInvoice.iCurrency;
+        iCurrencyRate     = iSupplierInvoice.iCurrencyRate;
+        iTaxSum           = iSupplierInvoice.iTaxSum;
+        iRoundingSum      = iSupplierInvoice.iRoundingSum;
+        iStockInfluencing = iSupplierInvoice.iStockInfluencing;
+        iEntered          = iSupplierInvoice.iEntered;
+        iBGCEntered       = iSupplierInvoice.iBGCEntered;
 
-        this.iVoucher         = new SSVoucher(iSupplierInvoice.iVoucher);
-        this.iCorrection      = new SSVoucher(iSupplierInvoice.iCorrection);
+        iVoucher          = new SSVoucher(iSupplierInvoice.iVoucher);
+        iCorrection       = new SSVoucher(iSupplierInvoice.iCorrection);
 
-        this.iSupplier          = iSupplierInvoice.iSupplier;
-        this.iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
+        iSupplier         = iSupplierInvoice.iSupplier;
+        iDefaultAccounts  = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all default accounts
         for (SSDefaultAccount iDefaultAccount : iSupplierInvoice.getDefaultAccounts().keySet()) {
-            this.iDefaultAccounts.put(iDefaultAccount, iSupplierInvoice.getDefaultAccounts().get(iDefaultAccount));
+            iDefaultAccounts.put(iDefaultAccount, iSupplierInvoice.getDefaultAccounts().get(iDefaultAccount));
         }
 
-        this.iRows = new LinkedList<SSSupplierInvoiceRow>();
+        iRows = new LinkedList<SSSupplierInvoiceRow>();
         for (SSSupplierInvoiceRow iRow : iSupplierInvoice.iRows) {
             iRows.add( new SSSupplierInvoiceRow(iRow) );
         }
@@ -182,7 +182,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
             }
         }
 
-        this.iNumber = iMax + 1;
+        iNumber = iMax + 1;
     }
 
 
@@ -434,7 +434,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      */
     public void setSupplier(SSSupplier iSupplier) {
         this.iSupplier   = iSupplier;
-        this.iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
+        iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
 
         if(iSupplier != null){
             iSupplierName     = iSupplier.getName();
@@ -605,7 +605,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      *
      */
     public void setEntered() {
-        this.iEntered = true;
+        iEntered = true;
     }
 
     ////////////////////////////////////////////////////
@@ -630,7 +630,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      *
      */
     public void setBGCEntered() {
-        this.iBGCEntered = true;
+        iBGCEntered = true;
     }
 
     ////////////////////////////////////////////////////

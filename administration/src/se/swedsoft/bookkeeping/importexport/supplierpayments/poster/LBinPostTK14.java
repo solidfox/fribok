@@ -33,11 +33,11 @@ public class LBinPostTK14 extends LBinPost {
      * @param iNumber
      */
     public LBinPostTK14(SupplierPayment iPayment, String iNumber) {
-        this.iNumber    = iNumber.replaceAll("-", "");
-        this.iReference = iPayment.getReference();
-        this.iValue     = iPayment.getValue();
-        this.iDate      = iPayment.getDate();
-        this.iInvoiceNr = iPayment.getNumber();
+        this.iNumber = iNumber.replaceAll("-", "");
+        iReference   = iPayment.getReference();
+        iValue       = iPayment.getValue();
+        iDate        = iPayment.getDate();
+        iInvoiceNr   = iPayment.getNumber();
     }
 
     /**

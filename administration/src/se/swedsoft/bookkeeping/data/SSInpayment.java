@@ -84,22 +84,22 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      * @param iInpayment
      */
     public void copyFrom(SSInpayment iInpayment) {
-        this.iNumber           = iInpayment.iNumber;
-        this.iDate             = iInpayment.iDate;
-        this.iText             = iInpayment.iText;
-        this.iEntered          = iInpayment.iEntered;
-        this.iVoucher          = new SSVoucher(iInpayment.iVoucher);
-        this.iDifference       = new SSVoucher(iInpayment.iDifference);
-        this.iRows             = new LinkedList<SSInpaymentRow>();
-        this.iDefaultAccounts  = new HashMap<SSDefaultAccount, Integer>();
+        iNumber          = iInpayment.iNumber;
+        iDate            = iInpayment.iDate;
+        iText            = iInpayment.iText;
+        iEntered         = iInpayment.iEntered;
+        iVoucher         = new SSVoucher(iInpayment.iVoucher);
+        iDifference      = new SSVoucher(iInpayment.iDifference);
+        iRows            = new LinkedList<SSInpaymentRow>();
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all rows
         for(SSInpaymentRow iRow : iInpayment.iRows){
-            this.iRows.add( new SSInpaymentRow(iRow) );
+            iRows.add( new SSInpaymentRow(iRow) );
         }
 
         // Copy all default accounts
-        this.iDefaultAccounts.putAll( iInpayment.getDefaultAccounts() );
+        iDefaultAccounts.putAll( iInpayment.getDefaultAccounts() );
     }
 
     ////////////////////////////////////////////////////
@@ -307,7 +307,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      *
      */
     public void setEntered() {
-        this.iEntered = true;
+        iEntered = true;
     }
     ////////////////////////////////////////////////////
 

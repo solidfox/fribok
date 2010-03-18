@@ -20,7 +20,7 @@ public class SymetricCrypter
     private Cipher cipher;
     
     public SymetricCrypter(byte[] keyBytes) {
-       this.key = new SecretKeySpec(keyBytes, "DES");
+        key = new SecretKeySpec(keyBytes, "DES");
    
        try {
             cipher = Cipher.getInstance("DES/ECB/PKCS5PADDING");

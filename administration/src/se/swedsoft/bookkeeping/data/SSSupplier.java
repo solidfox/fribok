@@ -78,11 +78,11 @@ public class SSSupplier implements Serializable, SSTableSearchable {
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
         if(iCompany != null){
-            this.iOurContact      = iCompany.getContactPerson();
-            this.iCurrency        = iCompany.getCurrency();
-            this.iPaymentTerm     = iCompany.getPaymentTerm();
-            this.iDeliveryTerm    = iCompany.getDeliveryTerm();
-            this.iDeliveryWay     = iCompany.getDeliveryWay();
+            iOurContact   = iCompany.getContactPerson();
+            iCurrency     = iCompany.getCurrency();
+            iPaymentTerm  = iCompany.getPaymentTerm();
+            iDeliveryTerm = iCompany.getDeliveryTerm();
+            iDeliveryWay  = iCompany.getDeliveryWay();
         }
     }
 
@@ -92,24 +92,24 @@ public class SSSupplier implements Serializable, SSTableSearchable {
      * @param iSupplier
      */
     public SSSupplier(SSSupplier iSupplier) {
-        this.iNumber                = iSupplier.iNumber;
-        this.iName                  = iSupplier.iName;
-        this.iPhone                 = iSupplier.iPhone;
-        this.iPhone2                = iSupplier.iPhone2;
-        this.iTeleFax               = iSupplier.iTeleFax;
-        this.iEmail                 = iSupplier.iEmail;
-        this.iHomepage              = iSupplier.iHomepage;
-        this.iRegistrationNumber    = iSupplier.iRegistrationNumber;
-        this.iYourContact           = iSupplier.iYourContact;
-        this.iOurContact            = iSupplier.iOurContact;
-        this.iOurCustomerNr         = iSupplier.iOurCustomerNr;
-        this.iBankAccountNumber     = iSupplier.iBankAccountNumber;
-        this.iPlusAccountNumber     = iSupplier.iPlusAccountNumber;
-        this.iCurrency              = iSupplier.iCurrency;
-        this.iPaymentTerm           = iSupplier.iPaymentTerm;
-        this.iDeliveryTerm          = iSupplier.iDeliveryTerm;
-        this.iDeliveryWay           = iSupplier.iDeliveryWay;
-        this.iAddress               = new SSAddress(iSupplier.iAddress);
+        iNumber             = iSupplier.iNumber;
+        iName               = iSupplier.iName;
+        iPhone              = iSupplier.iPhone;
+        iPhone2             = iSupplier.iPhone2;
+        iTeleFax            = iSupplier.iTeleFax;
+        iEmail              = iSupplier.iEmail;
+        iHomepage           = iSupplier.iHomepage;
+        iRegistrationNumber = iSupplier.iRegistrationNumber;
+        iYourContact        = iSupplier.iYourContact;
+        iOurContact         = iSupplier.iOurContact;
+        iOurCustomerNr      = iSupplier.iOurCustomerNr;
+        iBankAccountNumber  = iSupplier.iBankAccountNumber;
+        iPlusAccountNumber  = iSupplier.iPlusAccountNumber;
+        iCurrency           = iSupplier.iCurrency;
+        iPaymentTerm        = iSupplier.iPaymentTerm;
+        iDeliveryTerm       = iSupplier.iDeliveryTerm;
+        iDeliveryWay        = iSupplier.iDeliveryWay;
+        iAddress            = new SSAddress(iSupplier.iAddress);
     }
 
     //////////////////////////////////////////////////////
@@ -127,7 +127,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
      * @param iSupplierNr
      */
     public void setNumber(String iSupplierNr) {
-        this.iNumber = iSupplierNr;
+        iNumber = iSupplierNr;
     }
 
     //////////////////////////////////////////////////////
@@ -199,7 +199,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
      * @param iTelefax
      */
     public void setTelefax(String iTelefax) {
-        this.iTeleFax = iTelefax;
+        iTeleFax = iTelefax;
     }
 
     //////////////////////////////////////////////////////

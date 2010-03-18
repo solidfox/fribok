@@ -98,9 +98,9 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         if(iCompany != null){
             iOurContactPerson = iCompany.getContactPerson();
             iInvoiceCurrency  = iCompany.getCurrency();
-            iPaymentTerm = iCompany.getPaymentTerm();
-            iDeliveryTerm = iCompany.getDeliveryTerm();
-            iDeliveryWay = iCompany.getDeliveryWay();
+            iPaymentTerm      = iCompany.getPaymentTerm();
+            iDeliveryTerm     = iCompany.getDeliveryTerm();
+            iDeliveryWay      = iCompany.getDeliveryWay();
         //     setCurrency         ( iCompany.getCurrency()  );
         }
     }
@@ -111,32 +111,32 @@ public class SSCustomer implements Serializable, SSTableSearchable {
      * @param iCustomer
      */
     public SSCustomer(SSCustomer iCustomer) {
-        this.iCustomerNr                = iCustomer.iCustomerNr;
-        this.iName                      = iCustomer.iName;
-        this.iEMail                     = iCustomer.iEMail;
-        this.iPhone                     = iCustomer.iPhone;
-        this.iPhone2                    = iCustomer.iPhone2;
-        this.iTelefax                   = iCustomer.iTelefax;
-        this.iRegistrationNumber        = iCustomer.iRegistrationNumber;
-        this.iOurContactPerson          = iCustomer.iOurContactPerson;
-        this.iYourContactPerson         = iCustomer.iYourContactPerson;
-        this.iVATNumber                 = iCustomer.iVATNumber;
-        this.iBankAccountNumber         = iCustomer.iBankAccountNumber;
-        this.iPlusAccountNumber         = iCustomer.iPlusAccountNumber;
-        this.iAccountNumber             = iCustomer.iAccountNumber;
-        this.iClearingNumber            = iCustomer.iClearingNumber;
-        this.iEuSaleCommodity           = iCustomer.iEuSaleCommodity;
-        this.iEuSaleYhirdPartCommodity  = iCustomer.iEuSaleYhirdPartCommodity;
-        this.iVatFreeSale               = iCustomer.iVatFreeSale;
-        this.iHideUnitprice             = iCustomer.iHideUnitprice;
-        this.iInvoiceCurrency           = iCustomer.iInvoiceCurrency;
-        this.iPaymentTerm               = iCustomer.iPaymentTerm;
-        this.iDeliveryTerm              = iCustomer.iDeliveryTerm;
-        this.iDeliveryWay               = iCustomer.iDeliveryWay;
-        this.iCreditLimit               = iCustomer.iCreditLimit;
-        this.iDiscount                  = iCustomer.iDiscount;
-        this.iInvoiceAddress            = new SSAddress(iCustomer.iInvoiceAddress );
-        this.iDeliveryAddress           = new SSAddress(iCustomer.iDeliveryAddress);
+        iCustomerNr               = iCustomer.iCustomerNr;
+        iName                     = iCustomer.iName;
+        iEMail                    = iCustomer.iEMail;
+        iPhone                    = iCustomer.iPhone;
+        iPhone2                   = iCustomer.iPhone2;
+        iTelefax                  = iCustomer.iTelefax;
+        iRegistrationNumber       = iCustomer.iRegistrationNumber;
+        iOurContactPerson         = iCustomer.iOurContactPerson;
+        iYourContactPerson        = iCustomer.iYourContactPerson;
+        iVATNumber                = iCustomer.iVATNumber;
+        iBankAccountNumber        = iCustomer.iBankAccountNumber;
+        iPlusAccountNumber        = iCustomer.iPlusAccountNumber;
+        iAccountNumber            = iCustomer.iAccountNumber;
+        iClearingNumber           = iCustomer.iClearingNumber;
+        iEuSaleCommodity          = iCustomer.iEuSaleCommodity;
+        iEuSaleYhirdPartCommodity = iCustomer.iEuSaleYhirdPartCommodity;
+        iVatFreeSale              = iCustomer.iVatFreeSale;
+        iHideUnitprice            = iCustomer.iHideUnitprice;
+        iInvoiceCurrency          = iCustomer.iInvoiceCurrency;
+        iPaymentTerm              = iCustomer.iPaymentTerm;
+        iDeliveryTerm             = iCustomer.iDeliveryTerm;
+        iDeliveryWay              = iCustomer.iDeliveryWay;
+        iCreditLimit              = iCustomer.iCreditLimit;
+        iDiscount                 = iCustomer.iDiscount;
+        iInvoiceAddress           = new SSAddress(iCustomer.iInvoiceAddress );
+        iDeliveryAddress          = new SSAddress(iCustomer.iDeliveryAddress);
     }
 
     //////////////////////////////////////////////////////
@@ -154,7 +154,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
      * @param iNumber
      */
     public void setNumber(String iNumber) {
-        this.iCustomerNr = iNumber;
+        iCustomerNr = iNumber;
     }
 
     //////////////////////////////////////////////////////
@@ -440,7 +440,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
      * @param iTaxFree
      */
     public void setTaxFree(boolean iTaxFree) {
-        this.iVatFreeSale = iTaxFree;
+        iVatFreeSale = iTaxFree;
     }
 
     //////////////////////////////////////////////////////

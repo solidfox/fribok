@@ -24,7 +24,7 @@ public class SSIcon {
         private final String iName;
 
         IconState(String pName) {
-            this.iName = pName;
+            iName = pName;
         }
         public String getName() {
             return iName;

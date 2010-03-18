@@ -37,7 +37,7 @@ public class SSVoucherImporter {
      */
     public SSVoucherImporter(File iFile) {
         this.iFile = iFile;
-        this.iColumns = new HashMap<String, Integer>();
+        iColumns   = new HashMap<String, Integer>();
     }
 
 

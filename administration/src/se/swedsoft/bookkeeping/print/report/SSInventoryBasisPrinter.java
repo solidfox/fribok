@@ -32,8 +32,8 @@ public class SSInventoryBasisPrinter extends SSPrinter {
      */
     public SSInventoryBasisPrinter() {
         // Get all stock products
-        this.iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        this.iStock    = new SSStock();
+        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iStock = new SSStock();
 
         iStock.update();
 
@@ -48,8 +48,8 @@ public class SSInventoryBasisPrinter extends SSPrinter {
      */
     public SSInventoryBasisPrinter( Date iDate){
         // Get all stock products
-        this.iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        this.iStock    = new SSStock();
+        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iStock = new SSStock();
 
         iStock.update(iDate);
 

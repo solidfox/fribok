@@ -344,14 +344,14 @@ public class SSTable extends JTable{
      * is able to clean up the object.
      */
     public void dispose() {
-        MouseListener[] iMouseListeners = this.getMouseListeners();
+        MouseListener[] iMouseListeners = getMouseListeners();
         for (MouseListener iMouseListener : iMouseListeners) {
-            this.removeMouseListener(iMouseListener);
+            removeMouseListener(iMouseListener);
         }
-        DefaultListSelectionModel iSelectionModel=(DefaultListSelectionModel)this.getSelectionModel();
+        DefaultListSelectionModel iSelectionModel=(DefaultListSelectionModel) getSelectionModel();
         ListSelectionListener[] iSelectionListeners = iSelectionModel.getListSelectionListeners();
         for (ListSelectionListener iSelectionListener : iSelectionListeners) {
-            this.getSelectionModel().removeListSelectionListener(iSelectionListener);
+            getSelectionModel().removeListSelectionListener(iSelectionListener);
         }
         if(iDblClickListeners!=null)
             iDblClickListeners.removeAll(iDblClickListeners);

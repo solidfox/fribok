@@ -50,9 +50,9 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      */
     public SSSupplierCreditInvoice(SSSupplierInvoice iSupplierInvoice) {
         super(iSupplierInvoice);
-        this.iDate         = new Date();
-        this.iCreditingNr  = iSupplierInvoice.getNumber();
-        this.iCrediting    = iSupplierInvoice;
+        iDate        = new Date();
+        iCreditingNr = iSupplierInvoice.getNumber();
+        iCrediting   = iSupplierInvoice;
 
     }
 
@@ -86,8 +86,8 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
     public void copyFrom(SSSupplierCreditInvoice iSSSupplierCreditInvoice) {
         super.copyFrom(iSSSupplierCreditInvoice);
 
-        this.iCreditingNr  = iSSSupplierCreditInvoice.iCreditingNr;
-        this.iCrediting    = iSSSupplierCreditInvoice.iCrediting;
+        iCreditingNr = iSSSupplierCreditInvoice.iCreditingNr;
+        iCrediting   = iSSSupplierCreditInvoice.iCrediting;
     }
 
 
@@ -141,11 +141,11 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      * @param iCrediting
      */
     public void setCrediting(SSSupplierInvoice iCrediting) {
-        this.iCrediting   = iCrediting;
+        this.iCrediting = iCrediting;
         if (iCrediting == null) {
-            this.iCreditingNr = null;
+            iCreditingNr = null;
         } else {
-            this.iCreditingNr = iCrediting.getNumber();
+            iCreditingNr = iCrediting.getNumber();
         }
     }
 

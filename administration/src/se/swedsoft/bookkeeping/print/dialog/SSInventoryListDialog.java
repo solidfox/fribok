@@ -111,8 +111,8 @@ public class SSInventoryListDialog extends SSDialog {
         }
         // Filter by date
         if(iCheckDate.isSelected() ){
-            final Date iDateFrom = this.iFromDate.getDate();
-            final Date iDateTo   = this.iToDate  .getDate();
+            final Date iDateFrom = iFromDate.getDate();
+            final Date iDateTo   = iToDate.getDate();
 
 
             iInventories = SSFilterFactory.doFilter(iInventories, new SSFilter<SSInventory>() {

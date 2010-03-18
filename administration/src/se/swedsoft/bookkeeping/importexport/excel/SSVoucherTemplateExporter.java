@@ -41,8 +41,8 @@ public class SSVoucherTemplateExporter {
      * @param iFile
      */
     public SSVoucherTemplateExporter(File iFile){
-      this.iFile = iFile;
-      this.iVouchers = SSDB.getInstance().getVoucherTemplates();
+        this.iFile = iFile;
+        iVouchers  = SSDB.getInstance().getVoucherTemplates();
     }
 
     /**

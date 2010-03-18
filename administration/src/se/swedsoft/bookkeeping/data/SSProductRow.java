@@ -61,7 +61,7 @@ public class SSProductRow implements Serializable {
      */
     public void setProduct(String iProductNr) {
         this.iProductNr = iProductNr;
-        this.iProduct   = null;
+        iProduct        = null;
     }
 
     ////////////////////////////////////////////////////
@@ -136,12 +136,12 @@ public class SSProductRow implements Serializable {
      * @param iProduct
      */
     public void setProduct(SSProduct iProduct) {
-        this.iProduct   = iProduct;
-        this.iProductNr = iProduct == null ? null : iProduct.getNumber();
+        this.iProduct = iProduct;
+        iProductNr    = iProduct == null ? null : iProduct.getNumber();
 
         if(iProduct != null){
-            this.iCount       = 1;
-            this.iDescription = iProduct.getDescription();
+            iCount       = 1;
+            iDescription = iProduct.getDescription();
 
         }
     }

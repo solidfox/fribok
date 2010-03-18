@@ -90,7 +90,7 @@ public class SSInventoryBasisDialog  extends SSDialog {
      * @return
      */
     public Date getDate() {
-        return this.iDate.getDate();
+        return iDate.getDate();
     }
 
 }

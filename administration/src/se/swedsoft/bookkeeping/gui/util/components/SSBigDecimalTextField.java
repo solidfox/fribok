@@ -28,8 +28,8 @@ public class SSBigDecimalTextField extends JFormattedTextField {
             public void actionPerformed(ActionEvent e) {
                 FocusEvent iEvent = new FocusEvent(SSBigDecimalTextField.this, FocusEvent.FOCUS_LOST, false, SSBigDecimalTextField.this);
 
-                SSBigDecimalTextField.this.processFocusEvent(iEvent);
-                SSBigDecimalTextField.this.requestFocusInWindow();
+                processFocusEvent(iEvent);
+                requestFocusInWindow();
             }
         };
         // The action for transferring the focus to the search table.

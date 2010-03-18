@@ -510,7 +510,7 @@ public class SSSupplierCreditInvoicePanel {
      * @param iSSSupplierInvoice
      */
     public void setCreditSupplierInvoice(SSSupplierCreditInvoice iSSSupplierInvoice) {
-        this.iSupplierCreditInvoice = iSSSupplierInvoice;
+        iSupplierCreditInvoice = iSSSupplierInvoice;
 
         List<SSSupplier> iSuppliers = SSDB.getInstance().getSuppliers();
         List<SSSupplierInvoice   > iSupplierInvoices    = SSDB.getInstance().getSupplierInvoices();
@@ -519,36 +519,36 @@ public class SSSupplierCreditInvoicePanel {
         iCorrectionTableModel.setVoucher(iSSSupplierInvoice.getCorrection());
 
 
-        iModel.setObjects(this.iSupplierCreditInvoice.getRows());
+        iModel.setObjects(iSupplierCreditInvoice.getRows());
 
 
         // Fakturatnummer
-        iNumber.setValue(this.iSupplierCreditInvoice.getNumber());
+        iNumber.setValue(iSupplierCreditInvoice.getNumber());
         // Offertdatum
-        iDate.setDate(this.iSupplierCreditInvoice.getDate());
+        iDate.setDate(iSupplierCreditInvoice.getDate());
         // Kund nummer
-        iSupplier.setSelected(this.iSupplierCreditInvoice.getSupplier(iSuppliers) );
+        iSupplier.setSelected(iSupplierCreditInvoice.getSupplier(iSuppliers) );
 
-        iCrediting.setSelected( this.iSupplierCreditInvoice.getCrediting (iSupplierInvoices) );
+        iCrediting.setSelected(iSupplierCreditInvoice.getCrediting (iSupplierInvoices) );
 
         iTaxSum.setValue( iSSSupplierInvoice.getTaxSum() );
 
-        iRoundingSum.setValue(this.iSupplierCreditInvoice.getRoundingSum());
+        iRoundingSum.setValue(iSupplierCreditInvoice.getRoundingSum());
         // OCR/Referensnummer
-        iReferenceNumber.setText(this.iSupplierCreditInvoice.getReferencenumber());
+        iReferenceNumber.setText(iSupplierCreditInvoice.getReferencenumber());
 
         // Valuta
-        iCurrency.setSelected(this.iSupplierCreditInvoice.getCurrency());
+        iCurrency.setSelected(iSupplierCreditInvoice.getCurrency());
         // Valutakurs
-        iCurrencyRate.setValue( this.iSupplierCreditInvoice.getCurrencyRate() );
+        iCurrencyRate.setValue(iSupplierCreditInvoice.getCurrencyRate() );
 
 
         // Standard konton
-        iDefaultAccounts.setDefaultAccounts( this.iSupplierCreditInvoice.getDefaultAccounts());
+        iDefaultAccounts.setDefaultAccounts(iSupplierCreditInvoice.getDefaultAccounts());
         // Bokförd
-        iEntered.setSelected( this.iSupplierCreditInvoice.isEntered() );
+        iEntered.setSelected(iSupplierCreditInvoice.isEntered() );
         // Lagerför
-        isStockInfluencing.setSelected( this. iSupplierCreditInvoice.isStockInfluencing() );
+        isStockInfluencing.setSelected(iSupplierCreditInvoice.isStockInfluencing() );
 
         updateSumFields();
 

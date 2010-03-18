@@ -40,7 +40,7 @@ public class SSOutpaymentListPrinter extends SSPrinter {
      */
     public SSOutpaymentListPrinter( List<SSOutpayment> iInpayments){
         // Get all orders
-        this.iOutpayments = iInpayments;
+        iOutpayments = iInpayments;
 
         setPageHeader  ("header_period.jrxml");
         setColumnHeader("outpaymentlist.jrxml");

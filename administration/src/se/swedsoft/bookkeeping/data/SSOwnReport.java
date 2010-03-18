@@ -76,7 +76,7 @@ public class SSOwnReport implements Serializable {
     }
 
     public void setProjectNr(String iProjectNumber) {
-        this.iProjectNr = iProjectNumber;
+        iProjectNr = iProjectNumber;
     }
 
     /**
@@ -102,7 +102,7 @@ public class SSOwnReport implements Serializable {
 
         if(obj instanceof SSOwnReport){
             SSOwnReport iOwnReport = (SSOwnReport) obj;
-            if(iOwnReport.iId.equals(this.iId)) return true;
+            if(iOwnReport.iId.equals(iId)) return true;
         }
         return false;
     }

@@ -244,6 +244,6 @@ public class SSBudgetMainPanel {
     }
 
     public void setBudget(SSBudget pBudget){
-        this.iBudget = pBudget;
+        iBudget = pBudget;
     }
 }

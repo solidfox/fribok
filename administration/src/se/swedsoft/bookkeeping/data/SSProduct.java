@@ -113,42 +113,42 @@ public class SSProduct implements SSTableSearchable, Serializable {
      * @param iProduct
      */
     public void copyFrom(SSProduct iProduct) {
-        this.iNumber            = iProduct.iNumber;
-        this.iDescription       = iProduct.iDescription;
-        this.iUnitprice         = iProduct.iUnitprice;
-        this.iTaxCode           = iProduct.iTaxCode;
-        this.iWarehouseLocation = iProduct.iWarehouseLocation;
-        this.iOrderpoint        = iProduct.iOrderpoint;
-        this.iOrdercount        = iProduct.iOrdercount;
-        this.iPurchasePrice     = iProduct.iPurchasePrice;
-        this.iStockPrice        = iProduct.iStockPrice;
-        this.iFreight           = iProduct.iFreight;
-        this.iSupplierNr        = iProduct.iSupplierNr;
-        this.iSupplierProductNr = iProduct.iSupplierProductNr;
-        this.iExpired           = iProduct.iExpired;
-        this.iStockGoods        = iProduct.iStockGoods;
-        this.iUnit              = iProduct.iUnit;
-        this.iWeight            = iProduct.iWeight;
-        this.iVolume            = iProduct.iVolume;
-        this.iSupplier          = iProduct.iSupplier;
+        iNumber            = iProduct.iNumber;
+        iDescription       = iProduct.iDescription;
+        iUnitprice         = iProduct.iUnitprice;
+        iTaxCode           = iProduct.iTaxCode;
+        iWarehouseLocation = iProduct.iWarehouseLocation;
+        iOrderpoint        = iProduct.iOrderpoint;
+        iOrdercount        = iProduct.iOrdercount;
+        iPurchasePrice     = iProduct.iPurchasePrice;
+        iStockPrice        = iProduct.iStockPrice;
+        iFreight           = iProduct.iFreight;
+        iSupplierNr        = iProduct.iSupplierNr;
+        iSupplierProductNr = iProduct.iSupplierProductNr;
+        iExpired           = iProduct.iExpired;
+        iStockGoods        = iProduct.iStockGoods;
+        iUnit              = iProduct.iUnit;
+        iWeight            = iProduct.iWeight;
+        iVolume            = iProduct.iVolume;
+        iSupplier          = iProduct.iSupplier;
 
-        this.iDescriptions      = new HashMap<Locale, String>();
-        this.iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
-        this.iProductRows       = new LinkedList<SSProductRow>();
+        iDescriptions      = new HashMap<Locale, String>();
+        iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
+        iProductRows       = new LinkedList<SSProductRow>();
 
-        this.iDefaultAccounts.put(SSDefaultAccount.Sales    , iProduct.iDefaultAccounts.get(SSDefaultAccount.Sales    ));
-        this.iDefaultAccounts.put(SSDefaultAccount.Purchases, iProduct.iDefaultAccounts.get(SSDefaultAccount.Purchases));
+        iDefaultAccounts.put(SSDefaultAccount.Sales    , iProduct.iDefaultAccounts.get(SSDefaultAccount.Sales    ));
+        iDefaultAccounts.put(SSDefaultAccount.Purchases, iProduct.iDefaultAccounts.get(SSDefaultAccount.Purchases));
 
-        this.iProject           = iProduct.iProject;
-        this.iProjectNumber         = iProduct.iProjectNumber;
+        iProject           = iProduct.iProject;
+        iProjectNumber     = iProduct.iProjectNumber;
 
-        this.iResultUnit        = iProduct.iResultUnit;
-        this.iResultUnitNumber      = iProduct.iResultUnitNumber;
+        iResultUnit        = iProduct.iResultUnit;
+        iResultUnitNumber  = iProduct.iResultUnitNumber;
 
         for(SSProductRow iProductRow: iProduct.iProductRows){
-            this.iProductRows.add( new SSProductRow(iProductRow) );
+            iProductRows.add( new SSProductRow(iProductRow) );
         }
-        this.iDescriptions.putAll( iProduct.getDescriptions());
+        iDescriptions.putAll( iProduct.getDescriptions());
     }
 
     ////////////////////////////////////////////////////
@@ -222,7 +222,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
     }
 
     public void setResultUnitNr(String iResultUnitNr) {
-        this.iResultUnitNumber = iResultUnitNr;
+        iResultUnitNumber = iResultUnitNr;
     }
 
     public String getProjectNr() {
@@ -230,7 +230,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
     }
 
     public void setProjectNr(String iProjectNr) {
-        this.iProjectNumber = iProjectNr;
+        iProjectNumber = iProjectNr;
     }
 
     public SSNewProject getProject() {
@@ -463,7 +463,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
      */
     public void setSupplierNr(String iSupplierNr) {
         this.iSupplierNr = iSupplierNr;
-        this.iSupplier   = null;
+        iSupplier = null;
     }
 
     ////////////////////////////////////////////////////
@@ -490,7 +490,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
      */
     public void setSupplier(SSSupplier iSupplier) {
         this.iSupplier   = iSupplier;
-        this.iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
+        iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
     }
 
 
@@ -645,7 +645,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
      */
     public void setDefaultAccount(SSDefaultAccount iDefaultAccount, Integer iAccount) {
         if(iDefaultAccounts == null) iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
-        this.iDefaultAccounts.put(iDefaultAccount, iAccount);
+        iDefaultAccounts.put(iDefaultAccount, iAccount);
     }
 
     /**
@@ -676,7 +676,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
      * @param iParcelRows
      */
     public void setParcelRows(List<SSProductRow> iParcelRows) {
-        this.iProductRows = iParcelRows;
+        iProductRows = iParcelRows;
     }
 
     ////////////////////////////////////////////////////

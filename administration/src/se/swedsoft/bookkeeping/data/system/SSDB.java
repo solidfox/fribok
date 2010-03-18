@@ -124,7 +124,7 @@ public class SSDB {
     public void startupLocal(Connection pConnection) throws SQLException {
         PreparedStatement iStatement;
         ResultSet iResultSet;
-        this.iConnection = pConnection;
+        iConnection = pConnection;
         iConnection.setAutoCommit(false);
         iLocking = false;
 
@@ -164,7 +164,7 @@ public class SSDB {
     }
 
     public void startupRemote(Connection pConnection, String iServerAddress) throws SQLException {
-        this.iConnection = pConnection;
+        iConnection = pConnection;
         iConnection.setAutoCommit(false);
         createNewTables();
         //dropTriggers();

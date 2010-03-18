@@ -46,7 +46,7 @@ public class SSVoucherExporter {
      */
     public SSVoucherExporter(File iFile){
       this.iFile = iFile;
-      this.iVouchers = SSDB.getInstance().getVouchers();
+        iVouchers = SSDB.getInstance().getVouchers();
     }
 
     /**
@@ -55,7 +55,7 @@ public class SSVoucherExporter {
      * @param iVouchers
      */
     public SSVoucherExporter(File iFile, List<SSVoucher> iVouchers) {
-        this.iFile = iFile;
+        this.iFile     = iFile;
         this.iVouchers = iVouchers;
     }
 

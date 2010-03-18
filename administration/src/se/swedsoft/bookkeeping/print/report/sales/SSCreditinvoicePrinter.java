@@ -32,8 +32,8 @@ public class SSCreditinvoicePrinter extends SSPrinter {
      * @param iLocale
      */
     public SSCreditinvoicePrinter(SSCreditInvoice iInvoice, Locale iLocale){
-        this.iCreditInvoice = iInvoice;
-        this.iLocale = iLocale;
+        iCreditInvoice = iInvoice;
+        this.iLocale   = iLocale;
 
         ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.creditinvoicereport", iLocale);
 

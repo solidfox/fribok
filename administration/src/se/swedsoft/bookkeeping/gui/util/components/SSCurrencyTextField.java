@@ -24,8 +24,8 @@ public class SSCurrencyTextField extends JFormattedTextField {
             public void actionPerformed(ActionEvent e) {
                 FocusEvent event = new FocusEvent(SSCurrencyTextField.this, FocusEvent.FOCUS_LOST, false, SSCurrencyTextField.this);
 
-                SSCurrencyTextField.this.processFocusEvent(event);
-                SSCurrencyTextField.this.requestFocusInWindow();
+                processFocusEvent(event);
+                requestFocusInWindow();
             }
         };
         getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "SETVALUE");

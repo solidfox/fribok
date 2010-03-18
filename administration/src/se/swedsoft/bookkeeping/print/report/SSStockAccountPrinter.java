@@ -37,9 +37,9 @@ public class SSStockAccountPrinter extends SSPrinter {
      */
     public SSStockAccountPrinter() {
         // Get all orders
-        this.iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        this.iStock    = new SSStock();
-        this.iDate     = null;
+        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iStock    = new SSStock();
+        iDate     = null;
 
         iStock.update();
 
@@ -54,9 +54,9 @@ public class SSStockAccountPrinter extends SSPrinter {
      */
     public SSStockAccountPrinter( Date iDate){
         // Get all orders
-        this.iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        this.iStock    = new SSStock();
-        this.iDate     = iDate;
+        iProducts  = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iStock     = new SSStock();
+        this.iDate = iDate;
 
         iStock.update(iDate);
 

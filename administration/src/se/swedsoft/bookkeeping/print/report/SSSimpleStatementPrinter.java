@@ -362,7 +362,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
          * @param iNumber
          */
         public void setGroup(Integer iNumber){
-            this.iGroup = iNumber;
+            iGroup = iNumber;
 
             List<String> iObjects = new LinkedList<String>();
             switch(iNumber){

@@ -37,14 +37,14 @@ public class SSNameDescriptionDialog extends SSDialog{
             public void actionPerformed(ActionEvent e) {
                 iModalResult = JOptionPane.OK_OPTION;
 
-                SSNameDescriptionDialog.this.closeDialog();
+                closeDialog();
             }
         });
 
         iCancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iModalResult = JOptionPane.CANCEL_OPTION;
-                SSNameDescriptionDialog.this.closeDialog();
+                closeDialog();
             }
         });
         pack();
@@ -64,14 +64,14 @@ public class SSNameDescriptionDialog extends SSDialog{
             public void actionPerformed(ActionEvent e) {
                 iModalResult = JOptionPane.OK_OPTION;
 
-                SSNameDescriptionDialog.this.closeDialog();
+                closeDialog();
             }
         });
 
         iCancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iModalResult = JOptionPane.CANCEL_OPTION;
-                SSNameDescriptionDialog.this.closeDialog();
+                closeDialog();
             }
         });
         pack();

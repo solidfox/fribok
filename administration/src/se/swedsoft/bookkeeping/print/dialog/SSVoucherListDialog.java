@@ -209,8 +209,8 @@ public class SSVoucherListDialog extends SSDialog {
 
         // Filter by non payed invoices
         if( iRadioNumber.isSelected() ){
-            final Integer iNumberFrom = this.iFromVoucher.getSelected().getNumber();
-            final Integer iNumberTo   = this.iToVoucher.getSelected().getNumber();
+            final Integer iNumberFrom = iFromVoucher.getSelected().getNumber();
+            final Integer iNumberTo   = iToVoucher.getSelected().getNumber();
 
             iVouchers = SSFilterFactory.doFilter(iVouchers, new SSFilter<SSVoucher>() {
                 public boolean applyFilter(SSVoucher iObject) {
@@ -223,8 +223,8 @@ public class SSVoucherListDialog extends SSDialog {
         }
         // Filter by date
         if(iRadioDate.isSelected() ){
-            final Date iDateFrom = this.iFromDate.getDate();
-            final Date iDateTo   = this.iToDate  .getDate();
+            final Date iDateFrom = iFromDate.getDate();
+            final Date iDateTo   = iToDate.getDate();
 
 
             iVouchers = SSFilterFactory.doFilter(iVouchers, new SSFilter<SSVoucher>() {

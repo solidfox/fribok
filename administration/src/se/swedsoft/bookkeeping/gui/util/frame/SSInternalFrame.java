@@ -130,8 +130,8 @@ public abstract class SSInternalFrame extends JInternalFrame {
       * @param iFrame
     */
     public void setInCenter(JFrame iFrame){
-        int x = (iFrame.getWidth()  - this.getWidth()  ) / 2;
-        int y = (iFrame.getHeight() - this.getHeight() ) / 2;
+        int x = (iFrame.getWidth()  - getWidth()  ) / 2;
+        int y = (iFrame.getHeight() - getHeight() ) / 2;
 
         setBounds(x, y, getWidth(), getHeight());
     }
@@ -140,8 +140,8 @@ public abstract class SSInternalFrame extends JInternalFrame {
       * @param iFrame
     */
     public void setInCenter(JDialog iDialog){
-        int x = (iDialog.getWidth()  - this.getWidth()  ) / 2;
-        int y = (iDialog.getHeight() - this.getHeight() ) / 2;
+        int x = (iDialog.getWidth()  - getWidth()  ) / 2;
+        int y = (iDialog.getHeight() - getHeight() ) / 2;
 
         setBounds(x, y, getWidth(), getHeight());
     }
@@ -150,8 +150,8 @@ public abstract class SSInternalFrame extends JInternalFrame {
       * @param iMainFrame
     */
     public void setInCenter(SSMainFrame iMainFrame){
-        int x = (iMainFrame.getDesktopPane().getWidth()  - this.getWidth()  ) / 2;
-        int y = (iMainFrame.getDesktopPane().getHeight() - this.getHeight() ) / 2;
+        int x = (iMainFrame.getDesktopPane().getWidth()  - getWidth()  ) / 2;
+        int y = (iMainFrame.getDesktopPane().getHeight() - getHeight() ) / 2;
 
         setBounds(x, y, getWidth(), getHeight());
     }

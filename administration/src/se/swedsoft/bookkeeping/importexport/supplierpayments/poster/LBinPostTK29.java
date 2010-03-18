@@ -28,9 +28,9 @@ public class LBinPostTK29 extends LBinPost {
      * @param iSum
      */
     public LBinPostTK29(int iSize, BigDecimal iSum) {
-        this.iBankGiroNr = SupplierPaymentConfig.getOurBankGiroAccount().replaceAll("-", "");
-        this.iSize       = iSize;
-        this.iSum        = iSum;
+        iBankGiroNr = SupplierPaymentConfig.getOurBankGiroAccount().replaceAll("-", "");
+        this.iSize  = iSize;
+        this.iSum   = iSum;
     }
 
 

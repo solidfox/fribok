@@ -234,13 +234,13 @@ public class SSAutoDistPanel {
         this.iAutoDist = iAutoDist;
         iModel.setObjects(iAutoDist.getRows());
 
-        this.iAccount.setSelected(iAutoDist.getAccount());
-        if(this.iAccount.getSelected() != null){
-            this.iAccountDescription.setText(this.iAccount.getSelected().getDescription());
+        iAccount.setSelected(iAutoDist.getAccount());
+        if(iAccount.getSelected() != null){
+            iAccountDescription.setText(iAccount.getSelected().getDescription());
             iButtonPanel.getOkButton().setEnabled(true);
         }
-        this.iText.setText(iAutoDist.getDescription());
-        this.iAmount.setValue(iAutoDist.getAmount());
+        iText.setText(iAutoDist.getDescription());
+        iAmount.setValue(iAutoDist.getAmount());
 
     }
 

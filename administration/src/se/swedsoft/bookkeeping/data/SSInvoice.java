@@ -112,10 +112,10 @@ public class SSInvoice extends SSSale {
 
         copyFrom(iOrder);
 
-        this.iCurrencyRate = iOrder.getCurrencyRate();
-        this.iVoucher      = new SSVoucher();
-        this.iDate         = new Date();
-        this.iRows         = new LinkedList<SSSaleRow>();
+        iCurrencyRate = iOrder.getCurrencyRate();
+        iVoucher      = new SSVoucher();
+        iDate         = new Date();
+        iRows         = new LinkedList<SSSaleRow>();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
@@ -133,18 +133,18 @@ public class SSInvoice extends SSSale {
     public void copyFrom(SSInvoice iInvoice) {
         super.copyFrom(iInvoice);
 
-        //this.iCurrencyRate       = iInvoice.getCustomer().getInvoiceCurrency().getExchangeRate();
-        this.iCurrencyRate       = iInvoice.getCurrencyRate();
-        this.iPaymentDay         = iInvoice.iPaymentDay;
-        this.iYourOrderNumber    = iInvoice.iYourOrderNumber;
-        this.iType               = iInvoice.iType;
-        this.iEntered            = iInvoice.iEntered;
-        this.iStockInfluencing   = iInvoice.iStockInfluencing;
-        this.iInterestInvoiced   = iInvoice.iInterestInvoiced;
-        this.iNumReminders       = iInvoice.iNumReminders;
-        this.iOCRNumber          = iInvoice.iOCRNumber;
-        this.iOrderNumbers       = iInvoice.iOrderNumbers; 
-        this.iVoucher            = new SSVoucher(iInvoice.iVoucher);
+        //this.iCurrencyRate = iInvoice.getCustomer().getInvoiceCurrency().getExchangeRate();
+        iCurrencyRate        = iInvoice.getCurrencyRate();
+        iPaymentDay          = iInvoice.iPaymentDay;
+        iYourOrderNumber     = iInvoice.iYourOrderNumber;
+        iType                = iInvoice.iType;
+        iEntered             = iInvoice.iEntered;
+        iStockInfluencing    = iInvoice.iStockInfluencing;
+        iInterestInvoiced    = iInvoice.iInterestInvoiced;
+        iNumReminders        = iInvoice.iNumReminders;
+        iOCRNumber           = iInvoice.iOCRNumber;
+        iOrderNumbers        = iInvoice.iOrderNumbers;
+        iVoucher             = new SSVoucher(iInvoice.iVoucher);
     }
 
     ////////////////////////////////////////////////////
@@ -325,7 +325,7 @@ public class SSInvoice extends SSSale {
      *
      */
     public void setEntered() {
-        this.iEntered = true;
+        iEntered = true;
     }
 
    
@@ -346,7 +346,7 @@ public class SSInvoice extends SSSale {
             iOrdersForInvoice += iOrder.getNumber() + ", ";
         }
         iOrdersForInvoice = iOrdersForInvoice.substring(0,iOrdersForInvoice.lastIndexOf(", "));
-        this.iOrderNumbers = iOrdersForInvoice;
+        iOrderNumbers = iOrdersForInvoice;
     }
     /**
      *

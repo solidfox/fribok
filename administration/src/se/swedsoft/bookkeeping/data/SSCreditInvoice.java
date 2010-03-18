@@ -48,11 +48,11 @@ public class SSCreditInvoice extends SSInvoice {
     public SSCreditInvoice(SSInvoice iCrediting) {
         copyFrom(iCrediting);
 
-        this.iCrediting   = iCrediting;
-        this.iCreditingNr = iCrediting.getNumber();
-        this.iDate        = new Date() ;
-        this.iEntered     = false ;
-        this.iPrinted     = false ;
+        this.iCrediting = iCrediting;
+        iCreditingNr    = iCrediting.getNumber();
+        iDate           = new Date() ;
+        iEntered        = false ;
+        iPrinted        = false ;
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
@@ -95,10 +95,10 @@ public class SSCreditInvoice extends SSInvoice {
     public void copyFrom(SSCreditInvoice iInvoice) {
         super.copyFrom(iInvoice);
 
-        this.iCreditingNr        = iInvoice.iCreditingNr;
-        this.iCurrencyRate       = iInvoice.iCurrencyRate;
-        this.iCrediting          = iInvoice.iCrediting;
-        this.iVoucher            = new SSVoucher(iInvoice.iVoucher);
+        iCreditingNr  = iInvoice.iCreditingNr;
+        iCurrencyRate = iInvoice.iCurrencyRate;
+        iCrediting    = iInvoice.iCrediting;
+        iVoucher      = new SSVoucher(iInvoice.iVoucher);
     }
 
     ////////////////////////////////////////////////////
@@ -137,7 +137,7 @@ public class SSCreditInvoice extends SSInvoice {
      */
     public void setCreditingNr(Integer iCreditingNr) {
         this.iCreditingNr = iCreditingNr;
-        this.iCrediting   = null;
+        iCrediting        = null;
     }
 
     ////////////////////////////////////////////////////
@@ -214,8 +214,8 @@ public class SSCreditInvoice extends SSInvoice {
      * @param iCrediting
      */
     public void setCrediting(SSInvoice iCrediting) {
-        this.iCrediting   = iCrediting;
-        this.iCreditingNr = iCrediting != null ? iCrediting.getNumber() : null;
+        this.iCrediting = iCrediting;
+        iCreditingNr    = iCrediting != null ? iCrediting.getNumber() : null;
     }
 
     /**

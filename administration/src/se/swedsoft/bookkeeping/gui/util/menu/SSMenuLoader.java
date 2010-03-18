@@ -170,7 +170,7 @@ public class SSMenuLoader   {
     private ActionListener createActionListener(final String pName){
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSMenuLoader.this.notifyActionListeners(pName, e);
+                notifyActionListeners(pName, e);
             }
         };
     }

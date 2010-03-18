@@ -29,7 +29,7 @@ public class SSButton extends JButton {
 
         getActionMap().put("ENTER_PRESSED", new AbstractAction(){
             public void actionPerformed(ActionEvent e) {
-                SSButton.this.fireActionPerformed(e);
+                fireActionPerformed(e);
             }
         });
     }
@@ -118,9 +118,9 @@ public class SSButton extends JButton {
      * is able to clean up the object.
      */
     public void dispose() {
-        ActionListener[] iActionListeners = this.getActionListeners();
+        ActionListener[] iActionListeners = getActionListeners();
         for (ActionListener iActionListener : iActionListeners) {
-            this.removeActionListener(iActionListener);
+            removeActionListener(iActionListener);
         }
         //this.removeAll();
     }

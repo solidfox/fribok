@@ -69,13 +69,13 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @param iInpaymentRow
      */
     public void copyFrom(SSInpaymentRow iInpaymentRow) {
-        this.iInvoiceNr             = iInpaymentRow.iInvoiceNr;
-        this.iInvoiceCurrency       = iInpaymentRow.iInvoiceCurrency;
-        this.iInvoiceCurrencyRate   = iInpaymentRow.iInvoiceCurrencyRate;
-        this.iValue                 = iInpaymentRow.iValue;
-        this.iCurrencyRate          = iInpaymentRow.iCurrencyRate;
+        iInvoiceNr           = iInpaymentRow.iInvoiceNr;
+        iInvoiceCurrency     = iInpaymentRow.iInvoiceCurrency;
+        iInvoiceCurrencyRate = iInpaymentRow.iInvoiceCurrencyRate;
+        iValue               = iInpaymentRow.iValue;
+        iCurrencyRate        = iInpaymentRow.iCurrencyRate;
 
-        this.iInvoice               = iInpaymentRow.iInvoice;
+        iInvoice             = iInpaymentRow.iInvoice;
     }
 
     ////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      */
     public void setInvoiceNr(Integer iInvoiceNr) {
         this.iInvoiceNr = iInvoiceNr;
-        this.iInvoice   = null;
+        iInvoice        = null;
     }
 
     ////////////////////////////////////////////////////
@@ -131,7 +131,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @param iInvoiceExchangerate
      */
     public void setInvoiceCurrencyRate(BigDecimal iInvoiceExchangerate) {
-        this.iInvoiceCurrencyRate = iInvoiceExchangerate;
+        iInvoiceCurrencyRate = iInvoiceExchangerate;
     }
 
     ////////////////////////////////////////////////////
@@ -230,15 +230,15 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      */
     public void setInvoice(SSInvoice iInvoice) {
         this.iInvoice   = iInvoice;
-        this.iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
+        iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
 
         if( iInvoice != null){
-            BigDecimal iSaldo = SSInvoiceMath.getSaldo(iInvoice.getNumber());
+            BigDecimal iSaldo    = SSInvoiceMath.getSaldo(iInvoice.getNumber());
 
-            this.iInvoiceCurrency     = iInvoice.getCurrency();
-            this.iInvoiceCurrencyRate = iInvoice.getCurrencyRate();
-            this.iValue               = iSaldo;
-            this.iCurrencyRate        = iInvoice.getCurrencyRate();
+            iInvoiceCurrency     = iInvoice.getCurrency();
+            iInvoiceCurrencyRate = iInvoice.getCurrencyRate();
+            iValue               = iSaldo;
+            iCurrencyRate        = iInvoice.getCurrencyRate();
         }
     }
 

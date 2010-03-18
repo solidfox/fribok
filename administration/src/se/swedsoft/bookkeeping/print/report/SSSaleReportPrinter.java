@@ -69,11 +69,11 @@ public class SSSaleReportPrinter extends SSPrinter {
      * @param iAscending
      */
     public SSSaleReportPrinter(Date iFrom, Date iTo, SortingMode iSortingMode, boolean iAscending) {
-        this.iFrom       = iFrom;
+        this.iFrom        = iFrom;
         this.iTo          = iTo;
         this.iSortingMode = iSortingMode;
         this.iAscending   = iAscending;
-        this.iProducts    = SSDB.getInstance().getProducts();
+        iProducts = SSDB.getInstance().getProducts();
 
         setPageHeader  ("header_period.jrxml");
         setColumnHeader("salereport.jrxml");

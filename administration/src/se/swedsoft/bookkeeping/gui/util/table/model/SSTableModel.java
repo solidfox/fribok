@@ -129,7 +129,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     public void removeColumn(SSTableColumn<T> iColumn) {
         iColumns.remove(iColumn);
 
-        this.iEditable.remove(iColumn);
+        iEditable.remove(iColumn);
 
         fireTableDataChanged();
     }

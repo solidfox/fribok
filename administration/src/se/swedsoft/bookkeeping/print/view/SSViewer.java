@@ -232,9 +232,9 @@ public class SSViewer extends JPanel{
             iPagePanel.setLocation(0,0);
             iPagePanel.setSize    (iPageSize);
 
-            this.setMaximumSize  ( iPageSize );
-            this.setMinimumSize  ( iPageSize );
-            this.setPreferredSize( iPageSize );
+            setMaximumSize( iPageSize );
+            setMinimumSize( iPageSize );
+            setPreferredSize( iPageSize );
         }
         catch(Exception e){
             e.printStackTrace();
@@ -261,7 +261,7 @@ public class SSViewer extends JPanel{
     private void createMouseEvents(){
         final Point iMousePoint = new Point();
 
-        this.addMouseListener(new MouseListener() {
+        addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
             }
 
@@ -282,7 +282,7 @@ public class SSViewer extends JPanel{
             }
         });
 
-        this.addMouseMotionListener(new MouseMotionListener() {
+        addMouseMotionListener(new MouseMotionListener() {
             public void mouseDragged(MouseEvent e) {
 
                 Point iDelta = new Point(

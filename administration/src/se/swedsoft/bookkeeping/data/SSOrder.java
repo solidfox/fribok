@@ -63,7 +63,7 @@ public class SSOrder extends SSSale {
             setDeliveryTerm     ( iCompany.getDeliveryTerm());
             setDeliveryWay      ( iCompany.getDeliveryWay());
             setCurrency         ( iCompany.getCurrency());
-            this.iCurrencyRate = this.iCurrency.getExchangeRate();
+            iCurrencyRate = iCurrency.getExchangeRate();
 
         }
     }
@@ -71,7 +71,7 @@ public class SSOrder extends SSSale {
     @Override
     public void setCustomer(SSCustomer iCustomer){
         super.setCustomer(iCustomer);
-        this.iCurrencyRate = this.iCurrency.getExchangeRate();
+        iCurrencyRate = iCurrency.getExchangeRate();
     }
 
     /**
@@ -90,8 +90,8 @@ public class SSOrder extends SSSale {
     public SSOrder(SSTender iTender) {
         copyFrom(iTender);
 
-        this.iDate         = new Date();
-        this.iCurrencyRate = iTender.getCurrencyRate();
+        iDate         = new Date();
+        iCurrencyRate = iTender.getCurrencyRate();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
         for (SSCustomer pCustomer : SSDB.getInstance().getCustomers()) {
@@ -103,7 +103,7 @@ public class SSOrder extends SSSale {
             iEstimatedDelivery = iCompany.getEstimatedDelivery();
             iText              = iCompany.getStandardText(SSStandardText.Saleorder);
         }
-        this.iNumber = null;
+        iNumber = null;
     }
 
 
@@ -115,16 +115,16 @@ public class SSOrder extends SSSale {
     public void copyFrom(SSOrder iOrder) {
         super.copyFrom(iOrder);
 
-        this.iInvoice            = iOrder.iInvoice;
-        this.iInvoiceNr          = iOrder.iInvoiceNr;
-        this.iPeriodicInvoice    = iOrder.iPeriodicInvoice;
-        this.iPeriodicInvoiceNr  = iOrder.iPeriodicInvoiceNr;
-        this.iPurchaseOrder      = iOrder.iPurchaseOrder;
-        this.iPurchaseOrderNr    = iOrder.iPurchaseOrderNr;
-        this.iYourOrderNumber    = iOrder.iYourOrderNumber;
-        this.iEstimatedDelivery  = iOrder.iEstimatedDelivery;
-        this.iHideUnitprice      = iOrder.iHideUnitprice;
-        this.iCurrencyRate       = iOrder.iCurrencyRate;
+        iInvoice           = iOrder.iInvoice;
+        iInvoiceNr         = iOrder.iInvoiceNr;
+        iPeriodicInvoice   = iOrder.iPeriodicInvoice;
+        iPeriodicInvoiceNr = iOrder.iPeriodicInvoiceNr;
+        iPurchaseOrder     = iOrder.iPurchaseOrder;
+        iPurchaseOrderNr   = iOrder.iPurchaseOrderNr;
+        iYourOrderNumber   = iOrder.iYourOrderNumber;
+        iEstimatedDelivery = iOrder.iEstimatedDelivery;
+        iHideUnitprice     = iOrder.iHideUnitprice;
+        iCurrencyRate      = iOrder.iCurrencyRate;
     }
 
     ////////////////////////////////////////////////////
@@ -214,7 +214,7 @@ public class SSOrder extends SSSale {
      */
     public void setInvoiceNr(Integer iInvoiceNr) {
         this.iInvoiceNr = iInvoiceNr;
-        this.iInvoice   = null;
+        iInvoice        = null;
     }
 
     public Integer getPeriodicInvoiceNr() {
@@ -226,8 +226,8 @@ public class SSOrder extends SSSale {
      * @param iInvoiceNr
      */
     public void setPeriodicInvoiceNr(Integer iInvoiceNr) {
-        this.iPeriodicInvoiceNr = iInvoiceNr;
-        this.iPeriodicInvoice   = null;
+        iPeriodicInvoiceNr = iInvoiceNr;
+        iPeriodicInvoice   = null;
     }
 
     ////////////////////////////////////////////////////
@@ -292,8 +292,8 @@ public class SSOrder extends SSSale {
      * @param iInvoice
      */
     public void setInvoice(SSInvoice iInvoice) {
-        this.iInvoice   = iInvoice;
-        this.iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
+        this.iInvoice = iInvoice;
+        iInvoiceNr    = iInvoice == null ? null : iInvoice.getNumber();
     }
 
     public SSPeriodicInvoice getPeriodicInvoice() {
@@ -321,8 +321,8 @@ public class SSOrder extends SSSale {
      * @param iPeriodicInvoice
      */
     public void setPeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
-        this.iPeriodicInvoice   = iPeriodicInvoice;
-        this.iPeriodicInvoiceNr = iPeriodicInvoice == null ? null : iPeriodicInvoice.getNumber();
+        this.iPeriodicInvoice = iPeriodicInvoice;
+        iPeriodicInvoiceNr    = iPeriodicInvoice == null ? null : iPeriodicInvoice.getNumber();
     }
 
     ////////////////////////////////////////////////////
@@ -357,8 +357,8 @@ public class SSOrder extends SSSale {
      * @param iPurchaseOrder
      */
     public void setPurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
-        this.iPurchaseOrder   = iPurchaseOrder;
-        this.iPurchaseOrderNr = iPurchaseOrder == null ? null : iPurchaseOrder.getNumber();
+        this.iPurchaseOrder = iPurchaseOrder;
+        iPurchaseOrderNr    = iPurchaseOrder == null ? null : iPurchaseOrder.getNumber();
     }
 
     ////////////////////////////////////////////////////

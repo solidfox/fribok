@@ -60,11 +60,10 @@ public class SSTender extends SSSale {
      */
     public void copyFrom(SSTender iTender) {
         super.copyFrom(iTender);
-
-        this.iOrder        = iTender.iOrder;
-        this.iOrderNr      = iTender.iOrderNr;
-        this.iExpires      = iTender.iExpires;
-        this.iCurrencyRate = iTender.iCurrencyRate;
+        iOrder        = iTender.iOrder;
+        iOrderNr      = iTender.iOrderNr;
+        iExpires      = iTender.iExpires;
+        iCurrencyRate = iTender.iCurrencyRate;
     }
 
 
@@ -170,7 +169,7 @@ public class SSTender extends SSSale {
      */
     public void setOrder(SSOrder iOrder) {
         this.iOrder   = iOrder;
-        this.iOrderNr = iOrder == null ? null : iOrder.getNumber();
+        iOrderNr = iOrder == null ? null : iOrder.getNumber();
     }
 
     public boolean hasOrder(SSOrder iOrder) {

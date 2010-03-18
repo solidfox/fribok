@@ -125,39 +125,39 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iSale
      */
     public void copyFrom(SSSale iSale) {
-        this.iNumber                    = iSale.iNumber;
-        this.iDate                      = iSale.iDate;
-        this.iCustomerNr                = iSale.iCustomerNr;
-        this.iCustomerName              = iSale.iCustomerName;
-        this.iOurContactPerson          = iSale.iOurContactPerson;
-        this.iYourContactPerson         = iSale.iYourContactPerson;
-        this.iDelayInterest             = iSale.iDelayInterest;
-        this.iCurrency                  = iSale.iCurrency;
-        this.iPaymentTerm               = iSale.iPaymentTerm;
-        this.iDeliveryTerm              = iSale.iDeliveryTerm;
-        this.iDeliveryWay               = iSale.iDeliveryWay;
-        this.iTaxFree                   = iSale.iTaxFree;
-        this.iText                      = iSale.iText;
-        this.iTaxRate1                  = iSale.iTaxRate1;
-        this.iTaxRate2                  = iSale.iTaxRate2;
-        this.iTaxRate3                  = iSale.iTaxRate3;
-        this.iEuSaleCommodity           = iSale.iEuSaleCommodity;
-        this.iEuSaleYhirdPartCommodity  = iSale.iEuSaleYhirdPartCommodity;
-        this.iPrinted                   = iSale.iPrinted;
-        this.iCustomer                  = null;
-        this.iInvoiceAddress            = new SSAddress(iSale.iInvoiceAddress );
-        this.iDeliveryAddress           = new SSAddress(iSale.iDeliveryAddress);
-        this.iRows                      = new LinkedList<SSSaleRow>();
-        this.iDefaultAccounts           = new HashMap<SSDefaultAccount, Integer>();
+        iNumber                   = iSale.iNumber;
+        iDate                     = iSale.iDate;
+        iCustomerNr               = iSale.iCustomerNr;
+        iCustomerName             = iSale.iCustomerName;
+        iOurContactPerson         = iSale.iOurContactPerson;
+        iYourContactPerson        = iSale.iYourContactPerson;
+        iDelayInterest            = iSale.iDelayInterest;
+        iCurrency                 = iSale.iCurrency;
+        iPaymentTerm              = iSale.iPaymentTerm;
+        iDeliveryTerm             = iSale.iDeliveryTerm;
+        iDeliveryWay              = iSale.iDeliveryWay;
+        iTaxFree                  = iSale.iTaxFree;
+        iText                     = iSale.iText;
+        iTaxRate1                 = iSale.iTaxRate1;
+        iTaxRate2                 = iSale.iTaxRate2;
+        iTaxRate3                 = iSale.iTaxRate3;
+        iEuSaleCommodity          = iSale.iEuSaleCommodity;
+        iEuSaleYhirdPartCommodity = iSale.iEuSaleYhirdPartCommodity;
+        iPrinted                  = iSale.iPrinted;
+        iCustomer                 = null;
+        iInvoiceAddress           = new SSAddress(iSale.iInvoiceAddress );
+        iDeliveryAddress          = new SSAddress(iSale.iDeliveryAddress);
+        iRows                     = new LinkedList<SSSaleRow>();
+        iDefaultAccounts          = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all rows
         for(SSSaleRow iRow : iSale.iRows){
-            this.iRows.add( new SSSaleRow(iRow) );
+            iRows.add( new SSSaleRow(iRow) );
         }
 
         // Copy all default accounts
         for (SSDefaultAccount iDefaultAccount : iSale.getDefaultAccounts().keySet()) {
-            this.iDefaultAccounts.put(iDefaultAccount, iSale.getDefaultAccounts().get(iDefaultAccount));
+            iDefaultAccounts.put(iDefaultAccount, iSale.getDefaultAccounts().get(iDefaultAccount));
         }
     }
 
@@ -493,7 +493,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iTenderText
      */
     public void setText(String iTenderText) {
-        this.iText = iTenderText;
+        iText = iTenderText;
     }
 
     ////////////////////////////////////////////////////
@@ -518,7 +518,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      *
      */
     public void setPrinted() {
-        this.iPrinted = true;
+        iPrinted = true;
     }
 
 
@@ -663,24 +663,23 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iCustomer
      */
     public void setCustomer(SSCustomer iCustomer) {
-        this.iCustomer                  = iCustomer;
-        this.iCustomerName              = iCustomer.getName();
-        this.iCustomerNr                = iCustomer.getNumber();
-        this.iYourContactPerson         = iCustomer.getYourContactPerson();
-        this.iOurContactPerson          = iCustomer.getOurContactPerson();
-        this.iPaymentTerm               = iCustomer.getPaymentTerm();
-        this.iDeliveryTerm              = iCustomer.getDeliveryTerm();
-        this.iDeliveryWay               = iCustomer.getDeliveryWay();
-        this.iCurrency                  = iCustomer.getInvoiceCurrency();
+        this.iCustomer                                                  = iCustomer;
+        iCustomerName                                                   = iCustomer.getName();
+        iCustomerNr                                                     = iCustomer.getNumber();
+        iYourContactPerson                                              = iCustomer.getYourContactPerson();
+        iOurContactPerson                                               = iCustomer.getOurContactPerson();
+        iPaymentTerm                                                    = iCustomer.getPaymentTerm();
+        iDeliveryTerm                                                   = iCustomer.getDeliveryTerm();
+        iDeliveryWay                                                    = iCustomer.getDeliveryWay();
+        iCurrency                                                       = iCustomer.getInvoiceCurrency();
         
         //this.iCurrency.setExchangeRate(iCustomer.getInvoiceCurrency() == null ? null : iCustomer.getInvoiceCurrency().getExchangeRate());
-        this.iTaxFree                   = iCustomer.getTaxFree();
-        this.iEuSaleCommodity           = iCustomer.getEuSaleCommodity();
-        this.iEuSaleYhirdPartCommodity  = iCustomer.getEuSaleYhirdPartCommodity();
+        iTaxFree                                                        = iCustomer.getTaxFree();
+        iEuSaleCommodity                                                = iCustomer.getEuSaleCommodity();
+        iEuSaleYhirdPartCommodity                                       = iCustomer.getEuSaleYhirdPartCommodity();
 
-
-        this.iInvoiceAddress  = new SSAddress(iCustomer.getInvoiceAddress () );
-        this.iDeliveryAddress = new SSAddress(iCustomer.getDeliveryAddress() );
+        iInvoiceAddress                                                 = new SSAddress(iCustomer.getInvoiceAddress () );
+        iDeliveryAddress                                                = new SSAddress(iCustomer.getDeliveryAddress() );
     }
 
     ////////////////////////////////////////////////////

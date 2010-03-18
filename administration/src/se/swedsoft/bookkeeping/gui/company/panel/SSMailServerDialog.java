@@ -80,7 +80,7 @@ public class SSMailServerDialog extends SSDialog {
         });
 
 
-        this.pack();
+        pack();
     }
 
     /**

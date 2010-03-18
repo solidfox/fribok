@@ -156,7 +156,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public void setAccountNr(Integer iAccountNr) {
         this.iAccountNr = iAccountNr;
-        this.iAccount   = null;
+        iAccount        = null;
     }
 
 
@@ -175,8 +175,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iResultUnitNr
      */
     public void setResultUnitNr(String iResultUnitNr) {
-        this.iResultUnitNumber = iResultUnitNr;
-        this.iResultUnit   = null;
+        iResultUnitNumber = iResultUnitNr;
+        iResultUnit       = null;
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -194,8 +194,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iProjectNr
      */
     public void setProjectNr(String iProjectNr) {
-        this.iProjectNumber = iProjectNr;
-        this.iProject   = null;
+        iProjectNumber = iProjectNr;
+        iProject       = null;
     }
 
     public void fixResultUnitAndProject() {
@@ -367,8 +367,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iAccount
      */
     public void setAccount(SSAccount iAccount) {
-        this.iAccount   = iAccount;
-        this.iAccountNr = iAccount == null ? null : iAccount.getNumber();
+        this.iAccount = iAccount;
+        iAccountNr    = iAccount == null ? null : iAccount.getNumber();
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -405,8 +405,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iProject
      */
     public void setProject(SSNewProject iProject) {
-        this.iProject   = iProject;
-        this.iProjectNumber = iProject == null ? null : iProject.getNumber();
+        this.iProject  = iProject;
+        iProjectNumber = iProject == null ? null : iProject.getNumber();
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -441,8 +441,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iResultUnit
      */
     public void setResultUnit(SSNewResultUnit iResultUnit) {
-        this.iResultUnit   = iResultUnit;
-        this.iResultUnitNumber = iResultUnit == null ? null : iResultUnit.getNumber();
+        this.iResultUnit  = iResultUnit;
+        iResultUnitNumber = iResultUnit == null ? null : iResultUnit.getNumber();
 
     }
 

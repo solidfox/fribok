@@ -38,10 +38,10 @@ public class SSQuarterReportPrinter extends SSPrinter {
      */
     public SSQuarterReportPrinter( Locale iLocale, Date iFrom, Date iTo){
         // Get all orders
-        this.iCustomers = SSDB.getInstance().getCustomers();
-        this.iLocale    = iLocale;
-        this.iFrom      = iFrom;
-        this.iTo        = iTo;
+        iCustomers   = SSDB.getInstance().getCustomers();
+        this.iLocale = iLocale;
+        this.iFrom   = iFrom;
+        this.iTo     = iTo;
 
         ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.quarterreport");//", iLocale);
 

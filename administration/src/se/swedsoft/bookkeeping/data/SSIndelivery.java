@@ -28,9 +28,9 @@ public class SSIndelivery implements Serializable {
      *
      */
     public SSIndelivery() {
-        this.iDate  = new Date();
-        this.iText  = null;
-        this.iRows  = new LinkedList<SSIndeliveryRow>();
+        iDate = new Date();
+        iText = null;
+        iRows = new LinkedList<SSIndeliveryRow>();
 
         doAutoIncrement();
     }
@@ -67,10 +67,10 @@ public class SSIndelivery implements Serializable {
      * @param iIndelivery
      */
     public void copyFrom(SSIndelivery iIndelivery){
-        this.iNumber = iIndelivery.iNumber;
-        this.iDate   = iIndelivery.iDate;
-        this.iText   = iIndelivery.iText;
-        this.iRows   = new LinkedList<SSIndeliveryRow>();
+        iNumber = iIndelivery.iNumber;
+        iDate   = iIndelivery.iDate;
+        iText   = iIndelivery.iText;
+        iRows   = new LinkedList<SSIndeliveryRow>();
 
         for (SSIndeliveryRow iRow : iIndelivery.getRows()) {
             iRows.add( new SSIndeliveryRow(iRow) );

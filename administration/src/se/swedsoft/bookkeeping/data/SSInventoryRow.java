@@ -28,10 +28,10 @@ public class SSInventoryRow implements Serializable {
      *
      */
     public SSInventoryRow() {
-        this.iChange = 0;
-        this.iQuantity = 0;
-        this.iProductNr = null;
-        this.iProduct = null;
+        iChange    = 0;
+        iQuantity  = 0;
+        iProductNr = null;
+        iProduct   = null;
     }
 
     /**
@@ -48,9 +48,9 @@ public class SSInventoryRow implements Serializable {
      * @param iChange
      */
     public SSInventoryRow(SSProduct iProduct, int iChange) {
-        this.iChange    = iChange;
-        this.iProduct   = iProduct;
-        this.iProductNr = iProduct == null ? null : iProduct.getNumber();
+        this.iChange  = iChange;
+        this.iProduct = iProduct;
+        iProductNr    = iProduct == null ? null : iProduct.getNumber();
 
     }
 
@@ -58,10 +58,10 @@ public class SSInventoryRow implements Serializable {
 
 
     public void copyFrom(SSInventoryRow iInventoryRow) {
-        this.iProductNr = iInventoryRow.iProductNr;
-        this.iChange    = iInventoryRow.iChange;
-        this.iQuantity  = iInventoryRow.iQuantity;
-        this.iProduct   = iInventoryRow.iProduct;
+        iProductNr = iInventoryRow.iProductNr;
+        iChange    = iInventoryRow.iChange;
+        iQuantity  = iInventoryRow.iQuantity;
+        iProduct   = iInventoryRow.iProduct;
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ public class SSInventoryRow implements Serializable {
     public void setInventoryQuantity(Integer iValue) {
         if(iQuantity == null || iValue == null) return;
 
-        this.iChange = iValue - iQuantity;
+        iChange = iValue - iQuantity;
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -179,7 +179,7 @@ public class SSInventoryRow implements Serializable {
      */
     public void setProduct(SSProduct iProduct) {
         this.iProduct   = iProduct;
-        this.iProductNr = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
     }
 
     /////////////////////////////////////////////////////////////////////////////

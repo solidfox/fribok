@@ -48,9 +48,9 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
      * Default constructor.
      */
     public SSVoucherTemplate() {
-        this.iRows        = new LinkedList<SSVoucherTemplateRow>();
-        this.iDescription = null;
-        this.iDate        = new Date();
+        iRows        = new LinkedList<SSVoucherTemplateRow>();
+        iDescription = null;
+        iDate        = new Date();
     }
 
 
@@ -60,10 +60,10 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
      * @param pVoucher
      */
     public SSVoucherTemplate(SSVoucher pVoucher) {
-        this.iDescription = pVoucher.getDescription();
-        this.iDate        = new Date();
+        iDescription = pVoucher.getDescription();
+        iDate        = new Date();
 
-        iRows = new LinkedList<SSVoucherTemplateRow>();
+        iRows        = new LinkedList<SSVoucherTemplateRow>();
 
         for(SSVoucherRow iVoucherRow: pVoucher.getRows()){
             SSVoucherTemplateRow iTemplateRow = new SSVoucherTemplateRow();
@@ -238,7 +238,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          */
         public void setAccountNr(Integer iAccountNr) {
             this.iAccountNr = iAccountNr;
-            this.iAccount   = null;
+            iAccount        = null;
         }
 
 
@@ -275,7 +275,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @param iCredit
          */
         public void setCredit(BigDecimal iCredit) {
-            this.iDebet = iCredit == null;
+            iDebet = iCredit == null;
         }
 
 
@@ -312,7 +312,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          */
         public void setAccount(SSAccount iAccount) {
             this.iAccount   = iAccount;
-            this.iAccountNr = iAccount == null ? null : iAccount.getNumber();
+            iAccountNr = iAccount == null ? null : iAccount.getNumber();
         }
 
 

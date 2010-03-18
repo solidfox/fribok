@@ -37,14 +37,13 @@ public class SupplierPayment {
      * @param iInvoice
      */
     public SupplierPayment(SSSupplierInvoice iInvoice) {
-        this.iInvoice       = iInvoice;
-        this.iPaymentMethod = PaymentMethod.BANKGIRO;
-        this.iValue         = SSSupplierInvoiceMath.getSaldo(iInvoice.getNumber());
-        this.iAccount       = getBankGiro();
+        this.iInvoice  = iInvoice;
+        iPaymentMethod = PaymentMethod.BANKGIRO;
+        iValue         = SSSupplierInvoiceMath.getSaldo(iInvoice.getNumber());
+        iAccount       = getBankGiro();
 
-        this.iDate          = iInvoice.getDueDate () == null ? new Date() : iInvoice.getDueDate ();
-        this.iCurrency      = iInvoice.getCurrency() == null ? "SEK"      : iInvoice.getCurrency().getName();
-
+        iDate          = iInvoice.getDueDate () == null ? new Date() : iInvoice.getDueDate ();
+        iCurrency      = iInvoice.getCurrency() == null ? "SEK"      : iInvoice.getCurrency().getName();
     }
     ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -118,7 +117,7 @@ public class SupplierPayment {
      * @param iMethod
      */
     public void setPaymentMethod(PaymentMethod iMethod) {
-        this.iPaymentMethod = iMethod;
+        iPaymentMethod = iMethod;
     }
     ////////////////////////////////////////////////////////////////////////////////////////
 

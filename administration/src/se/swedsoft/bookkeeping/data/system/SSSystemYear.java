@@ -146,7 +146,7 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
      */
     public void setData(SSNewAccountingYear iAccountingYear) {
 
-        this.iYear = iAccountingYear;
+        iYear = iAccountingYear;
     }
 
     //////////////////////////////////////////////////////////////////////////////

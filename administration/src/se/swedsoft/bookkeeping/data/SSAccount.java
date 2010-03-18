@@ -51,7 +51,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      */
     public SSAccount(int iNumber) {
         this.iNumber = iNumber;
-        this.iActive = true;
+        iActive = true;
         iProjectRequired = false;
         iResultUnitRequired = false;
     }

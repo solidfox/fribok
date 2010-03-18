@@ -53,14 +53,14 @@ public class SSPurchaseOrderRow implements Serializable {
      * @param iPurchaseOrderRow
      */
     public SSPurchaseOrderRow(SSPurchaseOrderRow iPurchaseOrderRow) {
-        this.iProductNr         = iPurchaseOrderRow.iProductNr;
-        this.iDescription       = iPurchaseOrderRow.iDescription;
-        this.iSupplierArticleNr = iPurchaseOrderRow.iSupplierArticleNr;
-        this.iUnitprice         = iPurchaseOrderRow.iUnitprice;
-        this.iQuantity          = iPurchaseOrderRow.iQuantity;
-        this.iUnit              = iPurchaseOrderRow.iUnit;
-        this.iProduct           = iPurchaseOrderRow.iProduct;
-        this.iAccountNr         = iPurchaseOrderRow.iAccountNr;
+        iProductNr         = iPurchaseOrderRow.iProductNr;
+        iDescription       = iPurchaseOrderRow.iDescription;
+        iSupplierArticleNr = iPurchaseOrderRow.iSupplierArticleNr;
+        iUnitprice         = iPurchaseOrderRow.iUnitprice;
+        iQuantity          = iPurchaseOrderRow.iQuantity;
+        iUnit              = iPurchaseOrderRow.iUnit;
+        iProduct           = iPurchaseOrderRow.iProduct;
+        iAccountNr         = iPurchaseOrderRow.iAccountNr;
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ public class SSPurchaseOrderRow implements Serializable {
      */
     public void setProductNr(String iProductNr) {
         this.iProductNr = iProductNr;
-        this.iProduct   = null;
+        iProduct        = null;
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -219,16 +219,16 @@ public class SSPurchaseOrderRow implements Serializable {
      * @param iProduct
      */
     public void setProduct(SSProduct iProduct) {
-        this.iProduct   = iProduct;
-        this.iProductNr = iProduct == null ? null : iProduct.getNumber();
+        this.iProduct = iProduct;
+        iProductNr    = iProduct == null ? null : iProduct.getNumber();
 
         if( iProduct != null){
-            this.iDescription       = iProduct.getDescription();
-            this.iUnitprice         = iProduct.getPurchasePrice();
-            this.iUnit              = iProduct.getUnit();
-            this.iSupplierArticleNr = iProduct.getSupplierProductNr();
-            this.iAccountNr         = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);
-            this.iQuantity          = 1;
+            iDescription       = iProduct.getDescription();
+            iUnitprice         = iProduct.getPurchasePrice();
+            iUnit              = iProduct.getUnit();
+            iSupplierArticleNr = iProduct.getSupplierProductNr();
+            iAccountNr         = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);
+            iQuantity          = 1;
         }
     }
 

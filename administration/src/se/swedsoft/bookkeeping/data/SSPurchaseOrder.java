@@ -79,23 +79,23 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      * Default constructor
      */
     public SSPurchaseOrder() {
-        this.iRows = new LinkedList<SSPurchaseOrderRow>();
-        this.iDeliveryAddress   = new SSAddress();
-        this.iSupplierAddress   = new SSAddress();
-        this.iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
-        this.iEstimatedDelivery = new Date();
-        this.iStockInfluencing  = true;
+        iRows              = new LinkedList<SSPurchaseOrderRow>();
+        iDeliveryAddress   = new SSAddress();
+        iSupplierAddress   = new SSAddress();
+        iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
+        iEstimatedDelivery = new Date();
+        iStockInfluencing  = true;
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
         if(iCompany != null){
-             this.setDefaultAccounts(iCompany.getDefaultAccounts());
-            this.iDeliveryAddress = new SSAddress(iCompany.getDeliveryAddress());
-            this.iText            = iCompany.getStandardText(SSStandardText.Purchaseorder);
+            setDefaultAccounts(iCompany.getDefaultAccounts());
+            iDeliveryAddress = new SSAddress(iCompany.getDeliveryAddress());
+            iText = iCompany.getStandardText(SSStandardText.Purchaseorder);
         }
         if(iSupplier != null)
         {
-            this.iCurrency        = iSupplier.getCurrency();
-            this.iCurrencyRate    = this.iCurrency.getExchangeRate();
+            iCurrency = iSupplier.getCurrency();
+            iCurrencyRate = iCurrency.getExchangeRate();
         }
     }
 
@@ -105,53 +105,52 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      * @param iPurchaseOrder
      */
     public SSPurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
-        this.iNumber            = iPurchaseOrder.iNumber;
-        this.iDate              = iPurchaseOrder.iDate;
-        this.iSupplierNr        = iPurchaseOrder.iSupplierNr;
-        this.iSupplierName      = iPurchaseOrder.iSupplierName;
-        this.iEstimatedDelivery = iPurchaseOrder.iEstimatedDelivery;
-        this.iPaymentTerm       = iPurchaseOrder.iPaymentTerm;
-        this.iDeliveryTerm      = iPurchaseOrder.iDeliveryTerm;
-        this.iDeliveryWay       = iPurchaseOrder.iDeliveryWay;
-        this.iOurContact        = iPurchaseOrder.iOurContact;
-        this.iYourContact       = iPurchaseOrder.iYourContact;
-        this.iCurrency          = iPurchaseOrder.iCurrency;
-        this.iSupplier          = iPurchaseOrder.iSupplier;
-        this.iText              = iPurchaseOrder.iText;
-        this.iInvoice           = iPurchaseOrder.iInvoice;
-        this.iInvoiceNr         = iPurchaseOrder.iInvoiceNr;
-        this.iPrinted           = iPurchaseOrder.iPrinted;
-        this.iCurrencyRate      = iPurchaseOrder.iCurrencyRate;
-        this.iDeliveryAddress   = new SSAddress(iPurchaseOrder.iDeliveryAddress);
-        this.iSupplierAddress   = new SSAddress(iPurchaseOrder.iSupplierAddress);
-        this.iRows              = new LinkedList<SSPurchaseOrderRow>();
+        iNumber            = iPurchaseOrder.iNumber;
+        iDate              = iPurchaseOrder.iDate;
+        iSupplierNr        = iPurchaseOrder.iSupplierNr;
+        iSupplierName      = iPurchaseOrder.iSupplierName;
+        iEstimatedDelivery = iPurchaseOrder.iEstimatedDelivery;
+        iPaymentTerm       = iPurchaseOrder.iPaymentTerm;
+        iDeliveryTerm      = iPurchaseOrder.iDeliveryTerm;
+        iDeliveryWay       = iPurchaseOrder.iDeliveryWay;
+        iOurContact        = iPurchaseOrder.iOurContact;
+        iYourContact       = iPurchaseOrder.iYourContact;
+        iCurrency          = iPurchaseOrder.iCurrency;
+        iSupplier          = iPurchaseOrder.iSupplier;
+        iText              = iPurchaseOrder.iText;
+        iInvoice           = iPurchaseOrder.iInvoice;
+        iInvoiceNr         = iPurchaseOrder.iInvoiceNr;
+        iPrinted           = iPurchaseOrder.iPrinted;
+        iCurrencyRate      = iPurchaseOrder.iCurrencyRate;
+        iDeliveryAddress   = new SSAddress(iPurchaseOrder.iDeliveryAddress);
+        iSupplierAddress   = new SSAddress(iPurchaseOrder.iSupplierAddress);
+        iRows              = new LinkedList<SSPurchaseOrderRow>();
 
         for (SSPurchaseOrderRow iRow : iPurchaseOrder.iRows) {
             iRows.add(new SSPurchaseOrderRow(iRow) );
         }
         // Copy all default accounts
-        this.iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
-        this.iDefaultAccounts.putAll( iPurchaseOrder.getDefaultAccounts() );
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        iDefaultAccounts.putAll( iPurchaseOrder.getDefaultAccounts() );
 
     }
 
     public SSPurchaseOrder(List<SSProduct> iProducts, SSSupplier iSupplier) {
-
         setSupplier(iSupplier);
-        this.iRows = new LinkedList<SSPurchaseOrderRow>();
-        this.iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
-        this.iStockInfluencing  = true;
-        this.iEstimatedDelivery = Calendar.getInstance().getTime();
-        this.iDate  = Calendar.getInstance().getTime();
+        iRows                 = new LinkedList<SSPurchaseOrderRow>();
+        iDefaultAccounts      = new HashMap<SSDefaultAccount, Integer>();
+        iStockInfluencing     = true;
+        iEstimatedDelivery    = Calendar.getInstance().getTime();
+        iDate                 = Calendar.getInstance().getTime();
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
         if(iCompany != null){
-            this.setDefaultAccounts(iCompany.getDefaultAccounts());
-            this.iDeliveryAddress = new SSAddress(iCompany.getDeliveryAddress());
-            this.iText            = iCompany.getStandardText(SSStandardText.Purchaseorder);
+            setDefaultAccounts(iCompany.getDefaultAccounts());
+            iDeliveryAddress = new SSAddress(iCompany.getDeliveryAddress());
+            iText            = iCompany.getStandardText(SSStandardText.Purchaseorder);
         }
         if(this.iSupplier != null){
-            this.iCurrency        = this.iSupplier.getCurrency();
-            this.iCurrencyRate    = this.iCurrency == null ? null : this.iCurrency.getExchangeRate();
+            iCurrency     = this.iSupplier.getCurrency();
+            iCurrencyRate = iCurrency == null ? null : iCurrency.getExchangeRate();
         }
 
         for (SSProduct iProduct : iProducts) {
@@ -160,7 +159,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
                 SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
                 iRow.setProduct(iOriginal);
                 iRow.setQuantity(iProduct.getOrdercount());
-                this.iRows.add(iRow);
+                iRows.add(iRow);
             }
         }
     }
@@ -467,7 +466,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      *
      */
     public void setPrinted() {
-        this.iPrinted = true;
+        iPrinted = true;
     }
 
     ////////////////////////////////////////////////////
@@ -518,7 +517,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      */
     public void setSupplier(SSSupplier iSupplier) {
         this.iSupplier   = iSupplier;
-        this.iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
+        iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
 
         if(iSupplier != null){
             iSupplierName     = iSupplier.getName();
@@ -565,7 +564,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      */
     public void setInvoiceNr(Integer iInvoiceNr) {
         this.iInvoiceNr = iInvoiceNr;
-        this.iInvoice   = null;
+        iInvoice = null;
     }
 
     ////////////////////////////////////////////////////
@@ -600,7 +599,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      */
     public void setInvoice(SSSupplierInvoice iInvoice) {
         this.iInvoice   = iInvoice;
-        this.iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
+        iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
     }
 
 

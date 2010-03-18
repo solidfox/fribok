@@ -178,7 +178,7 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
 
         iTable.addDblClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSCompanyFrame.this.openSelectedCompany();
+                openSelectedCompany();
             }
         });
         JPanel iPanel = new JPanel();
@@ -287,7 +287,7 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
         if (iYear == null) {
             //Inget år för företaget sparat. Öppna årsfönstret
             SSDBConfig.setYearId(iNewCompany.getId(), null);
-            SSAccountingYearFrame.showFrame(this.getMainFrame(), 500, 300, false);
+            SSAccountingYearFrame.showFrame(getMainFrame(), 500, 300, false);
         } else {
             //Hittade ett sparat år. Sätt det som nuvarande
             SSDB.getInstance().setCurrentYear(iYear);
@@ -354,7 +354,7 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
             if (iYear == null) {
                 //Inget år för företaget sparat. Öppna årsfönstret
                 SSDBConfig.setYearId(pCompany.getId(), null);
-                SSAccountingYearFrame.showFrame(this.getMainFrame(), 500, 300, false);
+                SSAccountingYearFrame.showFrame(getMainFrame(), 500, 300, false);
             } else {
                 //Hittade ett sparat år. Sätt det som nuvarande
                 SSDB.getInstance().setCurrentYear(iYear);

@@ -127,7 +127,7 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
         // ******************
         iButton = new SSButton("ICON_PRINT", "budgetframe.printbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                final SSMainFrame iMainFrame = SSBudgetFrame.this.getMainFrame();
+                final SSMainFrame iMainFrame = getMainFrame();
 
                 final Date iFrom = SSDB.getInstance().getCurrentYear().getFrom();
                 final Date iTo = SSDB.getInstance().getCurrentYear().getTo();

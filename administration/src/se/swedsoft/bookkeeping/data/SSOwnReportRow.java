@@ -57,10 +57,10 @@ public class SSOwnReportRow implements SSTableSearchable, Serializable {
 
     public boolean equals(Object obj){
         if(obj == null) return false;
-        if(this.iHeading == null && ((SSOwnReportRow)obj).iHeading == null) return true;
+        if(iHeading == null && ((SSOwnReportRow)obj).iHeading == null) return true;
 
         if(obj instanceof SSOwnReportRow){
-            return this.iHeading != null && this.iHeading.equals(((SSOwnReportRow)obj).iHeading);
+            return iHeading != null && iHeading.equals(((SSOwnReportRow)obj).iHeading);
         }
         return false;
     }

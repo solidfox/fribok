@@ -75,7 +75,7 @@ public class SSVATCode implements SSTableSearchable {
      * @param iBundle
      */
     public void setBundle(String iBundle) {
-        this.iDescription =  SSBundle.getBundle().getString(iBundle);
+        iDescription =  SSBundle.getBundle().getString(iBundle);
     }
 
     ////////////////////////////////////////////////////////////////////////////////

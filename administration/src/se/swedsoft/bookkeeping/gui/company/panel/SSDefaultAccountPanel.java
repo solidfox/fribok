@@ -268,10 +268,10 @@ public class SSDefaultAccountPanel extends JPanel {
         iCustomerClaim.dispose();
         iCustomerClaim=null;
 
-        this.iInPayment.dispose();
-        this.iInPayment=null;
-        this.iOutPayment.dispose();
-        this.iOutPayment=null;
+        iInPayment.dispose();
+        iInPayment =null;
+        iOutPayment.dispose();
+        iOutPayment =null;
         iCash.dispose();
         iCash=null;
         iSupplierDebt.dispose();

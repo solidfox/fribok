@@ -46,7 +46,7 @@ public class SSSystemData implements Serializable {
      * @param pAccountPlans
      */
     public void setAccountPlans(List<SSAccountPlan> pAccountPlans) {
-        this.iAccountPlans = pAccountPlans;
+        iAccountPlans = pAccountPlans;
     }
 
     /**

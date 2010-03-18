@@ -31,10 +31,10 @@ public class SSSalevaluesPrinter extends SSPrinter {
 
      */
     public SSSalevaluesPrinter(Date iFrom, Date iTo) {
-        this.iFrom       = iFrom;
-        this.iTo          = iTo;
+        this.iFrom = iFrom;
+        this.iTo   = iTo;
 
-        this.iMonths    = SSMonth.splitYearIntoMonths(iFrom,iTo);
+        iMonths = SSMonth.splitYearIntoMonths(iFrom,iTo);
 
         setPageHeader  ("header_period.jrxml");
         setColumnHeader("salevalues.jrxml");

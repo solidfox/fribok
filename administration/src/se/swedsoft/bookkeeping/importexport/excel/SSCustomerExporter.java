@@ -67,7 +67,7 @@ public class SSCustomerExporter {
      */
     public SSCustomerExporter(File iFile){
       this.iFile = iFile;
-      this.iCustomers = SSDB.getInstance().getCustomers();
+        iCustomers = SSDB.getInstance().getCustomers();
     }
 
     /**
