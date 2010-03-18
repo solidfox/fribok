@@ -112,7 +112,7 @@ public class SSDBConfig {
                     Integer iCompanyElementId = Integer.parseInt(iCompanyElement.getAttribute("id"));
                     if(iCompanyElementId.equals(pCompanyId)){
                         String iResult = iCompanyElement.getAttribute("yearid");
-                        if (iResult == null || iResult.equals("")) {
+                        if (iResult == null || iResult.length() == 0) {
                             return null;
                         }
                         SSNewAccountingYear iYear = new SSNewAccountingYear();
@@ -201,14 +201,14 @@ public class SSDBConfig {
             if(iParser.getDocument().getDocumentElement().hasAttribute("company")){
                 iCompany  =  iParser.getDocument().getDocumentElement().getAttribute("company");
             }
-            if (iCompany != null && !iCompany.equals("")) {
+            if (iCompany != null && iCompany.length() != 0) {
                 iCompanyId = Integer.parseInt(iCompany);
             }
 
             if(iParser.getDocument().getDocumentElement().hasAttribute("year")){
                 iYear  =  iParser.getDocument().getDocumentElement().getAttribute("year");
             }
-            if (iYear != null && !iYear.equals("")) {
+            if (iYear != null && iYear.length() != 0) {
                 iYearId = Integer.parseInt(iYear);
             }
 

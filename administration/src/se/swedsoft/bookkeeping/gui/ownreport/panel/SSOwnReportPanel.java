@@ -255,7 +255,7 @@ public class SSOwnReportPanel {
         iHeadingComboBox.addSelectionListener(new SSSelectionListener<SSOwnReportRow>() {
             public void selected(SSOwnReportRow selected) {
                 if(selected != null){
-                    if(selected.getHeading() != null && !selected.getHeading().equals("")) iAccountTable.setEnabled(true);
+                    if(selected.getHeading() != null && selected.getHeading().length() != 0) iAccountTable.setEnabled(true);
                     else iAccountTable.setEnabled(false);
 
                     iAccountTableModel.setObjects(selected.getAccountRows());
@@ -276,14 +276,14 @@ public class SSOwnReportPanel {
     public SSOwnReport getOwnReport(){
         iOwnReport.setName(iName.getText());
 
-        if(iProjectComboBox.getText() != null && !iProjectComboBox.getText().equals("")) {
+        if(iProjectComboBox.getText() != null && iProjectComboBox.getText().length() != 0) {
             iOwnReport.setProjectNr(iProjectComboBox.getText());
         }
         else{
             iOwnReport.setProjectNr(null);
         }
 
-        if(iResultUnitComboBox.getText() != null && !iResultUnitComboBox.getText().equals("")){
+        if(iResultUnitComboBox.getText() != null && iResultUnitComboBox.getText().length() != 0){
             iOwnReport.setResultUnitNr(iResultUnitComboBox.getText());
         }
         else{
@@ -296,7 +296,7 @@ public class SSOwnReportPanel {
     }
 
     public boolean isValid(){
-        return ! iName.getText().equals("");
+        return iName.getText().length() != 0;
     }
     /**
      * Returns the panel.

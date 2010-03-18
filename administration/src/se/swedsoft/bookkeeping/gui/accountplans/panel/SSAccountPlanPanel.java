@@ -326,7 +326,7 @@ public class SSAccountPlanPanel {
     }
 
     public boolean isValid() {
-        return !iName.getText().equals("");
+        return iName.getText().length() != 0;
     }
 
 }

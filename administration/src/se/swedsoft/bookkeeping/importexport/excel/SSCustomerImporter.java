@@ -686,7 +686,7 @@ public class SSCustomerImporter {
                 }
 
                 if(iFields.length == 20){
-                    if(iFields[2] == null || iFields[2].equals("")){
+                    if(iFields[2] == null || iFields[2].length() == 0){
                         iCustomer.getInvoiceAddress().setName(iFields[3] + ' ' + iFields[4]);
                         iCustomer.setName(iFields[3] + ' ' + iFields[4]);
                         iCustomer.getInvoiceAddress().setAddress1(iFields[5]);
@@ -702,18 +702,18 @@ public class SSCustomerImporter {
                     iCustomer.getInvoiceAddress().setCity(iFields[7]);
                     iCustomer.getInvoiceAddress().setCountry(iFields[8]);
 
-                    if(iFields[9] == null || (iFields[9].equals("") && iFields[2].equals(""))){
+                    if(iFields[9] == null || (iFields[9].length() == 0 && iFields[2].length() == 0)){
                         iCustomer.getDeliveryAddress().setName((iFields[10] + ' ' + iFields[11]).equals(" ") ? iCustomer.getInvoiceAddress().getName() : iFields[10] + ' ' + iFields[11]);
-                        iCustomer.getDeliveryAddress().setAddress1(iFields[12].equals("") ? iCustomer.getInvoiceAddress().getAddress1() : iFields[12]);
+                        iCustomer.getDeliveryAddress().setAddress1(iFields[12].length() == 0 ? iCustomer.getInvoiceAddress().getAddress1() : iFields[12]);
                     }
                     else{
-                        iCustomer.getDeliveryAddress().setName(iFields[9].equals("") ? iCustomer.getInvoiceAddress().getName() : iFields[9]);
+                        iCustomer.getDeliveryAddress().setName(iFields[9].length() == 0 ? iCustomer.getInvoiceAddress().getName() : iFields[9]);
                         iCustomer.getDeliveryAddress().setAddress1((iFields[10] + ' ' + iFields[11]).equals(" ") ? iCustomer.getInvoiceAddress().getAddress1() : iFields[10] + ' ' + iFields[11]);
-                        iCustomer.getDeliveryAddress().setAddress2(iFields[12].equals("") ? iCustomer.getInvoiceAddress().getAddress2() : iFields[12]);
+                        iCustomer.getDeliveryAddress().setAddress2(iFields[12].length() == 0 ? iCustomer.getInvoiceAddress().getAddress2() : iFields[12]);
                     }
-                    iCustomer.getDeliveryAddress().setZipCode(iFields[13].equals("") ? iCustomer.getInvoiceAddress().getZipCode() : iFields[13]);
-                    iCustomer.getDeliveryAddress().setCity(iFields[14].equals("") ? iCustomer.getInvoiceAddress().getCity() : iFields[14]);
-                    iCustomer.getDeliveryAddress().setCountry(iFields[15].equals("") ? iCustomer.getInvoiceAddress().getCountry() : iFields[15]);
+                    iCustomer.getDeliveryAddress().setZipCode(iFields[13].length() == 0 ? iCustomer.getInvoiceAddress().getZipCode() : iFields[13]);
+                    iCustomer.getDeliveryAddress().setCity(iFields[14].length() == 0 ? iCustomer.getInvoiceAddress().getCity() : iFields[14]);
+                    iCustomer.getDeliveryAddress().setCountry(iFields[15].length() == 0 ? iCustomer.getInvoiceAddress().getCountry() : iFields[15]);
 
                     iCustomer.setPhone1(iFields[16]);
                     iCustomer.setTelefax(iFields[17]);
@@ -724,7 +724,7 @@ public class SSCustomerImporter {
                     iCustomerCount++;
                 }
                 else if(iFields.length == 19){
-                    if(iFields[1] == null || iFields[1].equals("")){
+                    if(iFields[1] == null || iFields[1].length() == 0){
                         iCustomer.getInvoiceAddress().setName(iFields[2] + ' ' + iFields[3]);
                         iCustomer.setName(iFields[2] + ' ' + iFields[3]);
                         iCustomer.getInvoiceAddress().setAddress1(iFields[4]);
@@ -740,18 +740,18 @@ public class SSCustomerImporter {
                     iCustomer.getInvoiceAddress().setCity(iFields[6]);
                     iCustomer.getInvoiceAddress().setCountry(iFields[7]);
 
-                    if(iFields[8] == null || (iFields[8].equals("") && iFields[1].equals(""))){
+                    if(iFields[8] == null || (iFields[8].length() == 0 && iFields[1].length() == 0)){
                         iCustomer.getDeliveryAddress().setName((iFields[9] + ' ' + iFields[10]).equals(" ") ? iCustomer.getInvoiceAddress().getName() : iFields[9] + ' ' + iFields[10]);
-                        iCustomer.getDeliveryAddress().setAddress1(iFields[11].equals("") ? iCustomer.getInvoiceAddress().getAddress1() : iFields[11]);
+                        iCustomer.getDeliveryAddress().setAddress1(iFields[11].length() == 0 ? iCustomer.getInvoiceAddress().getAddress1() : iFields[11]);
                     }
                     else{
-                        iCustomer.getDeliveryAddress().setName(iFields[8].equals("") ? iCustomer.getInvoiceAddress().getName() : iFields[8]);
+                        iCustomer.getDeliveryAddress().setName(iFields[8].length() == 0 ? iCustomer.getInvoiceAddress().getName() : iFields[8]);
                         iCustomer.getDeliveryAddress().setAddress1((iFields[9] + ' ' + iFields[10]).equals(" ") ? iCustomer.getInvoiceAddress().getAddress1() : iFields[9] + ' ' + iFields[10]);
-                        iCustomer.getDeliveryAddress().setAddress2(iFields[11].equals("") ? iCustomer.getInvoiceAddress().getAddress2() : iFields[11]);
+                        iCustomer.getDeliveryAddress().setAddress2(iFields[11].length() == 0 ? iCustomer.getInvoiceAddress().getAddress2() : iFields[11]);
                     }
-                    iCustomer.getDeliveryAddress().setZipCode(iFields[12].equals("") ? iCustomer.getInvoiceAddress().getZipCode() : iFields[12]);
-                    iCustomer.getDeliveryAddress().setCity(iFields[13].equals("") ? iCustomer.getInvoiceAddress().getCity() : iFields[13]);
-                    iCustomer.getDeliveryAddress().setCountry(iFields[14].equals("") ? iCustomer.getInvoiceAddress().getCountry() : iFields[14]);
+                    iCustomer.getDeliveryAddress().setZipCode(iFields[12].length() == 0 ? iCustomer.getInvoiceAddress().getZipCode() : iFields[12]);
+                    iCustomer.getDeliveryAddress().setCity(iFields[13].length() == 0 ? iCustomer.getInvoiceAddress().getCity() : iFields[13]);
+                    iCustomer.getDeliveryAddress().setCountry(iFields[14].length() == 0 ? iCustomer.getInvoiceAddress().getCountry() : iFields[14]);
 
                     iCustomer.setPhone1(iFields[15]);
                     iCustomer.setTelefax(iFields[16]);

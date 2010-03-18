@@ -174,7 +174,7 @@ public class SSDB {
 
         String iKey = SSDBConfig.getClientkey();
         try {
-            if(iKey != null && !iKey.equals("")){
+            if(iKey != null && iKey.length() != 0){
                 iStatement = iConnection.prepareStatement("INSERT INTO tbl_license VALUES(?)");
                 iStatement.setObject(1,iKey);
                 iStatement.executeUpdate();
@@ -414,7 +414,7 @@ public class SSDB {
 
             String iKey = SSDBConfig.getClientkey();
             try {
-                if(iKey != null && !iKey.equals("")){
+                if(iKey != null && iKey.length() != 0){
                     PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_license VALUES(?)");
                     iStatement.setObject(1,iKey);
                     iStatement.executeUpdate();

@@ -330,14 +330,14 @@ public class SSMainMenu {
                 String iIpAddress = SSInputDialog.showDialog();
                 if(iIpAddress == null) return;
                 try {
-                    if (iIpAddress.equals("")) {
+                    if (iIpAddress.length() == 0) {
                         throw new IOException("Could not connect to server on address null");
                     }
                     SSDB.getInstance().openSocket(iIpAddress);
                 } catch (IOException ex){
                     SSQueryDialog iDialog = new SSQueryDialog(SSMainFrame.getInstance(),"noserverfound");
 
-                    if (SSDBConfig.getClientkey() != null && !SSDBConfig.getClientkey().equals("")) {
+                    if (SSDBConfig.getClientkey() != null && SSDBConfig.getClientkey().length() != 0) {
                         SSDB.getInstance().removeClient();
                     }
                     if (iDialog.getResponce() == JOptionPane.YES_OPTION) {

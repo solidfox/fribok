@@ -360,9 +360,9 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         String iFileExt  =  getExtension(pSelectedFile);
 
         // Pdf
-        if( iFileExt.equals("pdf") || (iFileExt.equals("") && pFileFilter instanceof SSFilterPDF) ){
+        if( iFileExt.equals("pdf") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterPDF) ){
             try{
-                if(iFileExt.equals("") ) iFileName = iFileName + ".pdf";
+                if(iFileExt.length() == 0) iFileName = iFileName + ".pdf";
 
                 JasperExportManager.exportReportToPdfFile(iPrinter, iFileName);
             }catch(JRException ex){
@@ -370,9 +370,9 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
             }
         }
         // html
-        if( iFileExt.equals("htm") || iFileExt.equals("html") || (iFileExt.equals("") && pFileFilter instanceof SSFilterHTM)){
+        if( iFileExt.equals("htm") || iFileExt.equals("html") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterHTM)){
             try{
-                if(iFileExt.equals("") ) iFileName = iFileName + ".htm";
+                if(iFileExt.length() == 0) iFileName = iFileName + ".htm";
 
                 JasperExportManager.exportReportToHtmlFile(iPrinter, iFileName);
             }catch(JRException ex){
@@ -381,7 +381,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         }
 
         // RTF
-        if( iFileExt.equals(".rtf") || (iFileExt.equals("") && pFileFilter instanceof SSFilterRTF)){
+        if( iFileExt.equals(".rtf") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterRTF)){
             try{
                 JRRtfSaveContributor iSaver = new JRRtfSaveContributor();
 
@@ -392,7 +392,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         }
 
         // Excel
-        if( iFileExt.equals(".xls") || (iFileExt.equals("") && pFileFilter instanceof SSFilterXLS)){
+        if( iFileExt.equals(".xls") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterXLS)){
 
             try{
                 JRMultipleSheetsXlsSaveContributor iSaver = new JRMultipleSheetsXlsSaveContributor();

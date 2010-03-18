@@ -41,7 +41,7 @@ public class SSBookkeeping {
 
         try {
             String iServerAddress = SSDBConfig.getServerAddress();
-            if (iServerAddress.equals("")) {
+            if (iServerAddress.length() == 0) {
                 //K�r mot lokal databas! Ingen l�sning m.m.
                 Connection iConnection = DriverManager.getConnection("jdbc:hsqldb:file:db"+File.separator+"JFSDB", "sa", "");
                 SSDB.getInstance().startupLocal(iConnection);
@@ -145,7 +145,7 @@ public class SSBookkeeping {
             public void run() {
                 SSFrameManager.getInstance().storeAllFrames();
 
-                if (SSDBConfig.getClientkey() != null && !SSDBConfig.getClientkey().equals("")) {
+                if (SSDBConfig.getClientkey() != null && SSDBConfig.getClientkey().length() != 0) {
                     SSDB.getInstance().removeClient();
                 }
 

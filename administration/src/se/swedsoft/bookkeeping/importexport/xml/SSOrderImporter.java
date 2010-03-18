@@ -700,7 +700,7 @@ public class SSOrderImporter {
             br.close();
 
             for(String iLine : al){
-                if(iLine.equals(""))
+                if(iLine.length() == 0)
                     continue;
                 
                 String[] iFields = iLine.split("\t",2);
@@ -827,7 +827,7 @@ public class SSOrderImporter {
                     iPaymentString = iFields[14];
                 }
 
-                if(iFeeString != null && !iFeeString.equals("") && !iFeeString.equals("0")){
+                if(iFeeString != null && iFeeString.length() != 0 && !iFeeString.equals("0")){
                     try {
                         iFeeString = iFeeString.replace(",", ".");
                         SSSaleRow iRow = new SSSaleRow(SSDB.getInstance().getProduct("Avgift"));
@@ -841,7 +841,7 @@ public class SSOrderImporter {
                         continue;
                     }
                 }
-                if(iFreightString != null && !iFreightString.equals("") && !iFreightString.equals("0")){
+                if(iFreightString != null && iFreightString.length() != 0 && !iFreightString.equals("0")){
                     try {
                         iFreightString = iFreightString.replace(",", ".");
                         SSSaleRow iRow = new SSSaleRow(SSDB.getInstance().getProduct("Frakt"));
@@ -855,7 +855,7 @@ public class SSOrderImporter {
                         continue;
                     }
                 }
-                if(iPaymentString != null && !iPaymentString.equals("")){
+                if(iPaymentString != null && iPaymentString.length() != 0){
                     boolean set = false;
                     for(SSPaymentTerm iPaymentTerm : SSDB.getInstance().getPaymentTerms()){
                         if(iPaymentTerm.getDescription().equals(iPaymentString)){

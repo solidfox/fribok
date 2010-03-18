@@ -263,7 +263,7 @@ public class SSInvoicePrinter extends SSPrinter {
             iModel.addColumn("row.sum");
 
             List<SSSaleRow> iRows = new LinkedList<SSSaleRow>(iInvoice.getRows());
-            if(iInvoice.getOrderNumbers() != null && !iInvoice.getOrderNumbers().equals("") && !iInvoice.getOrderNumbers().equals("Fakturan har inga ordrar")){
+            if(iInvoice.getOrderNumbers() != null && iInvoice.getOrderNumbers().length() != 0 && !iInvoice.getOrderNumbers().equals("Fakturan har inga ordrar")){
                 SSSaleRow iRow = new SSSaleRow();
                 iRow.setProductNr(iLocale.getLanguage().equals("en") ? "Contains order:" : "Avser order:");
                 iRow.setDescription(iInvoice.getOrderNumbers());

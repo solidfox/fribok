@@ -186,7 +186,7 @@ public class SSProductPanel {
         iProject.addSelectionListener(new SSSelectionListener() {
             public void selected(SSTableSearchable selected) {
                 SSNewProject iSelected = iProject.getSelected();
-                if (iProject.getText() != null && !iProject.getText().equals("")) {
+                if (iProject.getText() != null && iProject.getText().length() != 0) {
                     iProjectDescription.setText(iSelected == null ? "" : iSelected.getName());
                 } else {
                     iProjectDescription.setText(null);
@@ -210,7 +210,7 @@ public class SSProductPanel {
         iResultUnit.addSelectionListener(new SSSelectionListener() {
             public void selected(SSTableSearchable selected) {
                 SSNewResultUnit iSelected = iResultUnit.getSelected();
-                if (iResultUnit.getText() != null && !iResultUnit.getText().equals("")) {
+                if (iResultUnit.getText() != null && iResultUnit.getText().length() != 0) {
                     iResultUnitDescription.setText(iSelected == null ? "" : iSelected.getName());
                 } else {
                     iResultUnitDescription.setText(null);
@@ -419,12 +419,12 @@ public class SSProductPanel {
         iProduct.setDefaultAccount(SSDefaultAccount.Purchases, iPurchaseAccount.getSelected());
         iProduct.setDefaultAccount(SSDefaultAccount.Sales    , iSellingAccount .getSelected());
 
-        if (iProject.getText() != null && !iProject.getText().equals("")) {
+        if (iProject.getText() != null && iProject.getText().length() != 0) {
             iProduct.setProject(iProject.getSelected());
         } else {
             iProduct.setProject(null);
         }
-        if (iResultUnit.getText() != null && !iResultUnit.getText().equals("")) {
+        if (iResultUnit.getText() != null && iResultUnit.getText().length() != 0) {
             iProduct.setResultUnit(iResultUnit.getSelected());
         } else {
             iProduct.setResultUnit(null);
