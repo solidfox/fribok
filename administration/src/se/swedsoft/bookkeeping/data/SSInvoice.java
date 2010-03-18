@@ -83,8 +83,8 @@ public class SSInvoice extends SSSale {
      */
     public SSInvoice(SSInvoiceType iInvoiceType ){
         this();
-        
-        setType(iInvoiceType);
+
+        iType = iInvoiceType;
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 

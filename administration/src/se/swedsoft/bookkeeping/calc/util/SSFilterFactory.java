@@ -86,7 +86,7 @@ public class SSFilterFactory<T> {
 
         iFactory.applyFilter(iFilter);
 
-        return iFactory.getObjects();
+        return iFactory.iObjects;
     }
 
 

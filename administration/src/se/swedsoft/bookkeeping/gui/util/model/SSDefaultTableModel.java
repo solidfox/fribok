@@ -280,7 +280,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
         List<T> objects;
 
         if (indices.length == 0) {
-            objects = getObjects();
+            objects = iObjects;
         } else {
             objects = new ArrayList<T>(indices.length);
             for (int i : indices) {

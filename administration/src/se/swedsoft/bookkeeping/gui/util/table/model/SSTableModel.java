@@ -360,7 +360,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         List<T> iFiltered;
 
         if (iIndices.length == 0) {
-            iFiltered = getObjects();
+            iFiltered = iObjects;
         } else {
             iFiltered = new ArrayList<T>(iIndices.length);
             for (int i : iIndices) {

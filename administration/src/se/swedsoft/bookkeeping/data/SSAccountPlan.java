@@ -72,7 +72,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      */
     public SSAccountPlan(SSAccountPlan iAccountPlan, boolean iBasedOn) {
         copyFrom(iAccountPlan);
-        if(iBasedOn) iBaseName = iAccountPlan.getName();
+        if(iBasedOn) iBaseName = iAccountPlan.iName;
     }
 
 
@@ -158,7 +158,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      * @param iAccountPlan
      */
     public void setBasePlan(SSAccountPlan iAccountPlan){
-        iBaseName = iAccountPlan == null ? null : iAccountPlan.getName();
+        iBaseName = iAccountPlan == null ? null : iAccountPlan.iName;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -300,7 +300,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     public void importSRUCodesFrom(SSAccountPlan pAccountPlan){
         Map<Integer, SSAccount> iMap = getAccountMap();
 
-        setAssessementYear( pAccountPlan.getAssessementYear());
+        iAssessementYear = pAccountPlan.iAssessementYear;
 
         for (SSAccount iFromAccount : pAccountPlan.getAccounts()) {
             SSAccount iAccount = iMap.get( iFromAccount.getNumber() );
@@ -317,7 +317,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     public void importVATCodesFrom(SSAccountPlan pAccountPlan){
         Map<Integer, SSAccount> iMap = getAccountMap();
 
-        setAssessementYear( pAccountPlan.getAssessementYear());
+        iAssessementYear = pAccountPlan.iAssessementYear;
 
         for (SSAccount iFromAccount : pAccountPlan.getAccounts()) {
             SSAccount iAccount = iMap.get( iFromAccount.getNumber() );
@@ -336,7 +336,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     public void importReportCodesFrom(SSAccountPlan pAccountPlan){
         Map<Integer, SSAccount> iMap = getAccountMap();
 
-        setAssessementYear( pAccountPlan.getAssessementYear());
+        iAssessementYear = pAccountPlan.iAssessementYear;
 
         for (SSAccount iFromAccount : pAccountPlan.getAccounts()) {
             SSAccount iAccount = iMap.get( iFromAccount.getNumber() );
@@ -418,11 +418,11 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     public String toString() {
         StringBuffer b = new StringBuffer();
 
-        b.append(getName());
+        b.append(iName);
         b.append(" - ");
         b.append(getAccounts().size());
         b.append(", base: ");
-        b.append(getBaseName());
+        b.append(iBaseName);
 
         return b.toString();
     }

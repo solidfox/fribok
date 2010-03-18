@@ -1050,7 +1050,7 @@ public class SSNewCompany implements Serializable {
         }
         if(iId == null) return false;
 
-        return iId.equals(((SSNewCompany)obj).getId());
+        return iId.equals(((SSNewCompany) obj).iId);
     }
 
 

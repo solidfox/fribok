@@ -112,11 +112,11 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         int iNumber = SSDB.getInstance().getAutoIncrement().getNumber("outpayment");
 
         for(SSOutpayment iOutpayment: iOutpayments){
-            if(iOutpayment.getNumber() != null && iOutpayment.getNumber() > iNumber){
-                iNumber = iOutpayment.getNumber();
+            if(iOutpayment.iNumber != null && iOutpayment.iNumber > iNumber){
+                iNumber = iOutpayment.iNumber;
             }
         }
-        setNumber(iNumber + 1);
+        this.iNumber = iNumber + 1;
     }
 
     ////////////////////////////////////////////////////
@@ -391,7 +391,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         if (!(obj instanceof SSOutpayment)) {
             return false;
         }
-        return iNumber.equals(((SSOutpayment)obj).getNumber());
+        return iNumber.equals(((SSOutpayment) obj).iNumber);
     }
 
 

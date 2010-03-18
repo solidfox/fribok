@@ -190,7 +190,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
         if (!(obj instanceof SSVoucherTemplate)) {
             return false;
         }
-        return iDescription.equals(((SSVoucherTemplate)obj).getDescription());
+        return iDescription.equals(((SSVoucherTemplate) obj).iDescription);
     }
 
 

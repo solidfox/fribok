@@ -159,7 +159,7 @@ public class SSMonth  implements Serializable {
         Calendar iMonthDate = Calendar.getInstance();
 
         iCheckDate.setTime(iDate);
-        iMonthDate.setTime(getDate());
+        iMonthDate.setTime(iFrom);
 
         return (iCheckDate.get(Calendar.MONTH) == iMonthDate.get(Calendar.MONTH)) && (iCheckDate.get(Calendar.YEAR) == iMonthDate.get(Calendar.YEAR));
     }

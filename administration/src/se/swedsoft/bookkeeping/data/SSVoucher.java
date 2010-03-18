@@ -103,7 +103,7 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
      */
     public void doAutoIncrecement() {
             int iNumber = SSVoucherMath.getMaxNumber();
-            setNumber(iNumber + 1);
+        this.iNumber = iNumber + 1;
     }
 
     ////////////////////////////////////////////////////////////////////

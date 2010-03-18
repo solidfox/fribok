@@ -228,7 +228,7 @@ public class SupplierPayment {
     public static List<SupplierPayment> getPayments(List<SupplierPayment> iPayments, String iCurrency) {
         List<SupplierPayment> iFiltered = new LinkedList<SupplierPayment>();
         for (SupplierPayment iPayment : iPayments) {
-            if( iCurrency.equals( iPayment.getCurrency() ) ){
+            if( iCurrency.equals(iPayment.iCurrency) ){
                 iFiltered.add(iPayment);
             }
         }
@@ -249,7 +249,7 @@ public class SupplierPayment {
     public boolean equals(Object obj) {
         if(obj instanceof SupplierPayment){
             SupplierPayment iPayment = (SupplierPayment) obj;
-            return iPayment.getSupplierInvoice().equals(iInvoice);
+            return iPayment.iInvoice.equals(iInvoice);
         }
         return false;
     }

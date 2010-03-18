@@ -78,7 +78,7 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
      * @return the value contained in the editor
      */
     public Object getCellEditorValue() {
-        return getDate();
+        return iDate;
     }
 
 

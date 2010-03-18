@@ -119,8 +119,8 @@ public class SSPeriodicInvoice implements Serializable {
         int iMax = 0;
         for(SSPeriodicInvoice iPeriodicInvoice: iPeriodicInvoices){
 
-            if(iPeriodicInvoice.getNumber() != null && iPeriodicInvoice.getNumber() > iMax){
-                iMax = iPeriodicInvoice.getNumber();
+            if(iPeriodicInvoice.iNumber != null && iPeriodicInvoice.iNumber > iMax){
+                iMax = iPeriodicInvoice.iNumber;
             }
         }
         iNumber = iMax + 1;
@@ -514,6 +514,6 @@ public class SSPeriodicInvoice implements Serializable {
         if (!(obj instanceof SSPeriodicInvoice)) {
             return false;
         }
-        return iNumber.equals(((SSPeriodicInvoice)obj).getNumber());
+        return iNumber.equals(((SSPeriodicInvoice) obj).iNumber);
     }
 }

@@ -115,7 +115,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     public SSSale(SSSale iSale, Integer iNumber) {
         copyFrom(iSale);
 
-        setNumber(iNumber);
+        this.iNumber = iNumber;
     }
 
     ////////////////////////////////////////////////////

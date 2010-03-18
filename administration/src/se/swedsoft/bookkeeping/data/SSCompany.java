@@ -1731,7 +1731,7 @@ public class SSCompany implements Serializable {
         if (!(obj instanceof SSCompany)) {
             return false;
         }
-        return iId.equals(((SSCompany)obj).getId());
+        return iId.equals(((SSCompany) obj).iId);
     }
 
 

@@ -153,7 +153,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
         if (!(obj instanceof SSCurrency)) {
             return false;
         }
-        return iCode.equals(((SSCurrency)obj).getName());
+        return iCode.equals(((SSCurrency) obj).iCode);
     }
 
 

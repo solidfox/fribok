@@ -101,7 +101,7 @@ public class SSUnit implements Serializable, SSTableSearchable {
         if(obj instanceof SSUnit){
             SSUnit iUnit = (SSUnit)obj;
 
-            return iName.equals(iUnit.getName());
+            return iName.equals(iUnit.iName);
         }
         return false;
     }

@@ -113,8 +113,8 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         int iNumber = SSDB.getInstance().getAutoIncrement().getNumber("inpayment");
 
         for(SSInpayment iInpayment: iInpayments){
-            if(iInpayment.getNumber() > iNumber){
-                iNumber = iInpayment.getNumber();
+            if(iInpayment.iNumber > iNumber){
+                iNumber = iInpayment.iNumber;
             }
         }
         this.iNumber = iNumber + 1;
@@ -389,7 +389,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         if (!(obj instanceof SSInpayment)) {
             return false;
         }
-        return iNumber.equals(((SSInpayment)obj).getNumber());
+        return iNumber.equals(((SSInpayment) obj).iNumber);
     }
 
 

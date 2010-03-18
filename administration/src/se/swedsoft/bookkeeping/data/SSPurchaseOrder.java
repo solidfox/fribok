@@ -176,8 +176,8 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
         int iNumber = SSDB.getInstance().getAutoIncrement().getNumber("purchaseorder");
 
         for (SSPurchaseOrder iPurchaseOrder : iPurchaseOrders) {
-            if( iPurchaseOrder.getNumber() > iNumber ){
-                iNumber  = iPurchaseOrder.getNumber();
+            if(iPurchaseOrder.iNumber > iNumber ){
+                iNumber  = iPurchaseOrder.iNumber;
             }
         }
         this.iNumber = iNumber + 1;
@@ -686,7 +686,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
         if(obj instanceof SSPurchaseOrder){
             SSPurchaseOrder iPurchaseOrder = (SSPurchaseOrder) obj;
 
-            return iPurchaseOrder.getNumber().equals(iNumber);
+            return iPurchaseOrder.iNumber.equals(iNumber);
         }
         return false;
     }

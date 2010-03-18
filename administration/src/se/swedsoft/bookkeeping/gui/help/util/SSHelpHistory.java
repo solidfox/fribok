@@ -120,7 +120,7 @@ public class SSHelpHistory {
      *
      */
     private void navigate(){
-        setUpdating(true);
+        iUpdating = true;
 
         HelpModelEvent iEvent = getCurrent();
 
@@ -136,7 +136,7 @@ public class SSHelpHistory {
         }
 
 
-        setUpdating(false);
+        iUpdating = false;
     }
 
     /**

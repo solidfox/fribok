@@ -99,7 +99,7 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
         if(obj instanceof SSDeliveryWay){
             SSDeliveryWay iUnit = (SSDeliveryWay)obj;
 
-            return iName.equals(iUnit.getName());
+            return iName.equals(iUnit.iName);
         }
         return false;
     }

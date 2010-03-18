@@ -494,11 +494,11 @@ public class SSVoucherRow implements Serializable, Cloneable {
 
         // Add the value
         if( iValue.signum() > 0){
-            setDebet  ( iValue      );
-            setCredit ( null);
+            iDebet = iValue;
+            iCredit = null;
         } else {
-            setDebet  ( null   );
-            setCredit ( iValue.abs()  );
+            iDebet = null;
+            iCredit = iValue.abs();
         }
     }
 

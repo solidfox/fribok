@@ -111,7 +111,7 @@ public class SIEDimension {
         if(obj instanceof SIEDimension){
             SIEDimension iObject = (SIEDimension)obj;
 
-            return iObject.getNumber().equals(iNumber);
+            return iObject.iNumber.equals(iNumber);
         }
         return super.equals(obj);
     }

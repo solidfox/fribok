@@ -227,7 +227,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
         if (!(obj instanceof SSAutoDist)) {
             return false;
         }
-        return iAccountNumber.equals(((SSAutoDist)obj).getNumber());
+        return iAccountNumber.equals(((SSAutoDist) obj).iAccountNumber);
     }
 }
 

@@ -177,8 +177,8 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
 
         int iMax = SSDB.getInstance().getAutoIncrement().getNumber("supplierinvoice");
         for (SSSupplierInvoice iSupplierInvoice : iInvoices) {
-            if(iSupplierInvoice.getNumber() > iMax){
-                iMax = iSupplierInvoice.getNumber();
+            if(iSupplierInvoice.iNumber > iMax){
+                iMax = iSupplierInvoice.iNumber;
             }
         }
 
@@ -190,10 +190,10 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         List<SSSupplierInvoice> iSupplierInvoices = SSDB.getInstance().getSupplierInvoices();
         Date iMax = null;
         if(!iSupplierInvoices.isEmpty()){
-            iMax = iSupplierInvoices.get(0).getDate();
+            iMax = iSupplierInvoices.get(0).iDate;
             for(SSSupplierInvoice iInvoice : iSupplierInvoices){
-                if(iInvoice.getDate().after(iMax)){
-                    iMax = iInvoice.getDate();
+                if(iInvoice.iDate.after(iMax)){
+                    iMax = iInvoice.iDate;
                 }
             }
         }
@@ -467,7 +467,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @param iSupplierInvoice
      */
     public void append(SSSupplierInvoice iSupplierInvoice) {
-        for (SSSupplierInvoiceRow iRow : iSupplierInvoice.getRows()) {
+        for (SSSupplierInvoiceRow iRow : iSupplierInvoice.iRows) {
             iRows.add( new SSSupplierInvoiceRow(iRow) );
         }
     }

@@ -190,7 +190,7 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
      */
     public boolean equals(Object other) {
         if(other instanceof SSSystemYear){
-            return iID.equals( ((SSSystemYear)other).getId() );
+            return iID.equals(((SSSystemYear) other).iID);
         }
         if(other instanceof SSNewAccountingYear){
             return iID.equals( ((SSNewAccountingYear)other).getId() );

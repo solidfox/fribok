@@ -135,7 +135,7 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
         if(obj instanceof SSPaymentTerm){
             SSPaymentTerm iUnit = (SSPaymentTerm)obj;
 
-            return iName.equals(iUnit.getName());
+            return iName.equals(iUnit.iName);
         }
         return false;
     }

@@ -58,7 +58,7 @@ public class SSOrder extends SSSale {
             setTaxRate3         ( iCompany.getTaxRate3()   );
             setDefaultAccounts  ( iCompany.getDefaultAccounts());
             setOurContactPerson ( iCompany.getContactPerson  () );
-            setEstimatedDelivery( iCompany.getEstimatedDelivery()  );
+            iEstimatedDelivery = iCompany.getEstimatedDelivery();
             setPaymentTerm      ( iCompany.getPaymentTerm());
             setDeliveryTerm     ( iCompany.getDeliveryTerm());
             setDeliveryWay      ( iCompany.getDeliveryWay());

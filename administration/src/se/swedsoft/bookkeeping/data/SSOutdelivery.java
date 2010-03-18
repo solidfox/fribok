@@ -55,8 +55,8 @@ public class SSOutdelivery implements Serializable {
         List<SSOutdelivery> iOutdeliveries = SSDB.getInstance().getOutdeliveries();
 
         for (SSOutdelivery iOutdelivery : iOutdeliveries) {
-            if(iOutdelivery.getNumber() >= iNumber){
-                iNumber = iOutdelivery.getNumber() + 1;
+            if(iOutdelivery.iNumber >= iNumber){
+                iNumber = iOutdelivery.iNumber + 1;
             }
         }
 
@@ -72,7 +72,7 @@ public class SSOutdelivery implements Serializable {
         iText   = iOutdelivery.iText;
         iRows   = new LinkedList<SSOutdeliveryRow>();
 
-        for (SSOutdeliveryRow iRow : iOutdelivery.getRows()) {
+        for (SSOutdeliveryRow iRow : iOutdelivery.iRows) {
             iRows.add( new SSOutdeliveryRow(iRow) );
         }
     }
@@ -186,7 +186,7 @@ public class SSOutdelivery implements Serializable {
         if (!(obj instanceof SSOutdelivery)) {
             return false;
         }
-        return iNumber.equals(((SSOutdelivery)obj).getNumber());
+        return iNumber.equals(((SSOutdelivery) obj).iNumber);
     }
 
 

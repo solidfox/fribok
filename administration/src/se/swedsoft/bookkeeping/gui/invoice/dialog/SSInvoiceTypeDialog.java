@@ -86,7 +86,7 @@ public class SSInvoiceTypeDialog extends SSDialog {
         iDialog.setLocationRelativeTo(iMainFrame);
 
         if( iDialog.showDialog() == JOptionPane.OK_OPTION ) {
-            return iDialog.getInvoiceType();
+            return iDialog.iInvoiceType;
         }
         return null;
     }

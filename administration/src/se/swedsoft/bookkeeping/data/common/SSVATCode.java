@@ -149,8 +149,8 @@ public class SSVATCode implements SSTableSearchable {
                     String iDescription = iNode.getAttributes().getNamedItem("description").getNodeValue();
 
                     SSVATCode iVatCode = new SSVATCode();
-                    iVatCode.setName       ( iName );
-                    iVatCode.setDescription     ( iDescription);
+                    iVatCode.iName = iName;
+                    iVatCode.iDescription = iDescription;
 
                     iValues.add(iVatCode);
                 }

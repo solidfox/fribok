@@ -372,7 +372,7 @@ public class SSNewAccountingYear implements Serializable, SSTableSearchable {
         if (!(obj instanceof SSNewAccountingYear)) {
             return false;
         }
-        return iId.equals(((SSNewAccountingYear)obj).getId());
+        return iId.equals(((SSNewAccountingYear) obj).iId);
     }
 
 }

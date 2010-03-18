@@ -99,7 +99,7 @@ public class SSDeliveryTerm implements Serializable, SSTableSearchable {
         if(obj instanceof SSDeliveryTerm){
             SSDeliveryTerm iUnit = (SSDeliveryTerm)obj;
 
-            return iName.equals(iUnit.getName());
+            return iName.equals(iUnit.iName);
         }
         return false;
     }

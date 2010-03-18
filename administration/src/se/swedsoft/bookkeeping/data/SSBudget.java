@@ -50,9 +50,9 @@ public class SSBudget implements Serializable  {
      * @param pSource
      */
     public SSBudget(SSBudget pSource){
-        iFrom           = pSource.getFrom();
-        iTo             = pSource.getTo  ();
-        iAccountingYear = pSource.getAccountingYear();
+        iFrom           = pSource.iFrom;
+        iTo             = pSource.iTo;
+        iAccountingYear = pSource.iAccountingYear;
         iBudget         = new HashMap<SSMonth, Map<SSAccount, BigDecimal>>();
 
         Map<SSMonth, Map<SSAccount, BigDecimal>> iSource =  pSource.getBudget();

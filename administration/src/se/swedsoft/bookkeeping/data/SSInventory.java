@@ -55,8 +55,8 @@ public class SSInventory implements Serializable {
 
         List<SSInventory> iInventories = SSDB.getInstance().getInventories();
         for (SSInventory iInventory : iInventories) {
-            if(iInventory.getNumber() >= iNumber){
-                iNumber = iInventory.getNumber() + 1;
+            if(iInventory.iNumber >= iNumber){
+                iNumber = iInventory.iNumber + 1;
             }
         }
     }
@@ -73,7 +73,7 @@ public class SSInventory implements Serializable {
         iText   = iInventory.iText;
         iRows   = new LinkedList<SSInventoryRow>();
 
-        for (SSInventoryRow iRow : iInventory.getRows()) {
+        for (SSInventoryRow iRow : iInventory.iRows) {
             iRows.add( new SSInventoryRow(iRow) );
         }
     }
@@ -185,7 +185,7 @@ public class SSInventory implements Serializable {
         if (!(obj instanceof SSInventory)) {
             return false;
         }
-        return iNumber.equals(((SSInventory)obj).getNumber());
+        return iNumber.equals(((SSInventory) obj).iNumber);
     }
 
 

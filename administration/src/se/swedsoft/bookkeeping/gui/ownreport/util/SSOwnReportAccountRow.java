@@ -51,7 +51,7 @@ public class SSOwnReportAccountRow implements Serializable {
         Integer iNumber = Integer.parseInt(iAccountNr);
         for(SSAccount pAccount : SSDB.getInstance().getCurrentYear().getAccounts()){
             if(pAccount.getNumber().equals(iNumber)){
-                setAccount(pAccount);
+                iAccount = pAccount;
             }
         }
     }

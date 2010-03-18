@@ -534,7 +534,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      *
      */
     public static void fireTableDataChanged() {
-        if(cInstance != null) cInstance.getModel().fireTableDataChanged();
+        if(cInstance != null) cInstance.iModel.fireTableDataChanged();
     }
 
     public void updateFrame() {
