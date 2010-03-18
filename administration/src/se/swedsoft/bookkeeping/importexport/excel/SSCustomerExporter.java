@@ -85,7 +85,7 @@ public class SSCustomerExporter {
      *
      * @throws IOException
      * @throws SSImportException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      */
     public void export()  throws IOException, SSExportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -114,7 +114,7 @@ public class SSCustomerExporter {
     /**
      *
      * @param pSheet
-     * @throws jxl.write.WriteException
+     * @throws WriteException
      */
     private void writeCustomers(SSWritableExcelSheet pSheet ) throws WriteException {
 

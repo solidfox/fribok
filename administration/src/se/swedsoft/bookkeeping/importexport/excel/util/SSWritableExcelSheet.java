@@ -49,7 +49,7 @@ public class SSWritableExcelSheet {
      * @param iRow
      * @param iColumn
      * @param pValue
-     * @throws jxl.write.WriteException
+     * @throws WriteException
      */
     public void setString(int iRow, int iColumn, String pValue) throws WriteException {
       
@@ -65,7 +65,7 @@ public class SSWritableExcelSheet {
      * @param iRow
      * @param iColumn
      * @param pValue
-     * @throws jxl.write.WriteException
+     * @throws WriteException
      */
     public void setInteger(int iRow, int iColumn, Integer pValue) throws WriteException {
         try{
@@ -80,7 +80,7 @@ public class SSWritableExcelSheet {
      * @param iRow
      * @param iColumn
      * @param pValue
-     * @throws jxl.write.WriteException
+     * @throws WriteException
      */
     public void setDouble(int iRow, int iColumn, Double pValue) throws WriteException {
         try{

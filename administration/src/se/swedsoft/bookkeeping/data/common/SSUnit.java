@@ -5,6 +5,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -94,7 +95,7 @@ public class SSUnit implements Serializable, SSTableSearchable {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
         if(obj instanceof SSUnit){

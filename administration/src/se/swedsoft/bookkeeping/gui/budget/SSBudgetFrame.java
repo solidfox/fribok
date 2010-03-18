@@ -14,6 +14,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSProgressDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
 import se.swedsoft.bookkeeping.print.report.SSBudgetPrinter;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ import java.util.Date;
 
 /**
  */
-public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame {
+public class SSBudgetFrame extends SSDefaultTableFrame {
 
     private static SSBudgetFrame cInstance;
 

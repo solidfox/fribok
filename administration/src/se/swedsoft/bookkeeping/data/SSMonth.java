@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -98,7 +99,7 @@ public class SSMonth  implements Serializable {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
         if(obj instanceof SSMonth){

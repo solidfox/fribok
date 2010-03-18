@@ -23,7 +23,7 @@ public class SIEEntrySRU extends SIEEntry {
      * @param iImporter
      * @param iReader
      * @return If anything was imported
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws SSImportException
      *
      */
     @Override
@@ -61,7 +61,7 @@ public class SIEEntrySRU extends SIEEntry {
      * @param iExporter
      * @param iWriter
      * @return If anything was exported
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      *
      */
     @Override

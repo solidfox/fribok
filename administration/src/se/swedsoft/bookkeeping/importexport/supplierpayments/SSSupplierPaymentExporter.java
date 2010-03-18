@@ -26,7 +26,7 @@ public class SSSupplierPaymentExporter {
      *
      * @param iFile
      * @param iPayments
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      */
     public static void Export(File iFile, List<SupplierPayment> iPayments) throws SSExportException {
 

@@ -52,7 +52,7 @@ public class SSSIEExporter {
     /**
      *
      * @param pFile
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      */
     public void exportSIE(File pFile) throws SSExportException {
         SSNewAccountingYear iYearData = SSDB.getInstance().getCurrentYear();
@@ -98,7 +98,7 @@ public class SSSIEExporter {
      *
      * @param pFile
      * @throws SSImportException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      */
     protected void readFile(File pFile) throws SSExportException{
         try{
@@ -117,7 +117,7 @@ public class SSSIEExporter {
      *
      * @param pFile
      * @throws SSImportException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      */
     private void writeFile(File pFile) throws SSExportException{
         try{

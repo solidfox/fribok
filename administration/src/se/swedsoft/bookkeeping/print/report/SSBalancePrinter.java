@@ -1,6 +1,7 @@
 package se.swedsoft.bookkeeping.print.report;
 
 import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
+import se.swedsoft.bookkeeping.calc.data.SSAccountGroup;
 import se.swedsoft.bookkeeping.calc.data.SSAccountSchema;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
@@ -92,13 +93,13 @@ public class SSBalancePrinter extends SSPrinter {
         final Map<SSAccount, BigDecimal> iOutSaldo     = iCalculator.getOutSaldo();
 
 
-        List<se.swedsoft.bookkeeping.calc.data.SSAccountGroup> iBalanceGroups = iAccountSchema.getBalanceGroups();
+        List<SSAccountGroup> iBalanceGroups = iAccountSchema.getBalanceGroups();
 
         List<SSAccount> iAccounts = iYearData.getAccounts();
 
         List<BalanceRow> iRows = new LinkedList<BalanceRow>();
 
-        for(se.swedsoft.bookkeeping.calc.data.SSAccountGroup iBalanceGroup: iBalanceGroups){
+        for(SSAccountGroup iBalanceGroup: iBalanceGroups){
             List<BalanceRow> iCurrentRows = getRows(iBalanceGroup,  iAccounts,  0);
             for(BalanceRow iRow: iCurrentRows){
                 SSAccount iAccount = iRow.iAccount;
@@ -226,7 +227,7 @@ public class SSBalancePrinter extends SSPrinter {
      * @param iLevel
      * @return
      */
-    private List<BalanceRow> getRows(se.swedsoft.bookkeeping.calc.data.SSAccountGroup iGroup, List<SSAccount> iAccounts, int iLevel){
+    private List<BalanceRow> getRows(SSAccountGroup iGroup, List<SSAccount> iAccounts, int iLevel){
         List<SSAccount> iGroupAccounts = iGroup.getGroupAccounts(iAccounts);
 
         List<BalanceRow> iRows = new LinkedList<BalanceRow>();
@@ -243,7 +244,7 @@ public class SSBalancePrinter extends SSPrinter {
                 iRows.add(iRow);
             }
         } else {
-            for(se.swedsoft.bookkeeping.calc.data.SSAccountGroup iBalanceGroup: iGroup.getGroups() ){
+            for(SSAccountGroup iBalanceGroup: iGroup.getGroups() ){
                 iRows.addAll( getRows(iBalanceGroup,  iAccounts,  iLevel+1) );
             }
             for(BalanceRow iRow: iRows){
@@ -258,7 +259,7 @@ public class SSBalancePrinter extends SSPrinter {
     private class BalanceRow{
         SSAccount iAccount;
 
-        se.swedsoft.bookkeeping.calc.data.SSAccountGroup [] iLevelGroups = new se.swedsoft.bookkeeping.calc.data.SSAccountGroup[3];
+        SSAccountGroup [] iLevelGroups = new SSAccountGroup[3];
 
         public int getLevelGroup(int iLevel){
             if(iLevelGroups[iLevel] == null) return -1;

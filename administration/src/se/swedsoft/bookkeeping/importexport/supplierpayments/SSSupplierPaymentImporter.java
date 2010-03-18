@@ -29,7 +29,7 @@ public class SSSupplierPaymentImporter {
     /**
      *
      * @param iFile
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws SSImportException
      * @return
      */
     public static List<SSOutpayment> Import(File iFile) throws SSImportException {

@@ -10,6 +10,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDefaultTableCellRenderer;
 
+import javax.swing.JLabel;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
@@ -238,7 +239,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
          *
          * @param value the string value for this cell; if value is
          *              <code>null</code> it sets the text value to an empty string
-         * @see javax.swing.JLabel#setText
+         * @see JLabel#setText
          */
         @Override
         protected void setValue(SSProduct value) {

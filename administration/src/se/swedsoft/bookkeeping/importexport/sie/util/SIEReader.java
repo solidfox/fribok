@@ -78,7 +78,7 @@ public class SIEReader implements Iterator<String> {
      * return each element in the underlying collection exactly once.
      *
      * @return the next element in the iteration.
-     * @throws java.util.NoSuchElementException
+     * @throws NoSuchElementException
      *          iteration has no more elements.
      */
     public String nextLine() {
@@ -99,7 +99,7 @@ public class SIEReader implements Iterator<String> {
      * the current item .
      *
      * @return the next element in the iteration.
-     * @throws java.util.NoSuchElementException
+     * @throws NoSuchElementException
      *          iteration has no more elements.
      */
     public String peekLine() {
@@ -128,7 +128,7 @@ public class SIEReader implements Iterator<String> {
      * return each element in the underlying collection exactly once.
      *
      * @return the next element in the iteration.
-     * @throws java.util.NoSuchElementException
+     * @throws NoSuchElementException
      *          iteration has no more elements.
      */
     public String next() {
@@ -140,7 +140,7 @@ public class SIEReader implements Iterator<String> {
      * return each element in the underlying collection exactly once.
      *
      * @return the next element in the iteration.
-     * @throws java.util.NoSuchElementException
+     * @throws NoSuchElementException
      *          iteration has no more elements.
      */
     public String peek() {

@@ -13,6 +13,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
+import java.util.List;
 
 // Trade Extensions specific imports
 
@@ -97,7 +98,7 @@ public class SSTableSorter extends AbstractTableModel {
     private MouseListener mouseListener;
     private TableModelListener tableModelListener;
     private Map columnComparators = new HashMap();
-    private java.util.List sortingColumns = new ArrayList();
+    private List sortingColumns = new ArrayList();
 
     public SSTableSorter() {
         this.mouseListener = new SSMouseHandler();

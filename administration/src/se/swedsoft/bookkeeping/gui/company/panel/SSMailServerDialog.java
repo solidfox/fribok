@@ -101,7 +101,7 @@ public class SSMailServerDialog extends SSDialog {
     /**
      * Reads the fields of the dialog and constructs a SSMailServer from
      * that, throwing if there was a format error in the fields.
-     * @throws se.swedsoft.bookkeeping.data.util.SSMailServerException
+     * @throws SSMailServerException
      * @return
      */
     private SSMailServer getServerFromFields() throws SSMailServerException {

@@ -17,6 +17,7 @@ import se.swedsoft.bookkeeping.util.SSException;
 import javax.swing.*;
 import javax.swing.event.InternalFrameListener;
 import java.awt.*;
+import java.lang.String;
 import java.util.*;
 import java.util.List;
 
@@ -168,7 +169,7 @@ public class SSReport {
 
     /**
      *
-     * @throws se.swedsoft.bookkeeping.util.SSException
+     * @throws SSException
      */
     public void generateReport()  throws SSException{
         if(iDesign == null){
@@ -196,7 +197,7 @@ public class SSReport {
 
     /**
      *
-     * @throws se.swedsoft.bookkeeping.util.SSException
+     * @throws SSException
      */
     private void compileDesign() throws SSException{
         List<JRReportFont>    theFonts    = new LinkedList<JRReportFont>();
@@ -372,7 +373,7 @@ public class SSReport {
      * @param pGroups
      * @param pFonts
      * @return
-     * @throws se.swedsoft.bookkeeping.util.SSException
+     * @throws SSException
      */
     private JRBand getField(ReportField pField, List<JRField> pFields, List<JRParameter> pParameters, List<JRVariable> pVariables, List<JRGroup> pGroups, List<JRReportFont> pFonts) throws SSException{
 
@@ -471,7 +472,7 @@ public class SSReport {
         iTextField.setItalic(true);
 
         JRDesignExpression iEpression = new JRDesignExpression();
-        iEpression.setValueClass(java.lang.String.class);
+        iEpression.setValueClass(String.class);
         iEpression.setText("$R{report.nopages}");
 
         iTextField.setExpression(iEpression);

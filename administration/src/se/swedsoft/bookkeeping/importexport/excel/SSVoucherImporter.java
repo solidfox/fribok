@@ -43,8 +43,8 @@ public class SSVoucherImporter {
 
     /**
      *
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
-     * @throws java.io.IOException
+     * @throws SSImportException
+     * @throws IOException
      */
     public void Import()  throws IOException, SSImportException {
         final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();

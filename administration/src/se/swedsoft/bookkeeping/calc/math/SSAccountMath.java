@@ -46,7 +46,7 @@ public class SSAccountMath {
     public static boolean isResultAccount(SSAccount iAccount, SSNewAccountingYear pYearData){
         SSAccountSchema iAccountSchema = SSAccountSchema.getAccountSchema(pYearData);
 
-        for(se.swedsoft.bookkeeping.calc.data.SSAccountGroup iAccountGroup : iAccountSchema.getResultGroups() ){
+        for(SSAccountGroup iAccountGroup : iAccountSchema.getResultGroups() ){
             if( iAccountGroup.getFromAccount() <= iAccount.getNumber() && iAccountGroup.getToAccount() >= iAccount.getNumber() ){
                 return true;
             }

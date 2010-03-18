@@ -229,7 +229,7 @@ public class SSDBUtils {
      *
      * @param iFile
      * @return
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public static Object LoadFromFile(File iFile)  throws IOException {
         FileInputStream fis = null;
@@ -296,7 +296,7 @@ public class SSDBUtils {
      * @param pFilename
      * @param pCompany
      *
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public static void storeCompany(String pFilename, SSNewCompany pCompany) throws IOException {
         BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(pFilename));
@@ -345,7 +345,7 @@ public class SSDBUtils {
      * @param pFilename
      * @param pYear
      *
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public static void storeYear(String pFilename, SSNewAccountingYear pYear) throws IOException {
         BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(pFilename));

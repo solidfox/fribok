@@ -218,7 +218,7 @@ public class SSSIEImporter {
      *
      * @param pFile
      * @throws SSImportException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws SSExportException
      */
     private void writeFile(File pFile) throws SSExportException{
         try{

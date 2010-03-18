@@ -721,7 +721,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
 
@@ -798,7 +798,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      *
      * @return a hash code value for this object.
      * @see Object#equals(Object)
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public int hashCode() {
         return iNumber;

@@ -49,8 +49,8 @@ public class SSMail {
      * @param pSubject
      * @param pFileName
      * @return
-     * @throws javax.mail.internet.AddressException
-     * @throws javax.mail.MessagingException
+     * @throws AddressException
+     * @throws MessagingException
      */
     public static boolean sendMail(String pTo, String pSubject, String pFileName) 
         throws AddressException, MessagingException  {
@@ -84,7 +84,7 @@ public class SSMail {
      * @param server
      * @param mail
      * @return
-     * @throws javax.mail.MessagingException
+     * @throws MessagingException
      */
     public static MimeMessage makeMessage(SSMailServer server, SSMailMessage mail) 
         throws MessagingException {
@@ -116,7 +116,7 @@ public class SSMail {
      * that file is send as an attachment.
      * @param mail
      * @return
-     * @throws javax.mail.MessagingException
+     * @throws MessagingException
      */
     private static Multipart makeMultipart(SSMailMessage mail) throws MessagingException {
         // Create the multi-part

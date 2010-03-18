@@ -119,7 +119,7 @@ public class SSDB {
      *
      * @param pConnection
      *
-     * @throws java.sql.SQLException
+     * @throws SQLException
      */
     public void startupLocal(Connection pConnection) throws SQLException {
         PreparedStatement iStatement;

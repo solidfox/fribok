@@ -60,9 +60,9 @@ public class SSFileChooser extends JFileChooser  {
      *         <li>JFileCHooser.ERROR_OPTION if an error occurs or the
      *         dialog is dismissed
      *         </ul>
-     * @throws java.awt.HeadlessException if GraphicsEnvironment.isHeadless()
+     * @throws HeadlessException if GraphicsEnvironment.isHeadless()
      *                                    returns true.
-     * @see java.awt.GraphicsEnvironment#isHeadless
+     * @see GraphicsEnvironment#isHeadless
      * @see #showDialog
      */
     @Override

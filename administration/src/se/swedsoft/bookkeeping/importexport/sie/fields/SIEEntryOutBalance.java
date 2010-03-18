@@ -27,7 +27,7 @@ public class SIEEntryOutBalance extends SIEEntry {
      * @param iImporter
      * @param iReader
      * @return If anything was imported
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws SSImportException
      *
      */
     @Override

@@ -44,8 +44,8 @@ public class SSAccountPlanExporter {
     /**
      *
      * @param pAccountPlan
-     * @throws java.io.IOException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws IOException
+     * @throws SSImportException
      */
     public void doExport(SSAccountPlan pAccountPlan) throws IOException, SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -74,7 +74,7 @@ public class SSAccountPlanExporter {
      *
      * @param pSheet
      * @param pAccountPlan
-     * @throws jxl.write.WriteException
+     * @throws WriteException
      */
     private void writeAccountPlan(SSWritableExcelSheet pSheet, SSAccountPlan pAccountPlan ) throws WriteException {
         int iRowStart = 6;

@@ -7,6 +7,8 @@ package se.swedsoft.bookkeeping.data;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -449,7 +451,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param out
      * @throws IOException
      */
-    private void writeObject(java.io.ObjectOutputStream out) throws IOException{
+    private void writeObject(ObjectOutputStream out) throws IOException{
         iAccount    = null;
         iProject    = null;
         iResultUnit = null;
@@ -462,7 +464,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
         in.defaultReadObject();
         if(iAccount    != null) iAccountNr    = iAccount   .getNumber();
         if(iProject    != null) iProjectNumber    = iProject   .getNumber();

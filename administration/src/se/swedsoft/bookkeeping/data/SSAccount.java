@@ -7,6 +7,7 @@ package se.swedsoft.bookkeeping.data;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
+import java.util.Hashtable;
 
 
 /**
@@ -243,7 +244,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
         if(obj instanceof SSAccount ){

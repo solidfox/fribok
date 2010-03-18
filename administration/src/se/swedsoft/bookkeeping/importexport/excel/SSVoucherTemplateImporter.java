@@ -43,8 +43,8 @@ public class SSVoucherTemplateImporter {
 
     /**
      *
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
-     * @throws java.io.IOException
+     * @throws SSImportException
+     * @throws IOException
      */
     public void Import()  throws IOException, SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();

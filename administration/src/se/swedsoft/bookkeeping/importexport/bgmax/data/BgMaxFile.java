@@ -45,7 +45,7 @@ public class BgMaxFile {
      * creating BgMaxAvsnitt object in the iAvsnitts collection with parsed data.
      *  
      * @param iLines The raw lines of a BgMax-file read from disk
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws SSImportException
      */
     public void parse(List<String> iLines) throws SSImportException{
         iAvsnitts = new LinkedList<BgMaxAvsnitt>();

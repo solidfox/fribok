@@ -9,6 +9,8 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -319,9 +321,9 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
         /**
          *
          * @param out
-         * @throws java.io.IOException
+         * @throws IOException
          */
-        private void writeObject(java.io.ObjectOutputStream out) throws IOException {
+        private void writeObject(ObjectOutputStream out) throws IOException {
             iAccount    = null;
             out.defaultWriteObject();
         }
@@ -332,7 +334,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @throws IOException
          * @throws ClassNotFoundException
          */
-        private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
+        private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
             in.defaultReadObject();
             if(iAccount    != null) iAccountNr    = iAccount   .getNumber();
 

@@ -388,7 +388,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      *
      * @param delete
      */
-    private void deleteSelectedVouchers(java.util.List<SSVoucher> delete) {
+    private void deleteSelectedVouchers(List<SSVoucher> delete) {
         if (delete.isEmpty()) {
             return;
         }

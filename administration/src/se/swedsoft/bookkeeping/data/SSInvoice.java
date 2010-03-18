@@ -445,7 +445,7 @@ public class SSInvoice extends SSSale {
      *
      * @return a hash code value for this object.
      * @see Object#equals(Object)
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public int hashCode() {
         if(iNumber != null) return iNumber;

@@ -699,7 +699,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      * <p/>
      * @return a hash code value for this object.
      * @see Object#equals(Object)
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public int hashCode() {
         return iNumber;

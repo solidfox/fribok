@@ -8,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -175,7 +176,7 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
 
@@ -243,7 +244,7 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      *
      * @return a hash code value for this object.
      * @see Object#equals(Object)
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public int hashCode() {
         return iNumber;

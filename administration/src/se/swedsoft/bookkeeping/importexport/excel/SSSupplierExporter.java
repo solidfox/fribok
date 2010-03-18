@@ -12,6 +12,7 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow;
 import se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,9 +71,9 @@ public class SSSupplierExporter {
 
     /**
      *
-     * @throws java.io.IOException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
+     * @throws IOException
+     * @throws SSImportException
+     * @throws SSExportException
      */
     public void export()  throws IOException, SSExportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -101,7 +102,7 @@ public class SSSupplierExporter {
     /**
      *
      * @param pSheet
-     * @throws jxl.write.WriteException
+     * @throws WriteException
      */
     private void writeSuppliers(SSWritableExcelSheet pSheet ) throws WriteException {
 

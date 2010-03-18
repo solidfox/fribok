@@ -512,7 +512,7 @@ public class SSSupplierCreditInvoicePanel {
     public void setCreditSupplierInvoice(SSSupplierCreditInvoice iSSSupplierInvoice) {
         this.iSupplierCreditInvoice = iSSSupplierInvoice;
 
-        java.util.List<SSSupplier> iSuppliers = SSDB.getInstance().getSuppliers();
+        List<SSSupplier> iSuppliers = SSDB.getInstance().getSuppliers();
         List<SSSupplierInvoice   > iSupplierInvoices    = SSDB.getInstance().getSupplierInvoices();
 
         iVoucherTableModel   .setVoucher(iSSSupplierInvoice.getVoucher());

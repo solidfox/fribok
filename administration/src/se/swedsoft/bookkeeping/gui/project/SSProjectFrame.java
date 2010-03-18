@@ -342,7 +342,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
 
     private void printProjects() {
         final SSProjectsPrinter iPrinter;
-        java.util.List<SSNewProject> iProjects;
+        List<SSNewProject> iProjects;
         if (iTable.getSelectedRowCount() > 0) {
 
             SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "projectframe.print");

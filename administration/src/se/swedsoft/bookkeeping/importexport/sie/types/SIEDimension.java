@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.types;
 
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -104,7 +105,7 @@ public class SIEDimension {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
         if(obj instanceof SIEDimension){

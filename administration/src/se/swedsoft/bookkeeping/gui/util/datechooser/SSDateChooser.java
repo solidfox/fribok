@@ -10,6 +10,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -201,7 +202,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      * Get the date format string to use for the editor
      *
      * @return the dateformat string
-     * @see java.text.DateFormat
+     * @see DateFormat
      */
     public String getDateFormatString() {
         return iDateFormatString;
@@ -211,7 +212,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      * Set the date format string to use for the editor
      *
      * @param iDateFormatString the date format string
-     * @see java.text.DateFormat
+     * @see DateFormat
      */
     public void setDateFormatString(String iDateFormatString) {
         this.iDateFormatString = iDateFormatString;

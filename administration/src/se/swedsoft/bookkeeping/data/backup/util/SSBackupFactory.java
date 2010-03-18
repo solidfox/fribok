@@ -122,7 +122,7 @@ public class SSBackupFactory {
     /**
      *
      * @param pFilename
-     * @throws se.swedsoft.bookkeeping.util.SSException
+     * @throws SSException
      */
     public static void restoreBackup(String pFilename) throws SSException{
         File iBackupFile;
@@ -161,7 +161,7 @@ public class SSBackupFactory {
      *
      * @param pFilename
      * @param iBackup
-     * @throws java.io.IOException
+     * @throws IOException
      */
     private static void restoreBackup(String pFilename, SSBackup iBackup) throws IOException {
         SSInternalFrame.closeAllFrames();

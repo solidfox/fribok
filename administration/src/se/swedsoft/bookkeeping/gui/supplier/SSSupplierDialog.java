@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * User: Andreas Lago
@@ -53,7 +54,7 @@ public class SSSupplierDialog {
                 if(iSupplier.getOutpaymentNumber() == null)
                     iSupplier.setOutpaymentNumber(SSSupplierMath.getOutpaymentNumber());
 
-                java.util.List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>(SSDB.getInstance().getSuppliers());
+                List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>(SSDB.getInstance().getSuppliers());
                 for(SSSupplier iTSupplier : iSuppliers){
                     if(iSupplier.equals(iTSupplier)){
                         new SSErrorDialog(iMainFrame, "supplierframe.duplicate", iSupplier.getNumber());
@@ -130,7 +131,7 @@ public class SSSupplierDialog {
                     iSupplier.setOutpaymentNumber(SSSupplierMath.getOutpaymentNumber());
 
                 if(!iSupplier.getOutpaymentNumber().equals(iOriginalOutPaymentNumber) ){
-                    java.util.List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>(SSDB.getInstance().getSuppliers());
+                    List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>(SSDB.getInstance().getSuppliers());
                     for(SSSupplier iTSupplier : iSuppliers){
                         if(iSupplier.getOutpaymentNumber().equals(iTSupplier.getOutpaymentNumber())){
                             new SSErrorDialog(iMainFrame, "supplierframe.dupopnr", iSupplier.getOutpaymentNumber());
@@ -207,7 +208,7 @@ public class SSSupplierDialog {
                 if(iSupplier.getOutpaymentNumber() == null)
                     iSupplier.setOutpaymentNumber(SSSupplierMath.getOutpaymentNumber());
 
-                java.util.List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>(SSDB.getInstance().getSuppliers());
+                List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>(SSDB.getInstance().getSuppliers());
                 for(SSSupplier iTSupplier : iSuppliers){
                     if(iSupplier.equals(iTSupplier)){
                         new SSErrorDialog(iMainFrame, "supplierframe.duplicate", iSupplier.getNumber());

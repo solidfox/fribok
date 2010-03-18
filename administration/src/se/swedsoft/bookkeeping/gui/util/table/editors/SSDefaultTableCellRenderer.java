@@ -2,6 +2,7 @@ package se.swedsoft.bookkeeping.gui.util.table.editors;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -18,7 +19,7 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
      *
      * @param value the string value for this cell; if value is
      *              <code>null</code> it sets the text value to an empty string
-     * @see javax.swing.JLabel#setText
+     * @see JLabel#setText
      */
     @Override
     protected void setValue(Object value) {
@@ -35,7 +36,7 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
      *
      * @param value the string value for this cell; if value is
      *              <code>null</code> it sets the text value to an empty string
-     * @see javax.swing.JLabel#setText
+     * @see JLabel#setText
      */
     protected void setValue(T value) {
         super.setValue(value);

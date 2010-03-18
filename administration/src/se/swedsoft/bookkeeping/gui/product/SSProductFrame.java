@@ -507,7 +507,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
         return SSDB.getInstance().getProduct(iProduct);
     }
 
-    private java.util.List<SSProduct> getProducts(java.util.List<SSProduct> iProducts) {
+    private List<SSProduct> getProducts(List<SSProduct> iProducts) {
         return SSDB.getInstance().getProducts(iProducts);
     }
 

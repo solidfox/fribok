@@ -56,7 +56,7 @@ public class SSCustomerImporter {
 
     /**
      *
-     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws SSImportException
      */
     public void Import()  throws SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();

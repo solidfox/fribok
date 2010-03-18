@@ -8,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog;
 import se.swedsoft.bookkeeping.gui.util.filechooser.SSExcelFileChooser;
+import se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.vouchertemplate.util.SSVoucherTemplateTableModel;
 import se.swedsoft.bookkeeping.importexport.excel.SSVoucherTemplateExporter;
@@ -28,7 +29,7 @@ import java.util.List;
  * Date: 2006-feb-07
  * Time: 15:36:58
  */
-public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefaultTableFrame {
+public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
 
 
     private SSTable iTable;

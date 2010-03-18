@@ -469,7 +469,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         SSNewProject iProject;
         SSNewResultUnit iResultUnit;
 
-        java.util.List<SSVoucherRow> iRows = iVoucher.getRows();
+        List<SSVoucherRow> iRows = iVoucher.getRows();
         for (SSAutoDistRow iAutoDistRow : iAutoDist.getRows()) {
             iDebet = null;
             iCredit = null;

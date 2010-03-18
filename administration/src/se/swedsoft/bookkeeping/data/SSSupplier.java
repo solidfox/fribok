@@ -10,6 +10,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Hashtable;
 
 /**
  * Date: 2006-mar-20
@@ -469,7 +470,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
      * @return <code>true</code> if this object is the same as the obj
      *         argument; <code>false</code> otherwise.
      * @see #hashCode()
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public boolean equals(Object obj) {
         if(iNumber == null){
@@ -490,7 +491,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
      * <p/>
      * @return a hash code value for this object.
      * @see Object#equals(Object)
-     * @see java.util.Hashtable
+     * @see Hashtable
      */
     public int hashCode() {
         if( iNumber != null){

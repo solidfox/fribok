@@ -343,7 +343,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      *
      * @param delete
      */
-    private void deleteSelectedSuppliers(java.util.List<SSSupplier> delete) {
+    private void deleteSelectedSuppliers(List<SSSupplier> delete) {
         if (delete.isEmpty()) {
             return;
         }
@@ -449,7 +449,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         return SSDB.getInstance().getSupplier(iSupplier);
     }
 
-    private java.util.List<SSSupplier> getSuppliers(java.util.List<SSSupplier> iSuppliers) {
+    private List<SSSupplier> getSuppliers(List<SSSupplier> iSuppliers) {
         return SSDB.getInstance().getSuppliers(iSuppliers);
     }
 
