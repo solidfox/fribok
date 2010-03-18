@@ -24,7 +24,6 @@ public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
      * Default constructor.
      */
     public SSDateTimeCellRenderer() {
-        super();
         iDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
         iTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
     }

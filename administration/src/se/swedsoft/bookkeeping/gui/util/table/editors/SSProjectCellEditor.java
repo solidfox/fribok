@@ -14,8 +14,6 @@ public class SSProjectCellEditor extends SSTableComboBox.CellEditor<SSNewProject
      *
      */
     public SSProjectCellEditor() {
-        super();
-
         setModel( SSProjectTableModel.getDropDownModel() );
 
         setSearchColumns(0);

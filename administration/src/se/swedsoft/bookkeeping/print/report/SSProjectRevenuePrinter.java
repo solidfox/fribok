@@ -42,7 +42,6 @@ public class SSProjectRevenuePrinter extends SSPrinter {
      * @param
      */
     public SSProjectRevenuePrinter(List<SSNewProject> pProjects, Date pFrom, Date pTo ){
-        super();
         iProjects = pProjects;
         iDateFrom       = SSDateMath.floor(pFrom);
         iDateTo         = SSDateMath.ceil(pTo);

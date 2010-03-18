@@ -25,7 +25,6 @@ public class SSXMLFileChooser extends SSFileChooser  {
      *
      */
     private SSXMLFileChooser(){
-        super();
         // Add a custom file filter
         addChoosableFileFilter    (new SSFilterXML());
         // Disable the default (Accept All) file filter.

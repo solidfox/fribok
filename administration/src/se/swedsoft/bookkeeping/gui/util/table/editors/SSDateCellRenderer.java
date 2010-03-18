@@ -28,8 +28,7 @@ public class SSDateCellRenderer extends DefaultTableCellRenderer {
      * Default constructor.
      */
     public SSDateCellRenderer() {
-        super();
-          setHorizontalAlignment(DefaultTableCellRenderer.LEFT);
+        setHorizontalAlignment(DefaultTableCellRenderer.LEFT);
     }
 
 

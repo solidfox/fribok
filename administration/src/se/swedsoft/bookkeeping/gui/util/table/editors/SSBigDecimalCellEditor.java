@@ -26,7 +26,6 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
      * @param maxFractionDigits
      */
     public SSBigDecimalCellEditor(int maxFractionDigits) {
-        super();
         NumberFormat iFormat = NumberFormat.getNumberInstance();
         iFormat.setMinimumFractionDigits(maxFractionDigits);
         iFormat.setMaximumFractionDigits(maxFractionDigits);

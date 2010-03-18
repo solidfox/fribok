@@ -17,7 +17,6 @@ public class SSMenuButton<T extends JButton> extends SSButton {
      *
      */
     public SSMenuButton(){
-        super();
         createPopup();
     }
 

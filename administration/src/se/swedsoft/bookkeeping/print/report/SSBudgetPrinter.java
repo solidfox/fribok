@@ -65,7 +65,6 @@ public class SSBudgetPrinter extends SSPrinter {
      * @param pTo
      */
     public SSBudgetPrinter(SSNewAccountingYear pAccountingYear, Date pFrom, Date pTo ){
-        super();
         iAccountingYear = pAccountingYear;
         iDateFrom       = pFrom;
         iDateTo         = pTo;

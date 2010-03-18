@@ -39,7 +39,6 @@ public class SSVoucherPrinter extends SSPrinter {
      * @param pTitle
      */
     public SSVoucherPrinter(SSVoucher pVoucher, String pTitle ){
-        super();
         iVoucher        = pVoucher;
         iTitle          = pTitle;
         iMarkedAccounts = Collections.emptyList();

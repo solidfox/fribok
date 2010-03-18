@@ -48,7 +48,6 @@ public class SSOrder extends SSSale {
      * Default constructor
      */
     public SSOrder() {
-        super();
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
         if(iCompany != null){

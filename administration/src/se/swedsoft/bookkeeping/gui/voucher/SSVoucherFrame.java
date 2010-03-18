@@ -511,7 +511,6 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
     private static class SSVoucherCellRenderer extends DefaultTableCellRenderer {
 
         public SSVoucherCellRenderer() {
-            super();
         }
 
         @Override

@@ -24,7 +24,6 @@ public class SSSIEFileChooser extends SSFileChooser  {
      *
      */
     private SSSIEFileChooser(){
-        super();
         addChoosableFileFilter(getAcceptAllFileFilter());
         addChoosableFileFilter(new SSFilterSIE());
     }

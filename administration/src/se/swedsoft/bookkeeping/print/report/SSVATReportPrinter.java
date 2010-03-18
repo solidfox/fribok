@@ -25,7 +25,6 @@ public class SSVATReportPrinter  extends SSPrinter {
     private Date iDateTo;
 
     public SSVATReportPrinter(SSNewAccountingYear pAccountingYear, Date pDateFrom, Date pDateTo ){
-        super();
         iAccountingYear = pAccountingYear;
         iDateFrom       = pDateFrom;
         iDateTo         = pDateTo;

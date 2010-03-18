@@ -40,8 +40,6 @@ public class SSTender extends SSSale {
      * Default constructor
      */
     public SSTender() {
-        super();
-
     }
 
     /**

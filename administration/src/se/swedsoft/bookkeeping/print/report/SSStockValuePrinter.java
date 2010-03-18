@@ -36,7 +36,6 @@ public class SSStockValuePrinter extends SSPrinter {
      *
      */
     public SSStockValuePrinter() {
-        super();
         // Get all orders
         this.iProducts    = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
         this.iStock       = new SSStock();
@@ -56,7 +55,6 @@ public class SSStockValuePrinter extends SSPrinter {
      * @param iDate
      */
     public SSStockValuePrinter(Date iDate){
-        super();
         // Get all orders
         this.iProducts    = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
         this.iStock       = new SSStock();

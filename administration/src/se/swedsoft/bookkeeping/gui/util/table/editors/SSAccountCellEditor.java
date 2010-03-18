@@ -15,7 +15,6 @@ public class SSAccountCellEditor extends SSTableComboBox.CellEditor<SSAccount> {
      *
      */
     public SSAccountCellEditor() {
-        super();
         setModel( SSAccountTableModel.getDropDownModel() );
 
         setSearchColumns(0,1);

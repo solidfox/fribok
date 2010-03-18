@@ -34,7 +34,6 @@ public class SSReminderPrinter extends SSPrinter {
      * @param iLocale
      */
     public SSReminderPrinter(List<SSInvoice> iInvoices, SSCustomer iCustomer, Locale iLocale){
-        super();
         this.iInvoices = iInvoices;
         this.iCustomer = iCustomer;
         this.iLocale   = iLocale;
@@ -166,7 +165,6 @@ public class SSReminderPrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
 
             setColumnHeader("sales/reminder.rows.jrxml");

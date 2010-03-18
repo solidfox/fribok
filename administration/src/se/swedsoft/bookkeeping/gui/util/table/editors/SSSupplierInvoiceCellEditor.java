@@ -13,14 +13,11 @@ import java.util.List;
  */
 public class SSSupplierInvoiceCellEditor extends SSTableComboBox.CellEditor<SSSupplierInvoice> {
 
-
     /**
      *
      * @param iInvoices
      */
     public SSSupplierInvoiceCellEditor(List<SSSupplierInvoice> iInvoices) {
-        super();
-
         setModel( SSSupplierInvoiceTableModel.getDropDownModel(iInvoices) );
         setSearchColumns(0);
         setAllowCustomValues(false);
@@ -31,15 +28,8 @@ public class SSSupplierInvoiceCellEditor extends SSTableComboBox.CellEditor<SSSu
      *
      */
     public SSSupplierInvoiceCellEditor() {
-        super();
-
         setModel( SSSupplierInvoiceTableModel.getDropDownModel() );
-
         setSearchColumns(0);
         setAllowCustomValues(false);
-
     }
-
-
-
 }

@@ -47,7 +47,6 @@ public class SSVATReport2007Printer extends SSPrinter {
      * @param iDateTo
      */
     public SSVATReport2007Printer(SSNewAccountingYear iAccountingYear, Date iDateFrom, Date iDateTo ){
-        super();
         this.iAccountingYear   = iAccountingYear;
         this.iDateFrom       = iDateFrom;
         this.iDateTo         = iDateTo;

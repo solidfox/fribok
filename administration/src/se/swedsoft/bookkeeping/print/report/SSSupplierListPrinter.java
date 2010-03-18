@@ -32,7 +32,6 @@ public class SSSupplierListPrinter extends SSPrinter {
      * @param iSuppliers
      */
     public SSSupplierListPrinter( List<SSSupplier> iSuppliers){
-        super();
         // Get all orders
         this.iSuppliers = iSuppliers;
 

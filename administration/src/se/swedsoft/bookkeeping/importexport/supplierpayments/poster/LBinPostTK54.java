@@ -30,8 +30,6 @@ public class LBinPostTK54 extends LBinPost {
      * @param iPayment
      */
     public LBinPostTK54(SupplierPayment iPayment) {
-        super();
-
         iPlusGiro  = iPayment.getPlusGiro().replaceAll("-", "").replaceAll(" ", "");
         iReference = iPayment.getReference();
         iValue     = iPayment.getValue();

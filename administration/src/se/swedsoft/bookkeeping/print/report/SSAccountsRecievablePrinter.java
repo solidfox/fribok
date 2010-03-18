@@ -49,7 +49,6 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
      * @param iCustomers
      */
     public SSAccountsRecievablePrinter(Date iDate, List<SSCustomer> iCustomers){
-        super();
         // Get all customers
         this.iCustomers = iCustomers;
         this.iDate      = iDate;

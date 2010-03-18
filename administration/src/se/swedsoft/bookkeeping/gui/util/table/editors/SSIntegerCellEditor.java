@@ -26,7 +26,6 @@ public class SSIntegerCellEditor extends AbstractCellEditor implements TableCell
      * Default constructor.
      */
     public SSIntegerCellEditor() {
-        super();
         NumberFormat iFormat = NumberFormat.getIntegerInstance();
         iFormat.setMinimumFractionDigits(0);
         iFormat.setMaximumFractionDigits(0);

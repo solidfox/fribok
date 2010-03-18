@@ -37,7 +37,6 @@ public class SSQuarterReportPrinter extends SSPrinter {
      * @param iTo
      */
     public SSQuarterReportPrinter( Locale iLocale, Date iFrom, Date iTo){
-        super();
         // Get all orders
         this.iCustomers = SSDB.getInstance().getCustomers();
         this.iLocale    = iLocale;

@@ -30,7 +30,6 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      * @param iInvoices
      */
     public SSPendingInvoiceTableModel(Map<SSPeriodicInvoice, List<SSInvoice>> iInvoices) {
-        super();
         List<Entry> iItems = new LinkedList<Entry>();
 
         Entry iEntry;

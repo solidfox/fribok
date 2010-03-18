@@ -53,7 +53,6 @@ public class SSResultPrinter extends SSPrinter {
      * @param pShowPrevYear
      */
     public SSResultPrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo, Boolean pShowBudget, Boolean pShowPrevYear){
-        super();
         iYearData     = pYearData;
         iDateFrom     = pFrom;
         iDateTo       = pTo;

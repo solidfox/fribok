@@ -25,7 +25,6 @@ public class SSJasperFileChooser extends SSFileChooser  {
      *
      */
     private SSJasperFileChooser(){
-        super();
         // Disable the default (Accept All) file filter.
         setAcceptAllFileFilterUsed(false);
 

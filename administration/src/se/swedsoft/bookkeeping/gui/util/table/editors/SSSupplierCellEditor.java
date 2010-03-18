@@ -14,8 +14,6 @@ public class SSSupplierCellEditor extends SSTableComboBox.CellEditor<SSSupplier>
      *
      */
     public SSSupplierCellEditor() {
-        super();
-
         setModel( SSSupplierTableModel.getDropDownModel() );
 
         setSearchColumns(0);

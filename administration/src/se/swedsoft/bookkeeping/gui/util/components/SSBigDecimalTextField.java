@@ -23,8 +23,6 @@ public class SSBigDecimalTextField extends JFormattedTextField {
      *
      */
     public SSBigDecimalTextField() {
-        super();
-
         // The action for transferring the focus to the search table.
         Action iSetValue =  new AbstractAction() {
             public void actionPerformed(ActionEvent e) {

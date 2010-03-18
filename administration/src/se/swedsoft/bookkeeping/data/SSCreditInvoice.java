@@ -37,7 +37,6 @@ public class SSCreditInvoice extends SSInvoice {
      * Default constructor
      */
     public SSCreditInvoice() {
-        super();
         iCurrencyRate = new BigDecimal(1.0);
         iVoucher      = new SSVoucher();
     }

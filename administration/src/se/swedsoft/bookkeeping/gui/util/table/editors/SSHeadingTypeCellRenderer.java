@@ -9,8 +9,6 @@ public class SSHeadingTypeCellRenderer extends DefaultTableCellRenderer {
      *
      */
     public SSHeadingTypeCellRenderer() {
-        super();
-
         setValue(SSHeadingType.HEADING1);
         setValue(SSHeadingType.HEADING2);
         setValue(SSHeadingType.HEADING3);

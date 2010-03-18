@@ -22,7 +22,6 @@ public class SSImageFileChooser extends SSFileChooser  {
      *
      */
     private SSImageFileChooser(){
-        super();
         // Add a custom file filter
         addChoosableFileFilter    (new SSImageFilter());
         //Add the preview pane.

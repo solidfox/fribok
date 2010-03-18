@@ -19,8 +19,6 @@ public class SSCurrencyTextField extends JFormattedTextField {
      *
      */
     public SSCurrencyTextField() {
-        super();
-
         // The action for transferring the focus to the search table.
         Action setValue =  new AbstractAction() {
             public void actionPerformed(ActionEvent e) {

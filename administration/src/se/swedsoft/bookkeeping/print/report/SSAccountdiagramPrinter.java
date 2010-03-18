@@ -42,7 +42,6 @@ public class SSAccountdiagramPrinter extends SSPrinter {
      * @param pAccountingYear The accountingyear
      */
     public SSAccountdiagramPrinter(SSNewAccountingYear pAccountingYear ){
-        super();
         iAccountingYear = pAccountingYear;
 
         setPageHeader  ("header_period.jrxml");

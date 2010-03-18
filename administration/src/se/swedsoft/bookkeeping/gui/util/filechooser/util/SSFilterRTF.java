@@ -13,7 +13,6 @@ public class SSFilterRTF extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterRTF(){
-        super();
         addExtension("rff");
     }
     /**

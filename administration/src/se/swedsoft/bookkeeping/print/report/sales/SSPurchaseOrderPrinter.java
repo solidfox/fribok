@@ -27,7 +27,6 @@ public class SSPurchaseOrderPrinter extends SSPrinter {
      * @param iLocale
      */
     public SSPurchaseOrderPrinter(SSPurchaseOrder iPurchaseOrder, Locale iLocale){
-        super();
         this.iPurchaseOrder = iPurchaseOrder;
         this.iLocale        = iLocale;
 
@@ -155,7 +154,6 @@ public class SSPurchaseOrderPrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
 
             setColumnHeader("sales/purchaseorder.rows.jrxml");

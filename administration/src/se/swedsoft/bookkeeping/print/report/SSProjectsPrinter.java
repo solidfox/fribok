@@ -30,7 +30,6 @@ public class SSProjectsPrinter extends SSPrinter {
      * @param pProjects The accountplan
      */
     public SSProjectsPrinter(List<SSNewProject> pProjects ){
-        super();
         iProjects = pProjects;
 
         setPageHeader  ("header.jrxml");

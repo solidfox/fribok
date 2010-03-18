@@ -29,7 +29,6 @@ public class SSAccountPlanPrinter extends SSPrinter {
      * @param pAccountPlan The accountplan
      */
     public SSAccountPlanPrinter(SSAccountPlan pAccountPlan ){
-        super();
         iAccountPlan = pAccountPlan;
 
         setPageHeader  ("header.jrxml");

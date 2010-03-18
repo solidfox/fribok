@@ -27,7 +27,6 @@ public class SSInquiryPrinter extends SSPrinter {
      * @param iLocale
      */
     public SSInquiryPrinter(SSPurchaseOrder iPurchaseOrder, Locale iLocale){
-        super();
         this.iPurchaseOrder = iPurchaseOrder;
         this.iLocale        = iLocale;
 
@@ -153,7 +152,6 @@ public class SSInquiryPrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
 
             setColumnHeader("sales/inquiry.rows.jrxml");

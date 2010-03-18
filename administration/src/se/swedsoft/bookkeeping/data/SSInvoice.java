@@ -52,7 +52,6 @@ public class SSInvoice extends SSSale {
      * Default constructor
      */
     public SSInvoice() {
-        super();
         iType              = SSInvoiceType.NORMAL;
         iCurrencyRate      = new BigDecimal(1.0);
         iVoucher           = new SSVoucher();

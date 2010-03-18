@@ -13,7 +13,6 @@ public class SSFilterZIP extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterZIP(){
-        super();
         addExtension("zip");
     }
     /**

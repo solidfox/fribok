@@ -28,7 +28,6 @@ public class SSPercentCellRenderer extends DefaultTableCellRenderer {
      * @param pShowNullValues
      */
     public SSPercentCellRenderer(int pFractionDigits, boolean pShowNullValues) {
-        super();
         iFractionDigits = pFractionDigits;
         iShowNullValues = pShowNullValues;
 

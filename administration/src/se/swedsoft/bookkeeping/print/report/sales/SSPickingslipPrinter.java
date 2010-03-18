@@ -27,7 +27,6 @@ public class SSPickingslipPrinter extends SSPrinter {
      * @param iLocale
      */
     public SSPickingslipPrinter(SSOrder iOrder, Locale iLocale){
-        super();
         this.iOrder  = iOrder;
         this.iLocale = iLocale;
 
@@ -159,7 +158,6 @@ public class SSPickingslipPrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
 
             setColumnHeader("sales/pickingslip.rows.jrxml");

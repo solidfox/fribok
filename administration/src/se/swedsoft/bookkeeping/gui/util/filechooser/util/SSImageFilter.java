@@ -18,7 +18,6 @@ public class SSImageFilter extends SSFileFilter {
     public static final String png = "png";
 
     public SSImageFilter(){
-        super();
         addExtension(gif );
         addExtension(jpeg);
         addExtension(jpg );

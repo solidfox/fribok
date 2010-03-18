@@ -33,7 +33,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      * Default constructor.
      */
     public SSTableModel() {
-        super();
         iColumns  = new LinkedList<SSTableColumn<T>>();
         iObjects  = new LinkedList<T     >();
         iEditable = new HashMap<SSTableColumn<T>, Boolean>();

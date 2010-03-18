@@ -31,8 +31,6 @@ public class LBinPostTK11 extends LBinPost {
      * @param iCurrency
      */
     public LBinPostTK11(String iCurrency){
-        super();
-
         this.iBankGiroNr = SupplierPaymentConfig.getOurBankGiroAccount().replaceAll("-", "");
         this.iDate       = new Date();
         this.iCurrency   = iCurrency;

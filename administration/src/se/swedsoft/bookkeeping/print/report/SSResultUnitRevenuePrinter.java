@@ -44,7 +44,6 @@ public class SSResultUnitRevenuePrinter extends SSPrinter {
      * @param pTo
      */
     public SSResultUnitRevenuePrinter(List<SSNewResultUnit> pResultUnits, Date pFrom, Date pTo ){
-        super();
         iResultUnits = pResultUnits;
         iDateFrom       = SSDateMath.floor(pFrom);
         iDateTo         = SSDateMath.ceil(pTo);

@@ -31,7 +31,6 @@ public class SSTenderPrinter extends SSPrinter {
      * @param iLocale
      */
     public SSTenderPrinter(SSTender iTender, Locale iLocale){
-        super();
         this.iTender  = iTender;
         this.iLocale = iLocale;
 
@@ -179,7 +178,6 @@ public class SSTenderPrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
 
             setColumnHeader("sales/tender.rows.jrxml");

@@ -36,7 +36,6 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
      * @param iDate
      */
     public SSSupplierInvoicejournalPrinter( List<SSSupplierInvoice> iInvoices, Integer iNumber, Date iDate){
-        super();
         this.iInvoices = iInvoices;
         this.iNumber   = iNumber;
 

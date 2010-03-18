@@ -20,7 +20,6 @@ public class SSDBFileChooser extends SSFileChooser  {
      *
      */
     private SSDBFileChooser(){
-        super();
         addChoosableFileFilter(new SSFilterDB());
     }
 }

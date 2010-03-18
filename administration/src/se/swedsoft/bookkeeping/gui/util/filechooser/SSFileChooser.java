@@ -25,8 +25,6 @@ public class SSFileChooser extends JFileChooser  {
      *
      */
     public SSFileChooser(){
-        super();
-
         // Disable the default (Accept All) file filter.
         setAcceptAllFileFilterUsed(false);
     }
@@ -37,8 +35,6 @@ public class SSFileChooser extends JFileChooser  {
      * @param iFilters
      */
     public SSFileChooser(SSFileFilter ... iFilters){
-        super();
-
         // Disable the default (Accept All) file filter.
         setAcceptAllFileFilterUsed(false);
         for (SSFileFilter iFilter : iFilters) {

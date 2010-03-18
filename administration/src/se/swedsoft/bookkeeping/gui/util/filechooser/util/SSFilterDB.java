@@ -13,7 +13,6 @@ public class SSFilterDB extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterDB(){
-        super();
         addExtension("db");
     }
     /**

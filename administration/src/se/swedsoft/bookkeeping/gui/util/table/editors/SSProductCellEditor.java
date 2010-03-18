@@ -18,14 +18,11 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
      * @param iAllowCustomValues
      */
     public SSProductCellEditor(boolean iAllowCustomValues) {
-        super();
-
         setModel( SSProductTableModel.getDropDownModel() );
 
         setSearchColumns(0, 1);
         setAllowCustomValues(iAllowCustomValues);
     }
-
 
     /**
      *
@@ -33,10 +30,7 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
      * @param iAllowCustomValues
      */
     public SSProductCellEditor(List<SSProduct> iProducts, boolean iAllowCustomValues) {
-        super();
-
         setModel( SSProductTableModel.getDropDownModel(iProducts) );
-
         setSearchColumns(0, 1);
         setAllowCustomValues(iAllowCustomValues);
     }
@@ -48,7 +42,6 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
         this(true);
     }
 
-
     /**
      *
      * @param iProducts
@@ -56,8 +49,4 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
     public SSProductCellEditor(List<SSProduct> iProducts) {
         this(iProducts, true);
     }
-
-
-
-
 }

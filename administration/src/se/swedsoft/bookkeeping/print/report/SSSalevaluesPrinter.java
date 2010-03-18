@@ -31,7 +31,6 @@ public class SSSalevaluesPrinter extends SSPrinter {
 
      */
     public SSSalevaluesPrinter(Date iFrom, Date iTo) {
-        super();
         this.iFrom       = iFrom;
         this.iTo          = iTo;
 

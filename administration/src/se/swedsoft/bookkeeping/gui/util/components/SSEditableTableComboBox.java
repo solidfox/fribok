@@ -41,7 +41,6 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
      * and a flow layout.
      */
     public SSEditableTableComboBox() {
-        super();
         iComboBox = new SSTableComboBox<T>();
 
         iEditButton  = new JButton( "..." );

@@ -27,7 +27,6 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
      * @param iShowBackground
      */
     public SSOCRInvoicePrinter(SSInvoice iInvoice, Locale iLocale, boolean iShowBackground) {
-        super();
         this.iInvoice = iInvoice;
         this.iLocale  = iLocale;
         super.iLocale = iLocale;

@@ -13,14 +13,11 @@ import java.util.List;
  */
 public class SSVATCellEditor extends SSTableComboBox.CellEditor<SSVATCode> {
 
-
-       /**
+    /**
      *
      */
     public SSVATCellEditor() {
-        super();
-
-        setModel( SSVATCodeTableModel.getDropDownModel() );
+           setModel( SSVATCodeTableModel.getDropDownModel() );
         setSearchColumns(0);
         setAllowCustomValues(true);
     }
@@ -30,13 +27,8 @@ public class SSVATCellEditor extends SSTableComboBox.CellEditor<SSVATCode> {
      * @param iCurrencies
      */
     public SSVATCellEditor(List<SSVATCode> iCurrencies) {
-        super();
-
         setModel( SSVATCodeTableModel.getDropDownModel(iCurrencies) );
         setSearchColumns(0);
         setAllowCustomValues(true);
-
     }
-
-
 }

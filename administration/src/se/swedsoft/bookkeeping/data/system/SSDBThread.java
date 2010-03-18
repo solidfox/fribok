@@ -28,7 +28,6 @@ public class SSDBThread extends Thread {
      *      Runnable, String)
      */
     public SSDBThread(SSDB pDatabase, SSSystemData pData) {
-        super();
         iData     = pData;
         iDatabase = pDatabase;
         setName("SSDBThread");

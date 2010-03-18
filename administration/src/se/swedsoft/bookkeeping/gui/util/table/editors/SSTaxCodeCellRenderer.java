@@ -24,7 +24,6 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
      *
      */
     public SSTaxCodeCellRenderer() {
-        super();
         iValues = new HashMap<SSTaxCode, BigDecimal>();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();

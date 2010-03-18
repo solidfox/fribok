@@ -19,7 +19,6 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      * Default constructor.
      */
     public SSEditableTableModel() {
-        super();
         iEditing = newObject();
     }
 

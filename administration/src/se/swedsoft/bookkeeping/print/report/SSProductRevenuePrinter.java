@@ -45,7 +45,6 @@ public class SSProductRevenuePrinter extends SSPrinter {
      * @param pTo
      */
     public SSProductRevenuePrinter(List<SSProduct> pProducts, Date pFrom, Date pTo ){
-        super();
         iProducts = pProducts;
         iDateFrom       = SSDateMath.floor(pFrom);
         iDateTo         = SSDateMath.ceil(pTo);

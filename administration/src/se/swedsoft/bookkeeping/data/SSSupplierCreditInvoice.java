@@ -32,7 +32,6 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
      *
      */
     public SSSupplierCreditInvoice() {
-        super();
     }
 
     /**

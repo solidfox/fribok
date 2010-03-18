@@ -21,7 +21,6 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      * @param pAccount
      */
     public SSMonthlyTableModel(SSBudget pBudget, SSAccount pAccount) {
-        super();
         iBudget  = pBudget;
         iAccount = pAccount;
     }

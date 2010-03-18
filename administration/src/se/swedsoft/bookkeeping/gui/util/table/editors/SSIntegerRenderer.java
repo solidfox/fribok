@@ -28,7 +28,6 @@ public class SSIntegerRenderer extends DefaultTableCellRenderer {
      * @param pShowNullValues
      */
     public SSIntegerRenderer(boolean pShowNullValues) {
-        super();
         iShowNullValues = pShowNullValues;
 
         setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);

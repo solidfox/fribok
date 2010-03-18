@@ -11,7 +11,6 @@ public class SSDefaultFileChooser extends SSFileChooser  {
      *
      */
     public SSDefaultFileChooser(){
-        super();
         // Add a custom file filter
         addChoosableFileFilter (new SSDefaultFilter());
     }

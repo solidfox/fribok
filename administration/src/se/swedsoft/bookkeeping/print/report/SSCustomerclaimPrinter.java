@@ -31,8 +31,6 @@ public class SSCustomerclaimPrinter extends SSPrinter {
      * @param iInvoices
      */
     public SSCustomerclaimPrinter( Date iDate , List<SSInvoice> iInvoices){
-        super();
-
         iSaldos = SSInvoiceMath.getSaldo(iInvoices, iDate);
 
         setPageHeader  ("header_period.jrxml");

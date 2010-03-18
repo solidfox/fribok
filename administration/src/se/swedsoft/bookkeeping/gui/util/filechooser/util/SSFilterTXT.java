@@ -13,7 +13,6 @@ public class SSFilterTXT extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterTXT(){
-        super();
         addExtension("txt");
     }
     /**

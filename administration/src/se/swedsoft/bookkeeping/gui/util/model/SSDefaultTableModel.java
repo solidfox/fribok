@@ -33,7 +33,6 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * Default constructor.
      */
     public SSDefaultTableModel() {
-        super();
         iColumns = new LinkedList<String>();
         iObjects = new LinkedList<T     >();
     }
@@ -44,7 +43,6 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * @param pObjects The data for the table model.
      */
     public SSDefaultTableModel(List<T> pObjects) {
-        super();
         iColumns = new LinkedList<String>();
         iObjects = pObjects;
     }
@@ -55,7 +53,6 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * @param pObjects The data for the table model.
      */
     public SSDefaultTableModel(T ... pObjects) {
-        super();
         iColumns = new LinkedList<String>();
         iObjects = new LinkedList<T     >();
 
@@ -68,7 +65,6 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * @param pModel The data for the table model.
      */
     public SSDefaultTableModel(SSDefaultTableModel<T> pModel) {
-        super();
         iColumns = new ArrayList<String>(pModel.iColumns);
         iObjects = new ArrayList<T     >(pModel.iObjects);
     }

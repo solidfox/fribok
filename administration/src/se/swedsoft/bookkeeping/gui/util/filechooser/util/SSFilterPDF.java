@@ -13,7 +13,6 @@ public class SSFilterPDF extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterPDF(){
-        super();
         addExtension("pdf");
     }
     /**

@@ -38,8 +38,6 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
      * @param iSupplierInvoices The data for the table model.
      */
     public SSSupplierPaymentTableModel(List<SSSupplierInvoice> iSupplierInvoices) {
-        super();
-
         List<SupplierPayment> iPayments = new LinkedList<SupplierPayment>();
         for (SSSupplierInvoice iSupplierInvoice : iSupplierInvoices) {
             iPayments.add( new SupplierPayment(iSupplierInvoice) );

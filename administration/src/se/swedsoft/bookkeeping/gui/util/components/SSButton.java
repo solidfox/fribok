@@ -25,8 +25,6 @@ public class SSButton extends JButton {
      *
      */
     public SSButton(){
-        super();
-
         getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "ENTER_PRESSED");
 
         getActionMap().put("ENTER_PRESSED", new AbstractAction(){

@@ -17,8 +17,6 @@ public class SSInvoiceCellEditor extends SSTableComboBox.CellEditor<SSInvoice> {
      *
      */
     public SSInvoiceCellEditor() {
-        super();
-
         setModel( SSInvoiceTableModel.getDropDownModel() );
         setSearchColumns(0);
         setAllowCustomValues(false);
@@ -29,13 +27,8 @@ public class SSInvoiceCellEditor extends SSTableComboBox.CellEditor<SSInvoice> {
      * @param iInvoices
      */
     public SSInvoiceCellEditor(List<SSInvoice> iInvoices) {
-        super();
-
         setModel( SSInvoiceTableModel.getDropDownModel(iInvoices) );
         setSearchColumns(0);
         setAllowCustomValues(false);
-
     }
-
-
 }

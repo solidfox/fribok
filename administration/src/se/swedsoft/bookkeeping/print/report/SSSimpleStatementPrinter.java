@@ -57,7 +57,6 @@ public class SSSimpleStatementPrinter extends SSPrinter {
      * @param iDateTo
      */
     public SSSimpleStatementPrinter(List<SSAccount> iAccounts, Date iDateFrom, Date iDateTo ){
-        super();
         this.iDateFrom       = iDateFrom;
         this.iDateTo         = iDateTo;
         this.iAccounts       = iAccounts;

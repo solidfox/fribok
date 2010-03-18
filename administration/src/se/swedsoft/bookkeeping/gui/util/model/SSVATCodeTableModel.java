@@ -27,7 +27,6 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      * @param iVATCodes
      */
     public SSVATCodeTableModel(List<SSVATCode> iVATCodes) {
-        super();
         add(SSVATCode.VAT_NULL);
         addAll(iVATCodes);
     }

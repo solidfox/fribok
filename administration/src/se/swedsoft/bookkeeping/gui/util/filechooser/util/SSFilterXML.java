@@ -13,7 +13,6 @@ public class SSFilterXML extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterXML(){
-        super();
         addExtension("xml");
     }
     /**

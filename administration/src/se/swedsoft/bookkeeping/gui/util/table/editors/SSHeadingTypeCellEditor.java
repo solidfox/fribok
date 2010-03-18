@@ -15,8 +15,6 @@ public class SSHeadingTypeCellEditor extends SSTableComboBox.CellEditor<SSHeadin
      *
      */
     public SSHeadingTypeCellEditor() {
-        super();
-
         setModel( SSHeadingTypeTableModel.getDropDownModel() );
 
         setSearchColumns(0);

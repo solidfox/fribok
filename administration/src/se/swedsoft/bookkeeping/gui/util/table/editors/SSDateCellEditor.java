@@ -35,7 +35,6 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
      * Default constructor.
      */
     public SSDateCellEditor() {
-        super();
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         iDateChooser = new SSDateChooser();

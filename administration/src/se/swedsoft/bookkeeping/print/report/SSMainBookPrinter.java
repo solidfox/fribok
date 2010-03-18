@@ -58,7 +58,6 @@ public class SSMainBookPrinter extends SSPrinter {
      * @param iResultUnit
      */
     public SSMainBookPrinter(SSNewAccountingYear pYearData, SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
-        super();
         iYearData       = pYearData;
         iAccountFrom    = pAccountFrom;
         iAccountTo      = pAccountTo;

@@ -13,7 +13,6 @@ public class SSFilterBGMAX extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterBGMAX(){
-        super();
         addExtension("out");
         addExtension("ut");
     }

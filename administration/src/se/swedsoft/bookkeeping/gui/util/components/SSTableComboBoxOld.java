@@ -61,7 +61,6 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      * and a flow layout.
      */
     public SSTableComboBoxOld() {
-        super();
         iSelectionListeners = new LinkedList<SSSelectionListener>();
         iSelected           = null;
         iSearchColumns      = new int[] {};

@@ -20,8 +20,6 @@ public class LBinPostTK12 extends LBinPost {
      *
      */
     public LBinPostTK12(){
-        super();
-
         iText  = SupplierPaymentConfig.getMessage();
         iDate  = SupplierPaymentConfig.getMessageDate();
 

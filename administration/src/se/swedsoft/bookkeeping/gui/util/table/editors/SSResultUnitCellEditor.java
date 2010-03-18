@@ -16,8 +16,6 @@ public class SSResultUnitCellEditor extends SSTableComboBoxOld.CellEditor<SSNewR
      *
      */
     public SSResultUnitCellEditor() {
-        super();
-
         SSDefaultTableModel<SSNewResultUnit> iModel = new SSDefaultTableModel<SSNewResultUnit>(SSDB.getInstance().getResultUnits()) {
             @Override
             public Class getType() {

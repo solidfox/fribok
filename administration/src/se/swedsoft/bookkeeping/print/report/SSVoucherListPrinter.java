@@ -32,7 +32,6 @@ public class SSVoucherListPrinter extends SSPrinter {
      * @param pVouchers The vouchers
      */
     public SSVoucherListPrinter(List<SSVoucher> pVouchers){
-        super();
         iVouchers = pVouchers;
 
         setPageHeader  ("header_period.jrxml");

@@ -69,7 +69,6 @@ public class SSSaleReportPrinter extends SSPrinter {
      * @param iAscending
      */
     public SSSaleReportPrinter(Date iFrom, Date iTo, SortingMode iSortingMode, boolean iAscending) {
-        super();
         this.iFrom       = iFrom;
         this.iTo          = iTo;
         this.iSortingMode = iSortingMode;

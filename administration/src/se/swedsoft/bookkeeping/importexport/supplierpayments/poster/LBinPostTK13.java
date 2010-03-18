@@ -19,7 +19,6 @@ public class LBinPostTK13 extends LBinPost {
      *
      */
     public LBinPostTK13(){
-        super();
         iReferenceText = "REFERENS                                             ";
         iValueText     = "BELOPP                                               ";
     }

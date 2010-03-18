@@ -31,7 +31,6 @@ public class SSOrderPrinter extends SSPrinter {
      * @param iLocale
      */
     public SSOrderPrinter(SSOrder iOrder, Locale iLocale){
-        super();
         this.iOrder  = iOrder;
         this.iLocale = iLocale;
 
@@ -180,7 +179,6 @@ public class SSOrderPrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
 
             setColumnHeader  ("sales/order.rows.jrxml");

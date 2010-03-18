@@ -13,7 +13,6 @@ public class SSFilterXLS extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterXLS(){
-        super();
         addExtension("xls");
     }
     /**

@@ -49,7 +49,6 @@ public class SSAccountsPayablePrinter extends SSPrinter {
      * @param iSuppliers
      */
     public SSAccountsPayablePrinter(Date iDate, List<SSSupplier> iSuppliers){
-        super();
         // Get all customers
         this.iSuppliers = iSuppliers;
         this.iDate      = iDate;

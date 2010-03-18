@@ -32,7 +32,6 @@ public class SSBigDecimalCellRenderer extends DefaultTableCellRenderer {
      * @param pShowNullValues
      */
     public SSBigDecimalCellRenderer(int pFractionDigits, boolean pShowNullValues) {
-        super();
         iFractionDigits = pFractionDigits;
         iShowNullValues = pShowNullValues;
 

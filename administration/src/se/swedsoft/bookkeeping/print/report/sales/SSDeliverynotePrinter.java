@@ -32,7 +32,6 @@ public class SSDeliverynotePrinter extends SSPrinter {
      * @param iLocale
      */
     public SSDeliverynotePrinter(SSOrder iOrder, Locale iLocale){
-        super();
         this.iOrder  = iOrder;
         this.iLocale = iLocale;
         this.iHideUnitprice=iOrder.getHideUnitprice();
@@ -179,7 +178,6 @@ public class SSDeliverynotePrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
             if(!iHideUnitprice)
             {

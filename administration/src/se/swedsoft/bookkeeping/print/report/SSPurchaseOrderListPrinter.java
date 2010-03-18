@@ -41,7 +41,6 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
      * @param iOrders
      */
     public SSPurchaseOrderListPrinter( List<SSPurchaseOrder> iOrders){
-        super();
         // Get all orders
         this.iOrders = iOrders;
 

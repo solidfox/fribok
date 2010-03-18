@@ -22,8 +22,6 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
      * @param iStock
      */
     public SSInventoryRowTableModel(SSStock iStock) {
-        super();
-
         SSInventoryRowTableModel.iStock = iStock;
     }
 

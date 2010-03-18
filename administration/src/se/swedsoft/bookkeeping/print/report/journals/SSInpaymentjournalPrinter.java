@@ -35,7 +35,6 @@ public class SSInpaymentjournalPrinter extends SSPrinter {
      * @param iDate
      */
     public SSInpaymentjournalPrinter( List<SSInpayment> iInpayments, Integer iNumber, Date iDate){
-        super();
         this.iInpayments = iInpayments;
         this.iNumber     = iNumber;
 

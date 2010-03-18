@@ -22,7 +22,6 @@ public class SSOwnReportMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      * @param pRows
      */
     public SSOwnReportMonthlyTableModel(SSAccount pAccount, List<SSOwnReportRow> pRows) {
-        super();
         iAccount = pAccount;
         iRows = pRows;
     }

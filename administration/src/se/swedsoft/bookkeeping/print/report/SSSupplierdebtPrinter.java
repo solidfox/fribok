@@ -31,8 +31,6 @@ public class SSSupplierdebtPrinter extends SSPrinter {
      * @param iInvoices
      */
     public SSSupplierdebtPrinter( Date iDate , List<SSSupplierInvoice> iInvoices){
-        super();
-
         iSaldos = SSSupplierInvoiceMath.getSaldo(iInvoices, iDate);
 
         setPageHeader  ("header_period.jrxml");

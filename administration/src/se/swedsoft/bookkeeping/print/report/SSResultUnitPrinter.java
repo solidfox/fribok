@@ -29,7 +29,6 @@ public class SSResultUnitPrinter extends SSPrinter {
      * @param pResultUnits The accountplan
      */
     public SSResultUnitPrinter(List<SSNewResultUnit> pResultUnits ){
-        super();
         iResultUnits = pResultUnits;
 
         setPageHeader  ("header.jrxml");

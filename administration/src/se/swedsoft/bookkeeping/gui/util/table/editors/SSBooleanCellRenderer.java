@@ -18,7 +18,6 @@ public class SSBooleanCellRenderer extends JPanel implements TableCellRenderer{
     private JCheckBox iCheckBox;
 
     public SSBooleanCellRenderer() {
-        super();
         iCheckBox = new JCheckBox();
         iCheckBox.setHorizontalAlignment(JLabel.CENTER);
         iCheckBox.setBorderPainted(true);

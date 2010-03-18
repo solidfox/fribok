@@ -23,7 +23,6 @@ public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
      * @param iCustomers
      */
     public SSExportBGCAdmissionTableModel(List<SSCustomer> iCustomers) {
-        super();
         setObjects(iCustomers);
     }
 

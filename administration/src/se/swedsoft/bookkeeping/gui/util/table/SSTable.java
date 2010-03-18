@@ -48,7 +48,6 @@ public class SSTable extends JTable{
      * Default constructor.
      */
     public SSTable() {
-        super();
         iDblClickListeners            = new LinkedList<ActionListener>();
         iSelectionDependentComponents = new LinkedList<JComponent>();
 

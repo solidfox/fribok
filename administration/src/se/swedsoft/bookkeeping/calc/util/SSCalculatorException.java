@@ -16,7 +16,6 @@ public class SSCalculatorException  extends RuntimeException{
      * @param pMesssage The message
      */
     public SSCalculatorException(String pMesssage) {
-        super();
 
         iMesssage = pMesssage;
     }
@@ -28,7 +27,6 @@ public class SSCalculatorException  extends RuntimeException{
      */
 
     public SSCalculatorException(ResourceBundle pBundle, String pKey) {
-        super();
 
         iMesssage = pBundle.getString(pKey);
     }
@@ -40,7 +38,6 @@ public class SSCalculatorException  extends RuntimeException{
      * @param pFormat Format args for String.format
      */
     public SSCalculatorException(ResourceBundle pBundle, String pKey, Object ... pFormat) {
-        super();
 
         iMesssage = String.format( pBundle.getString(pKey), pFormat);
     }

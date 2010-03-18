@@ -40,7 +40,6 @@ public class SSInpaymentListPrinter extends SSPrinter {
      * @param iInpayments
      */
     public SSInpaymentListPrinter( List<SSInpayment> iInpayments){
-        super();
         // Get all orders
         this.iInpayments = iInpayments;
 

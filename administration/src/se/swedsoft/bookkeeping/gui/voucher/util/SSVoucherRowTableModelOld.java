@@ -49,7 +49,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * @param pReadOnly
      */
     public SSVoucherRowTableModelOld(boolean pEdit, boolean pReadOnly){
-        super();
         iEdit                   = pEdit;
         iReadOnly               = pReadOnly;
         iReadOnlyRowCount       = 0;

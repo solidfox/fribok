@@ -40,7 +40,6 @@ public class SSCreditInvoiceListPrinter extends SSPrinter {
      * @param iInvoices
      */
     public SSCreditInvoiceListPrinter( List<SSCreditInvoice> iInvoices){
-        super();
         // Get all orders
         this.iInvoices = iInvoices;
 

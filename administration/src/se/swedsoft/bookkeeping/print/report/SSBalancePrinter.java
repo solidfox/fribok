@@ -47,7 +47,6 @@ public class SSBalancePrinter extends SSPrinter {
      * @param pTo
      */
     public SSBalancePrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo ){
-        super();
         iYearData    = pYearData;
         iDateFrom    = pFrom;
         iDateTo      = pTo;

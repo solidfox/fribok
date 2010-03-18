@@ -13,7 +13,6 @@ public class SSFilterHTM extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterHTM(){
-        super();
         addExtension("htm");
         addExtension("html");
     }

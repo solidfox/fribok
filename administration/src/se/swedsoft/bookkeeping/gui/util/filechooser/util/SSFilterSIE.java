@@ -13,7 +13,6 @@ public class SSFilterSIE extends SSFileFilter {
     public static ResourceBundle bundle = SSBundle.getBundle();
 
     public SSFilterSIE(){
-        super();
         addExtension("sie");
         addExtension("si");
         addExtension("se");

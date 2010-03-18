@@ -38,7 +38,6 @@ public class SSMultiPrinter extends SSPrinter {
      *
      */
     public SSMultiPrinter(  ){
-        super();
         iSubReports  = new LinkedList<SSSubReport>();
 
         setMargins(0,0,0,0);

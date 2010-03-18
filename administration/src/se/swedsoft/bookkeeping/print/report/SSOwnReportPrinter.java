@@ -45,7 +45,6 @@ public class SSOwnReportPrinter extends SSPrinter {
      */
 
     public SSOwnReportPrinter(Date pFrom, Date pTo, SSOwnReport pOwnReport){
-        super();
         iDateFrom = pFrom;
         iDateTo = pTo;
         iOwnReport = pOwnReport;

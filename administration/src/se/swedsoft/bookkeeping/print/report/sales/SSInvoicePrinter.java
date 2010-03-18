@@ -28,7 +28,6 @@ public class SSInvoicePrinter extends SSPrinter {
      *
      */
     protected SSInvoicePrinter(){
-        super();
     }
 
     /**
@@ -37,7 +36,6 @@ public class SSInvoicePrinter extends SSPrinter {
      * @param iLocale
      */
     public SSInvoicePrinter(SSInvoice iInvoice, Locale iLocale){
-        super();
         this.iInvoice = iInvoice;
         this.iLocale  = iLocale;
 
@@ -199,7 +197,6 @@ public class SSInvoicePrinter extends SSPrinter {
          *
          */
         public SSRowReport( ){
-            super();
             setMargins(0,0,0,0);
                   
             setColumnHeader("sales/invoice.rows.jrxml");

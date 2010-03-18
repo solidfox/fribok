@@ -25,7 +25,6 @@ public class SSExcelFileChooser extends SSFileChooser  {
      *
      */
     private SSExcelFileChooser(){
-        super();
         // Add a custom file filter
         addChoosableFileFilter    (new SSFilterXLS());
         // Disable the default (Accept All) file filter.

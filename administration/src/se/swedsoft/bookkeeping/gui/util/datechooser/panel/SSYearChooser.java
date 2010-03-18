@@ -38,7 +38,6 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
 
 
     public SSYearChooser() {
-        super();
         setLayout(new BorderLayout());
 
         add(iPanel, BorderLayout.CENTER);

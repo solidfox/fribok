@@ -18,8 +18,6 @@ public class SSOrderCellEditor extends SSTableComboBox.CellEditor<SSOrder> {
      *
      */
     public SSOrderCellEditor() {
-        super();
-
         setModel( SSOrderTableModel.getDropdownModel() );
         setSearchColumns(0);
         setAllowCustomValues(false);
@@ -30,13 +28,8 @@ public class SSOrderCellEditor extends SSTableComboBox.CellEditor<SSOrder> {
      * @param iInvoices
      */
     public SSOrderCellEditor(List<SSInvoice> iInvoices) {
-        super();
-
         setModel( SSOrderTableModel.getDropdownModel() );
         setSearchColumns(0);
         setAllowCustomValues(false);
-
     }
-
-
 }

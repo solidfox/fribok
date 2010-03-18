@@ -42,7 +42,6 @@ public class SSProductListPrinter extends SSPrinter {
      * @param iProducts
      */
     public SSProductListPrinter( List<SSProduct> iProducts){
-        super();
         // Get all orders
         this.iProducts = iProducts;
 

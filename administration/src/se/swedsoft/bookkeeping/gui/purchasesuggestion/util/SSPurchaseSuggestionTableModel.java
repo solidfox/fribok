@@ -34,7 +34,6 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      * @param iProducts
      */
     public SSPurchaseSuggestionTableModel(List<SSProduct> iProducts) {
-        super();
         List<Entry> iItems = new LinkedList<Entry>();
 
         Entry iEntry;

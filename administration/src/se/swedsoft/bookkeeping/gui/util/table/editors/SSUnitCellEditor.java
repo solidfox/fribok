@@ -16,8 +16,6 @@ public class SSUnitCellEditor extends SSTableComboBox.CellEditor<SSUnit> {
      *
      */
     public SSUnitCellEditor() {
-        super();
-
         setModel( SSUnitTableModel.getDropDownModel() );
 
         setSearchColumns(0);

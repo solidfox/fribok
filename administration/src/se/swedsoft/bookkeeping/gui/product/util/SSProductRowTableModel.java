@@ -260,8 +260,6 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
          * @param iExcluded
          */
         public SSProductEditor(List<SSProduct> iProducts, SSProduct iExcluded){
-            super();
-
             List<SSProduct> iFiltered = new LinkedList<SSProduct>();
             for(SSProduct iProduct : iProducts){
 
