@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Class to launch browsers.
@@ -62,8 +63,7 @@ public class SSBrowserLaunch {
         // respect the user's preferences
         String env = System.getenv("BROWSER");
         if (env != null)
-            for (String b : env.split(":"))
-                browsers.add(b);
+            browsers.addAll(Arrays.asList(env.split(":")));
         // fall back to trying reasonable defaults.  free-as-in-freedom browsers
         // in front please :-)
         browsers.add("firefox");
