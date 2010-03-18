@@ -63,7 +63,7 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        iPrinter = new SSOutpaymentjournalPrinter.SSVoucherPrinter();
+        iPrinter = new SSVoucherPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

@@ -74,7 +74,7 @@ public class SSProductListPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSProductListPrinter.SSParcelPrinter();
+        iPrinter = new SSParcelPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

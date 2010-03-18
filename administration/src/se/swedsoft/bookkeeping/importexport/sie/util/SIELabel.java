@@ -393,7 +393,7 @@ public enum SIELabel {
      */
     public static List<SIELabel> values(SIEType pFormat){
         List<SIELabel> iValues = new LinkedList<SIELabel>();
-        for(SIELabel iLabel : SIELabel.values() ){
+        for(SIELabel iLabel : values() ){
             for(SIEType iFormat: iLabel.iFormats){
                 if(pFormat == iFormat){
                     iValues.add(iLabel);

@@ -113,14 +113,14 @@ public class SSVoucherExporter {
 
         iCellFormat.setBackground( Colour.GRAY_25 );
 
-        iRows.get(0).setString(0, SSVoucherExporter.NUMMER            , iCellFormat);
-        iRows.get(0).setString(1, SSVoucherExporter.BESKRIVNING       , iCellFormat);
-        iRows.get(0).setString(2, SSVoucherExporter.DATUM             , iCellFormat);
-        iRows.get(0).setString(3, SSVoucherExporter.KONTO             , iCellFormat);
-        iRows.get(0).setString(4, SSVoucherExporter.DEBET             , iCellFormat);
-        iRows.get(0).setString(5, SSVoucherExporter.KREDIT            , iCellFormat);
-        iRows.get(0).setString(6, SSVoucherExporter.PROJEKT           , iCellFormat);
-        iRows.get(0).setString(7, SSVoucherExporter.RESULTATENHET     , iCellFormat);
+        iRows.get(0).setString(0, NUMMER            , iCellFormat);
+        iRows.get(0).setString(1, BESKRIVNING       , iCellFormat);
+        iRows.get(0).setString(2, DATUM             , iCellFormat);
+        iRows.get(0).setString(3, KONTO             , iCellFormat);
+        iRows.get(0).setString(4, DEBET             , iCellFormat);
+        iRows.get(0).setString(5, KREDIT            , iCellFormat);
+        iRows.get(0).setString(6, PROJEKT           , iCellFormat);
+        iRows.get(0).setString(7, RESULTATENHET     , iCellFormat);
 
         iCellFormat = new WritableCellFormat();
         WritableFont iFont = new WritableFont( WritableFont.ARIAL, WritableFont.DEFAULT_POINT_SIZE, WritableFont.BOLD);

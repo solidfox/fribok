@@ -354,7 +354,7 @@ public class SSSupplierInvoiceMath {
 
 
         for (SSSupplierInvoice iInvoice : iInvoices) {
-            if( iInvoice.hasSupplier(iSupplier) && SSSupplierInvoiceMath.inPeriod(iInvoice, iDate)){
+            if( iInvoice.hasSupplier(iSupplier) && inPeriod(iInvoice, iDate)){
                 iFiltered.add(iInvoice);
             }
 

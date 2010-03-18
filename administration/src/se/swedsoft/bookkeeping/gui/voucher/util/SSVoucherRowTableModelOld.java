@@ -410,18 +410,18 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         iTable.setDefaultEditor  (BigDecimal.class, new SSBigDecimalCellEditor  (2));
 
         try{
-            iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_ACCOUNT     ).setPreferredWidth(57);
-            iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_DESCRIPTION ).setPreferredWidth(240);
-            iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_DEBET       ).setPreferredWidth(85);
-            iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_CREDIT      ).setPreferredWidth(85);
-            iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_PROJECT     ).setPreferredWidth(85);
-            iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_RESULTUNIT  ).setPreferredWidth(85);
+            iTable.getColumnModel().getColumn(COL_ACCOUNT     ).setPreferredWidth(57);
+            iTable.getColumnModel().getColumn(COL_DESCRIPTION ).setPreferredWidth(240);
+            iTable.getColumnModel().getColumn(COL_DEBET       ).setPreferredWidth(85);
+            iTable.getColumnModel().getColumn(COL_CREDIT      ).setPreferredWidth(85);
+            iTable.getColumnModel().getColumn(COL_PROJECT     ).setPreferredWidth(85);
+            iTable.getColumnModel().getColumn(COL_RESULTUNIT  ).setPreferredWidth(85);
 
             if( iTable.getColumnModel().getColumnCount() == 8 ){
-                iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_EDITED_DATE     ).setPreferredWidth(70);
-                iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_EDITED_SIGNATURE).setPreferredWidth(65);
+                iTable.getColumnModel().getColumn(COL_EDITED_DATE     ).setPreferredWidth(70);
+                iTable.getColumnModel().getColumn(COL_EDITED_SIGNATURE).setPreferredWidth(65);
             } else {
-                iTable.getColumnModel().getColumn(SSVoucherRowTableModelOld.COL_DESCRIPTION ).setPreferredWidth(376);
+                iTable.getColumnModel().getColumn(COL_DESCRIPTION ).setPreferredWidth(376);
             }
         } catch (Exception ignored) {}
     }

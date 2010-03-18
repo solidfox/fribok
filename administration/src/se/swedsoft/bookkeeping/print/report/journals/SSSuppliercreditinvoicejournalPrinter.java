@@ -69,7 +69,7 @@ public class SSSuppliercreditinvoicejournalPrinter extends SSPrinter {
         //List<SSInvoice> iInvoices = new LinkedList<SSInvoice>( iSaldos.keySet() );
 
 
-        iPrinter = new SSSuppliercreditinvoicejournalPrinter.SSVoucherPrinter();
+        iPrinter = new SSVoucherPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

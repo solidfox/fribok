@@ -25,7 +25,7 @@ public class SSCreditinvoicejournalPrinter extends SSPrinter {
 
     private List<SSCreditInvoice> iCreditInvoices;
 
-    private SSCreditinvoicejournalPrinter.SSVoucherPrinter iPrinter;
+    private SSVoucherPrinter iPrinter;
 
     private SSDefaultJasperDataSource iDataSource;
 
@@ -65,7 +65,7 @@ public class SSCreditinvoicejournalPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSCreditinvoicejournalPrinter.SSVoucherPrinter();
+        iPrinter = new SSVoucherPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

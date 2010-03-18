@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class SSPurchaseOrderListPrinter extends SSPrinter {
 
-    private SSPurchaseOrderListPrinter.SSOrderRowPrinter iPrinter;
+    private SSOrderRowPrinter iPrinter;
 
 
     private SSDefaultJasperDataSource iDataSource;
@@ -67,7 +67,7 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSPurchaseOrderListPrinter.SSOrderRowPrinter();
+        iPrinter = new SSOrderRowPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

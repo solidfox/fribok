@@ -115,24 +115,24 @@ public class SSSupplierExporter {
         iCellFormat.setBackground( Colour.GRAY_25 );
 
 
-        iColumns.setString( 0, SSSupplierExporter.LEVERANTORSNUMMER     , iCellFormat);
-        iColumns.setString( 1, SSSupplierExporter.NAMN                  , iCellFormat);
-        iColumns.setString( 2, SSSupplierExporter.TELEFON1              , iCellFormat);
-        iColumns.setString( 3, SSSupplierExporter.TELEFON2              , iCellFormat);
-        iColumns.setString( 4, SSSupplierExporter.FAX                   , iCellFormat);
-        iColumns.setString( 5, SSSupplierExporter.EPOST                 , iCellFormat);
-        iColumns.setString( 6, SSSupplierExporter.HEMSIDA               , iCellFormat);
-        iColumns.setString( 7, SSSupplierExporter.KONTAKTPERSON         , iCellFormat);
-        iColumns.setString( 8, SSSupplierExporter.ORGANISATIONSNUMMER   , iCellFormat);
-        iColumns.setString( 9, SSSupplierExporter.VART_KUNDNUMMER       , iCellFormat);
-        iColumns.setString(10, SSSupplierExporter.BANKGIRO       , iCellFormat);
-        iColumns.setString(11, SSSupplierExporter.PLUSGIRO       , iCellFormat);
-        iColumns.setString(12, SSSupplierExporter.ADRESS_NAMN           , iCellFormat);
-        iColumns.setString(13, SSSupplierExporter.ADRESS_ADRESS1        , iCellFormat);
-        iColumns.setString(14, SSSupplierExporter.ADRESS_ADRESS2        , iCellFormat);
-        iColumns.setString(15, SSSupplierExporter.ADRESS_POSTNUMMER     , iCellFormat);
-        iColumns.setString(16, SSSupplierExporter.ADRESS_POSTORT        , iCellFormat);
-        iColumns.setString(17, SSSupplierExporter.ADRESS_LAND           , iCellFormat);
+        iColumns.setString( 0, LEVERANTORSNUMMER     , iCellFormat);
+        iColumns.setString( 1, NAMN                  , iCellFormat);
+        iColumns.setString( 2, TELEFON1              , iCellFormat);
+        iColumns.setString( 3, TELEFON2              , iCellFormat);
+        iColumns.setString( 4, FAX                   , iCellFormat);
+        iColumns.setString( 5, EPOST                 , iCellFormat);
+        iColumns.setString( 6, HEMSIDA               , iCellFormat);
+        iColumns.setString( 7, KONTAKTPERSON         , iCellFormat);
+        iColumns.setString( 8, ORGANISATIONSNUMMER   , iCellFormat);
+        iColumns.setString( 9, VART_KUNDNUMMER       , iCellFormat);
+        iColumns.setString(10, BANKGIRO       , iCellFormat);
+        iColumns.setString(11, PLUSGIRO       , iCellFormat);
+        iColumns.setString(12, ADRESS_NAMN           , iCellFormat);
+        iColumns.setString(13, ADRESS_ADRESS1        , iCellFormat);
+        iColumns.setString(14, ADRESS_ADRESS2        , iCellFormat);
+        iColumns.setString(15, ADRESS_POSTNUMMER     , iCellFormat);
+        iColumns.setString(16, ADRESS_POSTORT        , iCellFormat);
+        iColumns.setString(17, ADRESS_LAND           , iCellFormat);
 
 
 

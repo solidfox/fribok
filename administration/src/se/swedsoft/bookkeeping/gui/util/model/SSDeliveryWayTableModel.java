@@ -56,8 +56,8 @@ public class SSDeliveryWayTableModel extends SSTableModel<SSDeliveryWay> {
     public static SSDeliveryWayTableModel getDropDownModel(){
         SSDeliveryWayTableModel iModel = new SSDeliveryWayTableModel();
 
-        iModel.addColumn( SSDeliveryWayTableModel.COLUMN_NAME );
-        iModel.addColumn( SSDeliveryWayTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NAME );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
 

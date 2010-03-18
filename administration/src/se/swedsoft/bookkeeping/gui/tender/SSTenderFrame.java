@@ -414,7 +414,7 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iTabbedPane=null;
-        SSTenderFrame.cInstance=null;
+        cInstance=null;
     }
 
 

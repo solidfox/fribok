@@ -41,8 +41,8 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSPeriodicInvoiceFrame.cInstance == null || SSPeriodicInvoiceFrame.cInstance.isClosed() ){
-            SSPeriodicInvoiceFrame.cInstance = new SSPeriodicInvoiceFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSPeriodicInvoiceFrame.cInstance.isClosed() ){
+            cInstance = new SSPeriodicInvoiceFrame(pMainFrame, pWidth, pHeight);
         }
         SSPeriodicInvoiceFrame.cInstance.setVisible(true);
         SSPeriodicInvoiceFrame.cInstance.deIconize();
@@ -54,7 +54,7 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSPeriodicInvoiceFrame getInstance(){
-        return SSPeriodicInvoiceFrame.cInstance;
+        return cInstance;
     }
 
     private SSTable iTable;
@@ -338,7 +338,7 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSPeriodicInvoiceFrame.cInstance=null;
+        cInstance=null;
     }
 
 }

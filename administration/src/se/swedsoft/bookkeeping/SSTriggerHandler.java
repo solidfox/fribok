@@ -61,7 +61,7 @@ public class SSTriggerHandler extends Thread implements Trigger {
     }
 
     public void fire(int type, String trigName, String tabName, Object[] oldRow, Object[] newRow) {
-        if(type == Trigger.UPDATE_BEFORE_ROW){
+        if(type == UPDATE_BEFORE_ROW){
             oldRow = null;
         }
         String iNumber = null;

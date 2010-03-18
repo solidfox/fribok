@@ -21,7 +21,7 @@ import java.util.*;
 public class SSAccountsPayablePrinter extends SSPrinter {
 
 
-    private SSAccountsPayablePrinter.SSInvoicePrinter iPrinter;
+    private SSInvoicePrinter iPrinter;
 
     private SSDefaultJasperDataSource iDataSource;
 
@@ -97,7 +97,7 @@ public class SSAccountsPayablePrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSAccountsPayablePrinter.SSInvoicePrinter();
+        iPrinter = new SSInvoicePrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

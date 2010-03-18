@@ -273,7 +273,7 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
     {
         iStartingAmountPanel=null;
         iAccountingYear=null;
-        SSStartingAmountFrame.cInstance=null;
+        cInstance=null;
     }
 }
 

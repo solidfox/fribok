@@ -88,8 +88,8 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
     public static SSProductTableModel getDropDownModel(List<SSProduct> iProducts){
         SSProductTableModel iModel = new SSProductTableModel(iProducts);
 
-        iModel.addColumn( SSProductTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSProductTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
 

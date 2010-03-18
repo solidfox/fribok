@@ -57,7 +57,7 @@ public class SSMainFrame extends JFrame {
         super( SSVersion.app_title );
 
         // Exit the program when the main frame is closed.
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Dimension iScreenSize = Toolkit.getDefaultToolkit().getScreenSize();
 

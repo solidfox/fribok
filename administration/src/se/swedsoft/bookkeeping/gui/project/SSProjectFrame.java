@@ -378,6 +378,6 @@ public class SSProjectFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSProjectFrame.cInstance=null;
+        cInstance=null;
     }
 }

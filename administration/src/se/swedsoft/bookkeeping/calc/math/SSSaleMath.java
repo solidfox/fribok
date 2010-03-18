@@ -153,9 +153,9 @@ public class SSSaleMath {
      */
     public static BigDecimal getTotalSum(SSSale iSale){
         // Get the tax sum
-        Map<SSTaxCode, BigDecimal> iTaxSum = SSSaleMath.getTaxSum(iSale);
+        Map<SSTaxCode, BigDecimal> iTaxSum = getTaxSum(iSale);
 
-        BigDecimal iNetSum  = SSSaleMath.getNetSum(iSale);
+        BigDecimal iNetSum  = getNetSum(iSale);
         BigDecimal iTaxSum1 = iTaxSum.get(SSTaxCode.TAXRATE_1);
         BigDecimal iTaxSum2 = iTaxSum.get(SSTaxCode.TAXRATE_2);
         BigDecimal iTaxSum3 = iTaxSum.get(SSTaxCode.TAXRATE_3);
@@ -183,9 +183,9 @@ public class SSSaleMath {
      */
     public static BigDecimal getRounding(SSSale iSale){
         // Get the tax sum
-        Map<SSTaxCode, BigDecimal> iTaxSum = SSSaleMath.getTaxSum(iSale);
+        Map<SSTaxCode, BigDecimal> iTaxSum = getTaxSum(iSale);
 
-        BigDecimal iNetSum  = SSSaleMath.getNetSum(iSale);
+        BigDecimal iNetSum  = getNetSum(iSale);
         BigDecimal iTaxSum1 = iTaxSum.get(SSTaxCode.TAXRATE_1);
         BigDecimal iTaxSum2 = iTaxSum.get(SSTaxCode.TAXRATE_2);
         BigDecimal iTaxSum3 = iTaxSum.get(SSTaxCode.TAXRATE_3);
@@ -305,12 +305,12 @@ public class SSSaleMath {
      * @param iSale
      */
     public static void addCustomerAndProducts(SSSale iSale) {
-        SSCustomer iCustomer = SSSaleMath.getNewCustomer(iSale);
+        SSCustomer iCustomer = getNewCustomer(iSale);
         if(iCustomer != null){
             SSDB.getInstance().addCustomer(iCustomer);
         }
 
-        List<SSProduct> iProducts = SSSaleMath.getNewProducts(iSale);
+        List<SSProduct> iProducts = getNewProducts(iSale);
         for(SSProduct iProduct : iProducts){
             SSDB.getInstance().addProduct(iProduct);
 

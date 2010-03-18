@@ -6256,7 +6256,7 @@ public class SSDB {
                 }
 
                 if(iData == null) return;
-                List<SSBackupZip.ArchiveFile> iFiles = new LinkedList<SSBackupZip.ArchiveFile>();
+                List<ArchiveFile> iFiles = new LinkedList<ArchiveFile>();
                 iFiles.add(new ArchiveFile( iFile) );
 
                 for (SSSystemCompany iSystemCompany : iData.getSystemCompanies()) {

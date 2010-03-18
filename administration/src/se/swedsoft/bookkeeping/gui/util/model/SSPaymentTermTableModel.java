@@ -56,8 +56,8 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
     public static SSPaymentTermTableModel getDropDownModel(){
         SSPaymentTermTableModel iModel = new SSPaymentTermTableModel();
 
-        iModel.addColumn( SSPaymentTermTableModel.COLUMN_NAME );
-        iModel.addColumn( SSPaymentTermTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NAME );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
 

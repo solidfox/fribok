@@ -300,7 +300,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         }
         //Stäng fönstret om året är öppet
         if (iNewYear.equals(SSDB.getInstance().getCurrentYear())) {
-            SSAccountingYearFrame.getInstance().dispose();
+            getInstance().dispose();
             return;
         }
         //Kontrollera att året fortfarande finns i databasen
@@ -432,7 +432,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSAccountingYearFrame.cInstance=null;
+        cInstance=null;
     }
 }
 

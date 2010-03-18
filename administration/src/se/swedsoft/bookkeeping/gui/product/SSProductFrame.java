@@ -519,7 +519,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iSearchPanel=null;
-        SSProductFrame.cInstance=null;
+        cInstance=null;
     }
 
 }

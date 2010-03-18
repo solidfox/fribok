@@ -49,8 +49,8 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSSupplierFrame.cInstance == null || SSSupplierFrame.cInstance.isClosed() ){
-            SSSupplierFrame.cInstance = new SSSupplierFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSSupplierFrame.cInstance.isClosed() ){
+            cInstance = new SSSupplierFrame(pMainFrame, pWidth, pHeight);
         }
         SSSupplierFrame.cInstance.setVisible(true);
         SSSupplierFrame.cInstance.deIconize();
@@ -61,7 +61,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSSupplierFrame getInstance(){
-        return SSSupplierFrame.cInstance;
+        return cInstance;
     }
 
 
@@ -463,7 +463,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iSearchPanel=null;
-        SSSupplierFrame.cInstance=null;
+        cInstance=null;
     }
 
 }

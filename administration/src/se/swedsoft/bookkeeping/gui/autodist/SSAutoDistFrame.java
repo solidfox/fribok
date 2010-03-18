@@ -278,7 +278,7 @@ public class SSAutoDistFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSAutoDistFrame.cInstance=null;
+        cInstance=null;
     }
 
 }

@@ -63,9 +63,9 @@ public class SSInvoiceTableModel extends SSTableModel<SSInvoice>{
     public static SSInvoiceTableModel getDropDownModel(List<SSInvoice> iInvoices){
         SSInvoiceTableModel iModel = new SSInvoiceTableModel(iInvoices);
 
-        iModel.addColumn( SSInvoiceTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSInvoiceTableModel.COLUMN_CUSTOMER_NR   );
-        iModel.addColumn( SSInvoiceTableModel.COLUMN_CUSTOMER_NAME   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_CUSTOMER_NR   );
+        iModel.addColumn( COLUMN_CUSTOMER_NAME   );
 
         return iModel;
     }

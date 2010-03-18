@@ -36,8 +36,8 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSOwnReportFrame.cInstance == null || SSOwnReportFrame.cInstance.isClosed() ){
-            SSOwnReportFrame.cInstance = new SSOwnReportFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSOwnReportFrame.cInstance.isClosed() ){
+            cInstance = new SSOwnReportFrame(pMainFrame, pWidth, pHeight);
         }
         SSOwnReportFrame.cInstance.setVisible(true);
         SSOwnReportFrame.cInstance.deIconize();
@@ -48,7 +48,7 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSOwnReportFrame getInstance(){
-        return SSOwnReportFrame.cInstance;
+        return cInstance;
     }
 
 

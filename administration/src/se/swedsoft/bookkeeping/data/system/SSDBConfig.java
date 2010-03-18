@@ -219,9 +219,9 @@ public class SSDBConfig {
                 setClientKey(dateFormat.format(new Date()));
             }
 
-            SSDBConfig.iClientKey = iKey;
+            iClientKey = iKey;
 
-            SSDBConfig.iServerAddress = iServer;
+            iServerAddress = iServer;
 
         } catch (Exception ex) {
             ex.printStackTrace();

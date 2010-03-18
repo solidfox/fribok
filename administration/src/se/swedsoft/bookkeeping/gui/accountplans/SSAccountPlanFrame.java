@@ -403,7 +403,7 @@ public class SSAccountPlanFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSAccountPlanFrame.cInstance=null;
+        cInstance=null;
     }
 }
 

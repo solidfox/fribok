@@ -45,8 +45,8 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSPurchaseOrderFrame.cInstance == null || SSPurchaseOrderFrame.cInstance.isClosed() ){
-            SSPurchaseOrderFrame.cInstance = new SSPurchaseOrderFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSPurchaseOrderFrame.cInstance.isClosed() ){
+            cInstance = new SSPurchaseOrderFrame(pMainFrame, pWidth, pHeight);
         }
         SSPurchaseOrderFrame.cInstance.setVisible(true);
         SSPurchaseOrderFrame.cInstance.deIconize();
@@ -58,7 +58,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSPurchaseOrderFrame getInstance(){
-        return SSPurchaseOrderFrame.cInstance;
+        return cInstance;
     }
 
 
@@ -439,6 +439,6 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iTabbedPane=null;
-        SSPurchaseOrderFrame.cInstance=null;
+        cInstance=null;
     }
 }

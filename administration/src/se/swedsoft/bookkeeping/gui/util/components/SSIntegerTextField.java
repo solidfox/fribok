@@ -29,7 +29,7 @@ public class SSIntegerTextField extends JFormattedTextField {
                   SSIntegerTextField.this.requestFocus();
               }
           };
-          getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "SETVALUE");
+          getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "SETVALUE");
 
           getActionMap().put("SETVALUE", iSetValue);
 

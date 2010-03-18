@@ -45,9 +45,9 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
         SSResultUnitTableModel iModel = new SSResultUnitTableModel();
 
 
-        iModel.addColumn( SSResultUnitTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSResultUnitTableModel.COLUMN_NAME   );
-        iModel.addColumn( SSResultUnitTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_NAME   );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
         return iModel;
     }
 
@@ -59,9 +59,9 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
     public static SSResultUnitTableModel getDropDownModel(List<SSNewResultUnit> iResultUnits){
         SSResultUnitTableModel iModel = new SSResultUnitTableModel(iResultUnits);
 
-        iModel.addColumn( SSResultUnitTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSResultUnitTableModel.COLUMN_NAME   );
-        iModel.addColumn( SSResultUnitTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_NAME   );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
     }

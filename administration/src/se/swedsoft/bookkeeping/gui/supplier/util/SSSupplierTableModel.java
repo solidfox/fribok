@@ -53,8 +53,8 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      */
     public static SSTableModel<SSSupplier> getDropDownModel() {
         SSSupplierTableModel iModel = new SSSupplierTableModel();
-        iModel.addColumn(SSSupplierTableModel.COLUMN_NUMBER);
-        iModel.addColumn(SSSupplierTableModel.COLUMN_NAME);
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_NAME);
         return iModel;
 
     }

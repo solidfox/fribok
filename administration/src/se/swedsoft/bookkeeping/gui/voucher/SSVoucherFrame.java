@@ -529,7 +529,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSVoucherFrame.cInstance=null;
+        cInstance=null;
     }
 }
 

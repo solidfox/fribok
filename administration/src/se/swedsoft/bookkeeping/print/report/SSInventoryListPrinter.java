@@ -64,7 +64,7 @@ public class SSInventoryListPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSInventoryListPrinter.SSInventoryRowPrinter();
+        iPrinter = new SSInventoryRowPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

@@ -62,7 +62,7 @@ public class SSVATReportPrinter  extends SSPrinter {
         iCalculator.calculate();
 
 
-        List<SSSalesTaxCalculator.SSVATReportGroup> iReportGroups = iCalculator.getReportGroups();
+        List<SSVATReportGroup> iReportGroups = iCalculator.getReportGroups();
 
 
         SSDefaultTableModel<SSVATReportGroup> iModel = new SSDefaultTableModel<SSVATReportGroup>() {

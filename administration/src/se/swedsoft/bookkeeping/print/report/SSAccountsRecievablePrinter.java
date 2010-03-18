@@ -100,7 +100,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
 
 
 
-        iPrinter = new SSAccountsRecievablePrinter.SSInvoicePrinter();
+        iPrinter = new SSInvoicePrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

@@ -53,8 +53,8 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSSupplierInvoiceFrame.cInstance == null || SSSupplierInvoiceFrame.cInstance.isClosed() ){
-            SSSupplierInvoiceFrame.cInstance = new SSSupplierInvoiceFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSSupplierInvoiceFrame.cInstance.isClosed() ){
+            cInstance = new SSSupplierInvoiceFrame(pMainFrame, pWidth, pHeight);
         }
         SSSupplierInvoiceFrame.cInstance.setVisible(true);
         SSSupplierInvoiceFrame.cInstance.deIconize();
@@ -485,7 +485,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iTabbedPane=null;
-        SSSupplierInvoiceFrame.cInstance=null;
+        cInstance=null;
     }
 
 

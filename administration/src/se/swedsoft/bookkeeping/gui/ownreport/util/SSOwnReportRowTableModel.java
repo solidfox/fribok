@@ -30,7 +30,7 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
 
     public static SSTableModel<SSOwnReportRow> getDropDownModel(){
         SSOwnReportRowTableModel iModel = new SSOwnReportRowTableModel();
-        iModel.addColumn( SSOwnReportRowTableModel.COLUMN_HEADING, false   );
+        iModel.addColumn( COLUMN_HEADING, false   );
         return iModel;
     }
     /**

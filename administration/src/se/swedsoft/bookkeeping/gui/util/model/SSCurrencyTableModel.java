@@ -69,9 +69,9 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
     public static SSCurrencyTableModel getDropDownModel(List<SSCurrency> iCurrencies){
         SSCurrencyTableModel iModel = new SSCurrencyTableModel(iCurrencies);
 
-        iModel.addColumn( SSCurrencyTableModel.COLUMN_NAME );
-        iModel.addColumn( SSCurrencyTableModel.COLUMN_DESCRIPTION   );
-        iModel.addColumn( SSCurrencyTableModel.COLUMN_EXCHANGERATE   );
+        iModel.addColumn( COLUMN_NAME );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_EXCHANGERATE   );
 
         return iModel;
     }

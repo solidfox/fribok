@@ -50,7 +50,7 @@ public class SSVoucherTemplateTableModel extends SSTableModel<SSVoucherTemplate>
     public static SSVoucherTemplateTableModel getDropDownModel(){
         SSVoucherTemplateTableModel iModel = new SSVoucherTemplateTableModel();
 
-        iModel.addColumn( SSVoucherTemplateTableModel.COLUMN_DESCRIPTION );
+        iModel.addColumn( COLUMN_DESCRIPTION );
 
         return iModel;
     }

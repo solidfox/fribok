@@ -240,8 +240,8 @@ public class SSCustomerTableModel extends SSTableModel<SSCustomer> {
     public static SSCustomerTableModel getDropDownModel(){
         SSCustomerTableModel iModel = new SSCustomerTableModel();
 
-        iModel.addColumn( SSCustomerTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_NAME   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_NAME   );
 
         return iModel;
 

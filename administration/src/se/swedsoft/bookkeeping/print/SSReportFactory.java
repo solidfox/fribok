@@ -389,7 +389,7 @@ public class SSReportFactory {
                     @Override
                     public void internalFrameClosed(InternalFrameEvent e) {
                         // Ask the user if he wants to generate a vatVoucher
-                        SSReportFactory.dialogVATVoucher(iMainFrame, iVoucher, iAccountingYear, localFrom, localTo);
+                        dialogVATVoucher(iMainFrame, iVoucher, iAccountingYear, localFrom, localTo);
 
                         // For some reason this event get called over and over, this is a "hack" to avoid it
                         e.getInternalFrame().removeInternalFrameListener(this);

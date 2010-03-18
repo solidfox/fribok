@@ -152,7 +152,7 @@ public class SSCreditinvoicePrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        final SSPrinter iPrinter = new SSCreditinvoicePrinter.SSRowReport(  );
+        final SSPrinter iPrinter = new SSRowReport(  );
 
         iPrinter.setBundle(iBundle);
         iPrinter.setLocale(iLocale);

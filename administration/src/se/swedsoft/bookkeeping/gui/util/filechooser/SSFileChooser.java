@@ -69,7 +69,7 @@ public class SSFileChooser extends JFileChooser  {
     public int showSaveDialog(Component parent) throws HeadlessException {
         int iResult =  super.showSaveDialog(parent);
 
-        if(iResult != JFileChooser.APPROVE_OPTION) return iResult;
+        if(iResult != APPROVE_OPTION) return iResult;
 
         File iFile = getSelectedFile();
         if( iFile.exists()) {
@@ -77,7 +77,7 @@ public class SSFileChooser extends JFileChooser  {
             String iMessage = String.format( bundle.getString("filechooser.fileexists"), iFile.getAbsolutePath() );
 
             if( JOptionPane.showConfirmDialog(null, iMessage, iTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.YES_OPTION){
-                return JFileChooser.CANCEL_OPTION;
+                return CANCEL_OPTION;
             }
         }
         return iResult;
@@ -92,16 +92,16 @@ public class SSFileChooser extends JFileChooser  {
     public final int showDialog(Component pParent){
         int iResult = super.showDialog(pParent, null);
 
-        if(iResult != JFileChooser.APPROVE_OPTION) return iResult;
+        if(iResult != APPROVE_OPTION) return iResult;
 
-        if(getDialogType() == JFileChooser.SAVE_DIALOG ){
+        if(getDialogType() == SAVE_DIALOG ){
             File iFile = getSelectedFile();
             if( iFile.exists()) {
                 String iTitle   = getUI().getDialogTitle(this);
                 String iMessage = String.format( bundle.getString("filechooser.fileexists"), iFile.getAbsolutePath() );
 
                 if( JOptionPane.showConfirmDialog(null, iMessage, iTitle, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.YES_OPTION){
-                    return JFileChooser.CANCEL_OPTION;
+                    return CANCEL_OPTION;
                 }
             }
 

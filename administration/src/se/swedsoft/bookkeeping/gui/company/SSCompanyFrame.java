@@ -250,7 +250,7 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
         }
         //Stäng fönstret om företaget redan är öppet.
         if (iNewCompany.equals(SSDB.getInstance().getCurrentCompany())) {
-            SSCompanyFrame.getInstance().dispose();
+            getInstance().dispose();
             return;
         }
         //Kontrollera att företaget fortfarande finns i databasen
@@ -422,7 +422,7 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iShowAtStartup=null;
-        SSCompanyFrame.cInstance=null;
+        cInstance=null;
     }
 
 

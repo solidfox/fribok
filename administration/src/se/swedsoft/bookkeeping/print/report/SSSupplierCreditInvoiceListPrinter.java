@@ -67,7 +67,7 @@ public class SSSupplierCreditInvoiceListPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSSupplierCreditInvoiceListPrinter.SSInvoiceRowPrinter();
+        iPrinter = new SSInvoiceRowPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

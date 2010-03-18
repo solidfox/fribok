@@ -63,10 +63,10 @@ public class SSSupplierInvoiceTableModel extends SSTableModel<SSSupplierInvoice>
      */
     public static SSTableModel<SSSupplierInvoice> getDropDownModel(List<SSSupplierInvoice> iSupplierInvoices){
         SSSupplierInvoiceTableModel iModel = new SSSupplierInvoiceTableModel( iSupplierInvoices );
-        iModel.addColumn(SSSupplierInvoiceTableModel.COLUMN_NUMBER);
-        iModel.addColumn(SSSupplierInvoiceTableModel.COLUMN_REFERENCE_NUMBER);
-        iModel.addColumn(SSSupplierInvoiceTableModel.COLUMN_SUPPLIER_NUMBER);
-        iModel.addColumn(SSSupplierInvoiceTableModel.COLUMN_SUPPLIER_NAME);
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_REFERENCE_NUMBER);
+        iModel.addColumn(COLUMN_SUPPLIER_NUMBER);
+        iModel.addColumn(COLUMN_SUPPLIER_NAME);
         return iModel;
     }
 

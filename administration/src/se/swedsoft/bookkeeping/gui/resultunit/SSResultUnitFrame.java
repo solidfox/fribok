@@ -356,6 +356,6 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSResultUnitFrame.cInstance=null;
+        cInstance=null;
     }
 }

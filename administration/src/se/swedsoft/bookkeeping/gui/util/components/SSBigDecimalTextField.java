@@ -39,8 +39,8 @@ public class SSBigDecimalTextField extends JFormattedTextField {
             }
         };
 
-        getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "SETVALUE");
-        getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "SETNULL");
+        getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "SETVALUE");
+        getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "SETNULL");
 
         getActionMap().put("SETVALUE", iSetValue);
         getActionMap().put("SETNULL" , iSetNull);

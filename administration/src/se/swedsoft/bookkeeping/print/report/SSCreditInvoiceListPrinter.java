@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class SSCreditInvoiceListPrinter extends SSPrinter {
 
-    private SSCreditInvoiceListPrinter.SSInvoiceRowPrinter iPrinter;
+    private SSInvoiceRowPrinter iPrinter;
 
     private SSDefaultJasperDataSource iDataSource;
 
@@ -66,7 +66,7 @@ public class SSCreditInvoiceListPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSCreditInvoiceListPrinter.SSInvoiceRowPrinter();
+        iPrinter = new SSInvoiceRowPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

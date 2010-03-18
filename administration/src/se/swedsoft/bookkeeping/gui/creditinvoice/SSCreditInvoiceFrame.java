@@ -40,8 +40,8 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSCreditInvoiceFrame.cInstance == null || SSCreditInvoiceFrame.cInstance.isClosed() ){
-            SSCreditInvoiceFrame.cInstance = new SSCreditInvoiceFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSCreditInvoiceFrame.cInstance.isClosed() ){
+            cInstance = new SSCreditInvoiceFrame(pMainFrame, pWidth, pHeight);
         }
         SSCreditInvoiceFrame.cInstance.setVisible(true);
         SSCreditInvoiceFrame.cInstance.deIconize();
@@ -53,7 +53,7 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSCreditInvoiceFrame getInstance(){
-        return SSCreditInvoiceFrame.cInstance;
+        return cInstance;
     }
 
     private SSTable iTable;
@@ -343,7 +343,7 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSCreditInvoiceFrame.cInstance=null;
+        cInstance=null;
     }
 
 }

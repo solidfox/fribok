@@ -66,7 +66,7 @@ public class SSInpaymentListPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
 
-        iPrinter = new SSInpaymentListPrinter.SSInpaymentRowPrinter();
+        iPrinter = new SSInpaymentRowPrinter();
         iPrinter.generateReport();
 
         addParameter("Report"      , iPrinter.getReport());

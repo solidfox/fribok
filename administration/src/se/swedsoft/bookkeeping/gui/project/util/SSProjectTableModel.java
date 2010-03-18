@@ -76,8 +76,8 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
         SSProjectTableModel iModel = new SSProjectTableModel();
 
 
-        iModel.addColumn( SSProjectTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSProjectTableModel.COLUMN_NAME   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_NAME   );
 
         return iModel;
     }
@@ -89,8 +89,8 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
     public static SSProjectTableModel getDropDownModel(List<SSNewProject> iProjects){
         SSProjectTableModel iModel = new SSProjectTableModel(iProjects);
 
-        iModel.addColumn( SSProjectTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSProjectTableModel.COLUMN_NAME   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_NAME   );
 
         return iModel;
     }

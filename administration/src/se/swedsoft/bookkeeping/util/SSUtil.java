@@ -35,7 +35,7 @@ public class SSUtil
     }
     
     public static boolean isInRage(int i, int low, int high) {
-        SSUtil.verifyArgument("low must be lower or equal to high", low <= high);
+        verifyArgument("low must be lower or equal to high", low <= high);
         return low <= i && i <= high;
     }
 }

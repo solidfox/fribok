@@ -54,9 +54,9 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
     public static SSCreditInvoiceTableModel getDropDownModel(){
         SSCreditInvoiceTableModel iModel = new SSCreditInvoiceTableModel();
 
-        iModel.addColumn( SSCreditInvoiceTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSCreditInvoiceTableModel.COLUMN_CUSTOMER_NR   );
-        iModel.addColumn( SSCreditInvoiceTableModel.COLUMN_CUSTOMER_NAME   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_CUSTOMER_NR   );
+        iModel.addColumn( COLUMN_CUSTOMER_NAME   );
 
         return iModel;
     }

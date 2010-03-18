@@ -37,8 +37,8 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSOutdeliveryFrame.cInstance == null || SSOutdeliveryFrame.cInstance.isClosed() ){
-            SSOutdeliveryFrame.cInstance = new SSOutdeliveryFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSOutdeliveryFrame.cInstance.isClosed() ){
+            cInstance = new SSOutdeliveryFrame(pMainFrame, pWidth, pHeight);
         }
         SSOutdeliveryFrame.cInstance.setVisible(true);
         SSOutdeliveryFrame.cInstance.deIconize();
@@ -50,7 +50,7 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSOutdeliveryFrame getInstance(){
-        return SSOutdeliveryFrame.cInstance;
+        return cInstance;
     }
 
 
@@ -288,6 +288,6 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSOutdeliveryFrame.cInstance=null;
+        cInstance=null;
     }
 }

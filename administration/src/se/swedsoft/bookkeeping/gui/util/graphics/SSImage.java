@@ -22,13 +22,13 @@ public class SSImage {
 
     // Standard graphics
     static{
-        SSImage.loadImage("BACKGROUND"    , "Background.png" );
-        SSImage.loadImage("LOGO"          , "logo.png" );
-        SSImage.loadImage("OCRAVI"        , "OCRAvi.png" );
-        SSImage.loadImage("OCRBackground" , "OCRBackground.png" );
-        SSImage.loadImage("CHECK"         , "Check.png" );
-        SSImage.loadImage("SERVER"        , "Server.png");
-        SSImage.loadImage("ICON_LOGO"     , "Logo_Icon16.png");
+        loadImage("BACKGROUND"    , "Background.png" );
+        loadImage("LOGO"          , "logo.png" );
+        loadImage("OCRAVI"        , "OCRAvi.png" );
+        loadImage("OCRBackground" , "OCRBackground.png" );
+        loadImage("CHECK"         , "Check.png" );
+        loadImage("SERVER"        , "Server.png");
+        loadImage("ICON_LOGO"     , "Logo_Icon16.png");
     }
 
     /**

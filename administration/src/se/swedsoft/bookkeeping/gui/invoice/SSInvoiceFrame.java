@@ -55,8 +55,8 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSInvoiceFrame.cInstance == null || SSInvoiceFrame.cInstance.isClosed() ){
-            SSInvoiceFrame.cInstance = new SSInvoiceFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSInvoiceFrame.cInstance.isClosed() ){
+            cInstance = new SSInvoiceFrame(pMainFrame, pWidth, pHeight);
         }
         SSInvoiceFrame.cInstance.setVisible(true);
         SSInvoiceFrame.cInstance.deIconize();
@@ -74,7 +74,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      * @return The SSNewCompanyFrame
      */
     public static SSInvoiceFrame getInstance(){
-        return SSInvoiceFrame.cInstance;
+        return cInstance;
     }
 
     private JTabbedPane iTabbedPane;
@@ -545,6 +545,6 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
     {
         iTable=null;
         iModel=null;
-        SSInvoiceFrame.cInstance=null;
+        cInstance=null;
     }
 }

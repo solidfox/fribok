@@ -349,7 +349,7 @@ public class SSInvoiceMath extends SSSaleMath{
 
 
         for (SSInvoice iInvoice : iInvoices) {
-            if( iInvoice.hasCustomer(iCustomer) && SSInvoiceMath.inPeriod(iInvoice, iDate) ){
+            if( iInvoice.hasCustomer(iCustomer) && inPeriod(iInvoice, iDate) ){
                 iFiltered.add(iInvoice);
             }
 
@@ -448,7 +448,7 @@ public class SSInvoiceMath extends SSSaleMath{
      * @return
      */
     public static BigDecimal getInterestSaldo(SSInvoice iInvoice) {
-        BigDecimal iTotalSum = SSInvoiceMath.getTotalSum(iInvoice);
+        BigDecimal iTotalSum = getTotalSum(iInvoice);
 
         BigDecimal iCredited = SSCreditInvoiceMath.getSumForInvoice(iInvoice);
 

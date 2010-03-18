@@ -135,7 +135,7 @@ public class SSDeliverynotePrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        final SSPrinter iPrinter = new SSDeliverynotePrinter.SSRowReport(  );
+        final SSPrinter iPrinter = new SSRowReport(  );
 
         iPrinter.setBundle(iBundle);
         iPrinter.setLocale(iLocale);

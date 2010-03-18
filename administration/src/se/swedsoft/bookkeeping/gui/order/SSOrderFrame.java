@@ -56,8 +56,8 @@ public class SSOrderFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSOrderFrame.cInstance == null || SSOrderFrame.cInstance.isClosed() ){
-            SSOrderFrame.cInstance = new SSOrderFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSOrderFrame.cInstance.isClosed() ){
+            cInstance = new SSOrderFrame(pMainFrame, pWidth, pHeight);
         }
         SSOrderFrame.cInstance.setVisible(true);
         SSOrderFrame.cInstance.deIconize();
@@ -607,7 +607,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         iTabbedPane=null;
-        SSOrderFrame.cInstance=null;
+        cInstance=null;
     }
 
 

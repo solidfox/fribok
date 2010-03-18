@@ -135,7 +135,7 @@ public class SSTenderPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        final SSPrinter iPrinter = new SSTenderPrinter.SSRowReport(  );
+        final SSPrinter iPrinter = new SSRowReport(  );
 
         iPrinter.setBundle(iBundle);
         iPrinter.setLocale(iLocale);

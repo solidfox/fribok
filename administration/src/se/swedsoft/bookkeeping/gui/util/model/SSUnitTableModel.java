@@ -56,8 +56,8 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
     public static SSUnitTableModel getDropDownModel(){
         SSUnitTableModel iModel = new SSUnitTableModel();
 
-        iModel.addColumn( SSUnitTableModel.COLUMN_NAME );
-        iModel.addColumn( SSUnitTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NAME );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
 

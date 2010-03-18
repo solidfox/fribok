@@ -196,7 +196,7 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
     {
         iAccountingYear=null;
         iBudgetMainPanel=null;
-        SSBudgetFrame.cInstance=null;
+        cInstance=null;
     }
 
 }

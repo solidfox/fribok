@@ -25,7 +25,7 @@ public class SSBackupUtils {
      */
     public static List<ArchiveFile> getFiles(){
 
-        List<ArchiveFile> iFiles = new LinkedList<SSBackupZip.ArchiveFile>();
+        List<ArchiveFile> iFiles = new LinkedList<ArchiveFile>();
 
         if(!SSDB.getInstance().getLocking()){
             // Add the database files

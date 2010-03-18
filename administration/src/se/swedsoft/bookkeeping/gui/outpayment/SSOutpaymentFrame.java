@@ -40,8 +40,8 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( SSOutpaymentFrame.cInstance == null || SSOutpaymentFrame.cInstance.isClosed() ){
-            SSOutpaymentFrame.cInstance = new SSOutpaymentFrame(pMainFrame, pWidth, pHeight);
+        if( cInstance == null || SSOutpaymentFrame.cInstance.isClosed() ){
+            cInstance = new SSOutpaymentFrame(pMainFrame, pWidth, pHeight);
         }
         SSOutpaymentFrame.cInstance.setVisible(true);
         SSOutpaymentFrame.cInstance.deIconize();
@@ -53,7 +53,7 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
      * @return The SSNewCompanyFrame
      */
     public static SSOutpaymentFrame getInstance(){
-        return SSOutpaymentFrame.cInstance;
+        return cInstance;
     }
 
 
@@ -276,7 +276,7 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSOutpaymentFrame.cInstance=null;
+        cInstance=null;
     }
 
 

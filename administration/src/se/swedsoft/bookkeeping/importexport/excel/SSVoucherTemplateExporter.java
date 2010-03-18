@@ -110,10 +110,10 @@ public class SSVoucherTemplateExporter {
 
         iCellFormat.setBackground( Colour.GRAY_25 );
 
-        iRows.get(0).setString(0, SSVoucherTemplateExporter.BESKRIVNING       , iCellFormat);
-        iRows.get(0).setString(1, SSVoucherTemplateExporter.KONTO             , iCellFormat);
-        iRows.get(0).setString(2, SSVoucherTemplateExporter.DEBET             , iCellFormat);
-        iRows.get(0).setString(3, SSVoucherTemplateExporter.KREDIT            , iCellFormat);
+        iRows.get(0).setString(0, BESKRIVNING       , iCellFormat);
+        iRows.get(0).setString(1, KONTO             , iCellFormat);
+        iRows.get(0).setString(2, DEBET             , iCellFormat);
+        iRows.get(0).setString(3, KREDIT            , iCellFormat);
 
         iCellFormat = new WritableCellFormat();
         WritableFont iFont = new WritableFont( WritableFont.ARIAL, WritableFont.DEFAULT_POINT_SIZE, WritableFont.BOLD);

@@ -46,7 +46,7 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      * @return
      */
     public static SSVATCodeTableModel getDropDownModel(){
-        return SSVATCodeTableModel.getDropDownModel( SSVATCode.getValues() );
+        return getDropDownModel( SSVATCode.getValues() );
     }
 
     /**
@@ -57,8 +57,8 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
     public static SSVATCodeTableModel getDropDownModel(List<SSVATCode> iVATCodes){
         SSVATCodeTableModel iModel = new SSVATCodeTableModel(iVATCodes);
 
-        iModel.addColumn( SSVATCodeTableModel.COLUMN_NAME );
-        iModel.addColumn( SSVATCodeTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NAME );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
     }

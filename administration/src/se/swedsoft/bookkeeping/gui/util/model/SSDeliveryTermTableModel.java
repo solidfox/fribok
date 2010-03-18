@@ -57,8 +57,8 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
     public static SSDeliveryTermTableModel getDropDownModel(){
         SSDeliveryTermTableModel iModel = new SSDeliveryTermTableModel();
 
-        iModel.addColumn( SSDeliveryTermTableModel.COLUMN_NAME );
-        iModel.addColumn( SSDeliveryTermTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NAME );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
 

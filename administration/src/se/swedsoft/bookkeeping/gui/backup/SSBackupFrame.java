@@ -293,6 +293,6 @@ public class SSBackupFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSBackupFrame.cInstance=null;
+        cInstance=null;
     }
 }

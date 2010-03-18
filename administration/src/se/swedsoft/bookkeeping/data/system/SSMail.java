@@ -187,7 +187,7 @@ public class SSMail {
      * get an error message from a resource file.
      * @param message
      * @param resourceName
-     * @throws se.swedsoft.bookkeeping.data.system.SSMail.MailValidationException
+     * @throws MailValidationException
      */
     public static void onError(String message, String resourceName) throws MailValidationException {
         throw new MailValidationException(message, resourceName);

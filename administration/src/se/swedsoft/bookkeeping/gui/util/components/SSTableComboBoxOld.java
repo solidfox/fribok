@@ -188,15 +188,15 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
             }
         });
 
-        iTextField.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0                        ), "SELECT_NULL");
+        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0                        ), "SELECT_NULL");
 
-        iTextField.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
-        iTextField.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP   , 0                         ), "FOCUS_DROP_DOWN_TABLE");
-        iTextField.getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN , 0                         ), "FOCUS_DROP_DOWN_TABLE");
+        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP   , 0                         ), "FOCUS_DROP_DOWN_TABLE");
+        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN , 0                         ), "FOCUS_DROP_DOWN_TABLE");
 
-        iTable    .getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
-        iTable    .getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB  , 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
-        iTable    .getInputMap(JComponent.WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB  , KeyEvent.SHIFT_DOWN_MASK  ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTable    .getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTable    .getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB  , 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTable    .getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB  , KeyEvent.SHIFT_DOWN_MASK  ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
 
 
         iTextField.getActionMap().put("SELECT_NULL"                   , iSelectNull);

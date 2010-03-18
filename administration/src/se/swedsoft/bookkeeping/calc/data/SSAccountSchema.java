@@ -94,7 +94,7 @@ public class SSAccountSchema implements Serializable {
         if( iSchemaCache.containsKey(iSchema) ){
             iAccountSchema = iSchemaCache.get(iSchema);
         } else {
-            iAccountSchema = SSAccountSchema.createAccountSchema(new File(SSPath.get(SSPath.APP_DATA), iSchema));
+            iAccountSchema = createAccountSchema(new File(SSPath.get(SSPath.APP_DATA), iSchema));
 
             iSchemaCache.put(iSchema, iAccountSchema);
         }

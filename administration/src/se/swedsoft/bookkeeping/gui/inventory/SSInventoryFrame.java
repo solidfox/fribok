@@ -278,6 +278,6 @@ public class SSInventoryFrame extends SSDefaultTableFrame {
     {
         iTable=null;
         iModel=null;
-        SSInventoryFrame.cInstance=null;
+        cInstance=null;
     }
 }

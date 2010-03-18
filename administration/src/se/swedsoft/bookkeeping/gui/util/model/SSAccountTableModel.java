@@ -61,8 +61,8 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
             }
         }
 
-        iModel.addColumn( SSAccountTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSAccountTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
     }
@@ -70,8 +70,8 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
     public static SSAccountTableModel getDropDownModel(List<SSAccount> iAccounts){
         SSAccountTableModel iModel = new SSAccountTableModel(iAccounts);
             
-        iModel.addColumn( SSAccountTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSAccountTableModel.COLUMN_DESCRIPTION   );
+        iModel.addColumn( COLUMN_NUMBER );
+        iModel.addColumn( COLUMN_DESCRIPTION   );
 
         return iModel;
     }
