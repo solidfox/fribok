@@ -66,6 +66,7 @@ public class SSAccountPlanPanel {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSAccountPlanPanel(final SSMainFrame iMainFrame){
         iModel = new SSAccountPlanRowTableModel();
@@ -317,6 +318,7 @@ public class SSAccountPlanPanel {
 
     /**
      *
+     * @param iShowBase
      */
     public void setShowBase(boolean iShowBase){
         iBase           .setVisible(iShowBase);

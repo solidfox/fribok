@@ -67,6 +67,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * Copy constructor
      *
      * @param
+     * @param iSupplierInvoiceRow
      */
     public SSSupplierInvoiceRow(SSSupplierInvoiceRow iSupplierInvoiceRow) {
         this.iDescription  = iSupplierInvoiceRow.iDescription;
@@ -334,6 +335,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
     /**
      * Gets the product for this row
      *
+     * @param iProducts
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
@@ -373,6 +375,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iResultUnits
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
@@ -402,6 +405,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iProjects
      * @return
      */
     public SSNewProject getProject(List<SSNewProject> iProjects) {

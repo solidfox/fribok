@@ -97,6 +97,7 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
     /**
      *
      * @param iDate
+     * @return
      */
     public Date addDaysToDate(Date iDate) {
         int iDays = decodeValue();

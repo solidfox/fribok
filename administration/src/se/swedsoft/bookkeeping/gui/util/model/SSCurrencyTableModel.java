@@ -32,6 +32,7 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
 
     /**
      * Default constructor.
+     * @param iCurrencies
      */
     public SSCurrencyTableModel(List<SSCurrency> iCurrencies) {
         super(iCurrencies);
@@ -62,6 +63,7 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
 
     /**
      *
+     * @param iCurrencies
      * @return
      */
     public static SSCurrencyTableModel getDropDownModel(List<SSCurrency> iCurrencies){

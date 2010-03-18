@@ -36,6 +36,7 @@ public class SSWarningDialog {
      *
      * @param iFrame
      * @param pBundleName
+     * @param pMessageFormat
      */
     public SSWarningDialog(JFrame iFrame, String pBundleName, String ... pMessageFormat){
         String title   =               SSBundle.getBundle().getString(pBundleName + ".title");

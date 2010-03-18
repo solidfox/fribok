@@ -36,6 +36,7 @@ public class SSInventoryListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iInventories
      */
     public SSInventoryListPrinter( List<SSInventory> iInventories){
         super();

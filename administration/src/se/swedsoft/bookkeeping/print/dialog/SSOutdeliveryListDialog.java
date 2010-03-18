@@ -43,6 +43,7 @@ public class SSOutdeliveryListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSOutdeliveryListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("outdeliverylistreport.dialog.title") );

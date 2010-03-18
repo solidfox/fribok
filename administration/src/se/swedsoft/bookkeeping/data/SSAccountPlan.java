@@ -68,6 +68,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      * Copy constructor
      *
      * @param iAccountPlan
+     * @param iBasedOn
      */
     public SSAccountPlan(SSAccountPlan iAccountPlan, boolean iBasedOn) {
         copyFrom(iAccountPlan);

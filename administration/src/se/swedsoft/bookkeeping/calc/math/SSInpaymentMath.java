@@ -65,6 +65,7 @@ public class SSInpaymentMath {
      * Get the sum of the inpayments for the supplied sales in the sales currency
      *
      * @param iInpayment
+     * @param iInvoice
      * @return the sum
      */
     public static BigDecimal getSumForInvoice(SSInpayment iInpayment, SSInvoice iInvoice){

@@ -36,6 +36,7 @@ public class SSErrorDialog {
      *
      * @param iFrame
      * @param pBundleName
+     * @param pMessageFormat
      */
     public SSErrorDialog(JFrame iFrame, String pBundleName, Object ... pMessageFormat){
         String title   =               SSBundle.getBundle().getString(pBundleName + ".title");

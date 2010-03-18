@@ -27,6 +27,7 @@ public class SSBackup implements Serializable {
 
     /**
      *
+     * @param pType
      */
     public SSBackup(SSBackupType pType){
         iType = pType;
@@ -117,6 +118,8 @@ public class SSBackup implements Serializable {
      *
      * @param iFile
      * @return the backup
+     * @throws java.io.IOException
+     * @throws ClassNotFoundException
      */
     public static SSBackup loadBackup(File iFile) throws IOException, ClassNotFoundException {
         SSBackup iBackup = null;
@@ -135,6 +138,7 @@ public class SSBackup implements Serializable {
      *
      * @param iFile
      * @param iBackup
+     * @throws java.io.IOException
      */
     public static void storeBackup(File iFile, SSBackup iBackup) throws IOException {
         ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFile)));

@@ -36,6 +36,8 @@ public class SSBgMaxImporter {
     /**
      *
      * @param iFile
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @return
      */
     public static BgMaxFile Import(File iFile) throws SSImportException {
 

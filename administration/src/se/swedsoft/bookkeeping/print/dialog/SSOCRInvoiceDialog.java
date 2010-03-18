@@ -24,6 +24,8 @@ public class SSOCRInvoiceDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
+     * @param iTitle
      */
     public SSOCRInvoiceDialog(SSMainFrame iMainFrame, String iTitle) {
         super(iMainFrame, iTitle );

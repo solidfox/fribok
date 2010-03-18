@@ -58,6 +58,9 @@ public class SSBudgetFrame extends se.swedsoft.bookkeeping.gui.util.frame.SSDefa
 
     /**
      * Default constructor.
+     * @param pMainFrame
+     * @param pWidth
+     * @param pHeight
      */
     private SSBudgetFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
         super(pMainFrame, SSBundle.getBundle().getString("budgetframe.title"), pWidth, pHeight);

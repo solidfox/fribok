@@ -76,6 +76,7 @@ public class SSListInvoicesPanel {
     /**
      *
      * @param iMainFrame
+     * @param iPeriodicInvoice
      */
     public static void showDialog(SSMainFrame iMainFrame, SSPeriodicInvoice iPeriodicInvoice){
         SSListInvoicesPanel iPanel = new SSListInvoicesPanel(iPeriodicInvoice);

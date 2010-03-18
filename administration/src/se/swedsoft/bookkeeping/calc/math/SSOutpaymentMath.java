@@ -122,6 +122,7 @@ public class SSOutpaymentMath {
      * Get the sum of the inpayments for the supplied sales in the sales currency
      *
      * @param iOutpayment
+     * @param iInvoice
      * @return the sum
      */
     public static BigDecimal getSumForInvoice(SSOutpayment iOutpayment, SSSupplierInvoice iInvoice){

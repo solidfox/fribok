@@ -29,6 +29,7 @@ public class SSCustomerListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iCustomers
      */
     public SSCustomerListPrinter( List<SSCustomer> iCustomers){
         super();

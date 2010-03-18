@@ -31,6 +31,7 @@ public class SSInventoryBasisDialog  extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSInventoryBasisDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("inventorybasisreport.dialog.title") );

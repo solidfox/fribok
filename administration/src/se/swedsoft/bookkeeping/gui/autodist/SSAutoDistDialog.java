@@ -32,6 +32,7 @@ public class SSAutoDistDialog {
     /**
      *
      * @param iMainFrame
+     * @param iAutoDist
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSAutoDist iAutoDist, final SSAutoDistTableModel pModel) {
@@ -95,6 +96,7 @@ public class SSAutoDistDialog {
     /**
      *
      * @param iMainFrame
+     * @param iAutoDist
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSAutoDist iAutoDist, final SSAutoDistTableModel pModel) {

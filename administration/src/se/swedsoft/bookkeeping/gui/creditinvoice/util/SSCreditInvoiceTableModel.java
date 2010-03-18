@@ -31,6 +31,7 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
 
     /**
      * Default constructor.
+     * @param iCreditInvoices
      */
     public SSCreditInvoiceTableModel(List<SSCreditInvoice> iCreditInvoices) {
         super(iCreditInvoices);

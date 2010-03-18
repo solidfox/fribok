@@ -85,6 +85,7 @@ public class SSMailServerDialog extends SSDialog {
 
     /**
      * Sets the text of the fields in the dialog from the data in server.
+     * @param server
      */
     private void loadFieldsFromServer(SSMailServer server) {
 
@@ -100,6 +101,8 @@ public class SSMailServerDialog extends SSDialog {
     /**
      * Reads the fields of the dialog and constructs a SSMailServer from
      * that, throwing if there was a format error in the fields.
+     * @throws se.swedsoft.bookkeeping.data.util.SSMailServerException
+     * @return
      */
     private SSMailServer getServerFromFields() throws SSMailServerException {
 
@@ -128,6 +131,8 @@ public class SSMailServerDialog extends SSDialog {
      * The method for opening the dialog. The data from server will be
      * copied to the text fields of the dialog, a SSMailServer constructed
      * from the edited fields will bve returned.
+     * @param server
+     * @return
      */
     public SSMailServer showServerQuery(SSMailServer server) {
 
@@ -144,6 +149,7 @@ public class SSMailServerDialog extends SSDialog {
 
     /**
      * Disables/enables the authorisation components
+     * @param isEnabled
      */
     private void onNewAuthState(boolean isEnabled) {
         passwordField.setEnabled(isEnabled);
@@ -179,6 +185,8 @@ public class SSMailServerDialog extends SSDialog {
 
     /**
      * Opends a dialog asking if the user wants to discard the faulty info.
+     * @param message
+     * @return
      */
     private boolean queryShouldDiscard(String message) {
 

@@ -248,6 +248,7 @@ public class SSInventoryFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelected(List<SSInventory> delete) {
         if (delete.isEmpty()) {

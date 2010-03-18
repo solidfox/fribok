@@ -43,6 +43,8 @@ public class SSVoucherImporter {
 
     /**
      *
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws java.io.IOException
      */
     public void Import()  throws IOException, SSImportException {
         final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();
@@ -115,6 +117,7 @@ public class SSVoucherImporter {
     /**
      *
      * @param pSheet
+     * @return
      */
     private List<SSVoucher> importVouchers(SSExcelSheet pSheet ){
 
@@ -180,6 +183,7 @@ public class SSVoucherImporter {
     /**
      *
      * @param iVouchers
+     * @return
      */
     private boolean showImportReport(List<SSVoucher> iVouchers){
         SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(), SSBundle.getBundle().getString("voucherframe.import.report"));

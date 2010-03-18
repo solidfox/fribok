@@ -20,6 +20,9 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
 
     /**
      *
+     * @param pFrom
+     * @param pTo
+     * @param pResultUnit
      */
     public SSResultUnitResultPrinter(Date pFrom, Date pTo, SSNewResultUnit pResultUnit) {
         super(pFrom, pTo, false, false);
@@ -31,6 +34,9 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
 
     /**
      * @param pYearData The year
+     * @param pFrom
+     * @param pTo
+     * @param pResultUnit
      */
     public SSResultUnitResultPrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo, SSNewResultUnit pResultUnit) {
         super(pYearData, pFrom, pTo, false, false);

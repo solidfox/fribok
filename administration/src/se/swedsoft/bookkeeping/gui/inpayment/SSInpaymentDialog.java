@@ -28,6 +28,7 @@ public class SSInpaymentDialog {
     /**
      *
      * @param iMainFrame
+     * @param pInpayment
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, final SSInpayment pInpayment, final SSDefaultTableModel<SSInpayment> pModel) {
@@ -142,6 +143,8 @@ public class SSInpaymentDialog {
 
     /**
      *
+     * @param iMainFrame
+     * @param iInpayment
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, SSInpayment iInpayment , final SSDefaultTableModel<SSInpayment> pModel) {

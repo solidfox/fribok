@@ -26,6 +26,7 @@ public class SSCurrencyCellEditor extends SSTableComboBox.CellEditor<SSCurrency>
 
     /**
      *
+     * @param iCurrencies
      */
     public SSCurrencyCellEditor(List<SSCurrency> iCurrencies) {
         super();

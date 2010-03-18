@@ -236,6 +236,7 @@ public class SSNewCompany implements Serializable {
 
     /**
      *
+     * @param iStandardtext
      * @return
      */
     public String getStandardText(SSStandardText iStandardtext) {
@@ -276,6 +277,7 @@ public class SSNewCompany implements Serializable {
 
     /**
      *
+     * @param iDefaultAccount
      * @return
      */
     public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {

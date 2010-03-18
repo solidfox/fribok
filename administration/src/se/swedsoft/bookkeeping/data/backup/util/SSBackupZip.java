@@ -204,6 +204,7 @@ public class SSBackupZip {
      *
      * @throws FileNotFoundException
      * @throws IOException
+     * @return
      */
     public static boolean extractFile(String pFilename, ArchiveFile iFile) throws FileNotFoundException, IOException {
 

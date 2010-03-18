@@ -37,6 +37,7 @@ public class SSInpaymentListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iInpayments
      */
     public SSInpaymentListPrinter( List<SSInpayment> iInpayments){
         super();

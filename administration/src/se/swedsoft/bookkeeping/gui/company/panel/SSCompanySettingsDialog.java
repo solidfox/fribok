@@ -43,6 +43,8 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
 
     /**
      *
+     * @param iMainFrame
+     * @param iDialogTitle
      */
     public SSCompanySettingsDialog(SSMainFrame iMainFrame, String iDialogTitle) {
         super(iMainFrame, iDialogTitle);

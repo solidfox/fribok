@@ -28,6 +28,7 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
 
     /**
      * Default constructor.
+     * @param iPaymentTerms
      */
     public SSDeliveryTermTableModel(List<SSDeliveryTerm> iPaymentTerms) {
         super(iPaymentTerms);

@@ -28,6 +28,7 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
 
     /**
      * Default constructor.
+     * @param iPaymentTerms
      */
     public SSPaymentTermTableModel(List<SSPaymentTerm> iPaymentTerms) {
         super(iPaymentTerms);

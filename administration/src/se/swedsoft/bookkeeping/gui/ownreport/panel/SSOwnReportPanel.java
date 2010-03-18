@@ -77,6 +77,7 @@ public class SSOwnReportPanel {
     List<SSOwnReportRow> iOwnReportRows;
     /**
      * Default constructor.
+     * @param pOwnReport
      */
     public SSOwnReportPanel(SSOwnReport pOwnReport) {
         iOwnReport = pOwnReport;

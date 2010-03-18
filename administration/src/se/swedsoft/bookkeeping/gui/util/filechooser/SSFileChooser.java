@@ -34,6 +34,7 @@ public class SSFileChooser extends JFileChooser  {
 
     /**
      *
+     * @param iFilters
      */
     public SSFileChooser(SSFileFilter ... iFilters){
         super();

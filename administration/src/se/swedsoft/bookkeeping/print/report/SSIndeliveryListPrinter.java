@@ -37,6 +37,7 @@ public class SSIndeliveryListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iIndeliveries
      */
     public SSIndeliveryListPrinter( List<SSIndelivery> iIndeliveries){
         super();

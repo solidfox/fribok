@@ -110,6 +110,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * Clone constructor
      *
      * @param iSale
+     * @param iNumber
      */
     public SSSale(SSSale iSale, Integer iNumber) {
         copyFrom(iSale);
@@ -639,6 +640,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iCustomers
      * @return
      */
     public SSCustomer getCustomer(List<SSCustomer> iCustomers) {

@@ -38,6 +38,7 @@ public class SSSaleReportDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSSaleReportDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("salereport.dialog.title") );

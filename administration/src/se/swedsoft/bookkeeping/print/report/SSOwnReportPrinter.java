@@ -39,6 +39,9 @@ public class SSOwnReportPrinter extends SSPrinter {
 
     /**
      *
+     * @param pFrom
+     * @param pTo
+     * @param pOwnReport
      */
 
     public SSOwnReportPrinter(Date pFrom, Date pTo, SSOwnReport pOwnReport){
@@ -74,6 +77,8 @@ public class SSOwnReportPrinter extends SSPrinter {
 
     /**
      *
+     * @param iRow
+     * @param iLastVisibleRow
      * @return
      */
     private int getSummaryGroup(ResultRow iRow, ResultRow iLastVisibleRow){

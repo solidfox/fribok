@@ -170,6 +170,7 @@ public class SSVATControl2007Printer extends SSPrinter {
     /**
      *
      * @param group
+     * @return
      */
     private BigDecimal getValueForGroup(Integer group){
 
@@ -185,6 +186,7 @@ public class SSVATControl2007Printer extends SSPrinter {
     /**
      *
      * @param group
+     * @return
      */
     private BigDecimal getTaxForGroup(Integer group){
         BigDecimal iValue = getValueForGroup(group);
@@ -201,6 +203,7 @@ public class SSVATControl2007Printer extends SSPrinter {
     /**
      *
      * @param group
+     * @return
      */
     private BigDecimal getReportedTaxForGroup(Integer group){
 

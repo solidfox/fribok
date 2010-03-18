@@ -16,6 +16,7 @@ public class SSSupplierInvoiceCellEditor extends SSTableComboBox.CellEditor<SSSu
 
     /**
      *
+     * @param iInvoices
      */
     public SSSupplierInvoiceCellEditor(List<SSSupplierInvoice> iInvoices) {
         super();

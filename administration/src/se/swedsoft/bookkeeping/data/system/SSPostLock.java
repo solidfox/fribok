@@ -17,6 +17,7 @@ public class SSPostLock {
     /**
      * Låser objekt O så att flera instanser av programmet inte kan editera det samtidigt.
      * @param O - Det objekt som ska låsas
+     * @return
      */
     public static boolean applyLock(Object O) {
         /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");

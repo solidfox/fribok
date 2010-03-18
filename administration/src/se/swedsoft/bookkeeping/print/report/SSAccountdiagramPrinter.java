@@ -175,6 +175,8 @@ public class SSAccountdiagramPrinter extends SSPrinter {
 
     /**
      *
+     * @param creditMinusDebetSum
+     * @param debetMinusCreditSum
      * @return List of groups
      */
     private List<AccountDiagramGroup> createSRUGroups(Map<SSAccount, BigDecimal> creditMinusDebetSum, Map<SSAccount, BigDecimal> debetMinusCreditSum){

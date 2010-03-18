@@ -35,6 +35,7 @@ public class SSMonth  implements Serializable {
     /**
      *
      * @param pFrom
+     * @param pTo
      */
     public SSMonth(Date pFrom, Date pTo){
         iFrom = pFrom;
@@ -142,6 +143,8 @@ public class SSMonth  implements Serializable {
 
     /**
      *  Breaks a year into it's months
+     * @param pYearData
+     * @return
      */
     public static List<SSMonth> splitYearIntoMonths(SSNewAccountingYear pYearData){
         Date iFrom = pYearData.getFrom();

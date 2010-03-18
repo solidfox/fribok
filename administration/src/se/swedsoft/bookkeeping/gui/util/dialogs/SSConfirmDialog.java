@@ -34,6 +34,7 @@ public class SSConfirmDialog {
      *  Tle     = bundleName.title<br>
      *
      * @param pBundleName
+     * @param pMessageFormat
      */
     public SSConfirmDialog(String pBundleName, Object ... pMessageFormat){
         iTitle   =               SSBundle.getBundle().getString(pBundleName + ".title");
@@ -46,6 +47,7 @@ public class SSConfirmDialog {
     /**
      *
      * @param iFrame
+     * @return
      */
     public int openDialog(JFrame iFrame){
         Icon iIcon = SSIcon.getIcon("ICON_DIALOG_INFORMATION");
@@ -65,6 +67,7 @@ public class SSConfirmDialog {
     /**
      *
      * @param iDialog
+     * @return
      */
     public int openDialog(JDialog iDialog){
         Icon iIcon = SSIcon.getIcon("ICON_DIALOG_INFORMATION");

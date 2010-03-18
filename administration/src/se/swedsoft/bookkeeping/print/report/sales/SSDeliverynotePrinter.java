@@ -28,6 +28,8 @@ public class SSDeliverynotePrinter extends SSPrinter {
 
     /**
      *
+     * @param iOrder
+     * @param iLocale
      */
     public SSDeliverynotePrinter(SSOrder iOrder, Locale iLocale){
         super();

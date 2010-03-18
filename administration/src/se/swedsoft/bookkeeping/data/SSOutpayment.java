@@ -69,6 +69,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
      * Clone constructor
      *
      * @param iOutpayment
+     * @param iNumber
      */
     public SSOutpayment(SSOutpayment iOutpayment, Integer iNumber) {
         copyFrom(iOutpayment);
@@ -396,6 +397,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @return
      */
     public SSVoucher generateVoucher(){
         String iDescription = SSBundle.getBundle().getString("outpaymentframe.voucherdescription");

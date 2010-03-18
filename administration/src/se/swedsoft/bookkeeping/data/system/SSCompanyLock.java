@@ -19,6 +19,7 @@ public class SSCompanyLock {
     /**
      * Låser företag iCompany så att flera instanser av programmet inte kan editera det samtidigt.
      * @param iCompany - Det företag som ska låsas
+     * @return
      */
     public static boolean applyLock(SSNewCompany iCompany) {
         if (iCompany == null) {

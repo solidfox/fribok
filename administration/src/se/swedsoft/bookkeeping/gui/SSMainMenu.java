@@ -97,6 +97,7 @@ public class SSMainMenu {
 
     /**
      * Default constructor.
+     * @param pMainFrame
      */
     public SSMainMenu(SSMainFrame pMainFrame) {
         iMainFrame  = pMainFrame;

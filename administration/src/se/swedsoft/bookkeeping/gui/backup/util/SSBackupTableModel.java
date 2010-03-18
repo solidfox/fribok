@@ -20,6 +20,7 @@ public class SSBackupTableModel extends SSTableModel<SSBackup> {
 
     /**
      * Default constructor.
+     * @param iBackups
      */
     public SSBackupTableModel(List<SSBackup> iBackups) {
         super( iBackups );

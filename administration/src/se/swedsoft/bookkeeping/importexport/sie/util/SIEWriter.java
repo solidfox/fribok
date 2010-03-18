@@ -42,6 +42,7 @@ public class SIEWriter {
 
     /**
      * Adds a new line to the writer and reset the stringbuilder
+     * @param iLine
      */
     public void newLine(String iLine){
         iLines.add( iLine );

@@ -19,6 +19,7 @@ public class SSCustomerclaimPrinter extends SSPrinter {
     private Map<SSInvoice, BigDecimal> iSaldos;
     /**
      *
+     * @param iDate
      */
     public SSCustomerclaimPrinter( Date iDate ) {
         this( iDate, SSDB.getInstance().getInvoices() );
@@ -26,6 +27,8 @@ public class SSCustomerclaimPrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
+     * @param iInvoices
      */
     public SSCustomerclaimPrinter( Date iDate , List<SSInvoice> iInvoices){
         super();

@@ -46,6 +46,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
 
     /**
      * Default constructor
+     * @param iInvoice
      */
     public SSInpaymentRow(SSInvoice iInvoice) {
         setInvoice(iInvoice);

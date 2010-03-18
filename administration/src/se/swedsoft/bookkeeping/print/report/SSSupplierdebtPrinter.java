@@ -19,6 +19,7 @@ public class SSSupplierdebtPrinter extends SSPrinter {
     private Map<SSSupplierInvoice, BigDecimal> iSaldos;
     /**
      *
+     * @param iDate
      */
     public SSSupplierdebtPrinter( Date iDate ) {
         this( iDate, SSDB.getInstance().getSupplierInvoices() );
@@ -26,6 +27,8 @@ public class SSSupplierdebtPrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
+     * @param iInvoices
      */
     public SSSupplierdebtPrinter( Date iDate , List<SSSupplierInvoice> iInvoices){
         super();

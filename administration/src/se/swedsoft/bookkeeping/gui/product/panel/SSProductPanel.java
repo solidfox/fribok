@@ -131,6 +131,8 @@ public class SSProductPanel {
 
     /**
      *
+     * @param iOwner
+     * @param iEdit
      */
     public SSProductPanel(final SSDialog iOwner, boolean iEdit) {
         iProductNr.setEnabled(!iEdit);

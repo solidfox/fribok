@@ -341,6 +341,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedSuppliers(java.util.List<SSSupplier> delete) {
         if (delete.isEmpty()) {

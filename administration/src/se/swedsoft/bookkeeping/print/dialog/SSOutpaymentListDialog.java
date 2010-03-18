@@ -42,6 +42,7 @@ public class SSOutpaymentListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSOutpaymentListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("outpaymentlistreport.dialog.title") );

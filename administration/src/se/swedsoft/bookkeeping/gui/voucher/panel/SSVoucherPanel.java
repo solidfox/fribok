@@ -94,6 +94,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
 
     /**
      *
+     * @param iDialog
      */
     public SSVoucherPanel(final SSDialog  iDialog){
         iVoucher   = null;
@@ -514,6 +515,8 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
     /**
      *
      * @param pVoucher
+     * @param iEditing
+     * @param repop
      */
     public void setVoucher(SSVoucher pVoucher, boolean iEditing,boolean repop){
         iVoucher = pVoucher;

@@ -45,6 +45,7 @@ public class BgMaxFile {
      * creating BgMaxAvsnitt object in the iAvsnitts collection with parsed data.
      *  
      * @param iLines The raw lines of a BgMax-file read from disk
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
      */
     public void parse(List<String> iLines) throws SSImportException{
         iAvsnitts = new LinkedList<BgMaxAvsnitt>();
@@ -102,6 +103,7 @@ public class BgMaxFile {
      * Returns true if this is a valid bgmax file
      * @param iFirstLine
      * @return
+     * @throws RuntimeException
      */
     private boolean isValid(String iFirstLine) throws RuntimeException {
         return iFirstLine.length() == 80 && iFirstLine.startsWith("01BGMAX");
@@ -203,6 +205,7 @@ public class BgMaxFile {
      *
      *
      * @param iLine
+     * @param iFile
      */
     public static void readStartPost(BgMaxLine iLine, BgMaxFile iFile){
         iFile.iLayoutnamn     = iLine.getField( 3, 22);
@@ -215,6 +218,7 @@ public class BgMaxFile {
      * 1.14 Slutpost (70)
      *
      * @param iLine
+     * @param iFile
      */
     private static void readSlutPost(BgMaxLine iLine, BgMaxFile iFile) {
         iFile.iAntalBetalningsPoster    = iLine.getField(3, 10);
@@ -228,6 +232,7 @@ public class BgMaxFile {
      * 1.4 Öppningsport (05)
      *
      * @param iLine
+     * @param iAvsnitt
      */
     public static void readOppningsPost(BgMaxLine iLine, BgMaxAvsnitt  iAvsnitt){
         iAvsnitt.iPlusgiroNummer = iLine.getField(13, 22);
@@ -239,6 +244,7 @@ public class BgMaxFile {
      * 1.13 Insättningspost (15)
      *
      * @param iLine
+     * @param iAvsnitt
      */
     private static  void readInsattningsPost(BgMaxLine iLine, BgMaxAvsnitt iAvsnitt) {
         iAvsnitt.iBankKontoNummer = iLine.getField(3, 37);
@@ -254,6 +260,7 @@ public class BgMaxFile {
      * 1.5 Betalningspost (20)
      *
      * @param iLine
+     * @param iBetalning
      */
     public static void readBetalningsPost(BgMaxLine iLine, BgMaxBetalning iBetalning){
         iBetalning.iBankgiroNummer     = iLine.getField( 3, 12);
@@ -269,6 +276,7 @@ public class BgMaxFile {
      * 1.6 Avdragspost (21)
      *
      * @param iLine
+     * @param iBetalning
      */
     public static void readAvdragsPost(BgMaxLine iLine, BgMaxBetalning iBetalning){
         iBetalning.iBankgiroNummer     = iLine.getField( 3, 12);
@@ -284,6 +292,7 @@ public class BgMaxFile {
      * 1.7 Extra referensnummerpost (22 / 23)
      *
      * @param iLine
+     * @param iBetalning
      * @param iNegative
      */
     private static void readExtraReferensPost(BgMaxLine iLine, BgMaxBetalning iBetalning, boolean iNegative) {
@@ -312,6 +321,7 @@ public class BgMaxFile {
      * 1.8 Informationspost
      *
      * @param iLine
+     * @param iBetalning
      */
     private static void readInformationsPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
         String iInformationsText = iLine.getField(3, 52);
@@ -323,6 +333,7 @@ public class BgMaxFile {
      * 1.9 Namnpost (26)
      *
      * @param iLine
+     * @param iBetalning
      */
     private static void readNamnPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
         iBetalning.iBetalarensNamn = iLine.getField( 3, 27);
@@ -333,6 +344,7 @@ public class BgMaxFile {
      * 1.10 Adresspost 1 (27)
      *
      * @param iLine
+     * @param iBetalning
      */
     private static void readAddressPost1(BgMaxLine iLine, BgMaxBetalning iBetalning){
         iBetalning.iBetalarensAdress     = iLine.getField(3, 37);
@@ -343,6 +355,7 @@ public class BgMaxFile {
      * 1.11 Adresspost 1 (28)
      *
      * @param iLine
+     * @param iBetalning
      */
     private static void readAddressPost2(BgMaxLine iLine, BgMaxBetalning iBetalning){
         iBetalning. iBetalarensOrt = iLine.getField(3, 37);
@@ -354,6 +367,7 @@ public class BgMaxFile {
      * 1,12. Orginisationsnummerpost (29)
      *
      * @param iLine
+     * @param iBetalning
      */
     private static void readOrgnummerPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
         iBetalning. iBetalarensOrganisationsnr  = iLine.getField(3, 14);

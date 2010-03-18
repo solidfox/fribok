@@ -138,6 +138,7 @@ public class SSButtonGroup implements ActionListener {
 
     /**
      *
+     * @param iNewUpdating
      * @return if the locking failed
      */
     private boolean setUpdating(boolean iNewUpdating){

@@ -42,6 +42,7 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSSupplierCreditInvoiceListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("suppliercreditinvoicelistreport.dialog.title") );

@@ -39,6 +39,7 @@ public class SSProductListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iProducts
      */
     public SSProductListPrinter( List<SSProduct> iProducts){
         super();

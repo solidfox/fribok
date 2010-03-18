@@ -39,6 +39,7 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
     /**
      *
      * @param iMainFrame
+     * @param iCustomers
      */
     public SSExportBGCAdmissionDialog(final SSMainFrame iMainFrame, List<SSCustomer> iCustomers) {
         super(iMainFrame, SSBundle.getBundle().getString("customerframe.bgcadmission.title"));

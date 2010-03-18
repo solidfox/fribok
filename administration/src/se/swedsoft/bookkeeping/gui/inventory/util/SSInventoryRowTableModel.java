@@ -19,6 +19,7 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
 
     /**
      * Default constructor.
+     * @param iStock
      */
     public SSInventoryRowTableModel(SSStock iStock) {
         super();

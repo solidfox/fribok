@@ -45,6 +45,7 @@ public class SSTenderListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSTenderListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("tenderlistreport.dialog.title") );

@@ -52,6 +52,7 @@ public class SSAutoDistPanel {
     /**
      *
      * @param iDialog
+     * @param iEdit
      */
     public SSAutoDistPanel(SSDialog iDialog, boolean iEdit) {
         iAccount.setEnabled(!iEdit);

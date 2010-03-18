@@ -29,6 +29,7 @@ public class SSEditAccountingYearDialog {
     /**
      *
      * @param iMainFrame
+     * @param pAccountingYear
      * @param pModel
      */
     public static void showDialog(final SSMainFrame iMainFrame, final SSNewAccountingYear pAccountingYear, final SSDefaultTableModel<SSNewAccountingYear> pModel) {

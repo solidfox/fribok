@@ -15,6 +15,7 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
 
     /**
      *
+     * @param iAllowCustomValues
      */
     public SSProductCellEditor(boolean iAllowCustomValues) {
         super();
@@ -28,6 +29,8 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
 
     /**
      *
+     * @param iProducts
+     * @param iAllowCustomValues
      */
     public SSProductCellEditor(List<SSProduct> iProducts, boolean iAllowCustomValues) {
         super();
@@ -48,6 +51,7 @@ public class SSProductCellEditor extends SSTableComboBox.CellEditor<SSProduct> {
 
     /**
      *
+     * @param iProducts
      */
     public SSProductCellEditor(List<SSProduct> iProducts) {
         this(iProducts, true);

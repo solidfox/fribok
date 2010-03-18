@@ -47,6 +47,7 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
 
     /**
      *
+     * @param iDialog
      */
     public SSCompanyPageGeneral(JDialog iDialog) {
         super(iDialog);

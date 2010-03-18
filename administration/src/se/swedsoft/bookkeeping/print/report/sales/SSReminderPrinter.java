@@ -29,6 +29,9 @@ public class SSReminderPrinter extends SSPrinter {
 
     /**
      *
+     * @param iInvoices
+     * @param iCustomer
+     * @param iLocale
      */
     public SSReminderPrinter(List<SSInvoice> iInvoices, SSCustomer iCustomer, Locale iLocale){
         super();

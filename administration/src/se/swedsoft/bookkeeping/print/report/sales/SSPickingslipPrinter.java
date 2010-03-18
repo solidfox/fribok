@@ -23,6 +23,8 @@ public class SSPickingslipPrinter extends SSPrinter {
 
     /**
      *
+     * @param iOrder
+     * @param iLocale
      */
     public SSPickingslipPrinter(SSOrder iOrder, Locale iLocale){
         super();

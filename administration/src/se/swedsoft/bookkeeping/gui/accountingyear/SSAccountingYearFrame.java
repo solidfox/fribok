@@ -62,6 +62,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      * @param pMainFrame
      * @param pWidth
      * @param pHeight
+     * @param pShowNewDialog
      */
     public static void showFrame(final SSMainFrame pMainFrame, int pWidth, int pHeight, boolean pShowNewDialog){
         if( cInstance == null || cInstance.isClosed() ){

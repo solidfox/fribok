@@ -46,6 +46,7 @@ public class SSInvoiceListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSInvoiceListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("invoicelistreport.dialog.title") );

@@ -236,6 +236,7 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedInpayment(List<SSInpayment> delete) {
         if (delete.isEmpty()) {

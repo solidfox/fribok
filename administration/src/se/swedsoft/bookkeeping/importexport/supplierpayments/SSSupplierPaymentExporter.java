@@ -25,6 +25,8 @@ public class SSSupplierPaymentExporter {
     /**
      *
      * @param iFile
+     * @param iPayments
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
      */
     public static void Export(File iFile, List<SupplierPayment> iPayments) throws SSExportException {
 
@@ -54,6 +56,7 @@ public class SSSupplierPaymentExporter {
 
     /**
      *
+     * @param iPayments
      * @return
      */
     public static List<LBinPost> getPosts(List<SupplierPayment> iPayments){

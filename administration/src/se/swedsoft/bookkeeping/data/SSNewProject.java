@@ -69,6 +69,7 @@ public class SSNewProject implements Serializable, SSTableSearchable {
 
     /**
      *
+     * @return
      */
     public String getNumber() {
         return iNumber;

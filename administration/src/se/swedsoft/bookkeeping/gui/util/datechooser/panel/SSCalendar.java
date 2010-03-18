@@ -124,6 +124,7 @@ public class SSCalendar implements ActionListener {
 
     /**
      *
+     * @param iEvent
      */
     private void notifyChangeListeners(ActionEvent iEvent) {
 

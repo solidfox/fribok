@@ -102,6 +102,7 @@ public class SSPurchaseOrderRow implements Serializable {
 
     /**
      *
+     * @param iLocale
      * @return
      */
     public String getDescription(Locale iLocale) {
@@ -198,6 +199,7 @@ public class SSPurchaseOrderRow implements Serializable {
     }
     /**
      *
+     * @param iProducts
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {

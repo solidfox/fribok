@@ -43,6 +43,8 @@ public class SSVoucherTemplateImporter {
 
     /**
      *
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws java.io.IOException
      */
     public void Import()  throws IOException, SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -111,6 +113,7 @@ public class SSVoucherTemplateImporter {
     /**
      *
      * @param pSheet
+     * @return
      */
     private List<SSVoucherTemplate> importVouchers(SSExcelSheet pSheet ){
 
@@ -171,6 +174,7 @@ public class SSVoucherTemplateImporter {
     /**
      *
      * @param iVoucherTemplates
+     * @return
      */
     private boolean showImportReport(List<SSVoucherTemplate> iVoucherTemplates){
         SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(), SSBundle.getBundle().getString("vouchertemplateframe.import.report"));

@@ -37,6 +37,7 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iOutdeliveries
      */
     public SSOutdeliveryListPrinter( List<SSOutdelivery> iOutdeliveries){
         super();

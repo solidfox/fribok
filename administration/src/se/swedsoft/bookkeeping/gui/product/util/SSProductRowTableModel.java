@@ -212,6 +212,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     /**
      *
      * @param iTable
+     * @param iProduct
      */
     public static void setupTable(final SSTable iTable, SSProduct iProduct){
         iTable.setColumnSortingEnabled(false);
@@ -255,6 +256,8 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
         /**
          *
+         * @param iProducts
+         * @param iExcluded
          */
         public SSProductEditor(List<SSProduct> iProducts, SSProduct iExcluded){
             super();
@@ -300,5 +303,4 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
             setColumnWidths(60,300);
         }
     }
-
 }

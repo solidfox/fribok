@@ -40,6 +40,7 @@ public class SSSIEImporter {
 
     /**
      *
+     * @param iFile
      */
     public SSSIEImporter(File iFile) {
         this.iFile = iFile;
@@ -156,6 +157,7 @@ public class SSSIEImporter {
 
     /**
      *
+     * @param iLines
      * @return
      */
     private static List<List<String>> getParsedLines(List<String> iLines){
@@ -216,6 +218,7 @@ public class SSSIEImporter {
      *
      * @param pFile
      * @throws SSImportException
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
      */
     private void writeFile(File pFile) throws SSExportException{
         try{
@@ -258,6 +261,7 @@ public class SSSIEImporter {
     }
     /**
      *
+     * @param pNumber
      * @return
      */
     public SIEDimension getDimension(int pNumber) {

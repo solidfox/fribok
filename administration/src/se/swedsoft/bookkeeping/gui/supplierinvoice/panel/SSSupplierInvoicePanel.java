@@ -457,6 +457,7 @@ public class SSSupplierInvoicePanel implements ActionListener{
 
     /**
      * @param iSupplierInvoice
+     * @param iNewSupplierInvoice
      */
     public void setSupplierInvoice(SSSupplierInvoice iSupplierInvoice,boolean iNewSupplierInvoice) {
         bNewSupplierInvoice=iNewSupplierInvoice;

@@ -23,6 +23,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
 
     /**
      * Default constructor.
+     * @param maxFractionDigits
      */
     public SSBigDecimalCellEditor(int maxFractionDigits) {
         super();

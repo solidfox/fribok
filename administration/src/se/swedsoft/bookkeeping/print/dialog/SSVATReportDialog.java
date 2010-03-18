@@ -46,6 +46,7 @@ public class SSVATReportDialog extends SSDialog  {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSVATReportDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("vatreport2007.dialog.title") );

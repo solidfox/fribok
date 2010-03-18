@@ -33,6 +33,7 @@ public class SSTenderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iTender
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSTender iTender, final SSTenderTableModel pModel) {
@@ -98,6 +99,7 @@ public class SSTenderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iTender
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSTender iTender, final SSTenderTableModel pModel) {

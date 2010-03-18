@@ -350,6 +350,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
     /**
      *
      * @param index
+     * @param iInvoices
      */
     public void setFilterIndex(int index,List<SSSupplierInvoice> iInvoices){
         JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );
@@ -437,7 +438,8 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
 
 
     /**
-     * 
+     *
+     * @param delete
      */
     private void deleteSelected(List<SSSupplierInvoice> delete) {
         if (delete.isEmpty()) {

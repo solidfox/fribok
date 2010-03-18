@@ -102,6 +102,7 @@ public class SSSupplierCreditInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iSupplierInvoice
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, SSSupplierInvoice iSupplierInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {
@@ -166,6 +167,7 @@ public class SSSupplierCreditInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iSupplierCreditInvoice
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSSupplierCreditInvoice iSupplierCreditInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {
@@ -228,6 +230,7 @@ public class SSSupplierCreditInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iSupplierCreditInvoice
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSSupplierCreditInvoice iSupplierCreditInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {

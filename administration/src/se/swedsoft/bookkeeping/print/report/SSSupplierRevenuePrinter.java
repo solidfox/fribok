@@ -37,7 +37,9 @@ public class SSSupplierRevenuePrinter extends SSPrinter {
     private Map<String, Map<SSMonth, BigDecimal>> iSupplierRevenue;
     /**
      *
-     * @param
+     * @param pSuppliers
+     * @param pFrom
+     * @param pTo
      */
     public SSSupplierRevenuePrinter(List<SSSupplier> pSuppliers, Date pFrom, Date pTo ){
         super();
@@ -273,6 +275,7 @@ public class SSSupplierRevenuePrinter extends SSPrinter {
         /**
          *
          * @param pSupplier
+         * @param iMap
          */
         public void setSupplier(SSSupplier pSupplier, Map<SSMonth, BigDecimal> iMap) {
             iSupplier = pSupplier;

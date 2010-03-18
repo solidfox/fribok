@@ -19,6 +19,7 @@ public class SSYearLock {
     /**
      * Låser systemår iYear så att flera instanser av programmet inte kan editera det samtidigt.
      * @param iYear - Det år som ska låsas
+     * @return
      */
     public static boolean applyLock(SSNewAccountingYear iYear) {
         if (iYear == null) {

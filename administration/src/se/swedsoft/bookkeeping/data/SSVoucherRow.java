@@ -103,6 +103,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * Copy constructor.
      *
      * @param pVoucherRow
+     * @param iReverse
      */
     public SSVoucherRow(SSVoucherRow pVoucherRow, boolean iReverse) {
         copyFrom(pVoucherRow);
@@ -344,6 +345,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
 
     /**
      *
+     * @param iAccounts
      * @return
      */
     public SSAccount getAccount(List<SSAccount> iAccounts ) {
@@ -380,6 +382,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
 
     /**
      *
+     * @param iProjects
      * @return
      */
     public SSNewProject getProject(List<SSNewProject> iProjects) {
@@ -416,6 +419,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
     }
     /**
      *
+     * @param iResultUnits
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
@@ -604,6 +608,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
     /**
      *
      * @param iAccount
+     * @return
      */
     public boolean hasAccount(SSAccount iAccount) {
         return (iAccountNr != null) && iAccountNr.equals( iAccount.getNumber() );

@@ -190,6 +190,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
     /**
      *
      * @param iLocale
+     * @return
      */
     public String getDescription(Locale iLocale){
         if(iDescriptions == null) iDescriptions = new HashMap<Locale, String>();
@@ -205,6 +206,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iLocale
      * @param iDescription
      */
     public void setDescription(Locale iLocale, String iDescription) {
@@ -468,6 +470,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iSuppliers
      * @return
      */
     public SSSupplier getSupplier(List<SSSupplier> iSuppliers) {
@@ -606,6 +609,7 @@ public class SSProduct implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iDefaultAccount
      * @return
      */
     public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {
@@ -620,6 +624,8 @@ public class SSProduct implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iDefaultAccount
+     * @param iDefault
      * @return
      */
     public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount, Integer iDefault) {
@@ -770,7 +776,4 @@ public class SSProduct implements SSTableSearchable, Serializable {
         }
         return(new BigDecimal(iInvoiceSum-iCreditInvoiceSum));
     }
-
-
-
 }

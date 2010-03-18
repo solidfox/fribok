@@ -31,6 +31,7 @@ public class SSOrderTableModel extends SSTableModel<SSOrder> {
 
     /**
      * Default constructor.
+     * @param iOrders
      */
     public SSOrderTableModel(List<SSOrder> iOrders) {
         super(iOrders);

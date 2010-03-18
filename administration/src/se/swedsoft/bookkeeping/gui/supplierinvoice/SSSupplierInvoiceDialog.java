@@ -89,6 +89,7 @@ public class SSSupplierInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iSupplierInvoice
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSSupplierInvoice iSupplierInvoice, final SSTableModel<SSSupplierInvoice> pModel) {
@@ -150,6 +151,7 @@ public class SSSupplierInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iCopyFrom
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSSupplierInvoice iCopyFrom, final AbstractTableModel pModel) {

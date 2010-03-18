@@ -229,6 +229,7 @@ public class SSInvoiceMath extends SSSaleMath{
      *
      * @param iInvoice
      *
+     * @param iDate
      * @return  the saldo
      */
     public static BigDecimal getSumMinusCredited(SSInvoice iInvoice, Date iDate) {
@@ -328,6 +329,7 @@ public class SSInvoiceMath extends SSSaleMath{
      * Returns all invoices for the current customer
      *
      * @param iCustomer
+     * @param iDate
      * @return the invoices for the customer
      */
     public static List<SSInvoice> getInvoicesForCustomer(SSCustomer iCustomer, Date iDate) {
@@ -339,6 +341,7 @@ public class SSInvoiceMath extends SSSaleMath{
      *
      * @param iInvoices
      * @param iCustomer
+     * @param iDate
      * @return the invoices for the customer
      */
     public static List<SSInvoice> getInvoicesForCustomer(List<SSInvoice> iInvoices, SSCustomer iCustomer, Date iDate) {
@@ -458,6 +461,8 @@ public class SSInvoiceMath extends SSSaleMath{
     /**
      *
      * @param iInvoice
+     * @param iSaldo
+     * @param iNumDays
      * @return
      */
     public static  BigDecimal getInterestSum(SSInvoice iInvoice, BigDecimal iSaldo, int iNumDays  ) {

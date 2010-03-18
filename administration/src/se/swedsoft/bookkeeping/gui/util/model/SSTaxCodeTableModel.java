@@ -42,6 +42,7 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
 
     /**
      * Default constructor.
+     * @param iValues
      */
     public SSTaxCodeTableModel(Map<SSTaxCode, BigDecimal> iValues) {
         super( SSTaxCode.values() );
@@ -87,6 +88,7 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
 
     /**
      *
+     * @param iValues
      * @return
      */
     public static SSTaxCodeTableModel getDropDownModel(Map<SSTaxCode, BigDecimal> iValues){

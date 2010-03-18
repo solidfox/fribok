@@ -174,6 +174,8 @@ public class SIEReader implements Iterator<String> {
 
     /**
      *
+     * @param pDataTypes
+     * @return
      */
     public boolean hasFields(SIEDataType ... pDataTypes) {
 
@@ -208,6 +210,7 @@ public class SIEReader implements Iterator<String> {
     }
     /**
      *
+     * @return
      */
     public boolean hasNextInteger() {
         return iValues.hasNextInteger();
@@ -255,6 +258,7 @@ public class SIEReader implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextArray() {
         return iValues.hasNextArray();
@@ -262,6 +266,7 @@ public class SIEReader implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextDate() {
         return iValues.hasNextDate();
@@ -269,6 +274,7 @@ public class SIEReader implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextMonth() {
         return iValues.hasNextMonth();
@@ -342,6 +348,7 @@ public class SIEReader implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public Date nextDate() {
         return iValues.nextDate();
@@ -349,6 +356,7 @@ public class SIEReader implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public SSMonth nextMonth() {
         return iValues.nextMonth();

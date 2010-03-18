@@ -28,6 +28,8 @@ public class SSCreditinvoicePrinter extends SSPrinter {
 
     /**
      *
+     * @param iInvoice
+     * @param iLocale
      */
     public SSCreditinvoicePrinter(SSCreditInvoice iInvoice, Locale iLocale){
         super();

@@ -129,6 +129,7 @@ public class SSOwnReportAccountGroup {
      * be a concise but informative representation that is easy for a
      * person to read.
      *
+     * @param Seperator
      * @return a string representation of the object.
      */
     public String toString(String Seperator) {

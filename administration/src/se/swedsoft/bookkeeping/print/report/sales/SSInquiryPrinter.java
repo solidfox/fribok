@@ -23,6 +23,8 @@ public class SSInquiryPrinter extends SSPrinter {
 
     /**
      *
+     * @param iPurchaseOrder
+     * @param iLocale
      */
     public SSInquiryPrinter(SSPurchaseOrder iPurchaseOrder, Locale iLocale){
         super();

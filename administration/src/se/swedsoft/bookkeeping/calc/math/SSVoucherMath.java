@@ -204,6 +204,7 @@ public class SSVoucherMath {
 
     /**
      *
+     * @param pAccountingYear
      * @param pVouchers
      * @return
      */
@@ -226,6 +227,7 @@ public class SSVoucherMath {
 
     /**
      *
+     * @param pAccountingYear
      * @param pVouchers
      * @return
      */

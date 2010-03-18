@@ -270,6 +270,7 @@ public class SSSupplierCreditInvoiceFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelected(List<SSSupplierCreditInvoice> delete) {
         if (delete.isEmpty()) {

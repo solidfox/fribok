@@ -27,6 +27,7 @@ public class SSVATCellEditor extends SSTableComboBox.CellEditor<SSVATCode> {
 
     /**
      *
+     * @param iCurrencies
      */
     public SSVATCellEditor(List<SSVATCode> iCurrencies) {
         super();

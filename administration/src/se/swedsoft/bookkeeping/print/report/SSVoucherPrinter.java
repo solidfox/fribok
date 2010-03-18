@@ -35,6 +35,8 @@ public class SSVoucherPrinter extends SSPrinter {
 
     /**
      *
+     * @param pVoucher
+     * @param pTitle
      */
     public SSVoucherPrinter(SSVoucher pVoucher, String pTitle ){
         super();
@@ -49,6 +51,9 @@ public class SSVoucherPrinter extends SSPrinter {
 
     /**
      *
+     * @param pVoucher
+     * @param pTitle
+     * @param pMarkedAccounts
      */
     public SSVoucherPrinter(SSVoucher pVoucher, String pTitle, SSAccount ... pMarkedAccounts ){
         this(pVoucher, pTitle);
@@ -59,6 +64,9 @@ public class SSVoucherPrinter extends SSPrinter {
 
     /**
      *
+     * @param pVoucher
+     * @param pTitle
+     * @param pMarkedAccounts
      */
     public SSVoucherPrinter(SSVoucher pVoucher, String pTitle, List<SSAccount> pMarkedAccounts){
         this(pVoucher, pTitle);

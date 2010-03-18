@@ -28,6 +28,7 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
 
     /**
      * Default constructor.
+     * @param iPaymentTerms
      */
     public SSUnitTableModel(List<SSUnit> iPaymentTerms) {
         super(iPaymentTerms);

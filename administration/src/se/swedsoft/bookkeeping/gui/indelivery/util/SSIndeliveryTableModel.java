@@ -26,6 +26,7 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
 
     /**
      * Default constructor.
+     * @param iIndeliveries
      */
     public SSIndeliveryTableModel(List<SSIndelivery> iIndeliveries) {
         super(iIndeliveries);

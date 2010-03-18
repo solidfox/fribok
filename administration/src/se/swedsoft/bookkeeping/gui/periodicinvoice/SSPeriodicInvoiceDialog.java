@@ -155,6 +155,7 @@ public class SSPeriodicInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iEditInvoice
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, final SSPeriodicInvoice iEditInvoice, final AbstractTableModel pModel) {
@@ -235,6 +236,7 @@ public class SSPeriodicInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iPeriodicInvoice
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSPeriodicInvoice iPeriodicInvoice, final SSPeriodicInvoiceTableModel pModel) {
@@ -299,6 +301,7 @@ public class SSPeriodicInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @return
      */
     public static boolean pendingPeriodicInvoicesDialog(SSMainFrame iMainFrame) {
         final String lockString = "periodicinvoicepending"+SSDB.getInstance().getCurrentCompany().getId();

@@ -27,6 +27,8 @@ public class SSTenderPrinter extends SSPrinter {
 
     /**
      *
+     * @param iTender
+     * @param iLocale
      */
     public SSTenderPrinter(SSTender iTender, Locale iLocale){
         super();

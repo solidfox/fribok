@@ -37,6 +37,7 @@ public class SSAccountsPayablePrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
      */
     public SSAccountsPayablePrinter(Date iDate) {
         this(iDate, SSDB.getInstance().getSuppliers() );
@@ -44,6 +45,8 @@ public class SSAccountsPayablePrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
+     * @param iSuppliers
      */
     public SSAccountsPayablePrinter(Date iDate, List<SSSupplier> iSuppliers){
         super();

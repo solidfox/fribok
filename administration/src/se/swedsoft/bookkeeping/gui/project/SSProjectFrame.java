@@ -261,6 +261,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedProjects(List<SSNewProject> delete) {
         if (delete.isEmpty()) {

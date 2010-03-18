@@ -33,6 +33,8 @@ public class SSWritableExcelCell {
 
     /**
      *
+     * @param pValue
+     * @throws jxl.write.WriteException
      */
     public void setString(String pValue) throws WriteException {
         try{
@@ -44,6 +46,8 @@ public class SSWritableExcelCell {
 
     /**
      *
+     * @param pValue
+     * @throws jxl.write.WriteException
      */
     public void setInteger(Integer pValue) throws WriteException {
         try{
@@ -55,6 +59,8 @@ public class SSWritableExcelCell {
 
     /**
      *
+     * @param pValue
+     * @throws jxl.write.WriteException
      */
     public void setDouble(Double pValue) throws WriteException {
         try{

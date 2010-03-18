@@ -32,6 +32,7 @@ public class SSInterestInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param pModel
      */
     public static void showDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel ) {
         final String lockString = "interestinvoice"+SSDB.getInstance().getCurrentCompany().getId();

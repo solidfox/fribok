@@ -24,6 +24,7 @@ public class SSAutoIncrement implements Serializable {
 
     /**
      *
+     * @param iKey
      */
     public void doAutoIncrement(String iKey){
         Integer iNumber = iNumbers.get(iKey);
@@ -38,6 +39,7 @@ public class SSAutoIncrement implements Serializable {
 
     /**
      *
+     * @param iKey
      * @return
      */
     public int getNumber(String iKey) {

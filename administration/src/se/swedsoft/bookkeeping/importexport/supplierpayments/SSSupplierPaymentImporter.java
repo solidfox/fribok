@@ -29,6 +29,8 @@ public class SSSupplierPaymentImporter {
     /**
      *
      * @param iFile
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @return
      */
     public static List<SSOutpayment> Import(File iFile) throws SSImportException {
         List<String> iLines = new LinkedList<String>();

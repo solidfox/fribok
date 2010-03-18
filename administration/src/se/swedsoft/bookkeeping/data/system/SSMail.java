@@ -45,6 +45,12 @@ public class SSMail {
     /**
      * Asks if the user really wants to send a mail, gets data from db, and calls 
      * doSendMail to send it
+     * @param pTo
+     * @param pSubject
+     * @param pFileName
+     * @return
+     * @throws javax.mail.internet.AddressException
+     * @throws javax.mail.MessagingException
      */
     public static boolean sendMail(String pTo, String pSubject, String pFileName) 
         throws AddressException, MessagingException  {
@@ -75,6 +81,10 @@ public class SSMail {
     
     /**
      * Makes a MimeMessage ready to be send from the arguments
+     * @param server
+     * @param mail
+     * @return
+     * @throws javax.mail.MessagingException
      */
     public static MimeMessage makeMessage(SSMailServer server, SSMailMessage mail) 
         throws MessagingException {
@@ -104,6 +114,9 @@ public class SSMail {
     /**
      * Makes a Multipart from the data in the argument. If getFileName returns non-null,
      * that file is send as an attachment.
+     * @param mail
+     * @return
+     * @throws javax.mail.MessagingException
      */
     private static Multipart makeMultipart(SSMailMessage mail) throws MessagingException {
         // Create the multi-part
@@ -134,7 +147,9 @@ public class SSMail {
     }
 
     /**
-     * Makes a Session from the data in a SSMailServer 
+     * Makes a Session from the data in a SSMailServer
+     * @param server
+     * @return
      */
     private static Session makeSession(final SSMailServer server) {
         
@@ -170,6 +185,9 @@ public class SSMail {
     /**
      * Throws an MailValidationException with an resource name that can be used to
      * get an error message from a resource file.
+     * @param message
+     * @param resourceName
+     * @throws se.swedsoft.bookkeeping.data.system.SSMail.MailValidationException
      */
     public static void onError(String message, String resourceName) throws MailValidationException {
         throw new MailValidationException(message, resourceName);
@@ -178,7 +196,10 @@ public class SSMail {
     /**
      * Checks if company and o has mail addresses and servers. If not, opens a error dialog
      * and returns false.
-     * o can bve either an SSSupplier or an SScustomer 
+     * @param company
+     * @param o can be either an SSSupplier or an SScustomer
+     * @param resourceName
+     * @return
      */
     private static boolean isOk(SSNewCompany company, Object o, String resourceName) {
         
@@ -223,6 +244,8 @@ public class SSMail {
     /**
      * Checks if the current company and iCustomer has mail addresses and servers. If not, opens a error dialog
      * and returns false.
+     * @param iCustomer
+     * @return
      */
     public static boolean isOk(SSCustomer iCustomer) {
         return isOk(SSDB.getInstance().getCurrentCompany(), iCustomer, "mail.nocustomeremailaddress");
@@ -231,6 +254,8 @@ public class SSMail {
     /**
      * Checks if the current company and iSupplier has mail addresses and servers. If not, opens a error dialog
      * and returns false.
+     * @param iSupplier
+     * @return
      */
     public static boolean isOk(SSSupplier iSupplier) {
         return isOk(SSDB.getInstance().getCurrentCompany(), iSupplier, "mail.nosupplieremailaddress");

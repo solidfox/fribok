@@ -31,20 +31,23 @@ public abstract class SwingWorker {
     /** 
      * Get the value produced by the worker thread, or null if it 
      * hasn't been constructed yet.
+     * @return
      */
     protected synchronized Object getValue() { 
         return value; 
     }
 
     /** 
-     * Set the value produced by worker thread 
+     * Set the value produced by worker thread
+     * @param x
      */
     private synchronized void setValue(Object x) { 
         value = x; 
     }
 
     /** 
-     * Compute the value to be returned by the <code>get</code> method. 
+     * Compute the value to be returned by the <code>get</code> method.
+     * @return
      */
     public abstract Object construct();
 

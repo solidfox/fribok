@@ -30,6 +30,9 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
 
     /**
      *
+     * @param iOutpayments
+     * @param iNumber
+     * @param iDate
      */
     public SSOutpaymentjournalPrinter( List<SSOutpayment> iOutpayments, Integer iNumber, Date iDate){
         super();

@@ -20,6 +20,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
 
     /**
      *
+     * @param pInBalance
      */
     public SSStartingAmountTableModel( Map<SSAccount, BigDecimal> pInBalance){
         iInBalance = pInBalance;

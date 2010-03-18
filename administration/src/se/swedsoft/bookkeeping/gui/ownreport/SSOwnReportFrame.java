@@ -235,6 +235,7 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedOwnReport(List<SSOwnReport> delete) {
         if (delete.isEmpty()) {

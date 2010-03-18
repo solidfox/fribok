@@ -26,6 +26,7 @@ public class SSAccountTableModel extends SSTableModel<SSAccount> {
 
     /**
      * Default constructor.
+     * @param iAccounts
      */
     public SSAccountTableModel(List<SSAccount> iAccounts) {
         super(iAccounts);

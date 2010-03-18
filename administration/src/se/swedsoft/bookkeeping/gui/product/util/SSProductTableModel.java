@@ -33,6 +33,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
     /**
      * Default constructor.
+     * @param iProducts
      */
     public SSProductTableModel(List<SSProduct> iProducts) {
         super(iProducts);
@@ -81,6 +82,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
     /**
      *
+     * @param iProducts
      * @return
      */
     public static SSProductTableModel getDropDownModel(List<SSProduct> iProducts){

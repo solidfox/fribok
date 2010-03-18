@@ -55,6 +55,9 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
     /**
      * Default constructor. <P>
+     * @param frame
+     * @param width
+     * @param height
      */
     public SSJasperPreviewFrame(SSMainFrame frame, int width, int height) {
         super(frame, SSBundle.getBundle().getString("printpreviewframe.title"), width, height);

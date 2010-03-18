@@ -22,6 +22,8 @@ public class SSDBThread extends Thread {
      * a newly generated name. Automatically generated names are of the
      * form <code>"Thread-"+</code><i>n</i>, where <i>n</i> is an integer.
      *
+     * @param pDatabase
+     * @param pData
      * @see Thread#Thread(ThreadGroup,
      *      Runnable, String)
      */

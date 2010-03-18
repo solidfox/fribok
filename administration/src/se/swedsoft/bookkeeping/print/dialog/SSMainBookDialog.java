@@ -46,6 +46,7 @@ public class SSMainBookDialog extends SSDialog implements ActionListener {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSMainBookDialog(SSMainFrame iMainFrame){
         super(iMainFrame, SSBundle.getBundle().getString("mainbookreport.dialog.title") );

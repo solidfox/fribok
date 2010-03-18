@@ -134,6 +134,7 @@ public class SSVoucherDialog {
     /**
      *
      * @param iMainFrame
+     * @param iVoucher
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSVoucher iVoucher, final AbstractTableModel pModel) {
@@ -225,6 +226,7 @@ public class SSVoucherDialog {
     /**
      *
      * @param iMainFrame
+     * @param iVoucher
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSVoucher iVoucher, final AbstractTableModel pModel) {

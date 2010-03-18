@@ -78,6 +78,9 @@ public class SSBackupFrame extends SSDefaultTableFrame {
 
     /**
      * Default constructor.
+     * @param pMainFrame
+     * @param pWidth
+     * @param pHeight
      */
     private SSBackupFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
         super(pMainFrame, SSBundle.getBundle().getString("backupframe.title"), pWidth, pHeight);

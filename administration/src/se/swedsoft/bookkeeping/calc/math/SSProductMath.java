@@ -19,6 +19,8 @@ public class SSProductMath {
     /**
      * Gets the product with the specific nr from the list, if any
      *
+     * @param iProducts
+     * @param iProductNr
      * @return
      */
     public static SSProduct getProduct(List<SSProduct> iProducts, String iProductNr) {
@@ -50,6 +52,7 @@ public class SSProductMath {
     /**
      *
      * @param iProduct
+     * @param iDate
      * @return
      */
     public static BigDecimal getLastPurchasePrice(SSProduct iProduct, Date iDate) {
@@ -132,6 +135,7 @@ public class SSProductMath {
     /**
      *
      * @param iProducts
+     * @param iDate
      * @return
      */
     public static Map<SSProduct, BigDecimal> getInprices(List<SSProduct> iProducts, Date iDate) {
@@ -245,6 +249,7 @@ public class SSProductMath {
     /**
      *
      * @param iProduct
+     * @param iDate
      * @return
      */
     public static BigDecimal getContribution(SSProduct iProduct, Date iDate) {
@@ -278,6 +283,7 @@ public class SSProductMath {
     /**
      *
      * @param iProduct
+     * @param iDate
      * @return
      */
     public static BigDecimal getContributionRate(SSProduct iProduct, Date iDate) {
@@ -360,6 +366,8 @@ public class SSProductMath {
     /**
      *
      * @param iProduct
+     * @param iFrom
+     * @param iTo
      * @return
      */
     public static BigDecimal getAverageSellingPrice(SSProduct iProduct, Date iFrom, Date iTo) {

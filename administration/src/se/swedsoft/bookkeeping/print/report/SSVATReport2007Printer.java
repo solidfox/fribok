@@ -151,6 +151,7 @@ public class SSVATReport2007Printer extends SSPrinter {
     /**
      *
      * @param group
+     * @return
      */
     private BigDecimal getValueForGroup(Integer group){
 

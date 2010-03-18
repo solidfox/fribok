@@ -311,6 +311,7 @@ public class SSTenderFrame extends SSDefaultTableFrame {
     /**
      *
      * @param index
+     * @param iList
      */
     public void setFilterIndex(int index,List<SSTender> iList){
         JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );

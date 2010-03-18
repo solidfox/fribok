@@ -36,6 +36,8 @@ public class SSSalesTaxCalculator {
     /**
      *
      * @param pAccountingYear
+     * @param pDateFrom
+     * @param pDateTo
      */
     public SSSalesTaxCalculator(SSNewAccountingYear pAccountingYear, Date pDateFrom, Date pDateTo) {
         iAccountingYear = pAccountingYear;
@@ -209,6 +211,8 @@ public class SSSalesTaxCalculator {
 
         /**
          * Default constructor.
+         * @param pGroup1
+         * @param pGroup2
          */
         public SSVATReportGroup(int pGroup1, int pGroup2){
             iGroup1 = pGroup1;
@@ -280,6 +284,7 @@ public class SSSalesTaxCalculator {
 
         /**
          * Default constructor.
+         * @param pGroup1
          */
         public SSVATControlGroup(int pGroup1){
             iGroup1 = pGroup1;

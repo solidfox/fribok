@@ -24,6 +24,8 @@ public class SSLanguageDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
+     * @param iTitle
      */
     public SSLanguageDialog(SSMainFrame iMainFrame, String iTitle) {
         super(iMainFrame, iTitle );

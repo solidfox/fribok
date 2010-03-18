@@ -24,7 +24,15 @@ public class SSMailServer implements Serializable
     /**
      * Creates a new SSMailServer if arguments are valid, else throws MailServerException
      * with resourceName set to something that can identify the error so that an appropriate
-     * error message can be displayed. 
+     * error message can be displayed.
+     * @param name
+     * @param host
+     * @param port
+     * @param isAuth
+     * @param username
+     * @param password
+     * @return
+     * @throws SSMailServerException
      */
     public static SSMailServer makeIfValid(String name, String host, 
             int port, boolean isAuth, String username, String password) 

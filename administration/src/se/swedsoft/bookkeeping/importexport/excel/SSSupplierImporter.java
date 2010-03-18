@@ -43,6 +43,8 @@ public class SSSupplierImporter {
 
     /**
      *
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws java.io.IOException
      */
     public void Import()  throws IOException, SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -134,6 +136,7 @@ public class SSSupplierImporter {
     /**
      *
      * @param pSheet
+     * @return
      */
     private List<SSSupplier> importSuppliers(SSExcelSheet pSheet ){
         List<SSExcelRow> iRows = pSheet.getRows( );
@@ -188,6 +191,7 @@ public class SSSupplierImporter {
     /**
      *
      * @param iSuppliers
+     * @return
      */
     private boolean showImportReport(List<SSSupplier> iSuppliers){
         SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(), SSBundle.getBundle().getString("supplierframe.import.report"));

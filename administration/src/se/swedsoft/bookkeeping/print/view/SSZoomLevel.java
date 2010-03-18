@@ -28,6 +28,7 @@ public enum SSZoomLevel {
 
     /**
      *
+     * @return
      */
     public int getZoom(){
         return iZoom;

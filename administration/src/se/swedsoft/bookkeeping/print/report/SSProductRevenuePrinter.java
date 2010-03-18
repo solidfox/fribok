@@ -40,7 +40,9 @@ public class SSProductRevenuePrinter extends SSPrinter {
 
     /**
      *
-     * @param
+     * @param pProducts
+     * @param pFrom
+     * @param pTo
      */
     public SSProductRevenuePrinter(List<SSProduct> pProducts, Date pFrom, Date pTo ){
         super();
@@ -276,6 +278,7 @@ public class SSProductRevenuePrinter extends SSPrinter {
         /**
          *
          * @param pProduct
+         * @param iMap
          */
         public void setProduct(SSProduct pProduct, Map<SSMonth, BigDecimal> iMap) {
             iProduct = pProduct;

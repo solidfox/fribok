@@ -401,6 +401,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedProducts(List<SSProduct> delete) {
         if (delete.isEmpty()) {

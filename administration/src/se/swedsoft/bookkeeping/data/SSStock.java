@@ -256,6 +256,7 @@ public class SSStock {
      * @param iPurchaseOrders
      * @param iSupplierInvoices
      * @param iSupplierCreditInvoices
+     * @param iInventories
      * @param iIndeliveries
      * @param iOutdeliveries
      */

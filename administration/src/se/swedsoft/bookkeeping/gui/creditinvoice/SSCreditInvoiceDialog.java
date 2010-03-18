@@ -37,6 +37,7 @@ public class SSCreditInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iInvoice
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSCreditInvoice iInvoice, final AbstractTableModel pModel) {
@@ -184,6 +185,7 @@ public class SSCreditInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iCreditInvoice
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSCreditInvoice iCreditInvoice, final AbstractTableModel pModel) {

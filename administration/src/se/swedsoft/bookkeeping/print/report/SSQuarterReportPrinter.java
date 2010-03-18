@@ -32,6 +32,9 @@ public class SSQuarterReportPrinter extends SSPrinter {
 
     /**
      *
+     * @param iLocale
+     * @param iFrom
+     * @param iTo
      */
     public SSQuarterReportPrinter( Locale iLocale, Date iFrom, Date iTo){
         super();

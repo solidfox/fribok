@@ -38,6 +38,7 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iInvoices
      */
     public SSSupplierInvoiceListPrinter( List<SSSupplierInvoice> iInvoices){
         super();

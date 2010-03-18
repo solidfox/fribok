@@ -72,6 +72,7 @@ public class SSSupplierExporter {
      *
      * @throws java.io.IOException
      * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
      */
     public void export()  throws IOException, SSExportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -100,6 +101,7 @@ public class SSSupplierExporter {
     /**
      *
      * @param pSheet
+     * @throws jxl.write.WriteException
      */
     private void writeSuppliers(SSWritableExcelSheet pSheet ) throws WriteException {
 

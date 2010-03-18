@@ -80,6 +80,7 @@ public class SSCreditInvoice extends SSInvoice {
      * Clone constructor
      *
      * @param iInvoice
+     * @param iNumber
      */
     public SSCreditInvoice(SSCreditInvoice iInvoice, Integer iNumber) {
         copyFrom(iInvoice);
@@ -194,6 +195,7 @@ public class SSCreditInvoice extends SSInvoice {
     /**
      * Get the sales this sales is crediting
      *
+     * @param iInvoices
      * @return the sales
      */
     public SSInvoice getCrediting(List<SSInvoice> iInvoices) {

@@ -51,6 +51,7 @@ public class SSReportCache {
      * @param pReportName The name of the report to load, ie vatcontrol.jrxml.
      *
      * @return The JasperReport object
+     * @throws se.swedsoft.bookkeeping.util.SSException
      */
     public JasperReport getReport(String pReportName) throws SSException{
         // Try to get the report from cache
@@ -70,6 +71,7 @@ public class SSReportCache {
      * 
      * @param pReportName
      * @return
+     * @throws java.io.FileNotFoundException
      */
     private JasperReport loadReport(String pReportName) throws FileNotFoundException {
         File iReportFile   = new File(REPORT_DIR,   pReportName);

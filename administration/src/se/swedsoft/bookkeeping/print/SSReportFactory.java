@@ -268,6 +268,7 @@ public class SSReportFactory {
      *
      * @param iMainFrame
      * @param bundle
+     * @param iAccountingYear
      */
     public static void buildBalanceReport(final SSMainFrame iMainFrame, final ResourceBundle bundle, final SSNewAccountingYear iAccountingYear){
         SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(iMainFrame, bundle.getString("balancereport.perioddialog.title"));
@@ -295,6 +296,7 @@ public class SSReportFactory {
      *
      * @param iMainFrame
      * @param bundle
+     * @param iAccountingYear
      */
     public static void buildBudgetReport(final SSMainFrame iMainFrame, final ResourceBundle bundle, final SSNewAccountingYear iAccountingYear ){
         SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(iMainFrame, bundle.getString("budgetreport.perioddialog.title"));
@@ -1053,6 +1055,7 @@ public class SSReportFactory {
      *
      * @param iMainFrame
      * @param bundle
+     * @param iAccountingYear
      */
     public static void Salevalues(final SSMainFrame iMainFrame, final ResourceBundle bundle, final SSNewAccountingYear iAccountingYear ){
         SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(iMainFrame, bundle.getString("salevalues.perioddialog.title"));
@@ -1083,6 +1086,7 @@ public class SSReportFactory {
      *
      * @param iMainFrame
      * @param bundle
+     * @param iAccountingYear
      */
     public static void Purchasevalues(final SSMainFrame iMainFrame, final ResourceBundle bundle, final SSNewAccountingYear iAccountingYear ){
         SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(iMainFrame, bundle.getString("purchasevalues.perioddialog.title"));
@@ -1113,6 +1117,7 @@ public class SSReportFactory {
     /**
      *
      * @param iMainFrame
+     * @param iInvoices
      */
     public static void InvoiceReport(final SSMainFrame iMainFrame, final List<SSInvoice> iInvoices) {
         SSLanguageDialog iDialog = new SSLanguageDialog(iMainFrame, SSBundle.getBundle().getString("report.title.invoice"));
@@ -1181,6 +1186,7 @@ public class SSReportFactory {
     /**
      *
      * @param iMainFrame
+     * @param iInvoices
      */
     public static void OCRInvoiceReport(final SSMainFrame iMainFrame, final List<SSInvoice> iInvoices) {
         SSOCRInvoiceDialog iDialog = new SSOCRInvoiceDialog(iMainFrame, SSBundle.getBundle().getString("report.title.ocrinvoice"));
@@ -1215,6 +1221,7 @@ public class SSReportFactory {
     /**
      *
      * @param iMainFrame
+     * @param iCreditInvoices
      */
     public static void CreditInvoiceReport(final SSMainFrame iMainFrame, final List<SSCreditInvoice> iCreditInvoices) {
         SSLanguageDialog iDialog = new SSLanguageDialog(iMainFrame, SSBundle.getBundle().getString("report.title.creditinvoice"));
@@ -1641,6 +1648,7 @@ public class SSReportFactory {
     /**
      *
      * @param iMainFrame
+     * @param iInvoices
      */
     public static void ReminderReport(final SSMainFrame iMainFrame, final List<SSInvoice> iInvoices) {
         SSLanguageDialog iDialog = new SSLanguageDialog(iMainFrame, SSBundle.getBundle().getString("report.title.reminder"));

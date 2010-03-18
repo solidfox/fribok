@@ -333,6 +333,7 @@ public class SSSupplierInvoiceMath {
      * Returns all invoices for the current supplier
      *
      * @param iSupplier
+     * @param iDate
      * @return the invoices for the supplier
      */
     public static List<SSSupplierInvoice> getInvoicesForSupplier(SSSupplier iSupplier, Date iDate) {
@@ -345,6 +346,7 @@ public class SSSupplierInvoiceMath {
      *
      * @param iInvoices
      * @param iSupplier
+     * @param iDate
      * @return the invoices for the customer
      */
     public static List<SSSupplierInvoice> getInvoicesForSupplier(List<SSSupplierInvoice> iInvoices, SSSupplier iSupplier, Date iDate) {

@@ -319,6 +319,7 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
     /**
      *
      * @param index
+     * @param iOrders
      */
     public void setFilterIndex(int index, List<SSPurchaseOrder> iOrders){
         JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );

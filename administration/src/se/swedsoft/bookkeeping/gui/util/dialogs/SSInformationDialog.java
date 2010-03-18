@@ -35,6 +35,7 @@ public class SSInformationDialog {
      *
      * @param iFrame
      * @param pBundleName
+     * @param pMessageFormat
      */
     public SSInformationDialog(JFrame iFrame, String pBundleName, Object ... pMessageFormat){
         String title   =               SSBundle.getBundle().getString(pBundleName + ".title");
@@ -67,6 +68,7 @@ public class SSInformationDialog {
      *
      * @param iFrame
      * @param pBundleName
+     * @param pMessageFormat
      */
     public SSInformationDialog(JDialog iFrame, String pBundleName, Object ... pMessageFormat){
         String title   =               SSBundle.getBundle().getString(pBundleName + ".title");
@@ -140,6 +142,7 @@ public class SSInformationDialog {
      *
      * @param iFrame
      * @param pBundleName
+     * @param pMessageFormat
      */
     public static void showDialog(JFrame iFrame, String pBundleName, Object ... pMessageFormat){
         new SSInformationDialog(iFrame, pBundleName, pMessageFormat);

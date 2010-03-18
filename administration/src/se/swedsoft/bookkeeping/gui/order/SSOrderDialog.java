@@ -166,6 +166,7 @@ public class SSOrderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iOrder
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSOrder iOrder, final SSOrderTableModel pModel) {
@@ -232,6 +233,7 @@ public class SSOrderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iOrder
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSOrder iOrder, final SSOrderTableModel pModel) {

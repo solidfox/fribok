@@ -25,6 +25,7 @@ public class SSOrderMath extends SSTenderMath{
      * Returns all the customers for the selected orders
      *
      * @param iOrders
+     * @param iCustomerNr
      * @return
      */
     public static List<SSOrder> getOrdersByCustomerNr(List<SSOrder> iOrders, String iCustomerNr) {

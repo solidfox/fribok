@@ -31,6 +31,7 @@ public class SSStockAccountDialog  extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSStockAccountDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("stockaccountreport.dialog.title") );

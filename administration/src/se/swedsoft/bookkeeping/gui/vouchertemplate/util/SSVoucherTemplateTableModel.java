@@ -25,6 +25,7 @@ public class SSVoucherTemplateTableModel extends SSTableModel<SSVoucherTemplate>
 
     /**
      * Default constructor.
+     * @param iVouchers
      */
     public SSVoucherTemplateTableModel(List<SSVoucherTemplate> iVouchers) {
         super(iVouchers);

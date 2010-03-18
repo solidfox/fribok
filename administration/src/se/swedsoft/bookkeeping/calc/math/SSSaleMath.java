@@ -271,6 +271,7 @@ public class SSSaleMath {
     /**
      *
      * @param iSale
+     * @param iProduct
      * @return
      */
     public static Integer getProductCount(SSSale iSale, SSProduct iProduct){

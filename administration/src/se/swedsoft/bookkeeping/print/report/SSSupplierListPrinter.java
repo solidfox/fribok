@@ -29,6 +29,7 @@ public class SSSupplierListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iSuppliers
      */
     public SSSupplierListPrinter( List<SSSupplier> iSuppliers){
         super();

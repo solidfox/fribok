@@ -38,6 +38,7 @@ public class SSProjectPanel{
 
     /**
      * Default constructor. <P>
+     * @param iEdit
      */
     public SSProjectPanel(boolean iEdit) {
         iNumber.setEnabled(!iEdit);

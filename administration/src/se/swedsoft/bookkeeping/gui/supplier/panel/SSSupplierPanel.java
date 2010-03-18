@@ -66,6 +66,7 @@ public class SSSupplierPanel {
     /**
      *
      * @param iOwner
+     * @param iEdit
      */
     public SSSupplierPanel(final SSDialog iOwner, boolean iEdit) {
 
@@ -172,6 +173,7 @@ public class SSSupplierPanel {
 
     /**
      * @param iSupplier
+     * @param newSupplier
      */
     public void setSupplier(SSSupplier iSupplier,boolean newSupplier) {
         this.iSupplier = iSupplier;

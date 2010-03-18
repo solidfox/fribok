@@ -31,6 +31,7 @@ public class SSTenderTableModel  extends SSTableModel<SSTender> {
 
     /**
      * Default constructor.
+     * @param iTenders
      */
     public SSTenderTableModel(List<SSTender> iTenders) {
         super(iTenders);

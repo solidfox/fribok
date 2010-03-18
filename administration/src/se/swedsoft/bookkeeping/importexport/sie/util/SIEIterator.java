@@ -136,6 +136,7 @@ public class SIEIterator  implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextArray() {
         return hasNext(ArrayPattern);
@@ -143,6 +144,7 @@ public class SIEIterator  implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextInteger() {
         return hasNext(IntegerPattern);
@@ -191,6 +193,7 @@ public class SIEIterator  implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextDate() {
         return hasNext(IntegerPattern);
@@ -198,6 +201,7 @@ public class SIEIterator  implements Iterator<String> {
 
     /**
      *
+     * @return
      */
     public boolean hasNextMonth() {
         return hasNext(IntegerPattern);
@@ -302,6 +306,7 @@ public class SIEIterator  implements Iterator<String> {
     }
     /**
      *
+     * @return
      */
     public Date nextDate() {
         String iValue = next();

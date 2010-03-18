@@ -70,6 +70,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      * Clone constructor
      *
      * @param iInpayment
+     * @param iNumber
      */
     public SSInpayment(SSInpayment iInpayment, Integer iNumber) {
         copyFrom(iInpayment);
@@ -395,6 +396,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @return
      */
     public SSVoucher generateVoucher(){
         String iDescription = SSBundle.getBundle().getString("inpaymentframe.voucherdescription");

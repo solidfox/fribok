@@ -27,6 +27,8 @@ public class SSPeriodSelectionDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
+     * @param iTitle
      */
     public SSPeriodSelectionDialog(SSMainFrame iMainFrame, String iTitle) {
         super(iMainFrame, iTitle );

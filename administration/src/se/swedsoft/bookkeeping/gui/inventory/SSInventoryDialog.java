@@ -90,6 +90,7 @@ public class SSInventoryDialog {
     /**
      *
      * @param iMainFrame
+     * @param iInventory
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSInventory iInventory, final AbstractTableModel pModel) {
@@ -150,6 +151,7 @@ public class SSInventoryDialog {
     /**
      *
      * @param iMainFrame
+     * @param iInventory
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSInventory iInventory, final AbstractTableModel pModel) {

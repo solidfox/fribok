@@ -33,6 +33,8 @@ public class SSBalancePrinter extends SSPrinter {
 
     /**
      *
+     * @param pFrom
+     * @param pTo
      */
     public SSBalancePrinter(Date pFrom, Date pTo ){
         this( SSDB.getInstance().getCurrentYear(), pFrom, pTo  );
@@ -41,6 +43,8 @@ public class SSBalancePrinter extends SSPrinter {
     /**
      *
      * @param pYearData The year data
+     * @param pFrom
+     * @param pTo
      */
     public SSBalancePrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo ){
         super();

@@ -29,6 +29,8 @@ public class LBinPostTK14 extends LBinPost {
 
     /**
      *
+     * @param iPayment
+     * @param iNumber
      */
     public LBinPostTK14(SupplierPayment iPayment, String iNumber) {
         super();

@@ -68,6 +68,7 @@ public class SSDBUtils {
      * Restores the backup file for the given file name.
      *
      * @param iFile The file name of the file to restore the backup for.
+     * @return
      */
     public static boolean restoreBackup(File iFile) {
         File iBackupFile = getBackupFile(iFile);
@@ -228,6 +229,7 @@ public class SSDBUtils {
      *
      * @param iFile
      * @return
+     * @throws java.io.IOException
      */
     public static Object LoadFromFile(File iFile)  throws IOException {
         FileInputStream fis = null;
@@ -294,6 +296,7 @@ public class SSDBUtils {
      * @param pFilename
      * @param pCompany
      *
+     * @throws java.io.IOException
      */
     public static void storeCompany(String pFilename, SSNewCompany pCompany) throws IOException {
         BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(pFilename));
@@ -342,6 +345,7 @@ public class SSDBUtils {
      * @param pFilename
      * @param pYear
      *
+     * @throws java.io.IOException
      */
     public static void storeYear(String pFilename, SSNewAccountingYear pYear) throws IOException {
         BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(pFilename));

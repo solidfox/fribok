@@ -50,6 +50,9 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
     }
     /**
      * Default constructor.
+     * @param frame
+     * @param width
+     * @param height
      */
     public SSVoucherTemplateFrame(SSMainFrame frame, int width, int height) {
         super(frame, SSBundle.getBundle().getString("vouchertemplateframe.title"), width, height);
@@ -229,6 +232,7 @@ public class SSVoucherTemplateFrame extends se.swedsoft.bookkeeping.gui.util.fra
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedTemplates(List<SSVoucherTemplate> delete) {
         if (delete.isEmpty()) {

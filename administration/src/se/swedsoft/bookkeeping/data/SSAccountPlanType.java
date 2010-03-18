@@ -23,6 +23,7 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
     /**
      *
      * @param pName
+     * @param pSchema
      */
     private SSAccountPlanType(String pName, String pSchema){
         iName   = pName;

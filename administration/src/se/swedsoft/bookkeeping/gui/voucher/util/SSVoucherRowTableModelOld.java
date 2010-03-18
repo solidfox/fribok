@@ -45,6 +45,8 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
 
     /**
      * Default constructor.
+     * @param pEdit
+     * @param pReadOnly
      */
     public SSVoucherRowTableModelOld(boolean pEdit, boolean pReadOnly){
         super();
@@ -362,6 +364,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
     /**
      *
      * @param iTable
+     * @param iModel
      */
     public static void setupTable(SSTable iTable, final SSDefaultTableModel<SSVoucherRow> iModel) {
         //

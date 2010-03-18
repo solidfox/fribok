@@ -26,6 +26,7 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
 
     /**
      * Default constructor.
+     * @param iAutoDists
      */
     public SSAutoDistTableModel(List<SSAutoDist> iAutoDists) {
         super(iAutoDists);

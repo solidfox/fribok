@@ -56,6 +56,7 @@ public class SSCustomerImporter {
 
     /**
      *
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
      */
     public void Import()  throws SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -145,6 +146,7 @@ public class SSCustomerImporter {
     /**
      *
      * @param pSheet
+     * @return
      */
     private List<SSCustomer> importCustomers(SSExcelSheet pSheet ){
 
@@ -203,6 +205,7 @@ public class SSCustomerImporter {
     /**
      *
      * @param iCustomers
+     * @return
      */
     private boolean showImportReport(List<SSCustomer> iCustomers){
         SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(), SSBundle.getBundle().getString("customerframe.import.report"));

@@ -37,6 +37,7 @@ public class SSTenderListPrinter extends SSPrinter {
 
     /**
      *
+     * @param iTenders
      */
     public SSTenderListPrinter( List<SSTender> iTenders){
         super();

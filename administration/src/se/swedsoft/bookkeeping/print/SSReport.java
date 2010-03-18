@@ -168,6 +168,7 @@ public class SSReport {
 
     /**
      *
+     * @throws se.swedsoft.bookkeeping.util.SSException
      */
     public void generateReport()  throws SSException{
         if(iDesign == null){
@@ -195,6 +196,7 @@ public class SSReport {
 
     /**
      *
+     * @throws se.swedsoft.bookkeeping.util.SSException
      */
     private void compileDesign() throws SSException{
         List<JRReportFont>    theFonts    = new LinkedList<JRReportFont>();
@@ -370,6 +372,7 @@ public class SSReport {
      * @param pGroups
      * @param pFonts
      * @return
+     * @throws se.swedsoft.bookkeeping.util.SSException
      */
     private JRBand getField(ReportField pField, List<JRField> pFields, List<JRParameter> pParameters, List<JRVariable> pVariables, List<JRGroup> pGroups, List<JRReportFont> pFonts) throws SSException{
 
@@ -539,7 +542,9 @@ public class SSReport {
 
     /**
      *
+     * @param iName
      * @return
+     * @param iName
      */
     public Object getParameter(String iName) {
         return iParameters.get(iName);
@@ -570,6 +575,7 @@ public class SSReport {
 
     /**
      *
+     * @param iMainFrame
      */
     public void viewReport(SSMainFrame iMainFrame)  {
         try{
@@ -587,8 +593,9 @@ public class SSReport {
     }
 
       /**
-     *
-     */
+       *
+       * @param iDialog
+       */
     public void viewReport(JDialog iDialog)  {
         try{
             generateReport();
@@ -606,6 +613,8 @@ public class SSReport {
 
     /**
      *
+     * @param iMainFrame
+     * @param listener
      */
     public void viewReport(SSMainFrame iMainFrame, InternalFrameListener listener) {
         try{

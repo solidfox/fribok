@@ -26,6 +26,7 @@ public class SSOutdeliveryTableModel extends SSTableModel<SSOutdelivery> {
 
     /**
      * Default constructor.
+     * @param iIndeliveries
      */
     public SSOutdeliveryTableModel(List<SSOutdelivery> iIndeliveries) {
         super(iIndeliveries);

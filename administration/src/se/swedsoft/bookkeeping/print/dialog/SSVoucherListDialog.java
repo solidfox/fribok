@@ -53,6 +53,7 @@ public class SSVoucherListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSVoucherListDialog(SSMainFrame iMainFrame){
         super(iMainFrame, SSBundle.getBundle().getString("voucherlistreport.dialog.title"));

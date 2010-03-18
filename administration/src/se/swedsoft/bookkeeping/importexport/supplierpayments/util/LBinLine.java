@@ -21,6 +21,7 @@ public class LBinLine {
 
     /**
      *
+     * @param iLength
      */
     public LBinLine(int iLength) {
         iChars    = new char[iLength];
@@ -98,6 +99,7 @@ public class LBinLine {
      *
      * @param iString The text to append
      * @param iLength The lengt of the field
+     * @param iBlank
      * @return the new position
      */
     public int append(String iString, int iLength, char iBlank) {
@@ -122,6 +124,7 @@ public class LBinLine {
     /**
      * Append a string
      *
+     * @param iString
      * @param iLength
      * @return the new position
      */
@@ -135,6 +138,7 @@ public class LBinLine {
      *
      * @param iDate
      * @param iLength
+     * @param iFormat
      * @return the new position
      */
     public int append(Date iDate, int iLength, String iFormat) {
@@ -147,6 +151,7 @@ public class LBinLine {
      *
      * @param iValue
      * @param iLength
+     * @return
      */
     public int append(BigDecimal iValue, int iLength) {
         String iText = Long.toString( Math.round(iValue.doubleValue() * 100) );
@@ -158,6 +163,7 @@ public class LBinLine {
      *
      * @param iValue
      * @param iLength
+     * @return
      */
     public int append(int iValue, int iLength) {
         String iText = Integer.toString(iValue);

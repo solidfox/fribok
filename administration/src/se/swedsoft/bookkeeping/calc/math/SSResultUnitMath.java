@@ -14,6 +14,7 @@ public class SSResultUnitMath {
     /**
      * Returns one resultunit for the current company.
      *
+     * @param pNumber
      * @return The resultunit or null
      */
     public static SSNewResultUnit getResultUnit(String pNumber) {

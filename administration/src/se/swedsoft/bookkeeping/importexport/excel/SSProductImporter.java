@@ -204,6 +204,7 @@ public class SSProductImporter {
     /**
      *
      * @param iProducts
+     * @return
      */
     private boolean showImportReport(List<SSProduct> iProducts){
         SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(), SSBundle.getBundle().getString("productframe.import.report"));

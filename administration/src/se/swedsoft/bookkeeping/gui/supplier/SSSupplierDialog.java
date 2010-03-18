@@ -180,6 +180,7 @@ public class SSSupplierDialog {
      *
      * @param iMainFrame
      * @param pModel
+     * @param iSupplier
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSSupplier iSupplier, final AbstractTableModel pModel) {
         final String lockString = "supplier"+iSupplier.getNumber()+SSDB.getInstance().getCurrentCompany().getId();

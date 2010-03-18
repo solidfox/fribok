@@ -18,6 +18,7 @@ public class SSHelpButton extends SSButton implements ActionListener {
 
     /**
      *
+     * @param pHelpClass
      */
     public SSHelpButton(Class pHelpClass) {
         super("ICON_HELP24", "toolbar.helpbutton");

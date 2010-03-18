@@ -33,6 +33,7 @@ public class SSResultUnitPanel {
 
     /**
      * Default constructor.
+     * @param iEdit
      */
     public SSResultUnitPanel(boolean iEdit) {
         iNumber.setEnabled(!iEdit);

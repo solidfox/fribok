@@ -460,6 +460,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedCustomers(List<SSCustomer> delete) {
         if (delete.isEmpty()) {

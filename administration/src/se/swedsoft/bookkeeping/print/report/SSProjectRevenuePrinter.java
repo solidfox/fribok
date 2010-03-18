@@ -279,6 +279,7 @@ public class SSProjectRevenuePrinter extends SSPrinter {
         /**
          *
          * @param pProject
+         * @param iMap
          */
         public void setProject(SSNewProject pProject, Map<SSMonth, BigDecimal> iMap) {
             iProject = pProject;
@@ -287,8 +288,4 @@ public class SSProjectRevenuePrinter extends SSPrinter {
                 iRevenue = new HashMap<SSMonth, BigDecimal>();
         }
     }
-
-
-
-
 }

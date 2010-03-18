@@ -33,6 +33,7 @@ public class SSVoucherTableModel extends SSTableModel<SSVoucher> {
 
     /**
      * Default constructor.
+     * @param iVouchers
      */
     public SSVoucherTableModel(List<SSVoucher> iVouchers) {
         super(iVouchers);

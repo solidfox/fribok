@@ -117,6 +117,8 @@ public class SSMainBookCalculator {
      * @param pAccountTo
      * @param pDateFrom
      * @param pDateTo
+     * @param iProject
+     * @param iResultUnit
      */
     public SSMainBookCalculator(SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
         this( SSDB.getInstance().getCurrentYear(), pAccountFrom, pAccountTo, pDateFrom, pDateTo, iProject, iResultUnit );
@@ -129,6 +131,8 @@ public class SSMainBookCalculator {
      * @param pAccountTo
      * @param pDateFrom
      * @param pDateTo
+     * @param iProject
+     * @param iResultUnit
      */
     public SSMainBookCalculator(SSNewAccountingYear pYearData, SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
         iYearData  = pYearData;

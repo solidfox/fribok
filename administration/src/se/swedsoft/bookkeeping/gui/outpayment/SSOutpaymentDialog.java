@@ -34,6 +34,7 @@ public class SSOutpaymentDialog {
 
     /**
      *
+     * @param iMainFrame
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
@@ -87,6 +88,8 @@ public class SSOutpaymentDialog {
 
     /**
      *
+     * @param iMainFrame
+     * @param iOutpayment
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, SSOutpayment iOutpayment ,final AbstractTableModel pModel) {

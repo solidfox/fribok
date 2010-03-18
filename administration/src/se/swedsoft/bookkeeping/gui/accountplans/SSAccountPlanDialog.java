@@ -94,6 +94,7 @@ public class SSAccountPlanDialog {
     /**
      *
      * @param iMainFrame
+     * @param iAccountPlan
      * @param iModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSAccountPlan iAccountPlan, final AbstractTableModel iModel) {
@@ -167,6 +168,7 @@ public class SSAccountPlanDialog {
     /**
      *
      * @param iMainFrame
+     * @param iAccountPlan
      * @param iModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSAccountPlan iAccountPlan, final AbstractTableModel iModel) {
@@ -235,6 +237,7 @@ public class SSAccountPlanDialog {
      *
      * @param iMainFrame
      * @param iAccountPlan
+     * @param iModel
      */
     public static void editCurrentDialog(final SSMainFrame iMainFrame, SSAccountPlan iAccountPlan, final AbstractTableModel iModel) {
         final String lockString = "accountplan"+iAccountPlan.getName()+SSDB.getInstance().getCurrentYear().getId();

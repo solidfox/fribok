@@ -158,6 +158,7 @@ public class SSInventoryRow implements Serializable {
 
     /**
      *
+     * @param iProducts
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {

@@ -485,6 +485,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
     /**
      *
      * @param index
+     * @param iOrders
      */
     public void setFilterIndex(int index,List<SSOrder> iOrders){
         JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );
@@ -562,6 +563,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelectedOrder(List<SSOrder> delete) {
         if (delete.isEmpty()) {

@@ -21,6 +21,7 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
 
     /**
      * Default constructor.
+     * @param iResultUnits
      */
     public SSResultUnitTableModel(List<SSNewResultUnit> iResultUnits) {
         super(iResultUnits);
@@ -52,6 +53,7 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
 
     /**
      *
+     * @param iResultUnits
      * @return
      */
     public static SSResultUnitTableModel getDropDownModel(List<SSNewResultUnit> iResultUnits){

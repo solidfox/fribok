@@ -42,6 +42,7 @@ public class SSInpaymentListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSInpaymentListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("inpaymentlistreport.dialog.title") );

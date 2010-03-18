@@ -18,6 +18,7 @@ public abstract class SSTraversalAction {
 
     /**
      *
+     * @param iTable
      */
     public SSTraversalAction(SSTable iTable) {
         this.iTable = iTable;

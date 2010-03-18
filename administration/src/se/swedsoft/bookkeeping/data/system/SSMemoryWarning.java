@@ -59,6 +59,7 @@ public class SSMemoryWarning {
     /**
     * Tenured Space Pool can be determined by it being of type
     * HEAP and by it being possible to set the usage threshold.
+    * @return
     */
     private static MemoryPoolMXBean findTenuredGenPool() {
         for (MemoryPoolMXBean pool : ManagementFactory.getMemoryPoolMXBeans()) {

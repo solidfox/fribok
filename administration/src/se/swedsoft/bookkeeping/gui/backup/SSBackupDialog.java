@@ -19,6 +19,7 @@ public class SSBackupDialog {
     /**
      *
      * @param iMainFrame
+     * @return
      */
     public static boolean backupFullDialog(final SSMainFrame iMainFrame) {
         SSBackupFrame.hideFrame();

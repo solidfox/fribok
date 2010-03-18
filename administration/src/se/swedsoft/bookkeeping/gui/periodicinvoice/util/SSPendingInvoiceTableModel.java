@@ -94,6 +94,7 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
 
     /**
      *  Vald
+     * @return
      */
     public SSTableColumn<Entry> getSelectionColumn(){
         return new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.5")) {

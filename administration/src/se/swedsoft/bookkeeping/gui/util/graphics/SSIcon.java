@@ -244,6 +244,7 @@ public class SSIcon {
      * Loads an icon from the disk
      *
      * @param pName     Unique name of the icon
+     * @param pState
      * @param pIconFile The name of the icon file
      */
     private static void loadIcon(String pName, IconState pState, String pIconFile){

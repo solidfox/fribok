@@ -47,6 +47,7 @@ public class SSBudget implements Serializable  {
 
     /**
      * Copy constructor
+     * @param pSource
      */
     public SSBudget(SSBudget pSource){
         iFrom           = pSource.getFrom();
@@ -138,6 +139,7 @@ public class SSBudget implements Serializable  {
     }
 
     /**
+     * @param pMonth
      * @return The months
      */
     public SSMonth getMonth(  SSMonth pMonth) {
@@ -181,6 +183,7 @@ public class SSBudget implements Serializable  {
 
     /**
      *
+     * @param pMonth
      * @return the budget for a month
      */
     public Map<SSAccount, BigDecimal> getBudget(SSMonth pMonth){
@@ -236,6 +239,7 @@ public class SSBudget implements Serializable  {
      * Add a value to a month
      *
      * @param pMonth The month
+     * @param pAccount
      * @param pValue The value
      */
     public void addValueToMonth(SSMonth pMonth, SSAccount pAccount, BigDecimal pValue){

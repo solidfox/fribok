@@ -27,6 +27,8 @@ public class SSOrderPrinter extends SSPrinter {
 
     /**
      *
+     * @param iOrder
+     * @param iLocale
      */
     public SSOrderPrinter(SSOrder iOrder, Locale iLocale){
         super();

@@ -37,6 +37,8 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
 
     /**
      *
+     * @param iFrame
+     * @param title
      */
     public SSResultUnitResultSetupDialog(JFrame iFrame, String title) {
         super(iFrame, title);

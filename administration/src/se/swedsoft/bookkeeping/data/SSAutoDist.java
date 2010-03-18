@@ -46,6 +46,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iAccount
      */
     public SSAutoDist(SSAccount iAccount) {
         iRows           = new LinkedList<SSAutoDistRow>();
@@ -69,6 +70,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      * Clone constructor
      *
      * @param iAutoDist
+     * @param iAccountNumber
      */
     public SSAutoDist(SSAutoDist iAutoDist, Integer iAccountNumber) {
         copyFrom(iAutoDist);

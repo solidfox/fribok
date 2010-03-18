@@ -37,6 +37,7 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
     HashMap<Integer, BigDecimal> iCreditInvoiceSum;
     /**
      *
+     * @param iDate
      */
     public SSAccountsRecievablePrinter(Date iDate) {
         this(iDate, SSDB.getInstance().getCustomers() );
@@ -44,6 +45,8 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
+     * @param iCustomers
      */
     public SSAccountsRecievablePrinter(Date iDate, List<SSCustomer> iCustomers){
         super();

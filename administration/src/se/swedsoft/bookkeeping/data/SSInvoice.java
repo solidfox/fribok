@@ -80,6 +80,7 @@ public class SSInvoice extends SSSale {
     /**
      * Creates a new sales with the number as the lastest sales number + 1
      *
+     * @param iInvoiceType
      */
     public SSInvoice(SSInvoiceType iInvoiceType ){
         this();
@@ -456,6 +457,7 @@ public class SSInvoice extends SSSale {
 
     /**
      *
+     * @return
      */
     public SSVoucher generateVoucher(){
         String iDescription = SSBundle.getBundle().getString("invoiceframe.voucherdescription");

@@ -70,6 +70,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * Copy constructor
      *
      * @param
+     * @param iTenderRow
      */
     public SSSaleRow(SSSaleRow iTenderRow) {
         this.iDescription  = iTenderRow.iDescription;
@@ -139,6 +140,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iLocale
      * @return
      */
     public String getDescription(Locale iLocale) {
@@ -371,6 +373,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
     /**
      * Gets the product for this row
      *
+     * @param iProducts
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
@@ -420,6 +423,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iResultUnits
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
@@ -449,6 +453,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iProjects
      * @return
      */
     public SSNewProject getProject(List<SSNewProject> iProjects) {

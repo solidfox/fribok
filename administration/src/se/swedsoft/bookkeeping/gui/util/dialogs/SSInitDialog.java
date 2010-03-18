@@ -17,6 +17,7 @@ public class SSInitDialog extends SSDialog {
     /**
      *
      * @param iFrame
+     * @param iTitle
      */
     public SSInitDialog(JFrame iFrame, String iTitle){
         super(iFrame, iTitle, false);
@@ -32,6 +33,7 @@ public class SSInitDialog extends SSDialog {
     /**
      *
      * @param iDialog
+     * @param iTitle
      */
     public SSInitDialog(JDialog iDialog, String iTitle){
         super(iDialog, iTitle, false);

@@ -258,6 +258,7 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     private void deleteSelected(List<SSOutdelivery> delete) {
         if (delete.isEmpty()) {

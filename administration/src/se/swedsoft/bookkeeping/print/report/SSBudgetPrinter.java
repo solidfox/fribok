@@ -44,6 +44,8 @@ public class SSBudgetPrinter extends SSPrinter {
 
     /**
      *
+     * @param pFrom
+     * @param pTo
      */
     public SSBudgetPrinter( Date pFrom, Date pTo ){
         this( SSDB.getInstance().getCurrentYear(), pFrom, pTo  );
@@ -59,6 +61,8 @@ public class SSBudgetPrinter extends SSPrinter {
     /**
      *
      * @param pAccountingYear The accountingyear
+     * @param pFrom
+     * @param pTo
      */
     public SSBudgetPrinter(SSNewAccountingYear pAccountingYear, Date pFrom, Date pTo ){
         super();
@@ -171,6 +175,7 @@ public class SSBudgetPrinter extends SSPrinter {
 
         /**
          *
+         * @param pAccountingYear
          * @param pFrom
          * @param pTo
          */

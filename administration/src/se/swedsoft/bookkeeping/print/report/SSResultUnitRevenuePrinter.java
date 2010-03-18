@@ -38,8 +38,10 @@ public class SSResultUnitRevenuePrinter extends SSPrinter {
 
     private Map<String, Map<SSMonth,BigDecimal>> iResultUnitRevenue;
     /**
-     *
-     * @param
+     * 
+     * @param pResultUnits
+     * @param pFrom
+     * @param pTo
      */
     public SSResultUnitRevenuePrinter(List<SSNewResultUnit> pResultUnits, Date pFrom, Date pTo ){
         super();
@@ -279,6 +281,7 @@ public class SSResultUnitRevenuePrinter extends SSPrinter {
         /**
          *
          * @param pResultUnit
+         * @param iMap
          */
         public void setResultUnit(SSNewResultUnit pResultUnit, Map<SSMonth, BigDecimal> iMap) {
             iResultUnit = pResultUnit;

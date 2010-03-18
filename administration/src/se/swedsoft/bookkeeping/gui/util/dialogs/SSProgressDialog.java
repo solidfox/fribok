@@ -17,6 +17,7 @@ public class SSProgressDialog extends SSDialog {
     /**
      *
      * @param iFrame
+     * @param iTitle
      */
     public SSProgressDialog(JFrame iFrame, String iTitle){
         super(iFrame, iTitle, false);
@@ -32,6 +33,7 @@ public class SSProgressDialog extends SSDialog {
     /**
      *
      * @param iDialog
+     * @param iTitle
      */
     public SSProgressDialog(JDialog iDialog, String iTitle){
         super(iDialog, iTitle, false);

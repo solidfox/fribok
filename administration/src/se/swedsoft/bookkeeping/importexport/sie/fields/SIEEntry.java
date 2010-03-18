@@ -27,6 +27,7 @@ public abstract class SIEEntry {
      *
      * @param iImporter
      * @param iReader
+     * @param iCurrentYear
      * @return If anything was imported
      *
      * @throws SSImportException
@@ -38,6 +39,7 @@ public abstract class SIEEntry {
      *
      * @param iExporter
      * @param iWriter
+     * @param iCurrentYear
      * @return If anything was exported
      *
      * @throws SSExportException

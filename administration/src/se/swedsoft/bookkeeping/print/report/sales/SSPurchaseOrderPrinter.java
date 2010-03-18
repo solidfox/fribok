@@ -23,6 +23,8 @@ public class SSPurchaseOrderPrinter extends SSPrinter {
 
     /**
      *
+     * @param iPurchaseOrder
+     * @param iLocale
      */
     public SSPurchaseOrderPrinter(SSPurchaseOrder iPurchaseOrder, Locale iLocale){
         super();

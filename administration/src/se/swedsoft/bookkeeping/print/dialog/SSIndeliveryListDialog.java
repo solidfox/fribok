@@ -43,6 +43,7 @@ public class SSIndeliveryListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSIndeliveryListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("indeliverylistreport.dialog.title") );

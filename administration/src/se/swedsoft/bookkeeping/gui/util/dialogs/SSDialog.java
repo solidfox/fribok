@@ -211,6 +211,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
     /**
      *
+     * @param iFrame
      * @return the modal result
      * @see JOptionPane
      */
@@ -226,6 +227,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
     /**
      *
+     * @param iDialog
      * @return the modal result
      * @see JOptionPane
      */

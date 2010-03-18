@@ -14,6 +14,8 @@ public class SSProjectMath {
     /**
      * Returns one project for the current company.
      *
+     * @param iProjects
+     * @param iNumber
      * @return The project or null
      */
     public static SSNewProject getProject(List<SSNewProject> iProjects, String iNumber) {

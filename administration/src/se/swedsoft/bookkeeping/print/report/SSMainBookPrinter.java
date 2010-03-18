@@ -36,6 +36,12 @@ public class SSMainBookPrinter extends SSPrinter {
 
     /**
      *
+     * @param pAccountFrom
+     * @param pAccountTo
+     * @param pDateFrom
+     * @param pDateTo
+     * @param iProject
+     * @param iResultUnit
      */
     public SSMainBookPrinter(SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
         this( SSDB.getInstance().getCurrentYear(), pAccountFrom, pAccountTo, pDateFrom, pDateTo, iProject, iResultUnit );
@@ -44,6 +50,12 @@ public class SSMainBookPrinter extends SSPrinter {
     /**
      *
      * @param pYearData The year
+     * @param pAccountFrom
+     * @param pAccountTo
+     * @param pDateFrom
+     * @param pDateTo
+     * @param iProject
+     * @param iResultUnit
      */
     public SSMainBookPrinter(SSNewAccountingYear pYearData, SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
         super();

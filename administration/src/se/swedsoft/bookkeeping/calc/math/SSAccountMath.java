@@ -129,6 +129,8 @@ public class SSAccountMath {
     /**
      * Returns the account group.
      *
+     * @param iAccount
+     * @param pYearData
      * @return The account group of the current account.
      */
     public static int getResultGroup(SSAccount iAccount, SSNewAccountingYear pYearData){
@@ -190,6 +192,7 @@ public class SSAccountMath {
     /**
      * Returns the first account in the current accounting year.
      *
+     * @param pAccounts
      * @return The first account or null if there is none.
      */
     public static SSAccount getFirstAccount(List<SSAccount> pAccounts) {
@@ -207,6 +210,7 @@ public class SSAccountMath {
     /**
      * Returns the last account in the current accounting year.
      *
+     * @param pAccounts
      * @return The last account or null if there is none.
      */
     public static SSAccount getLastAccount(List<SSAccount> pAccounts) {

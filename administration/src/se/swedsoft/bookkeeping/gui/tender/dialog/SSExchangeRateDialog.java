@@ -79,6 +79,8 @@ public class SSExchangeRateDialog extends SSDialog{
      *
      * @param iOwner
      * @param iSale
+     * @param iCompanyCurrency
+     * @param iCurrentCurrency
      * @param pModel
      */
     public static void showDialog(final JDialog iOwner, final SSSale iSale, SSCurrency iCompanyCurrency, SSCurrency iCurrentCurrency, final AbstractTableModel pModel) {

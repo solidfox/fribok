@@ -26,6 +26,7 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
 
     /**
      * Default constructor.
+     * @param iInvoices
      */
     public SSInventoryTableModel(List<SSInventory> iInvoices) {
         super(iInvoices);

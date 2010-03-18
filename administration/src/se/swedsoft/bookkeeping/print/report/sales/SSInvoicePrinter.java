@@ -33,6 +33,8 @@ public class SSInvoicePrinter extends SSPrinter {
 
     /**
      *
+     * @param iInvoice
+     * @param iLocale
      */
     public SSInvoicePrinter(SSInvoice iInvoice, Locale iLocale){
         super();

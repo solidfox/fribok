@@ -57,6 +57,9 @@ public class SSWritableExcelRow {
 
     /**
      *
+     * @param iColumn
+     * @param pValue
+     * @throws jxl.write.WriteException
      */
     public void setString(int iColumn, String pValue) throws WriteException {
         try{
@@ -68,6 +71,10 @@ public class SSWritableExcelRow {
 
     /**
      *
+     * @param iColumn
+     * @param pValue
+     * @param iCellFormat
+     * @throws jxl.write.WriteException
      */
     public void setString(int iColumn, String pValue, CellFormat iCellFormat) throws WriteException {
         try{
@@ -83,6 +90,7 @@ public class SSWritableExcelRow {
      *
      * @param iColumn
      * @param pValue
+     * @throws jxl.write.WriteException
      */
     public void setNumber(int iColumn, java.lang.Number pValue) throws WriteException  {
         try{
@@ -98,6 +106,10 @@ public class SSWritableExcelRow {
     }
     /**
      *
+     * @param iColumn
+     * @param pValue
+     * @param iCellFormat
+     * @throws jxl.write.WriteException
      */
     public void setNumber(int iColumn, java.lang.Number pValue, CellFormat iCellFormat) throws WriteException {
         try{
@@ -112,6 +124,9 @@ public class SSWritableExcelRow {
     }
     /**
      *
+     * @param iColumn
+     * @param pValue
+     * @throws jxl.write.WriteException
      */
     public void setDate(int iColumn, Date pValue) throws WriteException {
         SimpleDateFormat iFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -129,6 +144,10 @@ public class SSWritableExcelRow {
 
     /**
      *
+     * @param iColumn
+     * @param pValue
+     * @param iCellFormat
+     * @throws jxl.write.WriteException
      */
     public void setDate(int iColumn, Date pValue, CellFormat iCellFormat) throws WriteException {
         SimpleDateFormat iFormat = new SimpleDateFormat("yyyy-MM-dd");

@@ -31,6 +31,9 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
 
     /**
      *
+     * @param iInvoices
+     * @param iNumber
+     * @param iDate
      */
     public SSSupplierInvoicejournalPrinter( List<SSSupplierInvoice> iInvoices, Integer iNumber, Date iDate){
         super();

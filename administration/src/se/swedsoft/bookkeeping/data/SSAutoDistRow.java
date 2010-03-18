@@ -60,6 +60,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
 
     /**
      * Default constructor
+     * @param iAccount
      */
     public SSAutoDistRow(SSAccount iAccount) {
         this.iAccount           = iAccount;
@@ -184,6 +185,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
 
     /**
      *
+     * @param iAccounts
      * @return
      */
     public SSAccount getAccount(List<SSAccount> iAccounts ) {
@@ -229,6 +231,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
     }
     /**
      *
+     * @param iResultUnits
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {

@@ -28,6 +28,7 @@ public class SSInvoiceTypeDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSInvoiceTypeDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("invoiceframe.type.title") );
@@ -77,6 +78,7 @@ public class SSInvoiceTypeDialog extends SSDialog {
     /**
      *
      * @param iMainFrame
+     * @return
      */
     public static SSInvoiceType showDialog(final SSMainFrame iMainFrame) {
         SSInvoiceTypeDialog iDialog = new SSInvoiceTypeDialog(iMainFrame);

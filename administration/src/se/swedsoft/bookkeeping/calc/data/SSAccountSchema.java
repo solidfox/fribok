@@ -115,6 +115,8 @@ public class SSAccountSchema implements Serializable {
 
     /**
      *
+     * @param iFile
+     * @return
      */
     private static SSAccountSchema createAccountSchema(File iFile){
         SSAccountSchema iSchema = new SSAccountSchema();
@@ -165,6 +167,7 @@ public class SSAccountSchema implements Serializable {
         /**
          *
          * @param iAttributes
+         * @return
          */
         private SSAccountGroup createGroup(Attributes iAttributes){
             String iId          = iAttributes.getValue("id");

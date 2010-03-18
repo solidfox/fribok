@@ -64,6 +64,7 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
      * Sets the objects to operate on for this table model.
      *
      * @param iObjects The objects to display.
+     * @param iEditing
      */
     public void setObjects(List<SSVoucherRow> iObjects, boolean iEditing ) {
         iReadOnlyCount = iEditing ? iObjects.size() :  0;
@@ -96,6 +97,7 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
 
     /**
      * @param iTable
+     * @param iUsePainter
      */
     public void setupTable(SSTable iTable, boolean iUsePainter) {
         super.setupTable(iTable);

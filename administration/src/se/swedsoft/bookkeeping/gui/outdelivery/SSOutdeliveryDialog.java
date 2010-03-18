@@ -79,6 +79,7 @@ public class SSOutdeliveryDialog {
     /**
      *
      * @param iMainFrame
+     * @param iOutdelivery
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSOutdelivery iOutdelivery, final AbstractTableModel pModel) {
@@ -138,6 +139,7 @@ public class SSOutdeliveryDialog {
     /**
      *
      * @param iMainFrame
+     * @param iCopyFrom
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSOutdelivery iCopyFrom, final AbstractTableModel pModel) {

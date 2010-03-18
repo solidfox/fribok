@@ -114,6 +114,8 @@ public class SSSimpleStatementPrinter extends SSPrinter {
     /**
      *
      * @param group
+     * @param number
+     * @return
      */
     private BigDecimal getValueForGroup(String group, int number){
         Map<SSAccount, BigDecimal> iValues;

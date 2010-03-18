@@ -44,6 +44,8 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
 
     /**
      * Default constructor.
+     * @param number
+     * @param name
      */
     public SSResultUnit(int number, String name) {
         iNumber      = number;

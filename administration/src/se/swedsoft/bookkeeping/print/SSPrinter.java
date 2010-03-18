@@ -62,6 +62,7 @@ public abstract class SSPrinter {
      *
      * @param pName
      * @param pValue
+     * @param toString
      */
     public void addParameter(String pName, Object pValue, boolean toString) {
        iReport.addParameter(pName, pValue == null ? null : pValue.toString());
@@ -299,6 +300,9 @@ public abstract class SSPrinter {
 
     /**
      *
+     * @param iMainFrame
+     * @param iMainFrame
+     * @param iMainFrame
      */
     public void preview(SSMainFrame iMainFrame) {
         iReport.addParameter("title"    , getTitle() );
@@ -310,6 +314,7 @@ public abstract class SSPrinter {
 
     /**
      *
+     * @param iDialog
      */
     public void preview(JDialog iDialog) {
         iReport.addParameter("title"    , getTitle() );
@@ -321,6 +326,8 @@ public abstract class SSPrinter {
 
     /**
      *
+     * @param iMainFrame
+     * @param listener
      */
     public void preview(SSMainFrame iMainFrame, InternalFrameListener listener ) {
         iReport.addParameter("title"    , getTitle() );
@@ -351,19 +358,6 @@ public abstract class SSPrinter {
        });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      *
      * @return  SSReport
@@ -385,15 +379,4 @@ public abstract class SSPrinter {
     public SSDefaultJasperDataSource getDataSource(){
         return iReport.getDataSource();
     }
-
-
-
-
-
-
-
-
-
-
-
 }

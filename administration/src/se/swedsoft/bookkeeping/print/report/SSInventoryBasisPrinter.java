@@ -45,6 +45,7 @@ public class SSInventoryBasisPrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
      */
     public SSInventoryBasisPrinter( Date iDate){
         super();

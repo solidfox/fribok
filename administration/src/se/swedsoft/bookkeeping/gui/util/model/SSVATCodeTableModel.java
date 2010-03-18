@@ -24,6 +24,7 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
 
     /**
      * Default constructor.
+     * @param iVATCodes
      */
     public SSVATCodeTableModel(List<SSVATCode> iVATCodes) {
         super();
@@ -51,6 +52,7 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
 
     /**
      *
+     * @param iVATCodes
      * @return
      */
     public static SSVATCodeTableModel getDropDownModel(List<SSVATCode> iVATCodes){

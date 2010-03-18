@@ -290,6 +290,7 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
 
     /**
      *
+     * @param delete
      */
     /*private void deleteSelectedInvoice() {
         int[] selected = iTable.getSelectedRows();

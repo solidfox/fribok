@@ -85,6 +85,7 @@ public class SIEEntryTransaktion extends SIEEntry {
      * @param iVoucher
      * @param iImporter
      * @param iReader
+     * @param iCurrentYearData
      * @return
      * @throws SSImportException
      */

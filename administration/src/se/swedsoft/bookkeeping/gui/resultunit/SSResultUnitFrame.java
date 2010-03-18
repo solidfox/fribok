@@ -68,6 +68,9 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
 
     /**
      * Default constructor. <P>
+     * @param frame
+     * @param width
+     * @param height
      */
     private SSResultUnitFrame(SSMainFrame frame, int width, int height) {
         super(frame, SSBundle.getBundle().getString("resultunitframe.title"), width, height);
@@ -233,16 +236,9 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         return false;
     }
 
-
-
-
-
-
-
-
-
     /**
      *
+     * @param delete
      */
     private void deleteSelectedResultUnits(List<SSNewResultUnit> delete) {
         if (delete.isEmpty()) {

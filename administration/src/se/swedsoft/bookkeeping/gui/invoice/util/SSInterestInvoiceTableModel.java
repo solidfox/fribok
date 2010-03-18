@@ -204,6 +204,8 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      *
      * Sets the "interest invoiced" flag on the invoices to true.
      *
+     * @param iDescription
+     * @param iAccount
      * @return the interest invoices
      */
     public List<SSInvoice> getInterestInvoices(String iDescription, SSAccount iAccount){

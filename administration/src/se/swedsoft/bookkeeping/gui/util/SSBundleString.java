@@ -82,6 +82,7 @@ public class SSBundleString {
     /**
      *
      * @param pBundleName
+     * @param pFromat
      * @return
      */
     public static SSBundleString getString(String pBundleName, Object ... pFromat){

@@ -89,6 +89,8 @@ public class SSAccountGroupMath {
     /**
      * Returns a List of accounts that are result accounts.
      *
+     * @param pAccounts
+     * @param pGroup
      * @return A List.
      */
     @Deprecated
@@ -105,6 +107,7 @@ public class SSAccountGroupMath {
      /**
      * Returns a List of accounts that are result accounts.
      *
+     * @param iAccounts
      * @return A List.
      */
      @Deprecated

@@ -109,6 +109,7 @@ public class SSProductExporter {
     /**
      *
      * @param pSheet
+     * @throws jxl.write.WriteException
      */
     private void writeSheet(SSWritableExcelSheet pSheet ) throws WriteException {
         List<SSWritableExcelRow> iRows = pSheet.getRows( iProducts.size() + 1  );

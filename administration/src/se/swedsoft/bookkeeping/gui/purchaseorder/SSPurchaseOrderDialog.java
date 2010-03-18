@@ -96,6 +96,7 @@ public class SSPurchaseOrderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iPurchaseOrder
      * @param iSelected
      * @param pModel
      */
@@ -166,6 +167,7 @@ public class SSPurchaseOrderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iPurchaseOrder
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSPurchaseOrder iPurchaseOrder, final AbstractTableModel pModel) {
@@ -228,6 +230,7 @@ public class SSPurchaseOrderDialog {
     /**
      *
      * @param iMainFrame
+     * @param iPurchaseOrder
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSPurchaseOrder iPurchaseOrder, final AbstractTableModel pModel) {

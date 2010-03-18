@@ -43,6 +43,10 @@ public class SSVATUtil {
 
     /**
      * Adds a new account to the required lists
+     * @param account
+     * @param accounts
+     * @param creditMinusDebetSum
+     * @param debetMinusCreditSum
      */
     private static void addAccount(SSAccount account, List<SSAccount>accounts, Map<SSAccount, BigDecimal> creditMinusDebetSum, Map<SSAccount, BigDecimal> debetMinusCreditSum){
         accounts.add(account);

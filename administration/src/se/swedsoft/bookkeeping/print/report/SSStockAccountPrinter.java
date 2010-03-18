@@ -51,6 +51,7 @@ public class SSStockAccountPrinter extends SSPrinter {
 
     /**
      *
+     * @param iDate
      */
     public SSStockAccountPrinter( Date iDate){
         super();

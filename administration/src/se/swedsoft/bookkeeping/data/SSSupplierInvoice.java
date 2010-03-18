@@ -409,6 +409,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
 
     /**
      *
+     * @param iSuppliers
      * @return
      */
     public SSSupplier getSupplier(List<SSSupplier> iSuppliers) {

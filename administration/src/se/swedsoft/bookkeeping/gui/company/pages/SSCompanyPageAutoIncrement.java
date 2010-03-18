@@ -31,7 +31,8 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
     private JSpinner iPurchaseOrder;
 
     /**
-     * 
+     *
+     * @param iDialog
      */
     public SSCompanyPageAutoIncrement(JDialog iDialog) {
         super(iDialog);

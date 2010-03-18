@@ -13,6 +13,7 @@ public class BgMaxLine {
     /**
      *
      * @param iLine
+     * @throws RuntimeException
      */
     public BgMaxLine(String iLine) throws RuntimeException{
         if(iLine.length()!= 80)

@@ -47,6 +47,7 @@ public class SSOutpaymentRow implements SSTableSearchable, Serializable {
 
     /**
      * Default constructor
+     * @param iInvoice
      */
     public SSOutpaymentRow(SSSupplierInvoice iInvoice) {
         setSupplierInvoice(iInvoice);

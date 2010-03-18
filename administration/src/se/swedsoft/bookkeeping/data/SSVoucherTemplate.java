@@ -289,6 +289,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
         /**
          *
+         * @param iAccounts
          * @return
          */
         public SSAccount getAccount(List<SSAccount> iAccounts ) {

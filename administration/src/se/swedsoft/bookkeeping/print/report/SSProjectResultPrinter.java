@@ -20,6 +20,9 @@ public class SSProjectResultPrinter extends SSResultPrinter {
 
     /**
      *
+     * @param pFrom
+     * @param pTo
+     * @param pProject
      */
     public SSProjectResultPrinter(Date pFrom, Date pTo,  SSNewProject pProject) {
         super(pFrom, pTo, false, false);
@@ -31,6 +34,9 @@ public class SSProjectResultPrinter extends SSResultPrinter {
 
     /**
      * @param pYearData The year
+     * @param pFrom
+     * @param pTo
+     * @param pProject
      */
     public SSProjectResultPrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo,  SSNewProject pProject) {
         super(pYearData, pFrom, pTo, false, false);

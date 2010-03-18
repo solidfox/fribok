@@ -27,6 +27,7 @@ public class SSOrderCellEditor extends SSTableComboBox.CellEditor<SSOrder> {
 
     /**
      *
+     * @param iInvoices
      */
     public SSOrderCellEditor(List<SSInvoice> iInvoices) {
         super();

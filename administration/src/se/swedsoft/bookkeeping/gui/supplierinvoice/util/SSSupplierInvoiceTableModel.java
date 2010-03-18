@@ -29,6 +29,7 @@ public class SSSupplierInvoiceTableModel extends SSTableModel<SSSupplierInvoice>
 
     /**
      * Default constructor.
+     * @param iSupplierInvoices
      */
     public SSSupplierInvoiceTableModel(List<SSSupplierInvoice> iSupplierInvoices) {
         super( iSupplierInvoices );

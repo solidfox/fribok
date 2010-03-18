@@ -274,6 +274,7 @@ public class SSCustomerRevenuePrinter extends SSPrinter {
         /**
          *
          * @param pCustomer
+         * @param iMap
          */
         public void setCustomer(SSCustomer pCustomer, Map<SSMonth, BigDecimal> iMap) {
             iCustomer = pCustomer;

@@ -59,6 +59,7 @@ public class SSBudgetMainPanel {
 
     /**
      * Default constructor.
+     * @param pBudget
      */
     public SSBudgetMainPanel(SSBudget pBudget) {
         iBudget            = pBudget;

@@ -35,6 +35,10 @@ public class SSResultPrinter extends SSPrinter {
 
     /**
      *
+     * @param pFrom
+     * @param pTo
+     * @param pShowBudget
+     * @param pShowPrevYear
      */
     public SSResultPrinter(Date pFrom, Date pTo, Boolean pShowBudget, Boolean pShowPrevYear){
         this( SSDB.getInstance().getCurrentYear(), pFrom, pTo, pShowBudget, pShowPrevYear );
@@ -43,6 +47,10 @@ public class SSResultPrinter extends SSPrinter {
     /**
      *
      * @param pYearData The year
+     * @param pFrom
+     * @param pTo
+     * @param pShowBudget
+     * @param pShowPrevYear
      */
     public SSResultPrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo, Boolean pShowBudget, Boolean pShowPrevYear){
         super();
@@ -71,12 +79,12 @@ public class SSResultPrinter extends SSPrinter {
         return bundle.getString("resultreport.title");
     }
 
-
-
     private int iLastVisibleSummaryGroup;
 
     /**
      *
+     * @param iRow
+     * @param iLastVisibleRow
      * @return
      */
     private int getSummaryGroup(ResultRow iRow, ResultRow iLastVisibleRow){

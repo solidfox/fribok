@@ -31,6 +31,9 @@ public class SSCreditinvoicejournalPrinter extends SSPrinter {
 
     /**
      *
+     * @param iCreditInvoices
+     * @param iNumber
+     * @param iDate
      */
     public SSCreditinvoicejournalPrinter( List<SSCreditInvoice> iCreditInvoices, Integer iNumber, Date iDate){
         super();

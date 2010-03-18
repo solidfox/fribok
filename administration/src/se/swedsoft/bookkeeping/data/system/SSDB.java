@@ -119,6 +119,7 @@ public class SSDB {
      *
      * @param pConnection
      *
+     * @throws java.sql.SQLException
      */
     public void startupLocal(Connection pConnection) throws SQLException {
         PreparedStatement iStatement;
@@ -6434,6 +6435,7 @@ public class SSDB {
     }
     /**
      *
+     * @param iFile
      */
     private void LoadYear(File iFile) {
 

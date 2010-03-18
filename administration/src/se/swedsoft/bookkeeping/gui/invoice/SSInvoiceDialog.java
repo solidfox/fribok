@@ -92,6 +92,7 @@ public class SSInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iInvoice
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSInvoice iInvoice, final SSInvoiceTableModel pModel) {
@@ -153,6 +154,7 @@ public class SSInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iInvoice
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSInvoice iInvoice, final SSInvoiceTableModel pModel) {
@@ -225,6 +227,8 @@ public class SSInvoiceDialog {
     /**
      *
      * @param iMainFrame
+     * @param iInvoice
+     * @param iOrders
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, SSInvoice iInvoice, final List<SSOrder> iOrders, final AbstractTableModel pModel) {

@@ -79,6 +79,7 @@ public class SSLocalizedTextField extends JPanel {
     /**
      *
      * @param iLocale
+     * @param iDescription
      */
     public void addLocale(Locale iLocale, String iDescription){
         addLocale(iLocale,  iDescription,  null);
@@ -87,6 +88,8 @@ public class SSLocalizedTextField extends JPanel {
     /**
      *
      * @param iLocale
+     * @param iDescription
+     * @param iValue
      */
     public void addLocale(Locale iLocale, String iDescription, String iValue){
         iLocales.add(iLocale);
@@ -138,6 +141,7 @@ public class SSLocalizedTextField extends JPanel {
     /**
      * 
      * @param iLocale
+     * @param value
      * @param iLocale
      */
     public void setValue(Locale iLocale, String value) {

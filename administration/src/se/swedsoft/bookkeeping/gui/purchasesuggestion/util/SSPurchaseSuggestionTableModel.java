@@ -96,6 +96,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
 
     /**
      *  Vald
+     * @return
      */
     public SSTableColumn<Entry> getSelectionColumn(){
         return new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.1")) {

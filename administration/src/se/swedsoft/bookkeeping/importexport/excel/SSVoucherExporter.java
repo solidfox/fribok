@@ -62,6 +62,7 @@ public class SSVoucherExporter {
      *
      * @throws java.io.IOException
      * @throws se.swedsoft.bookkeeping.importexport.util.SSImportException
+     * @throws se.swedsoft.bookkeeping.importexport.util.SSExportException
      */
     public void export()  throws IOException, SSExportException {
         WorkbookSettings iSettings = new WorkbookSettings();
@@ -103,6 +104,7 @@ public class SSVoucherExporter {
     /**
      *
      * @param pSheet
+     * @throws jxl.write.WriteException
      */
     private void writeVouchers(SSWritableExcelSheet pSheet ) throws WriteException {
         List<SSWritableExcelRow> iRows = pSheet.getRows( getNumRows(iVouchers) + 4  );

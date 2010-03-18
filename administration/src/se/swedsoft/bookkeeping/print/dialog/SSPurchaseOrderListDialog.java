@@ -46,6 +46,7 @@ public class SSPurchaseOrderListDialog extends SSDialog {
 
     /**
      *
+     * @param iMainFrame
      */
     public SSPurchaseOrderListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("purchaseorderlistreport.dialog.title") );
