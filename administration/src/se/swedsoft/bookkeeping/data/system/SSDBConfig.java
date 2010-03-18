@@ -23,7 +23,7 @@ import java.util.Date;
  */
 public class SSDBConfig {
 
-    private final static File CONFIG_FILE = new File(SSPath.get(SSPath.APP_BASE), "database.config");
+    private static final File CONFIG_FILE = new File(SSPath.get(SSPath.APP_BASE), "database.config");
 
     private static String iClientKey;
 

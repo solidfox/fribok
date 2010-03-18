@@ -10,7 +10,7 @@ import java.util.List;
  * Time: 09:39:32
  */
 public class SSBackupDatabase {
-    private final static File iFile = new File (SSPath.get(SSPath.USER_DATA), "backup.history");
+    private static final File iFile = new File (SSPath.get(SSPath.USER_DATA), "backup.history");
 
     private static SSBackupDatabase cInstance;
 

@@ -83,7 +83,7 @@ public class SSConfig implements Serializable {
     /**
      * Creates a new database
      */
-    private synchronized static void newConfig()  {
+    private static synchronized void newConfig()  {
         cInstance = new SSConfig();
     }
 
@@ -91,7 +91,7 @@ public class SSConfig implements Serializable {
      * Loads the database
      *
      */
-    private synchronized static void loadConfig()  {
+    private static synchronized void loadConfig()  {
         ObjectInputStream iObjectInputStream = null;
         try {
             iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(CONFIG_FILE)));
@@ -114,7 +114,7 @@ public class SSConfig implements Serializable {
      * Store the database
      *
      */
-    private synchronized static void storeConfig()  {
+    private static synchronized void storeConfig()  {
         try {
             ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(CONFIG_FILE)));
 

@@ -12,10 +12,10 @@ public class SSImageFilter extends SSFileFilter {
 
     public static ResourceBundle bundle = SSBundle.getBundle();
 
-    public final static String jpeg = "jpeg";
-    public final static String jpg = "jpg";
-    public final static String gif = "gif";
-    public final static String png = "png";
+    public static final String jpeg = "jpeg";
+    public static final String jpg = "jpg";
+    public static final String gif = "gif";
+    public static final String png = "png";
 
     public SSImageFilter(){
         super();
