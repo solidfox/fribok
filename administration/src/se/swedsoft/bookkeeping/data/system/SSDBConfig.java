@@ -195,7 +195,10 @@ public class SSDBConfig {
             //  parser.set(false)
             iParser.parse( new InputSource(new FileInputStream( CONFIG_FILE )) );
 
-            String iServer = null, iCompany = null, iYear = null, iKey = null;
+            String iServer = null;
+            String iCompany = null;
+            String iYear = null;
+            String iKey = null;
 
             if(iParser.getDocument().getDocumentElement().hasAttribute("server")){
                 iServer  =  iParser.getDocument().getDocumentElement().getAttribute("server");

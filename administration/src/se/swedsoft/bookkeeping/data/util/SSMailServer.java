@@ -13,9 +13,9 @@ import java.net.URISyntaxException;
  */
 public class SSMailServer implements Serializable
 {
-    private final String name, 
-            username,
-            password;
+    private final String name;
+    private final String username;
+    private final String password;
     
     private final URI address;
     

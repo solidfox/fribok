@@ -7,7 +7,11 @@ package se.swedsoft.bookkeeping.data.util;
  */
 public class SSMailMessage
 {
-    private final String to, subject, fileName, from, bodyText;
+    private final String to;
+    private final String subject;
+    private final String fileName;
+    private final String from;
+    private final String bodyText;
 
     /**
      * @param from
