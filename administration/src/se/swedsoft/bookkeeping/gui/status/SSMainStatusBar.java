@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.DateFormat;
 
 /**
  * User: Andreas Lago
@@ -127,7 +128,14 @@ public class SSMainStatusBar {
             iYearLabel.setText(SSBundle.getBundle().getString("mainframe.status.noyear"));
             iYearLabel.setForeground(Color.RED);
         } else {
-            iYearLabel.setText(iAccountingYear.toString());
+            DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
+            StringBuilder year = new StringBuilder();
+            year.append(df.format(iAccountingYear.getFrom()));
+            year.append(' ');
+            year.append( SSBundle.getBundle().getString("date.seperator") );
+            year.append(' ');
+            year.append(df.format(iAccountingYear.getTo()));
+            iYearLabel.setText(year.toString());
             iYearLabel.setForeground(Color.BLACK);
         }
     }
