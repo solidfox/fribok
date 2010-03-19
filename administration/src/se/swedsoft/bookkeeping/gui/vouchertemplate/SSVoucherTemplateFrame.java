@@ -71,26 +71,22 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
         JToolBar iToolBar = new JToolBar();
 
 
-        SSButton iButton;
-
-
-
         // Importera
         // ***************************
-        iButton = new SSButton("ICON_IMPORT", "vouchertemplateframe.importbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_IMPORT", "vouchertemplateframe.importbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
-                if( iFilechooser.showOpenDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    SSVoucherTemplateImporter iImporter = new SSVoucherTemplateImporter( iFilechooser.getSelectedFile() );
+                if (iFilechooser.showOpenDialog(getMainFrame()) == JFileChooser.APPROVE_OPTION) {
+                    SSVoucherTemplateImporter iImporter = new SSVoucherTemplateImporter(iFilechooser.getSelectedFile());
 
                     try {
                         iImporter.Import();
 
                     } catch (IOException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "", ex.getLocalizedMessage());
                     } catch (SSImportException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "", ex.getLocalizedMessage());
                     }
                     iModel.fireTableDataChanged();
                 }

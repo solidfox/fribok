@@ -97,21 +97,19 @@ public class SSBackupFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Restore from selected backup
         // ***************************
-        iButton = new SSButton("ICON_IMPORT", "backupframe.restorebutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_IMPORT", "backupframe.restorebutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSBackup iBackup = getSelected();
 
                 // If nothing selected, return
-                if(iBackup == null){
-                    new SSErrorDialog( getMainFrame(), "backupframe.selectone" );
+                if (iBackup == null) {
+                    new SSErrorDialog(getMainFrame(), "backupframe.selectone");
                     return;
                 }
 
-                if(! iBackup.exists() ){
+                if (!iBackup.exists()) {
                     iDatabase.getBackups().remove(iBackup);
                     iDatabase.notifyUpdated();
 
@@ -119,7 +117,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
 
                     return;
                 }
-                try{
+                try {
                     SSBackupFactory.restoreBackup(iBackup.getFilename());
 
                     SSDB.getInstance().setCurrentCompany(null);
@@ -127,7 +125,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
                     iModel.fireTableDataChanged();
                     SSFrameManager.getInstance().close();
 
-                    SSCompanyFrame.showFrame(getMainFrame(),500,300);
+                    SSCompanyFrame.showFrame(getMainFrame(), 500, 300);
                 } catch (SSException ex) {
                     new SSErrorDialog(getMainFrame(), "exceptiondialog", ex.getLocalizedMessage());
                 }

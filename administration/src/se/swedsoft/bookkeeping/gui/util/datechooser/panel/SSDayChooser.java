@@ -219,7 +219,6 @@ public class SSDayChooser implements ActionListener {
         //int iStartDay =  ;
         // Reset to the first day in the fist week of the month
        // iCalendar.add(Calendar.DAY_OF_YEAR, iCalendar.getFirstDayOfWeek() - iCalendar.get(Calendar.DAY_OF_WEEK) );
-        int iIndex = 0;
         int iStart  = iCalendar.get(Calendar.DAY_OF_WEEK) - iCalendar.getFirstDayOfWeek() ;
 
         if(iStart < 0) iStart = iStart + 7;
@@ -228,6 +227,7 @@ public class SSDayChooser implements ActionListener {
 
 
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.LONG);
+        int iIndex = 0;
         for(DayButton iButton: iDayButtons){
             int iDay = iCalendar.get(Calendar.DAY_OF_MONTH);
 

@@ -84,12 +84,9 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
-        JMenuItem iMenuItem;
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "creditinvoiceframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "creditinvoiceframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCreditInvoiceDialog.newDialog(getMainFrame(), iModel);
             }
@@ -156,7 +153,7 @@ public class SSCreditInvoiceFrame extends SSDefaultTableFrame {
         // Print
         // ***************************
         SSMenuButton iButton2 = new SSMenuButton("ICON_PRINT", "creditinvoiceframe.printbutton");
-        iMenuItem = iButton2.add("creditinvoiceframe.print.creditinvoice", new ActionListener(){
+        JMenuItem iMenuItem = iButton2.add("creditinvoiceframe.print.creditinvoice", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSCreditInvoice> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getCreditInvoices(iSelected);

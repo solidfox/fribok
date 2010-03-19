@@ -44,20 +44,19 @@ public class SSCompanyConfig {
     }
 
     public static SSSystemCompany openLastOpenCompany() {
-        SSSystemCompany iSystemCompany = null;
-        SSSystemYear iSystemYear = null;
         File iFile = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
         if(!iFile.exists())
             return null;
 
         FileInputStream fis = null;
         ObjectInputStream ois = null;
+        SSSystemCompany iSystemCompany = null;
         try {
             fis = new FileInputStream(iFile);
             ois = new ObjectInputStream(fis);
 
             iSystemCompany = (SSSystemCompany) ois.readObject();
-            iSystemYear = (SSSystemYear) ois.readObject();
+            SSSystemYear iSystemYear = (SSSystemYear) ois.readObject();
             if(iSystemCompany != null && iSystemYear != null) {
                 for (SSSystemYear iCurrent : iSystemCompany.getYears()) {
                     if(iCurrent.getId().equals(iSystemYear.getId()))
@@ -85,22 +84,16 @@ public class SSCompanyConfig {
     }
 
     public static void saveCompanySetting(SSNewCompany iCompany) {
-        SSSystemCompany iSystemCompany;
-        SSSystemYear iSystemYear;
         if(iCompany == null)
             return;
         
         File iFile = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
 
-        FileOutputStream fos = null;
-        FileInputStream fis = null;
-
-        ObjectOutputStream oos =null;
-        ObjectInputStream ois = null;
-
         Collection<Object> iVector = new Vector<Object>();
         iVector.add(iCompany);
         //iVector.add(iCompany.getCurrentYear());
+        ObjectInputStream ois = null;
+        FileInputStream fis = null;
         try {
             if(!iFile.exists())
                 return;
@@ -108,8 +101,8 @@ public class SSCompanyConfig {
             fis = new FileInputStream(iFile);
             ois = new ObjectInputStream(fis);
             while(true){
-                iSystemCompany = (SSSystemCompany) ois.readObject();
-                iSystemYear = (SSSystemYear) ois.readObject();
+                SSSystemCompany iSystemCompany = (SSSystemCompany) ois.readObject();
+                SSSystemYear iSystemYear = (SSSystemYear) ois.readObject();
                 if(iSystemCompany != null){
                     if(!iSystemCompany.getId().equals(iCompany.getId())){
                         iVector.add(iSystemCompany);
@@ -126,8 +119,8 @@ public class SSCompanyConfig {
             try {
                 if(iFile.exists())
                     iFile.delete();
-                fos = new FileOutputStream(iFile);
-                oos = new ObjectOutputStream(fos);
+                FileOutputStream fos = new FileOutputStream(iFile);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
                 for(Object iObject : iVector){
                     oos.writeObject(iObject);
                 }
@@ -144,18 +137,18 @@ public class SSCompanyConfig {
     }
 
     public static SSSystemCompany openCompanySetting(SSSystemCompany iCompany) {
-        SSSystemCompany iSystemCompany = null;
-        SSSystemYear iSystemYear = null;
         File iFile = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
         if(!iFile.exists())
             return null;
 
         FileInputStream fis = null;
         ObjectInputStream ois = null;
+        SSSystemCompany iSystemCompany = null;
         try {
             fis = new FileInputStream(iFile);
             ois = new ObjectInputStream(fis);
 
+            SSSystemYear iSystemYear = null;
             while(true){
                 iSystemCompany = (SSSystemCompany) ois.readObject();
                 iSystemYear = (SSSystemYear) ois.readObject();

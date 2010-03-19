@@ -84,13 +84,9 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
-        SSMenuButton<SSButton> iMenuButton;
-
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "outpaymentframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "outpaymentframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutpaymentDialog.newDialog(getMainFrame(), iModel);
             }
@@ -135,7 +131,7 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "outpaymentframe.printbutton");
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "outpaymentframe.printbutton");
         iMenuButton.add("outpaymentframe.print.outaymentlist", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 SSReportFactory.OutpaymentList(getMainFrame());

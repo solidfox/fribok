@@ -95,11 +95,9 @@ public class SSAccountPlanFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "accountplanframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "accountplanframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 updateFrame();
                 SSAccountPlanDialog.newDialog(getMainFrame(), iModel);

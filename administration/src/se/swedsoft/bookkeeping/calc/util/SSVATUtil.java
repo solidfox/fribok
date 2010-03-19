@@ -80,13 +80,13 @@ public class SSVATUtil {
 
 
         SSVoucher    iVoucher = new SSVoucher();
-        SSVoucherRow iRow;
 
         iVoucher.doAutoIncrecement();
         iVoucher.setDescription( iDescription );
         iVoucher.setDate(iDateTo);
 
         BigDecimal iSum        = new BigDecimal(0);
+        SSVoucherRow iRow;
         for (SSAccount iAccount : iAccounts) {
 
             BigDecimal iValue = iCreditMinusDebetSum.get(iAccount);

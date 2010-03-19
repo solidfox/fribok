@@ -244,8 +244,8 @@ public class SIEIterator  implements Iterator<String> {
      */
     public Integer nextInteger() {
         String s = next();
-        Integer iNumber = null;
         try{
+            Integer iNumber = null;
             if (s.length() > 0) {
                 iNumber = new Integer(s);
             }

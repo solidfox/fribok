@@ -100,9 +100,9 @@ public class SSSupplierImporter {
      * @param iColumns
      */
     private void getColumnIndexes(SSExcelRow iColumns) {
-        int iIndex = 0;
 
         this.iColumns.clear();
+        int iIndex = 0;
         for (SSExcelCell iColumn : iColumns.getCells()) {
             String iName = iColumn.getString();
 

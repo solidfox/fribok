@@ -100,11 +100,9 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Ny verifikation
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "voucherframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "voucherframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSVoucherDialog.newDialog(getMainFrame(), iModel);
             }
@@ -417,11 +415,11 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
      */
     private void printVouchers() {
         final SSVoucherListPrinter iPrinter;
-        List<SSVoucher> iVouchers;
         if (iTable.getSelectedRowCount() > 0) {
 
             SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "voucherframe.print");
 
+            List<SSVoucher> iVouchers;
             switch(iDialog.getResponce() ){
                 case JOptionPane.YES_OPTION:
                     iVouchers = getVouchers(iModel.getObjects(iTable.getSelectedRows()));

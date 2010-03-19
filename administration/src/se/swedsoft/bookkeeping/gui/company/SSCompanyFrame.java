@@ -91,11 +91,9 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Open
         // ***************************
-        iButton = new SSButton("ICON_OPENITEM", "companyframe.openbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_OPENITEM", "companyframe.openbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openSelectedCompany();
             }

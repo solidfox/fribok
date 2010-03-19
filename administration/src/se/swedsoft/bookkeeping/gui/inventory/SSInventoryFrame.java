@@ -82,15 +82,11 @@ public class SSInventoryFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
-        SSMenuButton<SSButton> iMenuButton;
-
         JMenuItem iMenuItem;
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "inventortyframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "inventortyframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInventoryDialog.newDialog(getMainFrame(), iModel);
             }
@@ -148,7 +144,7 @@ public class SSInventoryFrame extends SSDefaultTableFrame {
 
           // Print
         // ***************************
-        iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "inventortyframe.printbutton");
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "inventortyframe.printbutton");
         iMenuButton.add("inventortyframe.print.list", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 SSReportFactory.InventoryList(getMainFrame());

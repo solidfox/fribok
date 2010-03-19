@@ -68,7 +68,6 @@ public class SSSupplierPaymentImporter {
         List<SSOutpayment> iOutpayments = new LinkedList<SSOutpayment>();
 
         SSOutpayment iOutpayment = null;
-        SSSupplierInvoice iSupplierInvoice;
 
         for (LBinPost iPost : iPosts) {
             if(iPost instanceof LBinPostTK11){
@@ -89,6 +88,7 @@ public class SSSupplierPaymentImporter {
 
             if(iOutpayment == null) continue;
 
+            SSSupplierInvoice iSupplierInvoice;
             if(iPost instanceof LBinPostTK14){
                 LBinPostTK14 iPostTK14 = (LBinPostTK14) iPost;
 

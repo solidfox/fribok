@@ -111,7 +111,6 @@ public class SSVATControl2007Printer extends SSPrinter {
         List<SSAccount> iAccounts = SSAccountMath.getAccountsByVATCode( SSDB.getInstance().getAccounts(), "U1", "U2", "U3", "UVL", "UEU", "UTFU", "U1MI", "U2MI", "U3MI", "I", "IVL");
 
         SSVoucher    iVoucher = new SSVoucher();
-        SSVoucherRow iRow;
 
         iVoucher.doAutoIncrecement();
         iVoucher.setDescription( iDescription );
@@ -119,6 +118,7 @@ public class SSVATControl2007Printer extends SSPrinter {
 
         BigDecimal iSum        = new BigDecimal(0);
         BigDecimal iRoundedSum = new BigDecimal(0);
+        SSVoucherRow iRow;
         for (SSAccount iAccount : iAccounts) {
 
             BigDecimal iValue = iCreditMinusDebetSum.get(iAccount);

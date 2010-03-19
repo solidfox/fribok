@@ -102,12 +102,9 @@ public class SSOrderFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
-        JMenuItem iMenuItem;
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "orderframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "orderframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOrderDialog.newDialog(getMainFrame(), iModel);
             }
@@ -322,9 +319,9 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         // ***************************
         iButton = new SSButton("ICON_EXPORT", "orderframe.exportbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                List<SSOrder> iItems;
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);
+                List<SSOrder> iItems;
                 if( iSelected != null) {
                     int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("orderframe.exportallorselected"));
                     switch(select){
@@ -358,7 +355,7 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         // Print
         // ***************************
         iButton2 = new SSMenuButton("ICON_PRINT", "orderframe.printbutton");
-        iMenuItem = iButton2.add("orderframe.print.orderreport", new ActionListener(){
+        JMenuItem iMenuItem = iButton2.add("orderframe.print.orderreport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getOrders(iSelected);

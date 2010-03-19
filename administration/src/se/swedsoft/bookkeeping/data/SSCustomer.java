@@ -689,7 +689,6 @@ public class SSCustomer implements Serializable, SSTableSearchable {
 
     public BigDecimal getCustomerRevenueForMonth(SSMonth iMonth) {
         Double iInvoiceSum = 0.0;
-        Double iCreditInvoiceSum = 0.0;
 
         for (SSInvoice iInvoice : SSDB.getInstance().getInvoices()) {
             if(iMonth.isDateInMonth(iInvoice.getDate())){
@@ -702,6 +701,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
             }
         }
 
+        Double iCreditInvoiceSum = 0.0;
         for (SSCreditInvoice iCreditInvoice : SSDB.getInstance().getCreditInvoices()) {
             if(iMonth.isDateInMonth(iCreditInvoice.getDate())){
                 if(iCreditInvoice.getCustomerNr() != null){

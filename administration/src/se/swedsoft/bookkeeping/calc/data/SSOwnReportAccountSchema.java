@@ -38,7 +38,6 @@ public class SSOwnReportAccountSchema {
         SSOwnReportAccountSchema iSchema = new SSOwnReportAccountSchema();
 
         SSOwnReportAccountGroup iHeading1Group = new SSOwnReportAccountGroup();
-        SSOwnReportAccountGroup iHeading2Group;
 
         Integer iId1 = 0;
         Integer iId2 = 0;
@@ -56,7 +55,7 @@ public class SSOwnReportAccountSchema {
             }
             else if(iOwnReportRow.getType() == SSHeadingType.HEADING2){
                 iId2++;
-                iHeading2Group = new SSOwnReportAccountGroup();
+                SSOwnReportAccountGroup iHeading2Group = new SSOwnReportAccountGroup();
                 iHeading2Group.setId(iId2);
                 iHeading2Group.setName(iOwnReportRow.getHeading());
                 List<SSAccount> iAccounts = new LinkedList<SSAccount>();

@@ -105,9 +105,9 @@ public class SSProductImporter {
      * @param iColumns
      */
     private void getColumnIndexes(SSExcelRow iColumns) {
-        int iIndex = 0;
 
         this.iColumns.clear();
+        int iIndex = 0;
         for (SSExcelCell iColumn : iColumns.getCells()) {
             String iName = iColumn.getString();
 
@@ -251,7 +251,6 @@ public class SSProductImporter {
 
 
     public void doXMLImport() throws SSImportException{
-        SSProduct iProduct;
         List<SSProduct> iProducts = new LinkedList<SSProduct>();
         try {
             DocumentBuilderFactory iDocBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -270,7 +269,7 @@ public class SSProductImporter {
             }
 
             for (int i = 0; i < iProductList.getLength() ; i++) {
-                iProduct = new SSProduct();
+                SSProduct iProduct = new SSProduct();
 
                 Node iProductNode = iProductList.item(i);
                 if(iProductNode.getNodeType() == Node.ELEMENT_NODE){

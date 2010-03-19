@@ -35,21 +35,16 @@ public class SSOrderExporter {
 
 
     public void doExport() {
-        Element iElement;
-        Element iSubElement;
-        Element iRoot2;
-        Element iSubElement2;
-        Node iNode;
 
         Document iXmlDoc= new DocumentImpl();
         Element iRoot = iXmlDoc.createElement("Orders");
 
         for (SSOrder iOrder : iItems) {
-            iElement = iXmlDoc.createElementNS(null, "Order");
+            Element iElement = iXmlDoc.createElementNS(null, "Order");
 
-            iSubElement = iXmlDoc.createElementNS(null,"SellerOrderNo");
+            Element iSubElement = iXmlDoc.createElementNS(null, "SellerOrderNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iOrder.getNumber() == null ? "" : iOrder.getNumber().toString());
+            Node iNode = iXmlDoc.createTextNode(iOrder.getNumber() == null ? "" : iOrder.getNumber().toString());
             iSubElement.appendChild(iNode);
 
             iSubElement = iXmlDoc.createElementNS(null,"OrderDate");
@@ -228,12 +223,12 @@ public class SSOrderExporter {
             iNode = iXmlDoc.createTextNode(iOrder.getDeliveryAddress() == null ? "" : iOrder.getDeliveryAddress().getCountry());
             iSubElement.appendChild(iNode);
 
-            iRoot2 = iXmlDoc.createElement("Detail");
+            Element iRoot2 = iXmlDoc.createElement("Detail");
 
             for (SSSaleRow iRow : iOrder.getRows()) {
                 iSubElement = iXmlDoc.createElementNS(null,"ArticleRow");
 
-                iSubElement2 = iXmlDoc.createElementNS(null,"SellerArticleNo");
+                Element iSubElement2 = iXmlDoc.createElementNS(null, "SellerArticleNo");
                 iNode = iXmlDoc.createTextNode(iRow.getProductNr());
                 iSubElement2.appendChild(iNode);
                 iSubElement.appendChild(iSubElement2);

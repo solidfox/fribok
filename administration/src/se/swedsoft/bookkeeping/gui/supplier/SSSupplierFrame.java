@@ -94,12 +94,10 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "supplierframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "supplierframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplierDialog.newDialog(getMainFrame(), iModel);
             }
@@ -363,7 +361,6 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
 
     private void SupplierRevenueReport() {
-        final SSSupplierRevenuePrinter iPrinter;
         List<SSSupplier> iSuppliers;
         if (iTable.getSelectedRowCount() > 0) {
 
@@ -399,7 +396,7 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         final Date iFrom = iDialog.getFrom();
         final Date iTo   = iDialog.getTo();
 
-        iPrinter = new SSSupplierRevenuePrinter(iSuppliers,iFrom,iTo);
+        final SSSupplierRevenuePrinter iPrinter = new SSSupplierRevenuePrinter(iSuppliers, iFrom, iTo);
 
         SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
             public void run() {

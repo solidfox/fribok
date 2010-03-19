@@ -187,19 +187,16 @@ public class SSCustomerExporter {
     }
 
     public void doXMLExport() {
-        Element iElement;
-        Element iSubElement;
-        Node iNode;
 
         Document iXmlDoc= new DocumentImpl();
         Element iRoot = iXmlDoc.createElement("Customers");
 
         for (SSCustomer iCustomer : iCustomers) {
-            iElement = iXmlDoc.createElementNS(null, "Customer");
+            Element iElement = iXmlDoc.createElementNS(null, "Customer");
 
-            iSubElement = iXmlDoc.createElementNS(null,"CustomerNo");
+            Element iSubElement = iXmlDoc.createElementNS(null, "CustomerNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getNumber() == null ? "" : iCustomer.getNumber());
+            Node iNode = iXmlDoc.createTextNode(iCustomer.getNumber() == null ? "" : iCustomer.getNumber());
             iSubElement.appendChild(iNode);
 
             iSubElement = iXmlDoc.createElementNS(null,"CustomerName");

@@ -239,10 +239,10 @@ public class SSDBUtils {
         BufferedInputStream iBufferedInputStream = null;
         ObjectInputStream iObjectInputStream = null;
         try {
-            Object iObject = null;
             fis = new FileInputStream(iFile);
             iBufferedInputStream = new BufferedInputStream(fis);
             iObjectInputStream = new SSObjectInputStream(iBufferedInputStream);
+            Object iObject = null;
             try {
                 iObject = iObjectInputStream.readObject();
             } catch (ClassNotFoundException ex) {

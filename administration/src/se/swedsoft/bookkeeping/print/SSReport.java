@@ -212,13 +212,6 @@ public class SSReport {
         List<JRGroup>    theGroups    = new LinkedList<JRGroup>();
 
         JRBand iPageHeader   = null;
-        JRBand iPageFooter   = null;
-        JRBand iColumnHeader = null;
-        JRBand iDetail       = null;
-        JRBand iSummary      = null;
-        JRBand iBackground   = null;
-        JRBand iColumnFooter = null;
-        JRBand iLastPageFooter = null;
 
 
         // Page header
@@ -226,34 +219,41 @@ public class SSReport {
             iPageHeader = getField(ReportField.PAGE_HEADER, theFields, theParameters, theVariables, theGroups, theFonts);
         }
         // Page footer
+        JRBand iPageFooter = null;
         if( iFields.containsKey( ReportField.PAGE_FOOTER ) ){
             iPageFooter = getField(ReportField.PAGE_FOOTER, theFields, theParameters, theVariables, theGroups, theFonts);
         }
 
         // Column header
+        JRBand iColumnHeader = null;
         if( iFields.containsKey( ReportField.COLUMN_HEADER ) ){
             iColumnHeader = getField(ReportField.COLUMN_HEADER, theFields, theParameters, theVariables, theGroups, theFonts);
         }
         // Column footer
+        JRBand iColumnFooter = null;
         if( iFields.containsKey( ReportField.COLUMN_FOOTER ) ){
             iColumnFooter = getField(ReportField.COLUMN_FOOTER, theFields, theParameters, theVariables, theGroups, theFonts);
         }
 
         // Detail
+        JRBand iDetail = null;
         if( iFields.containsKey( ReportField.DETAIL ) ){
             iDetail = getField(ReportField.DETAIL, theFields, theParameters, theVariables, theGroups, theFonts);
         }
 
         // Summary
+        JRBand iSummary = null;
         if( iFields.containsKey( ReportField.SUMMARY ) ){
             iSummary = getField(ReportField.SUMMARY, theFields, theParameters, theVariables, theGroups, theFonts);
         }
 
         // Background
+        JRBand iBackground = null;
         if( iFields.containsKey( ReportField.BACKGROUND ) ){
             iBackground = getField(ReportField.BACKGROUND, theFields, theParameters, theVariables, theGroups, theFonts);
         }
         // Last page footer
+        JRBand iLastPageFooter = null;
         if( iFields.containsKey( ReportField.LAST_PAGE_FOOTER ) ){
             iLastPageFooter = getField(ReportField.LAST_PAGE_FOOTER, theFields, theParameters, theVariables, theGroups, theFonts);
         }

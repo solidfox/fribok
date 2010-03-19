@@ -200,9 +200,8 @@ public class SSHelpHistory {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        int iCounter = 0;
-
         sb.append("SSHelpHistory {\n");
+        int iCounter = 0;
         for(HelpModelEvent iEvent: iHistory){
             if(iCounter == iIndex){
                 sb.append(" *");

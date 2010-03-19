@@ -79,10 +79,9 @@ public class SSBackupFactory {
         // Get the database files
         List<ArchiveFile> iFiles = SSBackupUtils.getFiles();
 
-        File iBackupFile;
         try {
             // Create a new temp file
-            iBackupFile = File.createTempFile("backup", null);
+            File iBackupFile = File.createTempFile("backup", null);
 
             SSBackup.storeBackup(iBackupFile, iBackup);
 
@@ -127,10 +126,9 @@ public class SSBackupFactory {
      * @throws SSException
      */
     public static void restoreBackup(String pFilename) throws SSException{
-        File iBackupFile;
         try {
             // Create a new temp file
-            iBackupFile = File.createTempFile("backup", null);
+            File iBackupFile = File.createTempFile("backup", null);
 
 
             // Read the backup file, if exists

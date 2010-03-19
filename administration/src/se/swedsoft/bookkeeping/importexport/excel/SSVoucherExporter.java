@@ -129,9 +129,8 @@ public class SSVoucherExporter {
         iCellFormat.setFont( iFont );
 
         int iRowIndex = 1;
-        SSWritableExcelRow iRow;
         for (SSVoucher iVoucher : iVouchers) {
-            iRow =  iRows.get(iRowIndex++);
+            SSWritableExcelRow iRow = iRows.get(iRowIndex++);
             iRow.setNumber(0,  iVoucher.getNumber()      , iCellFormat);
             iRow.setString(1,  iVoucher.getDescription() , iCellFormat);
             iRow.setDate  (2,  iVoucher.getDate()        , iCellFormat);

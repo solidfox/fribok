@@ -78,12 +78,10 @@ public class SSAutoDistFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "autodistframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "autodistframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAutoDistDialog.newDialog(getMainFrame(), iModel);
             }

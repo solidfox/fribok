@@ -68,9 +68,8 @@ public class SSVoucherTemplateExporter {
         iSettings.setEncoding             ("windows-1252");
         iSettings.setExcelDisplayLanguage ("SE");
         iSettings.setExcelRegionalSettings("SE");
-        WritableWorkbook iWorkbook = null;
         try{
-            iWorkbook = Workbook.createWorkbook(iFile, iSettings);
+            WritableWorkbook iWorkbook = Workbook.createWorkbook(iFile, iSettings);
 
             WritableSheet iSheet = iWorkbook.createSheet("Konteringmallar", 0);
 
@@ -122,9 +121,8 @@ public class SSVoucherTemplateExporter {
         iCellFormat.setFont( iFont );
 
         int iRowIndex = 1;
-        SSWritableExcelRow iRow;
         for (SSVoucherTemplate iVoucher : iVouchers) {
-            iRow =  iRows.get(iRowIndex++);
+            SSWritableExcelRow iRow = iRows.get(iRowIndex++);
             iRow.setString(0,  iVoucher.getDescription() , iCellFormat);
 
             for (SSVoucherTemplateRow iVoucherRow : iVoucher.getRows()) {

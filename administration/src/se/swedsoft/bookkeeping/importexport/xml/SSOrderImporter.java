@@ -41,7 +41,6 @@ public class SSOrderImporter {
     }
 
     public void doImport() throws SSImportException{
-        SSOrder iOrder;
         List<SSOrder> iOrders = new LinkedList<SSOrder>();
 
         try {
@@ -75,7 +74,7 @@ public class SSOrderImporter {
                  * 23 = DELIVERYNAME, 24 = DELIVERYADDRESS1, 25 = DELIVERYADDRESS2
                  * 26 = DELIVERYZIPCODE, 27 = DELIVERYCITY, 28 = ROWS
                 **/
-                iOrder = new SSOrder();
+                SSOrder iOrder = new SSOrder();
 
                 Node iOrderNode = iOrderList.item(i);
                 if(iOrderNode.getNodeType() == Node.ELEMENT_NODE){
@@ -152,10 +151,10 @@ public class SSOrderImporter {
                     }
 
                     // Kundnummer
-                    SSCustomer iCustomer = null;
                     iValue = null;
                     iOrderAttList = iOrderElement.getElementsByTagName("CustomerNumber");
                     iFirstOrderAttElement = (Element)iOrderAttList.item(0);
+                    SSCustomer iCustomer = null;
                     if (iFirstOrderAttElement != null) {
                         iTextOrderAttList = iFirstOrderAttElement.getChildNodes();
                         iValue = iTextOrderAttList.item(0) == null ? "" : iTextOrderAttList.item(0).getNodeValue().trim();
@@ -507,9 +506,9 @@ public class SSOrderImporter {
                             }
 
                             // Produktnr
-                            SSProduct iProduct = null;
                             iRowAttList = iRowElement.getElementsByTagName("SellerArticleNo");
                             iFirstRowAttElement = (Element)iRowAttList.item(0);
+                            SSProduct iProduct = null;
                             if (iFirstOrderAttElement != null) {
                                 iTextRowAttList = iFirstRowAttElement.getChildNodes();
                                 iValue = iTextRowAttList.item(0) == null ? "" : iTextRowAttList.item(0).getNodeValue().trim();
@@ -716,7 +715,6 @@ public class SSOrderImporter {
             }
 
             Collection<String> iBadOrders = new LinkedList<String>();
-            Integer iOrderCount = 0;
 
             if(SSDB.getInstance().getProduct("frakt") == null/* && SSDB.getInstance().getProduct("frakt") == null && SSDB.getInstance().getProduct("FRAKT") == null*/){
                 SSErrorDialog.showDialog(SSMainFrame.getInstance(), "", "Du måste skapa en produkt med nummer \"Frakt\" innan du kan importera.");
@@ -729,6 +727,7 @@ public class SSOrderImporter {
             }
             List<Integer> iOrderNumbers = new ArrayList<Integer>(iResult.keySet());
             Collections.sort(iOrderNumbers);
+            Integer iOrderCount = 0;
             order:for(Integer iOrderNumber : iOrderNumbers){
                 SSOrder iOrder = new SSOrder();
                 Iterable<String> iAl = iResult.get(iOrderNumber);

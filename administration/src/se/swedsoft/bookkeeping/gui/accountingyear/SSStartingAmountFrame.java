@@ -106,15 +106,13 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Save
         // ***************************
-        iButton = new SSButton("ICON_SAVEITEM", "startingammountframe.savebutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_SAVEITEM", "startingammountframe.savebutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iAccountingYear.setInBalance(iStartingAmountPanel.getInBalance());
                 SSDB.getInstance().updateAccountingYear(iAccountingYear);
-                SSPostLock.removeLock("startingamount"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+                SSPostLock.removeLock("startingamount" + SSDB.getInstance().getCurrentCompany().getId() + SSDB.getInstance().getCurrentYear().getId());
                 cInstance = null;
                 setVisible(false);
             }

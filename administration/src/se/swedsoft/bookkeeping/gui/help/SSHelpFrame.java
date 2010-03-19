@@ -128,14 +128,12 @@ public class SSHelpFrame extends JFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Back
         // ***************************
-        iButton = new SSButton("ICON_HOME", "helpframe.homebutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_HOME", "helpframe.homebutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    iViewer.setCurrentID(  iHelpSet.getHomeID() );
+                    iViewer.setCurrentID(iHelpSet.getHomeID());
                 } catch (InvalidHelpSetContextException ex) {
                     ex.printStackTrace();
                 }

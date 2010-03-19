@@ -417,13 +417,12 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
     }
 
     private void doAutoDistributionForRows(SSAutoDist iAutoDist, BigDecimal iValue) {
-        SSVoucherRow iVoucherRow;
         BigDecimal iDebet = null;
         BigDecimal iCredit = null;
         SSNewProject iProject = null;
         SSNewResultUnit iResultUnit = null;
         for (SSAutoDistRow iAutoDistRow : iAutoDist.getRows()) {
-            iVoucherRow = null;
+            SSVoucherRow iVoucherRow = null;
             iProject = iAutoDistRow.getProject();
             iResultUnit = iAutoDistRow.getResultUnit();
             if (iAutoDistRow.getPercentage() != null && iValue != null) {
@@ -450,8 +449,8 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
     }
 
     private void doAutoDistributionForAmount(SSAutoDist iAutoDist, SSVoucherRow iRow) {
-        BigDecimal iValue = new BigDecimal(0.0);
         iVoucher.getRows().remove(iRow);
+        BigDecimal iValue = new BigDecimal(0.0);
         if (iAutoDist.getAmount().doubleValue() < 0.0) {
             iValue = iAutoDist.getAmount().multiply(new BigDecimal(-1.0));
             iRow.setCredit(iValue);
@@ -463,19 +462,13 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         }
         iVoucher.getRows().add(iRow);
 
-        SSVoucherRow iVoucherRow;
-        BigDecimal iDebet;
-        BigDecimal iCredit;
-        SSNewProject iProject;
-        SSNewResultUnit iResultUnit;
-
         List<SSVoucherRow> iRows = iVoucher.getRows();
         for (SSAutoDistRow iAutoDistRow : iAutoDist.getRows()) {
-            iDebet = null;
-            iCredit = null;
-            iVoucherRow = null;
-            iProject = iAutoDistRow.getProject();
-            iResultUnit = iAutoDistRow.getResultUnit();
+            BigDecimal iDebet = null;
+            BigDecimal iCredit = null;
+            SSVoucherRow iVoucherRow = null;
+            SSNewProject iProject = iAutoDistRow.getProject();
+            SSNewResultUnit iResultUnit = iAutoDistRow.getResultUnit();
             if (iAutoDistRow.getPercentage() != null && iAutoDist.getAmount() != null) {
                 if (iAutoDistRow.getPercentage().doubleValue() < 0.0) {
                     BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1.0));

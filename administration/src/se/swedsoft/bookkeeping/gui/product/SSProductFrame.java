@@ -96,12 +96,10 @@ public class SSProductFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "productframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "productframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSProductDialog.newDialog(getMainFrame(), iModel);
             }
@@ -210,9 +208,9 @@ public class SSProductFrame extends SSDefaultTableFrame {
         iButton2.add("productframe.export.excel", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
-                List<SSProduct> iItems;
                 List<SSProduct> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getProducts(iSelected);
+                List<SSProduct> iItems;
                 if( iSelected != null) {
                     int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("productframe.import.allorselected"));
                     switch(select){
@@ -246,9 +244,9 @@ public class SSProductFrame extends SSDefaultTableFrame {
         });
         iButton2.add("customerframe.export.xml", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                List<SSProduct> iItems;
                 List<SSProduct> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getProducts(iSelected);
+                List<SSProduct> iItems;
                 if( iSelected != null) {
                     int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("productframe.import.allorselected"));
                     switch(select){
@@ -422,7 +420,6 @@ public class SSProductFrame extends SSDefaultTableFrame {
     }
 
     private void ProductRevenueReport() {
-        final SSProductRevenuePrinter iPrinter;
         List<SSProduct> iProducts;
         if (iTable.getSelectedRowCount() > 0) {
 
@@ -460,7 +457,7 @@ public class SSProductFrame extends SSDefaultTableFrame {
         final Date iFrom = iDialog.getFrom();
         final Date iTo   = iDialog.getTo();
 
-        iPrinter = new SSProductRevenuePrinter(iProducts,iFrom,iTo);
+        final SSProductRevenuePrinter iPrinter = new SSProductRevenuePrinter(iProducts, iFrom, iTo);
 
         SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
             public void run() {

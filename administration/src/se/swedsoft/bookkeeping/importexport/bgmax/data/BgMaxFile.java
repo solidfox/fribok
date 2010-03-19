@@ -117,7 +117,6 @@ public class BgMaxFile {
     private void parseLine( BgMaxLine iLine ) {
         String iTransaktionsKod = iLine.getTransaktionsKod();
 
-        BgMaxBetalning iBetalning;
         BgMaxAvsnitt   iAvsnitt;
 
         if( iTransaktionsKod.equals("05") ) {
@@ -133,6 +132,7 @@ public class BgMaxFile {
             }
         }
 
+        BgMaxBetalning iBetalning;
         if(iAvsnitt != null){
 
             if( iTransaktionsKod.equals("20") || iTransaktionsKod.equals("21") ) {

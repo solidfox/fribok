@@ -196,14 +196,12 @@ public class SSDBConfig {
             iParser.parse( new InputSource(new FileInputStream( CONFIG_FILE )) );
 
             String iServer = null;
-            String iCompany = null;
-            String iYear = null;
-            String iKey = null;
 
             if(iParser.getDocument().getDocumentElement().hasAttribute("server")){
                 iServer  =  iParser.getDocument().getDocumentElement().getAttribute("server");
             }
 
+            String iCompany = null;
             if(iParser.getDocument().getDocumentElement().hasAttribute("company")){
                 iCompany  =  iParser.getDocument().getDocumentElement().getAttribute("company");
             }
@@ -211,6 +209,7 @@ public class SSDBConfig {
                 iCompanyId = Integer.parseInt(iCompany);
             }
 
+            String iYear = null;
             if(iParser.getDocument().getDocumentElement().hasAttribute("year")){
                 iYear  =  iParser.getDocument().getDocumentElement().getAttribute("year");
             }
@@ -218,6 +217,7 @@ public class SSDBConfig {
                 iYearId = Integer.parseInt(iYear);
             }
 
+            String iKey = null;
             if (iParser.getDocument().getDocumentElement().hasAttribute("clientkey")) {
                 iKey = iParser.getDocument().getDocumentElement().getAttribute("clientkey");
             } else {

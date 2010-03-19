@@ -102,8 +102,6 @@ public class SIEEntryTransaktion extends SIEEntry {
         BigDecimal   iAmmount       = iReader.nextBigDecimal();
 
         SSAccount    iAccount    = iCurrentYearData.getAccountPlan().getAccount(iAccountNumber);
-        SSNewProject    iProject    = null;
-        SSNewResultUnit iResultUnit = null;
 
         if(iAccount == null){
             throw new SSImportException(SSBundleString.getString("sieimport.missingaccount", Integer.toString(iAccountNumber) ) );
@@ -115,6 +113,8 @@ public class SIEEntryTransaktion extends SIEEntry {
 
         SIEIterator iObjectIterator = new SIEIterator(iObjects);
 
+        SSNewResultUnit iResultUnit = null;
+        SSNewProject iProject = null;
         while( iObjectIterator.hasNext() ){
             int iDimension = iObjectIterator.nextInteger();
             String iNum = iObjectIterator.next();

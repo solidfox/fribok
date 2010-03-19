@@ -88,11 +88,9 @@ public class SSProjectFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Nytt projekt
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "projectframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "projectframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 newProject();
             }
@@ -293,7 +291,6 @@ public class SSProjectFrame extends SSDefaultTableFrame {
      */
 
     private void ProjectRevenueReport() {
-        final SSProjectRevenuePrinter iPrinter;
         List<SSNewProject> iProjects;
         if (iTable.getSelectedRowCount() > 0) {
 
@@ -331,7 +328,7 @@ public class SSProjectFrame extends SSDefaultTableFrame {
         final Date iFrom = iDialog.getFrom();
         final Date iTo   = iDialog.getTo();
 
-        iPrinter = new SSProjectRevenuePrinter(iProjects,iFrom,iTo);
+        final SSProjectRevenuePrinter iPrinter = new SSProjectRevenuePrinter(iProjects, iFrom, iTo);
 
         SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
             public void run() {

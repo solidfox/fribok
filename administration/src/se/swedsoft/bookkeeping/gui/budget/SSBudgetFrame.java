@@ -94,15 +94,13 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Save
         // ***************************
-        iButton = new SSButton("ICON_SAVEITEM", "budgetframe.savebutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_SAVEITEM", "budgetframe.savebutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iAccountingYear.setBudget(iBudgetMainPanel.getBudget());
                 SSDB.getInstance().updateAccountingYear(iAccountingYear);
-                SSPostLock.removeLock("budget"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+                SSPostLock.removeLock("budget" + SSDB.getInstance().getCurrentCompany().getId() + SSDB.getInstance().getCurrentYear().getId());
 
                 cInstance = null;
                 setVisible(false);

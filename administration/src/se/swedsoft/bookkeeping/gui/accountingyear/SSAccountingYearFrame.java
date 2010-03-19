@@ -127,11 +127,9 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Open
         // ***************************
-        iButton = new SSButton("ICON_OPENITEM", "accountingyearframe.openbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_OPENITEM", "accountingyearframe.openbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openSelectedAccountingYear();
             }

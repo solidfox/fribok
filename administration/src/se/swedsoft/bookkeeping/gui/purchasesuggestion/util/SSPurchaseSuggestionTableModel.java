@@ -36,10 +36,9 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     public SSPurchaseSuggestionTableModel(List<SSProduct> iProducts) {
         List<Entry> iItems = new LinkedList<Entry>();
 
-        Entry iEntry;
         iStock = new SSStock(true);
         for (SSProduct iProduct : iProducts) {
-            iEntry = new Entry();
+            Entry iEntry = new Entry();
             iEntry.iProduct = iProduct;
             iEntry.iSelected = false;
             iEntry.iOrderVolume = iProduct.getOrdercount();

@@ -51,11 +51,9 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
         createLayout();
 
 
-        JMenuItem iMenuItem;
-
         iPopup = new JPopupMenu();
 
-        iMenuItem = new JMenuItem("Lägg till...");
+        JMenuItem iMenuItem = new JMenuItem("Lägg till...");
         iMenuItem.setIcon        ( SSIcon.getIcon("ICON_NEW16", SSIcon.IconState.NORMAL ) );
         iMenuItem.setDisabledIcon( SSIcon.getIcon("ICON_NEW16", SSIcon.IconState.DISABLED ) );
         iMenuItem.setRolloverIcon( SSIcon.getIcon("ICON_NEW16", SSIcon.IconState.HIGHLIGHTED ) );

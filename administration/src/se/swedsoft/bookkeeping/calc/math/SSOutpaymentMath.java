@@ -212,9 +212,8 @@ public class SSOutpaymentMath {
     public static BigDecimal getSumForInvoice(SSSupplierInvoice iInvoice, Date iDate) {
         List<SSOutpayment> iOutpayments = SSDB.getInstance().getOutpayments();
 
-        BigDecimal iSum = new BigDecimal(0.0);
-
         iDate = SSDateMath.ceil(iDate);
+        BigDecimal iSum = new BigDecimal(0.0);
         for (SSOutpayment iOutpayment : iOutpayments) {
             Date iCurrent = SSDateMath.floor(  iOutpayment.getDate() );
 

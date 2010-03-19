@@ -100,15 +100,10 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
-        SSMenuButton iMenuButton;
-
-
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "supplierinvoiceframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "supplierinvoiceframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplierInvoiceDialog.newDialog(getMainFrame(), iModel);
             }
@@ -264,7 +259,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        iMenuButton = new SSMenuButton("ICON_PRINT", "supplierinvoiceframe.printbutton");
+        SSMenuButton iMenuButton = new SSMenuButton("ICON_PRINT", "supplierinvoiceframe.printbutton");
 
         iMenuButton.add("supplierinvoiceframe.print.list", new ActionListener(){
             public void actionPerformed(ActionEvent e) {

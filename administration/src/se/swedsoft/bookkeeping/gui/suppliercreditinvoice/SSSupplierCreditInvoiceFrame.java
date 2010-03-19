@@ -84,13 +84,9 @@ public class SSSupplierCreditInvoiceFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
-        SSMenuButton iMenuButton;
-
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "suppliercreditinvoiceframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "suppliercreditinvoiceframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplierCreditInvoiceDialog.newDialog(getMainFrame(), iModel);
             }
@@ -156,7 +152,7 @@ public class SSSupplierCreditInvoiceFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        iMenuButton = new SSMenuButton("ICON_PRINT", "suppliercreditinvoiceframe.printbutton");
+        SSMenuButton iMenuButton = new SSMenuButton("ICON_PRINT", "suppliercreditinvoiceframe.printbutton");
 
         iMenuButton.add("suppliercreditinvoiceframe.print.list", new ActionListener(){
             public void actionPerformed(ActionEvent e) {

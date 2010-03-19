@@ -82,15 +82,11 @@ public class SSIndeliveryFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
-        SSMenuButton<SSButton> iMenuButton;
-
         JMenuItem iMenuItem;
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "indeliveryframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "indeliveryframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSIndeliveryDialog.newDialog(getMainFrame(), iModel);
             }
@@ -156,7 +152,7 @@ public class SSIndeliveryFrame extends SSDefaultTableFrame {
 
          // Print
         // ***************************
-        iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "indeliveryframe.printbutton");
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "indeliveryframe.printbutton");
         iMenuButton.add("indeliveryframe.print.list", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 SSReportFactory.IndeliveryList(getMainFrame());

@@ -106,9 +106,9 @@ public class SSCustomerImporter {
      * @param iColumns
      */
     private void getColumnIndexes(SSExcelRow iColumns) {
-        int iIndex = 0;
 
         this.iColumns.clear();
+        int iIndex = 0;
         for (SSExcelCell iColumn : iColumns.getCells()) {
             String iName = iColumn.getString();
 
@@ -261,7 +261,6 @@ public class SSCustomerImporter {
 
 
     public void doImport() throws SSImportException{
-        SSCustomer iCustomer;
         List<SSCustomer> iCustomers = new LinkedList<SSCustomer>();
         try {
             DocumentBuilderFactory iDocBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -280,7 +279,7 @@ public class SSCustomerImporter {
             }
 
             for (int i = 0; i < iCustomerList.getLength() ; i++) {
-                iCustomer = new SSCustomer();
+                SSCustomer iCustomer = new SSCustomer();
 
                 Node iCustomerNode = iCustomerList.item(i);
                 if(iCustomerNode.getNodeType() == Node.ELEMENT_NODE){
@@ -668,12 +667,12 @@ public class SSCustomerImporter {
             String text = null;
             Collection<String> al = new ArrayList<String>();
             Collection<String> iBadCustomers = new ArrayList<String>();
-            Integer iCustomerCount = 0;
             while((text = br.readLine()) != null) {
                 al.add(text);
             }
             br.close();
 
+            Integer iCustomerCount = 0;
             for(String iLine : al){
                 boolean iNewCustomer = false;
                 String[] iFields = iLine.split("\t",-1);

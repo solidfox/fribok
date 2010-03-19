@@ -172,19 +172,16 @@ public class SSProductExporter {
     }
 
     public void doXMLExport() {
-        Element iElement;
-        Element iSubElement;
-        Node iNode;
 
         Document iXmlDoc= new DocumentImpl();
         Element iRoot = iXmlDoc.createElement("Products");
 
         for (SSProduct iProduct : iProducts) {
-            iElement = iXmlDoc.createElementNS(null, "Product");
+            Element iElement = iXmlDoc.createElementNS(null, "Product");
 
-            iSubElement = iXmlDoc.createElementNS(null,"ProductNo");
+            Element iSubElement = iXmlDoc.createElementNS(null, "ProductNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iProduct.getNumber() == null ? "" : iProduct.getNumber());
+            Node iNode = iXmlDoc.createTextNode(iProduct.getNumber() == null ? "" : iProduct.getNumber());
             iSubElement.appendChild(iNode);
 
             iSubElement = iXmlDoc.createElementNS(null,"ProductDescription");

@@ -98,12 +98,10 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "customerframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "customerframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCustomerDialog.newDialog(getMainFrame(), iModel);
             }
@@ -275,9 +273,9 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         });
         iButton2.add("customerframe.export.xml", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                List<SSCustomer> iItems;
                 List<SSCustomer> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getCustomers(iSelected);
+                List<SSCustomer> iItems;
                 if( iSelected != null) {
                     int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("customerframe.import.allorselected"));
                     switch(select){
@@ -521,7 +519,6 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
     }
 
     private void CustomerRevenueReport() {
-        final SSCustomerRevenuePrinter iPrinter;
         List<SSCustomer> iCustomers;
         if (iTable.getSelectedRowCount() > 0) {
 
@@ -557,7 +554,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         final Date iFrom = iDialog.getFrom();
         final Date iTo   = iDialog.getTo();
 
-        iPrinter = new SSCustomerRevenuePrinter(iCustomers,iFrom,iTo);
+        final SSCustomerRevenuePrinter iPrinter = new SSCustomerRevenuePrinter(iCustomers, iFrom, iTo);
 
         SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
             public void run() {

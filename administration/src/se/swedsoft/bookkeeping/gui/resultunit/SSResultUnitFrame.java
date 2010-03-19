@@ -87,11 +87,9 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
         // Ny resultatenhet
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "resultunitframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "resultunitframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSResultUnitDialog.newDialog(getMainFrame(), iModel);
             }
@@ -258,7 +256,6 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
     }
 
     private void ResultUnitRevenueReport() {
-        final SSResultUnitRevenuePrinter iPrinter;
         List<SSNewResultUnit> iResultUnits;
         if (iTable.getSelectedRowCount() > 0) {
 
@@ -296,7 +293,7 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         final Date iFrom = iDialog.getFrom();
         final Date iTo   = iDialog.getTo();
 
-        iPrinter = new SSResultUnitRevenuePrinter(iResultUnits,iFrom,iTo);
+        final SSResultUnitRevenuePrinter iPrinter = new SSResultUnitRevenuePrinter(iResultUnits, iFrom, iTo);
 
         SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
             public void run() {

@@ -78,11 +78,9 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "ownreportframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "ownreportframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOwnReportDialog.newDialog(getMainFrame());
             }

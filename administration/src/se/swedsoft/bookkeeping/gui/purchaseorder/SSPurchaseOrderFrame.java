@@ -93,17 +93,10 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
-        SSMenuButton iMenuButton;
-
-        JMenuItem iMenuItem;
-
-
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "purchaseorderframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "purchaseorderframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPurchaseOrderDialog.newDialog(getMainFrame(), iModel);
             }
@@ -189,8 +182,8 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        iMenuButton = new SSMenuButton("ICON_PRINT", "purchaseorderframe.printbutton");
-        iMenuItem = iMenuButton.add("purchaseorderframe.print.purchaseorder", new ActionListener(){
+        SSMenuButton iMenuButton = new SSMenuButton("ICON_PRINT", "purchaseorderframe.printbutton");
+        JMenuItem iMenuItem = iMenuButton.add("purchaseorderframe.print.purchaseorder", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSPurchaseOrder> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getPurchaseOrders(iSelected);

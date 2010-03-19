@@ -95,12 +95,9 @@ public class SSTenderFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-        SSButton iButton;
-
-        JMenuItem iMenuItem;
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "tenderframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "tenderframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTenderDialog.newDialog(getMainFrame(), iModel);
             }
@@ -204,7 +201,7 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         // Print
         // ***************************
         SSMenuButton iButton2 = new SSMenuButton("ICON_PRINT", "tenderframe.printbutton");
-        iMenuItem = iButton2.add("tenderframe.print.tenderreport", new ActionListener(){
+        JMenuItem iMenuItem = iButton2.add("tenderframe.print.tenderreport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSTender> iSelected = iModel.getSelectedRows(iTable);
                 iSelected = getTenders(iSelected);

@@ -166,7 +166,6 @@ public class SSNewResultUnit implements Serializable, SSTableSearchable {
 
     public BigDecimal getResultUnitRevenueForMonth(SSMonth iMonth) {
         Double iInvoiceSum = 0.0;
-        Double iCreditInvoiceSum = 0.0;
         List<SSInvoice> iInvoices = SSDB.getInstance().getInvoices();
         for (SSInvoice iInvoice : iInvoices) {
             if(iMonth.isDateInMonth(iInvoice.getDate())){
@@ -181,6 +180,7 @@ public class SSNewResultUnit implements Serializable, SSTableSearchable {
         }
 
         List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
+        Double iCreditInvoiceSum = 0.0;
         for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
             if(iMonth.isDateInMonth(iCreditInvoice.getDate())){
                 for (SSSaleRow iRow : iCreditInvoice.getRows()) {

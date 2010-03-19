@@ -32,11 +32,10 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
     public SSPendingInvoiceTableModel(Map<SSPeriodicInvoice, List<SSInvoice>> iInvoices) {
         List<Entry> iItems = new LinkedList<Entry>();
 
-        Entry iEntry;
         for (SSPeriodicInvoice iPeriodicInvoice : iInvoices.keySet()) {
 
             for (SSInvoice iInvoice : iInvoices.get(iPeriodicInvoice)) {
-                iEntry = new Entry();
+                Entry iEntry = new Entry();
                 iEntry.iPeriodicInvoice = iPeriodicInvoice;
                 iEntry.iInvoice         = iInvoice;
                 iEntry.iSelected        = false;

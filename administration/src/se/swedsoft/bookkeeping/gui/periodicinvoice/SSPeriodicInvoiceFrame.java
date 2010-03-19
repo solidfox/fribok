@@ -85,15 +85,13 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar toolBar = new JToolBar();
 
-        SSButton iButton;
-
         SSMenuButton<SSButton> iMenuButton;
 
         JMenuItem iMenuItem;
 
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "periodicinvoiceframe.newbutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_NEWITEM", "periodicinvoiceframe.newbutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoiceDialog.newDialog(getMainFrame(), iModel);
             }

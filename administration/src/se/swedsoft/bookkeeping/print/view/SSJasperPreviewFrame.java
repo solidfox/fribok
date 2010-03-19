@@ -96,24 +96,22 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         iZoomLevels.setSelectedItem( SSZoomLevel.ZOOM_100 );
 
 
-        SSButton iButton;
-
         // Save
         // ***************************
-        iButton = new SSButton("ICON_SAVEITEM", "printpreviewframe.savebutton", new ActionListener(){
+        SSButton iButton = new SSButton("ICON_SAVEITEM", "printpreviewframe.savebutton", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSJasperFileChooser iFileChooser = SSJasperFileChooser.getInstance();
 
-                if(iReport != null){
-                    String iTitle = (String)iReport.getParameter("title");
-                    iFileChooser.setSelectedFile( new File(iTitle + ".pdf"));
+                if (iReport != null) {
+                    String iTitle = (String) iReport.getParameter("title");
+                    iFileChooser.setSelectedFile(new File(iTitle + ".pdf"));
                 } else {
-                    iFileChooser.setSelectedFile( new File( "Rapport.pdf"));
+                    iFileChooser.setSelectedFile(new File("Rapport.pdf"));
 
                 }
 
-                if(iFileChooser.showSaveDialog(SSJasperPreviewFrame.this) == JFileChooser.APPROVE_OPTION){
-                    saveDocument(iFileChooser.getFileFilter(), iFileChooser.getSelectedFile() );
+                if (iFileChooser.showSaveDialog(SSJasperPreviewFrame.this) == JFileChooser.APPROVE_OPTION) {
+                    saveDocument(iFileChooser.getFileFilter(), iFileChooser.getSelectedFile());
                 }
 
             }

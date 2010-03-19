@@ -129,9 +129,9 @@ public class SSCustomerRevenuePrinter extends SSPrinter {
                 Date iTo = iCal.getTime();
                 SSMonth iMonth = new SSMonth(iFrom, iTo);
 
-                Map<SSMonth,BigDecimal> iRevenueInMonth;
                 if(iInvoice.getCustomerNr() != null && SSInvoiceMath.getNetSum(iInvoice) != null){
                     BigDecimal iSum = SSInvoiceMath.convertToLocal(iInvoice, SSInvoiceMath.getNetSum(iInvoice));
+                    Map<SSMonth, BigDecimal> iRevenueInMonth;
                     if(iCustomerRevenue.containsKey(iInvoice.getCustomerNr())){
                         iRevenueInMonth = iCustomerRevenue.get(iInvoice.getCustomerNr());
                         if(iRevenueInMonth.containsKey(iMonth)){
@@ -161,9 +161,9 @@ public class SSCustomerRevenuePrinter extends SSPrinter {
                 Date iTo = iCal.getTime();
                 SSMonth iMonth = new SSMonth(iFrom, iTo);
 
-                Map<SSMonth,BigDecimal> iRevenueInMonth;
                 if(iCreditInvoice.getCustomerNr() != null && SSCreditInvoiceMath.getNetSum(iCreditInvoice) != null){
                     BigDecimal iSum = SSCreditInvoiceMath.convertToLocal(iCreditInvoice, SSCreditInvoiceMath.getNetSum(iCreditInvoice));
+                    Map<SSMonth, BigDecimal> iRevenueInMonth;
                     if(iCustomerRevenue.containsKey(iCreditInvoice.getCustomerNr())){
                         iRevenueInMonth = iCustomerRevenue.get(iCreditInvoice.getCustomerNr());
                         if(iRevenueInMonth.containsKey(iMonth)){

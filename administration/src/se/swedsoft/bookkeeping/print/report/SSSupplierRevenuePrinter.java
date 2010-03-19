@@ -131,9 +131,9 @@ public class SSSupplierRevenuePrinter extends SSPrinter {
                 Date iTo = iCal.getTime();
                 SSMonth iMonth = new SSMonth(iFrom, iTo);
 
-                Map<SSMonth,BigDecimal> iRevenueInMonth;
                 if(iSupplierInvoice.getSupplierNr() != null && SSSupplierInvoiceMath.getNetSum(iSupplierInvoice) != null){
                     BigDecimal iSum = SSSupplierInvoiceMath.convertToLocal(iSupplierInvoice, SSSupplierInvoiceMath.getNetSum(iSupplierInvoice));
+                    Map<SSMonth, BigDecimal> iRevenueInMonth;
                     if(iSupplierRevenue.containsKey(iSupplierInvoice.getSupplierNr())){
                         iRevenueInMonth = iSupplierRevenue.get(iSupplierInvoice.getSupplierNr());
                         if(iRevenueInMonth.containsKey(iMonth)){
@@ -163,9 +163,9 @@ public class SSSupplierRevenuePrinter extends SSPrinter {
                 Date iTo = iCal.getTime();
                 SSMonth iMonth = new SSMonth(iFrom, iTo);
 
-                Map<SSMonth,BigDecimal> iRevenueInMonth;
                 if(iSupplierCreditInvoice.getSupplierNr() != null && SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice) != null){
                     BigDecimal iSum = SSSupplierInvoiceMath.convertToLocal(iSupplierCreditInvoice, SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice));
+                    Map<SSMonth, BigDecimal> iRevenueInMonth;
                     if(iSupplierRevenue.containsKey(iSupplierCreditInvoice.getSupplierNr())){
                         iRevenueInMonth = iSupplierRevenue.get(iSupplierCreditInvoice.getSupplierNr());
                         if(iRevenueInMonth.containsKey(iMonth)){

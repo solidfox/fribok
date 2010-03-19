@@ -94,9 +94,8 @@ public class SSCreditInvoiceMath extends SSInvoiceMath {
         // Get all credit invoices from the db
         List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
 
-        BigDecimal iSum = new BigDecimal(0.0);
-
         iDate = SSDateMath.ceil(iDate);
+        BigDecimal iSum = new BigDecimal(0.0);
         for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
             Date iCurrent = SSDateMath.floor(  iCreditInvoice.getDate() );
 

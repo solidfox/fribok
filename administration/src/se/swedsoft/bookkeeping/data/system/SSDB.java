@@ -122,8 +122,6 @@ public class SSDB {
      * @throws SQLException
      */
     public void startupLocal(Connection pConnection) throws SQLException {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iConnection = pConnection;
         iConnection.setAutoCommit(false);
         iLocking = false;
@@ -135,13 +133,14 @@ public class SSDB {
         Integer iLastCompany = SSDBConfig.getCompanyId();
         Integer iLastYear = SSDBConfig.getYearId();
 
+        ResultSet iResultSet;
+        PreparedStatement iStatement;
         if(iLastCompany != null){
             iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company WHERE id=?");
             iStatement.setObject(1, iLastCompany);
             iResultSet = iStatement.executeQuery();
-            SSNewCompany iCompany;
             if(iResultSet.next()) {
-                iCompany = (SSNewCompany) iResultSet.getObject("company");
+                SSNewCompany iCompany = (SSNewCompany) iResultSet.getObject("company");
                 setCurrentCompany(iCompany);
             }
             iResultSet.close();
@@ -153,9 +152,8 @@ public class SSDB {
             iStatement.setObject(1, iLastYear);
             iResultSet = iStatement.executeQuery();
 
-            SSNewAccountingYear iYear;
             if(iResultSet.next()) {
-                iYear = (SSNewAccountingYear) iResultSet.getObject("accountingyear");
+                SSNewAccountingYear iYear = (SSNewAccountingYear) iResultSet.getObject("accountingyear");
                 setCurrentYear(iYear);
             }
             iResultSet.close();
@@ -170,7 +168,6 @@ public class SSDB {
         //dropTriggers();
         createServerTriggers();
         PreparedStatement iStatement;
-        ResultSet iResultSet;
 
         String iKey = SSDBConfig.getClientkey();
         try {
@@ -200,14 +197,14 @@ public class SSDB {
         Integer iLastCompany = SSDBConfig.getCompanyId();
         Integer iLastYear = SSDBConfig.getYearId();
 
+        ResultSet iResultSet;
         if(iLastCompany != null){
             iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company WHERE id=?");
             iStatement.setObject(1, iLastCompany);
             iResultSet = iStatement.executeQuery();
 
-            SSNewCompany iCompany;
             if(iResultSet.next()) {
-                iCompany = (SSNewCompany) iResultSet.getObject("company");
+                SSNewCompany iCompany = (SSNewCompany) iResultSet.getObject("company");
                 setCurrentCompany(iCompany);
                 SSCompanyLock.applyLock(iCompany);
             }
@@ -220,9 +217,8 @@ public class SSDB {
             iStatement.setObject(1, iLastYear);
             iResultSet = iStatement.executeQuery();
 
-            SSNewAccountingYear iYear;
             if(iResultSet.next()) {
-                iYear = (SSNewAccountingYear) iResultSet.getObject("accountingyear");
+                SSNewAccountingYear iYear = (SSNewAccountingYear) iResultSet.getObject("accountingyear");
                 setCurrentYear(iYear);
                 SSYearLock.applyLock(iYear);
             }
@@ -483,9 +479,8 @@ public class SSDB {
     public void removeClient() {
         if(!iLocking || iConnection == null) return;
 
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_license WHERE licensekey=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_license WHERE licensekey=?");
             iStatement.setObject(1, SSDBConfig.getClientkey());
             iStatement.executeUpdate();
             iStatement.close();
@@ -499,9 +494,8 @@ public class SSDB {
     }
 
     public void delete()  {
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("SHUTDOWN");
+            PreparedStatement iStatement = iConnection.prepareStatement("SHUTDOWN");
             iStatement.executeUpdate();
             iStatement.close();
             iConnection.close();
@@ -643,16 +637,14 @@ public class SSDB {
     }
 
     public List<SSNewCompany> getCompanies() {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSNewCompany> iCompanies = null;
         try {
             iCompanies = new LinkedList<SSNewCompany>();
 
             if(iConnection == null || iConnection.isClosed()) return iCompanies;
 
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iCompanies.add((SSNewCompany) iResultSet.getObject("company"));
@@ -668,14 +660,12 @@ public class SSDB {
     }
 
     public SSNewCompany getCompany(SSNewCompany pCompany) {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             if(pCompany == null || iConnection.isClosed()) return null;
 
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company WHERE id=?");
             iStatement.setObject(1,pCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSNewCompany iCompany = (SSNewCompany) iResultSet.getObject("company");
@@ -695,17 +685,15 @@ public class SSDB {
 
     public void addCompany(SSNewCompany iCompany) {
         if(iCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_company VALUES(NULL,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_company VALUES(NULL,?)");
             iStatement.setObject(1, iCompany);
             iStatement.executeUpdate();
             iConnection.commit();
             iStatement.close();
 
             iStatement = iConnection.prepareStatement("SELECT * FROM tbl_company");
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
             Integer iId = -1;
             while(iResultSet.next()){
                 if(iResultSet.isLast())
@@ -734,9 +722,8 @@ public class SSDB {
     }
 
     public void updateCompany(SSNewCompany iCompany) {
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_company SET company=? WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_company SET company=? WHERE id=?");
             iStatement.setObject(1, iCompany);
             iStatement.setObject(2, iCompany.getId());
             iStatement.executeUpdate();
@@ -753,9 +740,8 @@ public class SSDB {
     }
 
     public void deleteCompany(SSNewCompany iCompany){
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement(  "DELETE FROM tbl_project WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_project WHERE companyid=?");
             iStatement.setObject(1, iCompany.getId());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -900,13 +886,11 @@ public class SSDB {
 
     public List<SSNewAccountingYear> getYears() {
         List<SSNewAccountingYear> iYears = new LinkedList<SSNewAccountingYear>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany != null){
             try {
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE companyid=?");
                 iStatement.setObject(1,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
 
                 while (iResultSet.next()) {
                     iYears.add((SSNewAccountingYear) iResultSet.getObject("accountingyear"));
@@ -924,13 +908,11 @@ public class SSDB {
 
     public List<SSNewAccountingYear> getYearsForCompany(SSNewCompany iCompany) {
         List<SSNewAccountingYear> iYears = new LinkedList<SSNewAccountingYear>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCompany != null){
             try {
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE companyid=?");
                 iStatement.setObject(1,iCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
 
                 while (iResultSet.next()) {
                     iYears.add((SSNewAccountingYear) iResultSet.getObject("accountingyear"));
@@ -946,14 +928,12 @@ public class SSDB {
         return iYears;
     }
     public SSNewAccountingYear getAccountingYear(SSNewAccountingYear pAccountingYear){
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             if(pAccountingYear == null) return null;
 
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE id=?");
             iStatement.setObject(1,pAccountingYear.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSNewAccountingYear iAccountingYear = (SSNewAccountingYear) iResultSet.getObject("accountingyear");
@@ -972,12 +952,10 @@ public class SSDB {
     }
 
     public void addAccountingYear(SSNewAccountingYear iAccountingYear) {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iAccountingYear == null) return;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_accountingyear VALUES(NULL,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_accountingyear VALUES(NULL,?,?)");
             iStatement.setObject(1, iAccountingYear);
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -985,7 +963,7 @@ public class SSDB {
             iStatement.close();
 
             iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear");
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
             Integer iId = -1;
             while(iResultSet.next()){
                 if(iResultSet.isLast())
@@ -1010,10 +988,9 @@ public class SSDB {
     }
 
     public void updateAccountingYear(SSNewAccountingYear iAccountingYear) {
-        PreparedStatement iStatement;
         if(iAccountingYear == null) return;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_accountingyear SET accountingyear=? WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_accountingyear SET accountingyear=? WHERE id=?");
             iStatement.setObject(1, iAccountingYear);
             iStatement.setObject(2, iAccountingYear.getId());
             iStatement.executeUpdate();
@@ -1034,10 +1011,9 @@ public class SSDB {
     }
 
     public void deleteAccountingYear(SSNewAccountingYear iAccountingYear){
-        PreparedStatement iStatement;
         if(iAccountingYear == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_voucher WHERE yearid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_voucher WHERE yearid=?");
             iStatement.setObject(1, iAccountingYear.getId());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -1080,14 +1056,12 @@ public class SSDB {
     }
 
     public SSNewAccountingYear getLastYear(){
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSNewAccountingYear> iYears = new LinkedList<SSNewAccountingYear>();
         if(iCurrentCompany != null){
             try {
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountingyear WHERE companyid=?");
                 iStatement.setObject(1,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
 
                 while (iResultSet.next()) {
                     iYears.add((SSNewAccountingYear) iResultSet.getObject("accountingyear"));
@@ -1168,12 +1142,12 @@ public class SSDB {
         if (iVouchers != null) {
             return iVouchers;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iVouchers = new LinkedList<SSVoucher>();
         if(iCurrentYear == null) return iVouchers;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_voucher WHERE yearid=? AND id>?");
                 iStatement.setObject(1, iCurrentYear.getId());
@@ -1201,12 +1175,12 @@ public class SSDB {
     }
 
     public List<SSVoucher> getVouchers(SSNewAccountingYear iAccountingYear) {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSVoucher> iVoucherList = new LinkedList<SSVoucher>();
         if(iAccountingYear == null) return iVoucherList;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_voucher WHERE yearid=? AND id>?");
                 iStatement.setObject(1, iAccountingYear.getId());
@@ -1235,14 +1209,12 @@ public class SSDB {
 
     public SSVoucher getVoucher(SSVoucher pVoucher){
         if(pVoucher == null || iCurrentYear == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
 
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_voucher WHERE number=? AND yearid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_voucher WHERE number=? AND yearid=?");
             iStatement.setObject(1,pVoucher.getNumber());
             iStatement.setObject(2,iCurrentYear.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSVoucher iVoucher = (SSVoucher) iResultSet.getObject(3);
@@ -1261,15 +1233,13 @@ public class SSDB {
 
     public List<SSVoucher> getVouchers(List<SSVoucher> pVouchers){
         if(pVouchers == null || iCurrentYear == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSVoucher> iVouchers = new LinkedList<SSVoucher>();
         try {
             for(SSVoucher iVoucher : pVouchers){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_voucher WHERE number=? AND yearid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_voucher WHERE number=? AND yearid=?");
                 iStatement.setObject(1,iVoucher.getNumber());
                 iStatement.setObject(2,iCurrentYear.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iVouchers.add((SSVoucher) iResultSet.getObject("voucher"));
                 }
@@ -1287,14 +1257,13 @@ public class SSDB {
 
     public void addVoucher(SSVoucher iVoucher, boolean iHasNumber) {
         if(iVoucher == null || iCurrentYear == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
+            PreparedStatement iStatement;
             if(!iHasNumber){
                 iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_voucher WHERE yearid=?");
                 iStatement.setObject(1, iCurrentYear.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
 
                 if (iResultSet.next()) {
                     Integer iNumber = iResultSet.getInt("maxnum");
@@ -1323,13 +1292,11 @@ public class SSDB {
     }
 
     public Integer getLastVoucherNumber() {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentYear == null) return 0;
         try {
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_voucher WHERE yearid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_voucher WHERE yearid=?");
             iStatement.setObject(1, iCurrentYear.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iNumber = 0;
             if (iResultSet.next()) {
@@ -1349,9 +1316,8 @@ public class SSDB {
 
     public void updateVoucher(SSVoucher iVoucher) {
         if(iVoucher == null || iCurrentYear == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_voucher SET voucher=? WHERE number=? AND yearid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_voucher SET voucher=? WHERE number=? AND yearid=?");
             iStatement.setObject(1, iVoucher);
             iStatement.setObject(2, iVoucher.getNumber());
             iStatement.setObject(3, iCurrentYear.getId());
@@ -1368,9 +1334,8 @@ public class SSDB {
 
     public void deleteVoucher(SSVoucher iVoucher) {
         if(iVoucher == null || iCurrentYear == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_voucher WHERE number=? AND yearid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_voucher WHERE number=? AND yearid=?");
             iStatement.setObject(1, iVoucher.getNumber());
             iStatement.setObject(2, iCurrentYear.getId());
             iStatement.executeUpdate();
@@ -1385,14 +1350,12 @@ public class SSDB {
     }
 
     public List<SSVoucherTemplate> getVoucherTemplates() {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSVoucherTemplate> iVoucherTemplates = new LinkedList<SSVoucherTemplate>();
         if(iCurrentCompany == null) return iVoucherTemplates;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_vouchertemplate WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_vouchertemplate WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
             int i = 0;
             while (iResultSet.next()) {
                 iVoucherTemplates.add((SSVoucherTemplate) iResultSet.getObject(2));
@@ -1410,16 +1373,14 @@ public class SSDB {
 
     public List<SSVoucherTemplate> getVoucherTemplates(List<SSVoucherTemplate> pVoucherTemplates){
         if(pVoucherTemplates == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSVoucherTemplate> iVoucherTemplates = new LinkedList<SSVoucherTemplate>();
         if(iCurrentCompany == null) return iVoucherTemplates;
         try {
             for(SSVoucherTemplate iVoucherTemplate : pVoucherTemplates){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_vouchertemplate WHERE name=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_vouchertemplate WHERE name=? AND companyid=?");
                 iStatement.setObject(1,iVoucherTemplate.getDescription());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iVoucherTemplates.add((SSVoucherTemplate) iResultSet.getObject(2));
                 }
@@ -1437,10 +1398,9 @@ public class SSDB {
 
     public void addVoucherTemplate(SSVoucherTemplate iVoucherTemplate) {
         if(iVoucherTemplate == null) return;
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_vouchertemplate VALUES(?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_vouchertemplate VALUES(?,?,?)");
             iStatement.setObject(1, iVoucherTemplate.getDescription());
             iStatement.setObject(2, iVoucherTemplate);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -1455,10 +1415,9 @@ public class SSDB {
     }
 
     public void deleteVoucherTemplate(SSVoucherTemplate iVoucherTemplate) {
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_vouchertemplate WHERE name=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_vouchertemplate WHERE name=? AND companyid=?");
             iStatement.setObject(1, iVoucherTemplate.getDescription());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -1492,11 +1451,9 @@ public class SSDB {
 
     public List<SSAccountPlan> getAccountPlans() {
         List<SSAccountPlan> iAccountPlans = new LinkedList<SSAccountPlan>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountplan");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountplan");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iAccountPlans.add((SSAccountPlan) iResultSet.getObject("accountplan"));
@@ -1513,12 +1470,10 @@ public class SSDB {
 
     public SSAccountPlan getAccountPlan(SSAccountPlan pAccountPlan){
         if(pAccountPlan == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountplan WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountplan WHERE id=?");
             iStatement.setObject(1,pAccountPlan.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSAccountPlan iAccountPlan = (SSAccountPlan) iResultSet.getObject("accountplan");
@@ -1537,17 +1492,15 @@ public class SSDB {
 
     public void addAccountPlan(SSAccountPlan iAccountPlan) {
         if(iAccountPlan == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_accountplan VALUES(NULL,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_accountplan VALUES(NULL,?)");
             iStatement.setObject(1, iAccountPlan);
             iStatement.executeUpdate();
             iConnection.commit();
             iStatement.close();
 
             iStatement = iConnection.prepareStatement("SELECT * FROM tbl_accountplan");
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
             Integer iId = -1;
             while(iResultSet.next()){
                 if(iResultSet.isLast())
@@ -1572,10 +1525,9 @@ public class SSDB {
 
     public void updateAccountPlan(SSAccountPlan iAccountPlan) {
         if(iAccountPlan == null) return;
-        PreparedStatement iStatement;
 
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_accountplan SET accountplan=? WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_accountplan SET accountplan=? WHERE id=?");
             iStatement.setObject(1, iAccountPlan);
             iStatement.setObject(2, iAccountPlan.getId());
             iStatement.executeUpdate();
@@ -1591,9 +1543,8 @@ public class SSDB {
 
     public void deleteAccountPlan(SSAccountPlan iAccountPlan) {
         if(iAccountPlan == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_accountplan WHERE id=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_accountplan WHERE id=?");
             iStatement.setObject(1, iAccountPlan.getId());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -1609,11 +1560,9 @@ public class SSDB {
 
     public List<SSUnit> getUnits() {
         List<SSUnit> iUnits = new LinkedList<SSUnit>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_unit");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_unit");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iUnits.add((SSUnit) iResultSet.getObject("unit"));
@@ -1630,9 +1579,8 @@ public class SSDB {
 
     public void addUnit(SSUnit iUnit) {
         if(iUnit == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_unit VALUES(?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_unit VALUES(?,?)");
             iStatement.setObject(1, iUnit.getName());
             iStatement.setObject(2, iUnit);
             iStatement.executeUpdate();
@@ -1647,9 +1595,8 @@ public class SSDB {
 
     public void updateUnit(SSUnit iUnit) {
         if(iUnit == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_unit SET unit=? WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_unit SET unit=? WHERE name=?");
             iStatement.setObject(1, iUnit);
             iStatement.setObject(2, iUnit.getName());
             iStatement.executeUpdate();
@@ -1665,9 +1612,8 @@ public class SSDB {
 
     public void deleteUnit(SSUnit iUnit) {
         if(iUnit == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_unit WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_unit WHERE name=?");
             iStatement.setObject(1, iUnit.getName());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -1688,11 +1634,9 @@ public class SSDB {
      */
     public List<SSCurrency> getCurrencies() {
         List<SSCurrency> iCurrencies = new LinkedList<SSCurrency>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_currency");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_currency");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iCurrencies.add((SSCurrency) iResultSet.getObject("currency"));
@@ -1708,13 +1652,11 @@ public class SSDB {
     }
 
     public SSCurrency getCurrency(SSCurrency iCurrency) {
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         SSCurrency iUpdatedCurrency = new SSCurrency();
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_currency WHERE code=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_currency WHERE code=?");
             iStatement.setObject(1, iCurrency.getName());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 iUpdatedCurrency = (SSCurrency) iResultSet.getObject("currency");
@@ -1731,9 +1673,8 @@ public class SSDB {
 
     public void addCurrency(SSCurrency iCurrency) {
         if(iCurrency == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_currency VALUES(?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_currency VALUES(?,?)");
             iStatement.setObject(1, iCurrency.getName());
             iStatement.setObject(2, iCurrency);
             iStatement.executeUpdate();
@@ -1748,9 +1689,8 @@ public class SSDB {
 
     public void updateCurrency(SSCurrency iCurrency) {
         if(iCurrency == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_currency SET currency=? WHERE code=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_currency SET currency=? WHERE code=?");
             iStatement.setObject(1, iCurrency);
             iStatement.setObject(2, iCurrency.getName());
             iStatement.executeUpdate();
@@ -1766,9 +1706,8 @@ public class SSDB {
 
     public void deleteCurrency(SSCurrency iCurrency) {
         if(iCurrency == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_currency WHERE code=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_currency WHERE code=?");
             iStatement.setObject(1, iCurrency.getName());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -1790,11 +1729,9 @@ public class SSDB {
      */
     public List<SSDeliveryWay> getDeliveryWays() {
         List<SSDeliveryWay> iDeliveryWays = new LinkedList<SSDeliveryWay>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_deliveryway");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_deliveryway");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iDeliveryWays.add((SSDeliveryWay) iResultSet.getObject("deliveryway"));
@@ -1811,9 +1748,8 @@ public class SSDB {
 
     public void addDeliveryWay(SSDeliveryWay iDeliveryWay) {
         if(iDeliveryWay == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_deliveryway VALUES(?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_deliveryway VALUES(?,?)");
             iStatement.setObject(1, iDeliveryWay.getName());
             iStatement.setObject(2, iDeliveryWay);
             iStatement.executeUpdate();
@@ -1828,9 +1764,8 @@ public class SSDB {
 
     public void updateDeliveryWay(SSDeliveryWay iDeliveryWay) {
         if(iDeliveryWay == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_deliveryway SET deliveryway=? WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_deliveryway SET deliveryway=? WHERE name=?");
             iStatement.setObject(1, iDeliveryWay);
             iStatement.setObject(2, iDeliveryWay.getName());
             iStatement.executeUpdate();
@@ -1846,9 +1781,8 @@ public class SSDB {
 
     public void deleteDeliveryWay(SSDeliveryWay iDeliveryWay) {
         if(iDeliveryWay == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_deliveryway WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_deliveryway WHERE name=?");
             iStatement.setObject(1, iDeliveryWay.getName());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -1869,11 +1803,9 @@ public class SSDB {
      */
     public List<SSDeliveryTerm> getDeliveryTerms() {
         List<SSDeliveryTerm> iDeliveryTerms = new LinkedList<SSDeliveryTerm>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_deliveryterm");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_deliveryterm");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iDeliveryTerms.add((SSDeliveryTerm) iResultSet.getObject("deliveryterm"));
@@ -1890,9 +1822,8 @@ public class SSDB {
 
     public void addDeliveryTerm(SSDeliveryTerm iDeliveryTerm) {
         if(iDeliveryTerm == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_deliveryterm VALUES(?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_deliveryterm VALUES(?,?)");
             iStatement.setObject(1, iDeliveryTerm.getName());
             iStatement.setObject(2, iDeliveryTerm);
             iStatement.executeUpdate();
@@ -1907,9 +1838,8 @@ public class SSDB {
 
     public void updateDeliveryTerm(SSDeliveryTerm iDeliveryTerm) {
         if(iDeliveryTerm == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_deliveryterm SET deliveryterm=? WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_deliveryterm SET deliveryterm=? WHERE name=?");
             iStatement.setObject(1, iDeliveryTerm);
             iStatement.setObject(2, iDeliveryTerm.getName());
             iStatement.executeUpdate();
@@ -1925,9 +1855,8 @@ public class SSDB {
 
     public void deleteDeliveryTerm(SSDeliveryTerm iDeliveryTerm) {
         if(iDeliveryTerm == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_deliveryterm WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_deliveryterm WHERE name=?");
             iStatement.setObject(1, iDeliveryTerm.getName());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -1949,11 +1878,9 @@ public class SSDB {
      */
     public List<SSPaymentTerm> getPaymentTerms() {
         List<SSPaymentTerm> iPaymentTerms = new LinkedList<SSPaymentTerm>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_paymentterm");
-            iResultSet = iStatement.executeQuery();
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_paymentterm");
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iPaymentTerms.add((SSPaymentTerm) iResultSet.getObject("paymentterm"));
@@ -1970,9 +1897,8 @@ public class SSDB {
 
     public void addPaymentTerm(SSPaymentTerm iPaymentTerm) {
         if(iPaymentTerm == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_paymentterm VALUES(?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_paymentterm VALUES(?,?)");
             iStatement.setObject(1, iPaymentTerm.getName());
             iStatement.setObject(2, iPaymentTerm);
             iStatement.executeUpdate();
@@ -1987,9 +1913,8 @@ public class SSDB {
 
     public void updatePaymentTerm(SSPaymentTerm iPaymentTerm) {
         if(iPaymentTerm == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_paymentterm SET paymentterm=? WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_paymentterm SET paymentterm=? WHERE name=?");
             iStatement.setObject(1, iPaymentTerm);
             iStatement.setObject(2, iPaymentTerm.getName());
             iStatement.executeUpdate();
@@ -2005,9 +1930,8 @@ public class SSDB {
 
     public void deletePaymentTerm(SSPaymentTerm iPaymentTerm) {
         if(iPaymentTerm == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_paymentterm WHERE name=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_paymentterm WHERE name=?");
             iStatement.setObject(1, iPaymentTerm.getName());
             iStatement.executeUpdate();
             iConnection.commit();
@@ -2024,13 +1948,11 @@ public class SSDB {
 
     public List<SSNewResultUnit> getResultUnits() {
         List<SSNewResultUnit> iResultUnits = new LinkedList<SSNewResultUnit>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return iResultUnits;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE companyid=?");
             iStatement.setObject(1,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iResultUnits.add((SSNewResultUnit) iResultSet.getObject("resultunit"));
@@ -2047,14 +1969,12 @@ public class SSDB {
 
     public SSNewResultUnit getResultUnit(SSNewResultUnit pResultUnit){
         if(pResultUnit == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE number=? AND companyid=?");
             iStatement.setObject(1,pResultUnit.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSNewResultUnit iResultUnit = (SSNewResultUnit) iResultSet.getObject("resultunit");
@@ -2073,14 +1993,12 @@ public class SSDB {
 
     public SSNewResultUnit getResultUnit(String pResultUnitNumber){
         if(pResultUnitNumber == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE number=? AND companyid=?");
             iStatement.setObject(1,pResultUnitNumber);
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSNewResultUnit iResultUnit = (SSNewResultUnit) iResultSet.getObject("resultunit");
@@ -2099,16 +2017,14 @@ public class SSDB {
 
     public List<SSNewResultUnit> getResultUnits(List<SSNewResultUnit> pResultUnits){
         if(pResultUnits == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSNewResultUnit> iResultUnits = new LinkedList<SSNewResultUnit>();
         if(iCurrentCompany == null) return iResultUnits;
         try {
             for(SSNewResultUnit iResultUnit : pResultUnits){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_resultunit WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iResultUnit.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iResultUnits.add((SSNewResultUnit) iResultSet.getObject("resultunit"));
                 }
@@ -2126,10 +2042,9 @@ public class SSDB {
 
     public void addResultUnit(SSNewResultUnit iResultUnit) {
         if(iResultUnit == null) return;
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_resultunit VALUES(?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_resultunit VALUES(?,?,?)");
             iStatement.setObject(1, iResultUnit.getNumber());
             iStatement.setObject(2, iResultUnit);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -2144,10 +2059,9 @@ public class SSDB {
     }
 
     public void updateResultUnit(SSNewResultUnit iResultUnit) {
-        PreparedStatement iStatement;
         if(iResultUnit == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_resultunit SET resultunit=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_resultunit SET resultunit=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iResultUnit);
             iStatement.setObject(2, iResultUnit.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -2163,10 +2077,9 @@ public class SSDB {
     }
 
     public void deleteResultUnit(SSNewResultUnit iResultUnit) {
-        PreparedStatement iStatement;
         if(iResultUnit == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_resultunit WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_resultunit WHERE number=? AND companyid=?");
             iStatement.setObject(1, iResultUnit.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -2184,13 +2097,11 @@ public class SSDB {
 
     public List<SSNewProject> getProjects() {
         List<SSNewProject> iProjects = new LinkedList<SSNewProject>();
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return iProjects;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE companyid=?");
             iStatement.setObject(1,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             while (iResultSet.next()) {
                 iProjects.add((SSNewProject) iResultSet.getObject("project"));
@@ -2207,14 +2118,12 @@ public class SSDB {
 
     public SSNewProject getProject(SSNewProject pProject){
         if(pProject == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE number=? AND companyid=?");
             iStatement.setObject(1,pProject.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSNewProject iProject = (SSNewProject) iResultSet.getObject("project");
@@ -2233,14 +2142,12 @@ public class SSDB {
 
     public SSNewProject getProject(String pProjectNumber){
         if(pProjectNumber == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE number=? AND companyid=?");
             iStatement.setObject(1,pProjectNumber);
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSNewProject iProject = (SSNewProject) iResultSet.getObject("project");
@@ -2259,16 +2166,14 @@ public class SSDB {
 
     public List<SSNewProject> getProjects(List<SSNewProject> pProjects){
         if(pProjects == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSNewProject> iProjects = new LinkedList<SSNewProject>();
         if(iCurrentCompany == null) return iProjects;
         try {
             for(SSNewProject iProject : pProjects){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_project WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iProject.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iProjects.add((SSNewProject) iResultSet.getObject("project"));
                 }
@@ -2286,10 +2191,9 @@ public class SSDB {
 
     public void addProject(SSNewProject iProject) {
         if(iProject == null) return;
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_project VALUES(?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_project VALUES(?,?,?)");
             iStatement.setObject(1, iProject.getNumber());
             iStatement.setObject(2, iProject);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -2304,10 +2208,9 @@ public class SSDB {
     }
 
     public void updateProject(SSNewProject iProject) {
-        PreparedStatement iStatement;
         if(iProject == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_project SET project=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_project SET project=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iProject);
             iStatement.setObject(2, iProject.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -2323,10 +2226,9 @@ public class SSDB {
     }
 
     public void deleteProject(SSNewProject iProject) {
-        PreparedStatement iStatement;
         if(iProject == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_project WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_project WHERE number=? AND companyid=?");
             iStatement.setObject(1, iProject.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -2994,13 +2896,13 @@ public class SSDB {
         if (iProducts != null) {
             return iProducts;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iProducts = new LinkedList<SSProduct>();
 
         if(iCurrentCompany == null) return iProducts;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -3028,14 +2930,12 @@ public class SSDB {
 
     public SSProduct getProduct(SSProduct pProduct){
         if(pProduct == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE number=? AND companyid=?");
             iStatement.setObject(1,pProduct.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSProduct iProduct = (SSProduct) iResultSet.getObject(3);
@@ -3054,13 +2954,11 @@ public class SSDB {
 
     public SSProduct getProduct(String iProductNumber){
         if(iProductNumber == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE LOWER(number)=LOWER('"+ iProductNumber + "') AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE LOWER(number)=LOWER('" + iProductNumber + "') AND companyid=?");
             iStatement.setObject(1,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSProduct iProduct = (SSProduct) iResultSet.getObject(3);
@@ -3079,8 +2977,6 @@ public class SSDB {
 
     public List<SSProduct> getProducts(List<SSProduct> pProducts){
         if(pProducts == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSProduct> iProducts = new LinkedList<SSProduct>();
         if (this.iProducts != null) {
             for (SSProduct iProduct : pProducts) {
@@ -3093,10 +2989,10 @@ public class SSDB {
         if(iCurrentCompany == null) return iProducts;
         try {
             for(SSProduct iProduct : pProducts){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_product WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iProduct.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iProducts.add((SSProduct) iResultSet.getObject(3));
                 }
@@ -3114,10 +3010,9 @@ public class SSDB {
 
     public void addProduct(SSProduct iProduct) {
         if(iProduct == null) return;
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_product VALUES(NULL,?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_product VALUES(NULL,?,?,?)");
             iStatement.setObject(1, iProduct.getNumber());
             iStatement.setObject(2, iProduct);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3132,10 +3027,9 @@ public class SSDB {
     }
 
     public void updateProduct(SSProduct iProduct) {
-        PreparedStatement iStatement;
         if(iProduct == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_product SET product=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_product SET product=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iProduct);
             iStatement.setObject(2, iProduct.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3151,10 +3045,9 @@ public class SSDB {
     }
 
     public void deleteProduct(SSProduct iProduct) {
-        PreparedStatement iStatement;
         if(iProduct == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_product WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_product WHERE number=? AND companyid=?");
             iStatement.setObject(1, iProduct.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -3180,12 +3073,12 @@ public class SSDB {
         if (iCustomers != null) {
             return iCustomers;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iCustomers = new LinkedList<SSCustomer>();
         if(iCurrentCompany == null) return iCustomers;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -3213,14 +3106,12 @@ public class SSDB {
 
     public SSCustomer getCustomer(SSCustomer pCustomer){
         if(pCustomer == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE number=? AND companyid=?");
             iStatement.setObject(1,pCustomer.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSCustomer iCustomer = (SSCustomer) iResultSet.getObject(3);
@@ -3239,13 +3130,11 @@ public class SSDB {
 
     public SSCustomer getCustomer(String iCustomerNumber){
         if(iCustomerNumber == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE LOWER(number)=LOWER('" + iCustomerNumber + "') AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE LOWER(number)=LOWER('" + iCustomerNumber + "') AND companyid=?");
             iStatement.setObject(1,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSCustomer iCustomer = (SSCustomer) iResultSet.getObject(3);
@@ -3264,8 +3153,6 @@ public class SSDB {
 
     public List<SSCustomer> getCustomers(List<SSCustomer> pCustomers){
         if(pCustomers == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSCustomer> iCustomers = new LinkedList<SSCustomer>();
         if (this.iCustomers != null) {
             for (SSCustomer iCustomer : pCustomers) {
@@ -3278,10 +3165,10 @@ public class SSDB {
         if(iCurrentCompany == null) return iCustomers;
         try {
             for(SSCustomer iCustomer : pCustomers){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_customer WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iCustomer.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iCustomers.add((SSCustomer) iResultSet.getObject(3));
                 }
@@ -3299,10 +3186,9 @@ public class SSDB {
 
     public void addCustomer(SSCustomer iCustomer) {
         if(iCustomer == null) return;
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_customer VALUES(NULL,?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_customer VALUES(NULL,?,?,?)");
             iStatement.setObject(1, iCustomer.getNumber());
             iStatement.setObject(2, iCustomer);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3317,10 +3203,9 @@ public class SSDB {
     }
 
     public void updateCustomer(SSCustomer iCustomer) {
-        PreparedStatement iStatement;
         if(iCustomer == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_customer SET customer=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_customer SET customer=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iCustomer);
             iStatement.setObject(2, iCustomer.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3336,10 +3221,9 @@ public class SSDB {
     }
 
     public void deleteCustomer(SSCustomer iCustomer) {
-        PreparedStatement iStatement;
         if(iCustomer == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_customer WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_customer WHERE number=? AND companyid=?");
             iStatement.setObject(1, iCustomer.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -3365,12 +3249,12 @@ public class SSDB {
         if (iSuppliers != null) {
             return iSuppliers;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iSuppliers = new LinkedList<SSSupplier>();
         if(iCurrentCompany == null) return iSuppliers;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplier WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -3398,13 +3282,11 @@ public class SSDB {
 
     public SSSupplier getSupplier(SSSupplier pSupplier){
         if(pSupplier == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplier WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplier WHERE number=? AND companyid=?");
             iStatement.setObject(1,pSupplier.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSSupplier iSupplier = (SSSupplier) iResultSet.getObject(3);
@@ -3423,8 +3305,6 @@ public class SSDB {
 
     public List<SSSupplier> getSuppliers(List<SSSupplier> pSuppliers){
         if(pSuppliers == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSSupplier> iSuppliers = new LinkedList<SSSupplier>();
         if (this.iSuppliers != null) {
             for (SSSupplier iSupplier : pSuppliers) {
@@ -3437,10 +3317,10 @@ public class SSDB {
         if(iCurrentCompany == null) return iSuppliers;
         try {
             for(SSSupplier iSupplier : pSuppliers){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplier WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplier WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iSupplier.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iSuppliers.add((SSSupplier) iResultSet.getObject(3));
                 }
@@ -3458,9 +3338,8 @@ public class SSDB {
 
     public void addSupplier(SSSupplier iSupplier) {
         if(iSupplier == null ||iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_supplier VALUES(NULL,?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_supplier VALUES(NULL,?,?,?)");
             iStatement.setObject(1, iSupplier.getNumber());
             iStatement.setObject(2, iSupplier);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3476,9 +3355,8 @@ public class SSDB {
 
     public void updateSupplier(SSSupplier iSupplier) {
         if(iSupplier == null ||iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_supplier SET supplier=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_supplier SET supplier=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iSupplier);
             iStatement.setObject(2, iSupplier.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3495,9 +3373,8 @@ public class SSDB {
 
     public void deleteSupplier(SSSupplier iSupplier) {
         if(iSupplier == null ||iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_supplier WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_supplier WHERE number=? AND companyid=?");
             iStatement.setObject(1, iSupplier.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -3524,12 +3401,12 @@ public class SSDB {
         if (iAutoDists != null) {
             return iAutoDists;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iAutoDists = new LinkedList<SSAutoDist>();
         if(iCurrentCompany == null) return iAutoDists;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_autodist WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -3557,13 +3434,11 @@ public class SSDB {
 
     public SSAutoDist getAutoDist(SSAutoDist pAutoDist){
         if(pAutoDist == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_autodist WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_autodist WHERE number=? AND companyid=?");
             iStatement.setObject(1,pAutoDist.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSAutoDist iAutoDist = (SSAutoDist) iResultSet.getObject(3);
@@ -3582,8 +3457,6 @@ public class SSDB {
 
     public List<SSAutoDist> getAutoDists(List<SSAutoDist> pAutoDists){
         if(pAutoDists == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSAutoDist> iAutoDists = new LinkedList<SSAutoDist>();
         if (this.iAutoDists != null) {
             for (SSAutoDist iAutoDist : pAutoDists) {
@@ -3596,10 +3469,10 @@ public class SSDB {
         if(iCurrentCompany == null) return iAutoDists;
         try {
             for(SSAutoDist iAutoDist : pAutoDists){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_autodist WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_autodist WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iAutoDist.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iAutoDists.add((SSAutoDist) iResultSet.getObject(3));
                 }
@@ -3617,9 +3490,8 @@ public class SSDB {
 
     public void addAutoDist(SSAutoDist iAutoDist) {
         if(iAutoDist == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_autodist VALUES(NULL,?,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_autodist VALUES(NULL,?,?,?)");
             iStatement.setObject(1, iAutoDist.getNumber());
             iStatement.setObject(2, iAutoDist);
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3635,9 +3507,8 @@ public class SSDB {
 
     public void updateAutoDist(SSAutoDist iAutoDist, SSAutoDist iOriginal) {
         if(iAutoDist == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_autodist SET autodist=?, number=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_autodist SET autodist=?, number=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iAutoDist);
             iStatement.setObject(2, iAutoDist.getNumber());
             iStatement.setObject(3, iOriginal.getNumber());
@@ -3655,10 +3526,9 @@ public class SSDB {
 
     public void deleteAutoDist(SSAutoDist iAutoDist) {
         if(iAutoDist == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         if(iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_autodist WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_autodist WHERE number=? AND companyid=?");
             iStatement.setObject(1, iAutoDist.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -3683,12 +3553,12 @@ public class SSDB {
         if (iTenders != null) {
             return iTenders;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iTenders = new LinkedList<SSTender>();
         if(iCurrentCompany == null) return iTenders;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_tender WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -3717,13 +3587,11 @@ public class SSDB {
 
     public SSTender getTender(SSTender pTender){
         if(pTender == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_tender WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_tender WHERE number=? AND companyid=?");
             iStatement.setObject(1,pTender.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSTender iTender = (SSTender) iResultSet.getObject(3);
@@ -3753,14 +3621,12 @@ public class SSDB {
         }
         if(iCurrentCompany == null) return iTenders;
 
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             for(SSTender iTender : pTenders){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_tender WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_tender WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iTender.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iTenders.add((SSTender) iResultSet.getObject(3));
                 }
@@ -3778,13 +3644,11 @@ public class SSDB {
 
     public void addTender(SSTender iTender) {
         if(iTender == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_tender WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_tender WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("tender");
 
@@ -3819,9 +3683,8 @@ public class SSDB {
 
     public void updateTender(SSTender iTender) {
         if(iTender == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_tender SET tender=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_tender SET tender=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iTender);
             iStatement.setObject(2, iTender.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -3838,9 +3701,8 @@ public class SSDB {
 
     public void deleteTender(SSTender iTender) {
         if(iTender == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_tender WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_tender WHERE number=? AND companyid=?");
             iStatement.setObject(1, iTender.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -3861,12 +3723,12 @@ public class SSDB {
         if (iOrders != null) {
             return iOrders;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iOrders = new LinkedList<SSOrder>();
         if(iCurrentCompany == null) return iOrders;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_order WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -3895,13 +3757,11 @@ public class SSDB {
 
     public SSOrder getOrder(SSOrder pOrder){
         if(pOrder == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_order WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_order WHERE number=? AND companyid=?");
             iStatement.setObject(1,pOrder.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSOrder iOrder = (SSOrder) iResultSet.getObject(3);
@@ -3930,14 +3790,12 @@ public class SSDB {
             return iOrders;
         }
         if(iCurrentCompany == null) return iOrders;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             for(SSOrder iOrder : pOrders){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_order WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_order WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iOrder.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iOrders.add((SSOrder) iResultSet.getObject(3));
                 }
@@ -3955,13 +3813,11 @@ public class SSDB {
 
     public void addOrder(SSOrder iOrder) {
         if(iOrder == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_order WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_order WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("order");
 
@@ -3996,9 +3852,8 @@ public class SSDB {
 
     public void updateOrder(SSOrder iOrder) {
         if(iOrder == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_order SET iorder=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_order SET iorder=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iOrder);
             iStatement.setObject(2, iOrder.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -4015,9 +3870,8 @@ public class SSDB {
 
     public void deleteOrder(SSOrder iOrder) {
         if(iOrder == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_order WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_order WHERE number=? AND companyid=?");
             iStatement.setObject(1, iOrder.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -4044,12 +3898,12 @@ public class SSDB {
         if (iInvoices != null) {
             return iInvoices;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iInvoices = new LinkedList<SSInvoice>();
         if(iCurrentCompany == null) return iInvoices;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_invoice WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -4078,13 +3932,11 @@ public class SSDB {
 
     public SSInvoice getInvoice(SSInvoice pInvoice){
         if(pInvoice == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_invoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_invoice WHERE number=? AND companyid=?");
             iStatement.setObject(1,pInvoice.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSInvoice iInvoice = (SSInvoice) iResultSet.getObject(3);
@@ -4113,14 +3965,12 @@ public class SSDB {
             return iInvoices;
         }
         if( iCurrentCompany == null) return iInvoices;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             for(SSInvoice iInvoice : pInvoices){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_invoice WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_invoice WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iInvoice.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iInvoices.add((SSInvoice) iResultSet.getObject(3));
                 }
@@ -4138,13 +3988,11 @@ public class SSDB {
 
     public void addInvoice(SSInvoice iInvoice) {
         if(iInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_invoice WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_invoice WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("invoice");
 
@@ -4179,9 +4027,8 @@ public class SSDB {
 
     public void updateInvoice(SSInvoice iInvoice) {
         if(iInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_invoice SET invoice=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_invoice SET invoice=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iInvoice);
             iStatement.setObject(2, iInvoice.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -4198,9 +4045,8 @@ public class SSDB {
 
     public void deleteInvoice(SSInvoice iInvoice) {
         if(iInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_invoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_invoice WHERE number=? AND companyid=?");
             iStatement.setObject(1, iInvoice.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -4227,12 +4073,12 @@ public class SSDB {
         if (iInpayments != null) {
             return iInpayments;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iInpayments = new LinkedList<SSInpayment>();
         if(iCurrentCompany == null) return iInpayments;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_inpayment WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -4261,13 +4107,11 @@ public class SSDB {
 
     public SSInpayment getInpayment(SSInpayment pInpayment){
         if(pInpayment == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_inpayment WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_inpayment WHERE number=? AND companyid=?");
             iStatement.setObject(1,pInpayment.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSInpayment iInpayment = (SSInpayment) iResultSet.getObject(3);
@@ -4286,13 +4130,11 @@ public class SSDB {
 
     public void addInpayment(SSInpayment iInpayment) {
         if(iInpayment == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_inpayment WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_inpayment WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("inpayment");
 
@@ -4327,9 +4169,8 @@ public class SSDB {
 
     public void updateInpayment(SSInpayment iInpayment) {
         if(iInpayment == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_inpayment SET inpayment=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_inpayment SET inpayment=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iInpayment);
             iStatement.setObject(2, iInpayment.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -4346,9 +4187,8 @@ public class SSDB {
 
     public void deleteInpayment(SSInpayment iInpayment) {
         if(iInpayment == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_inpayment WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_inpayment WHERE number=? AND companyid=?");
             iStatement.setObject(1, iInpayment.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -4372,12 +4212,12 @@ public class SSDB {
         if (iOutpayments != null) {
             return iOutpayments;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iOutpayments = new LinkedList<SSOutpayment>();
         if(iCurrentCompany == null) return iOutpayments;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_outpayment WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -4406,13 +4246,11 @@ public class SSDB {
 
     public SSOutpayment getOutpayment(SSOutpayment pOutpayment){
         if(pOutpayment == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_outpayment WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_outpayment WHERE number=? AND companyid=?");
             iStatement.setObject(1,pOutpayment.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSOutpayment iOutpayment = (SSOutpayment) iResultSet.getObject(3);
@@ -4431,13 +4269,11 @@ public class SSDB {
 
     public void addOutpayment(SSOutpayment iOutpayment) {
         if(iOutpayment == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_outpayment WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_outpayment WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("outpayment");
 
@@ -4472,9 +4308,8 @@ public class SSDB {
 
     public void updateOutpayment(SSOutpayment iOutpayment) {
         if(iOutpayment == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_outpayment SET outpayment=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_outpayment SET outpayment=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iOutpayment);
             iStatement.setObject(2, iOutpayment.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -4491,9 +4326,8 @@ public class SSDB {
 
     public void deleteOutpayment(SSOutpayment iOutpayment) {
         if(iOutpayment == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_outpayment WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_outpayment WHERE number=? AND companyid=?");
             iStatement.setObject(1, iOutpayment.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -4519,12 +4353,12 @@ public class SSDB {
         if (iCreditInvoices != null) {
             return iCreditInvoices;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iCreditInvoices = new LinkedList<SSCreditInvoice>();
         if(iCurrentCompany == null) return iCreditInvoices;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_creditinvoice WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -4553,13 +4387,11 @@ public class SSDB {
 
     public SSCreditInvoice getCreditInvoice(SSCreditInvoice pCreditInvoice){
         if(pCreditInvoice == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_creditinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_creditinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1,pCreditInvoice.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSCreditInvoice iCreditInvoice = (SSCreditInvoice) iResultSet.getObject(3);
@@ -4588,14 +4420,12 @@ public class SSDB {
             return iCreditInvoices;
         }
         if(iCurrentCompany == null) return iCreditInvoices;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             for(SSCreditInvoice iCreditInvoice : pCreditInvoices){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_creditinvoice WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_creditinvoice WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iCreditInvoice.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iCreditInvoices.add((SSCreditInvoice) iResultSet.getObject(3));
                 }
@@ -4613,13 +4443,11 @@ public class SSDB {
 
     public void addCreditInvoice(SSCreditInvoice iCreditInvoice) {
         if(iCreditInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_creditinvoice WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_creditinvoice WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("creditinvoice");
 
@@ -4654,9 +4482,8 @@ public class SSDB {
 
     public void updateCreditInvoice(SSCreditInvoice iCreditInvoice) {
         if(iCreditInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_creditinvoice SET creditinvoice=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_creditinvoice SET creditinvoice=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iCreditInvoice);
             iStatement.setObject(2, iCreditInvoice.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -4673,9 +4500,8 @@ public class SSDB {
 
     public void deleteCreditInvoice(SSCreditInvoice iCreditInvoice) {
         if(iCreditInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_creditinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_creditinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1, iCreditInvoice.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -4703,12 +4529,12 @@ public class SSDB {
         if (iPeriodicInvoices != null) {
             return iPeriodicInvoices;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iPeriodicInvoices = new LinkedList<SSPeriodicInvoice>();
         if(iCurrentCompany == null) return iPeriodicInvoices;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_periodicinvoice WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -4737,13 +4563,11 @@ public class SSDB {
 
     public SSPeriodicInvoice getPeriodicInvoice(SSPeriodicInvoice pPeriodicInvoice){
         if(pPeriodicInvoice == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_periodicinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_periodicinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1,pPeriodicInvoice.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSPeriodicInvoice iPeriodicInvoice = (SSPeriodicInvoice) iResultSet.getObject(3);
@@ -4762,13 +4586,11 @@ public class SSDB {
 
     public void addPeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
         if(iPeriodicInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_periodicinvoice WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_periodicinvoice WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("periodicinvoice");
 
@@ -4803,9 +4625,8 @@ public class SSDB {
 
     public void updatePeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
         if(iPeriodicInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_periodicinvoice SET periodicinvoice=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_periodicinvoice SET periodicinvoice=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iPeriodicInvoice);
             iStatement.setObject(2, iPeriodicInvoice.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -4822,9 +4643,8 @@ public class SSDB {
 
     public void deletePeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
         if(iPeriodicInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_periodicinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_periodicinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1, iPeriodicInvoice.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -4851,12 +4671,12 @@ public class SSDB {
         if (iPurchaseOrders != null) {
             return iPurchaseOrders;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iPurchaseOrders = new LinkedList<SSPurchaseOrder>();
         if(iCurrentCompany == null) return iPurchaseOrders;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_purchaseorder WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -4885,13 +4705,11 @@ public class SSDB {
 
     public SSPurchaseOrder getPurchaseOrder(SSPurchaseOrder pPurchaseOrder){
         if(pPurchaseOrder == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_purchaseorder WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_purchaseorder WHERE number=? AND companyid=?");
             iStatement.setObject(1,pPurchaseOrder.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSPurchaseOrder iPurchaseOrder = (SSPurchaseOrder) iResultSet.getObject(3);
@@ -4920,14 +4738,12 @@ public class SSDB {
             return iPurchaseOrders;
         }
         if(iCurrentCompany == null) return iPurchaseOrders;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             for(SSPurchaseOrder iPurchaseOrder : pPurchaseOrders){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_purchaseorder WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_purchaseorder WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iPurchaseOrder.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iPurchaseOrders.add((SSPurchaseOrder) iResultSet.getObject(3));
                 }
@@ -4945,13 +4761,11 @@ public class SSDB {
 
     public void addPurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
         if(iPurchaseOrder == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_purchaseorder WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_purchaseorder WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("purchaseorder");
 
@@ -4986,9 +4800,8 @@ public class SSDB {
 
     public void updatePurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
         if(iPurchaseOrder == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_purchaseorder SET purchaseorder=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_purchaseorder SET purchaseorder=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iPurchaseOrder);
             iStatement.setObject(2, iPurchaseOrder.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5005,9 +4818,8 @@ public class SSDB {
 
     public void deletePurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
         if(iPurchaseOrder == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_purchaseorder WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_purchaseorder WHERE number=? AND companyid=?");
             iStatement.setObject(1, iPurchaseOrder.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5032,12 +4844,12 @@ public class SSDB {
         if (iSupplierInvoices != null) {
             return iSupplierInvoices;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iSupplierInvoices = new LinkedList<SSSupplierInvoice>();
         if(iCurrentCompany == null) return iSupplierInvoices;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplierinvoice WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -5066,13 +4878,11 @@ public class SSDB {
 
     public SSSupplierInvoice getSupplierInvoice(SSSupplierInvoice pSupplierInvoice){
         if(pSupplierInvoice == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplierinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplierinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1,pSupplierInvoice.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSSupplierInvoice iSupplierInvoice = (SSSupplierInvoice) iResultSet.getObject(3);
@@ -5101,14 +4911,12 @@ public class SSDB {
             return iSupplierInvoices;
         }
         if(iCurrentCompany == null) return iSupplierInvoices;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             for(SSSupplierInvoice iSupplierInvoice : pSupplierInvoices){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplierinvoice WHERE number=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_supplierinvoice WHERE number=? AND companyid=?");
                 iStatement.setObject(1,iSupplierInvoice.getNumber());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iSupplierInvoices.add((SSSupplierInvoice) iResultSet.getObject(3));
                 }
@@ -5126,13 +4934,11 @@ public class SSDB {
 
     public void addSupplierInvoice(SSSupplierInvoice iSupplierInvoice) {
         if(iSupplierInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_supplierinvoice WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_supplierinvoice WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("supplierinvoice");
 
@@ -5167,9 +4973,8 @@ public class SSDB {
 
     public void updateSupplierInvoice(SSSupplierInvoice iSupplierInvoice) {
         if(iSupplierInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_supplierinvoice SET supplierinvoice=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_supplierinvoice SET supplierinvoice=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iSupplierInvoice);
             iStatement.setObject(2, iSupplierInvoice.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5186,9 +4991,8 @@ public class SSDB {
 
     public void deleteSupplierInvoice(SSSupplierInvoice iSupplierInvoice) {
         if(iSupplierInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_supplierinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_supplierinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1, iSupplierInvoice.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5213,12 +5017,12 @@ public class SSDB {
         if (iSupplierCreditInvoices != null) {
             return iSupplierCreditInvoices;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iSupplierCreditInvoices = new LinkedList<SSSupplierCreditInvoice>();
         if(iCurrentCompany == null) return iSupplierCreditInvoices;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_suppliercreditinvoice WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -5247,13 +5051,11 @@ public class SSDB {
 
     public SSSupplierCreditInvoice getSupplierCreditInvoice(SSSupplierCreditInvoice pSupplierCreditInvoice){
         if(pSupplierCreditInvoice == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_suppliercreditinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_suppliercreditinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1,pSupplierCreditInvoice.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSSupplierCreditInvoice iSupplierCreditInvoice = (SSSupplierCreditInvoice) iResultSet.getObject(3);
@@ -5272,13 +5074,11 @@ public class SSDB {
 
     public void addSupplierCreditInvoice(SSSupplierCreditInvoice iSupplierCreditInvoice) {
         if(iSupplierCreditInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_suppliercreditinvoice WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_suppliercreditinvoice WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("suppliercreditinvoice");
 
@@ -5313,9 +5113,8 @@ public class SSDB {
 
     public void updateSupplierCreditInvoice(SSSupplierCreditInvoice iSupplierCreditInvoice) {
         if(iSupplierCreditInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_suppliercreditinvoice SET suppliercreditinvoice=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_suppliercreditinvoice SET suppliercreditinvoice=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iSupplierCreditInvoice);
             iStatement.setObject(2, iSupplierCreditInvoice.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5332,9 +5131,8 @@ public class SSDB {
 
     public void deleteSupplierCreditInvoice(SSSupplierCreditInvoice iSupplierCreditInvoice) {
         if(iSupplierCreditInvoice == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_suppliercreditinvoice WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_suppliercreditinvoice WHERE number=? AND companyid=?");
             iStatement.setObject(1, iSupplierCreditInvoice.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5359,12 +5157,12 @@ public class SSDB {
         if (iInventories != null) {
             return iInventories;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iInventories = new LinkedList<SSInventory>();
         if(iCurrentCompany == null) return iInventories;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_inventory WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -5393,13 +5191,11 @@ public class SSDB {
 
     public SSInventory getInventory(SSInventory pInventory){
         if(pInventory == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_inventory WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_inventory WHERE number=? AND companyid=?");
             iStatement.setObject(1,pInventory.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSInventory iInventory = (SSInventory) iResultSet.getObject(3);
@@ -5418,13 +5214,11 @@ public class SSDB {
 
     public void addInventory(SSInventory iInventory) {
         if(iInventory == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_inventory WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_inventory WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("inventory");
 
@@ -5459,9 +5253,8 @@ public class SSDB {
 
     public void updateInventory(SSInventory iInventory) {
         if(iInventory == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_inventory SET inventory=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_inventory SET inventory=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iInventory);
             iStatement.setObject(2, iInventory.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5478,9 +5271,8 @@ public class SSDB {
 
     public void deleteInventory(SSInventory iInventory) {
         if(iInventory == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_inventory WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_inventory WHERE number=? AND companyid=?");
             iStatement.setObject(1, iInventory.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5504,12 +5296,12 @@ public class SSDB {
         if (iIndeliveries != null) {
             return iIndeliveries;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iIndeliveries = new LinkedList<SSIndelivery>();
         if(iCurrentCompany == null) return iIndeliveries;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_indelivery WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -5538,13 +5330,11 @@ public class SSDB {
 
     public SSIndelivery getIndelivery(SSIndelivery pIndelivery){
         if(pIndelivery == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_indelivery WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_indelivery WHERE number=? AND companyid=?");
             iStatement.setObject(1,pIndelivery.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSIndelivery iIndelivery = (SSIndelivery) iResultSet.getObject(3);
@@ -5563,13 +5353,11 @@ public class SSDB {
 
     public void addIndelivery(SSIndelivery iIndelivery) {
         if(iIndelivery == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_indelivery WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_indelivery WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("indelivery");
 
@@ -5604,9 +5392,8 @@ public class SSDB {
 
     public void updateIndelivery(SSIndelivery iIndelivery) {
         if(iIndelivery == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_indelivery SET indelivery=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_indelivery SET indelivery=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iIndelivery);
             iStatement.setObject(2, iIndelivery.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5623,9 +5410,8 @@ public class SSDB {
 
     public void deleteIndelivery(SSIndelivery iIndelivery) {
         if(iIndelivery == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_indelivery WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_indelivery WHERE number=? AND companyid=?");
             iStatement.setObject(1, iIndelivery.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5649,12 +5435,12 @@ public class SSDB {
         if (iOutdeliveries != null) {
             return iOutdeliveries;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iOutdeliveries = new LinkedList<SSOutdelivery>();
         if(iCurrentCompany == null) return iOutdeliveries;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_outdelivery WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -5683,13 +5469,11 @@ public class SSDB {
 
     public SSOutdelivery getOutdelivery(SSOutdelivery pOutdelivery){
         if(pOutdelivery == null || iCurrentCompany == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_outdelivery WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_outdelivery WHERE number=? AND companyid=?");
             iStatement.setObject(1,pOutdelivery.getNumber());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSOutdelivery iOutdelivery = (SSOutdelivery) iResultSet.getObject(3);
@@ -5708,13 +5492,11 @@ public class SSDB {
 
     public void addOutdelivery(SSOutdelivery iOutdelivery) {
         if(iOutdelivery == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
             LockDatabase();
-            iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_outdelivery WHERE companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT MAX(number) AS maxnum FROM tbl_outdelivery WHERE companyid=?");
             iStatement.setObject(1, iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             Integer iCompanyNumber = getCurrentCompany().getAutoIncrement().getNumber("outdelivery");
 
@@ -5749,9 +5531,8 @@ public class SSDB {
 
     public void updateOutdelivery(SSOutdelivery iOutdelivery) {
         if(iOutdelivery == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_outdelivery SET outdelivery=? WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_outdelivery SET outdelivery=? WHERE number=? AND companyid=?");
             iStatement.setObject(1, iOutdelivery);
             iStatement.setObject(2, iOutdelivery.getNumber());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5768,9 +5549,8 @@ public class SSDB {
 
     public void deleteOutdelivery(SSOutdelivery iOutdelivery) {
         if(iOutdelivery == null || iCurrentCompany == null) return;
-        PreparedStatement iStatement;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_outdelivery WHERE number=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_outdelivery WHERE number=? AND companyid=?");
             iStatement.setObject(1, iOutdelivery.getNumber());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5790,13 +5570,13 @@ public class SSDB {
         if (iOwnReports != null) {
             return iOwnReports;
         }
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         iOwnReports = new LinkedList<SSOwnReport>();
 
         if(iCurrentCompany == null) return iOwnReports;
         try {
             Integer iMax = -1;
+            ResultSet iResultSet;
+            PreparedStatement iStatement;
             while (true) {
                 iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE companyid=? AND id>?");
                 iStatement.setObject(1, iCurrentCompany.getId());
@@ -5824,14 +5604,12 @@ public class SSDB {
 
     public SSOwnReport getOwnReport(SSOwnReport pOwnReport){
         if(pOwnReport == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE id=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE id=? AND companyid=?");
             iStatement.setObject(1,pOwnReport.getId());
             iStatement.setObject(2,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSOwnReport iOwnReport = (SSOwnReport) iResultSet.getObject(2);
@@ -5850,13 +5628,11 @@ public class SSDB {
 
     public SSOwnReport getOwnReport(Integer iOwnReportNumber){
         if(iOwnReportNumber == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         if(iCurrentCompany == null) return null;
         try {
-            iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE id="+ iOwnReportNumber + " AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE id=" + iOwnReportNumber + " AND companyid=?");
             iStatement.setObject(1,iCurrentCompany.getId());
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
 
             if (iResultSet.next()) {
                 SSOwnReport iOwnReport = (SSOwnReport) iResultSet.getObject(2);
@@ -5875,8 +5651,6 @@ public class SSDB {
 
     public List<SSOwnReport> getOwnReports(List<SSOwnReport> pOwnReports){
         if(pOwnReports == null) return null;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         List<SSOwnReport> iOwnReports = new LinkedList<SSOwnReport>();
         if (this.iOwnReports != null) {
             for (SSOwnReport iOwnReport : pOwnReports) {
@@ -5889,10 +5663,10 @@ public class SSDB {
         if(iCurrentCompany == null) return iOwnReports;
         try {
             for(SSOwnReport iOwnReport : pOwnReports){
-                iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE id=? AND companyid=?");
+                PreparedStatement iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport WHERE id=? AND companyid=?");
                 iStatement.setObject(1,iOwnReport.getId());
                 iStatement.setObject(2,iCurrentCompany.getId());
-                iResultSet = iStatement.executeQuery();
+                ResultSet iResultSet = iStatement.executeQuery();
                 if(iResultSet.next()) {
                     iOwnReports.add((SSOwnReport) iResultSet.getObject(2));
                 }
@@ -5910,10 +5684,8 @@ public class SSDB {
 
     public void addOwnReport(SSOwnReport iOwnReport) {
         if(iOwnReport == null) return;
-        PreparedStatement iStatement;
-        ResultSet iResultSet;
         try {
-            iStatement = iConnection.prepareStatement("INSERT INTO tbl_ownreport VALUES(NULL,?,?)");
+            PreparedStatement iStatement = iConnection.prepareStatement("INSERT INTO tbl_ownreport VALUES(NULL,?,?)");
             iStatement.setObject(1, iOwnReport);
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -5921,7 +5693,7 @@ public class SSDB {
             iStatement.close();
 
             iStatement = iConnection.prepareStatement("SELECT * FROM tbl_ownreport");
-            iResultSet = iStatement.executeQuery();
+            ResultSet iResultSet = iStatement.executeQuery();
             Integer iId = -1;
             while(iResultSet.next()){
                 if(iResultSet.isLast())
@@ -5950,10 +5722,9 @@ public class SSDB {
     }
 
     public void updateOwnReport(SSOwnReport iOwnReport) {
-        PreparedStatement iStatement;
         if(iOwnReport == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("UPDATE tbl_ownreport SET ownreport=? WHERE id=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("UPDATE tbl_ownreport SET ownreport=? WHERE id=? AND companyid=?");
             iStatement.setObject(1, iOwnReport);
             iStatement.setObject(2, iOwnReport.getId());
             iStatement.setObject(3, iCurrentCompany.getId());
@@ -5969,10 +5740,9 @@ public class SSDB {
     }
 
     public void deleteOwnReport(SSOwnReport iOwnReport) {
-        PreparedStatement iStatement;
         if(iOwnReport == null || iCurrentCompany == null) return;
         try {
-            iStatement = iConnection.prepareStatement("DELETE FROM tbl_ownreport WHERE id=? AND companyid=?");
+            PreparedStatement iStatement = iConnection.prepareStatement("DELETE FROM tbl_ownreport WHERE id=? AND companyid=?");
             iStatement.setObject(1, iOwnReport.getId());
             iStatement.setObject(2, iCurrentCompany.getId());
             iStatement.executeUpdate();
@@ -6245,8 +6015,8 @@ public class SSDB {
         SSInitDialog.runProgress(SSMainFrame.getInstance(),"Konverterar databasen", new Runnable(){
             public void run() {
                 //dropTriggers();
-                SSSystemData iData = null;
                 SSDBUtils.backup(iFile);
+                SSSystemData iData = null;
                 try {
                     iData = (SSSystemData) SSDBUtils.LoadFromFile(iFile);
                     SSDBUtils.removeBackup(iFile);
@@ -6473,11 +6243,10 @@ public class SSDB {
     }
 
     public void createNewTables(){
-        PreparedStatement iStatement;
         try {
             if(iConnection == null || iConnection.isClosed()) return;
 
-            iStatement = iConnection.prepareStatement("CREATE CACHED TABLE tbl_ownreport(id INTEGER IDENTITY, ownreport OBJECT, companyid INTEGER, FOREIGN KEY(companyid) REFERENCES tbl_company(id));");
+            PreparedStatement iStatement = iConnection.prepareStatement("CREATE CACHED TABLE tbl_ownreport(id INTEGER IDENTITY, ownreport OBJECT, companyid INTEGER, FOREIGN KEY(companyid) REFERENCES tbl_company(id));");
             iStatement.executeUpdate();
             iConnection.commit();
             iStatement.close();

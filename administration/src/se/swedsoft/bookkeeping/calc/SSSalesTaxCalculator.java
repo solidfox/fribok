@@ -100,7 +100,6 @@ public class SSSalesTaxCalculator {
 
         for(SSVATControlGroup iGroup : iControlGroups){
             BigDecimal iSum      = null;
-            BigDecimal iReported = null;
 
 
             switch( iGroup.getGroup1() ){
@@ -109,6 +108,7 @@ public class SSSalesTaxCalculator {
                 case 3: iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "MP3"); break;
             }
 
+            BigDecimal iReported = null;
             switch( iGroup.getGroup1() ){
                 case 1: iReported = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "U1", "UVL"); break;
                 case 2: iReported = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "U2"); break;

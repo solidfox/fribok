@@ -530,7 +530,6 @@ public class SSSupplier implements Serializable, SSTableSearchable {
 
     public BigDecimal getSupplierRevenueForMonth(SSMonth iMonth) {
         Double iSupplierInvoiceSum = 0.0;
-        Double iSupplierCreditInvoiceSum = 0.0;
 
         for (SSSupplierInvoice iSupplierInvoice : SSDB.getInstance().getSupplierInvoices()) {
             if(iMonth.isDateInMonth(iSupplierInvoice.getDate())){
@@ -542,6 +541,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
             }
         }
 
+        Double iSupplierCreditInvoiceSum = 0.0;
         for (SSSupplierCreditInvoice iSupplierCreditInvoice : SSDB.getInstance().getSupplierCreditInvoices()) {
             if(iMonth.isDateInMonth(iSupplierCreditInvoice.getDate())){
                 if(iSupplierCreditInvoice.getSupplierNr() != null){

@@ -152,9 +152,8 @@ public class SSInpaymentMath {
     public static BigDecimal getSumForInvoice(SSInvoice iInvoice, Date iDate) {
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
 
-        BigDecimal iSum = new BigDecimal(0.0);
-
         iDate = SSDateMath.ceil(iDate);
+        BigDecimal iSum = new BigDecimal(0.0);
         for (SSInpayment iInpayment : iInpayments) {
             Date iCurrent = SSDateMath.floor(  iInpayment.getDate() );
 

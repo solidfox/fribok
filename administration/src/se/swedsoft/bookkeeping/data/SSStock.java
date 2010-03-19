@@ -285,9 +285,7 @@ public class SSStock {
 
             if(!iProduct.isStockProduct()) continue;
 
-            Integer iQuantity = 0;
             Integer iReserved = 0;
-            Integer iOrdered  = 0;
 
             // Order: + reserverad om den ej är fakturerad
             /*for (SSOrder iOrder : iOrders) {
@@ -299,6 +297,7 @@ public class SSStock {
             /*for (SSInvoice iInvoice : iInvoices) {
                 iQuantity = iQuantity - SSSaleMath.getProductCount(iInvoice, iProduct);
             }*/
+            Integer iQuantity = 0;
             iQuantity = iInvoiceCount.get(iProduct.getNumber()) == null ? iQuantity : iQuantity - iInvoiceCount.get(iProduct.getNumber());
 
             // Kreditfaktura: + på lagret
@@ -311,6 +310,7 @@ public class SSStock {
             /*for (SSPurchaseOrder iPurchaseOrder : iPurchaseOrders) {
                 iOrdered = iOrdered + SSPurchaseOrderMath.getProductCount(iPurchaseOrder,  iProduct);
             }*/
+            Integer iOrdered = 0;
             iOrdered = iPurchaseOrderCount.get(iProduct.getNumber()) == null ? iOrdered : iOrdered + iPurchaseOrderCount.get(iProduct.getNumber());
 
             // Leverantörsfakturor: + på lagret
