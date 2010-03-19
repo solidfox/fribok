@@ -399,4 +399,15 @@ public class SSStock {
     public Integer getAvaiable(SSProduct iProduct) {
         return getQuantity(iProduct) - getReserved(iProduct);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSStock");
+        sb.append("{iOrdered=").append(iOrdered);
+        sb.append(", iQuantity=").append(iQuantity);
+        sb.append(", iReserved=").append(iReserved);
+        sb.append('}');
+        return sb.toString();
+    }
 }

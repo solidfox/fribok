@@ -29,6 +29,16 @@ public class SSResultCalculator {
         public SSAccount getAccount() {
             return iAccount;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.calc.SSResultCalculator.SSResultBudgetRow");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iGroup=").append(iGroup);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -352,4 +362,24 @@ public class SSResultCalculator {
         return iResult;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.calc.SSResultCalculator");
+        sb.append("{iChange=").append(iChange);
+        sb.append(", iChangeBudget=").append(iChangeBudget);
+        sb.append(", iChangePeriod=").append(iChangePeriod);
+        sb.append(", iChangePrevYear=").append(iChangePrevYear);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iProjectChange=").append(iProjectChange);
+        sb.append(", iProjectChangePeriod=").append(iProjectChangePeriod);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iResultunitChange=").append(iResultunitChange);
+        sb.append(", iResultunitChangePeriod=").append(iResultunitChangePeriod);
+        sb.append(", iTo=").append(iTo);
+        sb.append(", iYearData=").append(iYearData);
+        sb.append('}');
+        return sb.toString();
+    }
 }

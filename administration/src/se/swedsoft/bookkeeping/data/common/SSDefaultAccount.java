@@ -95,4 +95,12 @@ public enum SSDefaultAccount implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.common.SSDefaultAccount");
+        sb.append("{iDefaultAccountNumber=").append(iDefaultAccountNumber);
+        sb.append('}');
+        return sb.toString();
+    }
 }

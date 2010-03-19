@@ -228,7 +228,18 @@ public class SSMainBookPrinter extends SSPrinter {
     }
 
 
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSMainBookPrinter");
+        sb.append("{iAccountFrom=").append(iAccountFrom);
+        sb.append(", iAccountTo=").append(iAccountTo);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iYearData=").append(iYearData);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -434,4 +434,16 @@ public class SSPurchaseOrderFrame extends SSDefaultTableFrame {
         iTabbedPane=null;
         cInstance=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.purchaseorder.SSPurchaseOrderFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iSearchPanel=").append(iSearchPanel);
+        sb.append(", iTabbedPane=").append(iTabbedPane);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

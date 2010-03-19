@@ -765,6 +765,40 @@ public class SSSupplierInvoicePanel implements ActionListener{
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.supplierinvoice.panel.SSSupplierInvoicePanel");
+        sb.append("{bNewSupplierInvoice=").append(bNewSupplierInvoice);
+        sb.append(", iBGCEntered=").append(iBGCEntered);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCorrectionTable=").append(iCorrectionTable);
+        sb.append(", iCorrectionTableModel=").append(iCorrectionTableModel);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iDueDate=").append(iDueDate);
+        sb.append(", iEntered=").append(iEntered);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNetSum=").append(iNetSum);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iPurchaseOrder=").append(iPurchaseOrder);
+        sb.append(", iReferencenumber=").append(iReferencenumber);
+        sb.append(", iRefreshVoucher=").append(iRefreshVoucher);
+        sb.append(", iRoundingSum=").append(iRoundingSum);
+        sb.append(", isStockInfluencing=").append(isStockInfluencing);
+        sb.append(", iSupplier=").append(iSupplier);
+        sb.append(", iSupplierInvoice=").append(iSupplierInvoice);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iTaxSum=").append(iTaxSum);
+        sb.append(", iTotalSum=").append(iTotalSum);
+        sb.append(", iVoucherTable=").append(iVoucherTable);
+        sb.append(", iVoucherTableModel=").append(iVoucherTableModel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

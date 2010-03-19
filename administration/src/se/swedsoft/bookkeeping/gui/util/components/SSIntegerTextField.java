@@ -85,4 +85,13 @@ public class SSIntegerTextField extends JFormattedTextField {
 
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSIntegerTextField");
+        sb.append("{iFormat=").append(iFormat);
+        sb.append('}');
+        return sb.toString();
+    }
 }

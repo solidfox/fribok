@@ -98,4 +98,13 @@ public class SSTriggerHandler extends Thread implements Trigger {
         }
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.SSTriggerHandler");
+        sb.append("{iSocket=").append(iSocket);
+        sb.append('}');
+        return sb.toString();
+    }
 }

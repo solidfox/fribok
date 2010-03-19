@@ -585,4 +585,14 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         cInstance=null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.customer.SSCustomerFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iSearchPanel=").append(iSearchPanel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

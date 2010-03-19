@@ -180,8 +180,15 @@ public class SSIndelivery implements Serializable {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSIndelivery");
+        sb.append("{iDate=").append(iDate);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iRows=").append(iRows);
+        sb.append(", iText='").append(iText).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -120,8 +120,12 @@ public class SSCustomerListPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSCustomerListPrinter");
+        sb.append("{iCustomers=").append(iCustomers);
+        sb.append('}');
+        return sb.toString();
+    }
 }

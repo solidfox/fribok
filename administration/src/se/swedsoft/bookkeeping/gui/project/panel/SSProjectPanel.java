@@ -227,4 +227,21 @@ public class SSProjectPanel{
 
         return iProject;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.project.panel.SSProjectPanel");
+        sb.append("{iCancelButton=").append(iCancelButton);
+        sb.append(", iConcluded=").append(iConcluded);
+        sb.append(", iConcludedDate=").append(iConcludedDate);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iName=").append(iName);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOkButton=").append(iOkButton);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProject=").append(iProject);
+        sb.append('}');
+        return sb.toString();
+    }
 }

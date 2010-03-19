@@ -44,9 +44,15 @@ public class SSBackupZip {
             name = pFile.getName();
         }
 
-        
+
+        @Override
         public String toString() {
-            return file.getAbsolutePath();
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.data.backup.util.SSBackupZip.ArchiveFile");
+            sb.append("{file=").append(file);
+            sb.append(", name='").append(name).append('\'');
+            sb.append('}');
+            return sb.toString();
         }
 
         public File getFile() {

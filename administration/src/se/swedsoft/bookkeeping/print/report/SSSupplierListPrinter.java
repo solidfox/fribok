@@ -118,8 +118,12 @@ public class SSSupplierListPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSSupplierListPrinter");
+        sb.append("{iSuppliers=").append(iSuppliers);
+        sb.append('}');
+        return sb.toString();
+    }
 }

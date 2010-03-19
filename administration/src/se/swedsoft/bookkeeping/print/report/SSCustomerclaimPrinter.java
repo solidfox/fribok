@@ -136,8 +136,12 @@ public class SSCustomerclaimPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSCustomerclaimPrinter");
+        sb.append("{iSaldos=").append(iSaldos);
+        sb.append('}');
+        return sb.toString();
+    }
 }

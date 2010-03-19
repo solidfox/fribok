@@ -263,18 +263,19 @@ public class SSAccountingYear implements Serializable, SSTableSearchable {
         return iFormat.format(iFrom) + " - "+ iFormat.format(iTo);
     }
 
-    
+
+    @Override
     public String toString() {
-        DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(iFormat.format(iFrom));
-        sb.append(' ');
-        sb.append( SSBundle.getBundle().getString("date.seperator") );
-        sb.append(' ');
-        sb.append(iFormat.format(iTo));
-
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSAccountingYear");
+        sb.append("{iBudget=").append(iBudget);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iId=").append(iId);
+        sb.append(", iInBalance=").append(iInBalance);
+        sb.append(", iPlan=").append(iPlan);
+        sb.append(", iTo=").append(iTo);
+        sb.append(", iVouchers=").append(iVouchers);
+        sb.append('}');
         return sb.toString();
     }
 

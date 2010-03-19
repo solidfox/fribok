@@ -234,9 +234,26 @@ public class SSTenderListPrinter extends SSPrinter {
         public void setTender(SSTender iTender) {
             iModel.setObjects( iTender.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSTenderListPrinter.SSTenderRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSTenderListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iTenders=").append(iTenders);
+        sb.append('}');
+        return sb.toString();
+    }
 }

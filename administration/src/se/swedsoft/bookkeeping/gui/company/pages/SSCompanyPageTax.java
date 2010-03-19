@@ -111,4 +111,16 @@ public class SSCompanyPageTax extends SSCompanyPage{
         });
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageTax");
+        sb.append("{iCompany=").append(iCompany);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTaxRate1=").append(iTaxRate1);
+        sb.append(", iTaxRate2=").append(iTaxRate2);
+        sb.append(", iTaxRate3=").append(iTaxRate3);
+        sb.append('}');
+        return sb.toString();
+    }
 }

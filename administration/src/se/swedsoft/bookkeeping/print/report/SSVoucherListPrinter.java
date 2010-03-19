@@ -230,7 +230,26 @@ public class SSVoucherListPrinter extends SSPrinter {
 
             iModel.setObjects( iRows );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSVoucherListPrinter.SSVoucherRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSVoucherListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iVouchers=").append(iVouchers);
+        sb.append('}');
+        return sb.toString();
+    }
 }

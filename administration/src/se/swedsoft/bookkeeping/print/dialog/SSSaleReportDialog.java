@@ -113,4 +113,18 @@ public class SSSaleReportDialog extends SSDialog {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSSaleReportDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFromDate=").append(iFromDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iSort=").append(iSort);
+        sb.append(", iSortAscending=").append(iSortAscending);
+        sb.append(", iSortDescending=").append(iSortDescending);
+        sb.append(", iToDate=").append(iToDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -57,4 +57,13 @@ public class SSIntegerRenderer extends DefaultTableCellRenderer {
 
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSIntegerRenderer");
+        sb.append("{iShowNullValues=").append(iShowNullValues);
+        sb.append('}');
+        return sb.toString();
+    }
 }

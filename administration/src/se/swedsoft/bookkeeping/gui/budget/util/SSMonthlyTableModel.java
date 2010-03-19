@@ -109,4 +109,13 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.budget.util.SSMonthlyTableModel");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iBudget=").append(iBudget);
+        sb.append('}');
+        return sb.toString();
+    }
 }

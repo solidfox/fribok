@@ -224,4 +224,20 @@ public class SSInventoryPanel {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.inventory.panel.SSInventoryPanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iInventory=").append(iInventory);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iStock=").append(iStock);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iText=").append(iText);
+        sb.append('}');
+        return sb.toString();
+    }
 }

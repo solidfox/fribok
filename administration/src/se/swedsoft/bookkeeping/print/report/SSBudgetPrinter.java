@@ -252,9 +252,31 @@ public class SSBudgetPrinter extends SSPrinter {
         public void setAccount(SSAccount pAccount) {
             iAccount = pAccount;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSBudgetPrinter.SSMonthlyDistributionPrinter");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iFrom=").append(iFrom);
+            sb.append(", iModel=").append(iModel);
+            sb.append(", iTo=").append(iTo);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSBudgetPrinter");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iDataSource=").append(iDataSource);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

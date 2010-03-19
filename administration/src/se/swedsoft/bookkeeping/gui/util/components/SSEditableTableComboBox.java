@@ -218,7 +218,17 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSEditableTableComboBox");
+        sb.append("{iComboBox=").append(iComboBox);
+        sb.append(", iEditButton=").append(iEditButton);
+        sb.append(", iFactory=").append(iFactory);
+        sb.append(", iPopup=").append(iPopup);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

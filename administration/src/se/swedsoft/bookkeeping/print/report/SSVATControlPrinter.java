@@ -133,6 +133,14 @@ public class SSVATControlPrinter extends SSPrinter {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSVATControlPrinter");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

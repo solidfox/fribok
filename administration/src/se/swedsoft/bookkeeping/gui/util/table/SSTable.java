@@ -365,5 +365,22 @@ public class SSTable extends JTable{
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTable");
+        sb.append("{CELL_EDITABLE=").append(CELL_EDITABLE);
+        sb.append(", CELL_EDITABLE_SELECTED=").append(CELL_EDITABLE_SELECTED);
+        sb.append(", CELL_READONLY=").append(CELL_READONLY);
+        sb.append(", CELL_READONLY_SELECTED=").append(CELL_READONLY_SELECTED);
+        sb.append(", GRID_COLOR=").append(GRID_COLOR);
+        sb.append(", iColorReadOnly=").append(iColorReadOnly);
+        sb.append(", iColumnSortingEnabled=").append(iColumnSortingEnabled);
+        sb.append(", iCustomPainter=").append(iCustomPainter);
+        sb.append(", iDblClickListeners=").append(iDblClickListeners);
+        sb.append(", iSelectionDependentComponents=").append(iSelectionDependentComponents);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 

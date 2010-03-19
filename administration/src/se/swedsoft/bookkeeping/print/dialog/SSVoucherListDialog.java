@@ -237,4 +237,20 @@ public class SSVoucherListDialog extends SSDialog {
         return iVouchers;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSVoucherListDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFromDate=").append(iFromDate);
+        sb.append(", iFromVoucher=").append(iFromVoucher);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iRadioAll=").append(iRadioAll);
+        sb.append(", iRadioDate=").append(iRadioDate);
+        sb.append(", iRadioNumber=").append(iRadioNumber);
+        sb.append(", iToDate=").append(iToDate);
+        sb.append(", iToVoucher=").append(iToVoucher);
+        sb.append('}');
+        return sb.toString();
+    }
 }

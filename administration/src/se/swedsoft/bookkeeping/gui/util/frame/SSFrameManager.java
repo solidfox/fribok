@@ -255,9 +255,24 @@ public class SSFrameManager {
         }
 
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager.FrameListener");
+            sb.append("{iFrame=").append(iFrame);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager");
+        sb.append("{iFrameListeners=").append(iFrameListeners);
+        sb.append(", iFrames=").append(iFrames);
+        sb.append('}');
+        return sb.toString();
+    }
 }

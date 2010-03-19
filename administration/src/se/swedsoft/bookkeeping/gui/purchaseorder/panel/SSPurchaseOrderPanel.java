@@ -592,4 +592,34 @@ public class SSPurchaseOrderPanel {
         iDeliveryAddress.addKeyListeners();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.purchaseorder.panel.SSPurchaseOrderPanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iEstimatedDelivery=").append(iEstimatedDelivery);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOurContactPerson=").append(iOurContactPerson);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iPurchaseOrder=").append(iPurchaseOrder);
+        sb.append(", iSupplier=").append(iSupplier);
+        sb.append(", iSupplierAddress=").append(iSupplierAddress);
+        sb.append(", iSupplierName=").append(iSupplierName);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iText=").append(iText);
+        sb.append(", iTotalSum=").append(iTotalSum);
+        sb.append(", iYourContactPerson=").append(iYourContactPerson);
+        sb.append('}');
+        return sb.toString();
+    }
 }

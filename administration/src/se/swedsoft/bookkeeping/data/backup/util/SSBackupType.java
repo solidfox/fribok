@@ -7,5 +7,4 @@ package se.swedsoft.bookkeeping.data.backup.util;
 public enum SSBackupType {
     COMPANY,
     FULL
-
 }

@@ -156,14 +156,16 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
     ////////////////////////////////////////////////////////////////////
 
-    
+
+    @Override
     public String toString() {
-
-        StringBuffer b = new StringBuffer();
-        b.append(iDescription);
-        b.append('\n');
-
-        return b.toString();
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSVoucherTemplate");
+        sb.append("{iDate=").append(iDate);
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iRows=").append(iRows);
+        sb.append('}');
+        return sb.toString();
     }
 
 
@@ -331,6 +333,16 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
         }
 
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.data.SSVoucherTemplate.SSVoucherTemplateRow");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iAccountNr=").append(iAccountNr);
+            sb.append(", iDebet=").append(iDebet);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 

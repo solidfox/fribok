@@ -225,4 +225,16 @@ public class SSHelpFrame extends JFrame {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.help.SSHelpFrame");
+        sb.append("{iBackButton=").append(iBackButton);
+        sb.append(", iForwardButton=").append(iForwardButton);
+        sb.append(", iHelpSet=").append(iHelpSet);
+        sb.append(", iHistory=").append(iHistory);
+        sb.append(", iViewer=").append(iViewer);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -173,4 +173,21 @@ public class SSVATReportDialog extends SSDialog  {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSVATReportDialog");
+        sb.append("{iAccountA=").append(iAccountA);
+        sb.append(", iAccountR1=").append(iAccountR1);
+        sb.append(", iAccountR2=").append(iAccountR2);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTo=").append(iTo);
+        sb.append(", txtAccountA=").append(txtAccountA);
+        sb.append(", txtAccountR1=").append(txtAccountR1);
+        sb.append(", txtAccountR2=").append(txtAccountR2);
+        sb.append('}');
+        return sb.toString();
+    }
 }

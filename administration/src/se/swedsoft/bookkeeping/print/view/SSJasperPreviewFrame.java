@@ -435,5 +435,21 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         System.gc();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.view.SSJasperPreviewFrame");
+        sb.append("{iBack=").append(iBack);
+        sb.append(", iFirst=").append(iFirst);
+        sb.append(", iForward=").append(iForward);
+        sb.append(", iLast=").append(iLast);
+        sb.append(", iPageLabel=").append(iPageLabel);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iReport=").append(iReport);
+        sb.append(", iViewer=").append(iViewer);
+        sb.append(", iZoomLevels=").append(iZoomLevels);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 

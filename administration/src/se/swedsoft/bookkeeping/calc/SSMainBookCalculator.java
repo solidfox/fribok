@@ -89,6 +89,24 @@ public class SSMainBookCalculator {
         public void setCrossed(Boolean iCrossed) {
             this.iCrossed = iCrossed;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.calc.SSMainBookCalculator.SSMainBookRow");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iAdded=").append(iAdded);
+            sb.append(", iCredit=").append(iCredit);
+            sb.append(", iCrossed=").append(iCrossed);
+            sb.append(", iDate=").append(iDate);
+            sb.append(", iDebet=").append(iDebet);
+            sb.append(", iDescription='").append(iDescription).append('\'');
+            sb.append(", iHasdata=").append(iHasdata);
+            sb.append(", iNumber=").append(iNumber);
+            sb.append(", iSum=").append(iSum);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -281,5 +299,23 @@ public class SSMainBookCalculator {
      */
     public Map<SSAccount, BigDecimal> getInSaldo() {
         return iInSaldo;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.calc.SSMainBookCalculator");
+        sb.append("{iAccountFrom=").append(iAccountFrom);
+        sb.append(", iAccountTo=").append(iAccountTo);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iInBalance=").append(iInBalance);
+        sb.append(", iInSaldo=").append(iInSaldo);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iRows=").append(iRows);
+        sb.append(", iYearData=").append(iYearData);
+        sb.append('}');
+        return sb.toString();
     }
 }

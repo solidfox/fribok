@@ -98,6 +98,15 @@ public class SSConfirmDialog {
 
         return dialog.showDialog(iFrame);
     }
-    
 
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSConfirmDialog");
+        sb.append("{iMessage='").append(iMessage).append('\'');
+        sb.append(", iTitle='").append(iTitle).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

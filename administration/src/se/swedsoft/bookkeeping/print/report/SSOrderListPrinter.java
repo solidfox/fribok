@@ -240,9 +240,26 @@ public class SSOrderListPrinter extends SSPrinter {
         public void setOrder(SSOrder iOrder) {
             iModel.setObjects( iOrder.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSOrderListPrinter.SSOrderRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSOrderListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iOrders=").append(iOrders);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

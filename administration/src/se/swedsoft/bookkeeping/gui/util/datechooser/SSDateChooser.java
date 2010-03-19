@@ -365,4 +365,23 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iPanel.removeAll();
         iPanel=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser");
+        sb.append("{iCalendar=").append(iCalendar);
+        sb.append(", iCalendarButton=").append(iCalendarButton);
+        sb.append(", iCalendarField=").append(iCalendarField);
+        sb.append(", iChangeListeners=").append(iChangeListeners);
+        sb.append(", iDateFormatString='").append(iDateFormatString).append('\'');
+        sb.append(", iEditor=").append(iEditor);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPopup=").append(iPopup);
+        sb.append(", isDateSelected=").append(isDateSelected);
+        sb.append(", iSpinner=").append(iSpinner);
+        sb.append('}');
+        return sb.toString();
+    }
 }

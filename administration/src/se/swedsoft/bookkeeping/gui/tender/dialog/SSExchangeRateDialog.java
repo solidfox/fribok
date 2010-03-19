@@ -109,4 +109,16 @@ public class SSExchangeRateDialog extends SSDialog{
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.tender.dialog.SSExchangeRateDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iExchangeRate=").append(iExchangeRate);
+        sb.append(", iLabel1=").append(iLabel1);
+        sb.append(", iLabel2=").append(iLabel2);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

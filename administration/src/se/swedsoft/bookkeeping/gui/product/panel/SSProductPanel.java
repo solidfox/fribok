@@ -786,6 +786,54 @@ public class SSProductPanel {
             }
         });
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.product.panel.SSProductPanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCalculateButton=").append(iCalculateButton);
+        sb.append(", iContribution=").append(iContribution);
+        sb.append(", iContributionRate=").append(iContributionRate);
+        sb.append(", iDeleteParcelButton=").append(iDeleteParcelButton);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iDescriptions=").append(iDescriptions);
+        sb.append(", iExpired=").append(iExpired);
+        sb.append(", iFreight=").append(iFreight);
+        sb.append(", iInprice=").append(iInprice);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iOrdercount=").append(iOrdercount);
+        sb.append(", iOrderpoint=").append(iOrderpoint);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iParcel=").append(iParcel);
+        sb.append(", iParcelModel=").append(iParcelModel);
+        sb.append(", iProduct=").append(iProduct);
+        sb.append(", iProductNr=").append(iProductNr);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iProjectDescription=").append(iProjectDescription);
+        sb.append(", iPurchaseAccount=").append(iPurchaseAccount);
+        sb.append(", iPurchaseAccountDescription=").append(iPurchaseAccountDescription);
+        sb.append(", iPurchasePrice=").append(iPurchasePrice);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iResultUnitDescription=").append(iResultUnitDescription);
+        sb.append(", iSellingAccount=").append(iSellingAccount);
+        sb.append(", iSellingAccountDescription=").append(iSellingAccountDescription);
+        sb.append(", iStockGoods=").append(iStockGoods);
+        sb.append(", iStockPrice=").append(iStockPrice);
+        sb.append(", iSupplier=").append(iSupplier);
+        sb.append(", iSupplierProductNr=").append(iSupplierProductNr);
+        sb.append(", iTax=").append(iTax);
+        sb.append(", iUnit=").append(iUnit);
+        sb.append(", iUnitprice=").append(iUnitprice);
+        sb.append(", iUpdateContributionButton=").append(iUpdateContributionButton);
+        sb.append(", iVolume=").append(iVolume);
+        sb.append(", iVolumeUnit=").append(iVolumeUnit);
+        sb.append(", iWarehouseLocation=").append(iWarehouseLocation);
+        sb.append(", iWeight=").append(iWeight);
+        sb.append(", iWeightUnit=").append(iWeightUnit);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

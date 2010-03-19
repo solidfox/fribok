@@ -246,4 +246,23 @@ public class SSBudgetMainPanel {
     public void setBudget(SSBudget pBudget){
         iBudget = pBudget;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.budget.panel.SSBudgetMainPanel");
+        sb.append("{iAccountDescription=").append(iAccountDescription);
+        sb.append(", iAccountNumber=").append(iAccountNumber);
+        sb.append(", iBudget=").append(iBudget);
+        sb.append(", iBudgetTable=").append(iBudgetTable);
+        sb.append(", iBudgetTableModel=").append(iBudgetTableModel);
+        sb.append(", iCurrentAccount=").append(iCurrentAccount);
+        sb.append(", iMonthlyTable=").append(iMonthlyTable);
+        sb.append(", iMonthlyTableModel=").append(iMonthlyTableModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iSumTextField=").append(iSumTextField);
+        sb.append(", iTabbedPane=").append(iTabbedPane);
+        sb.append('}');
+        return sb.toString();
+    }
 }

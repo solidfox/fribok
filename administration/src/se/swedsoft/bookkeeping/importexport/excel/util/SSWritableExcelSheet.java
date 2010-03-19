@@ -107,4 +107,12 @@ public class SSWritableExcelSheet {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelSheet");
+        sb.append("{iSheet=").append(iSheet);
+        sb.append('}');
+        return sb.toString();
+    }
 }

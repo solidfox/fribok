@@ -154,5 +154,12 @@ public class SSTaxCodeTableModel extends SSTableModel<SSTaxCode> {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel");
+        sb.append("{iValues=").append(iValues);
+        sb.append('}');
+        return sb.toString();
+    }
 }

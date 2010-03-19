@@ -150,4 +150,16 @@ public class LBinPostTK14 extends LBinPost {
         this.iInvoiceNr = iInvoiceNr;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK14");
+        sb.append("{iDate=").append(iDate);
+        sb.append(", iInvoiceNr=").append(iInvoiceNr);
+        sb.append(", iNumber='").append(iNumber).append('\'');
+        sb.append(", iReference='").append(iReference).append('\'');
+        sb.append(", iValue=").append(iValue);
+        sb.append('}');
+        return sb.toString();
+    }
 }

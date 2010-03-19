@@ -170,6 +170,14 @@ public class SSSIEExporter {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter");
+        sb.append("{iComment='").append(iComment).append('\'');
+        sb.append(", iLines=").append(iLines);
+        sb.append(", iType=").append(iType);
+        sb.append('}');
+        return sb.toString();
+    }
 }

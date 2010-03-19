@@ -119,4 +119,17 @@ public class SSMailServer implements Serializable
     }
     
     static final long serialVersionUID = 1L;
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.util.SSMailServer");
+        sb.append("{address=").append(address);
+        sb.append(", isAuth=").append(isAuth);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", username='").append(username).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

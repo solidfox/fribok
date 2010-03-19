@@ -316,5 +316,32 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         });
 
     }
-    
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageAdditional");
+        sb.append("{iBank=").append(iBank);
+        sb.append(", iBankGiroNumber=").append(iBankGiroNumber);
+        sb.append(", iCompany=").append(iCompany);
+        sb.append(", iContactPerson=").append(iContactPerson);
+        sb.append(", iEditMailServerButton=").append(iEditMailServerButton);
+        sb.append(", iEMail=").append(iEMail);
+        sb.append(", iIBAN=").append(iIBAN);
+        sb.append(", iMailDialog=").append(iMailDialog);
+        sb.append(", iMailServer=").append(iMailServer);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPhone=").append(iPhone);
+        sb.append(", iPhone2=").append(iPhone2);
+        sb.append(", iPlusGiroNumber=").append(iPlusGiroNumber);
+        sb.append(", iRoundingOff=").append(iRoundingOff);
+        sb.append(", iSMTPAddress=").append(iSMTPAddress);
+        sb.append(", iSwiftCode=").append(iSwiftCode);
+        sb.append(", iTelefax=").append(iTelefax);
+        sb.append(", iVatPeriod=").append(iVatPeriod);
+        sb.append(", iWebAddress=").append(iWebAddress);
+        sb.append(", severField=").append(severField);
+        sb.append('}');
+        return sb.toString();
+    }
 }

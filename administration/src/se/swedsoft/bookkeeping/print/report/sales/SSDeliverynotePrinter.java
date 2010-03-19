@@ -278,5 +278,14 @@ public class SSDeliverynotePrinter extends SSPrinter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSDeliverynotePrinter");
+        sb.append("{iHideUnitprice=").append(iHideUnitprice);
+        sb.append(", iLocale=").append(iLocale);
+        sb.append(", iOrder=").append(iOrder);
+        sb.append('}');
+        return sb.toString();
+    }
 }

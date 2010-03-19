@@ -209,9 +209,26 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
         public void setOutdelivery(SSOutdelivery iOutdelivery ) {
             iModel.setObjects( iOutdelivery.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSOutdeliveryListPrinter.SSInventoryRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSOutdeliveryListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iOutdeliveries=").append(iOutdeliveries);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

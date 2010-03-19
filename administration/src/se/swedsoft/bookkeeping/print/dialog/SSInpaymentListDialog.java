@@ -165,4 +165,19 @@ public class SSInpaymentListDialog extends SSDialog {
     public SSInvoice getInvoice() {
         return iInvoice.getSelected();
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSInpaymentListDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCheckDate=").append(iCheckDate);
+        sb.append(", iCheckInvoice=").append(iCheckInvoice);
+        sb.append(", iFromDate=").append(iFromDate);
+        sb.append(", iInvoice=").append(iInvoice);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iToDate=").append(iToDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }

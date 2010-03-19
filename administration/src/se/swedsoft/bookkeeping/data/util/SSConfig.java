@@ -126,4 +126,12 @@ public class SSConfig implements Serializable {
         }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.util.SSConfig");
+        sb.append("{iSettings=").append(iSettings);
+        sb.append('}');
+        return sb.toString();
+    }
 }

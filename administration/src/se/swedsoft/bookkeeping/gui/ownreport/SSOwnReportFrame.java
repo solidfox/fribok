@@ -261,7 +261,13 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
     }
 
 
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.ownreport.SSOwnReportFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

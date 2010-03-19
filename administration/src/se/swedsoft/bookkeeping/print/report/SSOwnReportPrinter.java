@@ -361,6 +361,35 @@ public class SSOwnReportPrinter extends SSPrinter {
 
             return iLevelGroups[iLevel].getId();
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSOwnReportPrinter.ResultRow");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iLevelGroups=").append(iLevelGroups == null ? "null" : Arrays.asList(iLevelGroups).toString());
+            sb.append(", iSummaryGroup=").append(iSummaryGroup);
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSOwnReportPrinter");
+        sb.append("{iAccountSchema=").append(iAccountSchema);
+        sb.append(", iColumn1=").append(iColumn1);
+        sb.append(", iColumn2=").append(iColumn2);
+        sb.append(", iColumn3=").append(iColumn3);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iOwnReport=").append(iOwnReport);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iSummaries=").append(iSummaries);
+        sb.append('}');
+        return sb.toString();
     }
 }
 

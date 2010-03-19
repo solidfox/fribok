@@ -263,6 +263,28 @@ public class SSVoucherPrinter extends SSPrinter {
 
             iModel.setObjects( iRows );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSVoucherPrinter.SSVoucherRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSVoucherPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iMarkedAccounts=").append(iMarkedAccounts);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iTitle='").append(iTitle).append('\'');
+        sb.append(", iVoucher=").append(iVoucher);
+        sb.append('}');
+        return sb.toString();
     }
 }
 

@@ -452,18 +452,14 @@ public class SIEIterator  implements Iterator<String> {
         return iValues;
     }
 
-    
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("SIEIterator {\n");
-        for(String iValue: iValues){
-            sb.append("  ");
-            sb.append(iValue);
-            sb.append('\n');
-        }
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.sie.util.SIEIterator");
+        sb.append("{iIndex=").append(iIndex);
+        sb.append(", iValues=").append(iValues);
         sb.append('}');
-
         return sb.toString();
     }
 

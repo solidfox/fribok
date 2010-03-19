@@ -43,4 +43,13 @@ public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
         }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSDateTimeCellRenderer");
+        sb.append("{iDateFormat=").append(iDateFormat);
+        sb.append(", iTimeFormat=").append(iTimeFormat);
+        sb.append('}');
+        return sb.toString();
+    }
 }

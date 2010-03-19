@@ -1518,6 +1518,14 @@ public class SSMainMenu {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.SSMainMenu");
+        sb.append("{iMainFrame=").append(iMainFrame);
+        sb.append(", iMenuLoader=").append(iMenuLoader);
+        sb.append(", iWindowItems=").append(iWindowItems);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -45,4 +45,14 @@ public class LBinPostTK13 extends LBinPost {
         iValueText          = iLine.readString(28, 39); // 28 => 39: Rubrik för belopp
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK13");
+        sb.append("{iReferenceText='").append(iReferenceText).append('\'');
+        sb.append(", iValueText='").append(iValueText).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -509,4 +509,25 @@ public class SSPeriodicInvoice implements Serializable {
         }
         return iNumber.equals(((SSPeriodicInvoice) obj).iNumber);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSPeriodicInvoice");
+        sb.append("{iAdded=").append(iAdded);
+        sb.append(", iAppendInformation=").append(iAppendInformation);
+        sb.append(", iAppendPeriod=").append(iAppendPeriod);
+        sb.append(", iCount=").append(iCount);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iInformation='").append(iInformation).append('\'');
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPeriod=").append(iPeriod);
+        sb.append(", iPeriodEnd=").append(iPeriodEnd);
+        sb.append(", iPeriodStart=").append(iPeriodStart);
+        sb.append(", iTemplate=").append(iTemplate);
+        sb.append('}');
+        return sb.toString();
+    }
 }

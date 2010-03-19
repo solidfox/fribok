@@ -68,4 +68,14 @@ public class SSCompanyPageDefaultAccount extends SSCompanyPage{
         return iCompany;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageDefaultAccount");
+        sb.append("{iCompany=").append(iCompany);
+        sb.append(", iDefaultAccountPanel=").append(iDefaultAccountPanel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

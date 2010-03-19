@@ -90,4 +90,14 @@ public class SSDefaultJasperDataSource implements JRDataSource {
         return column != null ? iModel.getValueAt(iRow, column) : null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource");
+        sb.append("{iColumnIndices=").append(iColumnIndices);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iRow=").append(iRow);
+        sb.append('}');
+        return sb.toString();
+    }
 } // End of class SSDefaultJasperDataSource

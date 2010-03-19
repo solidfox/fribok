@@ -633,4 +633,22 @@ public class SSReport {
         iJasperPreviewFrame.setVisible(true);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.SSReport");
+        sb.append("{iColumnCount=").append(iColumnCount);
+        sb.append(", iColumnSpacing=").append(iColumnSpacing);
+        sb.append(", iColumnWidth=").append(iColumnWidth);
+        sb.append(", iDataSource=").append(iDataSource);
+        sb.append(", iDesign=").append(iDesign);
+        sb.append(", iFields=").append(iFields);
+        sb.append(", iMargins=").append(iMargins);
+        sb.append(", iParameters=").append(iParameters);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iReport=").append(iReport);
+        sb.append(", iSize=").append(iSize);
+        sb.append('}');
+        return sb.toString();
+    }
 }

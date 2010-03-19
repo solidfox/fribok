@@ -108,4 +108,16 @@ public class SSOwnReport implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSOwnReport");
+        sb.append("{iHeadings=").append(iHeadings);
+        sb.append(", iId=").append(iId);
+        sb.append(", iName='").append(iName).append('\'');
+        sb.append(", iProjectNr='").append(iProjectNr).append('\'');
+        sb.append(", iResultUnitNr='").append(iResultUnitNr).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

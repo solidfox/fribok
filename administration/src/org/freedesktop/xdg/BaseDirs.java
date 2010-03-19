@@ -21,7 +21,7 @@ package org.freedesktop.xdg;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -159,4 +159,14 @@ public class BaseDirs {
 
     private String[]   mUserPaths;
     private String[][] mSystemPaths;
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("org.freedesktop.xdg.BaseDirs");
+        sb.append("{mSystemPaths=").append(mSystemPaths == null ? "null" : Arrays.asList(mSystemPaths).toString());
+        sb.append(", mUserPaths=").append(mUserPaths == null ? "null" : Arrays.asList(mUserPaths).toString());
+        sb.append('}');
+        return sb.toString();
+    }
 }

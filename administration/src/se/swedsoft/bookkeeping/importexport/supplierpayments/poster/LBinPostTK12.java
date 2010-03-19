@@ -58,4 +58,13 @@ public class LBinPostTK12 extends LBinPost {
         iDate        = iLine.readDate  (53, 58, "yyMMdd"); // 53 => 58: Datum som anger hur länge informationen skall visas
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK12");
+        sb.append("{iDate=").append(iDate);
+        sb.append(", iText='").append(iText).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -123,4 +123,14 @@ public class SSExcelCell {
         return iRow;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.util.SSExcelCell");
+        sb.append("{iCell=").append(iCell);
+        sb.append(", iColumn=").append(iColumn);
+        sb.append(", iRow=").append(iRow);
+        sb.append('}');
+        return sb.toString();
+    }
 }

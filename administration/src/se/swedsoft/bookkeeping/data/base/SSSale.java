@@ -728,23 +728,36 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         return false;
     }
 
-    
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(iNumber);
-        sb.append(", ");
-        sb.append(iCustomerNr);
-        sb.append(", ");
-        sb.append(iCustomerName);
-        sb.append(") {\n");
-        for(SSSaleRow iRow : iRows){
-            sb.append("  ");
-            sb.append(iRow);
-            sb.append('\n');
-        }
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.base.SSSale");
+        sb.append("{iCurrency=").append(iCurrency);
+        sb.append(", iCustomer=").append(iCustomer);
+        sb.append(", iCustomerName='").append(iCustomerName).append('\'');
+        sb.append(", iCustomerNr='").append(iCustomerNr).append('\'');
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iDelayInterest=").append(iDelayInterest);
+        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iEuSaleCommodity=").append(iEuSaleCommodity);
+        sb.append(", iEuSaleYhirdPartCommodity=").append(iEuSaleYhirdPartCommodity);
+        sb.append(", iInvoiceAddress=").append(iInvoiceAddress);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOurContactPerson='").append(iOurContactPerson).append('\'');
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iPrinted=").append(iPrinted);
+        sb.append(", iRows=").append(iRows);
+        sb.append(", iTaxFree=").append(iTaxFree);
+        sb.append(", iTaxRate1=").append(iTaxRate1);
+        sb.append(", iTaxRate2=").append(iTaxRate2);
+        sb.append(", iTaxRate3=").append(iTaxRate3);
+        sb.append(", iText='").append(iText).append('\'');
+        sb.append(", iYourContactPerson='").append(iYourContactPerson).append('\'');
         sb.append('}');
-
         return sb.toString();
     }
 

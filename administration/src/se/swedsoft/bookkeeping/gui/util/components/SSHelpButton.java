@@ -47,4 +47,12 @@ public class SSHelpButton extends SSButton implements ActionListener {
         iToolBar.add( new SSHelpButton(pHelpClass) );
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSHelpButton");
+        sb.append("{iHelpClass=").append(iHelpClass);
+        sb.append('}');
+        return sb.toString();
+    }
 }

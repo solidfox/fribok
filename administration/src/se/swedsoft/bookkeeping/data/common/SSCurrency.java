@@ -128,9 +128,16 @@ public class SSCurrency implements Serializable, SSTableSearchable {
         return iCode ;
     }
 
-    
+
+    @Override
     public String toString() {
-        return iCode;
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.common.SSCurrency");
+        sb.append("{iCode='").append(iCode).append('\'');
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iExchangeRate=").append(iExchangeRate);
+        sb.append('}');
+        return sb.toString();
     }
 
     

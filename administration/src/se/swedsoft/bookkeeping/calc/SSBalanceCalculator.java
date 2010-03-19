@@ -242,4 +242,17 @@ public class SSBalanceCalculator {
         return iOutBalance;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.calc.SSBalanceCalculator");
+        sb.append("{iChange=").append(iChange);
+        sb.append(", iChangePeriod=").append(iChangePeriod);
+        sb.append(", iInBalance=").append(iInBalance);
+        sb.append(", iInSaldo=").append(iInSaldo);
+        sb.append(", iOutSaldo=").append(iOutSaldo);
+        sb.append(", iYearData=").append(iYearData);
+        sb.append('}');
+        return sb.toString();
+    }
 }

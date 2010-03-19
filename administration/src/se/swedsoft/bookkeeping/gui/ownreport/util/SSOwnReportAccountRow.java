@@ -97,4 +97,13 @@ public class SSOwnReportAccountRow implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportAccountRow");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iBudget=").append(iBudget);
+        sb.append('}');
+        return sb.toString();
+    }
 }

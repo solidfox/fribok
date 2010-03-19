@@ -102,6 +102,16 @@ public class SSImagePreview extends JComponent implements PropertyChangeListener
             iThumbnail.paintIcon(this, g, x, y);
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.filechooser.util.SSImagePreview");
+        sb.append("{iFile=").append(iFile);
+        sb.append(", iThumbnail=").append(iThumbnail);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

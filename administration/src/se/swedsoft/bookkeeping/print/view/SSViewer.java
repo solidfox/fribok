@@ -312,4 +312,18 @@ public class SSViewer extends JPanel{
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.view.SSViewer");
+        sb.append("{iDocumentPanel=").append(iDocumentPanel);
+        sb.append(", iJasperPrint=").append(iJasperPrint);
+        sb.append(", iListenerMap=").append(iListenerMap);
+        sb.append(", iPageIndex=").append(iPageIndex);
+        sb.append(", iPagePanel=").append(iPagePanel);
+        sb.append(", iScale=").append(iScale);
+        sb.append(", iZoom=").append(iZoom);
+        sb.append('}');
+        return sb.toString();
+    }
 }

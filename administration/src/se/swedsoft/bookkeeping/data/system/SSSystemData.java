@@ -59,8 +59,15 @@ public class SSSystemData implements Serializable {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.system.SSSystemData");
+        sb.append("{iAccountPlans=").append(iAccountPlans);
+        sb.append(", iCompanies=").append(iCompanies);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

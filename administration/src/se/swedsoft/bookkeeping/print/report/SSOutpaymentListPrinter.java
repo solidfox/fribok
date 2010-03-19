@@ -222,9 +222,26 @@ public class SSOutpaymentListPrinter extends SSPrinter {
         public void setOutpayment(SSOutpayment iInpayment) {
             iModel.setObjects( iInpayment.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSOutpaymentListPrinter.SSOutpaymentRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSOutpaymentListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iOutpayments=").append(iOutpayments);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

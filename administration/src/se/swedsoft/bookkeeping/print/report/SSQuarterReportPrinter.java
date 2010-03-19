@@ -252,8 +252,17 @@ public class SSQuarterReportPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSQuarterReportPrinter");
+        sb.append("{iCustomers=").append(iCustomers);
+        sb.append(", iEuSaleCommodity=").append(iEuSaleCommodity);
+        sb.append(", iEuSaleThirdPartCommodity=").append(iEuSaleThirdPartCommodity);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iLocale=").append(iLocale);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

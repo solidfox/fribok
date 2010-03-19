@@ -190,4 +190,20 @@ public class SSCalendar implements ActionListener {
         iChangeListeners=null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSCalendar");
+        sb.append("{iChangeListeners=").append(iChangeListeners);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDayChooser=").append(iDayChooser);
+        sb.append(", iDayPanel=").append(iDayPanel);
+        sb.append(", iMonthChooser=").append(iMonthChooser);
+        sb.append(", iMonthPanel=").append(iMonthPanel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iYearChooser=").append(iYearChooser);
+        sb.append(", iYearPanel=").append(iYearPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

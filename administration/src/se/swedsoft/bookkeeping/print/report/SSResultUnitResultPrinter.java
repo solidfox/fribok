@@ -78,4 +78,12 @@ public class SSResultUnitResultPrinter extends SSResultPrinter {
         iColumn3 = iCalculator.getResultunitChange();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSResultUnitResultPrinter");
+        sb.append("{iResultUnit=").append(iResultUnit);
+        sb.append('}');
+        return sb.toString();
+    }
 }

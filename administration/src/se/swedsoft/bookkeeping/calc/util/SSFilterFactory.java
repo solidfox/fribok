@@ -90,4 +90,12 @@ public class SSFilterFactory<T> {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.calc.util.SSFilterFactory");
+        sb.append("{iObjects=").append(iObjects);
+        sb.append('}');
+        return sb.toString();
+    }
 }

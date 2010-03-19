@@ -28,6 +28,18 @@ public class SSMultiPrinter extends SSPrinter {
 
         private ResourceBundle iBundle;
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.SSMultiPrinter.SSSubReport");
+            sb.append("{iBundle=").append(iBundle);
+            sb.append(", iDataSource=").append(iDataSource);
+            sb.append(", iName='").append(iName).append('\'');
+            sb.append(", iParameters=").append(iParameters);
+            sb.append(", iReport=").append(iReport);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private List<SSSubReport> iSubReports;
@@ -131,4 +143,12 @@ public class SSMultiPrinter extends SSPrinter {
         iSubReports.add(iSubReport);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.SSMultiPrinter");
+        sb.append("{iSubReports=").append(iSubReports);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -160,4 +160,22 @@ public class SSInvoiceListDialog extends SSDialog {
 
         return iFactory.getObjects();
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSInvoiceListDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCheckCustomer=").append(iCheckCustomer);
+        sb.append(", iCheckDate=").append(iCheckDate);
+        sb.append(", iCustomer=").append(iCustomer);
+        sb.append(", iFromDate=").append(iFromDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iRadioAll=").append(iRadioAll);
+        sb.append(", iRadioExpired=").append(iRadioExpired);
+        sb.append(", iRadioNotpayed=").append(iRadioNotpayed);
+        sb.append(", iToDate=").append(iToDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }

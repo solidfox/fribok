@@ -141,6 +141,23 @@ public class SSAddAccountDialog extends SSDialog {
         iDialog.showDialog();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.dialogs.SSAddAccountDialog");
+        sb.append("{iAccountNr=").append(iAccountNr);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProjectRequired=").append(iProjectRequired);
+        sb.append(", iReportCode=").append(iReportCode);
+        sb.append(", iResultUnitRequired=").append(iResultUnitRequired);
+        sb.append(", iSruCode=").append(iSruCode);
+        sb.append(", iVatCode=").append(iVatCode);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

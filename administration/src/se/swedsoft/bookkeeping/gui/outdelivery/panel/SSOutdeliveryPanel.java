@@ -197,4 +197,19 @@ public class SSOutdeliveryPanel {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.outdelivery.panel.SSOutdeliveryPanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOutdelivery=").append(iOutdelivery);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iText=").append(iText);
+        sb.append('}');
+        return sb.toString();
+    }
 }

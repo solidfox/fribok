@@ -260,4 +260,22 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
     public String toRenderString() {
         return String.valueOf(iAccountNr);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSAutoDistRow");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iAccountNr=").append(iAccountNr);
+        sb.append(", iCredit=").append(iCredit);
+        sb.append(", iDebet=").append(iDebet);
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iPercentage=").append(iPercentage);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iProjectNr='").append(iProjectNr).append('\'');
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iResultUnitNr='").append(iResultUnitNr).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

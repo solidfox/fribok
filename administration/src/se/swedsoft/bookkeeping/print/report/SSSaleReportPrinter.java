@@ -26,14 +26,12 @@ public class SSSaleReportPrinter extends SSPrinter {
         Product             (SSBundle.getBundle().getString("salereport.dialog.sort.product")),
         Period              (SSBundle.getBundle().getString("salereport.dialog.sort.period")),
         ContributionRate    (SSBundle.getBundle().getString("salereport.dialog.sort.contributionrate")),
-        AverageSellingPrice (SSBundle.getBundle().getString("salereport.dialog.sort.averagesellingprice"))
-        ;
+        AverageSellingPrice (SSBundle.getBundle().getString("salereport.dialog.sort.averagesellingprice"));
 
 
         private String iDescription;
 
         SortingMode(String iDescription) {
-
             this.iDescription = iDescription;
         }
 
@@ -407,4 +405,22 @@ public class SSSaleReportPrinter extends SSPrinter {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSSaleReportPrinter");
+        sb.append("{iAscending=").append(iAscending);
+        sb.append(", iAverageSellingPrice=").append(iAverageSellingPrice);
+        sb.append(", iContribution=").append(iContribution);
+        sb.append(", iContributionRate=").append(iContributionRate);
+        sb.append(", iCount=").append(iCount);
+        sb.append(", iDays=").append(iDays);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iInprices=").append(iInprices);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append(", iSortingMode=").append(iSortingMode);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

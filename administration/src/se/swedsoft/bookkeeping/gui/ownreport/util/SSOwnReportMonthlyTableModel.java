@@ -125,5 +125,15 @@ public class SSOwnReportMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.ownreport.util.SSOwnReportMonthlyTableModel");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iRows=").append(iRows);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 

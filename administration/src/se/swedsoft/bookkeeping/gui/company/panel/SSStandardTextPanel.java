@@ -131,8 +131,14 @@ public class SSStandardTextPanel extends JPanel {
             iField       = pField;
         }
 
+        @Override
         public String toString() {
-            return iDescription;
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSStandardTextPanel.StandardText");
+            sb.append("{iDescription='").append(iDescription).append('\'');
+            sb.append(", iField=").append(iField);
+            sb.append('}');
+            return sb.toString();
         }
 
         public SSStandardText getField(){
@@ -141,4 +147,16 @@ public class SSStandardTextPanel extends JPanel {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSStandardTextPanel");
+        sb.append("{iComboBox=").append(iComboBox);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iSelected=").append(iSelected);
+        sb.append(", iTextPane=").append(iTextPane);
+        sb.append(", iTexts=").append(iTexts);
+        sb.append('}');
+        return sb.toString();
+    }
 }

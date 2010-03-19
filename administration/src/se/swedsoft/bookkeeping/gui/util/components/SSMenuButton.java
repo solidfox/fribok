@@ -97,4 +97,13 @@ public class SSMenuButton<T extends JButton> extends SSButton {
         iPopup.addSeparator();
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSMenuButton");
+        sb.append("{iPopup=").append(iPopup);
+        sb.append('}');
+        return sb.toString();
+    }
 }

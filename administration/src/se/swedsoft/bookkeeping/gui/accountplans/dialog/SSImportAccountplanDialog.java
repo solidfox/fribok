@@ -119,8 +119,17 @@ public class SSImportAccountplanDialog extends SSDialog {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountplans.dialog.SSImportAccountplanDialog");
+        sb.append("{iAccountPlan=").append(iAccountPlan);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCheckREC=").append(iCheckREC);
+        sb.append(", iCheckSRU=").append(iCheckSRU);
+        sb.append(", iCheckVAT=").append(iCheckVAT);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

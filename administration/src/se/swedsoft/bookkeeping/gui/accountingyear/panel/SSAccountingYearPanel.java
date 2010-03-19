@@ -214,4 +214,20 @@ public class SSAccountingYearPanel {
         iAccountPlanPanel.setVisible(iShow);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountingyear.panel.SSAccountingYearPanel");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iAccountPlan=").append(iAccountPlan);
+        sb.append(", iAccountPlanPanel=").append(iAccountPlanPanel);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iRadioAccountPlan=").append(iRadioAccountPlan);
+        sb.append(", iRadioUseLast=").append(iRadioUseLast);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

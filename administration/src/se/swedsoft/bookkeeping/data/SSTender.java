@@ -197,6 +197,18 @@ public class SSTender extends SSSale {
         }
         return iNumber.equals(((SSTender)obj).getNumber());
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSTender");
+        sb.append("{iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iExpires=").append(iExpires);
+        sb.append(", iOrder=").append(iOrder);
+        sb.append(", iOrderNr=").append(iOrderNr);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

@@ -279,4 +279,13 @@ public class SSAutoDistFrame extends SSDefaultTableFrame {
         cInstance=null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.autodist.SSAutoDistFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

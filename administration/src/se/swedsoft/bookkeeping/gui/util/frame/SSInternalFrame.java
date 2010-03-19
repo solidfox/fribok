@@ -169,5 +169,12 @@ public abstract class SSInternalFrame extends JInternalFrame {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.frame.SSInternalFrame");
+        sb.append("{iMainFrame=").append(iMainFrame);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -109,7 +109,23 @@ public class SSBundleFactory {
             return iBundle.getKeys();
         }
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.resources.SSBundleFactory.SSResourceBundle");
+            sb.append("{iBundle=").append(iBundle);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.resources.SSBundleFactory");
+        sb.append("{iBundles=").append(iBundles);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 

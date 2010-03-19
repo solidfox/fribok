@@ -129,4 +129,13 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
         return iEditing;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel");
+        sb.append("{EMPTY_STRING='").append(EMPTY_STRING).append('\'');
+        sb.append(", iEditing=").append(iEditing);
+        sb.append('}');
+        return sb.toString();
+    }
 }

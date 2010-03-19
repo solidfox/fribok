@@ -261,5 +261,13 @@ public class SSOrderPrinter extends SSPrinter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSOrderPrinter");
+        sb.append("{iLocale=").append(iLocale);
+        sb.append(", iOrder=").append(iOrder);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -303,4 +303,20 @@ public class SSAdressPanel extends JPanel{
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel");
+        sb.append("{iAddress=").append(iAddress);
+        sb.append(", iAdress=").append(iAdress);
+        sb.append(", iCity=").append(iCity);
+        sb.append(", iCountry=").append(iCountry);
+        sb.append(", iName=").append(iName);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iStreet=").append(iStreet);
+        sb.append(", iTitle=").append(iTitle);
+        sb.append(", iZipCode=").append(iZipCode);
+        sb.append('}');
+        return sb.toString();
+    }
 }

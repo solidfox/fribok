@@ -251,8 +251,27 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
 
             iModel.setObjects( iInvoice.getVoucher().getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.journals.SSSupplierInvoicejournalPrinter.SSVoucherPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.journals.SSSupplierInvoicejournalPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

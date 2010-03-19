@@ -134,4 +134,26 @@ public class BgMaxSelectInvoiceDialog extends SSDialog {
        return sb.toString();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.bgmax.dialog.BgMaxSelectInvoiceDialog");
+        sb.append("{iBelopp=").append(iBelopp);
+        sb.append(", iBetalarensAdress=").append(iBetalarensAdress);
+        sb.append(", iBetalarensLand=").append(iBetalarensLand);
+        sb.append(", iBetalarensNamn=").append(iBetalarensNamn);
+        sb.append(", iBetalarensOrganisationsnr=").append(iBetalarensOrganisationsnr);
+        sb.append(", iBetalarensOrt=").append(iBetalarensOrt);
+        sb.append(", iBetalarensPostnummer=").append(iBetalarensPostnummer);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iInformationsText=").append(iInformationsText);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iReference=").append(iReference);
+        sb.append(", list1=").append(list1);
+        sb.append(", textPane1=").append(textPane1);
+        sb.append('}');
+        return sb.toString();
+    }
 }

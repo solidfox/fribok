@@ -60,4 +60,13 @@ public class LBinPostTK26 extends LBinPost {
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK26");
+        sb.append("{iName='").append(iName).append('\'');
+        sb.append(", iOutpaymentNumber=").append(iOutpaymentNumber);
+        sb.append('}');
+        return sb.toString();
+    }
 }

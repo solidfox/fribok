@@ -279,4 +279,19 @@ public class SSPurchaseOrderRow implements Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSPurchaseOrderRow");
+        sb.append("{iAccountNr=").append(iAccountNr);
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iProduct=").append(iProduct);
+        sb.append(", iProductNr='").append(iProductNr).append('\'');
+        sb.append(", iQuantity=").append(iQuantity);
+        sb.append(", iSupplierArticleNr='").append(iSupplierArticleNr).append('\'');
+        sb.append(", iUnit=").append(iUnit);
+        sb.append(", iUnitprice=").append(iUnitprice);
+        sb.append('}');
+        return sb.toString();
+    }
 }

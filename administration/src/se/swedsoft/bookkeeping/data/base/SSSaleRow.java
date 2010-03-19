@@ -482,25 +482,28 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
 
     ////////////////////////////////////////////////////
 
-    
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(iProductNr);
-        sb.append(", ");
-        sb.append(iDescription);
-        sb.append(", ");
-        sb.append(iUnitprice);
-        sb.append(", ");
-        sb.append(iCount);
-        sb.append(' ');
-        sb.append(iUnit);
-        sb.append(", ");
-        sb.append(iDiscount);
-        sb.append(", ");
-        sb.append(iTaxCode);
-        sb.append(" (");
-        sb.append(iProduct);
-        sb.append(')');
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.base.SSSaleRow");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iAccountNr=").append(iAccountNr);
+        sb.append(", iCount=").append(iCount);
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iDiscount=").append(iDiscount);
+        sb.append(", iProduct=").append(iProduct);
+        sb.append(", iProductNr='").append(iProductNr).append('\'');
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iProjectNr=").append(iProjectNr);
+        sb.append(", iProjectNumber='").append(iProjectNumber).append('\'');
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iResultUnitNr=").append(iResultUnitNr);
+        sb.append(", iResultUnitNumber='").append(iResultUnitNumber).append('\'');
+        sb.append(", iTaxCode=").append(iTaxCode);
+        sb.append(", iUnit=").append(iUnit);
+        sb.append(", iUnitprice=").append(iUnitprice);
+        sb.append('}');
         return sb.toString();
     }
     /**

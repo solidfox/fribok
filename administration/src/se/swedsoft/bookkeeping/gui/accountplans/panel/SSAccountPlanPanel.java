@@ -329,4 +329,24 @@ public class SSAccountPlanPanel {
         return iName.getText().length() != 0;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountplans.panel.SSAccountPlanPanel");
+        sb.append("{iAccountPlan=").append(iAccountPlan);
+        sb.append(", iAssessementYear=").append(iAssessementYear);
+        sb.append(", iBase=").append(iBase);
+        sb.append(", iBaseLabel=").append(iBaseLabel);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDeleteRowButton=").append(iDeleteRowButton);
+        sb.append(", iImportFields=").append(iImportFields);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iName=").append(iName);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iType=").append(iType);
+        sb.append('}');
+        return sb.toString();
+    }
 }

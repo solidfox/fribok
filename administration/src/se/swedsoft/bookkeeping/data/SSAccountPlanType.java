@@ -76,9 +76,15 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
         return iName.hashCode();
     }
 
-    
+
+    @Override
     public String toString() {
-        return iName;
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSAccountPlanType");
+        sb.append("{iName='").append(iName).append('\'');
+        sb.append(", iSchema='").append(iSchema).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
 

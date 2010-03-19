@@ -268,6 +268,17 @@ public class SSSalesTaxCalculator {
         public String getGroup2Description(){
             return SSBundle.getBundle().getString("vatreport.group.2." + iGroup2 );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator.SSVATReportGroup");
+            sb.append("{iGroup1=").append(iGroup1);
+            sb.append(", iGroup2=").append(iGroup2);
+            sb.append(", iSum=").append(iSum);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -336,7 +347,30 @@ public class SSSalesTaxCalculator {
         public String getDescription(){
             return SSBundle.getBundle().getString("vatcontrolreport.group.1." + iGroup1 );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator.SSVATControlGroup");
+            sb.append("{iGroup1=").append(iGroup1);
+            sb.append(", iReported=").append(iReported);
+            sb.append(", iSum=").append(iSum);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.calc.SSSalesTaxCalculator");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iControlGroups=").append(iControlGroups);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iReportGroups=").append(iReportGroups);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -79,4 +79,16 @@ public class SSPeriodSelectionDialog extends SSDialog {
     public void setFrom(Date from) {
         iFrom.setDate(from);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSPeriodSelectionDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

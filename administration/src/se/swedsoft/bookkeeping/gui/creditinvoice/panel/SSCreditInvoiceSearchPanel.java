@@ -63,4 +63,15 @@ public class SSCreditInvoiceSearchPanel extends JPanel {
         }
         iModel.setObjects(iFiltered);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.creditinvoice.panel.SSCreditInvoiceSearchPanel");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTextField=").append(iTextField);
+        sb.append('}');
+        return sb.toString();
+    }
 }

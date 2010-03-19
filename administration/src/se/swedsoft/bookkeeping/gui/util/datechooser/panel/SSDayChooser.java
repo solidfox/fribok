@@ -369,8 +369,33 @@ public class SSDayChooser implements ActionListener {
         public void setDate(Date iDate) {
             this.iDate = iDate;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSDayChooser.DayButton");
+            sb.append("{iDate=").append(iDate);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSDayChooser");
+        sb.append("{iChangeListeners=").append(iChangeListeners);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDayButtons=").append(iDayButtons);
+        sb.append(", iDayNamePanel=").append(iDayNamePanel);
+        sb.append(", iDayNames=").append(iDayNames);
+        sb.append(", iDayPanel=").append(iDayPanel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iWeekNamePanel=").append(iWeekNamePanel);
+        sb.append(", iWeekNames=").append(iWeekNames);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

@@ -161,20 +161,13 @@ public class SSMainFrame extends JFrame {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.SSMainFrame");
+        sb.append("{iDesktop=").append(iDesktop);
+        sb.append(", iStatusBar=").append(iStatusBar);
+        sb.append('}');
+        return sb.toString();
+    }
 }

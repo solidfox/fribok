@@ -206,4 +206,25 @@ public class SSMailServerDialog extends SSDialog {
         closeDialog(JOptionPane.CANCEL_OPTION);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog");
+        sb.append("{addressLabel=").append(addressLabel);
+        sb.append(", addressText=").append(addressText);
+        sb.append(", authCheckbox=").append(authCheckbox);
+        sb.append(", contentPane=").append(contentPane);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iMailServer=").append(iMailServer);
+        sb.append(", iParent=").append(iParent);
+        sb.append(", passwordField=").append(passwordField);
+        sb.append(", passwordLabel=").append(passwordLabel);
+        sb.append(", portField=").append(portField);
+        sb.append(", portLabel=").append(portLabel);
+        sb.append(", shouldSave=").append(shouldSave);
+        sb.append(", userNameLabel=").append(userNameLabel);
+        sb.append(", usernameText=").append(usernameText);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -282,4 +282,17 @@ public class SSOutpaymentRow implements SSTableSearchable, Serializable {
         return String.valueOf(iInvoiceNr);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSOutpaymentRow");
+        sb.append("{iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iInvoice=").append(iInvoice);
+        sb.append(", iInvoiceCurrency=").append(iInvoiceCurrency);
+        sb.append(", iInvoiceCurrencyRate=").append(iInvoiceCurrencyRate);
+        sb.append(", iInvoiceNr=").append(iInvoiceNr);
+        sb.append(", iValue=").append(iValue);
+        sb.append('}');
+        return sb.toString();
+    }
 }

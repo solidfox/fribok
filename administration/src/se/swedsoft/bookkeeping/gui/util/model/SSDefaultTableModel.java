@@ -380,4 +380,14 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
         iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "DELETE_ROW");
         iTable.getActionMap().put("DELETE_ROW"     , iDelete);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel");
+        sb.append("{iColumns=").append(iColumns);
+        sb.append(", iObjects=").append(iObjects);
+        sb.append('}');
+        return sb.toString();
+    }
 }

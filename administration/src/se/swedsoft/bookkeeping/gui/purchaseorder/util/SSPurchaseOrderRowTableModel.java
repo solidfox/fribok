@@ -280,4 +280,12 @@ public class SSPurchaseOrderRowTableModel extends SSTableModel<SSPurchaseOrderRo
     };
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.purchaseorder.util.SSPurchaseOrderRowTableModel");
+        sb.append("{iEditing=").append(iEditing);
+        sb.append('}');
+        return sb.toString();
+    }
 }

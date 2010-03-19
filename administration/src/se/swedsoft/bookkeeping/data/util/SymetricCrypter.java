@@ -79,4 +79,14 @@ public class SymetricCrypter
             super(message, cause);
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.util.SymetricCrypter");
+        sb.append("{cipher=").append(cipher);
+        sb.append(", key=").append(key);
+        sb.append('}');
+        return sb.toString();
+    }
 }

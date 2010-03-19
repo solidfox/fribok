@@ -884,4 +884,15 @@ public class SSOrderImporter {
             throw new SSImportException(e.getMessage());
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.xml.SSOrderImporter");
+        sb.append("{iCustomers=").append(iCustomers);
+        sb.append(", iFile=").append(iFile);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append('}');
+        return sb.toString();
+    }
 }

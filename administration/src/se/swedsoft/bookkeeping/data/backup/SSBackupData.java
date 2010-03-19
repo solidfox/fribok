@@ -28,6 +28,13 @@ public class SSBackupData implements Serializable  {
         return iBackups;
     }
 
-    
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.backup.SSBackupData");
+        sb.append("{iBackups=").append(iBackups);
+        sb.append('}');
+        return sb.toString();
+    }
 }

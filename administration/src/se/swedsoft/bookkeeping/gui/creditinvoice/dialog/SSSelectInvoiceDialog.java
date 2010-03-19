@@ -105,4 +105,15 @@ public class SSSelectInvoiceDialog extends SSDialog {
 
         return SSDB.getInstance().getInvoice(selected);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.creditinvoice.dialog.SSSelectInvoiceDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iInvoice=").append(iInvoice);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -51,36 +51,28 @@ public class BgMaxBetalning {
         return new BigDecimal(iBelopp).scaleByPowerOfTen(-2);
     }
 
-
-    
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("    Betalning: \n");
-        sb.append("    {\n");
-        sb.append("      iBankgiroNummer      : ").append(iBankgiroNummer    ).append('\n');
-        sb.append("      iReferens            : ").append(iReferens          ).append('\n');
-        sb.append("      iBelopp              : ").append(iBelopp            ).append('\n');
-        sb.append("      iReferensKod         : ").append(iReferensKod       ).append('\n');
-        sb.append("      iBetalningsKanalKod  : ").append(iBetalningsKanalKod).append('\n');
-        sb.append("      iBGCLopnummer        : ").append(iBGCLopnummer      ).append('\n');
-        sb.append("      iBankgiroNummer      : ").append(iBankgiroNummer    ).append('\n');
-        sb.append("      iAvibildmarkering    : ").append(iAvibildmarkering  ).append('\n');
-
-        for (BgMaxReferens iReferens : iReferenser) {
-            sb.append(iReferens);
-        }
-        sb.append("      iBetalarensNamn      : ").append(iBetalarensNamn     ).append('\n');
-        sb.append("      iExtraNamnfalt       : ").append(iExtraNamnfalt      ).append('\n');
-        sb.append("      iBetalarensAdress              : ").append(iBetalarensAdress             ).append('\n');
-        sb.append("      iBetalarensPostnummer          : ").append(iBetalarensPostnummer         ).append('\n');
-        sb.append("      iBetalarensOrt          : ").append(iBetalarensOrt         ).append('\n');
-        sb.append("      iBetalarensLand                : ").append(iBetalarensLand               ).append('\n');
-        sb.append("      iLandKod             : ").append(iLandKod            ).append('\n');
-        sb.append("      iBetalarensOrganisationsnr : ").append(iBetalarensOrganisationsnr).append('\n');
-        sb.append("    }\n");
-
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning");
+        sb.append("{iAvibildmarkering='").append(iAvibildmarkering).append('\'');
+        sb.append(", iAvsnitt=").append(iAvsnitt);
+        sb.append(", iBankgiroNummer='").append(iBankgiroNummer).append('\'');
+        sb.append(", iBelopp='").append(iBelopp).append('\'');
+        sb.append(", iBetalarensAdress='").append(iBetalarensAdress).append('\'');
+        sb.append(", iBetalarensLand='").append(iBetalarensLand).append('\'');
+        sb.append(", iBetalarensNamn='").append(iBetalarensNamn).append('\'');
+        sb.append(", iBetalarensOrganisationsnr='").append(iBetalarensOrganisationsnr).append('\'');
+        sb.append(", iBetalarensOrt='").append(iBetalarensOrt).append('\'');
+        sb.append(", iBetalarensPostnummer='").append(iBetalarensPostnummer).append('\'');
+        sb.append(", iBetalningsKanalKod='").append(iBetalningsKanalKod).append('\'');
+        sb.append(", iBGCLopnummer='").append(iBGCLopnummer).append('\'');
+        sb.append(", iExtraNamnfalt='").append(iExtraNamnfalt).append('\'');
+        sb.append(", iInformationsText='").append(iInformationsText).append('\'');
+        sb.append(", iLandKod='").append(iLandKod).append('\'');
+        sb.append(", iReferens='").append(iReferens).append('\'');
+        sb.append(", iReferenser=").append(iReferenser);
+        sb.append(", iReferensKod='").append(iReferensKod).append('\'');
+        sb.append('}');
         return sb.toString();
     }
-
-
 }

@@ -301,4 +301,16 @@ public class SSSIEImporter {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter");
+        sb.append("{iDimensions=").append(iDimensions);
+        sb.append(", iFactory=").append(iFactory);
+        sb.append(", iFile=").append(iFile);
+        sb.append(", iLines=").append(iLines);
+        sb.append(", iType=").append(iType);
+        sb.append('}');
+        return sb.toString();
+    }
 }

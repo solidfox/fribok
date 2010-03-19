@@ -74,6 +74,17 @@ public class SSDocumentPanel {
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.view.SSDocumentPanel");
+        sb.append("{iImage=").append(iImage);
+        sb.append(", iImagePanel=").append(iImagePanel);
+        sb.append(", iPage=").append(iPage);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

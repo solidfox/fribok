@@ -79,6 +79,17 @@ public class SSCopyReversedVoucherDialog extends SSDialog {
         return null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.dialogs.SSCopyReversedVoucherDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCopyReverse=").append(iCopyReverse);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iVerificationName=").append(iVerificationName);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

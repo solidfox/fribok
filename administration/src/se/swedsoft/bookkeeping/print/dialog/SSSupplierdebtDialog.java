@@ -54,8 +54,14 @@ public class SSSupplierdebtDialog extends SSDialog {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSSupplierdebtDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

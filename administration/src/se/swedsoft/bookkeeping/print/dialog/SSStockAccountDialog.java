@@ -93,4 +93,16 @@ public class SSStockAccountDialog  extends SSDialog {
         return iDate.getDate();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSStockAccountDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iRadioAll=").append(iRadioAll);
+        sb.append(", iRadioDate=").append(iRadioDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }

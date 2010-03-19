@@ -155,4 +155,13 @@ public class SSReportCache {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.util.SSReportCache");
+        sb.append("{iReportCache=").append(iReportCache);
+        sb.append('}');
+        return sb.toString();
+    }
 }

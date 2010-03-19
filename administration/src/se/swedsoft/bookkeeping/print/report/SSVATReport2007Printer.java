@@ -397,6 +397,15 @@ public class SSVATReport2007Printer extends SSPrinter {
             }
             iModel.setObjects( iObjects );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSVATReport2007Printer.SSVATReportRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -444,8 +453,20 @@ public class SSVATReport2007Printer extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSVATReport2007Printer");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iAccounts=").append(iAccounts);
+        sb.append(", iAccountsByVatCode=").append(iAccountsByVatCode);
+        sb.append(", iCreditMinusDebetSum=").append(iCreditMinusDebetSum);
+        sb.append(", iDataSource=").append(iDataSource);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iDebetMinusCreditSum=").append(iDebetMinusCreditSum);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

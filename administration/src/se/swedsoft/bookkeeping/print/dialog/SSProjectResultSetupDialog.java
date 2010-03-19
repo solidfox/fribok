@@ -134,4 +134,18 @@ public class SSProjectResultSetupDialog extends SSDialog {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSProjectResultSetupDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProjects=").append(iProjects);
+        sb.append(", iRadioAll=").append(iRadioAll);
+        sb.append(", iRadioSingle=").append(iRadioSingle);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

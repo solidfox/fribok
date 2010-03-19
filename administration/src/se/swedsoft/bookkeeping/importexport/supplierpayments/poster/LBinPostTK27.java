@@ -70,4 +70,16 @@ public class LBinPostTK27 extends LBinPost {
         iCity             = iLine.readString (53, 72); // 53 => 72: Mottagarens stad
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK27");
+        sb.append("{iAddress1='").append(iAddress1).append('\'');
+        sb.append(", iCity='").append(iCity).append('\'');
+        sb.append(", iOutpaymentNumber=").append(iOutpaymentNumber);
+        sb.append(", iZipCode='").append(iZipCode).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

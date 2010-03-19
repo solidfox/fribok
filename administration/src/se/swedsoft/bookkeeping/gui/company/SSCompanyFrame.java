@@ -424,6 +424,14 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.SSCompanyFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iShowAtStartup=").append(iShowAtStartup);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

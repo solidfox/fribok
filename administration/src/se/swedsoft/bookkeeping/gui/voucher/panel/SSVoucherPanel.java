@@ -744,5 +744,33 @@ return selected < 0 ? null : iModel.getObject(selected);
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.panel.SSVoucherPanel");
+        sb.append("{iAddAccountButton=").append(iAddAccountButton);
+        sb.append(", iCancelButton=").append(iCancelButton);
+        sb.append(", iCreditSum=").append(iCreditSum);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDebetSum=").append(iDebetSum);
+        sb.append(", iDeleteRowButton=").append(iDeleteRowButton);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iDifference=").append(iDifference);
+        sb.append(", iErrorLabel=").append(iErrorLabel);
+        sb.append(", iMarkRowButton=").append(iMarkRowButton);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOkButton=").append(iOkButton);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iReopenDialog=").append(iReopenDialog);
+        sb.append(", iSaldo=").append(iSaldo);
+        sb.append(", iStoreAsTemplate=").append(iStoreAsTemplate);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iVerifier=").append(iVerifier);
+        sb.append(", iVoucher=").append(iVoucher);
+        sb.append(", SSBigDecimalTextField1=").append(SSBigDecimalTextField1);
+        sb.append(", textField1=").append(textField1);
+        sb.append('}');
+        return sb.toString();
+    }
 }

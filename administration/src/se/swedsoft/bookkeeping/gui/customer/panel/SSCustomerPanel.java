@@ -637,4 +637,42 @@ public class SSCustomerPanel {
         iDeliveryAddress.addKeyListeners();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.customer.panel.SSCustomerPanel");
+        sb.append("{iBankAccountNumber=").append(iBankAccountNumber);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iComment=").append(iComment);
+        sb.append(", iCreditLimit=").append(iCreditLimit);
+        sb.append(", iCreditLimitCurrency=").append(iCreditLimitCurrency);
+        sb.append(", iCustomer=").append(iCustomer);
+        sb.append(", iCustomerNr=").append(iCustomerNr);
+        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iDiscount=").append(iDiscount);
+        sb.append(", iEMail=").append(iEMail);
+        sb.append(", iEuSaleCommodity=").append(iEuSaleCommodity);
+        sb.append(", iEuSaleYhirdPartCommodity=").append(iEuSaleYhirdPartCommodity);
+        sb.append(", iHideUnitPrice=").append(iHideUnitPrice);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iInvoiceAddress=").append(iInvoiceAddress);
+        sb.append(", iInvoiceCurrency=").append(iInvoiceCurrency);
+        sb.append(", iName=").append(iName);
+        sb.append(", iOrginisationNumber=").append(iOrginisationNumber);
+        sb.append(", iOurContactPerson=").append(iOurContactPerson);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iPhone=").append(iPhone);
+        sb.append(", iPhone2=").append(iPhone2);
+        sb.append(", iPlusAccountNumber=").append(iPlusAccountNumber);
+        sb.append(", iTelefax=").append(iTelefax);
+        sb.append(", iUseInvoiceForDelivery=").append(iUseInvoiceForDelivery);
+        sb.append(", iVatFreeSale=").append(iVatFreeSale);
+        sb.append(", iVATNumber=").append(iVATNumber);
+        sb.append(", iYourContactPerson=").append(iYourContactPerson);
+        sb.append('}');
+        return sb.toString();
+    }
 }

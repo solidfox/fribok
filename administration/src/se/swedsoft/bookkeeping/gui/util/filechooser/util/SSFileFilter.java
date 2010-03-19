@@ -71,4 +71,12 @@ public abstract class SSFileFilter extends FileFilter {
     @Override
     public abstract String getDescription();
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFileFilter");
+        sb.append("{iExtensions=").append(iExtensions);
+        sb.append('}');
+        return sb.toString();
+    }
 }

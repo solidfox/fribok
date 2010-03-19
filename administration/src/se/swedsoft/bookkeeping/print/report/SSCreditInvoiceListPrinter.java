@@ -250,9 +250,26 @@ public class SSCreditInvoiceListPrinter extends SSPrinter {
         public void setInvoice(SSCreditInvoice iInvoice) {
             iModel.setObjects( iInvoice.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSCreditInvoiceListPrinter.SSInvoiceRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSCreditInvoiceListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

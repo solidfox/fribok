@@ -390,35 +390,17 @@ public class SSBudget implements Serializable  {
         return iNewBudget;
     }
 
-    
+
+    @Override
     public String toString() {
-        DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
-
-        StringBuffer b = new StringBuffer();
-
-        b.append("Budget for " );
-        b.append(format.format(iFrom) );
-        b.append(" to" );
-        b.append(format.format(iTo) );
-
-        for(SSMonth iMonth: getMonths()){
-            b.append("Month: " );
-            b.append( iMonth );
-            b.append("{\n");
-
-            for(SSAccount iAccount: iBudget.get(iMonth).keySet()){
-                b.append("  Account: \n" );
-                b.append("  ");
-                b.append(iAccount);
-                b.append("    Sum:" );
-                b.append("    ");
-                b.append( iBudget.get(iMonth).get(iAccount) );
-                b.append('\n');
-            }
-            b.append("}\n");
-        }
-
-        return b.toString();
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSBudget");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iBudget=").append(iBudget);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
     }
 
     /**

@@ -162,4 +162,16 @@ public class SSQuaterChooser extends JPanel implements ItemListener {
 
         iComboBox.setSelectedIndex(iIndex);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSQuaterChooser");
+        sb.append("{iChangeListeners=").append(iChangeListeners);
+        sb.append(", iComboBox=").append(iComboBox);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

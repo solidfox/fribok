@@ -352,6 +352,56 @@ public class SSDefaultAccountPanel extends JPanel {
             }
 
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel.SelectionListener");
+            sb.append("{iDefaultAccount=").append(iDefaultAccount);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel");
+        sb.append("{iCash=").append(iCash);
+        sb.append(", iCashText=").append(iCashText);
+        sb.append(", iComboBoxes=").append(iComboBoxes);
+        sb.append(", iCurrencyLoss=").append(iCurrencyLoss);
+        sb.append(", iCurrencyLossText=").append(iCurrencyLossText);
+        sb.append(", iCurrencyProfit=").append(iCurrencyProfit);
+        sb.append(", iCurrencyProfitText=").append(iCurrencyProfitText);
+        sb.append(", iCustomerClaim=").append(iCustomerClaim);
+        sb.append(", iCustomerClaimText=").append(iCustomerClaimText);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iIncommingTax=").append(iIncommingTax);
+        sb.append(", iIncommingTaxText=").append(iIncommingTaxText);
+        sb.append(", iInPayment=").append(iInPayment);
+        sb.append(", iInPaymentText=").append(iInPaymentText);
+        sb.append(", iInterestProfit=").append(iInterestProfit);
+        sb.append(", iInterestProfitText=").append(iInterestProfitText);
+        sb.append(", iOutPayment=").append(iOutPayment);
+        sb.append(", iOutPaymentText=").append(iOutPaymentText);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPurchases=").append(iPurchases);
+        sb.append(", iPurchasesText=").append(iPurchasesText);
+        sb.append(", iRounding=").append(iRounding);
+        sb.append(", iRoundingText=").append(iRoundingText);
+        sb.append(", iSales=").append(iSales);
+        sb.append(", iSalesText=").append(iSalesText);
+        sb.append(", iSupplierDebt=").append(iSupplierDebt);
+        sb.append(", iSupplierDebtText=").append(iSupplierDebtText);
+        sb.append(", iTax1=").append(iTax1);
+        sb.append(", iTax1Text=").append(iTax1Text);
+        sb.append(", iTax2=").append(iTax2);
+        sb.append(", iTax2Text=").append(iTax2Text);
+        sb.append(", iTax3=").append(iTax3);
+        sb.append(", iTax3Text=").append(iTax3Text);
+        sb.append(", iTextFields=").append(iTextFields);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -143,4 +143,14 @@ public class SSBigDecimalTextField extends JFormattedTextField {
         }
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField");
+        sb.append("{iAppendText='").append(iAppendText).append('\'');
+        sb.append(", iFormat=").append(iFormat);
+        sb.append('}');
+        return sb.toString();
+    }
 }

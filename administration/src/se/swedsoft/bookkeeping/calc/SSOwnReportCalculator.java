@@ -25,6 +25,16 @@ public class SSOwnReportCalculator {
         public SSAccount getAccount() {
             return iAccount;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.calc.SSOwnReportCalculator.SSResultBudgetRow");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iGroup=").append(iGroup);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private SSOwnReport iOwnReport;
@@ -224,5 +234,20 @@ public class SSOwnReportCalculator {
         }   else {
             iMap.put(iAccount, s.subtract(iValue) );
         }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.calc.SSOwnReportCalculator");
+        sb.append("{iChangeBudget=").append(iChangeBudget);
+        sb.append(", iChangePeriod=").append(iChangePeriod);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iOwnReport=").append(iOwnReport);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -147,8 +147,15 @@ public class SSStockValuePrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSStockValuePrinter");
+        sb.append("{iDate=").append(iDate);
+        sb.append(", iInprices=").append(iInprices);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append(", iStock=").append(iStock);
+        sb.append('}');
+        return sb.toString();
+    }
 }

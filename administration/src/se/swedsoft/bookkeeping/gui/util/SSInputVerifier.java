@@ -224,4 +224,14 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.SSInputVerifier");
+        sb.append("{iComponents=").append(iComponents);
+        sb.append(", iCurrentComponent=").append(iCurrentComponent);
+        sb.append(", iListeners=").append(iListeners);
+        sb.append('}');
+        return sb.toString();
+    }
 }

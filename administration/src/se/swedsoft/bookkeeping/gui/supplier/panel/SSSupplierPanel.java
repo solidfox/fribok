@@ -519,4 +519,35 @@ public class SSSupplierPanel {
         iAddress.addKeyListeners();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.supplier.panel.SSSupplierPanel");
+        sb.append("{iAddress=").append(iAddress);
+        sb.append(", iBankGiroNumber=").append(iBankGiroNumber);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iComment=").append(iComment);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iEmail=").append(iEmail);
+        sb.append(", iHomepage=").append(iHomepage);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iName=").append(iName);
+        sb.append(", iOurContact=").append(iOurContact);
+        sb.append(", iOurCustomerNr=").append(iOurCustomerNr);
+        sb.append(", iOutpaymentNumber=").append(iOutpaymentNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iPhone=").append(iPhone);
+        sb.append(", iPhone2=").append(iPhone2);
+        sb.append(", iPlusGiroNumber=").append(iPlusGiroNumber);
+        sb.append(", iRegistrationNumber=").append(iRegistrationNumber);
+        sb.append(", iSupplier=").append(iSupplier);
+        sb.append(", iSupplierNr=").append(iSupplierNr);
+        sb.append(", iTeleFax=").append(iTeleFax);
+        sb.append(", iYourContact=").append(iYourContact);
+        sb.append('}');
+        return sb.toString();
+    }
 }

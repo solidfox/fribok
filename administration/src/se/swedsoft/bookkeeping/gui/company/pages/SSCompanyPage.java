@@ -57,4 +57,13 @@ public abstract class SSCompanyPage {
 
 
     //public static SSNewCompanyPage getInstance();
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPage");
+        sb.append("{iDialog=").append(iDialog);
+        sb.append('}');
+        return sb.toString();
+    }
 }

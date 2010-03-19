@@ -297,5 +297,13 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog");
+        sb.append("{iModalResult=").append(iModalResult);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 

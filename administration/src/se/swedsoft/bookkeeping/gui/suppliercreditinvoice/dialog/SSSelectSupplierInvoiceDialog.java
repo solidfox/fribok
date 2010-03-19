@@ -106,4 +106,15 @@ public class SSSelectSupplierInvoiceDialog extends SSDialog {
         SSSupplierInvoice selected = iDialog.iInvoices.getSelected();
         return SSDB.getInstance().getSupplierInvoice(selected);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.suppliercreditinvoice.dialog.SSSelectSupplierInvoiceDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

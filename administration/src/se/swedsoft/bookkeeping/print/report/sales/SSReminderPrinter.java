@@ -277,4 +277,15 @@ public class SSReminderPrinter extends SSPrinter {
         return iYear * iCalendar.getActualMaximum(Calendar.DAY_OF_YEAR) + iDay;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSReminderPrinter");
+        sb.append("{iCustomer=").append(iCustomer);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iLocale=").append(iLocale);
+        sb.append(", iMaxReminders=").append(iMaxReminders);
+        sb.append('}');
+        return sb.toString();
+    }
 }

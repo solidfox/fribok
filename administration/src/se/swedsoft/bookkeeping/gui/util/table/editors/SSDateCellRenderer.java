@@ -45,4 +45,12 @@ public class SSDateCellRenderer extends DefaultTableCellRenderer {
         setText((value == null) ? "" : iFormat.format(value));
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer");
+        sb.append("{iFormat=").append(iFormat);
+        sb.append('}');
+        return sb.toString();
+    }
 }

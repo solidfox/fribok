@@ -302,4 +302,13 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
             setColumnWidths(60,300);
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.product.util.SSProductRowTableModel");
+        sb.append("{iEditingRow=").append(iEditingRow);
+        sb.append('}');
+        return sb.toString();
+    }
 }

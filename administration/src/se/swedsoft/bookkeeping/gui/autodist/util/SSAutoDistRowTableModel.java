@@ -322,6 +322,15 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
             return true;
         }
     };
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.autodist.util.SSAutoDistRowTableModel");
+        sb.append("{iEditing=").append(iEditing);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

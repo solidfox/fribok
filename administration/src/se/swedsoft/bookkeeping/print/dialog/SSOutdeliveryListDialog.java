@@ -164,4 +164,19 @@ public class SSOutdeliveryListDialog extends SSDialog {
     public SSProduct getProduct() {
         return iProduct.getSelected();
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSOutdeliveryListDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCheckDate=").append(iCheckDate);
+        sb.append(", iCheckProduct=").append(iCheckProduct);
+        sb.append(", iFromDate=").append(iFromDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProduct=").append(iProduct);
+        sb.append(", iToDate=").append(iToDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }

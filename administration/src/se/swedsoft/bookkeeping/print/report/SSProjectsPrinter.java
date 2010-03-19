@@ -98,4 +98,12 @@ public class SSProjectsPrinter extends SSPrinter {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSProjectsPrinter");
+        sb.append("{iProjects=").append(iProjects);
+        sb.append('}');
+        return sb.toString();
+    }
 }

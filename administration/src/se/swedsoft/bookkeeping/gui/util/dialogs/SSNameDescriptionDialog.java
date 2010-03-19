@@ -123,4 +123,17 @@ public class SSNameDescriptionDialog extends SSDialog{
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSNameDescriptionDialog");
+        sb.append("{iCancelButton=").append(iCancelButton);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iModalResult=").append(iModalResult);
+        sb.append(", iName=").append(iName);
+        sb.append(", iOkButton=").append(iOkButton);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

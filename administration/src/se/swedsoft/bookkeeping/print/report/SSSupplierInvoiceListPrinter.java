@@ -247,9 +247,26 @@ public class SSSupplierInvoiceListPrinter extends SSPrinter {
         public void setInvoice(SSSupplierInvoice iInvoice) {
             iModel.setObjects( iInvoice.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSSupplierInvoiceListPrinter.SSInvoiceRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSSupplierInvoiceListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -528,33 +528,27 @@ public class SSVoucherRow implements Serializable, Cloneable {
         return iDebet != null;
     }
 
-    
+
+    @Override
     public String toString() {
-
-        StringBuffer b = new StringBuffer();
-        if( iCrossed ){
-            b.append('-');
-        }
-        b.append(iAccountNr);
-        b.append(", D=");
-        b.append(iDebet);
-        b.append(", C=");
-        b.append(iCredit);
-
-        if( iProjectNumber != null ){
-            b.append(" (Project ");
-            b.append(iProjectNumber );
-            b.append(" )");
-        }
-
-        if( iResultUnitNumber != null ){
-            b.append(" (Resultunit ");
-            b.append(iResultUnitNumber);
-            b.append(" )");
-        }
-
-
-        return b.toString();
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSVoucherRow");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iAccountNr=").append(iAccountNr);
+        sb.append(", iAdded=").append(iAdded);
+        sb.append(", iCredit=").append(iCredit);
+        sb.append(", iCrossed=").append(iCrossed);
+        sb.append(", iDebet=").append(iDebet);
+        sb.append(", iEditedDate=").append(iEditedDate);
+        sb.append(", iEditedSignature='").append(iEditedSignature).append('\'');
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iProjectNr=").append(iProjectNr);
+        sb.append(", iProjectNumber='").append(iProjectNumber).append('\'');
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append(", iResultUnitNr=").append(iResultUnitNr);
+        sb.append(", iResultUnitNumber='").append(iResultUnitNumber).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 
 

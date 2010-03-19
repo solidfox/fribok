@@ -63,4 +63,17 @@ public class SSInputDialog extends JDialog {
         dialog.setVisible(true);
         return iAddress;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSInputDialog");
+        sb.append("{buttonCancel=").append(buttonCancel);
+        sb.append(", buttonOK=").append(buttonOK);
+        sb.append(", contentPane=").append(contentPane);
+        sb.append(", iImage=").append(iImage);
+        sb.append(", iIpAddressTextField=").append(iIpAddressTextField);
+        sb.append('}');
+        return sb.toString();
+    }
 }

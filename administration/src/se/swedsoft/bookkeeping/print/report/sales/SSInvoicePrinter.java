@@ -288,5 +288,13 @@ public class SSInvoicePrinter extends SSPrinter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSInvoicePrinter");
+        sb.append("{iInvoice=").append(iInvoice);
+        sb.append(", iLocale=").append(iLocale);
+        sb.append('}');
+        return sb.toString();
+    }
 }

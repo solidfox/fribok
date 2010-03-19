@@ -607,6 +607,36 @@ public class SSSupplierCreditInvoicePanel {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.suppliercreditinvoice.panel.SSSupplierCreditInvoicePanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCorrectionTable=").append(iCorrectionTable);
+        sb.append(", iCorrectionTableModel=").append(iCorrectionTableModel);
+        sb.append(", iCrediting=").append(iCrediting);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iEntered=").append(iEntered);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNetSum=").append(iNetSum);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iReferenceNumber=").append(iReferenceNumber);
+        sb.append(", iRefreshVoucher=").append(iRefreshVoucher);
+        sb.append(", iRoundingSum=").append(iRoundingSum);
+        sb.append(", isStockInfluencing=").append(isStockInfluencing);
+        sb.append(", iSupplier=").append(iSupplier);
+        sb.append(", iSupplierCreditInvoice=").append(iSupplierCreditInvoice);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iTaxSum=").append(iTaxSum);
+        sb.append(", iTotalSum=").append(iTotalSum);
+        sb.append(", iVoucherTable=").append(iVoucherTable);
+        sb.append(", iVoucherTableModel=").append(iVoucherTableModel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -97,4 +97,14 @@ public class SSPurchasevaluePrinter extends SSPrinter {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSPurchasevaluePrinter");
+        sb.append("{iFrom=").append(iFrom);
+        sb.append(", iMonths=").append(iMonths);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

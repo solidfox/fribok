@@ -127,4 +127,16 @@ public class SSCurrencyDialog extends SSDialog{
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSCurrencyDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iExchangeRate=").append(iExchangeRate);
+        sb.append(", iName=").append(iName);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -188,27 +188,16 @@ public class SSHelpHistory {
     }
 
 
-    
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("SSHelpHistory {\n");
-        int iCounter = 0;
-        for(HelpModelEvent iEvent: iHistory){
-            if(iCounter == iIndex){
-                sb.append(" *");
-            }else{
-                sb.append("  ");
-            }
-            sb.append(iEvent.getID());
-            sb.append(", ");
-            sb.append(iEvent.getHistoryName());
-            sb.append('\n');
-
-            iCounter++;
-        }
-        sb.append("}\n");
-
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.help.util.SSHelpHistory");
+        sb.append("{iHistory=").append(iHistory);
+        sb.append(", iIndex=").append(iIndex);
+        sb.append(", iListeners=").append(iListeners);
+        sb.append(", iUpdating=").append(iUpdating);
+        sb.append(", iViewer=").append(iViewer);
+        sb.append('}');
         return sb.toString();
     }
 

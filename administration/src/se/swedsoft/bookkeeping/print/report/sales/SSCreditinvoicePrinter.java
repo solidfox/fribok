@@ -278,5 +278,13 @@ public class SSCreditinvoicePrinter extends SSPrinter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSCreditinvoicePrinter");
+        sb.append("{iCreditInvoice=").append(iCreditInvoice);
+        sb.append(", iLocale=").append(iLocale);
+        sb.append('}');
+        return sb.toString();
+    }
 }

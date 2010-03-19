@@ -123,4 +123,18 @@ public class SSResultPrinterSetupPanel {
     public void addOkActionListener(ActionListener iListener) {
         iButtonPanel.addOkActionListener(iListener);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSResultPrinterSetupPanel");
+        sb.append("{iBudgetCheckbox=").append(iBudgetCheckbox);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iFrom=").append(iFrom);
+        sb.append(", iLastyearCheckBox=").append(iLastyearCheckBox);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

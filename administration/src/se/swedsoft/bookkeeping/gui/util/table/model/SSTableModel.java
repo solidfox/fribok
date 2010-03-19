@@ -506,4 +506,14 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     }
 */
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel");
+        sb.append("{iColumns=").append(iColumns);
+        sb.append(", iEditable=").append(iEditable);
+        sb.append(", iObjects=").append(iObjects);
+        sb.append('}');
+        return sb.toString();
+    }
 }

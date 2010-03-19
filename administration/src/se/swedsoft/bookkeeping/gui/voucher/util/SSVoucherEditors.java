@@ -87,6 +87,14 @@ public class SSVoucherEditors {
             super.setValue(value);
         }
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherEditors.SSDefaultVoucherRowRenderer");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 

@@ -344,9 +344,29 @@ public class SSMenuLoader   {
 
 
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.menu.SSMenuLoader.MenuBuilder");
+            sb.append("{iMenuBar=").append(iMenuBar);
+            sb.append(", iMenuStack=").append(iMenuStack);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.menu.SSMenuLoader");
+        sb.append("{iActions=").append(iActions);
+        sb.append(", iDependancies=").append(iDependancies);
+        sb.append(", iMenuBars=").append(iMenuBars);
+        sb.append(", iMenuItems=").append(iMenuItems);
+        sb.append(", iMenus=").append(iMenus);
+        sb.append('}');
+        return sb.toString();
+    }
 }

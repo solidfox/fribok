@@ -333,6 +333,15 @@ public class SSTableSorter extends AbstractTableModel {
             }
             return 0;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.Row");
+            sb.append("{modelIndex=").append(modelIndex);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private class TableModelHandler implements TableModelListener {
@@ -461,6 +470,17 @@ public class SSTableSorter extends AbstractTableModel {
         public int getIconHeight() {
             return size;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.Arrow");
+            sb.append("{descending=").append(descending);
+            sb.append(", priority=").append(priority);
+            sb.append(", size=").append(size);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private class SortableHeaderRenderer implements TableCellRenderer {
@@ -486,6 +506,15 @@ public class SSTableSorter extends AbstractTableModel {
             }
             return c;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.SortableHeaderRenderer");
+            sb.append("{tableCellRenderer=").append(tableCellRenderer);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private static class Directive {
@@ -496,5 +525,33 @@ public class SSTableSorter extends AbstractTableModel {
             this.column = column;
             this.direction = direction;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.Directive");
+            sb.append("{column=").append(column);
+            sb.append(", direction=").append(direction);
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter");
+        sb.append("{columnComparators=").append(columnComparators);
+        sb.append(", modelToView=").append(modelToView == null ? "null" : "");
+        for (int i = 0; modelToView != null && i < modelToView.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(modelToView[i]);
+        sb.append(", mouseListener=").append(mouseListener);
+        sb.append(", sortingColumns=").append(sortingColumns);
+        sb.append(", tableHeader=").append(tableHeader);
+        sb.append(", tableModel=").append(tableModel);
+        sb.append(", tableModelListener=").append(tableModelListener);
+        sb.append(", viewToModel=").append(viewToModel == null ? "null" : Arrays.asList(viewToModel).toString());
+        sb.append('}');
+        return sb.toString();
     }
 }

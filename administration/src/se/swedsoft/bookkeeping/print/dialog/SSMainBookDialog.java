@@ -192,6 +192,24 @@ public class SSMainBookDialog extends SSDialog {
         iProject   .setEnabled( iCheckProject   .isSelected() );
         iResultunit.setEnabled( iCheckResultunit.isSelected() );
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSMainBookDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCheckProject=").append(iCheckProject);
+        sb.append(", iCheckResultunit=").append(iCheckResultunit);
+        sb.append(", iFromAccount=").append(iFromAccount);
+        sb.append(", iFromDate=").append(iFromDate);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProject=").append(iProject);
+        sb.append(", iResultunit=").append(iResultunit);
+        sb.append(", iToAccount=").append(iToAccount);
+        sb.append(", iToDate=").append(iToDate);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

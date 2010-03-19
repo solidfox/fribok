@@ -180,5 +180,16 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.purchasesuggestion.dialog.SSPurchaseSuggestionDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

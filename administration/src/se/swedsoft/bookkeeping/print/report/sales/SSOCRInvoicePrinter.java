@@ -164,4 +164,12 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSOCRInvoicePrinter");
+        sb.append("{iCodeRow=").append(iCodeRow);
+        sb.append('}');
+        return sb.toString();
+    }
 }

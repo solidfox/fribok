@@ -625,14 +625,39 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         return iCustomerNr == null ? super.hashCode() : iCustomerNr.hashCode();
     }
 
-    
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(iCustomerNr);
-        sb.append(", ");
-        sb.append(iName);
-
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSCustomer");
+        sb.append("{iAccountNumber='").append(iAccountNumber).append('\'');
+        sb.append(", iBankAccountNumber='").append(iBankAccountNumber).append('\'');
+        sb.append(", iClearingNumber='").append(iClearingNumber).append('\'');
+        sb.append(", iComment='").append(iComment).append('\'');
+        sb.append(", iCreditLimit=").append(iCreditLimit);
+        sb.append(", iCustomerNr='").append(iCustomerNr).append('\'');
+        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iDiscount=").append(iDiscount);
+        sb.append(", iEMail='").append(iEMail).append('\'');
+        sb.append(", iEuSaleCommodity=").append(iEuSaleCommodity);
+        sb.append(", iEuSaleYhirdPartCommodity=").append(iEuSaleYhirdPartCommodity);
+        sb.append(", iHideUnitprice=").append(iHideUnitprice);
+        sb.append(", iInvoiceAddress=").append(iInvoiceAddress);
+        sb.append(", iInvoiceCurrency=").append(iInvoiceCurrency);
+        sb.append(", iName='").append(iName).append('\'');
+        sb.append(", iOurContactPerson='").append(iOurContactPerson).append('\'');
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iPhone='").append(iPhone).append('\'');
+        sb.append(", iPhone2='").append(iPhone2).append('\'');
+        sb.append(", iPlusAccountNumber='").append(iPlusAccountNumber).append('\'');
+        sb.append(", iRegistrationNumber='").append(iRegistrationNumber).append('\'');
+        sb.append(", iTelefax='").append(iTelefax).append('\'');
+        sb.append(", iVatFreeSale=").append(iVatFreeSale);
+        sb.append(", iVATNumber='").append(iVATNumber).append('\'');
+        sb.append(", iYourContactPerson='").append(iYourContactPerson).append('\'');
+        sb.append('}');
         return sb.toString();
     }
 

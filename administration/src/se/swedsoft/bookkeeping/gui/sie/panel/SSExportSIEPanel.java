@@ -88,4 +88,20 @@ public class SSExportSIEPanel {
         return iPanel;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.sie.panel.SSExportSIEPanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iComment=").append(iComment);
+        sb.append(", iCommentLabel=").append(iCommentLabel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iSetupPanel=").append(iSetupPanel);
+        sb.append(", iSIERadio1=").append(iSIERadio1);
+        sb.append(", iSIERadio2=").append(iSIERadio2);
+        sb.append(", iSIERadio3=").append(iSIERadio3);
+        sb.append(", iSIERadio4=").append(iSIERadio4);
+        sb.append('}');
+        return sb.toString();
+    }
 }

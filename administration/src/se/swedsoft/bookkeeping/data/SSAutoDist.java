@@ -189,12 +189,17 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
         iAccountNumber = iAccount.getNumber();
     }
 
-    
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(iAccountNumber);
-        sb.append(", ");
-        sb.append(iDescription);
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSAutoDist");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iAccountNumber=").append(iAccountNumber);
+        sb.append(", iAmount=").append(iAmount);
+        sb.append(", iDescription='").append(iDescription).append('\'');
+        sb.append(", iRows=").append(iRows);
+        sb.append('}');
         return sb.toString();
     }
 

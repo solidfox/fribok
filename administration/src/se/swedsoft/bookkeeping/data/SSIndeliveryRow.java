@@ -132,4 +132,15 @@ public class SSIndeliveryRow implements Serializable {
     public boolean hasProduct(SSProduct iProduct) {
         return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSIndeliveryRow");
+        sb.append("{iChange=").append(iChange);
+        sb.append(", iProduct=").append(iProduct);
+        sb.append(", iProductNr='").append(iProductNr).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -363,23 +363,14 @@ public class SIEReader implements Iterator<String> {
     }
 
 
-
-
-
-    
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("SIEReader {\n");
-        for(String iLine: iLines){
-            SIEIterator iIterator = new SIEIterator( iLine );
-
-            sb.append("  ");
-            sb.append(iIterator);
-            sb.append('\n');
-        }
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.sie.util.SIEReader");
+        sb.append("{iIndex=").append(iIndex);
+        sb.append(", iLines=").append(iLines);
+        sb.append(", iValues=").append(iValues);
         sb.append('}');
-
         return sb.toString();
     }
 

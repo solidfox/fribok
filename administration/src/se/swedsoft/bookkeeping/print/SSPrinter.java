@@ -379,4 +379,14 @@ public abstract class SSPrinter {
     public SSDefaultJasperDataSource getDataSource(){
         return iReport.getDataSource();
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.SSPrinter");
+        sb.append("{iBundle=").append(iBundle);
+        sb.append(", iReport=").append(iReport);
+        sb.append('}');
+        return sb.toString();
+    }
 }

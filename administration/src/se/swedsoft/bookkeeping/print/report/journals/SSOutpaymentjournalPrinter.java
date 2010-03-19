@@ -223,9 +223,27 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
 
             iModel.setObjects( iOutpayment.getVoucher().getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.journals.SSOutpaymentjournalPrinter.SSVoucherPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.journals.SSOutpaymentjournalPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOutpayments=").append(iOutpayments);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

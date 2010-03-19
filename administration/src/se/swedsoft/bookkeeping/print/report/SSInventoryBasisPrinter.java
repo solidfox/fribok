@@ -146,8 +146,13 @@ public class SSInventoryBasisPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSInventoryBasisPrinter");
+        sb.append("{iProducts=").append(iProducts);
+        sb.append(", iStock=").append(iStock);
+        sb.append('}');
+        return sb.toString();
+    }
 }

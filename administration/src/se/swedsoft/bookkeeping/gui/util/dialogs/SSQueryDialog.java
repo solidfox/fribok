@@ -162,6 +162,14 @@ public class SSQueryDialog {
         return iDialog.getResponce();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSQueryDialog");
+        sb.append("{iOptionPane=").append(iOptionPane);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

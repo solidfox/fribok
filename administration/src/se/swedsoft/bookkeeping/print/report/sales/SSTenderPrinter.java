@@ -262,5 +262,13 @@ public class SSTenderPrinter extends SSPrinter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSTenderPrinter");
+        sb.append("{iLocale=").append(iLocale);
+        sb.append(", iTender=").append(iTender);
+        sb.append('}');
+        return sb.toString();
+    }
 }

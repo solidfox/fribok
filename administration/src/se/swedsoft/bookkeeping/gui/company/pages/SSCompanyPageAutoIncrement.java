@@ -248,4 +248,23 @@ public class SSCompanyPageAutoIncrement extends SSCompanyPage implements ChangeL
             }
         });
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageAutoIncrement");
+        sb.append("{iCompany=").append(iCompany);
+        sb.append(", iCreditInvoice=").append(iCreditInvoice);
+        sb.append(", iInpayment=").append(iInpayment);
+        sb.append(", iInvoice=").append(iInvoice);
+        sb.append(", iOrder=").append(iOrder);
+        sb.append(", iOutpayment=").append(iOutpayment);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPurchaseOrder=").append(iPurchaseOrder);
+        sb.append(", iSupplierCreditInvoice=").append(iSupplierCreditInvoice);
+        sb.append(", iSupplierInvoice=").append(iSupplierInvoice);
+        sb.append(", iTender=").append(iTender);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -426,6 +426,17 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         } catch (Exception ignored) {}
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherRowTableModelOld");
+        sb.append("{iEdit=").append(iEdit);
+        sb.append(", iEditingRow=").append(iEditingRow);
+        sb.append(", iReadOnly=").append(iReadOnly);
+        sb.append(", iReadOnlyRowCount=").append(iReadOnlyRowCount);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

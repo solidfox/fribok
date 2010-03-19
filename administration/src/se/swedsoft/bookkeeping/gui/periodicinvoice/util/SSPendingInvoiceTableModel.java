@@ -23,6 +23,17 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
         SSInvoice iInvoice;
 
         Boolean iSelected;
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPendingInvoiceTableModel.Entry");
+            sb.append("{iInvoice=").append(iInvoice);
+            sb.append(", iPeriodicInvoice=").append(iPeriodicInvoice);
+            sb.append(", iSelected=").append(iSelected);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     /**

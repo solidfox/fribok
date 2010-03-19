@@ -90,4 +90,17 @@ public class SSInvoiceTypeDialog extends SSDialog {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.invoice.dialog.SSInvoiceTypeDialog");
+        sb.append("{iCancelButton=").append(iCancelButton);
+        sb.append(", iInvoiceType=").append(iInvoiceType);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iType1Button=").append(iType1Button);
+        sb.append(", iType2Button=").append(iType2Button);
+        sb.append('}');
+        return sb.toString();
+    }
 }

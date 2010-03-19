@@ -239,4 +239,16 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
         iOnUpdate = pOnUpdate;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherVerifier");
+        sb.append("{iComponents=").append(iComponents);
+        sb.append(", iError='").append(iError).append('\'');
+        sb.append(", iOnUpdate=").append(iOnUpdate);
+        sb.append(", iValid=").append(iValid);
+        sb.append(", iVoucher=").append(iVoucher);
+        sb.append('}');
+        return sb.toString();
+    }
 }

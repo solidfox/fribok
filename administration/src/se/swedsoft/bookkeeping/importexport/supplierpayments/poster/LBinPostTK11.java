@@ -148,4 +148,16 @@ public class LBinPostTK11 extends LBinPost {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK11");
+        sb.append("{iBankGiroNr='").append(iBankGiroNr).append('\'');
+        sb.append(", iCurrency='").append(iCurrency).append('\'');
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iPaymentDate=").append(iPaymentDate);
+        sb.append(", iText='").append(iText).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

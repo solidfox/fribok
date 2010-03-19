@@ -308,10 +308,12 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     };
 
 
-
-
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.inpayment.util.SSInpaymentRowTableModel");
+        sb.append("{iEditing=").append(iEditing);
+        sb.append('}');
+        return sb.toString();
+    }
 }

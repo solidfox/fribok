@@ -286,4 +286,14 @@ public class SSIndeliveryFrame extends SSDefaultTableFrame {
         iModel=null;
         cInstance=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.indelivery.SSIndeliveryFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

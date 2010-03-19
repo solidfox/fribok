@@ -111,4 +111,21 @@ public class SSListInvoicesPanel {
         }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.panel.SSListInvoicesPanel");
+        sb.append("{iCount=").append(iCount);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNext=").append(iNext);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPeriod=").append(iPeriod);
+        sb.append(", iPeriodicInvoice=").append(iPeriodicInvoice);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

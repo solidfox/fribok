@@ -837,8 +837,40 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         public void setAllowCustomValues(boolean iAllowCustomValues) {
             iComboBox.setAllowCustomValues(iAllowCustomValues);
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld.CellEditor");
+            sb.append("{iComboBox=").append(iComboBox);
+            sb.append(", iCurrentColumn=").append(iCurrentColumn);
+            sb.append(", iCurrentRow=").append(iCurrentRow);
+            sb.append(", iCurrentTable=").append(iCurrentTable);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld");
+        sb.append("{iAllowCustomValues=").append(iAllowCustomValues);
+        sb.append(", iDropdownButton=").append(iDropdownButton);
+        sb.append(", iEditor=").append(iEditor);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iObjects=").append(iObjects);
+        sb.append(", iPopup=").append(iPopup);
+        sb.append(", iSearchColumns=").append(iSearchColumns == null ? "null" : "");
+        for (int i = 0; iSearchColumns != null && i < iSearchColumns.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(iSearchColumns[i]);
+        sb.append(", iSelected=").append(iSelected);
+        sb.append(", iSelectionListeners=").append(iSelectionListeners);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iTextField=").append(iTextField);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

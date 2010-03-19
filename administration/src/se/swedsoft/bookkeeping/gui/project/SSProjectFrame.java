@@ -377,4 +377,14 @@ public class SSProjectFrame extends SSDefaultTableFrame {
         iModel=null;
         cInstance=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.project.SSProjectFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

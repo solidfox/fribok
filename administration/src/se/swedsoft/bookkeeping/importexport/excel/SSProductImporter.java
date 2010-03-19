@@ -507,4 +507,13 @@ public class SSProductImporter {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.SSProductImporter");
+        sb.append("{iColumns=").append(iColumns);
+        sb.append(", iFile=").append(iFile);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -154,4 +154,17 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
         iTextField  .setValue(iDate);
         iDateChooser.setDate (iDate);
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellEditor");
+        sb.append("{iButton=").append(iButton);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDateChooser=").append(iDateChooser);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTextField=").append(iTextField);
+        sb.append('}');
+        return sb.toString();
+    }
 }

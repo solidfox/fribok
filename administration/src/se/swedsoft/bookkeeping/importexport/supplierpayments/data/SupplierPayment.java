@@ -243,4 +243,18 @@ public class SupplierPayment {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment");
+        sb.append("{iAccount='").append(iAccount).append('\'');
+        sb.append(", iCurrency='").append(iCurrency).append('\'');
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iInvoice=").append(iInvoice);
+        sb.append(", iPaymentMethod=").append(iPaymentMethod);
+        sb.append(", iValue=").append(iValue);
+        sb.append('}');
+        return sb.toString();
+    }
 }

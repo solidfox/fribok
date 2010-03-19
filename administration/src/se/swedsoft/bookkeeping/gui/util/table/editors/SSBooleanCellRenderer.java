@@ -74,6 +74,15 @@ public class SSBooleanCellRenderer extends JPanel implements TableCellRenderer{
 
         return this;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSBooleanCellRenderer");
+        sb.append("{iCheckBox=").append(iCheckBox);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

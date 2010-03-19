@@ -60,4 +60,14 @@ public class LBinPostTK29 extends LBinPost {
         iSum        = iLine.readBigDecimal(21, 32); // 21 => 32: Totalbelopp
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK29");
+        sb.append("{iBankGiroNr='").append(iBankGiroNr).append('\'');
+        sb.append(", iSize=").append(iSize);
+        sb.append(", iSum=").append(iSum);
+        sb.append('}');
+        return sb.toString();
+    }
 }

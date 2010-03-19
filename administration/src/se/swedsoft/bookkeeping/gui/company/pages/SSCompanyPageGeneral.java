@@ -348,4 +348,30 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
         });  
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageGeneral");
+        sb.append("{iBrowseForLogoButton=").append(iBrowseForLogoButton);
+        sb.append(", iCompany=").append(iCompany);
+        sb.append(", iCorporateID=").append(iCorporateID);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iDelayintrest=").append(iDelayintrest);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iEstimatedDelivery=").append(iEstimatedDelivery);
+        sb.append(", iLogotype=").append(iLogotype);
+        sb.append(", iName=").append(iName);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iReminderfee=").append(iReminderfee);
+        sb.append(", iResidence=").append(iResidence);
+        sb.append(", iStandardUnit=").append(iStandardUnit);
+        sb.append(", iTaxRegistered=").append(iTaxRegistered);
+        sb.append(", iVATNumber=").append(iVATNumber);
+        sb.append(", iVolumeUnit=").append(iVolumeUnit);
+        sb.append(", iWeightUnit=").append(iWeightUnit);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -6257,4 +6257,39 @@ public class SSDB {
             //e.printStackTrace();
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.system.SSDB");
+        sb.append("{iAutoDists=").append(iAutoDists);
+        sb.append(", iConnection=").append(iConnection);
+        sb.append(", iCreditInvoices=").append(iCreditInvoices);
+        sb.append(", iCurrentCompany=").append(iCurrentCompany);
+        sb.append(", iCurrentYear=").append(iCurrentYear);
+        sb.append(", iCustomers=").append(iCustomers);
+        sb.append(", iIn=").append(iIn);
+        sb.append(", iIndeliveries=").append(iIndeliveries);
+        sb.append(", iInpayments=").append(iInpayments);
+        sb.append(", iInventories=").append(iInventories);
+        sb.append(", iInvoices=").append(iInvoices);
+        sb.append(", iListenerMap=").append(iListenerMap);
+        sb.append(", iLocking=").append(iLocking);
+        sb.append(", iOrders=").append(iOrders);
+        sb.append(", iOut=").append(iOut);
+        sb.append(", iOutdeliveries=").append(iOutdeliveries);
+        sb.append(", iOutpayments=").append(iOutpayments);
+        sb.append(", iOwnReports=").append(iOwnReports);
+        sb.append(", iPeriodicInvoices=").append(iPeriodicInvoices);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append(", iPurchaseOrders=").append(iPurchaseOrders);
+        sb.append(", iSocket=").append(iSocket);
+        sb.append(", iSupplierCreditInvoices=").append(iSupplierCreditInvoices);
+        sb.append(", iSupplierInvoices=").append(iSupplierInvoices);
+        sb.append(", iSuppliers=").append(iSuppliers);
+        sb.append(", iTenders=").append(iTenders);
+        sb.append(", iVouchers=").append(iVouchers);
+        sb.append('}');
+        return sb.toString();
+    }
 }

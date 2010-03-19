@@ -63,4 +63,12 @@ public abstract class SSTraversalAction {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.actions.SSTraversalAction");
+        sb.append("{iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

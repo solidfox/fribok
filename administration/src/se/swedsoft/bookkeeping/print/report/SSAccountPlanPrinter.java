@@ -109,5 +109,12 @@ public class SSAccountPlanPrinter extends SSPrinter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSAccountPlanPrinter");
+        sb.append("{iAccountPlan=").append(iAccountPlan);
+        sb.append('}');
+        return sb.toString();
+    }
 }

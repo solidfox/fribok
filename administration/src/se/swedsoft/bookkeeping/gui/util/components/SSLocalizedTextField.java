@@ -194,6 +194,28 @@ public class SSLocalizedTextField extends JPanel {
             iValues.put(iLocale, iValue);
 
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.util.components.SSLocalizedTextField.MyDocumentListener");
+            sb.append("{iLocale=").append(iLocale);
+            sb.append(", iTextField=").append(iTextField);
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSLocalizedTextField");
+        sb.append("{iDescriptions=").append(iDescriptions);
+        sb.append(", iLocales=").append(iLocales);
+        sb.append(", iTextFields=").append(iTextFields);
+        sb.append(", iValues=").append(iValues);
+        sb.append('}');
+        return sb.toString();
     }
 }
 

@@ -88,4 +88,15 @@ public class SSLanguageDialog extends SSDialog {
         return Locale.getDefault() ;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSLanguageDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iLanguageRadioEnglish=").append(iLanguageRadioEnglish);
+        sb.append(", iLanguageRadioSwedish=").append(iLanguageRadioSwedish);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

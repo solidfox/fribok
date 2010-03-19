@@ -125,4 +125,13 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return columnIndex == 2;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountingyear.util.SSStartingAmountTableModel");
+        sb.append("{iInBalance=").append(iInBalance);
+        sb.append('}');
+        return sb.toString();
+    }
 }

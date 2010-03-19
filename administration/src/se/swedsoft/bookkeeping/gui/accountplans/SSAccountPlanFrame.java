@@ -403,6 +403,16 @@ public class SSAccountPlanFrame extends SSDefaultTableFrame {
         iModel=null;
         cInstance=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountplans.SSAccountPlanFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

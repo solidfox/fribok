@@ -70,4 +70,15 @@ public class SSQuarterReportDialog extends SSDialog {
         return iQuaterChooser.getEndDate();
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSQuarterReportDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iQuaterChooser=").append(iQuaterChooser);
+        sb.append(", iYearChooser=").append(iYearChooser);
+        sb.append('}');
+        return sb.toString();
+    }
 }

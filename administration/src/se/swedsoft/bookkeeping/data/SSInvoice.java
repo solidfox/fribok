@@ -530,4 +530,22 @@ public class SSInvoice extends SSSale {
         return iNumber.equals(((SSInvoice)obj).getNumber());
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSInvoice");
+        sb.append("{iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iEntered=").append(iEntered);
+        sb.append(", iInterestInvoiced=").append(iInterestInvoiced);
+        sb.append(", iNumReminders=").append(iNumReminders);
+        sb.append(", iOCRNumber='").append(iOCRNumber).append('\'');
+        sb.append(", iOrderNumbers='").append(iOrderNumbers).append('\'');
+        sb.append(", iPaymentDay=").append(iPaymentDay);
+        sb.append(", iStockInfluencing=").append(iStockInfluencing);
+        sb.append(", iType=").append(iType);
+        sb.append(", iVoucher=").append(iVoucher);
+        sb.append(", iYourOrderNumber='").append(iYourOrderNumber).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

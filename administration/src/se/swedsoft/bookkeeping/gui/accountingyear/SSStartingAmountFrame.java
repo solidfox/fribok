@@ -273,6 +273,16 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
         iAccountingYear=null;
         cInstance=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountingyear.SSStartingAmountFrame");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iStartingAmountPanel=").append(iStartingAmountPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

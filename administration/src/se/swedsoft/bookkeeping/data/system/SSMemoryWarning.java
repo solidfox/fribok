@@ -71,4 +71,13 @@ public class SSMemoryWarning {
         }
         throw new AssertionError("Could not find tenured space");
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.system.SSMemoryWarning");
+        sb.append("{listeners=").append(listeners);
+        sb.append('}');
+        return sb.toString();
+    }
 }

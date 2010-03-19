@@ -75,4 +75,15 @@ public class SSButtonPanel extends JPanel {
         iOkButton.dispose();
         iOkButton=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.SSButtonPanel");
+        sb.append("{iCancelButton=").append(iCancelButton);
+        sb.append(", iOkButton=").append(iOkButton);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -48,4 +48,17 @@ public class SSMailMessage
     public String getFrom() {
         return from;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.util.SSMailMessage");
+        sb.append("{bodyText='").append(bodyText).append('\'');
+        sb.append(", fileName='").append(fileName).append('\'');
+        sb.append(", from='").append(from).append('\'');
+        sb.append(", subject='").append(subject).append('\'');
+        sb.append(", to='").append(to).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -79,6 +79,17 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.exportbgcadmission.SSExportBGCAdmissionDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iMessage=").append(iMessage);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iOurBankGiroNumber=").append(iOurBankGiroNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -439,4 +439,28 @@ public class SSInpaymentPanel {
         iDefaultAccounts.dispose();
         iDefaultAccounts=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.inpayment.panel.SSInpaymentPanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iDifferenceTable=").append(iDifferenceTable);
+        sb.append(", iDifferenceTableModel=").append(iDifferenceTableModel);
+        sb.append(", iEntered=").append(iEntered);
+        sb.append(", iInpayment=").append(iInpayment);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iRefreshVoucher=").append(iRefreshVoucher);
+        sb.append(", iSum=").append(iSum);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iText=").append(iText);
+        sb.append(", iVoucherTable=").append(iVoucherTable);
+        sb.append(", iVoucherTableModel=").append(iVoucherTableModel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

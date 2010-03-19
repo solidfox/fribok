@@ -74,4 +74,15 @@ public class SSImagePanel extends JPanel {
         }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSImagePanel");
+        sb.append("{iImageHeight=").append(iImageHeight);
+        sb.append(", iImageName='").append(iImageName).append('\'');
+        sb.append(", iImageWidth=").append(iImageWidth);
+        sb.append(", iPaint=").append(iPaint);
+        sb.append('}');
+        return sb.toString();
+    }
 }

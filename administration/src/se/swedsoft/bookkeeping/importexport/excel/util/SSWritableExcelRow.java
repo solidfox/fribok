@@ -163,5 +163,13 @@ public class SSWritableExcelRow {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelRow");
+        sb.append("{iRow=").append(iRow);
+        sb.append(", iSheet=").append(iSheet);
+        sb.append('}');
+        return sb.toString();
+    }
 }

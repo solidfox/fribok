@@ -26,6 +26,18 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         Integer iOrderVolume;
         SSSupplier iSupplier;
         Boolean iSelected;
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.purchasesuggestion.util.SSPurchaseSuggestionTableModel.Entry");
+            sb.append("{iOrderVolume=").append(iOrderVolume);
+            sb.append(", iProduct=").append(iProduct);
+            sb.append(", iSelected=").append(iSelected);
+            sb.append(", iSupplier=").append(iSupplier);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private static SSStock iStock;

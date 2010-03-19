@@ -124,4 +124,13 @@ public class SSButton extends JButton {
         }
         //this.removeAll();
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.components.SSButton");
+        sb.append("{iIconName='").append(iIconName).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

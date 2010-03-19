@@ -415,5 +415,15 @@ public class SSTenderFrame extends SSDefaultTableFrame {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.tender.SSTenderFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iSearchPanel=").append(iSearchPanel);
+        sb.append(", iTabbedPane=").append(iTabbedPane);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -198,4 +198,13 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
         cInstance=null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.budget.SSBudgetFrame");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iBudgetMainPanel=").append(iBudgetMainPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

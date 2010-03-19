@@ -236,5 +236,16 @@ public class SSAccountSchema implements Serializable {
             }
 
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.calc.data.SSAccountSchema.AccountGroupLoader");
+            sb.append("{iLevelOne=").append(iLevelOne);
+            sb.append(", iLevelTwo=").append(iLevelTwo);
+            sb.append(", iSchema=").append(iSchema);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 }

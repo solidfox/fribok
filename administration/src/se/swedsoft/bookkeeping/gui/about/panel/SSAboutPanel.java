@@ -146,4 +146,14 @@ public class SSAboutPanel {
 
     }    */
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.about.panel.SSAboutPanel");
+        sb.append("{iCloseButton=").append(iCloseButton);
+        sb.append(", iEditorPane=").append(iEditorPane);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

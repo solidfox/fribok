@@ -134,4 +134,12 @@ public class SSIntegerCellEditor extends AbstractCellEditor implements TableCell
         return super.isCellEditable(e);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSIntegerCellEditor");
+        sb.append("{iTextField=").append(iTextField);
+        sb.append('}');
+        return sb.toString();
+    }
 }

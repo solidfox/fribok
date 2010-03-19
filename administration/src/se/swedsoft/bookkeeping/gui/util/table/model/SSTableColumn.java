@@ -117,5 +117,13 @@ public abstract class SSTableColumn<T> {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iName='").append(iName).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

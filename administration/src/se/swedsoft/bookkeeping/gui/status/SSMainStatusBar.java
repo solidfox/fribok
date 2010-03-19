@@ -151,4 +151,17 @@ public class SSMainStatusBar {
     public JLabel getMemLabel() {
         return iMemLabel;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.status.SSMainStatusBar");
+        sb.append("{iCompanyLabel=").append(iCompanyLabel);
+        sb.append(", iMemLabel=").append(iMemLabel);
+        sb.append(", iNameLabel=").append(iNameLabel);
+        sb.append(", iReadonlyLabel=").append(iReadonlyLabel);
+        sb.append(", iYearLabel=").append(iYearLabel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

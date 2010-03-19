@@ -114,5 +114,12 @@ public class SSBackupDatabase {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.backup.SSBackupDatabase");
+        sb.append("{iData=").append(iData);
+        sb.append('}');
+        return sb.toString();
+    }
 }

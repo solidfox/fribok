@@ -157,5 +157,16 @@ public class SSStartingAmountPanel {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.accountingyear.panel.SSStartingAmountPanel");
+        sb.append("{iInBalance=").append(iInBalance);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iSumField=").append(iSumField);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

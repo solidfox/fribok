@@ -125,8 +125,14 @@ public class SSStartingAmountPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSStartingAmountPrinter");
+        sb.append("{iFrom=").append(iFrom);
+        sb.append(", iInBalance=").append(iInBalance);
+        sb.append(", iTo=").append(iTo);
+        sb.append('}');
+        return sb.toString();
+    }
 }

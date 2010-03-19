@@ -152,5 +152,13 @@ public class SSVoucherExporter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.SSVoucherExporter");
+        sb.append("{iFile=").append(iFile);
+        sb.append(", iVouchers=").append(iVouchers);
+        sb.append('}');
+        return sb.toString();
+    }
 }

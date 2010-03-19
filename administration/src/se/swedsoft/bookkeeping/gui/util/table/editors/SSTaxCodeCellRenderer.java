@@ -70,4 +70,12 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
         iValues.put(iTaxCode, iValue );
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSTaxCodeCellRenderer");
+        sb.append("{iValues=").append(iValues);
+        sb.append('}');
+        return sb.toString();
+    }
 }

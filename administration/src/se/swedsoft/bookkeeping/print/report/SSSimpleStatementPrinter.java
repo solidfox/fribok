@@ -422,6 +422,16 @@ public class SSSimpleStatementPrinter extends SSPrinter {
             }
             iModel.setObjects( iObjects );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSSimpleStatementPrinter.GroupPrinter");
+            sb.append("{iGroup=").append(iGroup);
+            sb.append(", iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -475,8 +485,19 @@ public class SSSimpleStatementPrinter extends SSPrinter {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSSimpleStatementPrinter");
+        sb.append("{iAccounts=").append(iAccounts);
+        sb.append(", iAccountsByReportCode=").append(iAccountsByReportCode);
+        sb.append(", iCreditMinusDebetSum=").append(iCreditMinusDebetSum);
+        sb.append(", iDataSource=").append(iDataSource);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iDebetMinusCreditSum=").append(iDebetMinusCreditSum);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

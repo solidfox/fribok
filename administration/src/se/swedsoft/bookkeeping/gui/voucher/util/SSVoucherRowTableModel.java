@@ -393,4 +393,12 @@ public class SSVoucherRowTableModel extends SSEditableTableModel<SSVoucherRow> {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherRowTableModel");
+        sb.append("{iReadOnlyCount=").append(iReadOnlyCount);
+        sb.append('}');
+        return sb.toString();
+    }
 }

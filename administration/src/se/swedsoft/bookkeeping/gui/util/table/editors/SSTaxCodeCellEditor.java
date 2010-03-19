@@ -39,5 +39,12 @@ public class SSTaxCodeCellEditor extends SSTableComboBox.CellEditor<SSTaxCode> {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSTaxCodeCellEditor");
+        sb.append("{iValues=").append(iValues);
+        sb.append('}');
+        return sb.toString();
+    }
 }

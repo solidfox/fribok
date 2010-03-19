@@ -181,5 +181,18 @@ public class SSResultUnitPanel {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.resultunit.panel.SSResultUnitPanel");
+        sb.append("{iCancelButton=").append(iCancelButton);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iName=").append(iName);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOkButton=").append(iOkButton);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iResultUnit=").append(iResultUnit);
+        sb.append('}');
+        return sb.toString();
+    }
 }

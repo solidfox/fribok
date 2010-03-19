@@ -148,4 +148,15 @@ public class SIEDimension {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.sie.types.SIEDimension");
+        sb.append("{iName='").append(iName).append('\'');
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iReserved=").append(iReserved);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -65,4 +65,15 @@ public class SSOCRInvoiceDialog extends SSDialog {
         return false;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.dialog.SSOCRInvoiceDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iLanguageRadioEnglish=").append(iLanguageRadioEnglish);
+        sb.append(", iLanguageRadioSwedish=").append(iLanguageRadioSwedish);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

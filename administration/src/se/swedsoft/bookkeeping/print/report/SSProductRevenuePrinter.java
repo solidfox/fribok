@@ -285,5 +285,32 @@ public class SSProductRevenuePrinter extends SSPrinter {
             if(iMonthRevenue == null)
                 iMonthRevenue = new HashMap<SSMonth, BigDecimal>();
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSProductRevenuePrinter.SSMonthlyDistributionPrinter");
+            sb.append("{iFrom=").append(iFrom);
+            sb.append(", iModel=").append(iModel);
+            sb.append(", iMonthRevenue=").append(iMonthRevenue);
+            sb.append(", iProduct=").append(iProduct);
+            sb.append(", iTo=").append(iTo);
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSProductRevenuePrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iProductRevenue=").append(iProductRevenue);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append('}');
+        return sb.toString();
     }
 }

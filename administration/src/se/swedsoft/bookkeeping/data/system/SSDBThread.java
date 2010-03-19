@@ -100,4 +100,13 @@ public class SSDBThread extends Thread {
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.system.SSDBThread");
+        sb.append("{iData=").append(iData);
+        sb.append(", iDatabase=").append(iDatabase);
+        sb.append('}');
+        return sb.toString();
+    }
 }

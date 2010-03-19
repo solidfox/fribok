@@ -60,4 +60,14 @@ public class BgMaxLine {
 
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxLine");
+        sb.append("{iChars=").append(iChars == null ? "null" : "");
+        for (int i = 0; iChars != null && i < iChars.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(iChars[i]);
+        sb.append('}');
+        return sb.toString();
+    }
 }

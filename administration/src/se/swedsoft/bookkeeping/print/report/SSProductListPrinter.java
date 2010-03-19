@@ -247,9 +247,27 @@ public class SSProductListPrinter extends SSPrinter {
         public void setProduct(SSProduct iProduct) {
             iModel.setObjects( iProduct.getParcelRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSProductListPrinter.SSParcelPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSProductListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append(", iProducts=").append(iProducts);
+        sb.append(", iStock=").append(iStock);
+        sb.append('}');
+        return sb.toString();
+    }
 }

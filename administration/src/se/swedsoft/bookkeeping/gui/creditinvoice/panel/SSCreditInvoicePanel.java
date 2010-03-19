@@ -804,4 +804,55 @@ public class SSCreditInvoicePanel {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.creditinvoice.panel.SSCreditInvoicePanel");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iCrediting=").append(iCrediting);
+        sb.append(", iCreditInvoice=").append(iCreditInvoice);
+        sb.append(", iCurrency=").append(iCurrency);
+        sb.append(", iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iCustomer=").append(iCustomer);
+        sb.append(", iCustomerName=").append(iCustomerName);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iDelayInterest=").append(iDelayInterest);
+        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
+        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
+        sb.append(", iDeliveryWay=").append(iDeliveryWay);
+        sb.append(", iEntered=").append(iEntered);
+        sb.append(", iEuSaleCommodity=").append(iEuSaleCommodity);
+        sb.append(", iEuSaleYhirdPartCommodity=").append(iEuSaleYhirdPartCommodity);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iInvoiceAddress=").append(iInvoiceAddress);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iNetSum=").append(iNetSum);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iOurContactPerson=").append(iOurContactPerson);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPaymentTerm=").append(iPaymentTerm);
+        sb.append(", iRefreshVoucher=").append(iRefreshVoucher);
+        sb.append(", iRoundingSum=").append(iRoundingSum);
+        sb.append(", iSavecustomerandproducts=").append(iSavecustomerandproducts);
+        sb.append(", isStockInfluencing=").append(isStockInfluencing);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iTaxFree=").append(iTaxFree);
+        sb.append(", iTaxLabel1=").append(iTaxLabel1);
+        sb.append(", iTaxLabel2=").append(iTaxLabel2);
+        sb.append(", iTaxLabel3=").append(iTaxLabel3);
+        sb.append(", iTaxRate1=").append(iTaxRate1);
+        sb.append(", iTaxRate2=").append(iTaxRate2);
+        sb.append(", iTaxRate3=").append(iTaxRate3);
+        sb.append(", iTaxSum1=").append(iTaxSum1);
+        sb.append(", iTaxSum2=").append(iTaxSum2);
+        sb.append(", iTaxSum3=").append(iTaxSum3);
+        sb.append(", iText=").append(iText);
+        sb.append(", iTotalSum=").append(iTotalSum);
+        sb.append(", iVoucherTable=").append(iVoucherTable);
+        sb.append(", iVoucherTableModel=").append(iVoucherTableModel);
+        sb.append(", iYourContactPerson=").append(iYourContactPerson);
+        sb.append('}');
+        return sb.toString();
+    }
 }

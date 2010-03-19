@@ -261,4 +261,20 @@ public class SSAutoDistPanel {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.autodist.panel.SSAutoDistPanel");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iAccountDescription=").append(iAccountDescription);
+        sb.append(", iAmount=").append(iAmount);
+        sb.append(", iAutoDist=").append(iAutoDist);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTable=").append(iTable);
+        sb.append(", iText=").append(iText);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -363,6 +363,15 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
         public String toRenderString() {
             return getDescription();
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.invoice.util.SSInterestInvoiceTableModel.InterestAction");
+            sb.append("{iBundleName='").append(iBundleName).append('\'');
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private static class InterestActionCellEditor extends DefaultCellEditor {
@@ -413,7 +422,14 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.invoice.util.SSInterestInvoiceTableModel");
+        sb.append("{iActions=").append(iActions);
+        sb.append('}');
+        return sb.toString();
+    }
 }
 
 

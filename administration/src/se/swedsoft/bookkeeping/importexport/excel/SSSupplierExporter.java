@@ -168,5 +168,13 @@ public class SSSupplierExporter {
     }
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.SSSupplierExporter");
+        sb.append("{iFile=").append(iFile);
+        sb.append(", iSuppliers=").append(iSuppliers);
+        sb.append('}');
+        return sb.toString();
+    }
 }

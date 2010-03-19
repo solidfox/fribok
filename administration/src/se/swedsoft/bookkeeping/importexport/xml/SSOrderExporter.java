@@ -292,4 +292,14 @@ public class SSOrderExporter {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.xml.SSOrderExporter");
+        sb.append("{iFile=").append(iFile);
+        sb.append(", iItems=").append(iItems);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -88,4 +88,14 @@ public class SSWritableExcelCell {
         return iRow;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelCell");
+        sb.append("{iColumn=").append(iColumn);
+        sb.append(", iRow=").append(iRow);
+        sb.append(", iSheet=").append(iSheet);
+        sb.append('}');
+        return sb.toString();
+    }
 }

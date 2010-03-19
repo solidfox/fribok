@@ -68,4 +68,15 @@ public class SSOwnReportRow implements SSTableSearchable, Serializable {
     public String toRenderString(){
         return iHeading;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSOwnReportRow");
+        sb.append("{iAccounts=").append(iAccounts);
+        sb.append(", iHeading='").append(iHeading).append('\'');
+        sb.append(", iType=").append(iType);
+        sb.append('}');
+        return sb.toString();
+    }
 }

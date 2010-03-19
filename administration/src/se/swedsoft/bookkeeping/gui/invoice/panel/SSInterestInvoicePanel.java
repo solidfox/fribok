@@ -135,4 +135,20 @@ public class SSInterestInvoicePanel {
 
         return iRows;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.invoice.panel.SSInterestInvoicePanel");
+        sb.append("{iAccount=").append(iAccount);
+        sb.append(", iAccountText=").append(iAccountText);
+        sb.append(", iCancelButton=").append(iCancelButton);
+        sb.append(", iDescription=").append(iDescription);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iOkButton=").append(iOkButton);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

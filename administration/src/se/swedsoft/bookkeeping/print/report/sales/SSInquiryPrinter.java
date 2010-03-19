@@ -233,4 +233,14 @@ public class SSInquiryPrinter extends SSPrinter {
 
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.sales.SSInquiryPrinter");
+        sb.append("{iLocale=").append(iLocale);
+        sb.append(", iPurchaseOrder=").append(iPurchaseOrder);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -204,6 +204,13 @@ public class SSVoucherTemplateImporter {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.SSVoucherTemplateImporter");
+        sb.append("{iColumns=").append(iColumns);
+        sb.append(", iFile=").append(iFile);
+        sb.append('}');
+        return sb.toString();
+    }
 }

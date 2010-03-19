@@ -216,9 +216,26 @@ public class SSInventoryListPrinter extends SSPrinter {
         public void setInventory(SSInventory iInventory) {
             iModel.setObjects( iInventory.getRows() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSInventoryListPrinter.SSInventoryRowPrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSInventoryListPrinter");
+        sb.append("{iDataSource=").append(iDataSource);
+        sb.append(", iInventories=").append(iInventories);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

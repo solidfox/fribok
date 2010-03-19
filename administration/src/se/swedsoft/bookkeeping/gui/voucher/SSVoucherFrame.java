@@ -503,6 +503,15 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
         public boolean isCellEditable(EventObject anEvent) {
             return true;
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.voucher.SSVoucherFrame.SSVoucherCellEditor");
+            sb.append("{iRenderer=").append(iRenderer);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -528,6 +537,16 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
         iTable=null;
         iModel=null;
         cInstance=null;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.voucher.SSVoucherFrame");
+        sb.append("{iModel=").append(iModel);
+        sb.append(", iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
     }
 }
 

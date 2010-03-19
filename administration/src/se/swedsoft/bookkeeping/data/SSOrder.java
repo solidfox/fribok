@@ -409,4 +409,21 @@ public class SSOrder extends SSSale {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSOrder");
+        sb.append("{iCurrencyRate=").append(iCurrencyRate);
+        sb.append(", iEstimatedDelivery='").append(iEstimatedDelivery).append('\'');
+        sb.append(", iHideUnitprice=").append(iHideUnitprice);
+        sb.append(", iInvoice=").append(iInvoice);
+        sb.append(", iInvoiceNr=").append(iInvoiceNr);
+        sb.append(", iPeriodicInvoice=").append(iPeriodicInvoice);
+        sb.append(", iPeriodicInvoiceNr=").append(iPeriodicInvoiceNr);
+        sb.append(", iPurchaseOrder=").append(iPurchaseOrder);
+        sb.append(", iPurchaseOrderNr=").append(iPurchaseOrderNr);
+        sb.append(", iYourOrderNumber='").append(iYourOrderNumber).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }

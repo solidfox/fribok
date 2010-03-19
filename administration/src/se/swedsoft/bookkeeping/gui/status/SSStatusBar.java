@@ -18,6 +18,17 @@ public class SSStatusBar extends JPanel {
         int        fill;
         JComponent component;
         double     weightx;
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.SSStatusBarPanel");
+            sb.append("{component=").append(component);
+            sb.append(", fill=").append(fill);
+            sb.append(", weightx=").append(weightx);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
     private List<SSStatusBarPanel> iPanels;
@@ -175,6 +186,16 @@ public class SSStatusBar extends JPanel {
             g.setColor(cColor2);
             g.drawLine(5, 0 , 5, getHeight() );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.SeperatorPanel");
+            sb.append("{cColor1=").append(cColor1);
+            sb.append(", cColor2=").append(cColor2);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
@@ -242,5 +263,23 @@ public class SSStatusBar extends JPanel {
             return insets;
         }
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.StatusBorder");
+            sb.append("{cInnerColor=").append(cInnerColor);
+            sb.append(", cOuterColor=").append(cOuterColor);
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar");
+        sb.append("{iPanels=").append(iPanels);
+        sb.append('}');
+        return sb.toString();
     }
 }

@@ -57,6 +57,12 @@ public abstract class SSDeleteAction {
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.actions.SSDeleteAction");
+        sb.append("{iTable=").append(iTable);
+        sb.append('}');
+        return sb.toString();
+    }
 }

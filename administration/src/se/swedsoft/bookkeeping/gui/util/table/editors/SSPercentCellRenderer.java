@@ -58,4 +58,14 @@ public class SSPercentCellRenderer extends DefaultTableCellRenderer {
 
 
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSPercentCellRenderer");
+        sb.append("{iFractionDigits=").append(iFractionDigits);
+        sb.append(", iShowNullValues=").append(iShowNullValues);
+        sb.append('}');
+        return sb.toString();
+    }
 }

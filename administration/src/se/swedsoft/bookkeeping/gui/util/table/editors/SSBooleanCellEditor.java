@@ -58,4 +58,12 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSBooleanCellEditor");
+        sb.append("{iPanel=").append(iPanel);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -283,9 +283,30 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
 
             iModel.setObjects( iInvoices );
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSAccountsRecievablePrinter.SSInvoicePrinter");
+            sb.append("{iModel=").append(iModel);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
-
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSAccountsRecievablePrinter");
+        sb.append("{iCreditInvoiceSum=").append(iCreditInvoiceSum);
+        sb.append(", iCustomerInvoicesMap=").append(iCustomerInvoicesMap);
+        sb.append(", iCustomers=").append(iCustomers);
+        sb.append(", iDataSource=").append(iDataSource);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iInpaymentSum=").append(iInpaymentSum);
+        sb.append(", iPrinter=").append(iPrinter);
+        sb.append('}');
+        return sb.toString();
+    }
 }

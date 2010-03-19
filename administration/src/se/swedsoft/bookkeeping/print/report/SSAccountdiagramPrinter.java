@@ -357,7 +357,27 @@ public class SSAccountdiagramPrinter extends SSPrinter {
             return pBundle.getString("accountdiagramreport.title.sru." + iNumber );
         }
 
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSAccountdiagramPrinter.AccountDiagramGroup");
+            sb.append("{iGroup1=").append(iGroup1);
+            sb.append(", iGroup2=").append(iGroup2);
+            sb.append(", iNumber=").append(iNumber);
+            sb.append(", iSum=").append(iSum);
+            sb.append('}');
+            return sb.toString();
+        }
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSAccountdiagramPrinter");
+        sb.append("{iAccountingYear=").append(iAccountingYear);
+        sb.append(", iBundle=").append(iBundle);
+        sb.append('}');
+        return sb.toString();
+    }
 }

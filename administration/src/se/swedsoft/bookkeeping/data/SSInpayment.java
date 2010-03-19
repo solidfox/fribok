@@ -351,12 +351,20 @@ public class SSInpayment implements SSTableSearchable, Serializable {
 
     ////////////////////////////////////////////////////
 
-    
+
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(iNumber);
-        sb.append(", ");
-        sb.append(iText);
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.data.SSInpayment");
+        sb.append("{iDate=").append(iDate);
+        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
+        sb.append(", iDifference=").append(iDifference);
+        sb.append(", iEntered=").append(iEntered);
+        sb.append(", iNumber=").append(iNumber);
+        sb.append(", iRows=").append(iRows);
+        sb.append(", iText='").append(iText).append('\'');
+        sb.append(", iVoucher=").append(iVoucher);
+        sb.append('}');
         return sb.toString();
     }
 

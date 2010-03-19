@@ -324,4 +324,30 @@ public class SSOwnReportPanel {
         }
         return iAccounts;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.ownreport.panel.SSOwnReportPanel");
+        sb.append("{iAccountComboBox=").append(iAccountComboBox);
+        sb.append(", iAccountTable=").append(iAccountTable);
+        sb.append(", iAccountTableModel=").append(iAccountTableModel);
+        sb.append(", iAddRowButton=").append(iAddRowButton);
+        sb.append(", iButtonPanel=").append(iButtonPanel);
+        sb.append(", iHeadingComboBox=").append(iHeadingComboBox);
+        sb.append(", iHeadingTable=").append(iHeadingTable);
+        sb.append(", iHeadingTableModel=").append(iHeadingTableModel);
+        sb.append(", iInputVerifier=").append(iInputVerifier);
+        sb.append(", iMonthlyTable=").append(iMonthlyTable);
+        sb.append(", iMonthlyTableModel=").append(iMonthlyTableModel);
+        sb.append(", iName=").append(iName);
+        sb.append(", iOwnReport=").append(iOwnReport);
+        sb.append(", iOwnReportRows=").append(iOwnReportRows);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iProjectComboBox=").append(iProjectComboBox);
+        sb.append(", iResultUnitComboBox=").append(iResultUnitComboBox);
+        sb.append(", iTabbedPane=").append(iTabbedPane);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -99,4 +99,12 @@ public class SSBundle extends ResourceBundle {
     }
 
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.SSBundle");
+        sb.append("{iBundle=").append(iBundle);
+        sb.append('}');
+        return sb.toString();
+    }
 } // End of class SSBundle

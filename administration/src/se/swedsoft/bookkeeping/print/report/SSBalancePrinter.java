@@ -11,10 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.print.SSPrinter;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -266,5 +263,27 @@ public class SSBalancePrinter extends SSPrinter {
 
             return iLevelGroups[iLevel].getId();
         }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder();
+            sb.append("se.swedsoft.bookkeeping.print.report.SSBalancePrinter.BalanceRow");
+            sb.append("{iAccount=").append(iAccount);
+            sb.append(", iLevelGroups=").append(iLevelGroups == null ? "null" : Arrays.asList(iLevelGroups).toString());
+            sb.append('}');
+            return sb.toString();
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.print.report.SSBalancePrinter");
+        sb.append("{iAccountSchema=").append(iAccountSchema);
+        sb.append(", iDateFrom=").append(iDateFrom);
+        sb.append(", iDateTo=").append(iDateTo);
+        sb.append(", iYearData=").append(iYearData);
+        sb.append('}');
+        return sb.toString();
     }
 }

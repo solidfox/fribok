@@ -784,4 +784,13 @@ public class SSCustomerImporter {
         }
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.excel.SSCustomerImporter");
+        sb.append("{iColumns=").append(iColumns);
+        sb.append(", iFile=").append(iFile);
+        sb.append('}');
+        return sb.toString();
+    }
 }

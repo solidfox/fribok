@@ -225,4 +225,18 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
         iChangeListeners.removeAll(iChangeListeners);
         iChangeListeners=null;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSYearChooser");
+        sb.append("{iChangeListeners=").append(iChangeListeners);
+        sb.append(", iDate=").append(iDate);
+        sb.append(", iModel=").append(iModel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iSpinner=").append(iSpinner);
+        sb.append(", iTextField=").append(iTextField);
+        sb.append('}');
+        return sb.toString();
+    }
 }

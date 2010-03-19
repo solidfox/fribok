@@ -56,4 +56,18 @@ public class SSHelpPanel {
     public JPanel getPanel() {
         return iPanel;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.help.panel.SSHelpPanel");
+        sb.append("{iHelpSet=").append(iHelpSet);
+        sb.append(", iPane11=").append(iPane11);
+        sb.append(", iPane12=").append(iPane12);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iPanel3=").append(iPanel3);
+        sb.append(", tabbedPane1=").append(tabbedPane1);
+        sb.append('}');
+        return sb.toString();
+    }
 }

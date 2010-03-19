@@ -309,5 +309,12 @@ public class SSOutpaymentRowTableModel extends SSTableModel<SSOutpaymentRow> {
     };
 
 
-
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.outpayment.util.SSOutpaymentRowTableModel");
+        sb.append("{iEditing=").append(iEditing);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -164,4 +164,16 @@ public class SSButtonGroup implements ActionListener {
 
         }
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.gui.util.SSButtonGroup");
+        sb.append("{iAllowNoneSelected=").append(iAllowNoneSelected);
+        sb.append(", iButtons=").append(iButtons);
+        sb.append(", iSelected=").append(iSelected);
+        sb.append(", iUpdating=").append(iUpdating);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -50,4 +50,14 @@ public class SSImportReportDialog extends SSDialog {
         iTextPane.setText(t);
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder();
+        sb.append("se.swedsoft.bookkeeping.importexport.dialog.SSImportReportDialog");
+        sb.append("{iButtonPanel=").append(iButtonPanel);
+        sb.append(", iPanel=").append(iPanel);
+        sb.append(", iTextPane=").append(iTextPane);
+        sb.append('}');
+        return sb.toString();
+    }
 }
