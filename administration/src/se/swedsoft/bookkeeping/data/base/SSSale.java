@@ -689,7 +689,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return the normalized tax rate 1
      */
     public BigDecimal getNormalizedTaxRate1() {
-        return iTaxRate1 == null ? new BigDecimal(0.25) : iTaxRate1.scaleByPowerOfTen(-2);
+        return iTaxRate1 == null ? new BigDecimal("0.25") : iTaxRate1.scaleByPowerOfTen(-2);
 
     }
 
@@ -698,7 +698,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return the normalized tax rate 2
      */
     public BigDecimal getNormalizedTaxRate2() {
-        return iTaxRate2 == null ? new BigDecimal(0.12) : iTaxRate2.scaleByPowerOfTen(-2);
+        return iTaxRate2 == null ? new BigDecimal("0.12") : iTaxRate2.scaleByPowerOfTen(-2);
 
     }
 
@@ -707,7 +707,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return the normalized tax rate 3
      */
     public BigDecimal getNormalizedTaxRate3() {
-        return iTaxRate3 == null ? new BigDecimal(0.06) : iTaxRate3.scaleByPowerOfTen(-2);
+        return iTaxRate3 == null ? new BigDecimal("0.06") : iTaxRate3.scaleByPowerOfTen(-2);
 
     }
 

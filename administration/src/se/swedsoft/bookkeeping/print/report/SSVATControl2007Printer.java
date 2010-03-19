@@ -191,9 +191,9 @@ public class SSVATControl2007Printer extends SSPrinter {
         BigDecimal iValue = getValueForGroup(group);
 
         switch(group){
-            case 1: return iValue.multiply( new BigDecimal(0.25));
-            case 2: return iValue.multiply( new BigDecimal(0.12));
-            case 3: return iValue.multiply( new BigDecimal(0.06));
+            case 1: return iValue.multiply( new BigDecimal("0.25"));
+            case 2: return iValue.multiply( new BigDecimal("0.12"));
+            case 3: return iValue.multiply( new BigDecimal("0.06"));
         }
 
         return new BigDecimal(0);

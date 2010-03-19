@@ -101,9 +101,9 @@ public class SSVATControlPrinter extends SSPrinter {
                             case 3: d = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "MP3"); break;
                         }                                       */
                         switch( iControlGroup.getGroup1() ){
-                            case 1: value = d.multiply( new BigDecimal(0.25)); break;
-                            case 2: value = d.multiply( new BigDecimal(0.12)); break;
-                            case 3: value = d.multiply( new BigDecimal(0.06)); break;
+                            case 1: value = d.multiply( new BigDecimal("0.25")); break;
+                            case 2: value = d.multiply( new BigDecimal("0.12")); break;
+                            case 3: value = d.multiply( new BigDecimal("0.06")); break;
                         }
 
                         break;

@@ -831,7 +831,7 @@ public class SSOrderImporter {
                         iFeeString = iFeeString.replace(",", ".");
                         SSSaleRow iRow = new SSSaleRow(SSDB.getInstance().getProduct("Avgift"));
                         BigDecimal iFee = new BigDecimal(iFeeString);
-                        iFee = iFee.multiply(new BigDecimal(0.8));
+                        iFee = iFee.multiply(new BigDecimal("0.8"));
                         iRow.setUnitprice(iFee);
                         iRow.setQuantity(1);
                         iOrder.getRows().add(iRow);
@@ -845,7 +845,7 @@ public class SSOrderImporter {
                         iFreightString = iFreightString.replace(",", ".");
                         SSSaleRow iRow = new SSSaleRow(SSDB.getInstance().getProduct("Frakt"));
                         BigDecimal iFreight = new BigDecimal(iFreightString);
-                        iFreight = iFreight.multiply(new BigDecimal(0.8));
+                        iFreight = iFreight.multiply(new BigDecimal("0.8"));
                         iRow.setUnitprice(iFreight);
                         iRow.setQuantity(1);
                         iOrder.getRows().add(iRow);
