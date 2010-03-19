@@ -20,7 +20,7 @@ import java.util.Map;
  * Date: 2006-feb-23
  * Time: 14:26:58
  */
-public class SIEEntryOutBalance extends SIEEntry {
+public class SIEEntryOutBalance implements SIEEntry {
     /**
      * Imports the entry
      *

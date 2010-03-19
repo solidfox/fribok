@@ -16,7 +16,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
  * Date: 2006-feb-23
  * Time: 09:56:02
  */
-public class SIEEntryForetagsid extends SIEEntry {
+public class SIEEntryForetagsid implements SIEEntry {
     /**
      * Imports the entry
      *

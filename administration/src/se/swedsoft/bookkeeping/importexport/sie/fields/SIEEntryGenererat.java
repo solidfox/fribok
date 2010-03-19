@@ -15,7 +15,7 @@ import java.util.Date;
  * Date: 2006-feb-22
  * Time: 12:26:37
  */
-public class SIEEntryGenererat extends SIEEntry {
+public class SIEEntryGenererat implements SIEEntry {
 
     /**
      * Imports the field

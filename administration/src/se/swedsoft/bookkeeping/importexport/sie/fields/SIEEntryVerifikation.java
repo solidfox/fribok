@@ -22,7 +22,7 @@ import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataTyp
  * Date: 2006-feb-24
  * Time: 09:04:07
  */
-public class SIEEntryVerifikation extends SIEEntry {
+public class SIEEntryVerifikation implements SIEEntry {
 
     /**
      * Imports the entry

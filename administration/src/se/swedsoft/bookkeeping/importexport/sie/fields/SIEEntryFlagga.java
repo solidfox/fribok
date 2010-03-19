@@ -13,7 +13,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
  * Date: 2006-feb-20
  * Time: 12:40:17
  */
-public class SIEEntryFlagga extends SIEEntry {
+public class SIEEntryFlagga implements SIEEntry {
 
 
     /**

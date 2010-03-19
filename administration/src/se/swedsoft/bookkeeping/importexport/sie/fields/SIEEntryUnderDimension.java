@@ -19,7 +19,7 @@ import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataTyp
  * Date: 2006-feb-23
  * Time: 12:18:47
  */
-public class SIEEntryUnderDimension extends SIEEntry {
+public class SIEEntryUnderDimension implements SIEEntry {
 
 
     /**

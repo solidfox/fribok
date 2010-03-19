@@ -16,7 +16,7 @@ import java.util.Date;
  * Date: 2006-feb-22
  * Time: 15:43:41
  */
-public class SIEEntryOmfattn extends SIEEntry {
+public class SIEEntryOmfattn implements SIEEntry {
 
     /**
      * Imports the entry

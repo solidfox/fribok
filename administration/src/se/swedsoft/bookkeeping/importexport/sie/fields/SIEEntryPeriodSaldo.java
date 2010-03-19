@@ -20,7 +20,7 @@ import java.util.Map;
  * Date: 2006-feb-23
  * Time: 15:03:23
  */
-public class SIEEntryPeriodSaldo extends SIEEntry {
+public class SIEEntryPeriodSaldo implements SIEEntry {
     /**
      * Imports the entry
      *

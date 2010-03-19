@@ -20,7 +20,7 @@ import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataTyp
  * Date: 2006-feb-22
  * Time: 15:10:21
  */
-public class SIEEntryRAR extends SIEEntry {
+public class SIEEntryRAR implements SIEEntry {
 
 
     /**
