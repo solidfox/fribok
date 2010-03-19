@@ -55,7 +55,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     protected CellEditor iEditor;
 
 
-    private final static int[] EMPTY_INT_ARRAY = new int[] {};
+    private static final int[] EMPTY_INT_ARRAY = {};
     /**
      * Creates a new <code>JPanel</code> with a double buffer
      * and a flow layout.

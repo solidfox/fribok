@@ -34,9 +34,9 @@ import javax.swing.*;
  */
 public class BrowserLaunch {
 
-    private final static String osname    = System.getProperty("os.name").toLowerCase();
-    private final static boolean MAC_OS_X = osname.startsWith("mac os x");    
-    private final static boolean WINDOWS  = osname.startsWith("windows");
+    private static final String osname    = System.getProperty("os.name").toLowerCase();
+    private static final boolean MAC_OS_X = osname.startsWith("mac os x");
+    private static final boolean WINDOWS  = osname.startsWith("windows");
 
     private BrowserLaunch() {
         // private constructor to enforce non-instantiability

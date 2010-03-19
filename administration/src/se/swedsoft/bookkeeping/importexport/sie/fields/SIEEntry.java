@@ -25,7 +25,7 @@ public interface SIEEntry {
      *
      * @throws SSImportException
      */
-    public abstract boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYear) throws SSImportException;
+    boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYear) throws SSImportException;
 
     /**
      * Exports the entry
@@ -37,7 +37,7 @@ public interface SIEEntry {
      *
      * @throws SSExportException
      */
-    public abstract boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYear) throws SSExportException;
+    boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYear) throws SSExportException;
 
 
 }
