@@ -15,7 +15,7 @@ public class BgMaxLine {
      * @param iLine
      * @throws RuntimeException
      */
-    public BgMaxLine(String iLine) throws RuntimeException{
+    public BgMaxLine(String iLine) {
         if(iLine.length()!= 80)
             throw new RuntimeException("BgMaxLine lengt mismatch: " + iLine.length() );
 

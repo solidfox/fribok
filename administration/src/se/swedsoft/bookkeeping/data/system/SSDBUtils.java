@@ -18,23 +18,18 @@ public class SSDBUtils {
     private SSDBUtils() {
     }
 
-    private static void copyFile(File in, File out) throws Exception {
-        try{
-            FileInputStream fis  = new FileInputStream(in);
-            FileOutputStream fos = new FileOutputStream(out);
+    private static void copyFile(File in, File out) throws IOException {
+        FileInputStream fis  = new FileInputStream(in);
+        FileOutputStream fos = new FileOutputStream(out);
 
-            byte[] buf = new byte[1024];
-            int i = 0;
-            while((i=fis.read(buf))!=-1) {
-                fos.write(buf, 0, i);
-            }
-            fis.close();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        byte[] buf = new byte[1024];
+        int i = 0;
+        while((i=fis.read(buf))!=-1) {
+            fos.write(buf, 0, i);
         }
+        fis.close();
+        fos.close();
     }
-
 
     /**
      * Creates a backup for the file with the given file name.
@@ -48,7 +43,8 @@ public class SSDBUtils {
         if (iFile.exists() && !iBackupFile.exists()) {
             try {
                 copyFile(iFile, iBackupFile);
-            } catch (Exception e) {
+            } catch (IOException e) {
+                e.printStackTrace();
                 System.out.println("Failed to copy " + iFile + " to " + iBackupFile);
             }
         }

@@ -79,7 +79,7 @@ public class BgMaxFile {
      * @return
      * @throws RuntimeException
      */
-    private boolean isValid(String iFirstLine) throws RuntimeException {
+    private boolean isValid(String iFirstLine) {
         return iFirstLine.length() == 80 && iFirstLine.startsWith("01BGMAX");
     }
 
