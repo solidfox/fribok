@@ -90,9 +90,9 @@ public class BaseDirs {
         if ( file.exists() && file.isFile() ) return file;
 
         String[] paths = getSystemPaths( resource );
-        for ( int i = 0; i < paths.length; ++i ) {
-            file = new File( paths[ i ], relPath );
-            if ( file.exists() && file.isFile() ) return file;
+        for (String path : paths) {
+            file = new File(path, relPath);
+            if (file.exists() && file.isFile()) return file;
         }
 
         throw new FileNotFoundException();
@@ -105,9 +105,9 @@ public class BaseDirs {
         if ( file.exists() && file.isDirectory() ) return file;
 
         String[] paths = getSystemPaths( resource );
-        for ( int i = 0; i < paths.length; ++i ) {
-            file = new File( paths[ i ], relPath );
-            if ( file.exists() && file.isDirectory() ) return file;
+        for (String path : paths) {
+            file = new File(path, relPath);
+            if (file.exists() && file.isDirectory()) return file;
         }
 
         throw new FileNotFoundException();

@@ -56,28 +56,23 @@ public class BgMaxFile {
             throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.invalidfile");
         }
 
-        Iterator<String> itr = iLines.iterator();
-        
-        while (itr.hasNext()) {
-
-            String iLine = itr.next();
-
+        for (String iLine1 : iLines) {
+            String iLine = iLine1;
             try {
                 if (iLine.length() == 0) {
 
                     // If an empty line is found, all the rest of the lines have
                     // to be empty too
-                    if ( !isAllEmpty( itr ) ) {
+                    if (!isAllEmpty(itr)) {
                         // Throw exc to bee caught a few lines down
-                        throw new RuntimeException( "Empty line found in other place than last in the file" );
+                        throw new RuntimeException("Empty line found in other place than last in the file");
                     }
-              
                     break;  // Exit success
                 }
-             
+
                 BgMaxLine iBgMaxLine = new BgMaxLine(iLine);
                 parseLine(iBgMaxLine);
-             
+
             } catch (RuntimeException exc) {
                 exc.printStackTrace();
 
