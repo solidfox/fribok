@@ -132,7 +132,7 @@ public class SSMainStatusBar {
             StringBuilder year = new StringBuilder();
             year.append(df.format(iAccountingYear.getFrom()));
             year.append(' ');
-            year.append( SSBundle.getBundle().getString("date.seperator") );
+            year.append( SSBundle.getBundle().getString("date.separator") );
             year.append(' ');
             year.append(df.format(iAccountingYear.getTo()));
             iYearLabel.setText(year.toString());

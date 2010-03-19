@@ -270,7 +270,7 @@ public class SSMenuLoader   {
          *
          * @param iAttributes
          */
-        private void createSeperator(Attributes iAttributes){
+        private void createSeparator(Attributes iAttributes){
             if(!iMenuStack.isEmpty()){
                 JMenu iParent = iMenuStack.peek();
                 iParent.addSeparator();
@@ -318,8 +318,8 @@ public class SSMenuLoader   {
                 createMenuItem(iAttributes);
             }
 
-            if( localName.equalsIgnoreCase("Seperator") ){
-                createSeperator(iAttributes);
+            if( localName.equalsIgnoreCase("Separator") ){
+                createSeparator(iAttributes);
 
             }
 

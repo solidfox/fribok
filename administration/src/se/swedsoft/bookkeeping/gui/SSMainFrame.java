@@ -115,9 +115,9 @@ public class SSMainFrame extends JFrame {
         iStatusBar.addSpacer();
         iStatusBar.addPanel(iPanels.getMemLabel());
         iStatusBar.addPanel( iPanels.getReadonlyLabel() );
-         iStatusBar.addSeperator();
+        iStatusBar.addSeparator();
         iStatusBar.addPanel( iPanels.getCompanyLabel() );
-        iStatusBar.addSeperator();
+        iStatusBar.addSeparator();
         iStatusBar.addPanel( iPanels.getYearLabel());
 
         return iStatusBar;

@@ -61,7 +61,7 @@
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0"/>
             </constraints>
             <properties>
-              <text resource-bundle="book" key="date.seperator"/>
+              <text resource-bundle="book" key="date.separator"/>
             </properties>
           </component>
           <component id="cafa4" class="se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser" binding="iToDate">

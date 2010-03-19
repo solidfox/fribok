@@ -74,10 +74,10 @@ public class SSStatusBar extends JPanel {
     /**
      *
      */
-    public void addSeperator(){
+    public void addSeparator(){
         SSStatusBarPanel iPanel = new SSStatusBarPanel();
 
-        iPanel.component  = new SeperatorPanel();
+        iPanel.component  = new SeparatorPanel();
         iPanel.fill       = GridBagConstraints.NONE;
         iPanel.weightx    = 0;
 
@@ -160,7 +160,7 @@ public class SSStatusBar extends JPanel {
     /**
      *
      */
-    private static class SeperatorPanel extends JPanel{
+    private static class SeparatorPanel extends JPanel {
         private Color cColor1 = new Color(175, 173, 160);
         private Color cColor2 = new Color(243, 241, 231);
 
@@ -168,7 +168,7 @@ public class SSStatusBar extends JPanel {
          * Creates a new <code>JPanel</code> with a double buffer
          * and a flow layout.
          */
-        public SeperatorPanel() {
+        public SeparatorPanel() {
             setPreferredSize(new Dimension(8, 18));
             setMinimumSize  (new Dimension(8, 18));
         }
@@ -190,7 +190,7 @@ public class SSStatusBar extends JPanel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.SeperatorPanel");
+            sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.SeparatorPanel");
             sb.append("{cColor1=").append(cColor1);
             sb.append(", cColor2=").append(cColor2);
             sb.append('}');

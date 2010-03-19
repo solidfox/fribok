@@ -167,7 +167,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
      * @param number
      * @return
      */
-    private Boolean getShowSeperatorForGroup(String group, int number){
+    private Boolean getShowSeparatorForGroup(String group, int number){
        return !( group.equals("B5") || group.equals("B10") || group.equals("B11") || group.equals("B12") || group.equals("R4") || group.equals("R8") || group.equals("R10") || group.equals("R11")  || group.equals("U4") );
     }
 
@@ -318,7 +318,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
                             value = getSumForGroup(iNumber, iGroup);
                              break;
                          case 5:
-                            value = getShowSeperatorForGroup(iNumber, iGroup);
+                            value = getShowSeparatorForGroup(iNumber, iGroup);
                               break;
                     }
 
@@ -333,7 +333,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
             iModel.addColumn("group.sumtext");
             iModel.addColumn("group.sum");
 
-            iModel.addColumn("group.showseperator");
+            iModel.addColumn("group.showseparator");
 
         }
 

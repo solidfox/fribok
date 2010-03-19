@@ -110,7 +110,7 @@
                 </textField>
 
 
-                <!-- Seperator -->
+                <!-- Separator -->
                 <line>
                     <reportElement x="150" y="0" width="1" height="25"/>
                 </line>

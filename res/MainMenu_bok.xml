@@ -9,7 +9,7 @@
             <MenuItem Action="filemenu.companies"        Bundle="filemenu.companies"                           />
             <MenuItem Action="filemenu.companysettings"  Bundle="filemenu.companysettings" Dependent="Company" />
             <MenuItem Action="filemenu.accountplans"     Bundle="filemenu.accountplans"                        />
-            <Seperator/>
+            <Separator/>
 
             <Menu Name="Import" Bundle="filemenu.import" >
                 <MenuItem Action="filemenu.import.sie"                Bundle="filemenu.import.sie"    Dependent="Year"/>
@@ -21,21 +21,21 @@
                 <MenuItem Action="filemenu.export.vouchers"           Bundle="filemenu.export.vouchers" Dependent="Year"/>
             </Menu>
 
-            <Seperator/>
+            <Separator/>
 
             <Menu Name="Backup" Bundle="filemenu.backup">
                 <MenuItem Action="filemenu.backupall"       Bundle="filemenu.backupall"         />
-                <Seperator/>
+                <Separator/>
                 <MenuItem Action="filemenu.backurestore"    Bundle="filemenu.backurestore"  />
             </Menu>
 	    
-	    <Seperator/>
+	    <Separator/>
 
             <Menu Name="Networksettings" Bundle="filemenu.networksettings">
                 <MenuItem Action="filemenu.networksettings.db"       Bundle="filemenu.networksettings.db"         />
             </Menu>
 
-            <Seperator/>
+            <Separator/>
             <MenuItem Action="filemenu.exit"             Bundle="filemenu.exit"/>
         </Menu>
 
@@ -43,11 +43,11 @@
         <Menu Name="Register" Bundle="registermenu">
             <MenuItem Action="registermenu.accountingyear"   Bundle="registermenu.accountingyear"     Dependent="Company"/>
             <MenuItem Action="registermenu.accountplan"      Bundle="registermenu.accountplan"        Dependent="Year"/>
-            <Seperator/>
+            <Separator/>
             <MenuItem Action="registermenu.project"          Bundle="registermenu.project"            Dependent="Company"/>
             <MenuItem Action="registermenu.resultunit"       Bundle="registermenu.resultunit"         Dependent="Company"/>
 
-            <Seperator/>
+            <Separator/>
             <MenuItem Action="registermenu.vouchertemplates" Bundle="registermenu.vouchertemplates"   Dependent="Company"/>
 	    <MenuItem Action="registermenu.autodist" 	     Bundle="registermenu.autodist"   	      Dependent="Company"/>
         </Menu>
@@ -56,27 +56,27 @@
         <Menu Name="Bookkeeping" Bundle="bookkeepingmenu">
             <MenuItem Action="bookkeepingmenu.startingamount" Bundle="bookkeepingmenu.startingamount"   Dependent="Year"/>
             <MenuItem Action="bookkeepingmenu.budget"        Bundle="bookkeepingmenu.budget"            Dependent="Year"/>
-            <Seperator/>
+            <Separator/>
             <MenuItem Action="bookkeepingmenu.vouchers"       Bundle="bookkeepingmenu.vouchers"         Dependent="Year"/>
-            <Seperator/>
+            <Separator/>
 
             <Menu Name="Report" Bundle="reportmenu">
                 <MenuItem Action="reportmenu.vouchers"                  Bundle="reportmenu.vouchers"            Dependent="Year"/>
-                <Seperator/>
+                <Separator/>
                 <MenuItem Action="reportmenu.startingamounts"           Bundle="reportmenu.startingamounts"     Dependent="Year"/>
                 <MenuItem Action="reportmenu.accountplan"               Bundle="reportmenu.accountplan"         Dependent="Year"/>
                 <MenuItem Action="reportmenu.mainbook"                  Bundle="reportmenu.mainbook"            Dependent="Year"/>
-                <Seperator/>
+                <Separator/>
                 <MenuItem Action="reportmenu.balancereport"             Bundle="reportmenu.balancereport"       Dependent="Year"/>
                 <MenuItem Action="reportmenu.resultreport"              Bundle="reportmenu.resultreport"        Dependent="Year"/>
                 <MenuItem Action="reportmenu.projectresult"             Bundle="reportmenu.projectresult"       Dependent="Year"/>
                 <MenuItem Action="reportmenu.resultunitresult"          Bundle="reportmenu.resultunitresult"    Dependent="Year"/>
                 <MenuItem Action="reportmenu.budget"                    Bundle="reportmenu.budget"              Dependent="Year"/>
-                <Seperator/>
+                <Separator/>
                 <MenuItem Action="reportmenu.vatreport2007"             Bundle="reportmenu.vatreport2007"       Dependent="Year"/>
                 <MenuItem Action="reportmenu.accountdiagram"            Bundle="reportmenu.accountdiagram"      Dependent="Year"/>
                 <MenuItem Action="reportmenu.simplestatement"           Bundle="reportmenu.simplestatement"     Dependent="Year"/>
-		<Seperator/>
+		<Separator/>
 		<MenuItem Action="reportmenu.ownreports"           	Bundle="reportmenu.ownreports"     Dependent="Year"/>
 
             </Menu>
@@ -87,19 +87,19 @@
         <Menu Name="Window" Bundle="windowmenu">
             <MenuItem Action="windowmenu.cascade"             Bundle="windowmenu.cascade"     />
             <MenuItem Action="windowmenu.close"               Bundle="windowmenu.close"       />
-            <Seperator/>
+            <Separator/>
         </Menu>
 
         <Menu Name="Help" Bundle="helpmenu">
             <MenuItem Action="helpmenu.help"             Bundle="helpmenu.help"     />
-            <Seperator/>
+            <Separator/>
             <MenuItem Action="helpmenu.support"          Bundle="helpmenu.support"   />
             <MenuItem Action="helpmenu.updates"          Bundle="helpmenu.updates"   />
-	    <Seperator/>
+	    <Separator/>
             <MenuItem Action="helpmenu.clearlocks"       Bundle="helpmenu.clearlocks"   />
-            <Seperator/>
+            <Separator/>
 		<MenuItem Action="helpmenu.compress"       Bundle="helpmenu.compress"   />
-	      <Seperator/>
+	      <Separator/>
             <MenuItem Action="helpmenu.about"            Bundle="helpmenu.about"   />
         </Menu>
 

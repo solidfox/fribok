@@ -14,7 +14,7 @@
     <field name="group.sumtext"        class="java.lang.String"/>
     <field name="group.sum"           class="java.math.BigDecimal"/>
 
-    <field name="group.showseperator"           class="java.lang.Boolean"/>
+    <field name="group.showseparator"           class="java.lang.Boolean"/>
 
 
 
@@ -69,7 +69,7 @@
             <line>
                 <reportElement x="0" y="25" width="275" height="1">
                      <printWhenExpression>
-                        <![CDATA[$F{group.showseperator}]]>
+                        <![CDATA[$F{group.showseparator}]]>
                     </printWhenExpression>
                 </reportElement>
                 <graphicElement pen="Thin"/>
