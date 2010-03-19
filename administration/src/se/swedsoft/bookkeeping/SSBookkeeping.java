@@ -118,7 +118,7 @@ public class SSBookkeeping {
                 warning = "exists but is not a directory";
             }
             if (warning != null) {
-                System.out.println(" !! WARNING: " + dir + " " + warning);
+                System.out.println(" !! WARNING: " + dir + ' ' + warning);
                 warning = null;
             }
         }

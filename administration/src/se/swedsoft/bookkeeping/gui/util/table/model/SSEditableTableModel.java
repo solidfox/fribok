@@ -11,7 +11,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
 
     private T iEditing;
 
-    private final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
 
 
 
