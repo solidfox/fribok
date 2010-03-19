@@ -390,7 +390,7 @@ public class SSCompanyFrame extends SSDefaultTableFrame {
         updateFrame();
 
         if(SSCompanyLock.isLocked(pCompany)){
-            new SSErrorDialog( getMainFrame(), "companyframe.companyopen");
+            new SSErrorDialog( getMainFrame(), "companyframe.companyremoveopen");
             if(lockRemoved)
                 SSCompanyLock.applyLock(pCompany);
             return;
