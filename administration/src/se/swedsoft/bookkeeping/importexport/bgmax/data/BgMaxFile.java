@@ -50,50 +50,29 @@ public class BgMaxFile {
     public void parse(List<String> iLines) throws SSImportException{
         iAvsnitts = new LinkedList<BgMaxAvsnitt>();
         
-        boolean isEmptyLineRead = false;
-
         if( iLines.size() < 1 || ! isValid(iLines.get(0)) ) {
             throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.invalidfile");
         }
 
-        for (String iLine1 : iLines) {
-            String iLine = iLine1;
-            try {
-                if (iLine.length() == 0) {
-
-                    // If an empty line is found, all the rest of the lines have
-                    // to be empty too
-                    if (!isAllEmpty(itr)) {
-                        // Throw exc to bee caught a few lines down
-                        throw new RuntimeException("Empty line found in other place than last in the file");
-                    }
-                    break;  // Exit success
-                }
-
-                BgMaxLine iBgMaxLine = new BgMaxLine(iLine);
-                parseLine(iBgMaxLine);
-
-            } catch (RuntimeException exc) {
-                exc.printStackTrace();
-
+        boolean foundEmptyLine = false;
+        for (String line : iLines) {
+            // If an empty line is found, all the rest of the lines have to be
+            // empty too.
+            if (line.length() == 0) {
+                foundEmptyLine = true;
+            }
+            else if (foundEmptyLine) {
+                System.err.println("Empty line in the middle of the file");
                 throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.parseerror");
+            }
+            // Line is non-empty and not preceeded by any empty lines:
+            else {
+                BgMaxLine iBgMaxLine = new BgMaxLine(line);
+                parseLine(iBgMaxLine);
             }
         }
     }
     
-    private static boolean isAllEmpty(Iterator<String> itr)
-    {
-        if (itr == null) {
-            throw new IllegalArgumentException( "Method can not take null argument" );
-        }
-     
-        while ( itr.hasNext() ) {
-            if ( itr.next().length() != 0 ) return false;
-        }
-     
-        return true;
-    }
-
     /**
      * Returns true if this is a valid bgmax file
      * @param iFirstLine
