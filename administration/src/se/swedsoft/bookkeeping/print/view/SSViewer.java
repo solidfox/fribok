@@ -226,9 +226,6 @@ public class SSViewer extends JPanel{
 
             iDocumentPanel.setDocument( image, iSize);
 
-            Runtime.getRuntime().gc();
-
-
             iPagePanel.setLocation(0,0);
             iPagePanel.setSize    (iPageSize);
 

@@ -432,7 +432,6 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         iBack=null;
         iForward=null;
         iLast=null;
-        System.gc();
     }
 
     @Override
