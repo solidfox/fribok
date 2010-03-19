@@ -2,7 +2,7 @@ package se.swedsoft.bookkeeping.gui.about.panel;
 
 import se.swedsoft.bookkeeping.SSVersion;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
-import se.swedsoft.bookkeeping.util.SSBrowserLaunch;
+import se.swedsoft.bookkeeping.util.BrowserLaunch;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
@@ -41,7 +41,7 @@ public class SSAboutPanel {
                 String iEventName = e.getEventType() == null ? "" : e.getEventType().toString();
 
                 if(iEventName.equals("ACTIVATED")){
-                    SSBrowserLaunch.openURL(e.getURL());
+                    BrowserLaunch.openURL(e.getURL());
                 }
                 if(iEventName.equals("ENTERED")){
                     iEditorPane.setCursor(new Cursor(Cursor.HAND_CURSOR));

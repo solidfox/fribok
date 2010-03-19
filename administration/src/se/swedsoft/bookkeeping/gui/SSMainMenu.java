@@ -65,7 +65,7 @@ import se.swedsoft.bookkeeping.print.dialog.SSInventoryBasisDialog;
 import se.swedsoft.bookkeeping.print.report.SSAccountPlanPrinter;
 import se.swedsoft.bookkeeping.print.report.SSInventoryBasisPrinter;
 import se.swedsoft.bookkeeping.print.report.SSStartingAmountPrinter;
-import se.swedsoft.bookkeeping.util.SSBrowserLaunch;
+import se.swedsoft.bookkeeping.util.BrowserLaunch;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -1216,7 +1216,7 @@ public class SSMainMenu {
             public void actionPerformed(ActionEvent e) {
                 String iSupportURL =  SSBundle.getBundle().getString("application.url.support") ;
 
-                SSBrowserLaunch.openURL( iSupportURL );
+                BrowserLaunch.openURL( iSupportURL );
             }
         });
 
@@ -1226,7 +1226,7 @@ public class SSMainMenu {
             public void actionPerformed(ActionEvent e) {
                 String iSupportURL =  SSBundle.getBundle().getString("application.url.updates") ;
 
-                SSBrowserLaunch.openURL( iSupportURL );
+                BrowserLaunch.openURL( iSupportURL );
             }
         });
 
