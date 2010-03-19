@@ -109,29 +109,12 @@ public class SSOwnReportAccountGroup {
 
 
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         return toString("");
     }
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @param Seperator
-     * @return a string representation of the object.
-     */
+    
     public String toString(String Seperator) {
         /*StringBuilder sb = new StringBuilder();
 

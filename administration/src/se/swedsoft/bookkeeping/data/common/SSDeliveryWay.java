@@ -85,16 +85,7 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
         return iName;
     }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     *
-     * @param obj the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     * @see #hashCode()
-     * @see Hashtable
-     */
+    
     public boolean equals(Object obj) {
         if(obj instanceof SSDeliveryWay){
             SSDeliveryWay iUnit = (SSDeliveryWay)obj;
@@ -104,15 +95,7 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
         return false;
     }
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         return iDescription;
     }

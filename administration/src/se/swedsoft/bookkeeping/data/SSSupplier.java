@@ -463,15 +463,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
 
 //////////////////////////////////////////////////////
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     * @see #hashCode()
-     * @see Hashtable
-     */
+    
     public boolean equals(Object obj) {
         if(iNumber == null){
             return super.equals(obj);
@@ -484,15 +476,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         return false;
     }
 
-    /**
-     * Returns a hash code value for the object. This method is
-     * supported for the benefit of hashtables such as those provided by
-     * <code>java.util.Hashtable</code>.
-     * <p/>
-     * @return a hash code value for this object.
-     * @see Object#equals(Object)
-     * @see Hashtable
-     */
+    
     public int hashCode() {
         if( iNumber != null){
             return iNumber.hashCode();
@@ -509,15 +493,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         return iNumber;
     }
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(iNumber);

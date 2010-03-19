@@ -78,12 +78,7 @@ public class SSMonth  implements Serializable {
         return pFrom.compareTo(iFrom) <= 0 && pTo.compareTo(iFrom) >= 0;
     }
 
-    /**
-     * Returns a hash code value for the object. This method is
-     * supported for the benefit of hashtables such as those provided by
-     *
-     * @return a hash code value for this object.
-     */
+    
     public int hashCode() {
         if(iFrom == null) return super.hashCode();
 
@@ -92,15 +87,7 @@ public class SSMonth  implements Serializable {
         return  cCalendar.get(Calendar.YEAR) * 12 + cCalendar.get(Calendar.MONTH);
     }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     * @see #hashCode()
-     * @see Hashtable
-     */
+    
     public boolean equals(Object obj) {
         if(obj instanceof SSMonth){
             return obj.hashCode() == hashCode();
@@ -108,15 +95,7 @@ public class SSMonth  implements Serializable {
         return super.equals(obj);
     }
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
 

@@ -641,27 +641,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
 
     ////////////////////////////////////////////////////////
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     * It is recommended that all subclasses override this method.
-     * <p/>
-     * The <code>toString</code> method for class <code>Object</code>
-     * returns a string consisting of the name of the class of which the
-     * object is an instance, the at-sign character `<code>@</code>', and
-     * the unsigned hexadecimal representation of the hash code of the
-     * object. In other words, this method returns a string equal to the
-     * value of:
-     * <blockquote>
-     * <pre>
-     * getClass().getName() + '@' + Integer.toHexString(hashCode())
-     * </pre></blockquote>
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -671,17 +651,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
     }
 
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     * <p/>
-     * The <code>equals</code> method implements an equivalence relation
-     * on non-null object references:
-     *
-     * @param obj the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     * @see #hashCode()
-     */
+    
     public boolean equals(Object obj) {
         if(obj instanceof SSPurchaseOrder){
             SSPurchaseOrder iPurchaseOrder = (SSPurchaseOrder) obj;
@@ -691,15 +661,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
         return false;
     }
 
-    /**
-     * Returns a hash code value for the object. This method is
-     * supported for the benefit of hashtables such as those provided by
-     * <code>java.util.Hashtable</code>.
-     * <p/>
-     * @return a hash code value for this object.
-     * @see Object#equals(Object)
-     * @see Hashtable
-     */
+    
     public int hashCode() {
         return iNumber;
     }

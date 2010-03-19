@@ -248,15 +248,7 @@ public class SSNewAccountingYear implements Serializable, SSTableSearchable {
         return iFormat.format(iFrom) + " - "+ iFormat.format(iTo);
     }
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -360,14 +352,7 @@ public class SSNewAccountingYear implements Serializable, SSTableSearchable {
         }
     }  */
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     *
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     */
+    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSNewAccountingYear)) {
             return false;

@@ -352,15 +352,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
 
     ////////////////////////////////////////////////////
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(iNumber);
@@ -379,14 +371,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
     }
 
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     *
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     */
+    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSOutpayment)) {
             return false;

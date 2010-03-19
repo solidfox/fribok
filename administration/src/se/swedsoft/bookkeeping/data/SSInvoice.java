@@ -438,15 +438,7 @@ public class SSInvoice extends SSSale {
         return (iCustomerNr != null) && iCustomerNr.equals(iCustomer.getNumber());
     }
 
-    /**
-     * Returns a hash code value for the object. This method is
-     * supported for the benefit of hashtables such as those provided by
-     * <code>java.util.Hashtable</code>.
-     *
-     * @return a hash code value for this object.
-     * @see Object#equals(Object)
-     * @see Hashtable
-     */
+    
     public int hashCode() {
         if(iNumber != null) return iNumber;
 
@@ -530,14 +522,7 @@ public class SSInvoice extends SSSale {
         return iVoucher;
     }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     *
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     */
+    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSInvoice)) {
             return false;

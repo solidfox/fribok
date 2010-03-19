@@ -156,11 +156,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
     ////////////////////////////////////////////////////////////////////
 
-    /**
-     * Returns a string representation of the object.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
 
         StringBuffer b = new StringBuffer();
@@ -178,14 +174,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
         return iDescription;
     }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-     *
-     * @param obj the reference object with which to compare.
-     *
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
-     */
+    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSVoucherTemplate)) {
             return false;

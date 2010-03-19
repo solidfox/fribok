@@ -90,22 +90,12 @@ public class SSVATCode implements SSTableSearchable {
         return iName;
     }
 
-    /**
-     * Returns a string representation of the object. In general, the
-     * <code>toString</code> method returns a string that
-     * "textually represents" this object. The result should
-     * be a concise but informative representation that is easy for a
-     * person to read.
-     *
-     * @return a string representation of the object.
-     */
+    
     public String toString() {
         return iName;
     }
 
-    /**
-     * Indicates whether some other object is "equal to" this one.
-      */
+    
     public boolean equals(Object obj) {
         if(obj instanceof SSVATCode){
             SSVATCode iVATCode = (SSVATCode) obj;
