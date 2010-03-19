@@ -182,7 +182,7 @@ public class SIEWriter {
      *
      * @param pValue
      */
-    public void append(Boolean pValue) {
+    public void append(boolean pValue) {
         iStringBuilder.append(pValue);
         iStringBuilder.append(' ');
     }

@@ -29,9 +29,9 @@ public class SSResultPrinter extends SSPrinter {
 
     Date iDateTo;
 
-    Boolean iShowBudget;
+    boolean iShowBudget;
 
-    Boolean iShowPrevYear;
+    boolean iShowPrevYear;
 
     /**
      *
@@ -40,7 +40,7 @@ public class SSResultPrinter extends SSPrinter {
      * @param pShowBudget
      * @param pShowPrevYear
      */
-    public SSResultPrinter(Date pFrom, Date pTo, Boolean pShowBudget, Boolean pShowPrevYear){
+    public SSResultPrinter(Date pFrom, Date pTo, boolean pShowBudget, boolean pShowPrevYear){
         this( SSDB.getInstance().getCurrentYear(), pFrom, pTo, pShowBudget, pShowPrevYear );
     }
 
@@ -52,7 +52,7 @@ public class SSResultPrinter extends SSPrinter {
      * @param pShowBudget
      * @param pShowPrevYear
      */
-    public SSResultPrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo, Boolean pShowBudget, Boolean pShowPrevYear){
+    public SSResultPrinter(SSNewAccountingYear pYearData, Date pFrom, Date pTo, boolean pShowBudget, boolean pShowPrevYear){
         iYearData     = pYearData;
         iDateFrom     = pFrom;
         iDateTo       = pTo;

@@ -72,7 +72,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @param pPrintBudget
      */
-    public void setPrintBudget(Boolean pPrintBudget){
+    public void setPrintBudget(boolean pPrintBudget){
         iBudgetCheckbox.setSelected(pPrintBudget);
     }
 
@@ -80,7 +80,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @return
      */
-    public Boolean getPrintBudget(){
+    public boolean getPrintBudget(){
         return iBudgetCheckbox.isSelected();
     }
 
@@ -88,7 +88,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @param pLastyear
      */
-    public void setPrintLastyear(Boolean pLastyear){
+    public void setPrintLastyear(boolean pLastyear){
         iLastyearCheckBox.setSelected(pLastyear);
     }
 
@@ -96,7 +96,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @return
      */
-    public Boolean getPrintLastyear(){
+    public boolean getPrintLastyear(){
         return iLastyearCheckBox.isSelected();
     }
 
@@ -104,7 +104,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @param pLastyearEnabled
      */
-    public void setPrintLastyearEnabled(Boolean pLastyearEnabled){
+    public void setPrintLastyearEnabled(boolean pLastyearEnabled){
         iLastyearCheckBox.setEnabled(pLastyearEnabled);
     }
 

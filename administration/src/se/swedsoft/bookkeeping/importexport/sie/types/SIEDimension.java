@@ -16,7 +16,7 @@ public class SIEDimension {
     private String iName;
 
     // Means that an dimension is reserved and can't be changed
-    private Boolean iReserved;
+    private boolean iReserved;
 
     /**
      *
@@ -44,7 +44,7 @@ public class SIEDimension {
      * @param pReserved
      * @param pName
      */
-    private SIEDimension(Integer pNumber, Boolean pReserved, String pName){
+    private SIEDimension(Integer pNumber, boolean pReserved, String pName){
         iNumber   = pNumber;
         iName     = pName;
         iReserved = pReserved;
@@ -94,7 +94,7 @@ public class SIEDimension {
      *
      * @return
      */
-    public Boolean isReserved() {
+    public boolean isReserved() {
         return iReserved;
     }
 

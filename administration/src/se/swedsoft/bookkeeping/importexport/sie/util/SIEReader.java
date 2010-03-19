@@ -318,7 +318,7 @@ public class SIEReader implements Iterator<String> {
      *
      * @return
      */
-    public Boolean nextBoolean() {
+    public boolean nextBoolean() {
         return iValues.nextBoolean();
     }
 

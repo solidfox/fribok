@@ -168,7 +168,7 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 8 : 
             {
-                value = (java.math.BigDecimal)(((java.lang.Boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46debet.getValue()));
+                value = (java.math.BigDecimal)(((java.lang.boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46debet.getValue()));
                 break;
             }
             case 9 : 
@@ -178,7 +178,7 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 10 : 
             {
-                value = (java.math.BigDecimal)(((java.lang.Boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46credet.getValue()));
+                value = (java.math.BigDecimal)(((java.lang.boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46credet.getValue()));
                 break;
             }
             case 11 : 
@@ -198,22 +198,22 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 14 : 
             {
-                value = (java.lang.Object)(((java.lang.Boolean)field_voucherrow46ismarked.getValue()));
+                value = (java.lang.Object)(((java.lang.boolean)field_voucherrow46ismarked.getValue()));
                 break;
             }
             case 15 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46ismarked.getValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46ismarked.getValue()));
                 break;
             }
             case 16 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46iscrossed.getValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46iscrossed.getValue()));
                 break;
             }
             case 17 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46isadded.getValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46isadded.getValue()));
                 break;
             }
             case 18 : 
@@ -316,7 +316,7 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 8 : 
             {
-                value = (java.math.BigDecimal)(((java.lang.Boolean)field_voucherrow46iscrossed.getOldValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46debet.getOldValue()));
+                value = (java.math.BigDecimal)(((java.lang.boolean)field_voucherrow46iscrossed.getOldValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46debet.getOldValue()));
                 break;
             }
             case 9 : 
@@ -326,7 +326,7 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 10 : 
             {
-                value = (java.math.BigDecimal)(((java.lang.Boolean)field_voucherrow46iscrossed.getOldValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46credet.getOldValue()));
+                value = (java.math.BigDecimal)(((java.lang.boolean)field_voucherrow46iscrossed.getOldValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46credet.getOldValue()));
                 break;
             }
             case 11 : 
@@ -346,22 +346,22 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 14 : 
             {
-                value = (java.lang.Object)(((java.lang.Boolean)field_voucherrow46ismarked.getOldValue()));
+                value = (java.lang.Object)(((java.lang.boolean)field_voucherrow46ismarked.getOldValue()));
                 break;
             }
             case 15 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46ismarked.getOldValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46ismarked.getOldValue()));
                 break;
             }
             case 16 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46iscrossed.getOldValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46iscrossed.getOldValue()));
                 break;
             }
             case 17 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46isadded.getOldValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46isadded.getOldValue()));
                 break;
             }
             case 18 : 
@@ -464,7 +464,7 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 8 : 
             {
-                value = (java.math.BigDecimal)(((java.lang.Boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46debet.getValue()));
+                value = (java.math.BigDecimal)(((java.lang.boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46debet.getValue()));
                 break;
             }
             case 9 : 
@@ -474,7 +474,7 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 10 : 
             {
-                value = (java.math.BigDecimal)(((java.lang.Boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46credet.getValue()));
+                value = (java.math.BigDecimal)(((java.lang.boolean)field_voucherrow46iscrossed.getValue()).booleanValue() ? new BigDecimal(0) : ((java.math.BigDecimal)field_voucherrow46credet.getValue()));
                 break;
             }
             case 11 : 
@@ -494,22 +494,22 @@ public class JasperDocument_1168269391484_796027 extends JREvaluator
             }
             case 14 : 
             {
-                value = (java.lang.Object)(((java.lang.Boolean)field_voucherrow46ismarked.getValue()));
+                value = (java.lang.Object)(((java.lang.boolean)field_voucherrow46ismarked.getValue()));
                 break;
             }
             case 15 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46ismarked.getValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46ismarked.getValue()));
                 break;
             }
             case 16 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46iscrossed.getValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46iscrossed.getValue()));
                 break;
             }
             case 17 : 
             {
-                value = (java.lang.Boolean)(((java.lang.Boolean)field_voucherrow46isadded.getValue()));
+                value = (java.lang.boolean)(((java.lang.boolean)field_voucherrow46isadded.getValue()));
                 break;
             }
             case 18 : 

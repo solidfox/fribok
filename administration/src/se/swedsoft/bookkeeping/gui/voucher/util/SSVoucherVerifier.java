@@ -36,7 +36,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
 
     private List<JComponent> iComponents;
 
-    private Boolean iValid;
+    private boolean iValid;
 
     private String iError;
 
@@ -218,7 +218,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
      * 
      * @return
      */
-    public Boolean isValid(){
+    public boolean isValid(){
         return iValid;
     }
 

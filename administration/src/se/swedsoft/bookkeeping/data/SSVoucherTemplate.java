@@ -199,7 +199,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
         private Integer iAccountNr;
 
-        private Boolean iDebet;
+        private boolean iDebet;
 
         private SSAccount iAccount;
 

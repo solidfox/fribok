@@ -25,7 +25,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         SSProduct iProduct;
         Integer iOrderVolume;
         SSSupplier iSupplier;
-        Boolean iSelected;
+        boolean iSelected;
 
         @Override
         public String toString() {

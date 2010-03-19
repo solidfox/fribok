@@ -163,8 +163,8 @@ public class SSReportFactory {
             public void actionPerformed(ActionEvent e) {
                 final Date    lFrom          = iPanel.getFrom();
                 final Date    lTo            = iPanel.getTo();
-                final Boolean lPrintBudget   = iPanel.getPrintBudget();
-                final Boolean lPrintLastyear = iPanel.getPrintLastyear();
+                final boolean lPrintBudget   = iPanel.getPrintBudget();
+                final boolean lPrintLastyear = iPanel.getPrintLastyear();
                 iDialog.closeDialog();
 
                 SSProgressDialog.runProgress(iMainFrame, new Runnable(){

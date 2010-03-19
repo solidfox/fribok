@@ -270,7 +270,7 @@ public class SIEIterator  implements Iterator<String> {
      *
      * @return
      */
-    public Boolean nextBoolean() {
+    public boolean nextBoolean() {
         String s = next();
 
         return s.equals("true");

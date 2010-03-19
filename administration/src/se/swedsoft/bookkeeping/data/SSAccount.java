@@ -182,7 +182,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      *
      * @return
      */
-    public Boolean isActive() {
+    public boolean isActive() {
         return iActive;
     }
 
@@ -190,8 +190,8 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      *
      * @param pActive
      */
-    public void setActive(Boolean pActive) {
-        iActive = pActive != null && pActive;
+    public void setActive(boolean pActive) {
+        iActive = pActive;
     }
 
     ////////////////////////////////////////////////////////////////////////

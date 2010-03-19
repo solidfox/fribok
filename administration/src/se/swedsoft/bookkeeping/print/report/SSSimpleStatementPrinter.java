@@ -167,7 +167,7 @@ public class SSSimpleStatementPrinter extends SSPrinter {
      * @param number
      * @return
      */
-    private Boolean getShowSeparatorForGroup(String group, int number){
+    private boolean getShowSeparatorForGroup(String group, int number){
        return !( group.equals("B5") || group.equals("B10") || group.equals("B11") || group.equals("B12") || group.equals("R4") || group.equals("R8") || group.equals("R10") || group.equals("R11")  || group.equals("U4") );
     }
 

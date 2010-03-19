@@ -15,11 +15,9 @@ import java.util.*;
  */
 public class SSMainBookCalculator {
 
-
-
     public static class SSMainBookRow {
 
-        private Boolean      iHasdata;
+        private boolean      iHasdata;
 
         private SSAccount    iAccount;
 
@@ -29,9 +27,9 @@ public class SSMainBookCalculator {
 
         private Date         iDate;
 
-        private Boolean      iCrossed;
+        private boolean      iCrossed;
 
-        private Boolean      iAdded;
+        private boolean      iAdded;
 
         private BigDecimal   iDebet;
 
@@ -41,7 +39,7 @@ public class SSMainBookCalculator {
 
 
 
-        public Boolean getHasdata() {
+        public boolean getHasdata() {
             return iHasdata;
         }
 
@@ -74,19 +72,19 @@ public class SSMainBookCalculator {
             return iSum;
         }
 
-        public Boolean isAdded() {
+        public boolean isAdded() {
             return iAdded;
         }
 
-        public void setAdded(Boolean iAdded) {
+        public void setAdded(boolean iAdded) {
             this.iAdded = iAdded;
         }
 
-        public Boolean isCrossed() {
+        public boolean isCrossed() {
             return iCrossed;
         }
 
-        public void setCrossed(Boolean iCrossed) {
+        public void setCrossed(boolean iCrossed) {
             this.iCrossed = iCrossed;
         }
 
