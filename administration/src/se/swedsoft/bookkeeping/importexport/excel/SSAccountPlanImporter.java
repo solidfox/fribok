@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
  */
 public class SSAccountPlanImporter {
 
-    private static ResourceBundle cBundle = SSBundle.getBundle();
+    private static final ResourceBundle cBundle = SSBundle.getBundle();
 
     private static String cName  = cBundle.getString("importaccountplan.field_name");
     private static String cType  = cBundle.getString("importaccountplan.field_type");

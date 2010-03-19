@@ -93,7 +93,7 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
 
 
 
-    private static Map<String, SSAccountPlanType> iAccountPlanTypes = new HashMap<String, SSAccountPlanType>();
+    private static final Map<String, SSAccountPlanType> iAccountPlanTypes = new HashMap<String, SSAccountPlanType>();
 
     // TODO: Load this from file
     static{
