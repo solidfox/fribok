@@ -40,13 +40,13 @@ public class SSInvoiceTypeDialog extends SSDialog {
 
         iType1Button .addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                iInvoiceType = iInvoiceType = SSInvoiceType.NORMAL;
+                iInvoiceType = SSInvoiceType.NORMAL;
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
         iType2Button .addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                iInvoiceType = iInvoiceType = SSInvoiceType.CASH;
+                iInvoiceType = SSInvoiceType.CASH;
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
