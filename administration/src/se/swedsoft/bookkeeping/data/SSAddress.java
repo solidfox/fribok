@@ -28,8 +28,6 @@ public class SSAddress implements Serializable {
 
     private String iCountry;
 
-
-
     /**
      * Default constructor.
      */
@@ -57,14 +55,13 @@ public class SSAddress implements Serializable {
      * @param iAddress
      */
     public SSAddress(SSAddress iAddress) {
-        this.iName    = iAddress.iName;
+        iName         = iAddress.iName;
         this.iAddress = iAddress.iAddress;
-        this.iStreet  = iAddress.iStreet;
-        this.iZipCode = iAddress.iZipCode;
-        this.iCity    = iAddress.iCity;
-        this.iCountry = iAddress.iCountry;
+        iStreet       = iAddress.iStreet;
+        iZipCode      = iAddress.iZipCode;
+        iCity         = iAddress.iCity;
+        iCountry      = iAddress.iCountry;
     }
-
 
     /**
      * Constructor
