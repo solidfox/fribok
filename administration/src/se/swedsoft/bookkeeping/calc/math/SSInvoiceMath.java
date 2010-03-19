@@ -74,7 +74,7 @@ public class SSInvoiceMath extends SSSaleMath{
      */
     public static BigDecimal getSaldo(SSInvoice iInvoice) {
         // a cash sales cant have any saldo
-        if(iInvoice.getType() == SSInvoiceType.CASH) return new BigDecimal(0.0);
+        if(iInvoice.getType() == SSInvoiceType.CASH) return new BigDecimal(0);
 
         BigDecimal iTotalSum = getTotalSum(iInvoice);
 
@@ -89,7 +89,7 @@ public class SSInvoiceMath extends SSSaleMath{
 
     public static BigDecimal getSaldo(Integer iInvoiceNumber) {
         if(iSaldoMap.containsKey(iInvoiceNumber)) return iSaldoMap.get(iInvoiceNumber);
-        else return new BigDecimal(0.00);
+        else return new BigDecimal(0);
     }
 
     public static HashMap<Integer, BigDecimal> iSaldoMap;
@@ -150,7 +150,7 @@ public class SSInvoiceMath extends SSSaleMath{
      */
     public static BigDecimal getSaldo(SSInvoice iInvoice, Date iDate) {
         // a cash sales cant have any saldo
-        if(iInvoice.getType() == SSInvoiceType.CASH) return new BigDecimal(0.0);
+        if(iInvoice.getType() == SSInvoiceType.CASH) return new BigDecimal(0);
 
         BigDecimal iTotalSum = getTotalSum(iInvoice);
 
@@ -234,7 +234,7 @@ public class SSInvoiceMath extends SSSaleMath{
      */
     public static BigDecimal getSumMinusCredited(SSInvoice iInvoice, Date iDate) {
         // a cash sales cant have any saldo
-        if(iInvoice.getType() == SSInvoiceType.CASH) return new BigDecimal(0.0);
+        if(iInvoice.getType() == SSInvoiceType.CASH) return new BigDecimal(0);
 
         BigDecimal iTotalSum = getTotalSum(iInvoice);
 

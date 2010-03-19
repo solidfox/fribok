@@ -98,13 +98,13 @@ public class SSOwnReportCalculator {
                         if(inProject(iRowProject, iProject))
                             addValueToMap(iChangePeriod, iRowAccount, iRowSum);
                         else
-                            addValueToMap(iChangePeriod, iRowAccount, new BigDecimal(0.0));
+                            addValueToMap(iChangePeriod, iRowAccount, new BigDecimal(0));
                     }
                     else if(iResultUnit != null){
                         if(inResultUnit(iRowResultUnit, iResultUnit))
                             addValueToMap(iChangePeriod, iRowAccount, iRowSum);
                         else
-                            addValueToMap(iChangePeriod, iRowAccount, new BigDecimal(0.0));
+                            addValueToMap(iChangePeriod, iRowAccount, new BigDecimal(0));
                     }
                     else{
                         addValueToMap(iChangePeriod, iRowAccount, iRowSum);

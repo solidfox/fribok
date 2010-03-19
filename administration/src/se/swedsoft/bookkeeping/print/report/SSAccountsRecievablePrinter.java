@@ -221,10 +221,10 @@ public class SSAccountsRecievablePrinter extends SSPrinter {
                             value = SSInvoiceMath.getTotalSum(iInvoice);
                             break;
                         case 4:
-                            value = iCreditInvoiceSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0.00) : iCreditInvoiceSum.get(iInvoice.getNumber());//SSCreditInvoiceMath.getSumForInvoice(iInvoice, iDate);
+                            value = iCreditInvoiceSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0) : iCreditInvoiceSum.get(iInvoice.getNumber());//SSCreditInvoiceMath.getSumForInvoice(iInvoice, iDate);
                             break;
                         case 5:
-                            value = iInpaymentSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0.00) : iInpaymentSum.get(iInvoice.getNumber());//SSInpaymentMath.getSumForInvoice(iInvoice, iDate);
+                            value = iInpaymentSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0) : iInpaymentSum.get(iInvoice.getNumber());//SSInpaymentMath.getSumForInvoice(iInvoice, iDate);
                             break;
                         case 6:
                             value = iInvoice.getCurrencyRate();

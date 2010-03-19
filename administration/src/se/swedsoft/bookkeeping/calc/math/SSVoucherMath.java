@@ -101,7 +101,7 @@ public class SSVoucherMath {
      * @return
      */
     public static BigDecimal getCreditSum(SSVoucher iVoucher){
-        BigDecimal sum  = new BigDecimal(0.0);
+        BigDecimal sum  = new BigDecimal(0);
 
         for(SSVoucherRow iVoucherRow: iVoucher.getRows()){
             if (iVoucherRow.isValid() && iVoucherRow.getCredit() != null && !iVoucherRow.isCrossed()) {
@@ -117,7 +117,7 @@ public class SSVoucherMath {
      * @return
      */
     public static BigDecimal getDebetSum(SSVoucher iVoucher){
-        BigDecimal sum  = new BigDecimal(0.0);
+        BigDecimal sum  = new BigDecimal(0);
 
         for(SSVoucherRow iVoucherRow: iVoucher.getRows()){
             if (iVoucherRow.isValid() && iVoucherRow.getDebet() != null && !iVoucherRow.isCrossed()) {
@@ -259,7 +259,7 @@ public class SSVoucherMath {
      * @return
      */
     public static BigDecimal getDebetSumForAccount(SSVoucher iVoucher, SSAccount iAccount){
-        BigDecimal sum  = new BigDecimal(0.0);
+        BigDecimal sum  = new BigDecimal(0);
 
         for(SSVoucherRow iVoucherRow: iVoucher.getRows()){
             if (iVoucherRow.isValid() && iVoucherRow.getDebet() != null && !iVoucherRow.isCrossed() && iVoucherRow.getAccount().equals(iAccount) )  {
@@ -277,7 +277,7 @@ public class SSVoucherMath {
      * @return
      */
     public static BigDecimal getCreditSumForAccount(SSVoucher iVoucher, SSAccount iAccount){
-        BigDecimal sum  = new BigDecimal(0.0);
+        BigDecimal sum  = new BigDecimal(0);
 
         for(SSVoucherRow iVoucherRow: iVoucher.getRows()){
             if (iVoucherRow.isValid() && iVoucherRow.getCredit() != null && !iVoucherRow.isCrossed() && iVoucherRow.getAccount().equals(iAccount) )  {
@@ -398,8 +398,8 @@ public class SSVoucherMath {
         BigDecimal debet  = iVoucherRow.getDebet () ;
         BigDecimal credit = iVoucherRow.getCredit();
 
-        if(debet  == null) debet  = new BigDecimal(0.0);
-        if(credit == null) credit = new BigDecimal(0.0);
+        if(debet  == null) debet  = new BigDecimal(0);
+        if(credit == null) credit = new BigDecimal(0);
 
         return credit.subtract(debet);
     }
@@ -413,8 +413,8 @@ public class SSVoucherMath {
         BigDecimal debet  = iVoucherRow.getDebet () ;
         BigDecimal credit = iVoucherRow.getCredit();
 
-        if(debet  == null) debet  = new BigDecimal(0.0);
-        if(credit == null) credit = new BigDecimal(0.0);
+        if(debet  == null) debet  = new BigDecimal(0);
+        if(credit == null) credit = new BigDecimal(0);
 
         return debet.subtract(credit);
     }

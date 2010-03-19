@@ -262,7 +262,7 @@ public class SSBudget implements Serializable  {
      * @return The sum
      */
     public BigDecimal getSumForAccount(SSAccount pAccount){
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudget.entrySet()){
             BigDecimal iValue = ssMonthMapEntry.getValue().get(pAccount);
@@ -284,7 +284,7 @@ public class SSBudget implements Serializable  {
      * @return The sum
      */
     public BigDecimal getSumForAccount(SSAccount pAccount, Date pFrom, Date pTo){
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudget.entrySet()){
             BigDecimal iValue = ssMonthMapEntry.getValue().get(pAccount);

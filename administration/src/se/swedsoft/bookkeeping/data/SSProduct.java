@@ -83,10 +83,10 @@ public class SSProduct implements SSTableSearchable, Serializable {
     public SSProduct() {
         iProductRows     = new LinkedList<SSProductRow>();
         iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
-        iUnitprice       = new BigDecimal(0.0);
-        iPurchasePrice   = new BigDecimal(0.0);
-        iStockPrice      = new BigDecimal(0.0);
-        iFreight         = new BigDecimal(0.0);
+        iUnitprice       = new BigDecimal(0);
+        iPurchasePrice   = new BigDecimal(0);
+        iStockPrice      = new BigDecimal(0);
+        iFreight         = new BigDecimal(0);
         iTaxCode         = SSTaxCode.TAXRATE_1;
         iStockGoods      = true;
 

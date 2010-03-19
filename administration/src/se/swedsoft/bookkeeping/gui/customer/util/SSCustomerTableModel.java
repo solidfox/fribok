@@ -180,8 +180,8 @@ public class SSCustomerTableModel extends SSTableModel<SSCustomer> {
         @Override
         public Object getValue(SSCustomer iCustomer) {
             List<SSInvoice> iInvoices = SSCustomerMath.iInvoicesForCustomers.get(iCustomer.getNumber());
-            if(iInvoices == null) return new BigDecimal(0.00);
-            BigDecimal iTotalSum = new BigDecimal(0.00);
+            if(iInvoices == null) return new BigDecimal(0);
+            BigDecimal iTotalSum = new BigDecimal(0);
             for(SSInvoice iInvoice:iInvoices){
                 if(SSInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())){
                     BigDecimal iInvoiceSaldo = SSInvoiceMath.iSaldoMap.get(iInvoice.getNumber());

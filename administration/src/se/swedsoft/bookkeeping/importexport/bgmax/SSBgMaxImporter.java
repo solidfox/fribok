@@ -105,7 +105,7 @@ public class SSBgMaxImporter {
                     iInvoice = iDialog.getInvoice();
                 }
                 SSInpaymentRow iInpaymentRow = new SSInpaymentRow();
-                iInpaymentRow.setCurrencyRate( new BigDecimal(1.0));
+                iInpaymentRow.setCurrencyRate( new BigDecimal(1));
                 iInpaymentRow.setInvoice     ( iInvoice );
                 iInpaymentRow.setValue       ( iBetalning.getBelopp() );
 

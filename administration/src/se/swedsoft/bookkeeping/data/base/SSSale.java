@@ -391,7 +391,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return
      */
     public BigDecimal getTaxRate1() {
-        if(iTaxRate1 == null) iTaxRate1 = new BigDecimal(25.0);
+        if(iTaxRate1 == null) iTaxRate1 = new BigDecimal(25);
         return iTaxRate1;
     }
 
@@ -418,7 +418,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iTaxRate2
      */
     public void setTaxRate2(BigDecimal iTaxRate2) {
-        if(iTaxRate2 == null) iTaxRate2 = new BigDecimal(12.0);
+        if(iTaxRate2 == null) iTaxRate2 = new BigDecimal(12);
         this.iTaxRate2 = iTaxRate2;
     }
 
@@ -429,7 +429,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return
      */
     public BigDecimal getTaxRate3() {
-        if(iTaxRate3 == null) iTaxRate3 = new BigDecimal(6.0);
+        if(iTaxRate3 == null) iTaxRate3 = new BigDecimal(6);
         return iTaxRate3;
     }
 

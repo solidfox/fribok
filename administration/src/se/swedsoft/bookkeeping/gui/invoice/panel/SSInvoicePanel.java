@@ -203,10 +203,10 @@ public class SSInvoicePanel {
                     iModel.setCustomer(selected);
                     iInvoice.setCustomer(selected);
                     iInvoice.setDueDate();
-                    iInvoice.setCurrencyRate(selected.getInvoiceCurrency() == null ? new BigDecimal(1.0) : selected.getInvoiceCurrency().getExchangeRate());
+                    iInvoice.setCurrencyRate(selected.getInvoiceCurrency() == null ? new BigDecimal(1) : selected.getInvoiceCurrency().getExchangeRate());
                     if(selected.getDiscount() != null){
                         for (SSSaleRow iRow : iModel.getObjects()) {
-                            iRow.setDiscount(selected.getDiscount().doubleValue() == new BigDecimal(0.0).doubleValue() ? null : selected.getDiscount());
+                            iRow.setDiscount(selected.getDiscount().doubleValue() == new BigDecimal(0).doubleValue() ? null : selected.getDiscount());
                         }
                     }
                     setInvoice(iInvoice);

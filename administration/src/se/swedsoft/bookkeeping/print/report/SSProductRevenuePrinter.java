@@ -236,7 +236,7 @@ public class SSProductRevenuePrinter extends SSPrinter {
                                 value = iMonthRevenue.get(iMonth);
                             }
                             else{
-                                value = new BigDecimal(0.00);
+                                value = new BigDecimal(0);
                             }
                             break;
                         case 3  :

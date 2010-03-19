@@ -229,9 +229,9 @@ public class SSMainBookCalculator {
 
                     iMainBookRow.iAdded   = false;
                     iMainBookRow.iCrossed = false;
-                    iMainBookRow.iDebet   = new BigDecimal(0.0);
-                    iMainBookRow.iCredit  = new BigDecimal(0.0);
-                    iMainBookRow.iSum     = new BigDecimal(0.0);
+                    iMainBookRow.iDebet   = new BigDecimal(0);
+                    iMainBookRow.iCredit  = new BigDecimal(0);
+                    iMainBookRow.iSum     = new BigDecimal(0);
 
                     iRows.add( iMainBookRow );
                 }

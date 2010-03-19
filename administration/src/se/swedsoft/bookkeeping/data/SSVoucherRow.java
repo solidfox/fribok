@@ -514,7 +514,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
         if( iCredit != null){
             return iCredit.negate();
         }
-        return new BigDecimal(0.00);
+        return new BigDecimal(0);
     }
 
 

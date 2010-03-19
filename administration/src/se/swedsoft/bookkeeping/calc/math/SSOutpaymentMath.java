@@ -60,7 +60,7 @@ public class SSOutpaymentMath {
      */
     public static BigDecimal getSum(SSOutpayment iOutpayment){
 
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         for( SSOutpaymentRow iRow: iOutpayment.getRows()){
             BigDecimal iValue = iRow.getValue();
@@ -105,7 +105,7 @@ public class SSOutpaymentMath {
      * @return the currency rate difference
      */
     public static BigDecimal getCurrencyRateDifference(SSOutpayment iOutpayment){
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         for( SSOutpaymentRow iRow: iOutpayment.getRows()){
             BigDecimal iRowSum = getCurrencyRateDifference(iRow);
@@ -129,7 +129,7 @@ public class SSOutpaymentMath {
      */
     public static BigDecimal getSumForInvoice(SSOutpayment iOutpayment, SSSupplierInvoice iInvoice){
 
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         for( SSOutpaymentRow iRow: iOutpayment.getRows()){
             BigDecimal iRowValue   = iRow.getValue();
@@ -152,7 +152,7 @@ public class SSOutpaymentMath {
         // Get all credit invoices from the db
         List<SSOutpayment> iOutpayments = SSDB.getInstance().getOutpayments();
 
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
         for (SSOutpayment iOutpayment : iOutpayments) {
             BigDecimal iRowSum = getSumForInvoice(iOutpayment, iInvoice);
 
@@ -213,7 +213,7 @@ public class SSOutpaymentMath {
         List<SSOutpayment> iOutpayments = SSDB.getInstance().getOutpayments();
 
         iDate = SSDateMath.ceil(iDate);
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
         for (SSOutpayment iOutpayment : iOutpayments) {
             Date iCurrent = SSDateMath.floor(  iOutpayment.getDate() );
 

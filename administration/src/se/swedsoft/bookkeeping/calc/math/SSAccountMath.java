@@ -263,7 +263,7 @@ public class SSAccountMath {
      * @return BigDecimal
      */
     public static BigDecimal getSumByVATCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String ... pVatCodes ) {
-        BigDecimal sum = new BigDecimal(0.0);
+        BigDecimal sum = new BigDecimal(0);
         for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()){
 
             for(String iVatCode : pVatCodes){
@@ -416,7 +416,7 @@ public class SSAccountMath {
      */
     public static BigDecimal getSumBySRUCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String ... pSruCodes ) {
 
-        BigDecimal sum = new BigDecimal(0.0);
+        BigDecimal sum = new BigDecimal(0);
         for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()){
 
             for(String iSruCode : pSruCodes){

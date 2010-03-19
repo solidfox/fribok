@@ -124,7 +124,7 @@ public class SSTender extends SSSale {
             }
             else
             {
-                return new BigDecimal(1.00);
+                return new BigDecimal(1);
             }
         }
     }

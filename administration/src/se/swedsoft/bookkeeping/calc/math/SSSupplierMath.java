@@ -28,7 +28,7 @@ public class SSSupplierMath {
     public static BigDecimal getSupplierDebt(SSSupplier iSupplier) {
         List<SSSupplierInvoice> iInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier);
 
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
         for (SSSupplierInvoice iInvoice : iInvoices) {
             BigDecimal iSaldo = SSSupplierInvoiceMath.getSaldo(iInvoice.getNumber());
 

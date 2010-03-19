@@ -249,7 +249,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @return
          */
         public BigDecimal getDebet() {
-            return iDebet ? new BigDecimal(0.0) : null;
+            return iDebet ? new BigDecimal(0) : null;
         }
 
         /**
@@ -257,7 +257,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @return
          */
         public BigDecimal getCredit() {
-            return iDebet ?  null: new BigDecimal(0.0);
+            return iDebet ?  null: new BigDecimal(0);
         }
 
         ////////////////////////////////////////////////////////////////////

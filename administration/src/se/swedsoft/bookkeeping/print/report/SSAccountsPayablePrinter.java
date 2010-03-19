@@ -222,10 +222,10 @@ public class SSAccountsPayablePrinter extends SSPrinter {
                             value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
                             break;
                         case 4:
-                            value = iSupplierCreditInvoiceSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0.00) : iSupplierCreditInvoiceSum.get(iInvoice.getNumber());//value = SSSupplierCreditInvoiceMath.getSumForInvoice(iInvoice, iDate);
+                            value = iSupplierCreditInvoiceSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0) : iSupplierCreditInvoiceSum.get(iInvoice.getNumber());//value = SSSupplierCreditInvoiceMath.getSumForInvoice(iInvoice, iDate);
                             break;
                         case 5:
-                            value = iOutpaymentSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0.00) : iOutpaymentSum.get(iInvoice.getNumber());//value = SSOutpaymentMath    .getSumForInvoice(iInvoice, iDate);
+                            value = iOutpaymentSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0) : iOutpaymentSum.get(iInvoice.getNumber());//value = SSOutpaymentMath    .getSumForInvoice(iInvoice, iDate);
                             break;
                         case 6:
                             value = iInvoice.getCurrencyRate();

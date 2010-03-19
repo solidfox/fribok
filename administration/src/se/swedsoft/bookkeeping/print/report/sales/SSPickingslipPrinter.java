@@ -211,10 +211,10 @@ public class SSPickingslipPrinter extends SSPrinter {
                             value = iProduct.getUnit() == null  ? null : iProduct.getUnit().getName();
                             break;
                         case 5:
-                            value = iProduct.getWeight() == null ? new BigDecimal(0.0) : iProduct.getWeight();
+                            value = iProduct.getWeight() == null ? new BigDecimal(0) : iProduct.getWeight();
                             break;
                         case 6:
-                            value = iProduct.getVolume() == null ? new BigDecimal(0.0) : iProduct.getVolume();
+                            value = iProduct.getVolume() == null ? new BigDecimal(0) : iProduct.getVolume();
                             break;
                     }
 

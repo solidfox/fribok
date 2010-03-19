@@ -101,7 +101,7 @@ public class SSSupplierInvoiceMath {
      * @return the total sum
      */
     public static BigDecimal getNetSum(SSSupplierInvoice iSupplierInvoice){
-        BigDecimal iTotalSum = new BigDecimal(0.0);
+        BigDecimal iTotalSum = new BigDecimal(0);
 
         for (SSSupplierInvoiceRow iRow : iSupplierInvoice.getRows()) {
             BigDecimal iRowSum = iRow.getSum();
@@ -144,7 +144,7 @@ public class SSSupplierInvoiceMath {
         if(iSaldoMap.containsKey(iSupplierInvoiceNumber))
             return iSaldoMap.get(iSupplierInvoiceNumber);
         else
-            return new BigDecimal(0.00);
+            return new BigDecimal(0);
     }
 
     /*

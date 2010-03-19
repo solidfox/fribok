@@ -160,7 +160,7 @@ public class SSAccountdiagramPrinter extends SSPrinter {
      * @return
      */
     private BigDecimal getGroupSum(AccountDiagramGroup pGroup, Map<SSAccount, BigDecimal> creditMinusDebetSum, Map<SSAccount, BigDecimal> debetMinusCreditSum){
-        BigDecimal sum = new BigDecimal(0.0);
+        BigDecimal sum = new BigDecimal(0);
 
         String iSRUCode = pGroup.getSRUCode();
 

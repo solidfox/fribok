@@ -62,7 +62,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
                 break;
             case 2:
                 value = iInBalance.get(iAccount);
-                if(value == null) value = new BigDecimal(0.0);
+                if(value == null) value = new BigDecimal(0);
                 break;
         }
 

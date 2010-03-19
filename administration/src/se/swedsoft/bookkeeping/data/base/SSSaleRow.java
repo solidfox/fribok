@@ -239,7 +239,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @return the normalized discount
      */
     public BigDecimal getNormalizedDiscount() {
-        return iDiscount == null ? new BigDecimal(0.0) : iDiscount.scaleByPowerOfTen(-2);
+        return iDiscount == null ? new BigDecimal(0) : iDiscount.scaleByPowerOfTen(-2);
 
     }
 

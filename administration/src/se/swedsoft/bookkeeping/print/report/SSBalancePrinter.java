@@ -136,22 +136,22 @@ public class SSBalancePrinter extends SSPrinter {
                     case 2:
                         // account.inBalance
                         value = iInBalance.get(iAccount);
-                        if(value == null) value = new BigDecimal(0.0);
+                        if(value == null) value = new BigDecimal(0);
                         break;
                     case 3:
                         // account.inSaldo
                         value = iInSaldo.get(iAccount);
-                        if(value == null) value = new BigDecimal(0.0);
+                        if(value == null) value = new BigDecimal(0);
                         break;
                     case 4:
                         // account.change
                         value = iPeriodChange.get(iAccount);
-                        if(value == null) value = new BigDecimal(0.0);
+                        if(value == null) value = new BigDecimal(0);
                         break;
                     case 5:
                         // account.OutBalance
                         value = iOutSaldo.get(iAccount);
-                        if(value == null) value = new BigDecimal(0.0);
+                        if(value == null) value = new BigDecimal(0);
                         break;
                     case 6:
                         // account.group.1

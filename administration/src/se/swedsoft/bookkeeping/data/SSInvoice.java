@@ -53,7 +53,7 @@ public class SSInvoice extends SSSale {
      */
     public SSInvoice() {
         iType              = SSInvoiceType.NORMAL;
-        iCurrencyRate      = new BigDecimal(1.0);
+        iCurrencyRate      = new BigDecimal(1);
         iVoucher           = new SSVoucher();
         iOCRNumber         = null;
         iOrderNumbers      = "Fakturan har inga ordrar";
@@ -509,13 +509,13 @@ public class SSInvoice extends SSSale {
 
         for(SSVoucherRow iRow : iVoucher.getRows()){
             if(iRow.isDebet()){
-                if(iRow.getDebet().compareTo(new BigDecimal(0.0)) == -1){
+                if(iRow.getDebet().compareTo(new BigDecimal(0)) == -1){
                     iRow.setCredit(iRow.getDebet().negate());
                     iRow.setDebet(null);
                 }
             }
             else {
-                if(iRow.getCredit().compareTo(new BigDecimal(0.0)) == -1){
+                if(iRow.getCredit().compareTo(new BigDecimal(0)) == -1){
                     iRow.setDebet(iRow.getCredit().negate());
                     iRow.setCredit(null);
                 }

@@ -74,7 +74,7 @@ public class SSSaleMath {
      */
     public static BigDecimal getNetSum(SSSale iSale){
 
-        BigDecimal iNetSum  = new BigDecimal(0.0);
+        BigDecimal iNetSum  = new BigDecimal(0);
 
         for(SSSaleRow iRow: iSale.getRows()){
             BigDecimal iRowSum = iRow.getSum();
@@ -101,10 +101,10 @@ public class SSSaleMath {
 
         Map<SSTaxCode, BigDecimal> iTaxSum = new HashMap<SSTaxCode, BigDecimal>();
 
-        iTaxSum.put(SSTaxCode.TAXRATE_0, new BigDecimal(0.0));
-        iTaxSum.put(SSTaxCode.TAXRATE_1, new BigDecimal(0.0));
-        iTaxSum.put(SSTaxCode.TAXRATE_2, new BigDecimal(0.0));
-        iTaxSum.put(SSTaxCode.TAXRATE_3, new BigDecimal(0.0));
+        iTaxSum.put(SSTaxCode.TAXRATE_0, new BigDecimal(0));
+        iTaxSum.put(SSTaxCode.TAXRATE_1, new BigDecimal(0));
+        iTaxSum.put(SSTaxCode.TAXRATE_2, new BigDecimal(0));
+        iTaxSum.put(SSTaxCode.TAXRATE_3, new BigDecimal(0));
 
         if( iSale.getTaxFree() ) return iTaxSum;
 
@@ -199,7 +199,7 @@ public class SSSaleMath {
         if(!SSDB.getInstance().getCurrentCompany().isRoundingOff())
             return iSum.setScale(0, RoundingMode.HALF_UP).subtract(iSum);
         else
-            return new BigDecimal(0.0);
+            return new BigDecimal(0);
         //return iSum.subtract( iSum.setScale(0, RoundingMode.HALF_UP) );
     }
 

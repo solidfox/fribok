@@ -764,7 +764,7 @@ public class SSCompany implements Serializable {
      * @return
      */
     public BigDecimal getTaxRate1() {
-        if(iTaxrate1 == null) iTaxrate1 = new BigDecimal(25.0);
+        if(iTaxrate1 == null) iTaxrate1 = new BigDecimal(25);
         return iTaxrate1;
     }
 
@@ -783,7 +783,7 @@ public class SSCompany implements Serializable {
      * @return
      */
     public BigDecimal getTaxRate2() {
-        if(iTaxrate2 == null) iTaxrate2 = new BigDecimal(12.0);
+        if(iTaxrate2 == null) iTaxrate2 = new BigDecimal(12);
         return iTaxrate2;
     }
 
@@ -802,7 +802,7 @@ public class SSCompany implements Serializable {
      * @return
      */
     public BigDecimal getTaxRate3() {
-        if(iTaxrate3 == null) iTaxrate3 = new BigDecimal(6.0);
+        if(iTaxrate3 == null) iTaxrate3 = new BigDecimal(6);
         return iTaxrate3;
     }
 

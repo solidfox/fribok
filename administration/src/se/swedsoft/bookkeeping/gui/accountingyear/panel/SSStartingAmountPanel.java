@@ -124,13 +124,13 @@ public class SSStartingAmountPanel {
      *
      */
     private void updateSumField(){
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         // Copy all ammounts
         for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
             BigDecimal iVal = ssAccountBigDecimalEntry.getValue();
             if(iVal == null) {
-                iVal = new BigDecimal(0.0);
+                iVal = new BigDecimal(0);
                 iInBalance.put(ssAccountBigDecimalEntry.getKey(), iVal);
             }
             iSum = iSum.add(  iVal  );

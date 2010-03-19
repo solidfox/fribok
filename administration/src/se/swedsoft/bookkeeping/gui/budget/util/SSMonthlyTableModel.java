@@ -66,7 +66,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
                 value = month.toString();
                 break;
             case 1:
-                value= (iAccount == null) ? new BigDecimal(0.0) : iBudget.getValueForAccountAndMonth(iAccount, month);
+                value= (iAccount == null) ? new BigDecimal(0) : iBudget.getValueForAccountAndMonth(iAccount, month);
                 break;
         }
 

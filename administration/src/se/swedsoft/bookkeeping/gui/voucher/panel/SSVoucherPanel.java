@@ -216,8 +216,8 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                         List<SSVoucher> iVouchers = SSDB.getInstance().getVouchers();
                         SSNewAccountingYear iYear = SSDB.getInstance().getCurrentYear();
                         BigDecimal iInbalanceSum = iYear.getInBalance(iRow.getAccount());
-                        BigDecimal iDebetSum = new BigDecimal(0.0);
-                        BigDecimal iCreditSum = new BigDecimal(0.0);
+                        BigDecimal iDebetSum = new BigDecimal(0);
+                        BigDecimal iCreditSum = new BigDecimal(0);
 
                         for(SSVoucher iTempVoucher : iVouchers){
                             for(SSVoucherRow iTempRow : iTempVoucher.getRows()){
@@ -236,7 +236,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                         iSaldo.setValue(iTotalSum);
                     }
                     else{
-                        iSaldo.setValue(new BigDecimal(0.00));
+                        iSaldo.setValue(new BigDecimal(0));
                     }
                 }
             }
@@ -368,7 +368,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
                     iAccountChanged = false;
                     SSAutoDist iAutoDist = getAutoDistForAccount(iVoucherRow);
                     if(iAutoDist != null){
-                        if(!iAutoDist.getAmount().equals(new BigDecimal(0.0))){
+                        if(!iAutoDist.getAmount().equals(new BigDecimal(0))){
                             if(SSQueryDialog.showDialog(SSMainFrame.getInstance(),SSBundle.getBundle(), "voucherframe.doautodist") == JOptionPane.YES_OPTION){
                                 doAutoDistributionForAmount(iAutoDist, iVoucherRow);
                             }
@@ -427,11 +427,11 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
             iResultUnit = iAutoDistRow.getResultUnit();
             if (iAutoDistRow.getPercentage() != null && iValue != null) {
                 if (iAutoDistRow.getPercentage().doubleValue() < 0.0) {
-                    BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1.0));
-                    iCredit = iPercent.divide(new BigDecimal(100.0)).multiply(iValue);
+                    BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1));
+                    iCredit = iPercent.divide(new BigDecimal(100)).multiply(iValue);
                     iDebet = null;
                 } else if (iAutoDistRow.getPercentage().doubleValue() > 0.0) {
-                    iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100.0)).multiply(iValue);
+                    iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100)).multiply(iValue);
                     iCredit = null;
                 }
             }
@@ -450,9 +450,9 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
 
     private void doAutoDistributionForAmount(SSAutoDist iAutoDist, SSVoucherRow iRow) {
         iVoucher.getRows().remove(iRow);
-        BigDecimal iValue = new BigDecimal(0.0);
+        BigDecimal iValue = new BigDecimal(0);
         if (iAutoDist.getAmount().doubleValue() < 0.0) {
-            iValue = iAutoDist.getAmount().multiply(new BigDecimal(-1.0));
+            iValue = iAutoDist.getAmount().multiply(new BigDecimal(-1));
             iRow.setCredit(iValue);
             iRow.setDebet(null);
         } else if (iAutoDist.getAmount().doubleValue() > 0.0) {
@@ -471,20 +471,20 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
             SSNewResultUnit iResultUnit = iAutoDistRow.getResultUnit();
             if (iAutoDistRow.getPercentage() != null && iAutoDist.getAmount() != null) {
                 if (iAutoDistRow.getPercentage().doubleValue() < 0.0) {
-                    BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1.0));
+                    BigDecimal iPercent = iAutoDistRow.getPercentage().multiply(new BigDecimal(-1));
                     if (iAutoDist.getAmount().doubleValue() < 0.0) {
-                        iCredit = iPercent.divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1.0)));
+                        iCredit = iPercent.divide(new BigDecimal(100)).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1)));
                         iDebet = null;
                     } else {
-                        iCredit = iPercent.divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount());
+                        iCredit = iPercent.divide(new BigDecimal(100)).multiply(iAutoDist.getAmount());
                         iDebet = null;
                     }
                 } else if (iAutoDistRow.getPercentage().doubleValue() > 0.0) {
                     if (iAutoDist.getAmount().doubleValue() < 0.0) {
-                        iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1.0)));
+                        iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100)).multiply(iAutoDist.getAmount().multiply(new BigDecimal(-1)));
                         iCredit = null;
                     } else {
-                        iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100.0)).multiply(iAutoDist.getAmount());
+                        iDebet = iAutoDistRow.getPercentage().divide(new BigDecimal(100)).multiply(iAutoDist.getAmount());
                         iCredit = null;
                     }
                 }
@@ -625,7 +625,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
     private void setDifferenceToZero(SSVoucherRow iVoucherRow){
         BigDecimal iDebet = iVoucherRow.getDebet();
         BigDecimal iCredit = iVoucherRow.getCredit();
-        if((iDebet == null || iDebet.equals(new BigDecimal(0.0))) && (iCredit == null || iCredit.equals(new BigDecimal(0.0)))){
+        if((iDebet == null || iDebet.equals(new BigDecimal(0))) && (iCredit == null || iCredit.equals(new BigDecimal(0)))){
             BigDecimal iDifference = getDifference();
 
             if (iDifference.signum() < 0) {
@@ -647,7 +647,7 @@ public class SSVoucherPanel implements TableModelListener, ListSelectionListener
         if( iVoucher != null ){
             return SSVoucherMath.getDebetMinusCreditSum(iVoucher);
         } else {
-            return new BigDecimal(0.0);
+            return new BigDecimal(0);
         }
     }
 

@@ -196,8 +196,8 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
         @Override
         public Object getValue(SSSupplier iObject) {
             List<SSSupplierInvoice> iInvoices = SSSupplierMath.iInvoicesForSuppliers.get(iObject.getNumber());
-            if(iInvoices == null) return new BigDecimal(0.0);
-            BigDecimal iTotalSum = new BigDecimal(0.00);
+            if(iInvoices == null) return new BigDecimal(0);
+            BigDecimal iTotalSum = new BigDecimal(0);
             for(SSSupplierInvoice iInvoice:iInvoices){
                 if(SSSupplierInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())){
                     BigDecimal iSupplierInvoiceSaldo = SSSupplierInvoiceMath.iSaldoMap.get(iInvoice.getNumber());

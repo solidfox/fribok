@@ -29,7 +29,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
     public SSCurrency(){
         iCode         = null;
         iDescription  = null;
-        iExchangeRate = new BigDecimal(1.00);
+        iExchangeRate = new BigDecimal(1);
     }
 
     /**
@@ -40,7 +40,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
     public SSCurrency( String iCode, String iDescription){
         this.iCode        = iCode;
         this.iDescription = iDescription;
-        iExchangeRate     = new BigDecimal(1.00);
+        iExchangeRate     = new BigDecimal(1);
     }
 
     /**
@@ -108,7 +108,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
      * @return
      */
     public BigDecimal getExchangeRate() {
-        if(iExchangeRate == null) iExchangeRate = new BigDecimal(1.00);
+        if(iExchangeRate == null) iExchangeRate = new BigDecimal(1);
         return iExchangeRate;
     }
 

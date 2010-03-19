@@ -380,7 +380,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
             }
             else
             {
-                return new BigDecimal(1.00);
+                return new BigDecimal(1);
             }
         }
     }
@@ -629,7 +629,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
      * @return the sum
      */
     public BigDecimal getSum(){
-        BigDecimal iSum = new BigDecimal(0.0);
+        BigDecimal iSum = new BigDecimal(0);
 
         for (SSPurchaseOrderRow iRow : iRows) {
             BigDecimal iRowSum = iRow.getSum();

@@ -67,7 +67,7 @@ public class SSOwnReportMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
                 value = month.toString();
                 break;
             case 1:
-                value= (iAccount == null) ? new BigDecimal(0.0) : getValueForAccountAndMonth(iAccount, month).setScale(2, RoundingMode.HALF_UP);
+                value= (iAccount == null) ? new BigDecimal(0) : getValueForAccountAndMonth(iAccount, month).setScale(2, RoundingMode.HALF_UP);
                 break;
         }
 

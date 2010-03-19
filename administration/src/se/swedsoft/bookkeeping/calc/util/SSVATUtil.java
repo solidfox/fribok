@@ -51,8 +51,8 @@ public class SSVATUtil {
      */
     private static void addAccount(SSAccount account, List<SSAccount>accounts, Map<SSAccount, BigDecimal> creditMinusDebetSum, Map<SSAccount, BigDecimal> debetMinusCreditSum){
         accounts.add(account);
-        creditMinusDebetSum.put(account, new BigDecimal(0.0));
-        debetMinusCreditSum.put(account, new BigDecimal(0.0));
+        creditMinusDebetSum.put(account, new BigDecimal(0));
+        debetMinusCreditSum.put(account, new BigDecimal(0));
     }
 
 

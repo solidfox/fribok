@@ -301,7 +301,7 @@ public class SSNewAccountingYear implements Serializable, SSTableSearchable {
         BigDecimal amount = iInBalance.get(pAccount);
 
         if (amount == null) {
-            amount = new BigDecimal(0.0);
+            amount = new BigDecimal(0);
         }
         return amount;
     }

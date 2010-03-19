@@ -72,8 +72,8 @@ public class SSQuarterReportPrinter extends SSPrinter {
             List<SSInvoice>       iInvoicesForCustomer       = iInvoicesForCustomers.get(iCustomer.getNumber());
             List<SSCreditInvoice> iCreditInvoicesForCustomer = iCreditInvoicesForCustomers.get(iCustomer.getNumber());
 
-            iEuSaleCommodity         .put(iCustomer, new BigDecimal(0.0));
-            iEuSaleThirdPartCommodity.put(iCustomer, new BigDecimal(0.0));
+            iEuSaleCommodity         .put(iCustomer, new BigDecimal(0));
+            iEuSaleThirdPartCommodity.put(iCustomer, new BigDecimal(0));
 
             if(iInvoicesForCustomer != null){
                 for (SSInvoice iInvoice : iInvoicesForCustomer) {

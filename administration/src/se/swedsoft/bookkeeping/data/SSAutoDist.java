@@ -41,7 +41,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      */
     public SSAutoDist() {
         iRows           = new LinkedList<SSAutoDistRow>();
-        iAmount         = new BigDecimal(0.0);
+        iAmount         = new BigDecimal(0);
     }
 
     /**
@@ -50,7 +50,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      */
     public SSAutoDist(SSAccount iAccount) {
         iRows           = new LinkedList<SSAutoDistRow>();
-        iAmount         = new BigDecimal(0.0);
+        iAmount         = new BigDecimal(0);
         this.iAccount   = iAccount;
         iAccountNumber  = iAccount.getNumber();
     }

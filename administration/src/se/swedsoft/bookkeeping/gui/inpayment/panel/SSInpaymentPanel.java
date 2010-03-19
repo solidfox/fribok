@@ -300,8 +300,8 @@ public class SSInpaymentPanel {
      * @return The debet - credit
      */
     private BigDecimal getDifference() {
-        BigDecimal iCreditSum = new BigDecimal(0.0);
-        BigDecimal iDebetSum = new BigDecimal(0.0);
+        BigDecimal iCreditSum = new BigDecimal(0);
+        BigDecimal iDebetSum = new BigDecimal(0);
         for (SSVoucherRow iRow : iDifferenceTableModel.getObjects()) {
             if (iRow.getDebet() != null) {
                 iDebetSum = iDebetSum.add(iRow.getDebet());

@@ -54,7 +54,7 @@ public class SSExchangeRateDialog extends SSDialog{
             }
         });
 
-        iExchangeRate.setValue(new BigDecimal(1.0));
+        iExchangeRate.setValue(new BigDecimal(1));
     }
 
 

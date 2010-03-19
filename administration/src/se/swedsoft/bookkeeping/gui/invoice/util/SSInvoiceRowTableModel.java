@@ -62,7 +62,7 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
             if(iValue instanceof SSProduct){
                 iObject.setProduct((SSProduct)iValue);
                 if (iCustomer != null && iCustomer.getDiscount() != null) {
-                    iObject.setDiscount(iCustomer.getDiscount().doubleValue() == new BigDecimal(0.0).doubleValue() ? null : iCustomer.getDiscount());
+                    iObject.setDiscount(iCustomer.getDiscount().doubleValue() == new BigDecimal(0).doubleValue() ? null : iCustomer.getDiscount());
                 }
                 if (iObject.getProduct() != null && iObject.getProduct().getResultUnitNr() != null) {
                     iObject.setResultUnit(iObject.getProduct().getResultUnit(iObject.getProduct().getResultUnitNr()));
@@ -79,7 +79,7 @@ public class SSInvoiceRowTableModel extends SSEditableTableModel<SSSaleRow> {
                 if(iObject.getUnit()    == null) iObject.setUnit   ( iCompany.getStandardUnit() );
 
                 if (iCustomer != null && iCustomer.getDiscount() != null) {
-                    iObject.setDiscount(iCustomer.getDiscount().doubleValue() == new BigDecimal(0.0).doubleValue() ? null : iCustomer.getDiscount());
+                    iObject.setDiscount(iCustomer.getDiscount().doubleValue() == new BigDecimal(0).doubleValue() ? null : iCustomer.getDiscount());
                 }
                 if (iObject.getProduct() != null && iObject.getProduct().getResultUnit() != null) {
                     iObject.setResultUnit(iObject.getProduct().getResultUnit());

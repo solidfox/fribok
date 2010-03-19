@@ -210,7 +210,7 @@ public class SSSupplierInvoicePanel implements ActionListener{
             public void selected(SSSupplier selected) {
                 if(selected != null){
                     iSupplierInvoice.setSupplier(selected);
-                    iSupplierInvoice.setCurrencyRate(selected.getCurrency() == null ? new BigDecimal(1.0) : selected.getCurrency().getExchangeRate());
+                    iSupplierInvoice.setCurrencyRate(selected.getCurrency() == null ? new BigDecimal(1) : selected.getCurrency().getExchangeRate());
                     iPaymentTerm=selected.getPaymentTerm();
                     iSupplierInvoice.setPaymentTerm(iPaymentTerm);
                     iSupplierInvoice.setDueDate();
@@ -353,8 +353,8 @@ public class SSSupplierInvoicePanel implements ActionListener{
      * @return The debet - credit
      */
     private BigDecimal getDifference() {
-        BigDecimal iCreditSum = new BigDecimal(0.0);
-        BigDecimal iDebetSum = new BigDecimal(0.0);
+        BigDecimal iCreditSum = new BigDecimal(0);
+        BigDecimal iDebetSum = new BigDecimal(0);
         for (SSVoucherRow iRow : iCorrectionTableModel.getObjects()) {
             if (iRow.getDebet() != null) {
                 iDebetSum = iDebetSum.add(iRow.getDebet());

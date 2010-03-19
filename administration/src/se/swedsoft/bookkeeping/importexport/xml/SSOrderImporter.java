@@ -770,7 +770,7 @@ public class SSOrderImporter {
                                     iFields[6] = iFields[6].replace(",", ".");
                                     iRow.setUnitprice(new BigDecimal(iFields[6]));
                                 } catch (Exception e) {
-                                    iRow.setUnitprice(new BigDecimal(0.0));
+                                    iRow.setUnitprice(new BigDecimal(0));
                                 }
                             }
                         }
@@ -784,7 +784,7 @@ public class SSOrderImporter {
                                 iFields[6] = iFields[6].replace(",", ".");
                                 iProduct.setSellingPrice(new BigDecimal(iFields[6]));
                             } catch (Exception e) {
-                                iProduct.setSellingPrice(new BigDecimal(0.0));
+                                iProduct.setSellingPrice(new BigDecimal(0));
                             }
                             try {
                                 iFields[6] = iFields[6].replace(",", ".");

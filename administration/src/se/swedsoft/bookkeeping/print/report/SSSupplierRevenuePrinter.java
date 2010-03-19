@@ -234,7 +234,7 @@ public class SSSupplierRevenuePrinter extends SSPrinter {
                             if(iSupplier != null && iRevenue.containsKey(iMonth))
                                 value = iRevenue.get(iMonth);
                             else
-                                value = new BigDecimal(0.00);
+                                value = new BigDecimal(0);
                             break;
                         case 3  :
                             value = iMonth.isBetween(iFrom, iTo);

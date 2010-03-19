@@ -680,7 +680,7 @@ public class SSCustomerImporter {
                 if(iCustomer == null){
                     iCustomer = new SSCustomer();
                     iCustomer.setNumber(iFields[0]);
-                    //iCustomer.setCreditLimit(new BigDecimal(0.0));
+                    //iCustomer.setCreditLimit(new BigDecimal(0));
                     iNewCustomer = true;
                 }
 

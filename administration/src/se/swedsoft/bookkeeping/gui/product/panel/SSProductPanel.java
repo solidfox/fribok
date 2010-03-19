@@ -463,11 +463,11 @@ public class SSProductPanel {
      *
      */
     private void calculateFields() {
-        BigDecimal iUnitpriceSum     = new BigDecimal(0.0);
-        BigDecimal iVolumeSum        = new BigDecimal(0.0);
-        BigDecimal iWeightSum        = new BigDecimal(0.0);
-        BigDecimal iPurchasePriceSum = new BigDecimal(0.0);
-        BigDecimal iFreightSum       = new BigDecimal(0.0);
+        BigDecimal iUnitpriceSum     = new BigDecimal(0);
+        BigDecimal iVolumeSum        = new BigDecimal(0);
+        BigDecimal iWeightSum        = new BigDecimal(0);
+        BigDecimal iPurchasePriceSum = new BigDecimal(0);
+        BigDecimal iFreightSum       = new BigDecimal(0);
 
         for (SSProductRow iRow : iProduct.getParcelRows()) {
             SSProduct iProduct  = iRow.getProduct();

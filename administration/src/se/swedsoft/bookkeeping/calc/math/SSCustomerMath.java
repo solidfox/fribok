@@ -27,7 +27,7 @@ public class SSCustomerMath {
     public static BigDecimal getCustomerClain(SSCustomer iCustomer) {
         List<SSInvoice> iInvoices = SSInvoiceMath.getInvoicesForCustomer(iCustomer);
 
-        BigDecimal iCustomerClaim = new BigDecimal(0.0);
+        BigDecimal iCustomerClaim = new BigDecimal(0);
         for (SSInvoice iInvoice : iInvoices) {
             BigDecimal iSaldo = SSInvoiceMath.getSaldo(iInvoice.getNumber());
 

@@ -65,9 +65,9 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
     public SSAutoDistRow(SSAccount iAccount) {
         this.iAccount = iAccount;
         iAccountNr    = iAccount.getNumber();
-        iPercentage   = new BigDecimal(0.0);
-        iDebet        = new BigDecimal(0.0);
-        iCredit       = new BigDecimal(0.0);
+        iPercentage   = new BigDecimal(0);
+        iDebet        = new BigDecimal(0);
+        iCredit       = new BigDecimal(0);
         iProject      = null;
         iResultUnit   = null;
     }

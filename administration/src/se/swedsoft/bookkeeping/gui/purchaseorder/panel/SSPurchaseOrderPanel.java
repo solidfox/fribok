@@ -135,7 +135,7 @@ public class SSPurchaseOrderPanel {
             public void selected(SSSupplier selected) {
                 if(selected != null){
                     iPurchaseOrder.setSupplier(selected);
-                    iPurchaseOrder.setCurrencyRate(selected.getCurrency() == null ? new BigDecimal(1.0) : selected.getCurrency().getExchangeRate());
+                    iPurchaseOrder.setCurrencyRate(selected.getCurrency() == null ? new BigDecimal(1) : selected.getCurrency().getExchangeRate());
                     setOrder(iPurchaseOrder);
                 }
             }
