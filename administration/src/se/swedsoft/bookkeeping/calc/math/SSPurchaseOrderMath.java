@@ -11,6 +11,8 @@ import java.util.*;
  * Time: 17:11:57
  */
 public class SSPurchaseOrderMath {
+    private SSPurchaseOrderMath() {
+    }
 
     /*
     * @param iSale

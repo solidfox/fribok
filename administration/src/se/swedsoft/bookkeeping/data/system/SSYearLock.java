@@ -14,6 +14,8 @@ import java.io.PrintWriter;
  * inte kan tas bort av en annan användare.
  */
 public class SSYearLock {
+    private SSYearLock() {
+    }
 
 
     /**

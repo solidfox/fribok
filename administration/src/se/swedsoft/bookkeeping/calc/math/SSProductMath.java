@@ -14,6 +14,8 @@ import java.util.*;
  * Time: 11:40:06
  */
 public class SSProductMath {
+    private SSProductMath() {
+    }
 
 
     /**

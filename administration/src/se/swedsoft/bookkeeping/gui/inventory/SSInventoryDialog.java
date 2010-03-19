@@ -27,6 +27,8 @@ import java.util.List;
  * Time: 11:50:08
  */
 public class SSInventoryDialog {
+    private SSInventoryDialog() {
+    }
 
     /**
      *

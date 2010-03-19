@@ -9,6 +9,8 @@ import se.swedsoft.bookkeeping.print.SSPrinter;
  * Time: 16:49:39
  */
 public class SSSalePrinterUtils {
+    private SSSalePrinterUtils() {
+    }
 
     /**
      *

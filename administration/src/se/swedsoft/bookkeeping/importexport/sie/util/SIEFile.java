@@ -9,6 +9,8 @@ import java.util.List;
  * Time: 12:59:15
  */
 public class SIEFile {
+    private SIEFile() {
+    }
 
 
     /**

@@ -17,6 +17,8 @@ import java.util.Map;
  * Time: 10:55:55
  */
 public class SSAccountMath {
+    private SSAccountMath() {
+    }
 
     /**
      *

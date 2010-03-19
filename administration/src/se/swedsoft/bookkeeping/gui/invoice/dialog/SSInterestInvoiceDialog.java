@@ -29,6 +29,9 @@ public class SSInterestInvoiceDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSInterestInvoiceDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

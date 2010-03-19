@@ -31,6 +31,8 @@ import java.util.LinkedList;
  * Time: 15:48:37
  */
 public class SSVoucherDialog {
+    private SSVoucherDialog() {
+    }
 
     /**
      *

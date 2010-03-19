@@ -25,6 +25,9 @@ public class SSExportSIEDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSExportSIEDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

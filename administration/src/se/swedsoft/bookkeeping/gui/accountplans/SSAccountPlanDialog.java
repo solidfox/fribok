@@ -31,6 +31,9 @@ public class SSAccountPlanDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSAccountPlanDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

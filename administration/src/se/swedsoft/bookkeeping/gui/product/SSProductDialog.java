@@ -31,6 +31,9 @@ public class SSProductDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSProductDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

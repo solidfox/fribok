@@ -10,6 +10,8 @@ import java.util.List;
  * Time: 15:41:58
  */
 public class SSProjectMath {
+    private SSProjectMath() {
+    }
 
     /**
      * Returns one project for the current company.

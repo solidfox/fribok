@@ -33,6 +33,9 @@ public class SSDBConfig {
 
     private static Integer iYearId;
 
+    private SSDBConfig() {
+    }
+
 
     public static String getServerAddress() {
         return iServerAddress == null ? "" : iServerAddress;

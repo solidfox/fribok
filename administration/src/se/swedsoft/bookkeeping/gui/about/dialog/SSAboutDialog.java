@@ -19,6 +19,9 @@ public class SSAboutDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSAboutDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

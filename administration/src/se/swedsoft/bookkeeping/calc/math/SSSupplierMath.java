@@ -15,7 +15,8 @@ import java.util.List;
  * Time: 13:58:10
  */
 public class SSSupplierMath {
-
+    private SSSupplierMath() {
+    }
 
 
     /**

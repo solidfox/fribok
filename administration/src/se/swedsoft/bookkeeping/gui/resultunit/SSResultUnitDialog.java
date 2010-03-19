@@ -25,6 +25,8 @@ import java.util.List;
  * Time: 09:56:33
  */
 public class SSResultUnitDialog {
+    private SSResultUnitDialog() {
+    }
 
     /**
      *

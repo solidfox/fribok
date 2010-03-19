@@ -17,9 +17,8 @@ import java.util.List;
  * Time: 15:18:22
  */
 public class SSInpaymentMath {
-
-
-
+    private SSInpaymentMath() {
+    }
 
 
     /**

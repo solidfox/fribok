@@ -34,6 +34,9 @@ public class SSSupplierCreditInvoiceDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSSupplierCreditInvoiceDialog() {
+    }
+
 
     /**
      *

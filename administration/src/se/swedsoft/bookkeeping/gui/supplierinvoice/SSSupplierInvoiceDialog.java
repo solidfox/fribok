@@ -31,6 +31,8 @@ public class SSSupplierInvoiceDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSSupplierInvoiceDialog() {
+    }
 
 
     /**

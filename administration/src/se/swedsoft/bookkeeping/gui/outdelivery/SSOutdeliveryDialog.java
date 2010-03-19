@@ -24,6 +24,8 @@ import java.awt.event.WindowEvent;
  * Time: 11:50:08
  */
 public class SSOutdeliveryDialog {
+    private SSOutdeliveryDialog() {
+    }
 
     /**
      *

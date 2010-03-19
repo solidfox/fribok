@@ -35,6 +35,8 @@ import java.util.Map;
  * Time: 15:01:54
  */
 public class SSPeriodicInvoiceDialog {
+    private SSPeriodicInvoiceDialog() {
+    }
 
     /**
      *

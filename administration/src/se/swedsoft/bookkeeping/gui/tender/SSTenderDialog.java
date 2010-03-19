@@ -30,6 +30,9 @@ public class SSTenderDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSTenderDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

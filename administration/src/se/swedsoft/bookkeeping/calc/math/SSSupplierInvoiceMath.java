@@ -13,6 +13,8 @@ import java.util.*;
  * Time: 09:13:54
  */
 public class SSSupplierInvoiceMath {
+    private SSSupplierInvoiceMath() {
+    }
 
     /**
      *

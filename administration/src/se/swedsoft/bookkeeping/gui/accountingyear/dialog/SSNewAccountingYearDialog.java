@@ -26,6 +26,9 @@ public class SSNewAccountingYearDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSNewAccountingYearDialog() {
+    }
+
 
     /**
      *

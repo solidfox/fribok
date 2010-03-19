@@ -16,6 +16,8 @@ import java.util.List;
  * Time: 16:23:32
  */
 public class SSBudgetTableModels {
+    private SSBudgetTableModels() {
+    }
 
     /**
      *

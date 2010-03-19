@@ -27,6 +27,9 @@ public class SSBookkeeping {
 
     public static boolean iRunning;
 
+    private SSBookkeeping() {
+    }
+
     /**
      *
      */

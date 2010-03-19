@@ -25,6 +25,8 @@ import java.util.List;
  * Time: 11:57:35
  */
 public class SSSupplierPaymentImporter {
+    private SSSupplierPaymentImporter() {
+    }
 
     /**
      *

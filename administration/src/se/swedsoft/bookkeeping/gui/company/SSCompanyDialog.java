@@ -23,7 +23,8 @@ public class SSCompanyDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-
+    private SSCompanyDialog() {
+    }
 
 
     public static void editDialog(SSMainFrame iMainFrame, SSNewCompany pCompany, final SSDefaultTableModel<SSNewCompany> pModel) {

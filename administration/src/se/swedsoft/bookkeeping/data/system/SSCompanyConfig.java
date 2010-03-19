@@ -13,6 +13,8 @@ import java.util.Vector;
  * Time: 11:40:47
  */
 public class SSCompanyConfig {
+    private SSCompanyConfig() {
+    }
 
     public static void saveLastOpenCompany(SSSystemCompany iLastCompany) {
         File iFile = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");

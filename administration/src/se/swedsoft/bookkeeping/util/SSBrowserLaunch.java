@@ -21,6 +21,9 @@ public class SSBrowserLaunch {
 
     private static final String errMsg = "Error attempting to launch web browser";
 
+    private SSBrowserLaunch() {
+    }
+
     /**
      * Launch browser
      * @param url

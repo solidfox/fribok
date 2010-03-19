@@ -41,7 +41,10 @@ public class SSMail {
     // This dir where to look for pdf to send as attachments. This is hardcoded thouhg out the
     // application, so dont change.
     private static final String PDF_FILE_DIR =  "pdftoemail" + File.separator;
-    
+
+    private SSMail() {
+    }
+
     /**
      * Asks if the user really wants to send a mail, gets data from db, and calls 
      * doSendMail to send it

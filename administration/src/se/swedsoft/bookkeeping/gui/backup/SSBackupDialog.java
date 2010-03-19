@@ -16,6 +16,9 @@ import java.io.File;
  * Time: 10:16:17
  */
 public class SSBackupDialog {
+    private SSBackupDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

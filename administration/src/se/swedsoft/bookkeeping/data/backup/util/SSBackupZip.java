@@ -14,6 +14,8 @@ import java.util.zip.ZipOutputStream;
  * Time: 09:13:20
  */
 public class SSBackupZip {
+    private SSBackupZip() {
+    }
 
     public static class ArchiveFile{
 

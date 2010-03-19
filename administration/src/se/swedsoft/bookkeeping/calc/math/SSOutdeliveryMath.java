@@ -15,6 +15,8 @@ import java.util.Map;
  * Time: 16:34:16
  */
 public class SSOutdeliveryMath {
+    private SSOutdeliveryMath() {
+    }
 
     /**
      *

@@ -25,6 +25,9 @@ import java.awt.event.WindowEvent;
  * Time: 09:23:40
  */
 public class SSInpaymentDialog {
+    private SSInpaymentDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

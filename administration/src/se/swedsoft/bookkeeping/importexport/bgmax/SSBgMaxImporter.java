@@ -30,7 +30,8 @@ import java.util.List;
  * Time: 15:00:47
  */
 public class SSBgMaxImporter {
-
+    private SSBgMaxImporter() {
+    }
 
 
     /**

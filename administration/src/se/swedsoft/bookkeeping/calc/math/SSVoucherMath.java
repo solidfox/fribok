@@ -14,6 +14,9 @@ public class SSVoucherMath {
 
     private static Calendar cCalendar = Calendar.getInstance();
 
+    private SSVoucherMath() {
+    }
+
 
     /**
      *

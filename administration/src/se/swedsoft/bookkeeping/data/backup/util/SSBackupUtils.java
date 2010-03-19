@@ -17,6 +17,8 @@ import static se.swedsoft.bookkeeping.data.backup.util.SSBackupZip.ArchiveFile;
  * Time: 13:00:54
  */
 public class SSBackupUtils {
+    private SSBackupUtils() {
+    }
 
 
     /**

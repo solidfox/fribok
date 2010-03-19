@@ -14,6 +14,8 @@ import java.util.Date;
  * Time: 09:49:27
  */
 public class SSTableEditor {
+    private SSTableEditor() {
+    }
 
     public static void setDefaultEditors(SSTable iTable){
        

@@ -26,6 +26,9 @@ public class SSOwnReportDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSOwnReportDialog() {
+    }
+
     public static void newDialog(final SSMainFrame iMainFrame){
         final SSDialog iDialog = new SSDialog(iMainFrame, bundle.getString("ownreportframe.new.title"));
         final SSOwnReportPanel iPanel = new SSOwnReportPanel(new SSOwnReport());

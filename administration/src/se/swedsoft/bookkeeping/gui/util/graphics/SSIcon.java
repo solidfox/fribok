@@ -16,6 +16,9 @@ import java.util.Map;
 public class SSIcon {
     public static final File cIconDirectory = SSPath.get(SSPath.APP_ICONS);
 
+    private SSIcon() {
+    }
+
     public enum IconState {
         NORMAL     ("NORMAL"     ),
         DISABLED   ("DISABLED"   ),

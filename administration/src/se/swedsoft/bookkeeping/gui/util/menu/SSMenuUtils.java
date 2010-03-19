@@ -13,6 +13,9 @@ public class SSMenuUtils {
 
     private static SSBundle iBundle = SSBundle.getBundle();
 
+    private SSMenuUtils() {
+    }
+
 
     /**
      * @param name The name of the resouce

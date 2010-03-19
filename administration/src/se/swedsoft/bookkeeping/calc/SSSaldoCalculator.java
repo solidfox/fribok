@@ -13,8 +13,8 @@ import java.util.Map;
  * Time: 15:39:06
  */
 public class SSSaldoCalculator {
-
-
+    private SSSaldoCalculator() {
+    }
 
 
     /**

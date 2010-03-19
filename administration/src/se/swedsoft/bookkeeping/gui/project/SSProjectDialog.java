@@ -27,6 +27,9 @@ import java.util.List;
 public class SSProjectDialog {
     static final SSBundle bundle = SSBundle.getBundle();
 
+    private SSProjectDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

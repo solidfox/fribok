@@ -11,6 +11,9 @@ import java.util.List;
  * Time: 10:54:27
  */
 public class SSResultUnitMath {
+    private SSResultUnitMath() {
+    }
+
     /**
      * Returns one resultunit for the current company.
      *

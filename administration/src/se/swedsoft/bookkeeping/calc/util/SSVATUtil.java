@@ -20,7 +20,8 @@ import java.util.Map;
  * Time: 08:40:41
  */
 public class SSVATUtil {
-
+    private SSVATUtil() {
+    }
 
 
     /**

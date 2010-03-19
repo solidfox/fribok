@@ -38,6 +38,8 @@ public class SSPurchaseOrderDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSPurchaseOrderDialog() {
+    }
 
 
     /**

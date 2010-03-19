@@ -20,6 +20,9 @@ public class SSImage {
     // Library of all graphics
     private static Map<String, BufferedImage> iGraphics = new HashMap<String, BufferedImage>();
 
+    private SSImage() {
+    }
+
     // Standard graphics
     static{
         loadImage("BACKGROUND"    , "Background.png" );

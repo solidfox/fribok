@@ -16,6 +16,9 @@ public class SupplierPaymentConfig {
 
     private static Date iMessageDate;
 
+    private SupplierPaymentConfig() {
+    }
+
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
 

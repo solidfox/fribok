@@ -10,6 +10,8 @@ import java.util.List;
  * Time: 17:12:40
  */
 public class SSAccountGroupMath {
+    private SSAccountGroupMath() {
+    }
 
 
     /**

@@ -34,6 +34,9 @@ public class SSCreditInvoiceDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSCreditInvoiceDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

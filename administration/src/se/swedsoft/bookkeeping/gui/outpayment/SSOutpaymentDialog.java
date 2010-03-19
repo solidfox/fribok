@@ -30,6 +30,8 @@ public class SSOutpaymentDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSOutpaymentDialog() {
+    }
 
 
     /**

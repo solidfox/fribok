@@ -30,7 +30,11 @@ public class SSSupplierDialog {
 
 
     private static Dimension iDialogSize = new Dimension(640, 480);
-          /**
+
+    private SSSupplierDialog() {
+    }
+
+    /**
      *
      * @param iMainFrame
      * @param pModel

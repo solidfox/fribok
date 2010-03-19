@@ -38,6 +38,9 @@ public class SSOrderDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSOrderDialog() {
+    }
+
 
     /**
      *

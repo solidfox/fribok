@@ -30,6 +30,9 @@ public class SSCustomerDialog {
 
     private static Dimension iDialogSize = new Dimension(640, 480);
 
+    private SSCustomerDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

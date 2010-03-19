@@ -29,6 +29,9 @@ public class SSAutoDistDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
+    private SSAutoDistDialog() {
+    }
+
     /**
      *
      * @param iMainFrame

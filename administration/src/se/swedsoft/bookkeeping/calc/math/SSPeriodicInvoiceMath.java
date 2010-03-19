@@ -15,6 +15,8 @@ import java.util.Map;
  * Time: 09:53:50
  */
 public class SSPeriodicInvoiceMath {
+    private SSPeriodicInvoiceMath() {
+    }
 
 
     /**

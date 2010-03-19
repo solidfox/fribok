@@ -15,6 +15,8 @@ import java.util.List;
  * Time: 13:55:43
  */
 public class SSCustomerMath {
+    private SSCustomerMath() {
+    }
 
     /**
      * Returns the customer claim for the specified cistpmer

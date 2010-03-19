@@ -12,6 +12,8 @@ import java.io.PrintWriter;
  * inte kan ändras samtidigt av olika instanser av programmet.
  */
 public class SSPostLock {
+    private SSPostLock() {
+    }
 
 
     /**

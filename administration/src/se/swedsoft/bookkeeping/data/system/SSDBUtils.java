@@ -15,6 +15,9 @@ import java.net.SocketException;
 public class SSDBUtils {
     private static Integer iLocalRevisionNumber = 1;
 
+    private SSDBUtils() {
+    }
+
     private static void copyFile(File in, File out) throws Exception {
         try{
             FileInputStream fis  = new FileInputStream(in);

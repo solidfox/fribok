@@ -11,6 +11,9 @@ public class SSDateMath {
 
     private static Calendar cCalendar = Calendar.getInstance();
 
+    private SSDateMath() {
+    }
+
     /**
      * Sets the time parts of a date to 00:00:00
      *

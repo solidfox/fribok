@@ -35,6 +35,8 @@ import java.util.List;
  * Time: 10:38:58
  */
 public class SSReportFactory {
+    private SSReportFactory() {
+    }
 
     /**
      *

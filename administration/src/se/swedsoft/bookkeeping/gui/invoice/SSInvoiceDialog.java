@@ -31,6 +31,8 @@ import java.util.List;
  * Time: 15:01:54
  */
 public class SSInvoiceDialog {
+    private SSInvoiceDialog() {
+    }
 
     /**
      *

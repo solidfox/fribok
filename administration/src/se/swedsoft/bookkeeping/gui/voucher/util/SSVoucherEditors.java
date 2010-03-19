@@ -31,6 +31,8 @@ public class SSVoucherEditors {
     public static Color COLOR_CROSSED = new Color(255,192,192);
     public static Color COLOR_ADDED   = new Color(192,192,255);
 
+    private SSVoucherEditors() {
+    }
 
 
     static class SSDefaultVoucherRowRenderer<T extends SSTableSearchable> extends DefaultTableCellRenderer {

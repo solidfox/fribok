@@ -10,6 +10,8 @@ import se.swedsoft.bookkeeping.data.SSInvoice;
  * Time: 11:16:16
  */
 public class SSOCRNumber {
+    private SSOCRNumber() {
+    }
 
     /**
      * Generate an OCR number from an invoice
