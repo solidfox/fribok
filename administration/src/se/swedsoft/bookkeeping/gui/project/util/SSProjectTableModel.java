@@ -28,6 +28,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
     /**
      * Default constructor.
+     * @param iProjects
      */
     public SSProjectTableModel(List<SSNewProject> iProjects) {
         super(iProjects);
@@ -84,6 +85,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
     /**
      *
+     * @param iProjects
      * @return
      */
     public static SSProjectTableModel getDropDownModel(List<SSNewProject> iProjects){

@@ -46,7 +46,6 @@ public class SSAccountPlanImporter {
 
     /**
      *
-     * @return
      * @throws IOException
      * @throws SSImportException
      */

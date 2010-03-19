@@ -39,7 +39,9 @@ public class SSProjectRevenuePrinter extends SSPrinter {
     Map<String, Map<SSMonth, BigDecimal>> iProjectRevenue;
     /**
      *
-     * @param
+     * @param pProjects
+     * @param pFrom
+     * @param pTo
      */
     public SSProjectRevenuePrinter(List<SSNewProject> pProjects, Date pFrom, Date pTo ){
         iProjects = pProjects;

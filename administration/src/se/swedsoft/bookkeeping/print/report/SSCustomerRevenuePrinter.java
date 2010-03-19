@@ -38,7 +38,9 @@ public class SSCustomerRevenuePrinter extends SSPrinter {
     Map<String, Map<SSMonth, BigDecimal>> iCustomerRevenue;
     /**
      *
-     * @param
+     * @param pCustomers
+     * @param pFrom
+     * @param pTo
      */
     public SSCustomerRevenuePrinter(List<SSCustomer> pCustomers, Date pFrom, Date pTo ){
         iCustomers = pCustomers;
