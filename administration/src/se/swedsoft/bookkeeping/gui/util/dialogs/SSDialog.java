@@ -19,27 +19,27 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
     private int iModalResult;
 
-
-
-    /**
-     *
-     * @param iFrame
-     * @param title
-     */
-    public SSDialog(JFrame iFrame, String title) {
-        this(iFrame, title, true);
+    {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
      *
-     * @param iFrame
+     * @param owner
+     * @param title
+     */
+    public SSDialog(JFrame owner, String title) {
+        this(owner, title, true);
+    }
+
+    /**
+     *
+     * @param owner
      * @param title
      * @param modal
      */
-    public SSDialog(JFrame iFrame, String title, boolean modal) {
-        super(iFrame, title, modal);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    public SSDialog(JFrame owner, String title, boolean modal) {
+        super(owner, title, modal);
 
         setLayout(new BorderLayout());
 
@@ -47,31 +47,25 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
         // Add the esc-
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
-
     }
-
 
     /**
      *
-     * @param iDialog
+     * @param owner
      * @param title
      */
-    public SSDialog(JDialog iDialog, String title) {
-        this(iDialog, title, true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    public SSDialog(JDialog owner, String title) {
+        this(owner, title, true);
     }
 
     /**
      *
-     * @param iDialog
+     * @param owner
      * @param title
      * @param modal
      */
-    public SSDialog(JDialog iDialog, String title, boolean modal) {
-        super(iDialog, title, modal);
-
-        //Make sure memory is freed when dialog is closed.
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    public SSDialog(JDialog owner, String title, boolean modal) {
+        super(owner, title, modal);
 
         setLayout(new BorderLayout());
 
@@ -80,22 +74,19 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
     }
 
-
-
-    /*
-    *
-    */
+    /**
+     *
+     */
     public void setVisible(){
         setVisible(true);
     }
 
-    /*
-    *
-    */
+    /**
+     *
+     */
     public void closeDialog(){
         setVisible(false);
-        //this.dispose();
-        //System.gc();
+        //dispose();
     }
 
     @Override
@@ -115,7 +106,6 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
         setVisible(false);
         //dispose();
-        //System.gc();
     }
 
     /*
@@ -154,8 +144,6 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         add(iPanel, BorderLayout.CENTER);
         pack();
     }
-
-
 
     /*
       * @param iMainFrame
@@ -240,8 +228,6 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         return iModalResult;
     }
 
-
-
     /**
      *
      * @param iOwner
@@ -306,4 +292,3 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         return sb.toString();
     }
 }
-
