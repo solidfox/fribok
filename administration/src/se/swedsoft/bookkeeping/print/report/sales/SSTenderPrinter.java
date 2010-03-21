@@ -34,7 +34,7 @@ public class SSTenderPrinter extends SSPrinter {
         this.iTender  = iTender;
         this.iLocale = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.tenderreport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.tenderreport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

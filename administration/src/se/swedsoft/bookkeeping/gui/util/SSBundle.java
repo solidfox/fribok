@@ -9,10 +9,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 /**
- * The resoucebundle for this application
+ * The resourcebundle for this application
  */
 public class SSBundle extends ResourceBundle {
-
 
     /** */
     private static SSBundle cBundle;
@@ -21,29 +20,20 @@ public class SSBundle extends ResourceBundle {
         cBundle = new SSBundle(ResourceBundle.getBundle("book"));
     }
 
-    //--------------- Instance variables ----------------------------
-
     /** */
     private ResourceBundle iBundle;
 
-    //--------------- Constructors ----------------------------------
-
     /**
-     * Default constructor. <P>
-     *
-     * @param bundle The bundle to use and to protect us from.
+     * Default constructor.
+     * @param bundle the bundle to use and to protect us from
      */
     public SSBundle(ResourceBundle bundle) {
         iBundle = bundle;
     }
 
-    //--------------- Methods ---------------------------------------
-
-
     /**
-     * Returns the bundle to use. <P>
-     *
-     * @return A "Safe" resource bundle.
+     * Returns the bundle to use.
+     * @return a "Safe" resource bundle
      */
     public static SSBundle getBundle() {
         return cBundle;
@@ -51,6 +41,7 @@ public class SSBundle extends ResourceBundle {
 
     /**
      * Returns an enumeration of the keys.
+     * @return
      */
     @Override
     public Enumeration<String> getKeys() {
@@ -60,7 +51,7 @@ public class SSBundle extends ResourceBundle {
     /**
      *
      * @param key
-     * @return If the key exists in the bundle
+     * @return true if the key exists in the bundle
      */
     public boolean hasKey(String key){
         try {
@@ -71,17 +62,13 @@ public class SSBundle extends ResourceBundle {
         return true;
     }
 
-
-
     /**
      * Gets an object for the given key from this resource bundle.
      * Returns null if this resource bundle does not contain an
      * object for the given key.
      *
      * @param key the key for the desired object
-     *
      * @return the object for the given key, or null
-     *
      * @throws NullPointerException if <code>key</code> is <code>null</code>
      */
     @Override

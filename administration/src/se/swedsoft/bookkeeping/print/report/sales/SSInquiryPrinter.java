@@ -30,7 +30,7 @@ public class SSInquiryPrinter extends SSPrinter {
         this.iPurchaseOrder = iPurchaseOrder;
         this.iLocale        = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.inquiryreport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.inquiryreport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

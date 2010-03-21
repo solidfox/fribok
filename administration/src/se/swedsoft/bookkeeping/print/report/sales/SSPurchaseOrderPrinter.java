@@ -30,7 +30,7 @@ public class SSPurchaseOrderPrinter extends SSPrinter {
         this.iPurchaseOrder = iPurchaseOrder;
         this.iLocale        = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.purchaseorderrreport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.purchaseorderrreport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

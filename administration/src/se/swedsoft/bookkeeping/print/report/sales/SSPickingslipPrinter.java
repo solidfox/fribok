@@ -30,7 +30,7 @@ public class SSPickingslipPrinter extends SSPrinter {
         this.iOrder  = iOrder;
         this.iLocale = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.pickingslipreport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.pickingslipreport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

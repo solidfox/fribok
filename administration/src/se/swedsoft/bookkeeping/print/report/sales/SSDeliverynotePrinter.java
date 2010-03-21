@@ -35,7 +35,7 @@ public class SSDeliverynotePrinter extends SSPrinter {
         this.iOrder    = iOrder;
         this.iLocale   = iLocale;
         iHideUnitprice = iOrder.getHideUnitprice();
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.deliverynotereport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.deliverynotereport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

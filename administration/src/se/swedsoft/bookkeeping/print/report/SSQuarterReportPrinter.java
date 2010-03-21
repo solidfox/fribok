@@ -43,7 +43,7 @@ public class SSQuarterReportPrinter extends SSPrinter {
         this.iFrom   = iFrom;
         this.iTo     = iTo;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.quarterreport");//", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.quarterreport");//", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

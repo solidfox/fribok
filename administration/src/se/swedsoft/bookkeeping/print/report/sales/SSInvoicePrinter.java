@@ -39,7 +39,7 @@ public class SSInvoicePrinter extends SSPrinter {
         this.iInvoice = iInvoice;
         this.iLocale  = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.invoicereport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.invoicereport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );
@@ -115,8 +115,8 @@ public class SSInvoicePrinter extends SSPrinter {
         addParameter("invoice.ourcontact"               , iInvoice.getOurContactPerson() );
         addParameter("invoice.deliveryterm"             , iInvoice.getDeliveryTerm() , true);
         addParameter("invoice.deliveryway"              , iInvoice.getDeliveryWay () , true);
-        addParameter("invoice.paymentterm"              , iInvoice.getPaymentTerm () , true);
-        addParameter("invoice.delayinterest"            , iInvoice.getDelayInterest () , true);
+        addParameter("invoice.paymentterm"              , iInvoice.getPaymentTerm() , true);
+        addParameter("invoice.delayinterest"            , iInvoice.getDelayInterest() , true);
         addParameter("invoice.currency"                 , iInvoice.getCurrency() , true);
 
 

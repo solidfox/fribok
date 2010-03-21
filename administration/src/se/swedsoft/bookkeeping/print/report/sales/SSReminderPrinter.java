@@ -38,7 +38,7 @@ public class SSReminderPrinter extends SSPrinter {
         this.iCustomer = iCustomer;
         this.iLocale   = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.reminderreport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.reminderreport", iLocale);
 
         setBundle( iBundle );
         setLocale( iLocale );

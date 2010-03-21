@@ -31,7 +31,7 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
         this.iLocale  = iLocale;
         super.iLocale = iLocale;
         
-        ResourceBundle iBundle = ResourceBundle.getBundle("se.swedsoft.bookkeeping.resources.invoicereport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.invoicereport", iLocale);
 
 
         setBundle( iBundle );
