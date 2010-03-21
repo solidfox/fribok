@@ -184,14 +184,14 @@ public class SSSupplierCreditInvoice extends SSSupplierInvoice  {
         return false;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSSupplierCreditInvoice");
-        sb.append("{iCrediting=").append(iCrediting);
-        sb.append(", iCreditingNr=").append(iCreditingNr);
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iNumber);
+        sb.append(", ");
+        sb.append(iDate);
+
         return sb.toString();
     }
 

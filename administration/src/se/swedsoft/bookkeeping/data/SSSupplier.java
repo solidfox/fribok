@@ -493,32 +493,14 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         return iNumber;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSSupplier");
-        sb.append("{iAddress=").append(iAddress);
-        sb.append(", iBankAccountNumber='").append(iBankAccountNumber).append('\'');
-        sb.append(", iComment='").append(iComment).append('\'');
-        sb.append(", iCurrency=").append(iCurrency);
-        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
-        sb.append(", iDeliveryWay=").append(iDeliveryWay);
-        sb.append(", iEmail='").append(iEmail).append('\'');
-        sb.append(", iHomepage='").append(iHomepage).append('\'');
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append(", iNumber='").append(iNumber).append('\'');
-        sb.append(", iOurContact='").append(iOurContact).append('\'');
-        sb.append(", iOurCustomerNr='").append(iOurCustomerNr).append('\'');
-        sb.append(", iOutpaymentNumber=").append(iOutpaymentNumber);
-        sb.append(", iPaymentTerm=").append(iPaymentTerm);
-        sb.append(", iPhone='").append(iPhone).append('\'');
-        sb.append(", iPhone2='").append(iPhone2).append('\'');
-        sb.append(", iPlusAccountNumber='").append(iPlusAccountNumber).append('\'');
-        sb.append(", iRegistrationNumber='").append(iRegistrationNumber).append('\'');
-        sb.append(", iTeleFax='").append(iTeleFax).append('\'');
-        sb.append(", iYourContact='").append(iYourContact).append('\'');
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+        sb.append(iNumber);
+        sb.append(", ");
+        sb.append(iName);
+
+
         return sb.toString();
     }
 

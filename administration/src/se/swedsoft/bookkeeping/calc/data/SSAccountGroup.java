@@ -152,6 +152,33 @@ public class SSAccountGroup implements Serializable {
         return cBundle.getString(iBundle + ".sum");
     }
 
+    public String toString() {
+        return toString("");
+    }
+    
+    public String toString(String Seperator) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(Seperator);
+        sb.append( iId );
+        sb.append(": ");
+        sb.append( getTitle() );
+        sb.append(", ");
+        sb.append( iFromAccount );
+        sb.append(" - ");
+        sb.append( iToAccount );
+
+        if(iGroups  != null){
+            sb.append("{\n");
+            for(SSAccountGroup iGroup : iGroups ){
+                sb.append(iGroup.toString(Seperator + "  ") );
+            }
+            sb.append("  }\n");
+        }
+        sb.append('\n');
+        return sb.toString();
+    }
+
     /**
      *
      * @param iAccounts
@@ -168,18 +195,6 @@ public class SSAccountGroup implements Serializable {
     }
 
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.calc.data.SSAccountGroup");
-        sb.append("{iBundle='").append(iBundle).append('\'');
-        sb.append(", iFromAccount=").append(iFromAccount);
-        sb.append(", iGroups=").append(iGroups);
-        sb.append(", iId=").append(iId);
-        sb.append(", iToAccount=").append(iToAccount);
-        sb.append('}');
-        return sb.toString();
-    }
 }
 
 

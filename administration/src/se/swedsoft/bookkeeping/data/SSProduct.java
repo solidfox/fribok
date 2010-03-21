@@ -709,39 +709,15 @@ public class SSProduct implements SSTableSearchable, Serializable {
         return false;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSProduct");
-        sb.append("{iDefaultAccounts=").append(iDefaultAccounts);
-        sb.append(", iDescription='").append(iDescription).append('\'');
-        sb.append(", iDescriptions=").append(iDescriptions);
-        sb.append(", iExpired=").append(iExpired);
-        sb.append(", iFreight=").append(iFreight);
-        sb.append(", iNumber='").append(iNumber).append('\'');
-        sb.append(", iOrdercount=").append(iOrdercount);
-        sb.append(", iOrderpoint=").append(iOrderpoint);
-        sb.append(", iProductRows=").append(iProductRows);
-        sb.append(", iProject=").append(iProject);
-        sb.append(", iProjectNr=").append(iProjectNr);
-        sb.append(", iProjectNumber='").append(iProjectNumber).append('\'');
-        sb.append(", iPurchasePrice=").append(iPurchasePrice);
-        sb.append(", iResultUnit=").append(iResultUnit);
-        sb.append(", iResultUnitNr=").append(iResultUnitNr);
-        sb.append(", iResultUnitNumber='").append(iResultUnitNumber).append('\'');
-        sb.append(", iStockGoods=").append(iStockGoods);
-        sb.append(", iStockPrice=").append(iStockPrice);
-        sb.append(", iSupplier=").append(iSupplier);
-        sb.append(", iSupplierNr='").append(iSupplierNr).append('\'');
-        sb.append(", iSupplierProductNr='").append(iSupplierProductNr).append('\'');
-        sb.append(", iTaxCode=").append(iTaxCode);
-        sb.append(", iUnit=").append(iUnit);
-        sb.append(", iUnitprice=").append(iUnitprice);
-        sb.append(", iVolume=").append(iVolume);
-        sb.append(", iWarehouseLocation='").append(iWarehouseLocation).append('\'');
-        sb.append(", iWeight=").append(iWeight);
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iNumber);
+        sb.append(", ");
+        sb.append(iDescription);
+
+
         return sb.toString();
     }
 

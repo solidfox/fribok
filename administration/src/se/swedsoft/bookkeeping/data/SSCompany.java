@@ -1720,73 +1720,12 @@ public class SSCompany implements Serializable {
     }
 
 
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSCompany");
-        sb.append("{iAddress=").append(iAddress);
-        sb.append(", iAutoDists=").append(iAutoDists);
-        sb.append(", iAutoIncrement=").append(iAutoIncrement);
-        sb.append(", iBank='").append(iBank).append('\'');
-        sb.append(", iBankAccountNumber='").append(iBankAccountNumber).append('\'');
-        sb.append(", iContactPerson='").append(iContactPerson).append('\'');
-        sb.append(", iCorporateID='").append(iCorporateID).append('\'');
-        sb.append(", iCreditInvoices=").append(iCreditInvoices);
-        sb.append(", iCurrencies=").append(iCurrencies);
-        sb.append(", iCurrency=").append(iCurrency);
-        sb.append(", iCustomers=").append(iCustomers);
-        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
-        sb.append(", iDelayintrest=").append(iDelayintrest);
-        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
-        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
-        sb.append(", iDeliveryTerms=").append(iDeliveryTerms);
-        sb.append(", iDeliveryWay=").append(iDeliveryWay);
-        sb.append(", iDeliveryWays=").append(iDeliveryWays);
-        sb.append(", iEMail='").append(iEMail).append('\'');
-        sb.append(", iEstimatedDelivery='").append(iEstimatedDelivery).append('\'');
-        sb.append(", iIBAN='").append(iIBAN).append('\'');
-        sb.append(", iId=").append(iId);
-        sb.append(", iIndeliveries=").append(iIndeliveries);
-        sb.append(", iInpayments=").append(iInpayments);
-        sb.append(", iInventories=").append(iInventories);
-        sb.append(", iInvoices=").append(iInvoices);
-        sb.append(", iLogotype='").append(iLogotype).append('\'');
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append(", iOrders=").append(iOrders);
-        sb.append(", iOutdeliveries=").append(iOutdeliveries);
-        sb.append(", iOutpayments=").append(iOutpayments);
-        sb.append(", iPaymentTerm=").append(iPaymentTerm);
-        sb.append(", iPaymentTerms=").append(iPaymentTerms);
-        sb.append(", iPeriodicInvoices=").append(iPeriodicInvoices);
-        sb.append(", iPhone='").append(iPhone).append('\'');
-        sb.append(", iPhone2='").append(iPhone2).append('\'');
-        sb.append(", iPlusAccountNumber='").append(iPlusAccountNumber).append('\'');
-        sb.append(", iProducts=").append(iProducts);
-        sb.append(", iProjects=").append(iProjects);
-        sb.append(", iPurchaseOrders=").append(iPurchaseOrders);
-        sb.append(", iReminderfee=").append(iReminderfee);
-        sb.append(", iResidence='").append(iResidence).append('\'');
-        sb.append(", iResultUnits=").append(iResultUnits);
-        sb.append(", iSMTPAddress='").append(iSMTPAddress).append('\'');
-        sb.append(", iStandardTexts=").append(iStandardTexts);
-        sb.append(", iStandardUnit=").append(iStandardUnit);
-        sb.append(", iSupplierCreditinvoices=").append(iSupplierCreditinvoices);
-        sb.append(", iSupplierInvoices=").append(iSupplierInvoices);
-        sb.append(", iSuppliers=").append(iSuppliers);
-        sb.append(", iSwift='").append(iSwift).append('\'');
-        sb.append(", iTaxrate1=").append(iTaxrate1);
-        sb.append(", iTaxrate2=").append(iTaxrate2);
-        sb.append(", iTaxrate3=").append(iTaxrate3);
-        sb.append(", iTaxRegistered=").append(iTaxRegistered);
-        sb.append(", iTelefax='").append(iTelefax).append('\'');
-        sb.append(", iTenders=").append(iTenders);
-        sb.append(", iUnits=").append(iUnits);
-        sb.append(", iVATNumber='").append(iVATNumber).append('\'');
-        sb.append(", iVolumeUnit='").append(iVolumeUnit).append('\'');
-        sb.append(", iVoucherTemplates=").append(iVoucherTemplates);
-        sb.append(", iWebAddress='").append(iWebAddress).append('\'');
-        sb.append(", iWeightUnit='").append(iWeightUnit).append('\'');
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iName);
+
         return sb.toString();
     }
 

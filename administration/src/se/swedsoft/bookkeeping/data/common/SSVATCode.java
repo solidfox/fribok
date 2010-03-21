@@ -90,15 +90,9 @@ public class SSVATCode implements SSTableSearchable {
         return iName;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.common.SSVATCode");
-        sb.append("{iDescription='").append(iDescription).append('\'');
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return iName;
     }
 
     

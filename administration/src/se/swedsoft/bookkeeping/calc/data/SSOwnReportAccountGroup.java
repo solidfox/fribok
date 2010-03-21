@@ -105,6 +105,40 @@ public class SSOwnReportAccountGroup {
         return iSumTitle;
     }
 
+
+
+
+
+    
+    public String toString() {
+        return toString("");
+    }
+
+    
+    public String toString(String Seperator) {
+        /*StringBuilder sb = new StringBuilder();
+
+        sb.append(Seperator);
+        sb.append( iId );
+        sb.append(": ");
+        sb.append( getTitle() );
+        sb.append(", ");
+        sb.append( iFromAccount );
+        sb.append(" - ");
+        sb.append( iToAccount );
+
+        if(iGroups  != null){
+            sb.append("{\n");
+            for(SSAccountGroup iGroup : iGroups ){
+                sb.append(iGroup.toString(Seperator + "  ") );
+            }
+            sb.append("  }\n");
+        }
+        sb.append("\n");
+        return sb.toString();*/
+        return iName;
+    }
+
     /**
      *
      * @param iAccounts
@@ -119,17 +153,4 @@ public class SSOwnReportAccountGroup {
         }
         return iGroupAccounts;
     } */
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.calc.data.SSOwnReportAccountGroup");
-        sb.append("{iAccounts=").append(iAccounts);
-        sb.append(", iGroups=").append(iGroups);
-        sb.append(", iId=").append(iId);
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append(", iSumTitle='").append(iSumTitle).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 }

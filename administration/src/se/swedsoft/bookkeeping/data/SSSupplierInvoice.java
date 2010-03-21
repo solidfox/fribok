@@ -669,31 +669,14 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         return false;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSSupplierInvoice");
-        sb.append("{iBGCEntered=").append(iBGCEntered);
-        sb.append(", iCorrection=").append(iCorrection);
-        sb.append(", iCurrency=").append(iCurrency);
-        sb.append(", iCurrencyRate=").append(iCurrencyRate);
-        sb.append(", iDate=").append(iDate);
-        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
-        sb.append(", iDueDate=").append(iDueDate);
-        sb.append(", iEntered=").append(iEntered);
-        sb.append(", iNumber=").append(iNumber);
-        sb.append(", iPaymentTerm=").append(iPaymentTerm);
-        sb.append(", iReferencenumber='").append(iReferencenumber).append('\'');
-        sb.append(", iRoundingSum=").append(iRoundingSum);
-        sb.append(", iRows=").append(iRows);
-        sb.append(", iStockInfluencing=").append(iStockInfluencing);
-        sb.append(", iSupplier=").append(iSupplier);
-        sb.append(", iSupplierName='").append(iSupplierName).append('\'');
-        sb.append(", iSupplierNr='").append(iSupplierNr).append('\'');
-        sb.append(", iTaxSum=").append(iTaxSum);
-        sb.append(", iVoucher=").append(iVoucher);
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iNumber);
+        sb.append(", ");
+        sb.append(iDate);
+
         return sb.toString();
     }
 

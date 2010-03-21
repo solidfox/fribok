@@ -168,15 +168,18 @@ public class SSProductRow implements Serializable {
     }
 
 
-    @Override
+
+
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSProductRow");
-        sb.append("{iCount=").append(iCount);
-        sb.append(", iDescription='").append(iDescription).append('\'');
-        sb.append(", iProduct=").append(iProduct);
-        sb.append(", iProductNr='").append(iProductNr).append('\'');
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iProductNr);
+        sb.append(", ");
+        sb.append(iDescription);
+        sb.append(", ");
+        sb.append(iCount);
+
         return sb.toString();
     }
 

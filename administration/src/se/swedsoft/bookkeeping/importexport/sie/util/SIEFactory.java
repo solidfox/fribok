@@ -111,13 +111,22 @@ public class SIEFactory {
     }
 
 
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.importexport.sie.util.SIEFactory");
-        sb.append("{iEntries=").append(iEntries);
-        sb.append(", iLabels=").append(iLabels);
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("SIEFactory {\n");
+        for(SIELabel iLabel: iLabels){
+            SIEEntry iEntry = get(iLabel);
+
+            sb.append("  ");
+            sb.append(iLabel);
+            sb.append(" = ");
+            sb.append( iEntry == null ? "null" : iEntry.getClass().getName() );
+            sb.append('\n');
+        }
         sb.append('}');
+
         return sb.toString();
     }
 

@@ -258,19 +258,19 @@ public class LBinLine {
     }
 
 
+
+
+
+
+
+
+
     /**
+     *
      * @return
      */
-    @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine");
-        sb.append("{iChars=").append(iChars == null ? "null" : "");
-        for (int i = 0; iChars != null && i < iChars.length; ++i)
-            sb.append(i == 0 ? "" : ", ").append(iChars[i]);
-        sb.append(", iPosition=").append(iPosition);
-        sb.append('}');
-        return sb.toString();
+        return new String(iChars);
     }
 
 

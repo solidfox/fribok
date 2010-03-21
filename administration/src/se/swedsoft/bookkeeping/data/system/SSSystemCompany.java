@@ -190,17 +190,15 @@ public class SSSystemCompany implements Serializable {
         return false;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.system.SSSystemCompany");
-        sb.append("{iCompany=").append(iCompany);
-        sb.append(", iCurrent=").append(iCurrent);
-        sb.append(", iID=").append(iID);
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append(", iYears=").append(iYears);
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("SSSystemCompany (");
+        sb.append(iID);
+        sb.append("): ");
+        sb.append(iName);
+
         return sb.toString();
     }
 

@@ -224,15 +224,9 @@ public class SIEWriter {
         return iLines;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter");
-        sb.append("{iLines=").append(iLines);
-        sb.append(", iStringBuilder=").append(iStringBuilder);
-        sb.append('}');
-        return sb.toString();
+        return iStringBuilder.toString().trim();
     }
 
 

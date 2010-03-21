@@ -95,15 +95,9 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
         return false;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.common.SSDeliveryWay");
-        sb.append("{iDescription='").append(iDescription).append('\'');
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return iDescription;
     }
 
 

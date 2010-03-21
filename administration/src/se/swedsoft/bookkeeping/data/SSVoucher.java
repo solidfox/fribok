@@ -270,17 +270,26 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
     }
 
 
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSVoucher");
-        sb.append("{iCorrectedBy=").append(iCorrectedBy);
-        sb.append(", iCorrects=").append(iCorrects);
-        sb.append(", iDate=").append(iDate);
-        sb.append(", iDescription='").append(iDescription).append('\'');
-        sb.append(", iNumber=").append(iNumber);
-        sb.append(", iVoucherRows=").append(iVoucherRows);
-        sb.append('}');
+        DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append( iNumber );
+        sb.append( ", " );
+        sb.append( iDescription);
+        sb.append( ", " );
+        sb.append( iFormat.format(iDate) ); /*
+        sb.append( ", " );
+        sb.append( iVoucherRows.size() );
+        sb.append( " rows.{\n" );
+        for (SSVoucherRow row : iVoucherRows) {
+            sb.append("  " );
+            sb.append(row );
+            sb.append("\n");
+        }
+        sb.append( "}\n" );   */
         return sb.toString();
     }
 

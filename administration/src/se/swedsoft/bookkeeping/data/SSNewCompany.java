@@ -1039,51 +1039,12 @@ public class SSNewCompany implements Serializable {
     }
 
 
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSNewCompany");
-        sb.append("{iAddress=").append(iAddress);
-        sb.append(", iAutoIncrement=").append(iAutoIncrement);
-        sb.append(", iBank='").append(iBank).append('\'');
-        sb.append(", iBankAccountNumber='").append(iBankAccountNumber).append('\'');
-        sb.append(", iContactPerson='").append(iContactPerson).append('\'');
-        sb.append(", iCorporateID='").append(iCorporateID).append('\'');
-        sb.append(", iCurrency=").append(iCurrency);
-        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
-        sb.append(", iDelayintrest=").append(iDelayintrest);
-        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
-        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
-        sb.append(", iDeliveryWay=").append(iDeliveryWay);
-        sb.append(", iEMail='").append(iEMail).append('\'');
-        sb.append(", iEstimatedDelivery='").append(iEstimatedDelivery).append('\'');
-        sb.append(", iIBAN='").append(iIBAN).append('\'');
-        sb.append(", iId=").append(iId);
-        sb.append(", iLogotype='").append(iLogotype).append('\'');
-        sb.append(", iMailServer=").append(iMailServer);
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append(", iPaymentTerm=").append(iPaymentTerm);
-        sb.append(", iPhone='").append(iPhone).append('\'');
-        sb.append(", iPhone2='").append(iPhone2).append('\'');
-        sb.append(", iPlusAccountNumber='").append(iPlusAccountNumber).append('\'');
-        sb.append(", iReminderfee=").append(iReminderfee);
-        sb.append(", iResidence='").append(iResidence).append('\'');
-        sb.append(", iRoundingOff=").append(iRoundingOff);
-        sb.append(", iSMTPAddress='").append(iSMTPAddress).append('\'');
-        sb.append(", iStandardTexts=").append(iStandardTexts);
-        sb.append(", iStandardUnit=").append(iStandardUnit);
-        sb.append(", iSwift='").append(iSwift).append('\'');
-        sb.append(", iTaxrate1=").append(iTaxrate1);
-        sb.append(", iTaxrate2=").append(iTaxrate2);
-        sb.append(", iTaxrate3=").append(iTaxrate3);
-        sb.append(", iTaxRegistered=").append(iTaxRegistered);
-        sb.append(", iTelefax='").append(iTelefax).append('\'');
-        sb.append(", iVATNumber='").append(iVATNumber).append('\'');
-        sb.append(", iVatPeriod=").append(iVatPeriod);
-        sb.append(", iVolumeUnit='").append(iVolumeUnit).append('\'');
-        sb.append(", iWebAddress='").append(iWebAddress).append('\'');
-        sb.append(", iWeightUnit='").append(iWeightUnit).append('\'');
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iName);
+
         return sb.toString();
     }
 

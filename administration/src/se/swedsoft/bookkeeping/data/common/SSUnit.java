@@ -97,15 +97,9 @@ public class SSUnit implements Serializable, SSTableSearchable {
         return false;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.common.SSUnit");
-        sb.append("{iDescription='").append(iDescription).append('\'');
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return iName;
     }
 
 

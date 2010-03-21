@@ -641,34 +641,12 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
 
     ////////////////////////////////////////////////////////
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSPurchaseOrder");
-        sb.append("{iCurrency=").append(iCurrency);
-        sb.append(", iCurrencyRate=").append(iCurrencyRate);
-        sb.append(", iDate=").append(iDate);
-        sb.append(", iDefaultAccounts=").append(iDefaultAccounts);
-        sb.append(", iDeliveryAddress=").append(iDeliveryAddress);
-        sb.append(", iDeliveryTerm=").append(iDeliveryTerm);
-        sb.append(", iDeliveryWay=").append(iDeliveryWay);
-        sb.append(", iEstimatedDelivery=").append(iEstimatedDelivery);
-        sb.append(", iInvoice=").append(iInvoice);
-        sb.append(", iInvoiceNr=").append(iInvoiceNr);
-        sb.append(", iNumber=").append(iNumber);
-        sb.append(", iOurContact='").append(iOurContact).append('\'');
-        sb.append(", iPaymentTerm=").append(iPaymentTerm);
-        sb.append(", iPrinted=").append(iPrinted);
-        sb.append(", iRows=").append(iRows);
-        sb.append(", iStockInfluencing=").append(iStockInfluencing);
-        sb.append(", iSupplier=").append(iSupplier);
-        sb.append(", iSupplierAddress=").append(iSupplierAddress);
-        sb.append(", iSupplierName='").append(iSupplierName).append('\'');
-        sb.append(", iSupplierNr='").append(iSupplierNr).append('\'');
-        sb.append(", iText='").append(iText).append('\'');
-        sb.append(", iYourContact='").append(iYourContact).append('\'');
-        sb.append('}');
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(iNumber);
+
         return sb.toString();
     }
 

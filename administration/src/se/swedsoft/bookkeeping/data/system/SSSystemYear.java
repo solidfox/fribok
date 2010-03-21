@@ -193,17 +193,21 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
     }
 
 
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.system.SSSystemYear");
-        sb.append("{iAccountPlan='").append(iAccountPlan).append('\'');
-        sb.append(", iCurrent=").append(iCurrent);
-        sb.append(", iDateFrom=").append(iDateFrom);
-        sb.append(", iDateTo=").append(iDateTo);
-        sb.append(", iID=").append(iID);
-        sb.append(", iYear=").append(iYear);
-        sb.append('}');
+        DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("SSSystemYear (");
+        sb.append(iID);
+        sb.append("): ");
+        sb.append(iFormat.format(iDateFrom));
+        sb.append("- ");
+        sb.append(iFormat.format(iDateTo));
+        sb.append(", ");
+        sb.append(iAccountPlan);
+
         return sb.toString();
     }
 

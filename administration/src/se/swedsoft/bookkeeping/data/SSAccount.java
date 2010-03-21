@@ -213,20 +213,9 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
     }
 
 
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSAccount");
-        sb.append("{iActive=").append(iActive);
-        sb.append(", iDescription='").append(iDescription).append('\'');
-        sb.append(", iNumber=").append(iNumber);
-        sb.append(", iProjectRequired=").append(iProjectRequired);
-        sb.append(", iReportCode='").append(iReportCode).append('\'');
-        sb.append(", iResultUnitRequired=").append(iResultUnitRequired);
-        sb.append(", iSRUCode='").append(iSRUCode).append('\'');
-        sb.append(", iVATCode='").append(iVATCode).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return iNumber + " - " + iDescription;
     }
 
     /**

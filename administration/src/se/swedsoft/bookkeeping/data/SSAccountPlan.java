@@ -394,21 +394,17 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         return iName;
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSAccountPlan");
-        sb.append("{iAccountMap=").append(iAccountMap);
-        sb.append(", iAccounts=").append(iAccounts);
-        sb.append(", iActiveAccounts=").append(iActiveAccounts);
-        sb.append(", iAssessementYear='").append(iAssessementYear).append('\'');
-        sb.append(", iBaseName='").append(iBaseName).append('\'');
-        sb.append(", iId=").append(iId);
-        sb.append(", iName='").append(iName).append('\'');
-        sb.append(", iType=").append(iType);
-        sb.append('}');
-        return sb.toString();
+        StringBuffer b = new StringBuffer();
+
+        b.append(iName);
+        b.append(" - ");
+        b.append(getAccounts().size());
+        b.append(", base: ");
+        b.append(iBaseName);
+
+        return b.toString();
     }
 
 

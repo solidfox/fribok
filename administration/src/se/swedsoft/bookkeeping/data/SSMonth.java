@@ -95,15 +95,11 @@ public class SSMonth  implements Serializable {
         return super.equals(obj);
     }
 
-
-    @Override
+    
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.data.SSMonth");
-        sb.append("{iFrom=").append(iFrom);
-        sb.append(", iTo=").append(iTo);
-        sb.append('}');
-        return sb.toString();
+        DateFormat format = DateFormat.getDateInstance(DateFormat.SHORT);
+
+        return format.format(iFrom).substring(0,7);
     }
 
     /**
