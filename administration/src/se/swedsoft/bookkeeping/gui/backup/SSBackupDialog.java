@@ -3,73 +3,52 @@ package se.swedsoft.bookkeeping.gui.backup;
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
 import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupFactory;
-import se.swedsoft.bookkeeping.data.system.SSDB;
-import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
 
 import javax.swing.*;
 import java.io.File;
 
 /**
- * User: Andreas Lago
- * Date: 2006-okt-05
- * Time: 10:16:17
+ * Show the backup dialog.
+ * 2006
+ * @author Andreas Lago
+ * @version $Id$
  */
 public class SSBackupDialog {
-    private SSBackupDialog() {
+    private final JFrame parent;
+    private final JFileChooser fileChooser;
+    private final SSBackupDatabase backupDatabase;
+
+    /**
+     * Creates a new instance.
+     * @param parent the parent of the dialog
+     * @param fileChooser the file chooser object to use
+     * @param backupDatabase the backup database instance
+     */
+    public SSBackupDialog(JFrame parent, JFileChooser fileChooser,
+                          SSBackupDatabase backupDatabase) {
+        this.parent         = parent;
+        this.fileChooser    = fileChooser;
+        this.backupDatabase = backupDatabase;
     }
 
     /**
-     *
-     * @param iMainFrame
-     * @return
+     * Show the dialog and run the backup.
+     * @return true on success, false on error or if the user cancelled the action
      */
-    public static boolean backupFullDialog(final SSMainFrame iMainFrame) {
-        SSBackupFrame.hideFrame();
+    public boolean show() {
+        String defaultFileName = SSBackupFactory.getDefaultFileName();
+        fileChooser.setSelectedFile(new File(defaultFileName));
 
-        SSBackupFileChooser iFileChooser = SSBackupFileChooser.getInstance();
+        int result = fileChooser.showSaveDialog(parent);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            String filename = fileChooser.getSelectedFile().getAbsolutePath();
+            SSBackup backup = SSBackupFactory.createBackup(filename);
 
-        String iDefaultFileName = SSBackupFactory.getDefaultFileName();
-
-        iFileChooser.setSelectedFile( new File(iDefaultFileName) );
-
-        if( iFileChooser.showSaveDialog(iMainFrame) == JFileChooser.APPROVE_OPTION) {
-            String iFilename = iFileChooser.getSelectedFile().getAbsolutePath();
-
-            SSBackup iBackup = SSBackupFactory.createBackup(iFilename);
-
-            SSBackupDatabase.getInstance().getBackups().add(iBackup);
-            SSBackupDatabase.getInstance().notifyUpdated();
+            backupDatabase.add(backup);
+            backupDatabase.notifyUpdated();
             return true;
         }
         return false;
-
-    }
-
-    /**
-     *
-     * @param iMainFrame
-     */
-    public static void backupCurrentDialog(final SSMainFrame iMainFrame) {
-        SSBackupFrame.hideFrame();
-
-        SSBackupFileChooser iFileChooser = SSBackupFileChooser.getInstance();
-
-        String iDefaultFileName = SSBackupFactory.getDefaultFileName(SSDB.getInstance().getCurrentCompany());
-
-        iFileChooser.setSelectedFile( new File(iDefaultFileName) );
-
-        if( iFileChooser.showSaveDialog(iMainFrame) == JFileChooser.APPROVE_OPTION) {
-            String iFilename = iFileChooser.getSelectedFile().getAbsolutePath();
-
-            //SSSystemCompany iCompany = SSDB.getInstance().getCurrentSystemCompany();
-
-            //SSBackup iBackup = SSBackupFactory.createBackup(iFilename, iCompany);
-
-            //SSBackupDatabase.getInstance().getBackups().add(iBackup);
-            SSBackupDatabase.getInstance().notifyUpdated();
-
-        }
-
     }
 }

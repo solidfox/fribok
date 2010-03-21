@@ -76,6 +76,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
 
 /**
  *
@@ -293,11 +295,7 @@ public class SSMainMenu {
         // *****************************
         iMenuLoader.addActionListener("filemenu.backup.all", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (SSDB.getInstance().getLocking()) {
-                    new SSInformationDialog(iMainFrame, "backupframe.runningonserver");
-                    return;
-                }
-                SSBackupDialog.backupFullDialog(iMainFrame);
+                createBackupDialog();
             }
         });
 
@@ -463,11 +461,7 @@ public class SSMainMenu {
     }
 
     /**
-     * salemenu.inpayment
-     * creditinvoice
-     * salemenu.tender
-     * salemenu.order
-     * salemenu.sales
+     *
      */
     private void loadInvoiceActions() {
 
@@ -559,7 +553,7 @@ public class SSMainMenu {
     }
 
     /**
-     * bgcmenu.bgmax
+     *
      */
     private void bgcmenuActions() {
         // Importera från bgmax
@@ -645,7 +639,7 @@ public class SSMainMenu {
 
 
     /**
-     * stockmenu.inventory
+     *
      */
     private void addStockActions() {
 
@@ -731,9 +725,7 @@ public class SSMainMenu {
 
 
     /**
-     * bookkeepingmenu.startingamount
-     * bookkeepingmenu.vouchers
-     * bookkeepingmenu.budget
+     *
      */
     private void loadBookkeepingActions() {
 
@@ -773,20 +765,8 @@ public class SSMainMenu {
 
     }
 
-
     /**
-     * reportmenu.vouchers
-     * reportmenu.startingamounts
-     * reportmenu.accountplan
-     * reportmenu.mainbook
-     * reportmenu.resultreport
-     * reportmenu.projectresult
-     * reportmenu.resultunitresult
-     * reportmenu.budget
-     * reportmenu.balancereport
-     * reportmenu.vatreport
-     * reportmenu.accountdiagram
-     * reportmenu.quarterreport
+     *
      */
     private void loadPrintBookkeepingActions() {
 
@@ -1175,10 +1155,7 @@ public class SSMainMenu {
     }
 
     /**
-     * helpmenu.help
-     * helpmenu.versioncontrol
-     * helpmenu.versioncheck
-     * helpmenu.about
+     *
      */
     private void loadHelpActions() {
         // Hjälp
@@ -1195,19 +1172,17 @@ public class SSMainMenu {
         // *****************************
         iMenuLoader.addActionListener("helpmenu.support", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String iSupportURL =  SSBundle.getBundle().getString("application.url.support") ;
-
-                BrowserLaunch.openURL( iSupportURL );
+                String url =  SSBundle.getBundle().getString("application.url.support") ;
+                BrowserLaunch.openURL( url );
             }
         });
 
-// Online uppdateringar
-// *****************************
+        // Online updates
+        // *****************************
         iMenuLoader.addActionListener("helpmenu.updates", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String iSupportURL =  SSBundle.getBundle().getString("application.url.updates") ;
-
-                BrowserLaunch.openURL( iSupportURL );
+                String url =  SSBundle.getBundle().getString("application.url.updates") ;
+                BrowserLaunch.openURL( url );
             }
         });
 
@@ -1259,7 +1234,8 @@ public class SSMainMenu {
                 if(iConfirmDialog.openDialog(iMainFrame)!=JOptionPane.OK_OPTION) return;
 
                 if(!SSDB.getInstance().getLocking()){
-                    if(! SSBackupDialog.backupFullDialog(iMainFrame)) return;
+                    if (!createBackupDialog())
+                        return;
                 }
                 else{
                     SSNewCompany iCurrentCompany = SSDB.getInstance().getCurrentCompany();
@@ -1424,8 +1400,8 @@ public class SSMainMenu {
         });
 
 
-// Om...
-// *****************************
+        // About
+        // *****************************
         iMenuLoader.addActionListener("helpmenu.about", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAboutDialog.showDialog(iMainFrame);
@@ -1434,12 +1410,10 @@ public class SSMainMenu {
 
 
     }
-
     private List<JMenuItem> iWindowItems;
 
     /**
-     * windowmenu.close
-     * windowmenu.cascade
+     * Window actions
      */
     private void loadWindowActions(){
         iWindowItems = new LinkedList<JMenuItem>();
@@ -1493,12 +1467,29 @@ public class SSMainMenu {
         iMenuLoader.addActionListener("windowmenu.close", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSFrameManager.getInstance().close();
-
             }
         });
 
     }
 
+    /**
+     * Set up and create a BackupDialog
+     * @return true on successful backup
+     */
+    private boolean createBackupDialog() {
+        boolean result = false;
+        if (SSDB.getInstance().getLocking()) {
+            new SSInformationDialog(iMainFrame, "backupframe.runningonserver");
+        }
+        else {
+            JFileChooser fc             = SSBackupFileChooser.getInstance();
+            SSBackupDatabase db         = SSBackupDatabase.getInstance();
+            SSBackupDialog backupDialog = new SSBackupDialog(iMainFrame, fc, db);
+            SSBackupFrame.hideFrame();
+            result = backupDialog.show();
+        }
+        return result;
+    }
 
     @Override
     public String toString() {

@@ -38,8 +38,6 @@ public class SSBackupDatabase {
         }
     }
 
-
-
     /**
      * Notify that the database has been changed and need to be stored to file
      */
@@ -48,7 +46,6 @@ public class SSBackupDatabase {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-
 
     /**
      * Creates a new backupdatabase
@@ -96,9 +93,7 @@ public class SSBackupDatabase {
         }
     }
 
-
     /////////////////////////////////////////////////////////////////////////////////////
-
 
     /**
      * Returns a list of all known backups
@@ -109,10 +104,12 @@ public class SSBackupDatabase {
         if(iData == null){
             throw new RuntimeException("Backupdatabase not loaded");
         }
-
         return iData.getBackups();
     }
 
+    public void add(SSBackup backup) {
+        iData.getBackups().add(backup);
+    }
 
     @Override
     public String toString() {
