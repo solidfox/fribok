@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.data.system;
 
 import se.swedsoft.bookkeeping.SSTriggerHandler;
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.calc.math.*;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.data.*;
@@ -6009,7 +6009,7 @@ public class SSDB {
      * zippas ner.
      */
     public void readOldDatabase() {
-        final File iFile = new File(SSPath.get(SSPath.APP_BASE), "db/bookkeeper.db");
+        final File iFile = new File(Path.get(Path.APP_BASE), "db/bookkeeper.db");
         if(!iFile.exists()) return;
 
         SSInitDialog.runProgress(SSMainFrame.getInstance(),"Konverterar databasen", new Runnable(){
@@ -6059,7 +6059,7 @@ public class SSDB {
                 }
 
                 try {
-                    SSBackupZip.compressFiles(SSPath.get(SSPath.APP_BASE) + "/db/databas_v1.zip", iFiles);
+                    SSBackupZip.compressFiles(Path.get(Path.APP_BASE) + "/db/databas_v1.zip", iFiles);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -6239,7 +6239,7 @@ public class SSDB {
         iFileName = iFileName.replace(":", ".");
         iFileName = iFileName.replace("-", ".");
 
-        return new File(SSPath.get(SSPath.APP_BASE), "db/" + iFileName + ".data");
+        return new File(Path.get(Path.APP_BASE), "db/" + iFileName + ".data");
     }
 
     public void createNewTables(){

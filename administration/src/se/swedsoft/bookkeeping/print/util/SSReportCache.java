@@ -3,7 +3,7 @@ package se.swedsoft.bookkeeping.print.util;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.util.SSException;
 
 import java.io.*;
@@ -17,7 +17,7 @@ import java.util.Map;
  * @version $Id$
  */
 public class SSReportCache {
-    private static final File REPORT_DIR   = new File(SSPath.get(SSPath.APP_DATA), "report");
+    private static final File REPORT_DIR   = new File(Path.get(Path.APP_DATA), "report");
     private static final File COMPILED_DIR = new File(REPORT_DIR, "compiled");
 
     // The report cache with compiled report definitions.

@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.backup;
 
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 
 import java.io.*;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * Time: 09:39:32
  */
 public class SSBackupDatabase {
-    private static final File iFile = new File (SSPath.get(SSPath.USER_DATA), "backup.history");
+    private static final File iFile = new File (Path.get(Path.USER_DATA), "backup.history");
 
     private static SSBackupDatabase cInstance;
 

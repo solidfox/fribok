@@ -20,18 +20,18 @@ package se.swedsoft.bookkeeping.app;
 
 import org.junit.Assert;
 import org.junit.Test;
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 
 /**
- * Tests for SSPath
+ * Tests for Path
  *
  * @author Stefan Kangas
  * @version $Id$
  */
-public class SSPathTest {
+public class PathTest {
     @Test
     public void ValuesNotNull() {
-        for (SSPath path : SSPath.values())
-            Assert.assertNotNull(SSPath.get(path));
+        for (Path path : Path.values())
+            Assert.assertNotNull(Path.get(path));
     }
 }

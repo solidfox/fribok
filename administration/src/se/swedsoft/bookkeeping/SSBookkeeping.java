@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping;
 
 import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.system.SSCompanyLock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -90,20 +90,20 @@ public class SSBookkeeping {
         System.out.println("Title     : " + Version.APP_TITLE);
         System.out.println("Version   : " + Version.APP_VERSION);
         System.out.println("Build     : " + Version.APP_BUILD);
-        System.out.println("Directory : " + SSPath.get(SSPath.APP_BASE));
+        System.out.println("Directory : " + Path.get(Path.APP_BASE));
         System.out.println("");
         System.out.println("Operating system: " + System.getProperty("os.name"));
         System.out.println("Architecture    : " + System.getProperty("os.arch"));
         System.out.println("Java version     : " + System.getProperty("java.version"));
         System.out.println("");
         System.out.println("Paths:");
-        for (SSPath name : SSPath.values())
-            System.out.printf("   %-12s = %s\n", name, SSPath.get(name));
+        for (Path name : Path.values())
+            System.out.printf("   %-12s = %s\n", name, Path.get(name));
 
         String warning = null;
         // Create paths as needed, warning the user on failure
-        for (SSPath name : SSPath.values()) {
-            File dir = SSPath.get(name);
+        for (Path name : Path.values()) {
+            File dir = Path.get(name);
             if (!dir.exists()) {
                 try {
                     if (dir.mkdirs()) {

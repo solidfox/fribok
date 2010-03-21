@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.util;
 
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class SSConfig implements Serializable {
     }
 
     // The settings file
-    private static File CONFIG_FILE = new File(SSPath.get(SSPath.USER_CONF), "bookkeeping.config");
+    private static File CONFIG_FILE = new File(Path.get(Path.USER_CONF), "bookkeeping.config");
 
     private Map<String, Object> iSettings;
 

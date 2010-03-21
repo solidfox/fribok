@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import java.io.*;
@@ -17,7 +17,7 @@ public class SSCompanyConfig {
     }
 
     public static void saveLastOpenCompany(SSSystemCompany iLastCompany) {
-        File iFile = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
+        File iFile = new File(Path.get(Path.APP_BASE), "lastcompanyopen.config");
         if(iFile.exists())
             iFile.delete();
         FileOutputStream fos = null;
@@ -44,7 +44,7 @@ public class SSCompanyConfig {
     }
 
     public static SSSystemCompany openLastOpenCompany() {
-        File iFile = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
+        File iFile = new File(Path.get(Path.APP_BASE), "lastcompanyopen.config");
         if(!iFile.exists())
             return null;
 
@@ -87,7 +87,7 @@ public class SSCompanyConfig {
         if(iCompany == null)
             return;
         
-        File iFile = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
+        File iFile = new File(Path.get(Path.APP_BASE), "companysettings.config");
 
         Collection<Object> iVector = new Vector<Object>();
         iVector.add(iCompany);
@@ -137,7 +137,7 @@ public class SSCompanyConfig {
     }
 
     public static SSSystemCompany openCompanySetting(SSSystemCompany iCompany) {
-        File iFile = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
+        File iFile = new File(Path.get(Path.APP_BASE), "companysettings.config");
         if(!iFile.exists())
             return null;
 
@@ -195,8 +195,8 @@ public class SSCompanyConfig {
     }
 
     public static void deleteFiles() {
-        File iFile1 = new File(SSPath.get(SSPath.APP_BASE), "lastcompanyopen.config");
-        File iFile2 = new File(SSPath.get(SSPath.APP_BASE), "companysettings.config");
+        File iFile1 = new File(Path.get(Path.APP_BASE), "lastcompanyopen.config");
+        File iFile2 = new File(Path.get(Path.APP_BASE), "companysettings.config");
 
         if (iFile1.exists()) {
             iFile1.delete();

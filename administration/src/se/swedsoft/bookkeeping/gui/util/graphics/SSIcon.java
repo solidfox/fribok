@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.graphics;
 
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,7 +14,7 @@ import java.util.Map;
  * Time: 10:11:34
  */
 public class SSIcon {
-    public static final File cIconDirectory = SSPath.get(SSPath.APP_ICONS);
+    public static final File cIconDirectory = Path.get(Path.APP_ICONS);
 
     private SSIcon() {
     }

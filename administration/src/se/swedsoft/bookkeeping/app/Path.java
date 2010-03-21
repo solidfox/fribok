@@ -32,7 +32,7 @@ import org.freedesktop.xdg.BaseDirs;
  * @author Stefan Kangas
  * @version $Id$
  */
-public enum SSPath {
+public enum Path {
     /** The application base directory */
     APP_BASE,
     /** The application data directory */
@@ -47,7 +47,7 @@ public enum SSPath {
     USER_DATA;
     
     private static final String JFS_SUBDIR = "jfsaccounting";
-    private static final Map<SSPath, File> path = new EnumMap<SSPath, File>(SSPath.class);
+    private static final Map<Path, File> path = new EnumMap<Path, File>(Path.class);
 
     static {
         File base = new File(new File("").getAbsolutePath());
@@ -78,7 +78,7 @@ public enum SSPath {
      * @param name a path you want
      * @return the path
      */
-    public static File get(SSPath name) {
+    public static File get(Path name) {
         return path.get(name);
     }
 }

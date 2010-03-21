@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.graphics;
 
-import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Path;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class SSImage {
 
-    public static final File cImageDirectory = SSPath.get(SSPath.APP_IMAGES);
+    public static final File cImageDirectory = Path.get(Path.APP_IMAGES);
 
     // Library of all graphics
     private static Map<String, BufferedImage> iGraphics = new HashMap<String, BufferedImage>();
