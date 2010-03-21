@@ -12,10 +12,10 @@ import javax.swing.*;
 public class SSInformationDialog {
 
     /**
-     *  Opens a error dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a error dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName
@@ -28,10 +28,10 @@ public class SSInformationDialog {
     }
 
     /**
-     *  Opens a query dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a query dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName
@@ -45,10 +45,10 @@ public class SSInformationDialog {
     }
 
     /**
-     *  Opens a error dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a error dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName
@@ -61,10 +61,10 @@ public class SSInformationDialog {
     }
 
     /**
-     *  Opens a query dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a query dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName
@@ -122,10 +122,10 @@ public class SSInformationDialog {
 
 
      /**
-     *  Opens a error dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a error dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName
@@ -135,10 +135,10 @@ public class SSInformationDialog {
     }
 
     /**
-     *  Opens a query dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a query dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName

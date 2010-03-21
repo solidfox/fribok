@@ -13,10 +13,10 @@ import javax.swing.*;
 public class SSWarningDialog {
 
     /**
-     *  Opens a warning dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a warning dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param bundleName
@@ -29,10 +29,10 @@ public class SSWarningDialog {
 
     }
     /**
-     *  Opens a warning dialog and reads the tile and message from the bundle<br>
-     *  <br>
-     *  Message = bundleName.message<br>
-     *  Tle     = bundleName.title<br>
+     *  Opens a warning dialog and reads the tile and message from the bundle
+     *  
+     *  Message = bundleName.message
+     *  Tle     = bundleName.title
      *
      * @param iFrame
      * @param pBundleName
