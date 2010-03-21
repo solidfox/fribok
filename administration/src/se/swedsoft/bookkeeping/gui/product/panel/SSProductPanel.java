@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product.panel;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
@@ -284,9 +284,9 @@ public class SSProductPanel {
 
         iContributionRate.setFormatterFactory(new DefaultFormatterFactory(iFormatter));
 
-        if (SSVersion.app_title.contains("JFS Fakturering")) {
-            iSupplier.setEnabled(false);
-        }
+        // if (SSVersion.app_title.contains("JFS Fakturering")) {
+        //     iSupplier.setEnabled(false);
+        // }
 
         addKeyListeners();
 

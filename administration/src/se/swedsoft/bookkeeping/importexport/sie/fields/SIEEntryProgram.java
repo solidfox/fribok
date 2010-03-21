@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
@@ -34,8 +34,8 @@ public class SIEEntryProgram implements SIEEntry {
     @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         iWriter.append(SIELabel.SIE_PROGRAM);
-        iWriter.append(SSVersion.app_title);
-        iWriter.append(SSVersion.app_version);
+        iWriter.append(Version.APP_TITLE);
+        iWriter.append(Version.APP_VERSION);
         iWriter.newLine();
         return true;
     }

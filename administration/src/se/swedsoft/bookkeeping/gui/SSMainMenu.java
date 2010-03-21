@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.app.SSPath;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
@@ -1262,15 +1262,16 @@ public class SSMainMenu {
 
                 final Date iDate = SSDateMath.ceil(iDialog.getDate());
                 SSConfirmDialog iConfirmDialog;
-                if(!SSDB.getInstance().getLocking() && !SSVersion.app_title.contains("JFS Fakturering")) {
+                if (!SSDB.getInstance().getLocking() /*&& !SSVersion.app_title.contains("JFS Fakturering")*/) {
                     iConfirmDialog = new SSConfirmDialog("helpmenu.cleartransactions.warning",new SimpleDateFormat("yyyy-MM-dd").format(iDate));
                 }
-                else if(!SSDB.getInstance().getLocking()){
-                    iConfirmDialog = new SSConfirmDialog("helpmenu.cleartransactions.wfl",new SimpleDateFormat("yyyy-MM-dd").format(iDate));
-                }
-                else if(SSVersion.app_title.contains("JFS Fakturering")){
-                    iConfirmDialog = new SSConfirmDialog("helpmenu.cleartransactions.wfs",new SimpleDateFormat("yyyy-MM-dd").format(iDate));
-                }
+                // // Fakturering
+                // else if(!SSDB.getInstance().getLocking()){
+                //     iConfirmDialog = new SSConfirmDialog("helpmenu.cleartransactions.wfl",new SimpleDateFormat("yyyy-MM-dd").format(iDate));
+                // }
+                // else if(SSVersion.app_title.contains("JFS Fakturering")){
+                //     iConfirmDialog = new SSConfirmDialog("helpmenu.cleartransactions.wfs",new SimpleDateFormat("yyyy-MM-dd").format(iDate));
+                // }
                 else{
                     iConfirmDialog = new SSConfirmDialog("helpmenu.cleartransactions.was",new SimpleDateFormat("yyyy-MM-dd").format(iDate));
                 }

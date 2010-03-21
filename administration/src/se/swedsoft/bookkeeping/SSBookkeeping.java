@@ -2,6 +2,7 @@ package se.swedsoft.bookkeeping;
 
 import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
 import se.swedsoft.bookkeeping.app.SSPath;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.system.SSCompanyLock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
@@ -86,9 +87,9 @@ public class SSBookkeeping {
 
         // Print information to ease debugging
         System.out.println("Starting up...");
-        System.out.println("Title     : " + SSVersion.app_title);
-        System.out.println("Version   : " + SSVersion.app_version);
-        System.out.println("Build     : " + SSVersion.app_build);
+        System.out.println("Title     : " + Version.APP_TITLE);
+        System.out.println("Version   : " + Version.APP_VERSION);
+        System.out.println("Build     : " + Version.APP_BUILD);
         System.out.println("Directory : " + SSPath.get(SSPath.APP_BASE));
         System.out.println("");
         System.out.println("Operating system: " + System.getProperty("os.name"));

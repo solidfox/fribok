@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.order;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -205,10 +205,10 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         iTable.addSelectionDependentComponent(iButton2);
         toolBar.add(iButton2);
 
-        if(!SSVersion.app_title.contains("JFS Fakturering")){
-            // Create purchase order from this order
-            // ***************************
-            iButton = new SSButton("ICON_INVOICE24", "orderframe.createspurchaseorderbutton", new ActionListener(){
+        // if(!SSVersion.app_title.contains("JFS Fakturering")){
+        // Create purchase order from this order
+        // ***************************
+        iButton = new SSButton("ICON_INVOICE24", "orderframe.createspurchaseorderbutton", new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
                     iSelected = getOrders(iSelected);
@@ -265,10 +265,10 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
 
             });
-            iTable.addSelectionDependentComponent(iButton);
-            toolBar.add(iButton);
-            toolBar.addSeparator();
-        }
+        iTable.addSelectionDependentComponent(iButton);
+        toolBar.add(iButton);
+        toolBar.addSeparator();
+        // } // end Faktura if-sats
         // Importera
         // ***************************
         iButton2 = new SSMenuButton("ICON_IMPORT", "orderframe.importbutton");
@@ -432,9 +432,9 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         iModel.addColumn( SSOrderTableModel.COLUMN_CURRENCY );
         iModel.addColumn( SSOrderTableModel.COLUMN_ESTIMATED_DELIVERY );
         iModel.addColumn( SSOrderTableModel.COLUMN_INVOICE );
-        if(!SSVersion.app_title.contains("JFS Fakturering"))
-            iModel.addColumn( SSOrderTableModel.COLUMN_PURCHASEORDER );
-
+        // if (!SSVersion.app_title.contains("JFS Fakturering")) {
+        iModel.addColumn( SSOrderTableModel.COLUMN_PURCHASEORDER );
+        // }
 
         iModel.setupTable(iTable);
 

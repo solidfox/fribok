@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSProductRow;
@@ -48,13 +48,13 @@ public class SSProductListPrinter extends SSPrinter {
         iStock = new SSStock(true);
 
         setPageHeader  ("header_period.jrxml");
-        if (!SSVersion.app_title.contains("JFS Fakturering")) {
-            setColumnHeader("productlist.jrxml");
-            setDetail("productlist.jrxml");
-        } else {
-            setColumnHeader("productlist_fakt.jrxml");
-            setDetail("productlist_fakt.jrxml");
-        }
+        // if (!SSVersion.app_title.contains("JFS Fakturering")) {
+        setColumnHeader("productlist.jrxml");
+        setDetail("productlist.jrxml");
+        // } else {
+        //     setColumnHeader("productlist_fakt.jrxml");
+        //     setDetail("productlist_fakt.jrxml");
+        // }
     }
 
 
@@ -116,15 +116,13 @@ public class SSProductListPrinter extends SSPrinter {
                         value = iProduct.getWarehouseLocation() == null ? "" : iProduct.getWarehouseLocation();
                         break;
                     case 6:
-                        if (!SSVersion.app_title.contains("JFS Fakturering")) {
+                        // if (!SSVersion.app_title.contains("JFS Fakturering")) {
                             value = iStock.getQuantity(iProduct);
-                        } else {
-                            iPrinter.setProduct(iProduct);
-
-                            iDataSource.reset();
-
-                            value = iDataSource;
-                        }
+                        // } else {
+                        //     iPrinter.setProduct(iProduct);
+                        //     iDataSource.reset();
+                        //     value = iDataSource;
+                        // }
                         break;
 
                     case 7:
@@ -147,9 +145,9 @@ public class SSProductListPrinter extends SSPrinter {
         iModel.addColumn("product.unit");
         iModel.addColumn("product.unitprice");
         iModel.addColumn("product.warehouselocation");
-        if(!SSVersion.app_title.contains("JFS Fakturering")){
-            iModel.addColumn("product.warehousequantity");
-        }
+        // if(!SSVersion.app_title.contains("JFS Fakturering")){
+        iModel.addColumn("product.warehousequantity");
+        // }
         iModel.addColumn("product.rows");
 
 

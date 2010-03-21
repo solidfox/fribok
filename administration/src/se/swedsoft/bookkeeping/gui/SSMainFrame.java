@@ -4,7 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.util.SSConfig;
 import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
 import se.swedsoft.bookkeeping.gui.status.SSMainStatusBar;
@@ -54,7 +54,7 @@ public class SSMainFrame extends JFrame {
      * Creates and displays the main window of the application.
      */
     private SSMainFrame() {
-        super( SSVersion.app_title );
+        super( Version.APP_TITLE );
 
         // Exit the program when the main frame is closed.
         setDefaultCloseOperation(EXIT_ON_CLOSE);

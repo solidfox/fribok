@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.status;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -37,9 +37,7 @@ public class SSMainStatusBar {
         iYearLabel     = new JLabel();
         iReadonlyLabel = new JLabel();
         iMemLabel      = new JLabel();
-        String iTitle   = SSVersion.app_title;
-        String iVersion = SSVersion.app_version;
-        iNameLabel.setText( String.format("%s %s", iTitle, iVersion ) );
+        iNameLabel.setText( String.format("%s %s", Version.APP_TITLE, Version.APP_VERSION ) );
 
         setCompanyText( /*SSDB.getInstance().getCurrentCompany()*/null );
         setYearText   ( /*SSDB.getInstance().getCurrentYear()*/null    );

@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -319,10 +319,10 @@ public class SSProductFrame extends SSDefaultTableFrame {
         iModel.addColumn( SSProductTableModel.COLUMN_PRICE);
         iModel.addColumn( SSProductTableModel.COLUMN_UNIT );
         iModel.addColumn( SSProductTableModel.COLUMN_WAREHOUSE_LOCATION );
-        if(!SSVersion.app_title.contains("JFS Fakturering")) {
-            iModel.addColumn( SSProductTableModel.getStockQuantityColumn(iStock) );
-            iModel.addColumn( SSProductTableModel.getStockAvaiableColumn(iStock) );
-        }
+        //if(!SSVersion.app_title.contains("JFS Fakturering")) {
+        iModel.addColumn( SSProductTableModel.getStockQuantityColumn(iStock) );
+        iModel.addColumn( SSProductTableModel.getStockAvaiableColumn(iStock) );
+        //}
 
         iTable = new SSTable();
 

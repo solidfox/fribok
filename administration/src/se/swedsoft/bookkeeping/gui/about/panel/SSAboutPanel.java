@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.about.panel;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.util.BrowserLaunch;
 
@@ -30,9 +30,9 @@ public class SSAboutPanel {
 
         iEditorPane.setBackground( iPanel.getBackground() );
 
-        iText = iText.replace("{TITLE}"  , SSVersion.app_title);
-        iText = iText.replace("{VERSION}", SSVersion.app_version);
-        iText = iText.replace("{BUILD}"  , SSVersion.app_build);
+        iText = iText.replace("{TITLE}"  , Version.APP_TITLE);
+        iText = iText.replace("{VERSION}", Version.APP_VERSION);
+        iText = iText.replace("{BUILD}"  , Version.APP_BUILD);
 
         iEditorPane.setText(iText);
 

@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui.voucher;
 
-import se.swedsoft.bookkeeping.SSVersion;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -151,8 +151,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
         iToolBar.add(iButton);
         iToolBar.addSeparator();
 
-
-        if(SSVersion.iAllowVoucherDeletion){
+        if (Version.CAN_DELETE_VOUCHERS) {
             // Ta bort verifikation
             // ***************************
             iButton = new SSButton("ICON_DELETEITEM", "voucherframe.deletebutton", new ActionListener(){
