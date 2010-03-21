@@ -79,15 +79,13 @@ import java.util.*;
 
 /**
  *
- * $Id$
+ * @version $Id$
  */
 public class SSMainMenu {
 
     private static final File cMenuFile = new File(Path.get(Path.APP_DATA), "MainMenu.xml");
 
     private static final ResourceBundle bundle = SSBundle.getBundle();
-
-
 
     private SSMainFrame iMainFrame;
 
@@ -165,18 +163,10 @@ public class SSMainMenu {
 
 
     /**
-     * filemenu.companies
-     * filemenu.companysettings
-     * filemenu.accountplans
-     * filemenu.export.sie
-     * filemenu.export.sie
-     * filemenu.export.vouchers
-     * filemenu.backup
-     * filemenu.exit
+     * Add actions to the File menu
      */
     private void loadFileActions(){
-
-        // Öppna företag
+        // Open company
         // *****************************
         iMenuLoader.addActionListener("filemenu.companies", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -184,15 +174,15 @@ public class SSMainMenu {
             }
         });
 
-        // Företagsinställningar
+        // Company settings
         // *****************************
-        iMenuLoader.addActionListener("filemenu.companysettings", new ActionListener() {
+        iMenuLoader.addActionListener("filemenu.company.settings", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCompanyDialog.editCurrentDialog(iMainFrame, SSDB.getInstance().getCurrentCompany(), null);
             }
         });
 
-        // Kontoplaner
+        // Account plans
         // *****************************
         iMenuLoader.addActionListener("filemenu.accountplans", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -238,7 +228,8 @@ public class SSMainMenu {
                     new SSInformationDialog(iMainFrame, "sieimport.importdone");
             }
         });
-        // Verifikations importering
+
+        // Voucher import
         // *****************************
         iMenuLoader.addActionListener("filemenu.import.vouchers", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -277,7 +268,7 @@ public class SSMainMenu {
         });
 
 
-        // Verifikations exporterinng
+        // Voucher export
         // *****************************
         iMenuLoader.addActionListener("filemenu.export.vouchers", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -298,9 +289,9 @@ public class SSMainMenu {
             }
         });
 
-        // Backup
+        // Backup all
         // *****************************
-        iMenuLoader.addActionListener("filemenu.backupall", new ActionListener() {
+        iMenuLoader.addActionListener("filemenu.backup.all", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (SSDB.getInstance().getLocking()) {
                     new SSInformationDialog(iMainFrame, "backupframe.runningonserver");
@@ -310,9 +301,9 @@ public class SSMainMenu {
             }
         });
 
-        // Backup
+        // Restore backup
         // *****************************
-        iMenuLoader.addActionListener("filemenu.backurestore", new ActionListener() {
+        iMenuLoader.addActionListener("filemenu.backup.restore", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (SSDB.getInstance().getLocking()) {
                     new SSInformationDialog(iMainFrame, "backupframe.runningonserver");
@@ -322,9 +313,9 @@ public class SSMainMenu {
             }
         });
 
-        // Nätverksinställningar
+        // Network settings
         // *****************************
-        iMenuLoader.addActionListener("filemenu.networksettings.db", new ActionListener() {
+        iMenuLoader.addActionListener("filemenu.network.settings.db", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String iIpAddress = SSInputDialog.showDialog();
                 if(iIpAddress == null) return;
@@ -368,7 +359,7 @@ public class SSMainMenu {
             }
         });
 
-        // Avsluta
+        // Exit
         // *****************************
         iMenuLoader.addActionListener("filemenu.exit", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -380,16 +371,7 @@ public class SSMainMenu {
     }
 
     /**
-     * registermenu.accountingyear
-     * registermenu.accountplan
-     * registermenu.project
-     * registermenu.resultunit
-     *
-     * registermenu.product
-     * registermenu.customer
-     *
-     * registermenu.vouchertemplates
-     *
+     * Add actions to register menu
      */
     private void loadRegisterActions() {
 
@@ -1468,7 +1450,7 @@ public class SSMainMenu {
 
                 if(iMenu == null) return;
 
-// Remove all old items
+                // Remove all old items
                 for(JMenuItem iMenuItem : iWindowItems){
                     iMenu.remove(iMenuItem);
                 }
@@ -1498,16 +1480,16 @@ public class SSMainMenu {
         });
 
 
-// Cascade...
-// *****************************
+        // Cascade...
+        // *****************************
         iMenuLoader.addActionListener("windowmenu.cascade", new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                SSFrameManager.getInstance().cascade();
-            }
-        });
+                public void actionPerformed(ActionEvent e) {
+                    SSFrameManager.getInstance().cascade();
+                }
+            });
 
-// Close...
-// *****************************
+        // Close...
+        // *****************************
         iMenuLoader.addActionListener("windowmenu.close", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSFrameManager.getInstance().close();

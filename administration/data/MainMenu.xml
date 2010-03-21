@@ -7,7 +7,7 @@
 
         <Menu Name="File" Bundle="filemenu">
             <MenuItem Action="filemenu.companies"        Bundle="filemenu.companies"                           />
-            <MenuItem Action="filemenu.companysettings"  Bundle="filemenu.companysettings" Dependent="Company" />
+            <MenuItem Action="filemenu.company.settings"  Bundle="filemenu.company.settings" Dependent="Company" />
             <MenuItem Action="filemenu.accountplans"     Bundle="filemenu.accountplans"                        />
             <Separator/>
 
@@ -24,15 +24,15 @@
             <Separator/>
 
             <Menu Name="Backup" Bundle="filemenu.backup">
-                <MenuItem Action="filemenu.backupall"       Bundle="filemenu.backupall"         />
+                <MenuItem Action="filemenu.backup.all"       Bundle="filemenu.backup.all"         />
                 <Separator/>
-                <MenuItem Action="filemenu.backurestore"    Bundle="filemenu.backurestore"  />
+                <MenuItem Action="filemenu.backup.restore"    Bundle="filemenu.backup.restore"  />
             </Menu>
 
 	    <Separator/>
 
-            <Menu Name="Networksettings" Bundle="filemenu.networksettings">
-                <MenuItem Action="filemenu.networksettings.db"       Bundle="filemenu.networksettings.db"         />
+            <Menu Name="Networksettings" Bundle="filemenu.network.settings">
+                <MenuItem Action="filemenu.network.settings.db"       Bundle="filemenu.network.settings.db"         />
             </Menu>
 
             <Separator/>
