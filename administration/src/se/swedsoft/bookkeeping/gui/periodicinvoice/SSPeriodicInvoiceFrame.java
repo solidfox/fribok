@@ -157,7 +157,7 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
 
         // List the invoices for this periodic invoice
         // ***************************
-        iButton = new SSButton("Task List 24", "periodicinvoiceframe.invoicelistbutton", new ActionListener(){
+        iButton = new SSButton("ICON_TASKLIST24", "periodicinvoiceframe.invoicelistbutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;

@@ -206,9 +206,9 @@ public class SSIcon {
         loadIcon("ICON_FORWARDTASK16", IconState.DISABLED   , "Forward_Task_16_DISABLED.png" );
         loadIcon("ICON_FORWARDTASK16", IconState.HIGHLIGHTED, "Forward_Task_16_HIGHLIGHTED.png" );
 
-        loadIcon("Task_List_24", IconState.NORMAL     , "Task_List_24_NORMAL.png" );
-        loadIcon("Task_List_24", IconState.DISABLED   , "Task_List_24_DISABLED.png" );
-        loadIcon("Task_List_24", IconState.HIGHLIGHTED, "Task_List_24_HIGHLIGHTED.png" );
+        loadIcon("ICON_TASKLIST24", IconState.NORMAL     , "Task_List_24_NORMAL.png" );
+        loadIcon("ICON_TASKLIST24", IconState.DISABLED   , "Task_List_24_DISABLED.png" );
+        loadIcon("ICON_TASKLIST24", IconState.HIGHLIGHTED, "Task_List_24_HIGHLIGHTED.png" );
 
         loadIcon("ICON_REFRESH16", IconState.NORMAL     , "Refresh_16_NORMAL.png" );
         loadIcon("ICON_REFRESH16", IconState.DISABLED   , "Refresh_16_DISABLED.png" );

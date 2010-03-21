@@ -247,7 +247,7 @@ public class SSVoucherFrame extends SSDefaultTableFrame {
 
         // Importera verifikationer från sie
         // ***************************
-        iButton = new SSButton("Task List 24", "voucherframe.importsiebutton", new ActionListener(){
+        iButton = new SSButton("ICON_TASKLIST24", "voucherframe.importsiebutton", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();
                 if (!SSPostLock.applyLock(lockString)) {

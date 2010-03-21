@@ -216,7 +216,7 @@ public class SSSupplierInvoiceFrame extends SSDefaultTableFrame {
 
         // Skapa leverantörsbetalningar
         // ***************************
-        iButton = new SSButton("Task List 24", "supplierinvoiceframe.createsupplierpayment", new ActionListener(){
+        iButton = new SSButton("ICON_TASKLIST24", "supplierinvoiceframe.createsupplierpayment", new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 final String lockString = "supplierpayment"+SSDB.getInstance().getCurrentCompany().getId();
                 if (!SSPostLock.applyLock(lockString)) {
