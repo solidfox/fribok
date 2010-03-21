@@ -5,6 +5,7 @@ import jxl.DateCell;
 import jxl.NumberCell;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -83,7 +84,7 @@ public class SSExcelCell {
         SimpleDateFormat iFormat = new SimpleDateFormat("yyyy-MM-dd");
         try{
             return iFormat.parse( iCell.getContents()  );
-        } catch(Exception e){
+        } catch (ParseException e) {
             return new Date();
         }
     }

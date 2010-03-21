@@ -57,8 +57,8 @@ public class SSMenuLoader   {
         XMLReader iReader;
         try{
             iReader = XMLReaderFactory.createXMLReader(cParserClass);
-        }catch(Exception ex){
-            ex.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
             return;
         }
 

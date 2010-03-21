@@ -187,6 +187,7 @@ public class SSCompanyConfig {
         boolean append = f.exists() && f.length()>0;
         if (append)
             return new ObjectOutputStream(fos) {
+                @SuppressWarnings({"RedundantThrowsDeclaration"})
                 @Override
                 protected void writeStreamHeader() throws IOException{}
             };

@@ -57,8 +57,6 @@ public class SSExportSIEDialog {
                     iExporter.exportSIE(iFile);
                 } catch (SSExportException ex) {
                     new SSErrorDialog(iMainFrame, "exportexceptiondialog", ex.getMessage());
-                } catch (Exception ex) {
-                    ex.printStackTrace();
                 }
 
                 iDialog.closeDialog();

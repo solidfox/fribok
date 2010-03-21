@@ -116,8 +116,8 @@ public class SSAccountSchema implements Serializable {
         XMLReader iReader;
         try{
             iReader = XMLReaderFactory.createXMLReader(cParserClass);
-        }catch(Exception ex){
-            ex.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
             return iSchema;
         }
 

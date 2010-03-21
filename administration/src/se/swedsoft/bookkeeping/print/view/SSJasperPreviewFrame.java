@@ -227,7 +227,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
                         iZoom = Integer.parseInt(  (String)iZoomLevels.getSelectedItem() );
                     }
 
-                } catch(Exception ex){
+                } catch (NumberFormatException e1) {
                     return;
                 }
                 iViewer.setZoom( iZoom );

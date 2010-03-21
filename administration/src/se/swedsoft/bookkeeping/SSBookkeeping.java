@@ -16,6 +16,7 @@ import se.swedsoft.bookkeeping.gui.util.graphics.SSIcon;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -37,7 +38,7 @@ public class SSBookkeeping {
     private static void startupDatabase(){
         try {
         Class.forName("org.hsqldb.jdbcDriver" );
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("ERROR: failed to load HSQLDB JDBC driver.");
             e.printStackTrace();
             return;
@@ -80,7 +81,7 @@ public class SSBookkeeping {
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel(new Plastic3DLookAndFeel());
-        } catch (Exception e) {
+        } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
         iRunning = true;
@@ -168,7 +169,7 @@ public class SSBookkeeping {
 
 
 
-                } catch (Exception e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

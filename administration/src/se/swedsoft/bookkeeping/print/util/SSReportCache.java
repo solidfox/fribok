@@ -150,8 +150,8 @@ public class SSReportCache {
             iObjectOutputStream.flush();
 
             return pReport;
-        } catch (Throwable t) {
-            t.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return null;
     }

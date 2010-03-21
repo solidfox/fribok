@@ -189,8 +189,8 @@ public class SSReport {
                 iPrinter = getNoPagesReport();
             }
 
-        } catch (Throwable t) {
-            t.printStackTrace();
+        } catch (JRException e) {
+            e.printStackTrace();
         }
 
     }

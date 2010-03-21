@@ -234,10 +234,9 @@ public class LBinLine {
             Long iValue = Long.valueOf(iText, 10);
 
             return new BigDecimal(iValue / 100.0);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return new BigDecimal(0);
         }
-
     }
 
 
@@ -250,13 +249,12 @@ public class LBinLine {
      */
     public Integer readInteger(int iStart, int iEnd){
         String iValue = readString(iStart, iEnd);
-
+        
         try {
             return new Integer(iValue);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             return 0;
         }
-
     }
 
 

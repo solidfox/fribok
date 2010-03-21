@@ -397,7 +397,7 @@ public class SSDB {
 
         try {
             Class.forName("org.hsqldb.jdbcDriver");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("ERROR: failed to load HSQLDB JDBC driver.");
             e.printStackTrace();
             return;
@@ -445,7 +445,7 @@ public class SSDB {
         }
         try {
             Class.forName("org.hsqldb.jdbcDriver");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException e) {
             System.out.println("ERROR: failed to load HSQLDB JDBC driver.");
             e.printStackTrace();
             return;
@@ -2886,10 +2886,9 @@ public class SSDB {
                 iOwnReport = null;
                 if (SSOwnReportFrame.getInstance() != null) SSOwnReportFrame.getInstance().updateFrame();
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-
     }
 
     public List<SSProduct> getProducts() {
