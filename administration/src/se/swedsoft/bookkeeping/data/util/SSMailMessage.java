@@ -18,7 +18,7 @@ public class SSMailMessage
      * @param to
      * @param subject
      * @param bodyText
-     * @param fileName path to the attatchment file, can be null
+     * @param fileName path to the attachment file, can be null
      */
     public SSMailMessage(String from, String to, String subject, String bodyText, String fileName) {
         
