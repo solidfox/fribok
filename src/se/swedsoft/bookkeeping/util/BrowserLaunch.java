@@ -86,7 +86,7 @@ public class BrowserLaunch {
 
                 // launch browser
                 if (browser != null) {
-                    String[] commandLine = new String[] {browser, url};
+                    String[] commandLine = {browser, url};
                     Process process = Runtime.getRuntime().exec(commandLine);
                 }  else {
                     error = "Could not find web browser";
