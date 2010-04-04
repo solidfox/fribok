@@ -83,7 +83,8 @@ public class SIEIterator  implements Iterator<String> {
             throw new NoSuchElementException();
         }
 
-        return iValues.get(iIndex++);
+        iIndex++;
+        return iValues.get(iIndex);
     }
 
     /**

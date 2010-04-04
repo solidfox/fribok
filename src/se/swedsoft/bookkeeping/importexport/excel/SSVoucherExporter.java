@@ -130,7 +130,8 @@ public class SSVoucherExporter {
 
         int iRowIndex = 1;
         for (SSVoucher iVoucher : iVouchers) {
-            SSWritableExcelRow iRow = iRows.get(iRowIndex++);
+            iRowIndex++;
+            SSWritableExcelRow iRow = iRows.get(iRowIndex);
             iRow.setNumber(0,  iVoucher.getNumber()      , iCellFormat);
             iRow.setString(1,  iVoucher.getDescription() , iCellFormat);
             iRow.setDate  (2,  iVoucher.getDate()        , iCellFormat);
@@ -139,7 +140,8 @@ public class SSVoucherExporter {
 
                 if(iVoucherRow.isCrossed()) continue;
 
-                iRow =  iRows.get(iRowIndex++);
+                iRowIndex++;
+                iRow =  iRows.get(iRowIndex);
                 iRow.setNumber(3,  iVoucherRow.getAccountNr() );
                 iRow.setNumber(4,  iVoucherRow.getDebet() );
                 iRow.setNumber(5,  iVoucherRow.getCredit() );

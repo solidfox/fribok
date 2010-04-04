@@ -122,11 +122,13 @@ public class SSVoucherTemplateExporter {
 
         int iRowIndex = 1;
         for (SSVoucherTemplate iVoucher : iVouchers) {
-            SSWritableExcelRow iRow = iRows.get(iRowIndex++);
+            iRowIndex++;
+            SSWritableExcelRow iRow = iRows.get(iRowIndex);
             iRow.setString(0,  iVoucher.getDescription() , iCellFormat);
 
             for (SSVoucherTemplateRow iVoucherRow : iVoucher.getRows()) {
-                iRow =  iRows.get(iRowIndex++);
+                iRowIndex++;
+                iRow =  iRows.get(iRowIndex);
                 iRow.setNumber(1,  iVoucherRow.getAccountNr() );
                 iRow.setNumber(2,  iVoucherRow.getDebet() );
                 iRow.setNumber(3,  iVoucherRow.getCredit() );

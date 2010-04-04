@@ -72,7 +72,8 @@ public class SSDefaultJasperDataSource implements JRDataSource {
      * @throws JRException
      */
     public boolean next() throws JRException {
-        return ++iRow < iModel.getRowCount();
+        iRow++;
+        return iRow < iModel.getRowCount();
     }
 
     /**
