@@ -14,7 +14,7 @@ The software was originally developed for use in Sweden, and the
 internationalization might be less than satisfactory.  Let us know if you run
 into problems.
 
-The primary source directory can be found in `administration/src'.
+The primary source directory can be found in `src'.
 
 The website can be found at http://sourceforge.net/projects/jfsaccounting
 

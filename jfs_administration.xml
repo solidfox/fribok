@@ -97,8 +97,8 @@
   
   <property name="compiler.args.jfs_administration" value="${compiler.args}"/>
   
-  <property name="jfs_administration.output.dir" value="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/administration/classes"/>
-  <property name="jfs_administration.testoutput.dir" value="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/administration/classes"/>
+  <property name="jfs_administration.output.dir" value="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/classes"/>
+  <property name="jfs_administration.testoutput.dir" value="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/classes"/>
   
   <path id="jfs_administration.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
@@ -106,58 +106,58 @@
   
   <path id="jfs_administration.module.classpath">
     <path refid="${module.jdk.classpath.jfs_administration}"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/xerces.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jh.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/itext-1.3.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils-bean-collections.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils-core.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/poi.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging-api.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/looks-2.3.1.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jhall.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-collections-3.1.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jxl.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-collections-testframework-3.1.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jhbasic.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/alloy.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-digester-1.7.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jsearch.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/data/help.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/mail.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/activation.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/hsqldb.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/mysql-connector-java-3.1.14-bin.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jasperreports-2.0.4.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/xerces.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jh.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/itext-1.3.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-beanutils-bean-collections.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-beanutils-core.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/poi.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-logging-api.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/looks-2.3.1.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jhall.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-logging.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-collections-3.1.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-beanutils.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jxl.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-collections-testframework-3.1.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jhbasic.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/alloy.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-digester-1.7.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jsearch.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/data/help.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/mail.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/activation.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/hsqldb.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/mysql-connector-java-3.1.14-bin.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jasperreports-2.0.4.jar"/>
   </path>
   
   <path id="jfs_administration.runtime.module.classpath">
     <pathelement location="${jfs_administration.output.dir}"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/xerces.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jh.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/itext-1.3.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils-bean-collections.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils-core.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/poi.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging-api.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/looks-2.3.1.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jhall.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-logging.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-collections-3.1.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-beanutils.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jxl.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-collections-testframework-3.1.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jhbasic.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/alloy.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/commons-digester-1.7.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jsearch.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/data/help.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/mail.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/activation.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/hsqldb.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/mysql-connector-java-3.1.14-bin.jar"/>
-    <pathelement location="/home/ljo/bin/jfsbok/administration/lib/jasperreports-2.0.4.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/xerces.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jh.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/itext-1.3.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-beanutils-bean-collections.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-beanutils-core.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/poi.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-logging-api.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/looks-2.3.1.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jhall.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-logging.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-collections-3.1.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-beanutils.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jxl.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-collections-testframework-3.1.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jhbasic.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/alloy.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/commons-digester-1.7.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jsearch.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/data/help.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/mail.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/activation.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/hsqldb.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/mysql-connector-java-3.1.14-bin.jar"/>
+    <pathelement location="/home/ljo/bin/jfsbok/lib/jasperreports-2.0.4.jar"/>
   </path>
   
   
@@ -170,7 +170,7 @@
   </patternset>
   
   <path id="jfs_administration.module.sourcepath">
-    <dirset dir="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/administration">
+    <dirset dir="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok">
       <include name="src"/>
     </dirset>
   </path>
@@ -189,7 +189,7 @@
     </javac2>
     
     <copy todir="${jfs_administration.output.dir}">
-      <fileset dir="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/administration/src">
+      <fileset dir="${module.jfs_administration.basedir}/../../../../home/ljo/bin/jfsbok/src">
         <patternset refid="compiler.resources"/>
         <type type="file"/>
       </fileset>

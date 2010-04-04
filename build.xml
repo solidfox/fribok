@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- $Id$ -->
 <project default="adm-dev" name="JFS Adminstration" basedir="." >
-  <property name="classes_dir" value="administration\classes" />
-  <property name="source_dir"  value="administration\src" />
+  <property name="classes_dir" value="classes" />
+  <property name="source_dir"  value="src" />
 
   <property name="output_dir" value="dist" />
   <property name="res_dir" value="res" />

@@ -295,7 +295,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/administration/JFS Administration.iml" filepath="$PROJECT_DIR$/administration/JFS Administration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JFS Administration.iml" filepath="$PROJECT_DIR$/JFS Administration.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK" />
