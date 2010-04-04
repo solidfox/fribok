@@ -115,16 +115,13 @@ public class SSMailServerDialog extends SSDialog {
         }
 
 
-        SSMailServer s = SSMailServer.makeIfValid(
+        return SSMailServer.makeIfValid(
                 "NONAME",
                 addressText.getText(),
                 port,
                 authCheckbox.isSelected(),
                 usernameText.getText(),
                 SSMail.crypter.encrypt(String.valueOf(passwordField.getPassword())));
-
-
-        return s;
     }
 
     /**

@@ -121,21 +121,20 @@ public class SIEEntryTransaktion implements SIEEntry {
             if (iNum == null) {
                 continue;
             }
-            String iNumber = iNum;
 
             // Resultatenhet, #DIM 1
             if( iDimension == 1 ){
-                iResultUnit =  SSResultUnitMath.getResultUnit(iNumber);
+                iResultUnit =  SSResultUnitMath.getResultUnit(iNum);
 
                 //if(iResultUnit == null)
-                //    throw new RuntimeException("Resultunit not defined: " + iNumber);
+                //    throw new RuntimeException("Resultunit not defined: " + iNum);
             }
             // Projekt, #DIM 6
             if( iDimension == 6 ){
-                iProject =  SSProjectMath.getProject(SSDB.getInstance().getProjects(), iNumber);
+                iProject =  SSProjectMath.getProject(SSDB.getInstance().getProjects(), iNum);
 
                 //if(iProject == null)
-                //    throw new RuntimeException("Project not defined: " + iNumber);
+                //    throw new RuntimeException("Project not defined: " + iNum);
             }
 
         }

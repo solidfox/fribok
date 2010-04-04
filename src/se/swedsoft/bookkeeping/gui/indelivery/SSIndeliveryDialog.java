@@ -94,8 +94,6 @@ public class SSIndeliveryDialog {
         final SSDialog         iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("indeliveryframe.edit.title"));
         final SSIndeliveryPanel iPanel  = new SSIndeliveryPanel(iDialog);
 
-        final SSIndelivery iOriginal = iIndelivery;
-
         iPanel.setIndelivery(  new SSIndelivery(iIndelivery) );
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
