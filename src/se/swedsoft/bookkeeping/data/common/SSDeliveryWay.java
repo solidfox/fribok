@@ -3,7 +3,6 @@ package se.swedsoft.bookkeeping.data.common;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 

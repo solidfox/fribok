@@ -5,6 +5,7 @@ import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
+import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.system.*;
 import se.swedsoft.bookkeeping.gui.about.dialog.SSAboutDialog;
 import se.swedsoft.bookkeeping.gui.accountingyear.SSAccountingYearFrame;
@@ -41,6 +42,7 @@ import se.swedsoft.bookkeeping.gui.supplierinvoice.SSSupplierInvoiceFrame;
 import se.swedsoft.bookkeeping.gui.tender.SSTenderFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.dialogs.*;
+import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
 import se.swedsoft.bookkeeping.gui.util.filechooser.SSFileChooser;
 import se.swedsoft.bookkeeping.gui.util.filechooser.SSSIEFileChooser;
 import se.swedsoft.bookkeeping.gui.util.filechooser.util.SSFilterALL;
@@ -76,8 +78,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
 
 /**
  *

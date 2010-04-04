@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.gui.order;
 
-import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;

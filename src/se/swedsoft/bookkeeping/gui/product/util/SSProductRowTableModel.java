@@ -10,7 +10,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSDefaultTableCellRenderer;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;

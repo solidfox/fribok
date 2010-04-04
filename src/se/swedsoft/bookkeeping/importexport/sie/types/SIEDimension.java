@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.importexport.sie.types;
 
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 

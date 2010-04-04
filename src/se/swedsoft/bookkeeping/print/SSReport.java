@@ -17,7 +17,6 @@ import se.swedsoft.bookkeeping.util.SSException;
 import javax.swing.*;
 import javax.swing.event.InternalFrameListener;
 import java.awt.*;
-import java.lang.String;
 import java.util.*;
 import java.util.List;
 

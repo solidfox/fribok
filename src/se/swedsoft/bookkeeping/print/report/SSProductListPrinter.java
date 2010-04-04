@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.print.report;
 
-import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSProductRow;

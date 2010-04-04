@@ -2,7 +2,7 @@ package se.swedsoft.bookkeeping.gui.util.table.editors;
 
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**

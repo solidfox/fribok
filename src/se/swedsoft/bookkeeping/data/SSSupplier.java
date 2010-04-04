@@ -10,7 +10,6 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Hashtable;
 
 /**
  * Date: 2006-mar-20

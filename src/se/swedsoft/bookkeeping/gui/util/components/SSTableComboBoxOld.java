@@ -7,7 +7,6 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableModel;
 import javax.swing.text.Document;
 import java.awt.*;

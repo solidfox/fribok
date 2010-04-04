@@ -5,7 +5,6 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 

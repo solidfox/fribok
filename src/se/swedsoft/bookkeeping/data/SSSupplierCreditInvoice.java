@@ -8,7 +8,6 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 
 /**

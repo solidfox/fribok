@@ -19,12 +19,12 @@
 
 package se.swedsoft.bookkeeping.util;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import javax.swing.*;
 
 /**
  * Class to launch web browsers.

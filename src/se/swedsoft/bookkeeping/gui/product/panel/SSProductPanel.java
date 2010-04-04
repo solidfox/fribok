@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.gui.product.panel;
 
-import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;

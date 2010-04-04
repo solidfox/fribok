@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.gui.product;
 
-import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.data.system.SSDB;

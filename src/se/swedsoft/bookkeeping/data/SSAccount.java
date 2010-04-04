@@ -7,7 +7,6 @@ package se.swedsoft.bookkeeping.data;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
-import java.util.Hashtable;
 
 
 /**

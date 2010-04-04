@@ -18,10 +18,11 @@
  */ 
 package se.swedsoft.bookkeeping.app;
 
+import org.freedesktop.xdg.BaseDirs;
+
 import java.io.File;
 import java.util.EnumMap;
 import java.util.Map;
-import org.freedesktop.xdg.BaseDirs;
 
 /**
  * Return paths to directories depending on the running OS.  This class makes NO

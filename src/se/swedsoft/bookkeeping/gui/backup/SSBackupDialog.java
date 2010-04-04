@@ -3,7 +3,6 @@ package se.swedsoft.bookkeeping.gui.backup;
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
 import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupFactory;
-import se.swedsoft.bookkeeping.gui.util.filechooser.SSBackupFileChooser;
 
 import javax.swing.*;
 import java.io.File;
