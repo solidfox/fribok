@@ -15,7 +15,6 @@
   <!-- Build Settings -->
   <packaging>jar</packaging>
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
       <resource>
