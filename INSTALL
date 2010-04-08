@@ -4,7 +4,7 @@ Build requirements:
 * Java SDK, version 1.6 or greater
 * Apache Maven 2
 
-The preferred way of building JFS Administration is to use the Maven POM-file.
+The preferred way of building JFS Administration is using the Maven POM-file.
 
 $ mvn assembly:assembly
 [output...]
@@ -24,8 +24,18 @@ rid of this dependency.  For now, we recommend people to use the free software
 community edition of the IDE to edit the forms.  It is available from:
 http://www.jetbrains.org/
 
-Alternatively, you can build JFS Administration directly from IntelliJ IDEA.
-What follows is build instructions for IntelliJ IDEA Community Edition.
+You can also generate an IntelliJ project using Maven.
+
+$ mvn idea:idea
+
+If you wish, you can download the sources and javadocs of deployed artifacts for
+easy access inside IntelliJ.
+
+$ mvn idea:idea -DdownloadSources=true -DdownloadJavadocs=true
+
+If you don't wish to use Maven, you can build JFS Administration from inside
+IntelliJ IDEA.  What follows is build instructions for IntelliJ IDEA Community
+Edition.
 
 1. Start IntelliJ IDEA.
 
@@ -40,4 +50,5 @@ What follows is build instructions for IntelliJ IDEA Community Edition.
 4. Add a new configuration as `Application', using SSBookkeeping as main class
    and `administration' as working dir. Make sure to specify an SDK to use.
 
-5. Now you can run the program.
+5. Run the program!
+

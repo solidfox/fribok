@@ -70,6 +70,13 @@
           <failOnError>true</failOnError>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-idea-plugin</artifactId>
+        <configuration>
+          <jdkLevel>1.6</jdkLevel>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
