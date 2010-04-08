@@ -1,7 +1,5 @@
 JFS Administration, INSTALL file
 
-TODO: Add izpack instructions here.
-
 Build requirements:
 * Java SDK, version 1.6 or greater
 * Apache Maven 2
