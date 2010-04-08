@@ -1,0 +1,8 @@
+This directory and the containing files should be removed or integrated with the
+other reports as needed.  I didn't want to remove them without being sure, but
+they clearly don't belong in the project's root.  Thus, I moved them here.
+
+They seem to be auto generated and are probably cruft from way back.  Someone
+else should have a look first, though.
+
+ -- Stefan Kangas, Thu Apr  8 22:23:29 CEST 2010
