@@ -1,0 +1,64 @@
+/*
+ * This is the style for the help in the JFS Administration program.
+ */
+
+
+body {
+    font-family: sans-serif;
+    background-color: white;
+}
+
+.rubrik {
+    font-size: 14pt;
+    font-family: verdana;
+    font-weight: normal;
+    width: 700px;
+    text-transform: uppercase;
+    color: black;
+
+}
+
+.text {
+    font-size: 11pt;
+    font-family: verdana;
+    width: 700px;
+    line-height: 15pt;
+
+}
+
+.flik {
+    font-size: 11pt;
+    font-family: verdana;
+    font-weight: bold;
+    width: 700px;
+
+}
+
+.undermeny {
+    font-size: 11pt;
+    font-family: verdana;
+    font-style: italic;
+    width: 700px;
+
+}
+
+.kantlinje {
+    border-top: 2px dotted #99BCE8; 
+    border-bottom: 2px dotted #99BCE8;
+    width: 700px;
+    
+}
+
+.copyright {
+    font-size: 11pt;
+    font-family: verdana;
+    font-style: italic;
+    width: 700px;
+
+}
+
+.bild {
+    width: 700px;
+    height: 20px;
+
+}
