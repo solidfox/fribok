@@ -15,7 +15,6 @@
   <!-- Build Settings -->
   <packaging>jar</packaging>
   <build>
-    <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
