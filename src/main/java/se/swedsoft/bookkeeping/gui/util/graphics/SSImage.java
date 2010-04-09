@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.net.URL;
 
 /**
  * Date: 2006-feb-08
@@ -15,16 +16,14 @@ import java.util.Map;
  */
 public class SSImage {
 
-    public static final File cImageDirectory = Path.get(Path.APP_IMAGES);
-
     // Library of all graphics
-    private static Map<String, BufferedImage> iGraphics = new HashMap<String, BufferedImage>();
+    private static Map<String, BufferedImage> graphics = new HashMap<String, BufferedImage>();
 
-    private SSImage() {
-    }
+    // Ensure non-instantiability
+    private SSImage() { throw new AssertionError("Don't instantiate this class"); }
 
     // Standard graphics
-    static{
+    static {
         loadImage("BACKGROUND"    , "Background.png" );
         loadImage("LOGO"          , "logo.png" );
         loadImage("OCRAVI"        , "OCRAvi.png" );
@@ -35,64 +34,50 @@ public class SSImage {
     }
 
     /**
-     * Loads an image from the disk
-     *
-     * @param pName     Unique name of the image
-     * @param pImageFile The name of the image file
+     * Load an image from disk
+     * @param name     unique name of the image
+     * @param filename the name of the image file
      */
-    public static void loadImage(String pName, String pImageFile){
-
-        if(iGraphics.containsKey(pName) ){
-            System.out.println("(SSImage): Duplicate image: "+ pName );
+    private static void loadImage(String name, String filename){
+        if (graphics.containsKey(name)) {
+            System.out.println("(SSImage): Already loaded image: " + name);
             return;
         }
 
-        BufferedImage iImage = loadImage(new File(cImageDirectory, pImageFile));
+        URL url = Path.class.getResource("/graphics/" + filename);
 
-        if(iImage == null){
-            System.out.println("(SSImage): Failed to load image: "+ cImageDirectory + pImageFile );
-            return;
-        }
-        iGraphics.put(pName, iImage);
-    }
-
-    /**
-     *   Gets the image by the specified name
-     *
-     * @param pName The unique name of the image
-     * @return if image exists
-     */
-    public static boolean hasImage(String pName){
-        return iGraphics.containsKey(pName);
-    }
-
-    /**
-     *   Gets the image by the specified name
-     *
-     * @param pName The unique name of the image
-     * @return The image
-     */
-    public static BufferedImage getImage(String pName){
-        if(!iGraphics.containsKey(pName) ){
-            System.out.println("(SSImage): Image not found: "+ pName );
-        }
-        return iGraphics.get(pName);
-    }
-
-    /**
-     *
-     * @param iImageFile
-     * @return The Image
-     */
-    private static BufferedImage loadImage(File iImageFile) {
-        if( !iImageFile.exists() ) return null;
-
+        BufferedImage image = null;
         try {
-            return ImageIO.read(iImageFile);
+            image = ImageIO.read(url);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        if (image != null) {
+            graphics.put(name, image);
+        } else {
+            System.out.println("(SSImage): Failed to load image: " + filename);
+        }
     }
 
+    /**
+     * Check if an image with the specified name exists
+     * @param name the unique name of the image
+     * @return true if image exists
+     */
+    public static boolean hasImage(String name){
+        return graphics.containsKey(name);
+    }
+
+    /**
+     * Gets the image by the specified name
+     * @param name the unique name of the image
+     * @return the image
+     */
+    public static BufferedImage getImage(String name){
+        if (!graphics.containsKey(name)) {
+            System.out.println("(SSImage): Image not found: "+ name );
+        }
+        return graphics.get(name);
+    }
 }

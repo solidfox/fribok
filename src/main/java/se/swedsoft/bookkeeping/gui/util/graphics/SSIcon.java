@@ -8,34 +8,34 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.net.URL;
 
 /**
  * Date: 2006-feb-02
  * Time: 10:11:34
  */
 public class SSIcon {
-    public static final File cIconDirectory = Path.get(Path.APP_ICONS);
 
-    private SSIcon() {
-    }
+    // Ensure non-instantiability
+    private SSIcon() { throw new AssertionError("Don't instantiate this class"); }
 
     public enum IconState {
         NORMAL     ("NORMAL"     ),
         DISABLED   ("DISABLED"   ),
         HIGHLIGHTED("HIGHLIGHTED");
 
-        private final String iName;
+        private final String name;
 
-        IconState(String pName) {
-            iName = pName;
+        IconState(String name) {
+            name = name;
         }
         public String getName() {
-            return iName;
+            return name;
         }
     }
 
     // Library of all graphics
-    private static Map<String, ImageIcon> iIcons = new HashMap<String, ImageIcon>();
+    private static Map<String, ImageIcon> icons = new HashMap<String, ImageIcon>();
 
     // Standard graphics
     static{
@@ -224,96 +224,87 @@ public class SSIcon {
     /**
      * Loads an icon from the disk
      *
-     * @param pName     Unique name of the icon
-     * @param pIconFile The name of the icon file
+     * @param name     Unique name of the icon
+     * @param filename The name of the icon file
      */
-    private static void loadIcon(String pName, String pIconFile){
-
-        if(iIcons.containsKey(pName) ){
-            System.out.println("(SSIcon): Duplicate icon: "+ pName );
+    private static void loadIcon(String name, String filename) {
+        if (icons.containsKey(name)) {
+            System.out.println("(SSIcon): Already loaded icon: " + name);
             return;
         }
 
-        ImageIcon iIcon = loadIcon(new File(cIconDirectory, pIconFile));
+        URL url = Path.class.getResource("/graphics/icons/" + filename);
 
-        if(iIcon == null){
-            System.out.println("(SSIcon): Failed to load icon: "+ cIconDirectory + pIconFile );
-            return;
+        ImageIcon icon = null;
+        try {
+            icon = new ImageIcon(ImageIO.read(url));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        iIcons.put(pName, iIcon);
+
+        if (icon != null) {
+            icons.put(name, icon);
+        } else {
+            System.out.println("(SSIcon): Failed to load icon: " + filename);
+        }
     }
 
     /**
      * Loads an icon from the disk
      *
-     * @param pName     Unique name of the icon
+     * @param name     Unique name of the icon
      * @param pState
-     * @param pIconFile The name of the icon file
+     * @param filename The name of the icon file
      */
-    private static void loadIcon(String pName, IconState pState, String pIconFile){
-        loadIcon(pName + '_' + pState.getName(), pIconFile);
+    private static void loadIcon(String name, IconState pState, String filename){
+        loadIcon(name + '_' + pState.getName(), filename);
     }
 
     /**
      *   Gets the icon by the specified name
      *
-     * @param pName The unique name of the icon
+     * @param name The unique name of the icon
      * @return The icon
      */
-    public static ImageIcon getIcon(String pName){
-        return getIcon(pName, IconState.NORMAL);
+    public static ImageIcon getIcon(String name){
+        return getIcon(name, IconState.NORMAL);
     }
 
     /**
      *   Gets the icon by the specified name
      *
-     * @param pName The unique name of the icon
+     * @param name The unique name of the icon
      * @return The icon
      */
-    public static boolean hasIcon(String pName){
-        return hasIcon(pName, IconState.NORMAL);
-    }
-    /**
-     *
-     * @param pName The unique name of the icon
-     * @param pState The state of the icon
-     * @return The icon
-     */
-    public static boolean hasIcon(String pName, IconState pState){
-        String iIconName = pName + '_' + pState.getName();
-
-        return iIcons.containsKey(iIconName);
+    public static boolean hasIcon(String name){
+        return hasIcon(name, IconState.NORMAL);
     }
 
     /**
      *
-     * @param pName The unique name of the icon
+     * @param name The unique name of the icon
      * @param pState The state of the icon
      * @return The icon
      */
-    public static ImageIcon getIcon(String pName, IconState pState){
-        String iIconName = pName + '_' + pState.getName();
+    public static boolean hasIcon(String name, IconState pState){
+        String iIconName = name + '_' + pState.getName();
 
-        if(!iIcons.containsKey(iIconName) ){
+        return icons.containsKey(iIconName);
+    }
+
+    /**
+     *
+     * @param name The unique name of the icon
+     * @param pState The state of the icon
+     * @return The icon
+     */
+    public static ImageIcon getIcon(String name, IconState pState){
+        String iIconName = name + '_' + pState.getName();
+
+        if(!icons.containsKey(iIconName) ){
             System.out.println("(SSIcon): Icon not found: "+ iIconName );
         }
-        return iIcons.get(iIconName);
-    }
-
-    /**
-     *
-     * @param iImageFile
-     * @return The icon
-     */
-    private static ImageIcon loadIcon(File iImageFile) {
-        if( !iImageFile.exists() ) return null;
-
-        try {
-            return new ImageIcon(ImageIO.read(iImageFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return icons.get(iIconName);
     }
 
 }

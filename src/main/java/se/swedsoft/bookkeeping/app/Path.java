@@ -26,9 +26,9 @@ import java.util.Map;
 
 /**
  * Return paths to directories depending on the running OS.  This class makes NO
- * GUARANTEES at all that these directories are readable or writable by the
- * current user; this class is nothing more than a set of File objects available
- * for use in different parts of the program.
+ * GUARANTEES that these directories are neither readable nor writable by the
+ * current user; this class should be regarded as nothing more than a set of
+ * File objects available for use in different parts of the program.
  *
  * @author Stefan Kangas
  * @version $Id$
@@ -38,10 +38,6 @@ public enum Path {
     APP_BASE,
     /** The application data directory */
     APP_DATA,
-    /** The application icon directory */
-    APP_ICONS,
-    /** The application image directory */
-    APP_IMAGES,
     /** The user configuration directory */
     USER_CONF,
     /** The user data directory */
@@ -54,8 +50,6 @@ public enum Path {
         File base = new File(new File("").getAbsolutePath());
         path.put(APP_BASE,   base);
         path.put(APP_DATA,   new File(base, "data"));
-        path.put(APP_IMAGES, new File(base, "graphic"));
-        path.put(APP_ICONS,  new File(base, "graphic/icons"));
 
         String os = System.getProperty("os.name");
         if (os.startsWith("Mac OS") || os.startsWith("Windows")) {
