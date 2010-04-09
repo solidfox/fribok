@@ -12,6 +12,12 @@
     organizations and small companies.
   </description>
   <url>https://sourceforge.net/projects/jfsaccounting/</url>
+  <licenses>
+    <license>
+      <name>The GNU General Public License, version 3</name>
+      <url>COPYING</url>
+    </license>
+  </licenses>
   <!-- Build Settings -->
   <packaging>jar</packaging>
   <build>
