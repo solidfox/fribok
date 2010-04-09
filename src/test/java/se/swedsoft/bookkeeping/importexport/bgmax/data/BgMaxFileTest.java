@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +16,7 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxAvsnitt;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxBetalning;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxFile;
 import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
+import java.net.URL;
 
 /**
  * Tests for BGMax.
@@ -24,68 +24,45 @@ import se.swedsoft.bookkeeping.importexport.bgmax.data.BgMaxReferens;
  * @version $Id$
  */
 public class BgMaxFileTest {
+    private final int NUM_FILES = 4;
 
     private final String FILE_NAME   = "BgMaxTestFile";
     private final String FILE_ENDING = "ut";
-    private final String DIR         = "test/resources/se/swedsoft/bookkeeping/importexport/bgmax/data";
 
-    private final int NR_FILES = 4;
+    private final List<List<String>> files = new ArrayList<List<String>>();
 
-    private List<TestFile> fileList = new ArrayList<TestFile>();
- 
     @Before
     public void setUp() throws Exception {
-        for ( int i = 0; i < NR_FILES; i++ ) {
-            TestFile file = new TestFile( FILE_NAME + (i + 1) + "." + FILE_ENDING, DIR );
-            fileList.add( file );
-   
-            BufferedReader reader = new BufferedReader( new FileReader( new File(file.dir, file.name) ) );
-            file.lines = new ArrayList<String>();
-   
-            while ( true ) {
-                String line = reader.readLine();
-    
-                if ( line == null ) break;
-    
-                file.lines.add( line );
-            }
-   
+        // Load file lines to a list for easy access in tests
+        for (int i = 0; i < NUM_FILES; i++) {
+            String filename = FILE_NAME + (i + 1) + "." + FILE_ENDING;
+            URL url = getClass().getResource(filename);
+            File file = new File( url.toURI() );
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+
+            List<String> lines = new ArrayList<String>();
+            String line;
+            while ((line = reader.readLine()) != null)
+                lines.add(line);
+            files.add(lines);
         }
     }
 
-    @After
-    public void tearDown() throws Exception {}
-
     @Test
-    public void testParse() {
-        testParseFile4();
-    }
- 
-    public void testParseFile4() {
-        TestFile testFile = fileList.get( 3 );  
+    public void testParseFile3() {
         BgMaxFile bgMaxFile = new BgMaxFile();
-  
-        bgMaxFile.parse(  testFile.lines );
-  
-        testParsedFile4( bgMaxFile, testFile );
-    }
- 
-    /**
-     * Tests if the right data has been read to bgFile. Is supposed to
-     * be called with a bgFile where .parse has already been called.
-     */
-    public void testParsedFile4( BgMaxFile bgFile, TestFile testFile )
-    {
-        assertEquals( "layout name after reading ", "BGMAX", bgFile.iLayoutnamn );
-        assertEquals( "iVersion", "01", bgFile.iVersion );
-        assertEquals( "iTidsstampel", "20040525173035010331", bgFile.iTidsstampel );
-        
-        assertEquals( "iAntalBetalningsPoster", "00000009", bgFile.iAntalBetalningsPoster );
-        assertEquals( "iAntalAvdragsPoster", "00000000", bgFile.iAntalAvdragsPoster );
-        assertEquals( "iAntalExtraReferensPoster", "00000013", bgFile.iAntalExtraReferensPoster );
-        assertEquals( "iAntalInsattningsPoster", "00000004", bgFile.iAntalInsattningsPoster );
+        bgMaxFile.parse(files.get(3));
 
-        BgMaxAvsnitt avs1 = bgFile.iAvsnitts.get( 0 );
+        assertEquals( "layout name after reading ", "BGMAX", bgMaxFile.iLayoutnamn );
+        assertEquals( "iVersion", "01", bgMaxFile.iVersion );
+        assertEquals( "iTidsstampel", "20040525173035010331", bgMaxFile.iTidsstampel );
+        
+        assertEquals( "iAntalBetalningsPoster", "00000009", bgMaxFile.iAntalBetalningsPoster );
+        assertEquals( "iAntalAvdragsPoster", "00000000", bgMaxFile.iAntalAvdragsPoster );
+        assertEquals( "iAntalExtraReferensPoster", "00000013", bgMaxFile.iAntalExtraReferensPoster );
+        assertEquals( "iAntalInsattningsPoster", "00000004", bgMaxFile.iAntalInsattningsPoster );
+
+        BgMaxAvsnitt avs1 = bgMaxFile.iAvsnitts.get( 0 );
         assertEquals( "iBankgiroNummer", "0009912346", avs1.iBankgiroNummer );
         assertEquals( "iValuta", "SEK", avs1.iValuta );
         
@@ -121,19 +98,4 @@ public class BgMaxFileTest {
         assertEquals( "iBGCLopnummer", "000120000018", ref1.iBGCLopnummer );
         assertEquals( "iAvibildmarkering", "0", ref1.iAvibildmarkering );
     }
- 
-    public class TestFile
-    {
-        public String name, dir;
-        public File file;
-
-        public List<String> lines = new LinkedList<String>();
-
-        public TestFile( String name, String dir ) {
-            this.name = name;
-            this.dir = dir;
-            this.file = new File( dir, this.name );
-        }
-    }
-
 }
