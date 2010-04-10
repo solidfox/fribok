@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
@@ -12,11 +13,13 @@ import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
+
 /**
  * Date: 2006-feb-23
  * Time: 11:11:59
  */
 public class SIEEntrySRU implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -32,26 +35,28 @@ public class SIEEntrySRU implements SIEEntry {
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
 
         // read the account number
-        if( !iReader.hasNextInteger() ){
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasNextInteger()) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         int iAccountNumber = iReader.nextInteger();
 
-        SSAccount iAccount = iAccountPlan.getAccount( iAccountNumber );
+        SSAccount iAccount = iAccountPlan.getAccount(iAccountNumber);
 
         // read the account description
-        if( !iReader.hasNext() ){
-            throw new SSImportException(SSBundleString.getString("sieexport.expectedbutfound.value") );
+        if (!iReader.hasNext()) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieexport.expectedbutfound.value"));
         }
 
-        if(iAccount == null){
-            throw new RuntimeException("Missing account for srucode " + iAccountNumber );
+        if (iAccount == null) {
+            throw new RuntimeException("Missing account for srucode " + iAccountNumber);
         }
 
-        iAccount.setSRUCode( iReader.next() );
+        iAccount.setSRUCode(iReader.next());
 
-        //SSDB.getInstance().updateAccountingYear(iYearData);
+        // SSDB.getInstance().updateAccountingYear(iYearData);
         return true;
     }
 
@@ -65,18 +70,19 @@ public class SIEEntrySRU implements SIEEntry {
      *
      */
     @Override
-    public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter,SSNewAccountingYear iYearData) throws SSExportException {
+    public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iYearData) throws SSExportException {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
 
         boolean iHasData = false;
-        for(SSAccount iAccount : iAccountPlan.getAccounts()){
 
-            if( iAccount.getSRUCode() != null ){
+        for (SSAccount iAccount : iAccountPlan.getAccounts()) {
+
+            if (iAccount.getSRUCode() != null) {
 
                 iWriter.append(SIELabel.SIE_SRU);
-                iWriter.append( iAccount.getNumber() );
-                iWriter.append( iAccount.getSRUCode() );
+                iWriter.append(iAccount.getNumber());
+                iWriter.append(iAccount.getSRUCode());
                 iWriter.newLine();
                 iHasData = true;
             }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -15,12 +16,12 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * Date: 2006-feb-20
  * Time: 14:16:55
  */
 public class SSSIEExporter {
-
 
     private List<String> iLines;
 
@@ -28,14 +29,13 @@ public class SSSIEExporter {
 
     private String iComment;
 
-
     /**
      *
      * @param pType
      */
     public SSSIEExporter(SIEType pType) {
-        iLines   = new LinkedList<String>();
-        iType    = pType;
+        iLines = new LinkedList<String>();
+        iType = pType;
         iComment = null;
     }
 
@@ -45,10 +45,11 @@ public class SSSIEExporter {
      * @param pComment
      */
     public SSSIEExporter(SIEType pType, String pComment) {
-        iLines   = new LinkedList<String>();
-        iType    = pType;
+        iLines = new LinkedList<String>();
+        iType = pType;
         iComment = pComment;
     }
+
     /**
      *
      * @param pFile
@@ -58,33 +59,36 @@ public class SSSIEExporter {
         SSNewAccountingYear iYearData = SSDB.getInstance().getCurrentYear();
 
         // Test so we have an active year
-        if(iYearData == null) {
-            throw new SSExportException( SSBundleString.getString("sieexport.noyear") );
+        if (iYearData == null) {
+            throw new SSExportException(SSBundleString.getString("sieexport.noyear"));
         }
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
         // Test so we have an active company
-        if(iCompany == null) {
-            throw new SSExportException( SSBundleString.getString("sieexport.nocompany") );
+        if (iCompany == null) {
+            throw new SSExportException(SSBundleString.getString("sieexport.nocompany"));
         }
 
         // Get the exporter factory
         SIEFactory iFactory = SIEFactory.getExportInstance(iType);
 
-        //System.out.println( iFactory.toString() );
+        // System.out.println( iFactory.toString() );
 
-        for(SIELabel iLabel : iFactory.getLabels()){
+        for (SIELabel iLabel : iFactory.getLabels()) {
             SIEEntry iEntry = iLabel.getEntry();
 
-            if(iEntry == null) continue;
+            if (iEntry == null) {
+                continue;
+            }
 
             SIEWriter iWriter = new SIEWriter();
 
-            if( iEntry.exportEntry(this, iWriter, iYearData) ){
+            if (iEntry.exportEntry(this, iWriter, iYearData)) {
 
-                if(iWriter.getLines().isEmpty()){
-                    throw new RuntimeException("Entry reported data but no lines found: " + iEntry);
+                if (iWriter.getLines().isEmpty()) {
+                    throw new RuntimeException(
+                            "Entry reported data but no lines found: " + iEntry);
                 }
 
                 iLines.addAll(iWriter.getLines());
@@ -93,48 +97,41 @@ public class SSSIEExporter {
         writeFile(pFile);
     }
 
-
     /**
      *
      * @param pFile
      * @throws SSImportException
      * @throws SSExportException
      */
-    protected void readFile(File pFile) throws SSExportException{
-        try{
+    protected void readFile(File pFile) throws SSExportException {
+        try {
             iLines = SIEFile.readFile(pFile);
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             throw new SSExportException(ex.getMessage());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
             throw new SSExportException(ex.getMessage());
         }
     }
+
     /**
      *
      * @param pFile
      * @throws SSImportException
      * @throws SSExportException
      */
-    private void writeFile(File pFile) throws SSExportException{
-        try{
+    private void writeFile(File pFile) throws SSExportException {
+        try {
             SIEFile.writeFile(pFile, iLines);
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             throw new SSExportException(ex.getMessage());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
             throw new SSExportException(ex.getMessage());
         }
     }
-
-
-
 
     /**
      *
@@ -169,10 +166,10 @@ public class SSSIEExporter {
         return iLines;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter");
         sb.append("{iComment='").append(iComment).append('\'');
         sb.append(", iLines=").append(iLines);

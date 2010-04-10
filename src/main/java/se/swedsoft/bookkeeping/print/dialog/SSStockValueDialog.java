@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
@@ -12,6 +13,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -27,7 +29,6 @@ public class SSStockValueDialog extends SSDialog {
     private SSButtonPanel iButtonPanel;
     private JRadioButton iRadioAll;
     private JRadioButton iRadioDate;
-
 
     /**
      * @param iFrame
@@ -48,16 +49,17 @@ public class SSStockValueDialog extends SSDialog {
             }
         });
 
-
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iDate.setEnabled( iRadioDate.isSelected() );
+                iDate.setEnabled(iRadioDate.isSelected());
             }
         };
-        iRadioAll  .addChangeListener(iChangeListener);
+
+        iRadioAll.addChangeListener(iChangeListener);
         iRadioDate.addChangeListener(iChangeListener);
 
         ButtonGroup iGroup = new ButtonGroup();
+
         iGroup.add(iRadioAll);
         iGroup.add(iRadioDate);
 
@@ -73,17 +75,17 @@ public class SSStockValueDialog extends SSDialog {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public boolean isDateSelected() {
         return iRadioDate.isSelected();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSStockValueDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

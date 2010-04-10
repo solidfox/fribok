@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -14,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * User: Andreas Lago
@@ -30,17 +32,17 @@ public class SSPendingPeriodicInvoiceDialog extends SSDialog {
 
     private SSTable iTable;
 
-
     // The periodic invoices and the new invoices
-    private Map<SSPeriodicInvoice,List<SSInvoice>> iInvoices;
+    private Map<SSPeriodicInvoice, List<SSInvoice>> iInvoices;
 
     /**
      *
      * @param iMainFrame
      * @param iInvoices
      */
-    public SSPendingPeriodicInvoiceDialog(SSMainFrame iMainFrame, Map<SSPeriodicInvoice,List<SSInvoice>> iInvoices){
-        super(iMainFrame, SSBundle.getBundle().getString("periodicinvoiceframe.invoice.title"));
+    public SSPendingPeriodicInvoiceDialog(SSMainFrame iMainFrame, Map<SSPeriodicInvoice, List<SSInvoice>> iInvoices) {
+        super(iMainFrame,
+                SSBundle.getBundle().getString("periodicinvoiceframe.invoice.title"));
         this.iInvoices = iInvoices;
 
         iModel = new SSPendingInvoiceTableModel(iInvoices);
@@ -53,7 +55,6 @@ public class SSPendingPeriodicInvoiceDialog extends SSDialog {
 
         iModel.setupTable(iTable);
         iModel.selectAll();
-
 
         iButtonPanel.addCancelActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -72,8 +73,6 @@ public class SSPendingPeriodicInvoiceDialog extends SSDialog {
 
         setPanel(iPanel);
     }
-
-
 
     /**
      *
@@ -99,30 +98,33 @@ public class SSPendingPeriodicInvoiceDialog extends SSDialog {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     /**
      *
      * @param iMainFrame
      * @param iInvoices
      * @return
      */
-    public static Map<SSPeriodicInvoice,List<SSInvoice>> showDialog(SSMainFrame iMainFrame, Map<SSPeriodicInvoice,List<SSInvoice>> iInvoices){
-        SSPendingPeriodicInvoiceDialog iDialog = new SSPendingPeriodicInvoiceDialog(iMainFrame, iInvoices);
+    public static Map<SSPeriodicInvoice, List<SSInvoice>> showDialog(SSMainFrame iMainFrame, Map<SSPeriodicInvoice, List<SSInvoice>> iInvoices) {
+        SSPendingPeriodicInvoiceDialog iDialog = new SSPendingPeriodicInvoiceDialog(
+                iMainFrame, iInvoices);
 
         iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible(true);
 
-        if(iDialog.getModalResult() != JOptionPane.OK_OPTION ) return null;
+        if (iDialog.getModalResult() != JOptionPane.OK_OPTION) {
+            return null;
+        }
 
         return iDialog.iModel.getSelected();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.dialog.SSPendingPeriodicInvoiceDialog");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.periodicinvoice.dialog.SSPendingPeriodicInvoiceDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iInvoices=").append(iInvoices);
         sb.append(", iModel=").append(iModel);

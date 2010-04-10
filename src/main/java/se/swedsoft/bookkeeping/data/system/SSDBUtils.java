@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -8,6 +9,7 @@ import se.swedsoft.bookkeeping.gui.util.dialogs.SSErrorDialog;
 import java.io.*;
 import java.net.SocketException;
 
+
 /**
  * Date: 2006-feb-28
  * Time: 16:37:12
@@ -15,16 +17,16 @@ import java.net.SocketException;
 public class SSDBUtils {
     private static Integer iLocalRevisionNumber = 1;
 
-    private SSDBUtils() {
-    }
+    private SSDBUtils() {}
 
     private static void copyFile(File in, File out) throws IOException {
-        FileInputStream fis  = new FileInputStream(in);
+        FileInputStream fis = new FileInputStream(in);
         FileOutputStream fos = new FileOutputStream(out);
 
         byte[] buf = new byte[1024];
         int i = 0;
-        while((i=fis.read(buf))!=-1) {
+
+        while ((i = fis.read(buf)) != -1) {
             fos.write(buf, 0, i);
         }
         fis.close();
@@ -56,7 +58,7 @@ public class SSDBUtils {
      * @param iFile The file name of the file to remove the backup for.
      */
     public static void removeBackup(File iFile) {
-        File iBackupFile = getBackupFile( iFile);
+        File iBackupFile = getBackupFile(iFile);
 
         if (iBackupFile.exists()) {
             iBackupFile.delete();
@@ -71,8 +73,9 @@ public class SSDBUtils {
      */
     public static boolean restoreBackup(File iFile) {
         File iBackupFile = getBackupFile(iFile);
+
         if (iBackupFile.exists()) {
-            if(iFile.exists()) {
+            if (iFile.exists()) {
                 iFile.delete();
             }
             return iBackupFile.renameTo(iFile);
@@ -91,6 +94,7 @@ public class SSDBUtils {
             iOut.println("getrevisionnumber");
             iOut.flush();
             String iAnswer = iIn.readLine();
+
             return Integer.parseInt(iAnswer);
 
         } catch (SocketException e) {
@@ -116,7 +120,6 @@ public class SSDBUtils {
         iOut.flush();
     }
 
-
     /**
      * Creates a backup name for the given file name.
      *
@@ -128,7 +131,6 @@ public class SSDBUtils {
         return new File(iFile.getParent(), iFile.getName() + ".backup");
     }
 
-
     /**
      * Deletes a file if the file exists
      *
@@ -139,7 +141,7 @@ public class SSDBUtils {
     public static boolean deleteFile(String pFilename) {
         File iFile = new File(pFilename);
 
-        if(iFile.exists()){
+        if (iFile.exists()) {
             return iFile.delete();
         }
         return false;
@@ -152,11 +154,13 @@ public class SSDBUtils {
      * @param pFileName The name to change.
      */
     public static void backup(String pFileName) {
-        File iFile       = new File(pFileName);
+        File iFile = new File(pFileName);
         File iBackupFile = getBackupFile(iFile);
 
         if (iFile.exists()) {
-            if(iBackupFile.exists()) iBackupFile.delete();
+            if (iBackupFile.exists()) {
+                iBackupFile.delete();
+            }
 
             iFile.renameTo(iBackupFile);
         }
@@ -168,7 +172,7 @@ public class SSDBUtils {
      * @param pFileName The file name of the file to remove the backup for.
      */
     public static void removeBackup(String pFileName) {
-        File iBackupFile = getBackupFile( new File(pFileName));
+        File iBackupFile = getBackupFile(new File(pFileName));
 
         if (iBackupFile.exists()) {
             iBackupFile.delete();
@@ -181,16 +185,17 @@ public class SSDBUtils {
      * @param pFileName The file name of the file to remove the backup for.
      */
     public static void restoreBackup(String pFileName) {
-        File iFile       = new File(pFileName);
+        File iFile = new File(pFileName);
         File iBackupFile = getBackupFile(iFile);
 
         if (iBackupFile.exists()) {
-            if(iFile.exists()) iFile.delete();
+            if (iFile.exists()) {
+                iFile.delete();
+            }
 
             iBackupFile.renameTo(iFile);
         }
     }
-
 
     /**
      *
@@ -199,26 +204,30 @@ public class SSDBUtils {
      * @throws IOException
      */
     public static void SaveToFile(File iFile, Object iObject) throws IOException {
-        FileOutputStream fos  = null;
+        FileOutputStream fos = null;
         BufferedOutputStream iBufferedOutputStream = null;
         ObjectOutputStream iObjectOutputStream = null;
+
         try {
-            fos  = new FileOutputStream(iFile);
+            fos = new FileOutputStream(iFile);
             iBufferedOutputStream = new BufferedOutputStream(fos);
             iObjectOutputStream = new ObjectOutputStream(iBufferedOutputStream);
 
             iObjectOutputStream.writeObject(iObject);
             iObjectOutputStream.flush();
             iObjectOutputStream.close();
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e1) {
-            if(fos != null)
+            if (fos != null) {
                 fos.close();
-            if(iBufferedOutputStream != null)
+            }
+            if (iBufferedOutputStream != null) {
                 iBufferedOutputStream.close();
-            if (iObjectOutputStream != null)
+            }
+            if (iObjectOutputStream != null) {
                 iObjectOutputStream.close();
+            }
 
             throw new IOException(e1.getMessage());
         }
@@ -234,11 +243,13 @@ public class SSDBUtils {
         FileInputStream fis = null;
         BufferedInputStream iBufferedInputStream = null;
         ObjectInputStream iObjectInputStream = null;
+
         try {
             fis = new FileInputStream(iFile);
             iBufferedInputStream = new BufferedInputStream(fis);
             iObjectInputStream = new SSObjectInputStream(iBufferedInputStream);
             Object iObject = null;
+
             try {
                 iObject = iObjectInputStream.readObject();
             } catch (ClassNotFoundException ex) {
@@ -250,12 +261,15 @@ public class SSDBUtils {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e1) {
-            if(fis != null)
+            if (fis != null) {
                 fis.close();
-            if(iBufferedInputStream != null)
+            }
+            if (iBufferedInputStream != null) {
                 iBufferedInputStream.close();
-            if (iObjectInputStream != null)
+            }
+            if (iObjectInputStream != null) {
                 iObjectInputStream.close();
+            }
 
             throw new IOException(e1.getMessage());
         }
@@ -263,9 +277,6 @@ public class SSDBUtils {
         return null;
 
     }
-
-
-
 
     /**
      * Loads the company object from the disk
@@ -276,11 +287,13 @@ public class SSDBUtils {
      */
     public static SSNewCompany loadCompany(String pFilename) {
         try {
-            BufferedInputStream iBufferedInputStream = new BufferedInputStream(new FileInputStream( pFilename ));
+            BufferedInputStream iBufferedInputStream = new BufferedInputStream(
+                    new FileInputStream(pFilename));
 
-            ObjectInputStream iObjectInputStream = new SSObjectInputStream(iBufferedInputStream);
+            ObjectInputStream iObjectInputStream = new SSObjectInputStream(
+                    iBufferedInputStream);
 
-            return (SSNewCompany)iObjectInputStream.readObject();
+            return (SSNewCompany) iObjectInputStream.readObject();
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (ClassNotFoundException ex) {
@@ -298,16 +311,17 @@ public class SSDBUtils {
      * @throws IOException
      */
     public static void storeCompany(String pFilename, SSNewCompany pCompany) throws IOException {
-        BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(pFilename));
+        BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(
+                new FileOutputStream(pFilename));
 
-        ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(iBufferedOutputStream);
+        ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(
+                iBufferedOutputStream);
 
         iObjectOutputStream.writeObject(pCompany);
         iObjectOutputStream.flush();
         iObjectOutputStream.close();
 
     }
-
 
     /**
      * Loads the year object from the disk
@@ -318,13 +332,15 @@ public class SSDBUtils {
      */
     public static SSNewAccountingYear loadYear(String pFilename) {
         try {
-            BufferedInputStream iBufferedInputStream = new BufferedInputStream(new FileInputStream( pFilename ));
+            BufferedInputStream iBufferedInputStream = new BufferedInputStream(
+                    new FileInputStream(pFilename));
 
-            ObjectInputStream iObjectInputStream = new ObjectInputStream(iBufferedInputStream);
+            ObjectInputStream iObjectInputStream = new ObjectInputStream(
+                    iBufferedInputStream);
 
-            SSNewAccountingYear iYear = (SSNewAccountingYear)iObjectInputStream.readObject();
+            SSNewAccountingYear iYear = (SSNewAccountingYear) iObjectInputStream.readObject();
 
-            if(iYear == null){
+            if (iYear == null) {
                 return new SSNewAccountingYear();
             } else {
                 return iYear;
@@ -347,9 +363,11 @@ public class SSDBUtils {
      * @throws IOException
      */
     public static void storeYear(String pFilename, SSNewAccountingYear pYear) throws IOException {
-        BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(pFilename));
+        BufferedOutputStream iBufferedOutputStream = new BufferedOutputStream(
+                new FileOutputStream(pFilename));
 
-        ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(iBufferedOutputStream);
+        ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(
+                iBufferedOutputStream);
 
         iObjectOutputStream.writeObject(pYear);
         iObjectOutputStream.flush();
@@ -357,11 +375,10 @@ public class SSDBUtils {
 
     }
 
-
     /**
      *
      */
-    private static class SSObjectInputStream extends ObjectInputStream{
+    private static class SSObjectInputStream extends ObjectInputStream {
 
         /**
          *
@@ -372,7 +389,6 @@ public class SSDBUtils {
             super(in);
         }
 
-
         /**
          * This function is to make the database forward compatible
          *
@@ -381,15 +397,13 @@ public class SSDBUtils {
         protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
 
             // This is the old SSStandardText class
-            if(desc.getSerialVersionUID() == -673623580724335542L){
+            if (desc.getSerialVersionUID() == -673623580724335542L) {
                 return null;
             }
 
             return super.resolveClass(desc);
         }
 
-
     }
-
 
 }

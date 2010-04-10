@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.util.model;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 
@@ -21,13 +22,11 @@ import java.util.*;
  */
 public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
 
-
     /** The objects in the table. */
     private List<T> iObjects;
 
     /** The columns. */
     private List<String> iColumns;
-
 
     /**
      * Default constructor.
@@ -52,7 +51,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      *
      * @param pObjects The data for the table model.
      */
-    public SSDefaultTableModel(T ... pObjects) {
+    public SSDefaultTableModel(T... pObjects) {
         iColumns = new LinkedList<String>();
         iObjects = new LinkedList<T     >();
 
@@ -68,8 +67,6 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
         iColumns = new ArrayList<String>(pModel.iColumns);
         iObjects = new ArrayList<T     >(pModel.iObjects);
     }
-
-
 
     /**
      * Returns a List of Strings with the column names.
@@ -95,7 +92,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      *
      * @param pObjects The objects to display.
      */
-    public void setObjects(T ... pObjects) {
+    public void setObjects(T... pObjects) {
         iObjects = new LinkedList<T>();
         iObjects.addAll(Arrays.asList(pObjects));
     }
@@ -115,13 +112,14 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * @param iString The column title.
      */
     public void addColumn(SSBundleString iString) {
-        iColumns.add( iString.getString() );
+        iColumns.add(iString.getString());
     }
-
 
     @Override
     public String getColumnName(int column) {
-        return column < iColumns.size() ? iColumns.get(column) : super.getColumnName(column);
+        return column < iColumns.size()
+                ? iColumns.get(column)
+                : super.getColumnName(column);
     }
 
     @Override
@@ -151,7 +149,6 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     public List<String> getColumns() {
         return iColumns;
     }
-
 
     /**
      * Adds the object to the table model.
@@ -289,10 +286,10 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * @param iTable
      * @return
      */
-    public T getSelectedRow(JTable iTable){
+    public T getSelectedRow(JTable iTable) {
         int selected = iTable.getSelectedRow();
 
-        if (selected >= 0){
+        if (selected >= 0) {
             return getObject(selected);
         }
         return null;
@@ -304,15 +301,14 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * @param iTable
      * @return
      */
-    public List<T> getSelectedRows(JTable iTable){
-        int [] selected = iTable.getSelectedRows();
+    public List<T> getSelectedRows(JTable iTable) {
+        int[] selected = iTable.getSelectedRows();
 
-        if (selected.length >= 0){
+        if (selected.length >= 0) {
             return getObjects(selected);
         }
         return null;
     }
-
 
     /**
      * Returns the index in this list of the first occurrence of the specified
@@ -328,12 +324,11 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
         return iObjects.indexOf(o);
     }
 
-
     /**
      *
      * @param iTable
      */
-    public void addDeleteAction(final JTable iTable){
+    public void addDeleteAction(final JTable iTable) {
 
         // The delete action.
         Action iDelete = new AbstractAction() {
@@ -341,25 +336,28 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
                 int col = iTable.getSelectedColumn();
                 int row = iTable.getSelectedRow();
 
-                if ( iTable.isEditing() ) {
+                if (iTable.isEditing()) {
                     return;
                 }
                 T iSelected = getSelectedRow(iTable);
 
-                if(iSelected != null) {
-                    deleteRow(iSelected );
+                if (iSelected != null) {
+                    deleteRow(iSelected);
 
-                    iTable.changeSelection(row-1, col, false, false);
+                    iTable.changeSelection(row - 1, col, false, false);
                 }
             }
         };
-        iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "DELETE_ROW");
-        iTable.getActionMap().put("DELETE_ROW"     , iDelete);
+
+        iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0),
+                "DELETE_ROW");
+        iTable.getActionMap().put("DELETE_ROW", iDelete);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel");
         sb.append("{iColumns=").append(iColumns);
         sb.append(", iObjects=").append(iObjects);

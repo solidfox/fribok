@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.model.SSVATCodeTableModel;
@@ -17,7 +18,7 @@ public class SSVATCellEditor extends SSTableComboBox.CellEditor<SSVATCode> {
      *
      */
     public SSVATCellEditor() {
-           setModel( SSVATCodeTableModel.getDropDownModel() );
+        setModel(SSVATCodeTableModel.getDropDownModel());
         setSearchColumns(0);
         setAllowCustomValues(true);
     }
@@ -27,7 +28,7 @@ public class SSVATCellEditor extends SSTableComboBox.CellEditor<SSVATCode> {
      * @param iCurrencies
      */
     public SSVATCellEditor(List<SSVATCode> iCurrencies) {
-        setModel( SSVATCodeTableModel.getDropDownModel(iCurrencies) );
+        setModel(SSVATCodeTableModel.getDropDownModel(iCurrencies));
         setSearchColumns(0);
         setAllowCustomValues(true);
     }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
 import se.swedsoft.bookkeeping.data.SSOutpaymentRow;
@@ -19,14 +20,14 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-28
  * Time: 11:57:35
  */
 public class SSSupplierPaymentImporter {
-    private SSSupplierPaymentImporter() {
-    }
+    private SSSupplierPaymentImporter() {}
 
     /**
      *
@@ -38,16 +39,18 @@ public class SSSupplierPaymentImporter {
         List<String> iLines = new LinkedList<String>();
 
         try {
-            BufferedReader iReader = new BufferedReader( new FileReader(iFile) );
+            BufferedReader iReader = new BufferedReader(new FileReader(iFile));
 
             String iLine;
-            while( (iLine = iReader.readLine()) != null){
+
+            while ((iLine = iReader.readLine()) != null) {
                 iLines.add(iLine);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         List<LBinPost> iPosts = new LinkedList<LBinPost>();
+
         for (String iLine : iLines) {
 
             LBinLine iReader = new LBinLine(iLine);
@@ -56,8 +59,8 @@ public class SSSupplierPaymentImporter {
 
             LBinPost iPost = getPost(iPostTyp);
 
-            if(iPost != null){
-                //      System.out.println(iLine);
+            if (iPost != null) {
+                // System.out.println(iLine);
                 iPost.read(iReader);
 
                 iPosts.add(iPost);
@@ -70,75 +73,84 @@ public class SSSupplierPaymentImporter {
         SSOutpayment iOutpayment = null;
 
         for (LBinPost iPost : iPosts) {
-            if(iPost instanceof LBinPostTK11){
+            if (iPost instanceof LBinPostTK11) {
                 LBinPostTK11 iPostTK11 = (LBinPostTK11) iPost;
 
                 Date iPaymentDate = iPostTK11.getPaymentDate();
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
-
                 iOutpayment = new SSOutpayment();
                 iOutpayment.setText("Leverantörsbetalning");
-                iOutpayment.setDate( iPaymentDate );
-                iOutpayment.setText("Leverantörsbetalning " + iFormat.format(iPaymentDate));
+                iOutpayment.setDate(iPaymentDate);
+                iOutpayment.setText(
+                        "Leverantörsbetalning " + iFormat.format(iPaymentDate));
 
                 iOutpayments.add(iOutpayment);
             }
 
-            if(iOutpayment == null) continue;
+            if (iOutpayment == null) {
+                continue;
+            }
 
             SSSupplierInvoice iSupplierInvoice;
-            if(iPost instanceof LBinPostTK14){
+
+            if (iPost instanceof LBinPostTK14) {
                 LBinPostTK14 iPostTK14 = (LBinPostTK14) iPost;
 
-                String  iReference  = iPostTK14.getReference().trim();
-                Integer iInvoiceNr  = iPostTK14.getInvoiceNr();
+                String  iReference = iPostTK14.getReference().trim();
+                Integer iInvoiceNr = iPostTK14.getInvoiceNr();
 
-                iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByNumber( SSDB.getInstance().getSupplierInvoices(), iInvoiceNr );
+                iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByNumber(
+                        SSDB.getInstance().getSupplierInvoices(), iInvoiceNr);
 
-                if(iSupplierInvoice == null){
-                    iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByReference( SSDB.getInstance().getSupplierInvoices(), iReference );
+                if (iSupplierInvoice == null) {
+                    iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByReference(
+                            SSDB.getInstance().getSupplierInvoices(), iReference);
                 }
 
-                if( iSupplierInvoice !=  null){
+                if (iSupplierInvoice != null) {
                     SSOutpaymentRow iRow = new SSOutpaymentRow();
 
                     iRow.setSupplierInvoice(iSupplierInvoice);
 
-                    iRow.setValue( iPostTK14.getValue()  );
+                    iRow.setValue(iPostTK14.getValue());
 
                     iOutpayment.getRows().add(iRow);
 
-                }  else {
-                    throw new SSImportException(SSBundle.getBundle(), "supplierpaymentimport.error.invalidreference", iReference);
+                } else {
+                    throw new SSImportException(SSBundle.getBundle(),
+                            "supplierpaymentimport.error.invalidreference", iReference);
                 }
 
             }
 
-            if(iPost instanceof LBinPostTK54){
+            if (iPost instanceof LBinPostTK54) {
                 LBinPostTK54 iPostTK54 = (LBinPostTK54) iPost;
 
-                String  iReference  = iPostTK54.getReference().trim();
-                Integer iInvoiceNr  = iPostTK54.getInvoiceNr();
+                String  iReference = iPostTK54.getReference().trim();
+                Integer iInvoiceNr = iPostTK54.getInvoiceNr();
 
-                iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByNumber( SSDB.getInstance().getSupplierInvoices(), iInvoiceNr );
+                iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByNumber(
+                        SSDB.getInstance().getSupplierInvoices(), iInvoiceNr);
 
-                if(iSupplierInvoice == null){
-                    iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByReference( SSDB.getInstance().getSupplierInvoices(), iReference );
+                if (iSupplierInvoice == null) {
+                    iSupplierInvoice = SSSupplierInvoiceMath.getSupplierInvoiceByReference(
+                            SSDB.getInstance().getSupplierInvoices(), iReference);
                 }
 
-                if( iSupplierInvoice !=  null){
+                if (iSupplierInvoice != null) {
                     SSOutpaymentRow iRow = new SSOutpaymentRow();
 
                     iRow.setSupplierInvoice(iSupplierInvoice);
 
-                    iRow.setValue( iPostTK54.getValue()  );
+                    iRow.setValue(iPostTK54.getValue());
 
                     iOutpayment.getRows().add(iRow);
 
-                }  else {
-                    throw new SSImportException(SSBundle.getBundle(), "supplierpaymentimport.error.invalidreference", iReference);
+                } else {
+                    throw new SSImportException(SSBundle.getBundle(),
+                            "supplierpaymentimport.error.invalidreference", iReference);
                 }
 
             }
@@ -146,25 +158,38 @@ public class SSSupplierPaymentImporter {
         return iOutpayments;
     }
 
-
-
     /**
      *
      * @param iPostTyp
      * @return
      */
     private static LBinPost getPost(String iPostTyp) {
-        if( iPostTyp.equals("11") ) return new LBinPostTK11();
-        if( iPostTyp.equals("12") ) return new LBinPostTK12();
-        if( iPostTyp.equals("13") ) return new LBinPostTK13();
-        if( iPostTyp.equals("14") ) return new LBinPostTK14();
-        if( iPostTyp.equals("26") ) return new LBinPostTK26();
-        if( iPostTyp.equals("27") ) return new LBinPostTK27();
-        if( iPostTyp.equals("29") ) return new LBinPostTK29();
-        if( iPostTyp.equals("54") ) return new LBinPostTK54();
+        if (iPostTyp.equals("11")) {
+            return new LBinPostTK11();
+        }
+        if (iPostTyp.equals("12")) {
+            return new LBinPostTK12();
+        }
+        if (iPostTyp.equals("13")) {
+            return new LBinPostTK13();
+        }
+        if (iPostTyp.equals("14")) {
+            return new LBinPostTK14();
+        }
+        if (iPostTyp.equals("26")) {
+            return new LBinPostTK26();
+        }
+        if (iPostTyp.equals("27")) {
+            return new LBinPostTK27();
+        }
+        if (iPostTyp.equals("29")) {
+            return new LBinPostTK29();
+        }
+        if (iPostTyp.equals("54")) {
+            return new LBinPostTK54();
+        }
 
         return null;
     }
-
 
 }

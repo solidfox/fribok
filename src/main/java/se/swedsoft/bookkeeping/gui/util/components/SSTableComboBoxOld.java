@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSSelectionListener;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
@@ -14,6 +15,7 @@ import java.awt.event.*;
 import java.util.EventObject;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * Date: 2006-jan-30
@@ -48,40 +50,39 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     // The selectef value
     private T       iSelected;
 
-
     private List<SSSelectionListener> iSelectionListeners;
     // Our current editor
     protected CellEditor iEditor;
 
-
     private static final int[] EMPTY_INT_ARRAY = {};
+
     /**
      * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSTableComboBoxOld() {
         iSelectionListeners = new LinkedList<SSSelectionListener>();
-        iSelected           = null;
-        iSearchColumns      = EMPTY_INT_ARRAY;
-        iAllowCustomValues  = false;
-        iModel              = createDefaultModel();
+        iSelected = null;
+        iSearchColumns = EMPTY_INT_ARRAY;
+        iAllowCustomValues = false;
+        iModel = createDefaultModel();
 
         iTextField = new SSTextField();
 
-        iDropdownButton = new SSButton( "ICON_DROPDOWN16" );
+        iDropdownButton = new SSButton("ICON_DROPDOWN16");
         iDropdownButton.setPreferredSize(new Dimension(20, 20));
-        iDropdownButton.setMaximumSize  (new Dimension(20, 20));
-        iDropdownButton.setMinimumSize  (new Dimension(20, 20));
+        iDropdownButton.setMaximumSize(new Dimension(20, 20));
+        iDropdownButton.setMinimumSize(new Dimension(20, 20));
 
         createLayout();
 
         // Create the popup here.
         iTable = new SSTable();
-        iTable.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+        iTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         iPopup = new JPopupMenu();
         iPopup.add(new JScrollPane(iTable));
-        iPopup.setPreferredSize( new Dimension(350,200) );
+        iPopup.setPreferredSize(new Dimension(350, 200));
         iPopup.setLightWeightPopupEnabled(true);
 
         // Listener for pressing the button
@@ -100,7 +101,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
 
                 notifySelectionListeners(iSelected);
 
-                if(iEditor != null) {
+                if (iEditor != null) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iEditor.stopCellEditing();
@@ -119,14 +120,14 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
                 int selected = iTable.getSelectedRow();
 
                 if (selected >= 0 && iModel.getRowCount() > selected) {
-                    T value = iModel.getObject( selected );
+                    T value = iModel.getObject(selected);
 
                     setSelected(value);
 
                     notifySelectionListeners(iSelected);
                 }
 
-                if(iEditor != null) {
+                if (iEditor != null) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iEditor.stopCellEditing();
@@ -138,27 +139,34 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
             }
         };
         // The action for transferring the focus to the search table.
-        Action iFocusTable =  new AbstractAction() {
+        Action iFocusTable = new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 iTable.requestFocus();
             }
         };
+
         // Listener for textfield
-        iTextField.addKeyListener(new KeyAdapter() {
+        iTextField.addKeyListener(
+                new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 // Dont do anything if disabled
-                if(!isEnabled()) return;
+                if (!isEnabled()) {
+                    return;
+                }
 
                 // Dont process enter or escape keys
-                if(e.getKeyCode() == KeyEvent.VK_ENTER  || e.getKeyCode() ==  KeyEvent.VK_ESCAPE) return;
+                if (e.getKeyCode() == KeyEvent.VK_ENTER
+                        || e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                    return;
+                }
 
                 // Search the model after the text
-                if ( searchTable() ) {
+                if (searchTable()) {
 
                     // The text matches one item, select the fist one
-                    if(  iModel != null && iModel.getRowCount() > 0){
-                        iSelected =  iModel.getObject(0);
+                    if (iModel != null && iModel.getRowCount() > 0) {
+                        iSelected = iModel.getObject(0);
 
                         iTable.setRowSelectionInterval(0, 0);
                     } else {
@@ -171,7 +179,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
                     iSelected = null;
                 }
                 // If we dont allow custom values color the textfield according to the selected value
-                if(! iAllowCustomValues){
+                if (!iAllowCustomValues) {
                     iTextField.setForeground(iSelected == null ? Color.RED : Color.BLACK);
                 }
 
@@ -181,27 +189,35 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
             }
         });
 
-        iTable.addDblClickListener( new ActionListener() {
+        iTable.addDblClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iSelectAndClose.actionPerformed(null);
             }
         });
 
-        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0                        ), "SELECT_NULL");
+        iTextField.getInputMap(WHEN_FOCUSED).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "SELECT_NULL");
 
-        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
-        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP   , 0                         ), "FOCUS_DROP_DOWN_TABLE");
-        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN , 0                         ), "FOCUS_DROP_DOWN_TABLE");
+        iTextField.getInputMap(WHEN_FOCUSED).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTextField.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0),
+                "FOCUS_DROP_DOWN_TABLE");
+        iTextField.getInputMap(WHEN_FOCUSED).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "FOCUS_DROP_DOWN_TABLE");
 
-        iTable    .getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
-        iTable    .getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB  , 0                         ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
-        iTable    .getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB  , KeyEvent.SHIFT_DOWN_MASK  ), "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTable.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTable.getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0),
+                "SELECT_ROW_AND_CLOSE_DROP_DOWN");
+        iTable.getInputMap(WHEN_FOCUSED).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_TAB, KeyEvent.SHIFT_DOWN_MASK),
+                "SELECT_ROW_AND_CLOSE_DROP_DOWN");
 
-
-        iTextField.getActionMap().put("SELECT_NULL"                   , iSelectNull);
-        iTextField.getActionMap().put("FOCUS_DROP_DOWN_TABLE"         , iFocusTable);
+        iTextField.getActionMap().put("SELECT_NULL", iSelectNull);
+        iTextField.getActionMap().put("FOCUS_DROP_DOWN_TABLE", iFocusTable);
         iTextField.getActionMap().put("SELECT_ROW_AND_CLOSE_DROP_DOWN", iSelectAndClose);
-        iTable    .getActionMap().put("SELECT_ROW_AND_CLOSE_DROP_DOWN", iSelectAndClose);
+        iTable.getActionMap().put("SELECT_ROW_AND_CLOSE_DROP_DOWN", iSelectAndClose);
     }
 
     /**
@@ -214,6 +230,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
             public Class getType() {
                 return null;
             }
+
             public Object getValueAt(int rowIndex, int columnIndex) {
                 return null;
             }
@@ -223,24 +240,24 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     /**
      *
      */
-    protected void createLayout(){
-        setLayout( new BorderLayout() );
+    protected void createLayout() {
+        setLayout(new BorderLayout());
 
         JPanel iPanel = new JPanel();
-        iPanel.setBorder( new EmptyBorder(1,1,1,1));
-        iPanel.setLayout( new BorderLayout() );
-        iPanel.add(iDropdownButton     , BorderLayout.CENTER);
+
+        iPanel.setBorder(new EmptyBorder(1, 1, 1, 1));
+        iPanel.setLayout(new BorderLayout());
+        iPanel.add(iDropdownButton, BorderLayout.CENTER);
 
         add(iTextField, BorderLayout.CENTER);
-        add(iPanel    , BorderLayout.EAST);
+        add(iPanel, BorderLayout.EAST);
     }
-
 
     /**
      *
      * @param iModel
      */
-    public void setModel(SSDefaultTableModel<T> iModel){
+    public void setModel(SSDefaultTableModel<T> iModel) {
         this.iModel = iModel;
 
         iObjects = iModel.getObjects();
@@ -252,16 +269,18 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      *
      * @param pSearchColumns
      */
-    public void setSearchColumns(int ... pSearchColumns){
+    public void setSearchColumns(int... pSearchColumns) {
         iSearchColumns = pSearchColumns;
     }
+
     /**
      *
      * @param pColumnWidths
      */
-    public void setColumnWidths(int ... pColumnWidths){
+    public void setColumnWidths(int... pColumnWidths) {
         int index = 0;
-        for(int pColumnWidth: pColumnWidths){
+
+        for (int pColumnWidth: pColumnWidths) {
             iTable.getColumnModel().getColumn(index).setPreferredWidth(pColumnWidth);
             index++;
         }
@@ -272,7 +291,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      * @param pPopupSize
      */
     public void setPopupSize(Dimension pPopupSize) {
-        iPopup.setPreferredSize( pPopupSize );
+        iPopup.setPreferredSize(pPopupSize);
     }
 
     /**
@@ -281,7 +300,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      * @param pHeight
      */
     public void setPopupSize(int pWidth, int pHeight) {
-        setPopupSize( new Dimension(pWidth, pHeight) );
+        setPopupSize(new Dimension(pWidth, pHeight));
     }
 
     /**
@@ -292,7 +311,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     public void setAllowCustomValues(boolean iAllowCustomValues) {
         this.iAllowCustomValues = iAllowCustomValues;
 
-        if( iAllowCustomValues){
+        if (iAllowCustomValues) {
             iTextField.setForeground(Color.BLACK);
         } else {
             iTextField.setForeground(iSelected == null ? Color.RED : Color.BLACK);
@@ -308,46 +327,45 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         return iAllowCustomValues;
     }
 
-
     /**
      * Set the selected value
      *
      * @param pSelected the value
      * @param pNotifyListeners if the listeners shall be notifyed
      */
-    public void setSelected(T pSelected, boolean pNotifyListeners){
+    public void setSelected(T pSelected, boolean pNotifyListeners) {
         iSelected = pSelected;
 
-        if(iSelected != null){
-            iTextField.setText( iSelected.toRenderString() );
+        if (iSelected != null) {
+            iTextField.setText(iSelected.toRenderString());
         } else {
-            iTextField.setText( "" );
+            iTextField.setText("");
         }
 
-        if( iAllowCustomValues){
+        if (iAllowCustomValues) {
             iTextField.setForeground(Color.BLACK);
         } else {
             iTextField.setForeground(iSelected == null ? Color.RED : Color.BLACK);
         }
 
-        if(pNotifyListeners) notifySelectionListeners(pSelected);
+        if (pNotifyListeners) {
+            notifySelectionListeners(pSelected);
+        }
     }
 
     /**
      *
      * @param pSelected
      */
-    public void setSelected(T pSelected){
+    public void setSelected(T pSelected) {
         setSelected(pSelected, false);
     }
-
-
 
     /**
      *
      * @return The selected object
      */
-    public T getSelected(){
+    public T getSelected() {
         return iSelected;
     }
 
@@ -355,31 +373,28 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      *
      * @return If the combobox has a selected value
      */
-    public boolean hasSelected(){
+    public boolean hasSelected() {
         return iSelected != null;
     }
-
-
 
     /**
      *
      * @return The first object
      */
-    public T getFirst(){
-        if(!iObjects.isEmpty()){
+    public T getFirst() {
+        if (!iObjects.isEmpty()) {
             return iObjects.get(0);
         } else {
             return null;
         }
     }
 
-
     /**
      *
      * @return The text
      */
-    public String getText(){
-        if(iAllowCustomValues){
+    public String getText() {
+        if (iAllowCustomValues) {
             return iTextField.getText();
         } else {
             return iSelected == null ? null : iSelected.toRenderString();
@@ -391,7 +406,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      *
      * @param pText
      */
-    public void setText(String pText){
+    public void setText(String pText) {
         iTextField.setText(pText);
 
         searchTable();
@@ -404,7 +419,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     private boolean searchTable() {
         String iText = iTextField.getText();
 
-        if( iSearchColumns.length == 0 ){
+        if (iSearchColumns.length == 0) {
             return true;
         }
         List<T> iVisible = new LinkedList<T>();
@@ -417,7 +432,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
             for (int c : iSearchColumns) {
                 Object value = iModel.getValueAt(i, c);
 
-                if(compareTo(c, iText, value)) {
+                if (compareTo(c, iText, value)) {
                     iVisible.add(iModel.getObject(i));
                     break;
                 }
@@ -439,13 +454,15 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      * @return boolean
      */
     protected boolean compareTo(int column, String text, Object value) {
-        if(value == null || text == null) return true;
+        if (value == null || text == null) {
+            return true;
+        }
 
         String iString = value.toString();
 
-        return iString.length() == 0 || iString.toLowerCase().startsWith(text.toLowerCase());
+        return iString.length() == 0
+                || iString.toLowerCase().startsWith(text.toLowerCase());
     }
-
 
     /**
      * Start the editing.
@@ -453,7 +470,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     public void startEdit() {
         iPopup.show(this, 0, getHeight());
 
-        //    iTextField.requestFocusInWindow();
+        // iTextField.requestFocusInWindow();
     }
 
     /**
@@ -486,19 +503,16 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      * @param pAction
      */
     public void addChangeListener(final ActionListener pAction) {
-        iTextField.addKeyListener( new KeyListener(){
-            public void keyTyped(KeyEvent e) {
-            }
+        iTextField.addKeyListener(new KeyListener() {
+            public void keyTyped(KeyEvent e) {}
 
-            public void keyPressed(KeyEvent e) {
-            }
+            public void keyPressed(KeyEvent e) {}
 
             public void keyReleased(KeyEvent e) {
                 pAction.actionPerformed(null);
             }
         });
     }
-
 
     /**
      *
@@ -525,8 +539,8 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
      */
     @Override
     public void setEnabled(boolean enabled) {
-        iTextField     .setEditable(enabled);
-        iDropdownButton.setEnabled (enabled);
+        iTextField.setEditable(enabled);
+        iDropdownButton.setEnabled(enabled);
 
         super.setEnabled(enabled);
     }
@@ -552,17 +566,14 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         return iModel;
     }
 
-
     /**
      *
      * @param iModel
      * @return The tablecell editor
      */
-    public static CellEditor<?> createAsCellEditor(SSDefaultTableModel<?> iModel){
+    public static CellEditor<?> createAsCellEditor(SSDefaultTableModel<?> iModel) {
         return new CellEditor(iModel);
     }
-
-
 
     /**
      *
@@ -581,9 +592,9 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         /**
          *
          */
-        public CellEditor(){
+        public CellEditor() {
             super(new JTextField());
-            iComboBox        = new SSTableComboBoxOld<T>();
+            iComboBox = new SSTableComboBoxOld<T>();
             iComboBox.iEditor = this;
         }
 
@@ -591,41 +602,40 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          *
          * @param pModel
          */
-        public CellEditor(SSDefaultTableModel<T> pModel){
+        public CellEditor(SSDefaultTableModel<T> pModel) {
             this();
-            setModel( pModel );
+            setModel(pModel);
         }
 
         /**
          *
          * @param pModel
          */
-        protected void setModel(SSDefaultTableModel<T> pModel){
-            iComboBox.setModel( pModel );
+        protected void setModel(SSDefaultTableModel<T> pModel) {
+            iComboBox.setModel(pModel);
         }
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             iCurrentTable = table;
-            iCurrentRow          = row;
-            iCurrentColumn       = column;
+            iCurrentRow = row;
+            iCurrentColumn = column;
 
-            if (value != null && value instanceof SSTableSearchable ){
-                iComboBox.iSelected = (T)value;
-                iComboBox.iTextField.setText( ((SSTableSearchable)value).toRenderString() );
+            if (value != null && value instanceof SSTableSearchable) {
+                iComboBox.iSelected = (T) value;
+                iComboBox.iTextField.setText(((SSTableSearchable) value).toRenderString());
 
-                if ( iComboBox.searchTable()) {
+                if (iComboBox.searchTable()) {
                     iComboBox.iTable.setRowSelectionInterval(0, 0);
                 }
             } else {
-                if(value == null){
-                    iComboBox.iTextField.setText( "" );
-                } else{
-                    iComboBox.iTextField.setText( value.toString() );
+                if (value == null) {
+                    iComboBox.iTextField.setText("");
+                } else {
+                    iComboBox.iTextField.setText(value.toString());
                 }
                 iComboBox.searchTable();
             }
-
 
             // Request focus to receive input.
             SwingUtilities.invokeLater(new Runnable() {
@@ -644,7 +654,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
 
         @Override
         public Object getCellEditorValue() {
-            if(iComboBox.getSelected() == null && iComboBox.doAllowCustomValues()){
+            if (iComboBox.getSelected() == null && iComboBox.doAllowCustomValues()) {
                 return iComboBox.getText();
             }
             return iComboBox.getSelected();
@@ -657,12 +667,13 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
                 return true;
             }
             if (anEvent instanceof MouseEvent) {
-                MouseEvent e = (MouseEvent)anEvent;
+                MouseEvent e = (MouseEvent) anEvent;
+
                 if (e.getClickCount() != 2) {
                     return false;
                 }
             }
-            JTable table = (JTable)anEvent.getSource();
+            JTable table = (JTable) anEvent.getSource();
             TableModel model = table.getModel();
             int row = table.getSelectedRow();
             int col = table.getSelectedColumn();
@@ -674,6 +685,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         public boolean shouldSelectCell(EventObject anEvent) {
             return true;
         }
+
         /**
          *
          * @return
@@ -696,7 +708,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         /**
          *
          */
-        private void transferFocusToTable(){
+        private void transferFocusToTable() {
             iCurrentTable.changeSelection(iCurrentRow, iCurrentColumn, false, false);
             iCurrentTable.requestFocusInWindow();
         }
@@ -705,7 +717,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          *
          * @param pSearchColumns
          */
-        public void setSearchColumns(int ... pSearchColumns){
+        public void setSearchColumns(int... pSearchColumns) {
             iComboBox.setSearchColumns(pSearchColumns);
 
         }
@@ -714,7 +726,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          *
          * @param pColumnWidths
          */
-        public void setColumnWidths(int ... pColumnWidths){
+        public void setColumnWidths(int... pColumnWidths) {
             iComboBox.setColumnWidths(pColumnWidths);
         }
 
@@ -732,7 +744,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
          * @param pHeight
          */
         public void setPopupSize(int pWidth, int pHeight) {
-            iComboBox.setPopupSize(pWidth, pHeight );
+            iComboBox.setPopupSize(pWidth, pHeight);
         }
 
         /**
@@ -746,7 +758,9 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld.CellEditor");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld.CellEditor");
             sb.append("{iComboBox=").append(iComboBox);
             sb.append(", iCurrentColumn=").append(iCurrentColumn);
             sb.append(", iCurrentRow=").append(iCurrentRow);
@@ -759,6 +773,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld");
         sb.append("{iAllowCustomValues=").append(iAllowCustomValues);
         sb.append(", iDropdownButton=").append(iDropdownButton);
@@ -767,8 +782,9 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         sb.append(", iObjects=").append(iObjects);
         sb.append(", iPopup=").append(iPopup);
         sb.append(", iSearchColumns=").append(iSearchColumns == null ? "null" : "");
-        for (int i = 0; iSearchColumns != null && i < iSearchColumns.length; ++i)
+        for (int i = 0; iSearchColumns != null && i < iSearchColumns.length; ++i) {
             sb.append(i == 0 ? "" : ", ").append(iSearchColumns[i]);
+        }
         sb.append(", iSelected=").append(iSelected);
         sb.append(", iSelectionListeners=").append(iSelectionListeners);
         sb.append(", iTable=").append(iTable);
@@ -777,6 +793,4 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         return sb.toString();
     }
 }
-
-
 

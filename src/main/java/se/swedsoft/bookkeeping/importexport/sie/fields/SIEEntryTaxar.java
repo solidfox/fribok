@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
@@ -12,6 +13,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
+
 
 /**
  * Date: 2006-feb-22
@@ -32,17 +34,18 @@ public class SIEEntryTaxar implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #TAXAR taxeringsår
-        if(!iReader.hasFields(STRING, INT)) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         String  iYear = iReader.nextString();
 
-        if( iCurrentYearData != null && iCurrentYearData.getAccountPlan() != null){
+        if (iCurrentYearData != null && iCurrentYearData.getAccountPlan() != null) {
 
             iCurrentYearData.getAccountPlan().setAssessementYear(iYear);
 
-            //SSDB.getInstance().updateAccountingYear(iCurrentYearData);
+            // SSDB.getInstance().updateAccountingYear(iCurrentYearData);
             return true;
         }
         return false;
@@ -61,16 +64,17 @@ public class SIEEntryTaxar implements SIEEntry {
     @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
 
-        if( iCurrentYearData != null && iCurrentYearData.getAccountPlan() != null){
+        if (iCurrentYearData != null && iCurrentYearData.getAccountPlan() != null) {
             String iAssessementYear = iCurrentYearData.getAccountPlan().getAssessementYear();
 
-            if(iAssessementYear == null){
-                throw new SSExportException( SSBundleString.getString("sieexport.noassesmentyear") );
+            if (iAssessementYear == null) {
+                throw new SSExportException(
+                        SSBundleString.getString("sieexport.noassesmentyear"));
             }
 
             iWriter.append(SIELabel.SIE_TAXAR);
             iWriter.append(iAssessementYear);
-            iWriter.append( "BFL" );
+            iWriter.append("BFL");
             iWriter.newLine();
 
             return true;

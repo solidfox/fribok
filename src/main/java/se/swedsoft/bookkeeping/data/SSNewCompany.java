@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
@@ -18,15 +19,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * @author Roger Björnstedt
  */
 public class SSNewCompany implements Serializable {
 
-
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     private Integer iId;
     // Grunduppgifter
@@ -84,7 +84,7 @@ public class SSNewCompany implements Serializable {
     // Viktenhet
     private String iWeightUnit;
 
-    //Volymenhet
+    // Volymenhet
     private String iVolumeUnit;
 
     // Address
@@ -108,26 +108,26 @@ public class SSNewCompany implements Serializable {
     private boolean iRoundingOff;
 
     private Integer iVatPeriod;
-    
+
     private SSMailServer iMailServer;
 
     // Autoräknare
     private SSAutoIncrement iAutoIncrement;
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      * Default constructor.
      */
     public SSNewCompany() {
-        iId                = 0;
-        iAddress           = new SSAddress();
-        iDeliveryAddress   = new SSAddress();
-        iStandardTexts     = new HashMap<SSStandardText, String>();
-        iDefaultAccounts   = new HashMap<SSDefaultAccount, Integer>();
+        iId = 0;
+        iAddress = new SSAddress();
+        iDeliveryAddress = new SSAddress();
+        iStandardTexts = new HashMap<SSStandardText, String>();
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
 
-        iAutoIncrement    = new SSAutoIncrement();
-        iRoundingOff   = false;
+        iAutoIncrement = new SSAutoIncrement();
+        iRoundingOff = false;
         iVatPeriod = 1;
 
     }
@@ -171,7 +171,8 @@ public class SSNewCompany implements Serializable {
         iAutoIncrement = iOldCompany.getAutoIncrement();
         iVatPeriod = 1;
     }
-    ////////////////////////////////////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////////////////////////////////////
 
     public Integer getId() {
         return iId;
@@ -180,6 +181,7 @@ public class SSNewCompany implements Serializable {
     public void setId(Integer pId) {
         iId = pId;
     }
+
     /**
      *
      * @return
@@ -196,16 +198,16 @@ public class SSNewCompany implements Serializable {
         iAddress = pAddress;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     public SSMailServer getMailServer() {
         return iMailServer;
     }
-    
-    public void setMailServer( SSMailServer server ) {
+
+    public void setMailServer(SSMailServer server) {
         iMailServer = server;
     }
-    
+
     /**
      *
      * @return
@@ -222,17 +224,18 @@ public class SSNewCompany implements Serializable {
         iDeliveryAddress = pDeliveryAddress;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public Map<SSStandardText, String> getStandardTexts() {
-        if( iStandardTexts == null) iStandardTexts = new HashMap<SSStandardText, String>();
+        if (iStandardTexts == null) {
+            iStandardTexts = new HashMap<SSStandardText, String>();
+        }
         return iStandardTexts;
     }
-
 
     /**
      *
@@ -240,7 +243,7 @@ public class SSNewCompany implements Serializable {
      * @return
      */
     public String getStandardText(SSStandardText iStandardtext) {
-        if( iStandardTexts != null) {
+        if (iStandardTexts != null) {
             return iStandardTexts.get(iStandardtext);
         } else {
             return null;
@@ -256,7 +259,7 @@ public class SSNewCompany implements Serializable {
         iStandardTexts = pStandardTexts;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     public boolean isRoundingOff() {
         return iRoundingOff;
@@ -271,7 +274,9 @@ public class SSNewCompany implements Serializable {
      * @return
      */
     public Map<SSDefaultAccount, Integer> getDefaultAccounts() {
-        if( iDefaultAccounts == null) iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        if (iDefaultAccounts == null) {
+            iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        }
         return iDefaultAccounts;
     }
 
@@ -281,26 +286,28 @@ public class SSNewCompany implements Serializable {
      * @return
      */
     public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {
-        if( iDefaultAccounts != null && iDefaultAccounts.containsKey(iDefaultAccount) ) {
+        if (iDefaultAccounts != null && iDefaultAccounts.containsKey(iDefaultAccount)) {
             return iDefaultAccounts.get(iDefaultAccount);
         } else {
             return iDefaultAccount.getDefaultAccountNumber();
         }
     }
+
     /**
      *
      * @param iAccountPlan
      * @param iDefaultAccount
      * @return
      */
-    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount){
+    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount) {
         Integer iAccountNumber = iDefaultAccounts.get(iDefaultAccount);
 
-        if(iAccountNumber == null) return null;
+        if (iAccountNumber == null) {
+            return null;
+        }
 
         return iAccountPlan.getAccount(iAccountNumber);
     }
-
 
     /**
      *
@@ -310,8 +317,7 @@ public class SSNewCompany implements Serializable {
         this.iDefaultAccounts = iDefaultAccounts;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -329,7 +335,7 @@ public class SSNewCompany implements Serializable {
         iName = name;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -347,7 +353,7 @@ public class SSNewCompany implements Serializable {
         iPhone = pPhone;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -365,7 +371,7 @@ public class SSNewCompany implements Serializable {
         iPhone2 = pPhone2;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -383,7 +389,7 @@ public class SSNewCompany implements Serializable {
         iTelefax = pTelefax;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -401,7 +407,7 @@ public class SSNewCompany implements Serializable {
         iResidence = residence;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -419,7 +425,7 @@ public class SSNewCompany implements Serializable {
         iEMail = pEMail;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -437,9 +443,9 @@ public class SSNewCompany implements Serializable {
         iWebAddress = pWebAddress;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -457,7 +463,7 @@ public class SSNewCompany implements Serializable {
         iSMTPAddress = pSMTPAddress;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -475,8 +481,7 @@ public class SSNewCompany implements Serializable {
         iContactPerson = pContactPerson;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -494,8 +499,7 @@ public class SSNewCompany implements Serializable {
         iTaxRegistered = pTaxRegistered;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -513,8 +517,7 @@ public class SSNewCompany implements Serializable {
         this.iCorporateID = iCorporateID;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -532,7 +535,7 @@ public class SSNewCompany implements Serializable {
         iLogotype = pLogotype;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -550,8 +553,7 @@ public class SSNewCompany implements Serializable {
         iVATNumber = pVATNumber;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -569,7 +571,7 @@ public class SSNewCompany implements Serializable {
         iBank = pBank;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -587,7 +589,7 @@ public class SSNewCompany implements Serializable {
         iBankAccountNumber = bankAccountNumber;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -605,7 +607,7 @@ public class SSNewCompany implements Serializable {
         iPlusAccountNumber = plusAccountNumber;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -623,7 +625,7 @@ public class SSNewCompany implements Serializable {
         iIBAN = IBAN;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -641,14 +643,16 @@ public class SSNewCompany implements Serializable {
         iSwift = swift;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public String getVolumeUnit() {
-        if(iVolumeUnit == null) iVolumeUnit = "m3";
+        if (iVolumeUnit == null) {
+            iVolumeUnit = "m3";
+        }
 
         return iVolumeUnit;
     }
@@ -661,14 +665,16 @@ public class SSNewCompany implements Serializable {
         this.iVolumeUnit = iVolumeUnit;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public String getWeightUnit() {
-        if(iWeightUnit == null) iWeightUnit = "kg";
+        if (iWeightUnit == null) {
+            iWeightUnit = "kg";
+        }
 
         return iWeightUnit;
     }
@@ -680,7 +686,8 @@ public class SSNewCompany implements Serializable {
     public void setWeightUnit(String iWeightUnit) {
         this.iWeightUnit = iWeightUnit;
     }
-    /////////////////////////////////////////////////////
+
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -697,10 +704,11 @@ public class SSNewCompany implements Serializable {
     public void setCurrency(SSCurrency iCurrency) {
         this.iCurrency = iCurrency;
     }
-    /////////////////////////////////////////////////////
+
+    // ///////////////////////////////////////////////////
 
     /**
-     * 
+     *
      * @return
      */
     public SSUnit getStandardUnit() {
@@ -715,9 +723,7 @@ public class SSNewCompany implements Serializable {
         this.iStandardUnit = iStandardUnit;
     }
 
-
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -735,7 +741,7 @@ public class SSNewCompany implements Serializable {
         this.iDelayintrest = iDelayintrest;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -753,14 +759,16 @@ public class SSNewCompany implements Serializable {
         this.iReminderfee = iReminderfee;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getTaxRate1() {
-        if(iTaxrate1 == null) iTaxrate1 = new BigDecimal(25);
+        if (iTaxrate1 == null) {
+            iTaxrate1 = new BigDecimal(25);
+        }
         return iTaxrate1;
     }
 
@@ -772,14 +780,16 @@ public class SSNewCompany implements Serializable {
         this.iTaxrate1 = iTaxrate1;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getTaxRate2() {
-        if(iTaxrate2 == null) iTaxrate2 = new BigDecimal(12);
+        if (iTaxrate2 == null) {
+            iTaxrate2 = new BigDecimal(12);
+        }
         return iTaxrate2;
     }
 
@@ -791,14 +801,16 @@ public class SSNewCompany implements Serializable {
         this.iTaxrate2 = iTaxrate2;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getTaxRate3() {
-        if(iTaxrate3 == null) iTaxrate3 = new BigDecimal(6);
+        if (iTaxrate3 == null) {
+            iTaxrate3 = new BigDecimal(6);
+        }
         return iTaxrate3;
     }
 
@@ -810,7 +822,7 @@ public class SSNewCompany implements Serializable {
         this.iTaxrate3 = iTaxrate3;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     public SSDeliveryWay getDeliveryWay() {
         return iDeliveryWay;
@@ -836,11 +848,11 @@ public class SSNewCompany implements Serializable {
         this.iPaymentTerm = iPaymentTerm;
     }
 
-    public Integer getVatPeriod(){
+    public Integer getVatPeriod() {
         return iVatPeriod;
     }
 
-    public void setVatPeriod(Integer iVatPeriod){
+    public void setVatPeriod(Integer iVatPeriod) {
         this.iVatPeriod = iVatPeriod;
     }
 
@@ -850,13 +862,19 @@ public class SSNewCompany implements Serializable {
      * @return
      */
     public BigDecimal getTaxRate(SSTaxCode iTaxCode) {
-        if(iTaxCode == SSTaxCode.TAXRATE_1) return  iTaxrate1;
-        if(iTaxCode == SSTaxCode.TAXRATE_2) return  iTaxrate2;
-        if(iTaxCode == SSTaxCode.TAXRATE_3) return  iTaxrate3;
+        if (iTaxCode == SSTaxCode.TAXRATE_1) {
+            return  iTaxrate1;
+        }
+        if (iTaxCode == SSTaxCode.TAXRATE_2) {
+            return  iTaxrate2;
+        }
+        if (iTaxCode == SSTaxCode.TAXRATE_3) {
+            return  iTaxrate3;
+        }
         return null;
     }
 
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     /**
      *
@@ -874,17 +892,19 @@ public class SSNewCompany implements Serializable {
         this.iEstimatedDelivery = iEstimatedDelivery;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     public Double getTenderValueForMonth(SSMonth iMonth) {
         Double sum = 0.0;
+
         for (SSTender iTender: SSDB.getInstance().getTenders()) {
             Date iTenderDate = iTender.getDate();
+
             if (iMonth.isDateInMonth(iTenderDate)) {
                 for (SSSaleRow iRow : iTender.getRows()) {
-                    if(iRow.getSum() != null){
-                        sum+= iRow.getSum().doubleValue() *iTender.getCurrencyRate().doubleValue();
+                    if (iRow.getSum() != null) {
+                        sum += iRow.getSum().doubleValue()
+                                * iTender.getCurrencyRate().doubleValue();
                     }
                 }
 
@@ -896,12 +916,15 @@ public class SSNewCompany implements Serializable {
     public Double getOrderValueForMonth(SSMonth iMonth) {
         Double sum = 0.0;
         List<SSOrder> iOrders = SSDB.getInstance().getOrders();
+
         for (SSOrder iOrder : iOrders) {
             Date iOrderDate = iOrder.getDate();
+
             if (iMonth.isDateInMonth(iOrderDate)) {
                 for (SSSaleRow iRow : iOrder.getRows()) {
-                    if(iRow.getSum() != null){
-                        sum+= iRow.getSum().doubleValue() *iOrder.getCurrencyRate().doubleValue();
+                    if (iRow.getSum() != null) {
+                        sum += iRow.getSum().doubleValue()
+                                * iOrder.getCurrencyRate().doubleValue();
                     }
                 }
             }
@@ -911,66 +934,81 @@ public class SSNewCompany implements Serializable {
 
     public Double getInvoiceValueForMonth(SSMonth iMonth) {
         Double suminvoices = 0.0;
+
         for (SSInvoice iInvoice:SSDB.getInstance().getInvoices()) {
             Date iInvoiceDate = iInvoice.getDate();
+
             if (iMonth.isDateInMonth(iInvoiceDate)) {
                 for (SSSaleRow iRow : iInvoice.getRows()) {
-                    if(iRow.getSum() != null){
-                        suminvoices+= iRow.getSum().doubleValue() *iInvoice.getCurrencyRate().doubleValue();
+                    if (iRow.getSum() != null) {
+                        suminvoices += iRow.getSum().doubleValue()
+                                * iInvoice.getCurrencyRate().doubleValue();
                     }
                 }
 
             }
         }
         Double sumcreditinvoices = 0.0;
+
         for (SSCreditInvoice iCreditInvoice:SSDB.getInstance().getCreditInvoices()) {
             Date iCreditInvoiceDate = iCreditInvoice.getDate();
+
             if (iMonth.isDateInMonth(iCreditInvoiceDate)) {
                 for (SSSaleRow iRow : iCreditInvoice.getRows()) {
-                    if(iRow.getSum() != null){
-                        sumcreditinvoices+= iRow.getSum().doubleValue() *iCreditInvoice.getCurrencyRate().doubleValue();
+                    if (iRow.getSum() != null) {
+                        sumcreditinvoices += iRow.getSum().doubleValue()
+                                * iCreditInvoice.getCurrencyRate().doubleValue();
                     }
                 }
 
             }
         }
 
-        return suminvoices-sumcreditinvoices;
+        return suminvoices - sumcreditinvoices;
     }
-    //////////////////////////////////////////////////////
 
+    // ////////////////////////////////////////////////////
 
     public Double getPurchaseOrderValueForMonth(SSMonth iMonth) {
         Double sum = 0.0;
+
         for (SSPurchaseOrder iPurchaseOrder : SSDB.getInstance().getPurchaseOrders()) {
             Date iPurchaseOrderDate = iPurchaseOrder.getDate();
+
             if (iMonth.isDateInMonth(iPurchaseOrderDate)) {
-                if(iPurchaseOrder.getSum()!=null){
-                    sum+= iPurchaseOrder.getSum().doubleValue()*iPurchaseOrder.getCurrencyRate().doubleValue();
+                if (iPurchaseOrder.getSum() != null) {
+                    sum += iPurchaseOrder.getSum().doubleValue()
+                            * iPurchaseOrder.getCurrencyRate().doubleValue();
                 }
             }
         }
         return sum;
     }
-    //////////////////////////////////////////////////////
 
+    // ////////////////////////////////////////////////////
 
     public Double getSupplierInvoiceValueForMonth(SSMonth iMonth) {
         Double sumSupplierInvoices = 0.0;
+
         for (SSSupplierInvoice iSupplierInvoice:SSDB.getInstance().getSupplierInvoices()) {
             Date iSupplierInvoiceDate = iSupplierInvoice.getDate();
+
             if (iMonth.isDateInMonth(iSupplierInvoiceDate)) {
-                if(SSSupplierInvoiceMath.getNetSum(iSupplierInvoice)!=null){
-                    sumSupplierInvoices += SSSupplierInvoiceMath.getNetSum(iSupplierInvoice).doubleValue()*iSupplierInvoice.getCurrencyRate().doubleValue();
+                if (SSSupplierInvoiceMath.getNetSum(iSupplierInvoice) != null) {
+                    sumSupplierInvoices += SSSupplierInvoiceMath.getNetSum(iSupplierInvoice).doubleValue()
+                            * iSupplierInvoice.getCurrencyRate().doubleValue();
                 }
             }
         }
         Double sumSupplierCreditInvoices = 0.0;
+
         for (SSSupplierCreditInvoice iSupplierCreditInvoice:SSDB.getInstance().getSupplierCreditInvoices()) {
             Date iSupplierCreditInvoiceDate = iSupplierCreditInvoice.getDate();
+
             if (iMonth.isDateInMonth(iSupplierCreditInvoiceDate)) {
-                if(SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice)!=null){
-                    sumSupplierCreditInvoices += SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice).doubleValue()*iSupplierCreditInvoice.getCurrencyRate().doubleValue();
+                if (SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice) != null) {
+                    sumSupplierCreditInvoices += SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice).doubleValue()
+                            * iSupplierCreditInvoice.getCurrencyRate().doubleValue();
                 }
 
             }
@@ -979,13 +1017,12 @@ public class SSNewCompany implements Serializable {
         return sumSupplierInvoices - sumSupplierCreditInvoices;
     }
 
-
     /**
      *
      * @return
      */
     public SSAutoIncrement getAutoIncrement() {
-        if(iAutoIncrement == null){
+        if (iAutoIncrement == null) {
             iAutoIncrement = new SSAutoIncrement();
         }
         return iAutoIncrement;
@@ -995,17 +1032,22 @@ public class SSNewCompany implements Serializable {
      *
      * @return
      */
-    public Image getLogoImage(){
+    public Image getLogoImage() {
         // The logotype is null
-        if(iLogotype == null) return null;
+        if (iLogotype == null) {
+            return null;
+        }
 
         // Create the file
         File iFile = new File(iLogotype);
 
         // The file doesn't exists, return null
-        if( ! iFile.exists() ) return null;
+        if (!iFile.exists()) {
+            return null;
+        }
 
         Image iImage = null;
+
         try {
             iImage = ImageIO.read(iFile);
         } catch (IOException e) {
@@ -1015,31 +1057,27 @@ public class SSNewCompany implements Serializable {
 
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
-
-
-
-
-    
     public int hashCode() {
         return iId.hashCode();
     }
 
-    
     public boolean equals(Object obj) {
-        if(obj == null) return false;
+        if (obj == null) {
+            return false;
+        }
 
         if (!(obj instanceof SSNewCompany)) {
             return false;
         }
-        if(iId == null) return false;
+        if (iId == null) {
+            return false;
+        }
 
         return iId.equals(((SSNewCompany) obj).iId);
     }
 
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -1047,6 +1085,5 @@ public class SSNewCompany implements Serializable {
 
         return sb.toString();
     }
-
 
 }

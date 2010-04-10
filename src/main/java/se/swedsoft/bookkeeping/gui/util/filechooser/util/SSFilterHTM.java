@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-13
@@ -12,10 +14,11 @@ public class SSFilterHTM extends SSFileFilter {
 
     public static ResourceBundle bundle = SSBundle.getBundle();
 
-    public SSFilterHTM(){
+    public SSFilterHTM() {
         addExtension("htm");
         addExtension("html");
     }
+
     /**
      * @return The description of this filter
      */

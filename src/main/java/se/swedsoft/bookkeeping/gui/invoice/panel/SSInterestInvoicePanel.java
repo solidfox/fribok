@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.invoice.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
@@ -22,6 +23,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-12
@@ -37,31 +39,31 @@ public class SSInterestInvoicePanel {
 
     private SSTableComboBox<SSAccount> iAccount;
 
-
     private SSInterestInvoiceTableModel iModel;
     private JTextField iAccountText;
 
-
     public SSInterestInvoicePanel(List<SSInvoice> iRows) {
-        iModel = new SSInterestInvoiceTableModel( iRows );
+        iModel = new SSInterestInvoiceTableModel(iRows);
 
         iTable.setModel(iModel);
 
-        SSAccount iSelected = SSDB.getInstance().getCurrentCompany().getDefaultAccount(SSDB.getInstance().getCurrentAccountPlan(), SSDefaultAccount.InterestProfit);
+        SSAccount iSelected = SSDB.getInstance().getCurrentCompany().getDefaultAccount(
+                SSDB.getInstance().getCurrentAccountPlan(),
+                SSDefaultAccount.InterestProfit);
 
-        iAccount.setModel            ( SSAccountTableModel.getDropDownModel() );
-        iAccount.setSearchColumns    ( 0);
-        iAccount.setAllowCustomValues( true);
+        iAccount.setModel(SSAccountTableModel.getDropDownModel());
+        iAccount.setSearchColumns(0);
+        iAccount.setAllowCustomValues(true);
         iAccount.addSelectionListener(new SSSelectionListener<SSAccount>() {
             public void selected(SSAccount selected) {
-                if(selected != null){
-                    iAccountText.setText( selected.getDescription() );
+                if (selected != null) {
+                    iAccountText.setText(selected.getDescription());
                 } else {
                     iAccount.setText("");
                 }
             }
         });
-        iAccount.setSelected ( iSelected, true );
+        iAccount.setSelected(iSelected, true);
 
         SSInterestInvoiceTableModel.setupTable(iTable);
     }
@@ -97,7 +99,7 @@ public class SSInterestInvoicePanel {
      */
     public List<SSInvoice> getInterestInvoices() {
         String    iDescription = this.iDescription.getText();
-        SSAccount iAccount     = this.iAccount    .getSelected();
+        SSAccount iAccount = this.iAccount.getSelected();
 
         return iModel.getInterestInvoices(iDescription, iAccount);
     }
@@ -106,32 +108,34 @@ public class SSInterestInvoicePanel {
      *
      * @return
      */
-    public static List<SSInvoice> getRows(){
+    public static List<SSInvoice> getRows() {
         // Get all invoices from the DB
         List<SSInvoice> iInvoices = SSDB.getInstance().getInvoices();
 
         // Get all the rows
         List<SSInvoice> iRows = new LinkedList<SSInvoice>();
 
-
         for (SSInvoice iInvoice : iInvoices) {
             // Skip invoices that is flagged as interest invoiced or is a cash sales
-            if(iInvoice.isInterestInvoiced() || iInvoice.getType() == SSInvoiceType.CASH ) continue;
+            if (iInvoice.isInterestInvoiced() || iInvoice.getType() == SSInvoiceType.CASH) {
+                continue;
+            }
 
             BigDecimal iSaldo = SSInvoiceMath.getSaldo(iInvoice.getNumber());
 
             Date iLastInpayment = SSInpaymentMath.getLastInpaymentForInvoice(iInvoice);
 
-            if(iLastInpayment == null ) iLastInpayment = new Date();
+            if (iLastInpayment == null) {
+                iLastInpayment = new Date();
+            }
 
             // Floor the inpayment date so we don't get any credit invoices for invoices payed on the last day
             iLastInpayment = SSDateMath.floor(iLastInpayment);
 
-            if( iSaldo.signum() == 0 && iLastInpayment.after( iInvoice.getDueDate() ) ){
+            if (iSaldo.signum() == 0 && iLastInpayment.after(iInvoice.getDueDate())) {
                 iRows.add(iInvoice);
             }
         }
-
 
         return iRows;
     }
@@ -139,6 +143,7 @@ public class SSInterestInvoicePanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.invoice.panel.SSInterestInvoicePanel");
         sb.append("{iAccount=").append(iAccount);
         sb.append(", iAccountText=").append(iAccountText);

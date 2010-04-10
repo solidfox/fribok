@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplier.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
@@ -20,6 +21,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 
 /**
  * User: Andreas Lago
@@ -60,7 +62,7 @@ public class SSSupplierPanel {
     private SSIntegerTextField iOutpaymentNumber;
 
     private SSInputVerifier iInputVerifier;
-    
+
     private JTextPane iComment;
 
     /**
@@ -72,23 +74,23 @@ public class SSSupplierPanel {
 
         iSupplierNr.setEnabled(!iEdit);
 
-        iCurrency.getComboBox().setModel( SSCurrencyTableModel.getDropDownModel() );
+        iCurrency.getComboBox().setModel(SSCurrencyTableModel.getDropDownModel());
         iCurrency.getComboBox().setSearchColumns();
-        iCurrency.setEditingFactory( SSCurrencyTableModel.getEditingFactory(iOwner) );
+        iCurrency.setEditingFactory(SSCurrencyTableModel.getEditingFactory(iOwner));
 
-        iDeliveryWay.getComboBox().setModel( SSDeliveryWayTableModel.getDropDownModel() );
+        iDeliveryWay.getComboBox().setModel(SSDeliveryWayTableModel.getDropDownModel());
         iDeliveryWay.getComboBox().setSearchColumns();
-        iDeliveryWay.setEditingFactory( SSDeliveryWayTableModel.getEditingFactory(iOwner) );
+        iDeliveryWay.setEditingFactory(SSDeliveryWayTableModel.getEditingFactory(iOwner));
 
-        iDeliveryTerm.getComboBox().setModel( SSDeliveryTermTableModel.getDropDownModel() );
+        iDeliveryTerm.getComboBox().setModel(SSDeliveryTermTableModel.getDropDownModel());
         iDeliveryTerm.getComboBox().setSearchColumns();
-        iDeliveryTerm.setEditingFactory( SSDeliveryTermTableModel.getEditingFactory(iOwner) );
+        iDeliveryTerm.setEditingFactory(SSDeliveryTermTableModel.getEditingFactory(iOwner));
 
-        iPaymentTerm.getComboBox().setModel( SSPaymentTermTableModel.getDropDownModel() );
+        iPaymentTerm.getComboBox().setModel(SSPaymentTermTableModel.getDropDownModel());
         iPaymentTerm.getComboBox().setSearchColumns();
-        iPaymentTerm.setEditingFactory( SSPaymentTermTableModel.getEditingFactory(iOwner) );
+        iPaymentTerm.setEditingFactory(SSPaymentTermTableModel.getEditingFactory(iOwner));
 
-         iInputVerifier = new SSInputVerifier();
+        iInputVerifier = new SSInputVerifier();
 
         iInputVerifier.add(iSupplierNr);
         iInputVerifier.addListener(new SSInputVerifier.SSVerifierListener() {
@@ -116,7 +118,6 @@ public class SSSupplierPanel {
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      * @return
@@ -149,7 +150,7 @@ public class SSSupplierPanel {
         // Plusgiro nummer:
         iSupplier.setPlusGiro(iPlusGiroNumber.getText());
         // Utbetalningsnummer
-        iSupplier.setOutpaymentNumber(iOutpaymentNumber.getValue() );
+        iSupplier.setOutpaymentNumber(iOutpaymentNumber.getValue());
         // Valuta
         iSupplier.setCurrency(iCurrency.getSelected());
         // Betalningsvilkor
@@ -163,11 +164,12 @@ public class SSSupplierPanel {
 
         iSupplier.setComment(iComment.getText());
 
-        if(iSupplier.getAddress().getName() == null || iSupplier.getAddress().getName().length() == 0) iSupplier.getAddress().setName( iSupplier.getName() );
-
+        if (iSupplier.getAddress().getName() == null
+                || iSupplier.getAddress().getName().length() == 0) {
+            iSupplier.getAddress().setName(iSupplier.getName());
+        }
 
         return iSupplier;
-
 
     }
 
@@ -175,7 +177,7 @@ public class SSSupplierPanel {
      * @param iSupplier
      * @param newSupplier
      */
-    public void setSupplier(SSSupplier iSupplier,boolean newSupplier) {
+    public void setSupplier(SSSupplier iSupplier, boolean newSupplier) {
         this.iSupplier = iSupplier;
 
         // Leverantörsnummer
@@ -207,8 +209,8 @@ public class SSSupplierPanel {
         // Utbetalningsnummer
         if (newSupplier) {
             iOutpaymentNumber.setValue(null);
-        }else{
-            iOutpaymentNumber.setValue( iSupplier.getOutpaymentNumber() );
+        } else {
+            iOutpaymentNumber.setValue(iSupplier.getOutpaymentNumber());
         }
         // Valuta
         iCurrency.setSelected(iSupplier.getCurrency());
@@ -223,7 +225,6 @@ public class SSSupplierPanel {
 
         iComment.setText(iSupplier.getComment());
     }
-
 
     /**
      *
@@ -249,18 +250,19 @@ public class SSSupplierPanel {
     public void addKeyListeners() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                if(iSupplierNr.isEnabled())
+                if (iSupplierNr.isEnabled()) {
                     iSupplierNr.requestFocusInWindow();
-                else
+                } else {
                     iName.requestFocusInWindow();
+                }
             }
         });
 
-        iSupplierNr.addKeyListener(new KeyAdapter(){
+        iSupplierNr.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iName.requestFocusInWindow();
                         }
@@ -269,11 +271,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iName.addKeyListener(new KeyAdapter(){
+        iName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iHomepage.requestFocusInWindow();
                         }
@@ -282,11 +284,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iHomepage.addKeyListener(new KeyAdapter(){
+        iHomepage.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iEmail.requestFocusInWindow();
                         }
@@ -295,11 +297,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iEmail.addKeyListener(new KeyAdapter(){
+        iEmail.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iRegistrationNumber.requestFocusInWindow();
                         }
@@ -308,11 +310,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iRegistrationNumber.addKeyListener(new KeyAdapter(){
+        iRegistrationNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOurContact.requestFocusInWindow();
                         }
@@ -321,11 +323,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iOurContact.addKeyListener(new KeyAdapter(){
+        iOurContact.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iYourContact.requestFocusInWindow();
                         }
@@ -334,11 +336,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iYourContact.addKeyListener(new KeyAdapter(){
+        iYourContact.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPhone.requestFocusInWindow();
                         }
@@ -347,11 +349,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iPhone.addKeyListener(new KeyAdapter(){
+        iPhone.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPhone2.requestFocusInWindow();
                         }
@@ -360,11 +362,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iPhone2.addKeyListener(new KeyAdapter(){
+        iPhone2.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTeleFax.requestFocusInWindow();
                         }
@@ -373,11 +375,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iTeleFax.addKeyListener(new KeyAdapter(){
+        iTeleFax.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
                         }
@@ -386,10 +388,10 @@ public class SSSupplierPanel {
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -399,10 +401,10 @@ public class SSSupplierPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -412,11 +414,12 @@ public class SSSupplierPanel {
             }
         });
 
-        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iPaymentTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -425,11 +428,12 @@ public class SSSupplierPanel {
             }
         });
 
-        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -438,11 +442,12 @@ public class SSSupplierPanel {
             }
         });
 
-        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryWay.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -451,11 +456,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOurCustomerNr.requestFocusInWindow();
                         }
@@ -464,11 +469,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iOurCustomerNr.addKeyListener(new KeyAdapter(){
+        iOurCustomerNr.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOutpaymentNumber.requestFocusInWindow();
                         }
@@ -477,11 +482,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iOutpaymentNumber.addKeyListener(new KeyAdapter(){
+        iOutpaymentNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iBankGiroNumber.requestFocusInWindow();
                         }
@@ -490,11 +495,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iBankGiroNumber.addKeyListener(new KeyAdapter(){
+        iBankGiroNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPlusGiroNumber.requestFocusInWindow();
                         }
@@ -503,11 +508,11 @@ public class SSSupplierPanel {
             }
         });
 
-        iPlusGiroNumber.addKeyListener(new KeyAdapter(){
+        iPlusGiroNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iComment.requestFocusInWindow();
                         }
@@ -522,6 +527,7 @@ public class SSSupplierPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.supplier.panel.SSSupplierPanel");
         sb.append("{iAddress=").append(iAddress);
         sb.append(", iBankGiroNumber=").append(iBankGiroNumber);

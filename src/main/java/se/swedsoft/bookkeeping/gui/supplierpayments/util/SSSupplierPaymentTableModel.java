@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplierpayments.util;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
@@ -23,6 +24,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-28
@@ -37,8 +39,9 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
      */
     public SSSupplierPaymentTableModel(List<SSSupplierInvoice> iSupplierInvoices) {
         List<SupplierPayment> iPayments = new LinkedList<SupplierPayment>();
+
         for (SSSupplierInvoice iSupplierInvoice : iSupplierInvoices) {
-            iPayments.add( new SupplierPayment(iSupplierInvoice) );
+            iPayments.add(new SupplierPayment(iSupplierInvoice));
         }
         setObjects(iPayments);
     }
@@ -51,7 +54,8 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     /**
      * Number
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_NUMBER = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.1")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_NUMBER = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.1")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             SSSupplierInvoice iInvoice = iPayment.getSupplierInvoice();
@@ -60,13 +64,13 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
 
         @Override
-        public void setValue(SupplierPayment iPayment, Object iValue) {
-        }
+        public void setValue(SupplierPayment iPayment, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 70;
@@ -76,7 +80,8 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     /**
      * Supplier nr
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_SUPPLIER_NUMBER = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.2")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_SUPPLIER_NUMBER = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.2")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             SSSupplierInvoice iInvoice = iPayment.getSupplierInvoice();
@@ -85,13 +90,13 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
 
         @Override
-        public void setValue(SupplierPayment iPayment, Object iValue) {
-        }
+        public void setValue(SupplierPayment iPayment, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 150;
@@ -101,7 +106,8 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     /**
      * Supplier name
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_SUPPLIER_NAME = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.3")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_SUPPLIER_NAME = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.3")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             SSSupplierInvoice iInvoice = iPayment.getSupplierInvoice();
@@ -110,24 +116,24 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
 
         @Override
-        public void setValue(SupplierPayment iPayment, Object iValue) {
-        }
+        public void setValue(SupplierPayment iPayment, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 150;
         }
     };
 
-
     /**
      * Supplier name
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_DATE = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.4")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_DATE = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.4")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             return iPayment.getDate();
@@ -135,24 +141,25 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
 
         @Override
         public void setValue(SupplierPayment iPayment, Object iValue) {
-            iPayment.setDate((Date)iValue);
+            iPayment.setDate((Date) iValue);
         }
 
         @Override
         public Class getColumnClass() {
             return Date.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 100;
         }
     };
 
-
     /**
      * Value
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_VALUE = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.5")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_VALUE = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.5")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
 
@@ -161,13 +168,14 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
 
         @Override
         public void setValue(SupplierPayment iPayment, Object iValue) {
-            iPayment.setValue((BigDecimal)iValue);
+            iPayment.setValue((BigDecimal) iValue);
         }
 
         @Override
         public Class getColumnClass() {
             return BigDecimal.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 100;
@@ -177,7 +185,8 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     /**
      *
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_CURRENCY = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.6")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_CURRENCY = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.6")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             SSSupplierInvoice iInvoice = iPayment.getSupplierInvoice();
@@ -186,25 +195,24 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
 
         @Override
-        public void setValue(SupplierPayment iPayment, Object iValue) {
-        }
+        public void setValue(SupplierPayment iPayment, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return SSCurrency.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 50;
         }
     };
 
-
-
     /**
      * Payment method
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_PAYMENT_METHOD = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.7")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_PAYMENT_METHOD = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.7")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             return iPayment.getPaymentMethod();
@@ -212,17 +220,17 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
 
         @Override
         public void setValue(SupplierPayment iPayment, Object iValue) {
-            iPayment.setPaymentMethod((PaymentMethod)iValue);
+            iPayment.setPaymentMethod((PaymentMethod) iValue);
 
-            if(iPayment.getPaymentMethod() == PaymentMethod.BANKGIRO){
-                iPayment.setAccount( iPayment.getBankGiro() );
+            if (iPayment.getPaymentMethod() == PaymentMethod.BANKGIRO) {
+                iPayment.setAccount(iPayment.getBankGiro());
             }
-            if(iPayment.getPaymentMethod() == PaymentMethod.PLUSGIRO){
-                iPayment.setAccount(  iPayment.getPlusGiro() );
+            if (iPayment.getPaymentMethod() == PaymentMethod.PLUSGIRO) {
+                iPayment.setAccount(iPayment.getPlusGiro());
             }
 
-            if(iPayment.getPaymentMethod() == PaymentMethod.CASH){
-                iPayment.setAccount(  iPayment.getOutpaymentNumber().toString() );
+            if (iPayment.getPaymentMethod() == PaymentMethod.CASH) {
+                iPayment.setAccount(iPayment.getOutpaymentNumber().toString());
             }
 
         }
@@ -238,12 +246,11 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
     };
 
-
-
     /**
      * Account
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_ACCOUNT = new SSTableColumn<SupplierPayment>(SSBundle.getBundle().getString("supplierpaymenttable.column.8")) {
+    public static SSTableColumn<SupplierPayment> COLUMN_ACCOUNT = new SSTableColumn<SupplierPayment>(
+            SSBundle.getBundle().getString("supplierpaymenttable.column.8")) {
         @Override
         public Object getValue(SupplierPayment iPayment) {
             return iPayment.getAccount();
@@ -254,13 +261,16 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         public void setValue(SupplierPayment iPayment, Object iValue) {
             PaymentMethod iPaymentMethod = iPayment.getPaymentMethod();
 
-            if(iPaymentMethod != PaymentMethod.CASH) iPayment.setAccount((String)iValue);
+            if (iPaymentMethod != PaymentMethod.CASH) {
+                iPayment.setAccount((String) iValue);
+            }
         }
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 100;
@@ -270,21 +280,22 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     /**
      * Edit Supplier
      */
-    public static SSTableColumn<SupplierPayment> COLUMN_EDIT_SUPPLIER = new SSTableColumn<SupplierPayment>("") {
+    public static SSTableColumn<SupplierPayment> COLUMN_EDIT_SUPPLIER = new SSTableColumn<SupplierPayment>(
+            "") {
         @Override
         public Object getValue(SupplierPayment iPayment) {
-            return iPayment.getSupplierInvoice().getSupplier(SSDB.getInstance().getSuppliers());
+            return iPayment.getSupplierInvoice().getSupplier(
+                    SSDB.getInstance().getSuppliers());
         }
 
         @Override
-        public void setValue(SupplierPayment iObject, Object iValue) {
-
-        }
+        public void setValue(SupplierPayment iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return SSSupplier.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 20;
@@ -318,8 +329,8 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     public void setupTable(SSTable iTable) {
         super.setupTable(iTable);
 
-        iTable.setDefaultRenderer(PaymentMethod.class,  new PaymentMethodCellRenderer() );
-        iTable.setDefaultEditor  (PaymentMethod.class,  new PaymentMethodCellEditor() );
+        iTable.setDefaultRenderer(PaymentMethod.class, new PaymentMethodCellRenderer());
+        iTable.setDefaultEditor(PaymentMethod.class, new PaymentMethodCellEditor());
     }
 
     /**
@@ -332,26 +343,29 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
          *
          */
         public PaymentMethodCellEditor() {
-            super(new JComboBox() );
+            super(new JComboBox());
 
-            JComboBox iComboBox = (JComboBox)getComponent();
+            JComboBox iComboBox = (JComboBox) getComponent();
 
             DefaultComboBoxModel iModel = new DefaultComboBoxModel();
+
             iModel.addElement(PaymentMethod.BANKGIRO);
             iModel.addElement(PaymentMethod.PLUSGIRO);
             iModel.addElement(PaymentMethod.CASH);
 
-            iComboBox.setModel( iModel );
+            iComboBox.setModel(iModel);
 
-            iComboBox.setRenderer(new DefaultListCellRenderer(){
+            iComboBox.setRenderer(
+                    new DefaultListCellRenderer() {
                 @Override
                 public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                    super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                    super.getListCellRendererComponent(list, value, index, isSelected,
+                            cellHasFocus);
 
-                    if(value instanceof PaymentMethod){
+                    if (value instanceof PaymentMethod) {
                         PaymentMethod iAction = (PaymentMethod) value;
 
-                        setText( iAction.getDescription() );
+                        setText(iAction.getDescription());
                     } else {
                         setText("");
                     }
@@ -362,6 +376,7 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
     }
 
+
     /**
      *
      */
@@ -369,20 +384,22 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
 
         @Override
         public void setValue(Object value) {
-            if(value instanceof PaymentMethod){
+            if (value instanceof PaymentMethod) {
                 PaymentMethod iAction = (PaymentMethod) value;
 
                 setText(iAction.getDescription());
-            }  else {
-                setText( "" );
+            } else {
+                setText("");
             }
         }
     }
 
+
     /**
      *
      */
-    private static class EditSupplierCellEditor extends AbstractCellEditor implements TableCellEditor{
+    private static class EditSupplierCellEditor extends AbstractCellEditor implements TableCellEditor {
+
         /**
          * Returns the value contained in the editor.
          *
@@ -395,17 +412,20 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         /**
          */
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            final SSSupplier iSupplier = (SSSupplier)value;
-            final JTable     iTable    = table;
+            final SSSupplier iSupplier = (SSSupplier) value;
+            final JTable     iTable = table;
 
             JButton iButton = new JButton("..");
-            iButton.addActionListener(new ActionListener() {
+
+            iButton.addActionListener(
+                    new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    SSSupplierDialog.editDialog( SSMainFrame.getInstance(), iSupplier, null   );
+                    SSSupplierDialog.editDialog(SSMainFrame.getInstance(), iSupplier, null);
 
                     TableModel iModel = iTable.getModel();
-                    if(iModel instanceof AbstractTableModel){
-                        ((AbstractTableModel)iModel).fireTableDataChanged();
+
+                    if (iModel instanceof AbstractTableModel) {
+                        ((AbstractTableModel) iModel).fireTableDataChanged();
                     }
                 }
             });

@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.customer.util;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -18,7 +20,7 @@ public class SSCustomerDropdownModel extends SSDefaultTableModel<SSCustomer> {
      * Default constructor.
      */
     public SSCustomerDropdownModel() {
-        this( SSDB.getInstance().getCustomers() );
+        this(SSDB.getInstance().getCustomers());
     }
 
     /**
@@ -41,13 +43,15 @@ public class SSCustomerDropdownModel extends SSDefaultTableModel<SSCustomer> {
         SSCustomer iCustomer = getObject(rowIndex);
 
         Object value = null;
-        switch(columnIndex){
-            case 0:
-                value = iCustomer.getNumber();
-                break;
-            case 1:
-                value = iCustomer.getName();
-                break;
+
+        switch (columnIndex) {
+        case 0:
+            value = iCustomer.getNumber();
+            break;
+
+        case 1:
+            value = iCustomer.getName();
+            break;
         }
 
         return value;
@@ -55,12 +59,14 @@ public class SSCustomerDropdownModel extends SSDefaultTableModel<SSCustomer> {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        switch(columnIndex){
-            case 0:
-                return String.class;
-            case 1:
-                return String.class;
-            case 2:
+        switch (columnIndex) {
+        case 0:
+            return String.class;
+
+        case 1:
+            return String.class;
+
+        case 2:
 
         }
         return super.getColumnClass(columnIndex);

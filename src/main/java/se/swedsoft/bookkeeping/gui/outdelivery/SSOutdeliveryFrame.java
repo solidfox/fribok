@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outdelivery;
 
+
 import se.swedsoft.bookkeeping.data.SSOutdelivery;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -20,13 +21,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-18
  * Time: 11:34:17
  */
 public class SSOutdeliveryFrame extends SSDefaultTableFrame {
-
 
     private static SSOutdeliveryFrame cInstance;
 
@@ -36,8 +37,8 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSOutdeliveryFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSOutdeliveryFrame.cInstance.isClosed()) {
             cInstance = new SSOutdeliveryFrame(pMainFrame, pWidth, pHeight);
         }
         SSOutdeliveryFrame.cInstance.setVisible(true);
@@ -49,16 +50,13 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSOutdeliveryFrame getInstance(){
+    public static SSOutdeliveryFrame getInstance() {
         return cInstance;
     }
-
 
     private SSTable iTable;
 
     private SSOutdeliveryTableModel iModel;
-
-
 
     /**
      * Constructor.
@@ -68,9 +66,9 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSOutdeliveryFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("outdeliveryframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("outdeliveryframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -86,29 +84,32 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "outdeliveryframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "outdeliveryframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutdeliveryDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "outdeliveryframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "outdeliveryframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutdelivery iOutdelivery = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iOutdelivery != null){
+
+                if (iOutdelivery != null) {
                     iNumber = iOutdelivery.getNumber();
                     iOutdelivery = getOutdelivery(iOutdelivery);
                 }
                 if (iOutdelivery != null) {
                     SSOutdeliveryDialog.editDialog(getMainFrame(), iOutdelivery, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliverygone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliverygone",
+                            iNumber);
                 }
             }
         });
@@ -118,18 +119,21 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "outdeliveryframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "outdeliveryframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutdelivery iOutdelivery = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iOutdelivery != null){
+
+                if (iOutdelivery != null) {
                     iNumber = iOutdelivery.getNumber();
                     iOutdelivery = getOutdelivery(iOutdelivery);
                 }
                 if (iOutdelivery != null) {
                     SSOutdeliveryDialog.copyDialog(getMainFrame(), iOutdelivery, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliverygone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliverygone",
+                            iNumber);
                 }
             }
         });
@@ -139,10 +143,12 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "outdeliveryframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "outdeliveryframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSOutdelivery> toDelete = iModel.getObjects(selected);
+
                 deleteSelected(toDelete);
             }
         });
@@ -150,21 +156,20 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-         // Print
+        // Print
         // ***************************
-        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "outdeliveryframe.printbutton");
-        iMenuButton.add("outdeliveryframe.print.list", new ActionListener(){
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT",
+                "outdeliveryframe.printbutton");
+
+        iMenuButton.add("outdeliveryframe.print.list", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSReportFactory.OutdeliveryList(getMainFrame());
             }
         });
         toolBar.add(iMenuButton);
 
-
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -184,10 +189,12 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
 
         iModel.setupTable(iTable);
 
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutdelivery iOutdelivery = iModel.getSelectedRow(iTable);
                 Integer iNumber;
+
                 if (iOutdelivery != null) {
                     iNumber = iOutdelivery.getNumber();
                     iOutdelivery = getOutdelivery(iOutdelivery);
@@ -197,17 +204,17 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
                 if (iOutdelivery != null) {
                     SSOutdeliveryDialog.editDialog(getMainFrame(), iOutdelivery, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliverygone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliverygone",
+                            iNumber);
                 }
             }
         });
-
 
         JPanel iPanel = new JPanel();
 
         iPanel.setLayout(new BorderLayout());
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
@@ -250,8 +257,6 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
         return false;
     }
 
-
-
     /**
      *
      * @param delete
@@ -260,12 +265,17 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
         if (delete.isEmpty()) {
             return;
         }
-        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "outdeliveryframe.delete");
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(),
+                "outdeliveryframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSOutdelivery iOutdelivery : delete) {
-                if (SSPostLock.isLocked("outdelivery" + iOutdelivery.getNumber() + SSDB.getInstance().getCurrentCompany().getId())){
-                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliveryopen",iOutdelivery.getNumber());
+                if (SSPostLock.isLocked(
+                        "outdelivery" + iOutdelivery.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "outdeliveryframe.outdeliveryopen",
+                            iOutdelivery.getNumber());
                 } else {
                     SSDB.getInstance().deleteOutdelivery(iOutdelivery);
                 }
@@ -280,16 +290,17 @@ public class SSOutdeliveryFrame extends SSDefaultTableFrame {
     public void updateFrame() {
         iModel.setObjects(SSDB.getInstance().getOutdeliveries());
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.outdelivery.SSOutdeliveryFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iTable=").append(iTable);

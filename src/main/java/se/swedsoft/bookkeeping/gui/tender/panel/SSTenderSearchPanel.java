@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.tender.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.tender.SSTenderFrame;
@@ -11,6 +12,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -24,14 +26,12 @@ public class SSTenderSearchPanel extends JPanel {
 
     private SSTenderTableModel iModel;
 
-
     public SSTenderSearchPanel(SSTenderTableModel iModel) {
         this.iModel = iModel;
 
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,33 +41,41 @@ public class SSTenderSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter(List<SSTender> iList) {
         List<SSTender> iFiltered = new LinkedList<SSTender>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSTender iTender : iList) {
-            String iNumber      = iTender.getNumber().toString();
+            String iNumber = iTender.getNumber().toString();
             String iDescription = iTender.getCustomerName();
             String iCustomerNumber = iTender.getCustomerNr();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) || (iCustomerNumber != null && iCustomerNumber.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))
+                            || (iCustomerNumber != null
+                                    && iCustomerNumber.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iTender);
             }
         }
-        SSTenderFrame.getInstance().setFilterIndex(SSTenderFrame.getInstance().getTabbedPane().getSelectedIndex(),iFiltered);
-        //iModel.setObjects(iFiltered);
+        SSTenderFrame.getInstance().setFilterIndex(
+                SSTenderFrame.getInstance().getTabbedPane().getSelectedIndex(), iFiltered);
+        // iModel.setObjects(iFiltered);
 
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.tender.panel.SSTenderSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

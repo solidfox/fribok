@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.data;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
@@ -7,6 +8,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-27
@@ -29,9 +31,9 @@ public class SSAccountGroup implements Serializable {
     /**
      *
      */
-    public SSAccountGroup(){
+    public SSAccountGroup() {
         iGroups = null;
-        iId     = -1;
+        iId = -1;
     }
 
     /**
@@ -49,6 +51,7 @@ public class SSAccountGroup implements Serializable {
     public void setId(Integer iId) {
         this.iId = iId;
     }
+
     /**
      *
      * @param iFromAccount
@@ -57,16 +60,15 @@ public class SSAccountGroup implements Serializable {
         this.iFromAccount = iFromAccount;
     }
 
-
     /**
      *
      * @return
      */
     public Integer getFromAccount() {
-        if(iFromAccount == null && iGroups != null){
+        if (iFromAccount == null && iGroups != null) {
             iFromAccount = Integer.MAX_VALUE;
-            for(SSAccountGroup iAccountGroup : iGroups){
-                if(iAccountGroup.getFromAccount() < iFromAccount ){
+            for (SSAccountGroup iAccountGroup : iGroups) {
+                if (iAccountGroup.getFromAccount() < iFromAccount) {
                     iFromAccount = iAccountGroup.getFromAccount();
                 }
             }
@@ -74,15 +76,16 @@ public class SSAccountGroup implements Serializable {
 
         return iFromAccount;
     }
+
     /**
      *
      * @return
      */
     public Integer getToAccount() {
-        if(iToAccount == null && iGroups != null){
+        if (iToAccount == null && iGroups != null) {
             iToAccount = Integer.MIN_VALUE;
-            for(SSAccountGroup iAccountGroup : iGroups){
-                if(iAccountGroup.getToAccount() > iToAccount ){
+            for (SSAccountGroup iAccountGroup : iGroups) {
+                if (iAccountGroup.getToAccount() > iToAccount) {
                     iToAccount = iAccountGroup.getToAccount();
                 }
             }
@@ -127,20 +130,19 @@ public class SSAccountGroup implements Serializable {
      *
      * @param pAccountGroup
      */
-    public void addAccountGroup(SSAccountGroup pAccountGroup){
-        if(iGroups == null ){
+    public void addAccountGroup(SSAccountGroup pAccountGroup) {
+        if (iGroups == null) {
             iGroups = new LinkedList<SSAccountGroup>();
         }
 
         iGroups.add(pAccountGroup);
     }
 
-
     /**
      *
      * @return The title for this account group
      */
-    public String getTitle(){
+    public String getTitle() {
         return cBundle.getString(iBundle);
     }
 
@@ -148,30 +150,30 @@ public class SSAccountGroup implements Serializable {
      *
      * @return The sum title for this account group
      */
-    public String getSumTitle(){
+    public String getSumTitle() {
         return cBundle.getString(iBundle + ".sum");
     }
 
     public String toString() {
         return toString("");
     }
-    
+
     public String toString(String Seperator) {
         StringBuilder sb = new StringBuilder();
 
         sb.append(Seperator);
-        sb.append( iId );
+        sb.append(iId);
         sb.append(": ");
-        sb.append( getTitle() );
+        sb.append(getTitle());
         sb.append(", ");
-        sb.append( iFromAccount );
+        sb.append(iFromAccount);
         sb.append(" - ");
-        sb.append( iToAccount );
+        sb.append(iToAccount);
 
-        if(iGroups  != null){
+        if (iGroups != null) {
             sb.append("{\n");
-            for(SSAccountGroup iGroup : iGroups ){
-                sb.append(iGroup.toString(Seperator + "  ") );
+            for (SSAccountGroup iGroup : iGroups) {
+                sb.append(iGroup.toString(Seperator + "  "));
             }
             sb.append("  }\n");
         }
@@ -184,17 +186,17 @@ public class SSAccountGroup implements Serializable {
      * @param iAccounts
      * @return
      */
-    public List<SSAccount> getGroupAccounts(List<SSAccount> iAccounts){
+    public List<SSAccount> getGroupAccounts(List<SSAccount> iAccounts) {
         List<SSAccount> iGroupAccounts = new LinkedList<SSAccount>();
-        for(SSAccount iAccount: iAccounts){
-            if( iAccount.getNumber() >= getFromAccount() && iAccount.getNumber() <= getToAccount()  ){
+
+        for (SSAccount iAccount: iAccounts) {
+            if (iAccount.getNumber() >= getFromAccount()
+                    && iAccount.getNumber() <= getToAccount()) {
                 iGroupAccounts.add(iAccount);
             }
         }
         return iGroupAccounts;
     }
 
-
 }
-
 

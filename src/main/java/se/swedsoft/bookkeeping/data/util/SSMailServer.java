@@ -1,24 +1,25 @@
 package se.swedsoft.bookkeeping.data.util;
 
+
 import se.swedsoft.bookkeeping.util.SSUtil;
 
 import java.io.Serializable;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+
 /**
  * Class to store data about a mail server. Immutable.
- * 
+ *
  * @author jensli
  */
-public class SSMailServer implements Serializable
-{
+public class SSMailServer implements Serializable {
     private final String name;
     private final String username;
     private final String password;
-    
+
     private final URI address;
-    
+
     private final boolean isAuth; // Should authorization be used when connecting to the mail server?
 
     /**
@@ -34,36 +35,36 @@ public class SSMailServer implements Serializable
      * @return
      * @throws SSMailServerException
      */
-    public static SSMailServer makeIfValid(String name, String host, 
-            int port, boolean isAuth, String username, String password) 
+    public static SSMailServer makeIfValid(String name, String host,
+            int port, boolean isAuth, String username, String password)
         throws SSMailServerException {
-        
+
         if (!SSUtil.isInRage(port, 1, 65563)) {
             onError("mailserver.port_error");
         }
-        
+
         URI tempAddress = null;
-        
+
         try {
             tempAddress = new URI(null, null, host, port, null, null, null);
         } catch (URISyntaxException e) {
             onError("mailserver.format_error");
         }
-        
+
         if (!isValidAddress(tempAddress)) {
             onError("mailserver.parts_error");
         }
-        
+
         return new SSMailServer(name, tempAddress, isAuth, username, password);
     }
 
-
-    public SSMailServer(String name, URI address, boolean isAuth, String username, String password ) {
+    public SSMailServer(String name, URI address, boolean isAuth, String username, String password) {
 
         SSUtil.verifyNotNull("argument to SSMailServer constructor", name, address);
-        
+
         if (isAuth) {
-            SSUtil.verifyNotNull("argument to SSMailServer constructor", username, password);
+            SSUtil.verifyNotNull("argument to SSMailServer constructor", username,
+                    password);
         }
 
         this.name = name;
@@ -73,39 +74,34 @@ public class SSMailServer implements Serializable
         this.address = address;
     }
 
-    
-    
-    public static void onError( String msg ) throws SSMailServerException  {
-        throw new SSMailServerException( "Error when creating SSMailServer", msg);
+    public static void onError(String msg) throws SSMailServerException {
+        throw new SSMailServerException("Error when creating SSMailServer", msg);
     }
-        
+
     public static boolean isValidAddress(URI a) {
-        
-        return a.getHost() != null
-                && !a.isAbsolute()
-                && isNullOrEmpty(a.getPath())
-                && isNullOrEmpty(a.getQuery())
-                && isNullOrEmpty(a.getFragment());
+
+        return a.getHost() != null && !a.isAbsolute() && isNullOrEmpty(a.getPath())
+                && isNullOrEmpty(a.getQuery()) && isNullOrEmpty(a.getFragment());
     }
-    
-    public static boolean isNullOrEmpty( String s ) {
+
+    public static boolean isNullOrEmpty(String s) {
         return s == null || s.isEmpty();
     }
-    
+
     private static void verifyNotNull(Object o, String msg) {
         if (o == null) {
             throw new NullPointerException(msg + " must not be null");
         }
     }
-    
+
     private String getName() {
         return name;
     }
-    
+
     public String getUsername() {
         return username;
     }
-    
+
     public String getPassword() {
         return password;
     }
@@ -113,16 +109,17 @@ public class SSMailServer implements Serializable
     public boolean isAuth() {
         return isAuth;
     }
-    
+
     public URI getURI() {
         return address;
     }
-    
+
     static final long serialVersionUID = 1L;
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.util.SSMailServer");
         sb.append("{address=").append(address);
         sb.append(", isAuth=").append(isAuth);

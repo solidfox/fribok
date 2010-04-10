@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.autodist.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAutoDist;
 import se.swedsoft.bookkeeping.data.SSAutoDistRow;
@@ -24,6 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-26
@@ -31,7 +33,7 @@ import java.awt.event.KeyEvent;
  */
 public class SSAutoDistPanel {
 
-    private  SSAutoDist iAutoDist;
+    private SSAutoDist iAutoDist;
 
     private JPanel iPanel;
 
@@ -39,15 +41,12 @@ public class SSAutoDistPanel {
 
     private SSTable iTable;
 
-
-
     private JTextField iText;
 
     private SSTableComboBox<SSAccount> iAccount;
     private SSAutoDistRowTableModel iModel;
     private JTextField iAccountDescription;
     private SSBigDecimalTextField iAmount;
-
 
     /**
      *
@@ -63,35 +62,39 @@ public class SSAutoDistPanel {
         iModel = new SSAutoDistRowTableModel();
         iModel.addColumn(SSAutoDistRowTableModel.COLUMN_ACCOUNT, true);
         iModel.addColumn(SSAutoDistRowTableModel.COLUMN_DESCRIPTION);
-        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_PERCENTAGE,true);
-        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_DEBET,true);
-        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_CREDIT,true);
-        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_PROJECT,true);
-        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_RESULTUNIT,true);
+        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_PERCENTAGE, true);
+        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_DEBET, true);
+        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_CREDIT, true);
+        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_PROJECT, true);
+        iModel.addColumn(SSAutoDistRowTableModel.COLUMN_RESULTUNIT, true);
 
         iModel.setupTable(iTable);
 
         iTable.setSingleSelect();
-        //iTable.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
+        // iTable.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
 
-        new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSAutoDistRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "autodistframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "autodistframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
         };
 
-        new SSTraversalAction(iTable){
+        new SSTraversalAction(iTable) {
             @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 6) {
@@ -102,7 +105,7 @@ public class SSAutoDistPanel {
                     iPosition.y = iPosition.y + 1;
                     iPosition.x = 0;
 
-                    if(iPosition.y == iModel.getRowCount()) {
+                    if (iPosition.y == iModel.getRowCount()) {
                         iButtonPanel.getOkButton().requestFocus();
                         return null;
                     }
@@ -115,15 +118,15 @@ public class SSAutoDistPanel {
         iAccount.setModel(SSAccountTableModel.getDropDownModel());
         iAccount.setSearchColumns(0);
         iAccount.setAllowCustomValues(true);
-        iAccount.addSelectionListener(new SSSelectionListener<SSAccount>(){
+        iAccount.addSelectionListener(new SSSelectionListener<SSAccount>() {
             public void selected(SSAccount iAccount) {
                 iAccountDescription.setText(iAccount.getDescription());
                 iButtonPanel.getOkButton().setEnabled(true);
             }
         });
-        iAccount.addChangeListener(new ActionListener(){
+        iAccount.addChangeListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(iAccount.getSelected() == null){
+                if (iAccount.getSelected() == null) {
                     iButtonPanel.getOkButton().setEnabled(false);
                     iAccountDescription.setText(null);
                 }
@@ -132,17 +135,18 @@ public class SSAutoDistPanel {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                if(iAccount.isEnabled())
+                if (iAccount.isEnabled()) {
                     iAccount.getComponent(0).requestFocusInWindow();
-                else
+                } else {
                     iText.requestFocusInWindow();
+                }
             }
         });
 
-        iAccount.getComponent(0).addKeyListener(new KeyAdapter(){
+        iAccount.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iText.requestFocusInWindow();
@@ -152,10 +156,10 @@ public class SSAutoDistPanel {
             }
         });
 
-        iText.addKeyListener(new KeyAdapter(){
+        iText.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iAmount.requestFocusInWindow();
@@ -165,24 +169,24 @@ public class SSAutoDistPanel {
             }
         });
 
-        iAmount.addKeyListener(new KeyAdapter(){
+        iAmount.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -192,10 +196,10 @@ public class SSAutoDistPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -205,8 +209,8 @@ public class SSAutoDistPanel {
             }
         });
 
-        //iInputVerifier = new SSInputVerifier();
-        //iInputVerifier.add(iAccount);
+        // iInputVerifier = new SSInputVerifier();
+        // iInputVerifier.add(iAccount);
     }
 
     /**
@@ -223,7 +227,7 @@ public class SSAutoDistPanel {
      */
     public SSAutoDist getAutoDist() {
         // Text
-        iAutoDist.setDescrition( iText.getText() );
+        iAutoDist.setDescrition(iText.getText());
         iAutoDist.setAccount(iAccount.getSelected());
         iAutoDist.setAmount(iAmount.getValue());
         iAutoDist.setRows(iModel.getObjects());
@@ -235,7 +239,7 @@ public class SSAutoDistPanel {
         iModel.setObjects(iAutoDist.getRows());
 
         iAccount.setSelected(iAutoDist.getAccount());
-        if(iAccount.getSelected() != null){
+        if (iAccount.getSelected() != null) {
             iAccountDescription.setText(iAccount.getSelected().getDescription());
             iButtonPanel.getOkButton().setEnabled(true);
         }
@@ -260,10 +264,10 @@ public class SSAutoDistPanel {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.autodist.panel.SSAutoDistPanel");
         sb.append("{iAccount=").append(iAccount);
         sb.append(", iAccountDescription=").append(iAccountDescription);

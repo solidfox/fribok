@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.accountingyear.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.gui.accountingyear.util.SSStartingAmountTableModel;
 import se.swedsoft.bookkeeping.gui.util.components.SSCurrencyTextField;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Date: 2006-feb-15
  * Time: 15:59:52
@@ -25,9 +27,7 @@ public class SSStartingAmountPanel {
 
     private JPanel iPanel;
 
-
     private SSTable iTable;
-
 
     private Map<SSAccount, BigDecimal> iInBalance;
 
@@ -35,8 +35,7 @@ public class SSStartingAmountPanel {
 
     private SSCurrencyTextField iSumField;
 
-
-    public SSStartingAmountPanel(){
+    public SSStartingAmountPanel() {
         iInBalance = new HashMap<SSAccount, BigDecimal>();
 
         iModel = new SSStartingAmountTableModel(iInBalance);
@@ -52,38 +51,37 @@ public class SSStartingAmountPanel {
 
         iTable.getColumnModel().getColumn(2).setPreferredWidth(100);
         iTable.getColumnModel().getColumn(2).setMinWidth(60);
-        //iTable.getColumnModel().getColumn(2).setMaxWidth(150);
+        // iTable.getColumnModel().getColumn(2).setMaxWidth(150);
 
-        iTable.setDefaultEditor  (BigDecimal.class, new SSBigDecimalCellEditor(2));
+        iTable.setDefaultEditor(BigDecimal.class, new SSBigDecimalCellEditor(2));
         iTable.setDefaultRenderer(BigDecimal.class, new SSBigDecimalCellRenderer(2));
 
         // Update the sum if a change occurs in the second column.
-        iModel.addTableModelListener( new TableModelListener(){
+        iModel.addTableModelListener(new TableModelListener() {
             public void tableChanged(TableModelEvent e) {
-                if( e.getColumn() == 2){
+                if (e.getColumn() == 2) {
                     updateSumField();
                 }
             }
         });
 
-
     }
-
 
     /**
      *
      * @param pInBalance
      * @param pBalanceAccounts
      */
-    public void setInBalance( Map<SSAccount, BigDecimal> pInBalance, List<SSAccount> pBalanceAccounts){
+    public void setInBalance(Map<SSAccount, BigDecimal> pInBalance, List<SSAccount> pBalanceAccounts) {
         iInBalance.clear();
 
         // Copy all ammounts
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pInBalance.entrySet()){
-            iInBalance.put(ssAccountBigDecimalEntry.getKey(), new BigDecimal(ssAccountBigDecimalEntry.getValue().doubleValue() ) );
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pInBalance.entrySet()) {
+            iInBalance.put(ssAccountBigDecimalEntry.getKey(),
+                    new BigDecimal(ssAccountBigDecimalEntry.getValue().doubleValue()));
         }
 
-        iModel.setObjects( pBalanceAccounts );
+        iModel.setObjects(pBalanceAccounts);
         updateSumField();
     }
 
@@ -91,12 +89,13 @@ public class SSStartingAmountPanel {
      *
      * @param pInBalance
      */
-    public void setInBalance( Map<SSAccount, BigDecimal> pInBalance){
+    public void setInBalance(Map<SSAccount, BigDecimal> pInBalance) {
         iInBalance.clear();
 
         // Copy all ammounts
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pInBalance.entrySet()){
-            iInBalance.put(ssAccountBigDecimalEntry.getKey(), new BigDecimal(ssAccountBigDecimalEntry.getValue().doubleValue() ) );
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pInBalance.entrySet()) {
+            iInBalance.put(ssAccountBigDecimalEntry.getKey(),
+                    new BigDecimal(ssAccountBigDecimalEntry.getValue().doubleValue()));
         }
         updateSumField();
     }
@@ -105,35 +104,35 @@ public class SSStartingAmountPanel {
      *
      * @return
      */
-    public Map<SSAccount, BigDecimal> getInBalance( ){
+    public Map<SSAccount, BigDecimal> getInBalance() {
         Map<SSAccount, BigDecimal> iResult = new HashMap<SSAccount, BigDecimal>();
 
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()) {
             BigDecimal iValue = ssAccountBigDecimalEntry.getValue();
-            if((iValue != null ) && (iValue.signum() != 0)){
+
+            if ((iValue != null) && (iValue.signum() != 0)) {
                 iResult.put(ssAccountBigDecimalEntry.getKey(), iValue);
             }
         }
 
-
         return iResult;
     }
-
 
     /**
      *
      */
-    private void updateSumField(){
+    private void updateSumField() {
         BigDecimal iSum = new BigDecimal(0);
 
         // Copy all ammounts
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()) {
             BigDecimal iVal = ssAccountBigDecimalEntry.getValue();
-            if(iVal == null) {
+
+            if (iVal == null) {
                 iVal = new BigDecimal(0);
                 iInBalance.put(ssAccountBigDecimalEntry.getKey(), iVal);
             }
-            iSum = iSum.add(  iVal  );
+            iSum = iSum.add(iVal);
         }
         iSumField.setValue(iSum);
 
@@ -144,22 +143,18 @@ public class SSStartingAmountPanel {
         }
     }
 
-
-
-
-
     /**
      *
      * @return
      */
-    public JPanel getPanel(){
+    public JPanel getPanel() {
         return iPanel;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.accountingyear.panel.SSStartingAmountPanel");
         sb.append("{iInBalance=").append(iInBalance);
         sb.append(", iModel=").append(iModel);

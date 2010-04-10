@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.customer.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.customer.util.SSCustomerTableModel;
@@ -23,14 +24,12 @@ public class SSCustomerSearchPanel extends JPanel {
     private JTextField iTextField;
     private SSCustomerTableModel iModel;
 
-
     public SSCustomerSearchPanel(SSCustomerTableModel iModel) {
         this.iModel = iModel;
 
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -40,22 +39,25 @@ public class SSCustomerSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSCustomer> iCustomers = SSDB.getInstance().getCustomers();
         List<SSCustomer> iFiltered = new LinkedList<SSCustomer>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSCustomer iCustomer : iCustomers) {
             String iNumber = iCustomer.getNumber();
-            String iName   = iCustomer.getName();
+            String iName = iCustomer.getName();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iName != null && iName.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iName != null && iName.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iCustomer);
             }
         }
@@ -65,6 +67,7 @@ public class SSCustomerSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.customer.panel.SSCustomerSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

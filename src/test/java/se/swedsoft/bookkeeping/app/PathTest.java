@@ -1,6 +1,6 @@
 /*
  * Copyright © 2010 Stefan Kangas <skangas@skangas.se>
- * 
+ *
  * This file is part of JFS Accounting.
  *
  * JFS Accounting is free software: you can redistribute it and/or modify it
@@ -15,12 +15,14 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * JFS Accounting.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 package se.swedsoft.bookkeeping.app;
+
 
 import org.junit.Assert;
 import org.junit.Test;
 import se.swedsoft.bookkeeping.app.Path;
+
 
 /**
  * Tests for Path
@@ -31,7 +33,8 @@ import se.swedsoft.bookkeeping.app.Path;
 public class PathTest {
     @Test
     public void ValuesNotNull() {
-        for (Path path : Path.values())
+        for (Path path : Path.values()) {
             Assert.assertNotNull(Path.get(path));
+        }
     }
 }

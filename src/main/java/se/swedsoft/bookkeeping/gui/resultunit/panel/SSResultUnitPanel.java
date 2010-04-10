@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.resultunit.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 
 import javax.swing.*;
@@ -30,7 +31,6 @@ public class SSResultUnitPanel {
 
     protected JTextArea iDescription;
 
-
     /**
      * Default constructor.
      * @param iEdit
@@ -40,17 +40,18 @@ public class SSResultUnitPanel {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                if(iNumber.isEnabled())
+                if (iNumber.isEnabled()) {
                     iNumber.requestFocusInWindow();
-                else
+                } else {
                     iName.requestFocusInWindow();
+                }
             }
         });
 
-        iNumber.addKeyListener(new KeyAdapter(){
+        iNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iName.requestFocusInWindow();
@@ -60,10 +61,10 @@ public class SSResultUnitPanel {
             }
         });
 
-        iName.addKeyListener(new KeyAdapter(){
+        iName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iDescription.requestFocusInWindow();
@@ -73,10 +74,10 @@ public class SSResultUnitPanel {
             }
         });
 
-        iDescription.addKeyListener(new KeyAdapter(){
+        iDescription.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOkButton.requestFocusInWindow();
@@ -86,20 +87,19 @@ public class SSResultUnitPanel {
             }
         });
 
-        iOkButton.addKeyListener(new KeyAdapter(){
+        iOkButton.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCancelButton.requestFocusInWindow();
                         }
                     });
-                }
-                else if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
-                            for(ActionListener al : iOkButton.getActionListeners()){
+                            for (ActionListener al : iOkButton.getActionListeners()) {
                                 al.actionPerformed(null);
                             }
                         }
@@ -108,20 +108,19 @@ public class SSResultUnitPanel {
             }
         });
 
-        iCancelButton.addKeyListener(new KeyAdapter(){
+        iCancelButton.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOkButton.requestFocusInWindow();
                         }
                     });
-                }
-                else if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
-                            for(ActionListener al : iCancelButton.getActionListeners()){
+                            for (ActionListener al : iCancelButton.getActionListeners()) {
                                 al.actionPerformed(null);
                             }
                         }
@@ -138,7 +137,6 @@ public class SSResultUnitPanel {
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      *
@@ -164,9 +162,9 @@ public class SSResultUnitPanel {
     public void setResultUnit(SSNewResultUnit iResultUnit) {
         this.iResultUnit = iResultUnit;
 
-        iNumber     .setValue(iResultUnit.getNumber());
-        iName       .setText (iResultUnit.getName());
-        iDescription.setText (iResultUnit.getDescription());
+        iNumber.setValue(iResultUnit.getNumber());
+        iName.setText(iResultUnit.getName());
+        iDescription.setText(iResultUnit.getDescription());
     }
 
     /**
@@ -174,16 +172,16 @@ public class SSResultUnitPanel {
      * @return
      */
     public SSNewResultUnit getResultUnit() {
-        iResultUnit.setNumber       (iNumber.getValue().toString());
-        iResultUnit.setName         (iName.getText());
-        iResultUnit.setDescription  (iDescription.getText());
+        iResultUnit.setNumber(iNumber.getValue().toString());
+        iResultUnit.setName(iName.getText());
+        iResultUnit.setDescription(iDescription.getText());
         return iResultUnit;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.resultunit.panel.SSResultUnitPanel");
         sb.append("{iCancelButton=").append(iCancelButton);
         sb.append(", iDescription=").append(iDescription);

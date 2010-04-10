@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
@@ -15,13 +16,13 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
 
+
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-23
  * Time: 10:15:47
  */
 public class SIEEntryKonto implements SIEEntry {
-
 
     /**
      * Imports the entry
@@ -37,15 +38,16 @@ public class SIEEntryKonto implements SIEEntry {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
 
-        if(!iReader.hasFields(STRING, INT, STRING )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT, STRING)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
         SSAccount iAccount = new SSAccount();
 
-        iAccount.setNumber     ( iReader.nextInteger() );
-        iAccount.setDescription( iReader.next() );
+        iAccount.setNumber(iReader.nextInteger());
+        iAccount.setDescription(iReader.next());
 
-        if(!iAccountPlan.getAccounts().contains(iAccount)){
+        if (!iAccountPlan.getAccounts().contains(iAccount)) {
             // add the acccount
             iAccountPlan.addAccount(iAccount);
         }
@@ -66,10 +68,10 @@ public class SIEEntryKonto implements SIEEntry {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
 
-        for(SSAccount iAccount : iAccountPlan.getAccounts()){
+        for (SSAccount iAccount : iAccountPlan.getAccounts()) {
             iWriter.append(SIELabel.SIE_KONTO);
-            iWriter.append( iAccount.getNumber() );
-            iWriter.append( iAccount.getDescription() );
+            iWriter.append(iAccount.getNumber());
+            iWriter.append(iAccount.getDescription());
             iWriter.newLine();
         }
 

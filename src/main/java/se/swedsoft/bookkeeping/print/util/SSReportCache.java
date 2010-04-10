@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.util;
 
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
@@ -11,13 +12,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * Date: 2006-feb-14
  * Time: 17:01:15
  * @version $Id$
  */
 public class SSReportCache {
-    private static final File REPORT_DIR   = new File(Path.get(Path.APP_DATA), "report");
+    private static final File REPORT_DIR = new File(Path.get(Path.APP_DATA), "report");
     private static final File COMPILED_DIR = new File(REPORT_DIR, "compiled");
 
     // The report cache with compiled report definitions.
@@ -30,7 +32,7 @@ public class SSReportCache {
      * Get the instance of this class
      * @return The instance
      */
-    public static SSReportCache getInstance(){
+    public static SSReportCache getInstance() {
         if (cInstance == null) {
             cInstance = new SSReportCache();
         }
@@ -40,8 +42,8 @@ public class SSReportCache {
     /**
      *
      */
-    private SSReportCache(){
-        iReportCache =  new HashMap<String, JasperReport>();
+    private SSReportCache() {
+        iReportCache = new HashMap<String, JasperReport>();
     }
 
     /**
@@ -53,14 +55,15 @@ public class SSReportCache {
      * @return The JasperReport object
      * @throws SSException
      */
-    public JasperReport getReport(String pReportName) throws SSException{
+    public JasperReport getReport(String pReportName) throws SSException {
         // Try to get the report from cache
         JasperReport pReport = iReportCache.get(pReportName);
+
         if (pReport == null) {
             try {
                 pReport = loadReport(pReportName);
-            } catch(FileNotFoundException ex) {
-                throw new SSException( ex.getLocalizedMessage() );
+            } catch (FileNotFoundException ex) {
+                throw new SSException(ex.getLocalizedMessage());
             }
             iReportCache.put(pReportName, pReport);
         }
@@ -68,30 +71,32 @@ public class SSReportCache {
     }
 
     /**
-     * 
+     *
      * @param pReportName
      * @return
      * @throws FileNotFoundException
      */
     private JasperReport loadReport(String pReportName) throws FileNotFoundException {
-        File iReportFile   = new File(REPORT_DIR,   pReportName);
-        File iCompiledFile = new File(COMPILED_DIR, pReportName.replace(".jrxml", ".jasperreport"));
+        File iReportFile = new File(REPORT_DIR, pReportName);
+        File iCompiledFile = new File(COMPILED_DIR,
+                pReportName.replace(".jrxml", ".jasperreport"));
 
         try {
             // If the report exists on disk, load it...
             if (iCompiledFile.exists()) {
-                Date iReportDate   =  new Date(iReportFile  .lastModified());
-                Date iCompiledDate =  new Date(iCompiledFile.lastModified());
+                Date iReportDate = new Date(iReportFile.lastModified());
+                Date iCompiledDate = new Date(iCompiledFile.lastModified());
 
                 // if the report file hasnt been changes since the last compile,
                 // load the compiled file, else fall through to the compile code
-                if (iReportDate.compareTo( iCompiledDate ) <= 0) {
-                    System.out.printf("Loading precompiled report %s from disk...\n", iCompiledFile);
+                if (iReportDate.compareTo(iCompiledDate) <= 0) {
+                    System.out.printf("Loading precompiled report %s from disk...\n",
+                            iCompiledFile);
 
                     return loadCompiledReport(iCompiledFile);
                 }
 
-                System.out.println("Precompiled report exists, but report is changed..." );
+                System.out.println("Precompiled report exists, but report is changed...");
             }
 
             // .. we need to recompile the report
@@ -99,7 +104,8 @@ public class SSReportCache {
 
             FileInputStream iFileInputStream = new FileInputStream(iReportFile);
 
-            JasperReport iReport = JasperCompileManager.compileReport(new BufferedInputStream(iFileInputStream));
+            JasperReport iReport = JasperCompileManager.compileReport(
+                    new BufferedInputStream(iFileInputStream));
 
             // Make the output directory
             iCompiledFile.getParentFile().mkdirs();
@@ -118,12 +124,13 @@ public class SSReportCache {
      * @return The report
      */
     private JasperReport loadCompiledReport(File pCompiledFile) {
-        try{
+        try {
             FileInputStream iFileInputStream = new FileInputStream(pCompiledFile);
 
-            ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(iFileInputStream));
+            ObjectInputStream iObjectInputStream = new ObjectInputStream(
+                    new BufferedInputStream(iFileInputStream));
 
-            return (JasperReport)iObjectInputStream.readObject();
+            return (JasperReport) iObjectInputStream.readObject();
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -141,10 +148,11 @@ public class SSReportCache {
      * @return The report
      */
     private JasperReport saveCompiledReport(File pCompiledFile, JasperReport pReport) {
-        try{
+        try {
             FileOutputStream iFileOutputStream = new FileOutputStream(pCompiledFile);
 
-            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(iFileOutputStream) );
+            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(
+                    new BufferedOutputStream(iFileOutputStream));
 
             iObjectOutputStream.writeObject(pReport);
             iObjectOutputStream.flush();
@@ -159,6 +167,7 @@ public class SSReportCache {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.util.SSReportCache");
         sb.append("{iReportCache=").append(iReportCache);
         sb.append('}');

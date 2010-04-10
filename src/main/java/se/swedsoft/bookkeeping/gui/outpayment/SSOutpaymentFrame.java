@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outpayment;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
 import se.swedsoft.bookkeeping.data.SSOutpaymentRow;
@@ -24,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -39,8 +41,8 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSOutpaymentFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSOutpaymentFrame.cInstance.isClosed()) {
             cInstance = new SSOutpaymentFrame(pMainFrame, pWidth, pHeight);
         }
         SSOutpaymentFrame.cInstance.setVisible(true);
@@ -52,16 +54,16 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSOutpaymentFrame getInstance(){
+    public static SSOutpaymentFrame getInstance() {
         return cInstance;
     }
-
 
     private SSTable iTable;
 
     private SSOutpaymentTableModel iModel;
 
     private SSOutpaymentSearchPanel iSearchPanel;
+
     /**
      * Constructor.
      *
@@ -70,9 +72,9 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSOutpaymentFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("outpaymentframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("outpaymentframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -86,21 +88,23 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "outpaymentframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "outpaymentframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutpaymentDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "outpaymentframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "outpaymentframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutpayment iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getOutpayment(iSelected);
@@ -108,7 +112,8 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSOutpaymentDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                   new SSErrorDialog( getMainFrame(), "outpaymentframe.outpaymentgone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "outpaymentframe.outpaymentgone",
+                            iNumber);
                 }
             }
         });
@@ -118,32 +123,32 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "outpaymentframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "outpaymentframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSOutpayment> toDelete = iModel.getObjects(selected);
+
                 deleteSelected(toDelete);
             }
         });
         iTable.addSelectionDependentComponent(iButton);
         toolBar.add(iButton);
 
-
         // Print
         // ***************************
-        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "outpaymentframe.printbutton");
-        iMenuButton.add("outpaymentframe.print.outaymentlist", new ActionListener(){
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT",
+                "outpaymentframe.printbutton");
+
+        iMenuButton.add("outpaymentframe.print.outaymentlist", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSReportFactory.OutpaymentList(getMainFrame());
             }
         });
         toolBar.add(iMenuButton);
 
-
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -162,12 +167,12 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
         iModel.addColumn(SSOutpaymentTableModel.COLUMN_SUM);
         iModel.setupTable(iTable);
 
-
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOutpayment iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getOutpayment(iSelected);
@@ -177,18 +182,20 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSOutpaymentDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                   new SSErrorDialog( getMainFrame(), "outpaymentframe.outpaymentgone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "outpaymentframe.outpaymentgone",
+                            iNumber);
                 }
             }
         });
 
         JPanel iPanel = new JPanel();
+
         iSearchPanel = new SSOutpaymentSearchPanel(iModel);
         iPanel.setLayout(new BorderLayout());
 
         iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
@@ -231,7 +238,6 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
         return true;
     }
 
-
     /**
      *
      * @param delete
@@ -242,15 +248,22 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "outpaymentframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSOutpayment iOutpayment : delete) {
-                if (SSPostLock.isLocked("outpayment" + iOutpayment.getNumber() + SSDB.getInstance().getCurrentCompany().getId())){
-                    new SSErrorDialog(getMainFrame(), "outpaymentframe.outpaymentopen",iOutpayment.getNumber());
+                if (SSPostLock.isLocked(
+                        "outpayment" + iOutpayment.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "outpaymentframe.outpaymentopen",
+                            iOutpayment.getNumber());
                 } else {
-                    for(SSOutpaymentRow iRow : iOutpayment.getRows()){
-                        if(iRow.getValue() != null && iRow.getInvoiceNr() != null){
-                            if(SSSupplierInvoiceMath.iSaldoMap.containsKey(iRow.getInvoiceNr())){
-                                SSSupplierInvoiceMath.iSaldoMap.put(iRow.getInvoiceNr(), SSSupplierInvoiceMath.iSaldoMap.get(iRow.getInvoiceNr()).add(iRow.getValue()));
+                    for (SSOutpaymentRow iRow : iOutpayment.getRows()) {
+                        if (iRow.getValue() != null && iRow.getInvoiceNr() != null) {
+                            if (SSSupplierInvoiceMath.iSaldoMap.containsKey(
+                                    iRow.getInvoiceNr())) {
+                                SSSupplierInvoiceMath.iSaldoMap.put(iRow.getInvoiceNr(),
+                                        SSSupplierInvoiceMath.iSaldoMap.get(iRow.getInvoiceNr()).add(
+                                        iRow.getValue()));
                             }
                         }
                     }
@@ -268,17 +281,16 @@ public class SSOutpaymentFrame extends SSDefaultTableFrame {
         iSearchPanel.ApplyFilter();
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.outpayment.SSOutpaymentFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

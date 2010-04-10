@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSBudget;
@@ -16,16 +17,14 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
  */
 public class SSBudgetPrinter extends SSPrinter {
 
-
-
     private SSMonthlyDistributionPrinter iPrinter;
-
 
     private SSDefaultJasperDataSource iDataSource;
 
@@ -38,8 +37,8 @@ public class SSBudgetPrinter extends SSPrinter {
     /**
      *
      */
-    public SSBudgetPrinter(  ){
-        this( SSDB.getInstance().getCurrentYear()  );
+    public SSBudgetPrinter() {
+        this(SSDB.getInstance().getCurrentYear());
     }
 
     /**
@@ -47,15 +46,16 @@ public class SSBudgetPrinter extends SSPrinter {
      * @param pFrom
      * @param pTo
      */
-    public SSBudgetPrinter( Date pFrom, Date pTo ){
-        this( SSDB.getInstance().getCurrentYear(), pFrom, pTo  );
+    public SSBudgetPrinter(Date pFrom, Date pTo) {
+        this(SSDB.getInstance().getCurrentYear(), pFrom, pTo);
     }
+
     /**
      *
      * @param pAccountingYear The accountingyear
      */
-    public SSBudgetPrinter(SSNewAccountingYear pAccountingYear ){
-        this(pAccountingYear, pAccountingYear.getFrom(),  pAccountingYear.getTo());
+    public SSBudgetPrinter(SSNewAccountingYear pAccountingYear) {
+        this(pAccountingYear, pAccountingYear.getFrom(), pAccountingYear.getTo());
     }
 
     /**
@@ -64,16 +64,15 @@ public class SSBudgetPrinter extends SSPrinter {
      * @param pFrom
      * @param pTo
      */
-    public SSBudgetPrinter(SSNewAccountingYear pAccountingYear, Date pFrom, Date pTo ){
+    public SSBudgetPrinter(SSNewAccountingYear pAccountingYear, Date pFrom, Date pTo) {
         iAccountingYear = pAccountingYear;
-        iDateFrom       = pFrom;
-        iDateTo         = pTo;
+        iDateFrom = pFrom;
+        iDateTo = pTo;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("budget.jrxml");
-        setDetail      ("budget.jrxml");
+        setDetail("budget.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -90,18 +89,18 @@ public class SSBudgetPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        addParameter("dateFrom", iDateFrom );
-        addParameter("dateTo"  , iDateTo    );
+        addParameter("dateFrom", iDateFrom);
+        addParameter("dateTo", iDateTo);
 
         iPrinter = new SSMonthlyDistributionPrinter(iAccountingYear, iDateFrom, iDateTo);
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
-
-        final SSBudget        iBudget    = iAccountingYear.getBudget();
-        final List<SSAccount> iAccounts  = SSAccountMath.getResultAccounts( iAccountingYear, iAccountingYear.getAccounts() ) ;
+        final SSBudget        iBudget = iAccountingYear.getBudget();
+        final List<SSAccount> iAccounts = SSAccountMath.getResultAccounts(iAccountingYear,
+                iAccountingYear.getAccounts());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -117,22 +116,25 @@ public class SSBudgetPrinter extends SSPrinter {
                 SSAccount iAccount = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iAccount.getNumber();
-                        break;
-                    case 1:
-                        value = iAccount.getDescription();
-                        break;
-                    case 2:
-                        value = iBudget.getSumForAccount(iAccount) != null;
-                        break;
-                    case 3:
-                        iPrinter.setAccount(iAccount);
+                case 0:
+                    value = iAccount.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iAccount.getDescription();
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 2:
+                    value = iBudget.getSumForAccount(iAccount) != null;
+                    break;
+
+                case 3:
+                    iPrinter.setAccount(iAccount);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -144,22 +146,18 @@ public class SSBudgetPrinter extends SSPrinter {
         iModel.addColumn("account.visible");
         iModel.addColumn("month.data");
 
-
-        Collections.sort(iAccounts, new Comparator<SSAccount>() {
+        Collections.sort(iAccounts,
+                new Comparator<SSAccount>() {
             public int compare(SSAccount o1, SSAccount o2) {
-                return SSAccountMath.getResultGroup(o1, iAccountingYear) -  SSAccountMath.getResultGroup(o2, iAccountingYear);
+                return SSAccountMath.getResultGroup(o1, iAccountingYear)
+                        - SSAccountMath.getResultGroup(o2, iAccountingYear);
             }
         });
 
         iModel.setObjects(iAccounts);
 
-
         return iModel;
     }
-
-
-
-
 
     private class SSMonthlyDistributionPrinter extends SSPrinter {
 
@@ -171,24 +169,23 @@ public class SSBudgetPrinter extends SSPrinter {
 
         private Date  iTo;
 
-
         /**
          *
          * @param pAccountingYear
          * @param pFrom
          * @param pTo
          */
-        public SSMonthlyDistributionPrinter(SSNewAccountingYear pAccountingYear, Date pFrom, Date pTo ){
+        public SSMonthlyDistributionPrinter(SSNewAccountingYear pAccountingYear, Date pFrom, Date pTo) {
             iFrom = pFrom;
-            iTo   = pTo;
-            setMargins(0,0,0,0);
+            iTo = pTo;
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("budget.monthly.jrxml");
+            setDetail("budget.monthly.jrxml");
             setSummary("budget.monthly.jrxml");
 
             final SSBudget iBudget = pAccountingYear.getBudget();
 
-            iModel = new SSDefaultTableModel<SSMonth>( iBudget.getMonths() ) {
+            iModel = new SSDefaultTableModel<SSMonth>(iBudget.getMonths()) {
 
                 @Override
                 public Class getType() {
@@ -201,18 +198,21 @@ public class SSBudgetPrinter extends SSPrinter {
                     SSMonth iMonth = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iMonth.toString();
-                            break;
-                        case 1  :
-                            value = iMonth.getName();
-                            break;
-                        case 2:
-                            value = iBudget.getValueForAccountAndMonth(iAccount, iMonth);
-                            break;
-                        case 3  :
-                            value = iMonth.isBetween(iFrom, iTo);
-                            break;
+                    case 0:
+                        value = iMonth.toString();
+                        break;
+
+                    case 1:
+                        value = iMonth.getName();
+                        break;
+
+                    case 2:
+                        value = iBudget.getValueForAccountAndMonth(iAccount, iMonth);
+                        break;
+
+                    case 3:
+                        value = iMonth.isBetween(iFrom, iTo);
+                        break;
                     }
 
                     return value;
@@ -256,7 +256,9 @@ public class SSBudgetPrinter extends SSPrinter {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSBudgetPrinter.SSMonthlyDistributionPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSBudgetPrinter.SSMonthlyDistributionPrinter");
             sb.append("{iAccount=").append(iAccount);
             sb.append(", iFrom=").append(iFrom);
             sb.append(", iModel=").append(iModel);
@@ -266,10 +268,10 @@ public class SSBudgetPrinter extends SSPrinter {
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSBudgetPrinter");
         sb.append("{iAccountingYear=").append(iAccountingYear);
         sb.append(", iDataSource=").append(iDataSource);

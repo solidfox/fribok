@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
@@ -15,15 +16,15 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  */
-public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
+public class SSVoucher implements Serializable, Cloneable, SSTableSearchable {
 
     /**
      * Constant for serialization versioning.
      */
     static final long serialVersionUID = 1L;
-
 
     private int iNumber;
 
@@ -37,12 +38,11 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
 
     private List<SSVoucherRow> iVoucherRows;
 
-
     /**
      * Default constructor.
      */
     public SSVoucher() {
-        iDate        = SSVoucherMath.getNextVoucherDate();
+        iDate = SSVoucherMath.getNextVoucherDate();
         iVoucherRows = new ArrayList<SSVoucherRow>();
         doAutoIncrecement();
     }
@@ -67,10 +67,10 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
      * @param pVoucher
      */
     public void copyFrom(SSVoucher pVoucher) {
-        iNumber      = pVoucher.iNumber;
-        iDate        = pVoucher.iDate;
+        iNumber = pVoucher.iNumber;
+        iDate = pVoucher.iDate;
         iDescription = pVoucher.iDescription;
-        iCorrects    = pVoucher.iCorrects;
+        iCorrects = pVoucher.iCorrects;
         iCorrectedBy = pVoucher.iCorrectedBy;
         iVoucherRows = new LinkedList<SSVoucherRow>();
 
@@ -80,7 +80,7 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
 
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -102,11 +102,12 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
      * Sets the number of this voucher as the maxinum mumber + 1
      */
     public void doAutoIncrecement() {
-            int iNumber = SSVoucherMath.getMaxNumber();
+        int iNumber = SSVoucherMath.getMaxNumber();
+
         this.iNumber = iNumber + 1;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -123,7 +124,8 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
     public void setDate(Date date) {
         iDate = date;
     }
-    ////////////////////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -141,7 +143,7 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         iDescription = description;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -159,7 +161,7 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         iCorrects = corrects;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -177,8 +179,7 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         iCorrectedBy = correctedBy;
     }
 
-    ////////////////////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -196,7 +197,6 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         iVoucherRows.add(pVoucherRow);
     }
 
-
     /**
      *
      * @param iAccount
@@ -206,9 +206,9 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
     public void addVoucherRow(SSAccount iAccount, BigDecimal iDebet, BigDecimal iCredit) {
         SSVoucherRow iVoucherRow = new SSVoucherRow();
 
-        iVoucherRow.setAccount( iAccount );
-        iVoucherRow.setDebet  ( iDebet   );
-        iVoucherRow.setCredit ( iCredit  );
+        iVoucherRow.setAccount(iAccount);
+        iVoucherRow.setDebet(iDebet);
+        iVoucherRow.setCredit(iCredit);
 
         iVoucherRows.add(iVoucherRow);
     }
@@ -220,24 +220,25 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
      */
     public void addVoucherRow(SSAccount iAccount, BigDecimal iValue) {
         // Dont add a empty row
-        if(iValue == null || iValue.signum() == 0) return;
+        if (iValue == null || iValue.signum() == 0) {
+            return;
+        }
 
         SSVoucherRow iVoucherRow = new SSVoucherRow();
 
-        iVoucherRow.setAccount( iAccount );
+        iVoucherRow.setAccount(iAccount);
 
         // Add the rounding
-        if( iValue.signum() > 0){
-            iVoucherRow.setDebet  ( iValue      );
-            iVoucherRow.setCredit ( null);
+        if (iValue.signum() > 0) {
+            iVoucherRow.setDebet(iValue);
+            iVoucherRow.setCredit(null);
         } else {
-            iVoucherRow.setDebet  ( null   );
-            iVoucherRow.setCredit ( iValue.abs()  );
+            iVoucherRow.setDebet(null);
+            iVoucherRow.setCredit(iValue.abs());
         }
 
         iVoucherRows.add(iVoucherRow);
     }
-
 
     /**
      *
@@ -256,12 +257,10 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         iVoucherRows = rows;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
-
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSVoucher){
+        if (obj instanceof SSVoucher) {
             SSVoucher iVoucher = (SSVoucher) obj;
 
             return iNumber == iVoucher.iNumber;
@@ -269,30 +268,27 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         return super.equals(obj);
     }
 
-
-    
     public String toString() {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append( iNumber );
-        sb.append( ", " );
-        sb.append( iDescription);
-        sb.append( ", " );
-        sb.append( iFormat.format(iDate) ); /*
-        sb.append( ", " );
-        sb.append( iVoucherRows.size() );
-        sb.append( " rows.{\n" );
-        for (SSVoucherRow row : iVoucherRows) {
-            sb.append("  " );
-            sb.append(row );
-            sb.append("\n");
-        }
-        sb.append( "}\n" );   */
+        sb.append(iNumber);
+        sb.append(", ");
+        sb.append(iDescription);
+        sb.append(", ");
+        sb.append(iFormat.format(iDate)); /*
+         sb.append( ", " );
+         sb.append( iVoucherRows.size() );
+         sb.append( " rows.{\n" );
+         for (SSVoucherRow row : iVoucherRows) {
+         sb.append("  " );
+         sb.append(row );
+         sb.append("\n");
+         }
+         sb.append( "}\n" );   */
         return sb.toString();
     }
-
 
     /**
      * Returns the render string to be shown in the tables
@@ -303,38 +299,33 @@ public class SSVoucher implements Serializable, Cloneable, SSTableSearchable  {
         return Integer.toString(iNumber);
     }
 
-
-
-
-
     /**
      * Creates a new voucher with the number as the lastest voucher number + 1
      * @return The voucher
 
-    public static SSVoucher newVoucher(){
-        SSVoucher        iVoucher  = new SSVoucher();
-        SSVoucher        iPrevious = SSVoucherMath.getPreviousVoucher();
-        SSNewAccountingYear iYear     = SSDB.getInstance().getCurrentYear();
+     public static SSVoucher newVoucher(){
+     SSVoucher        iVoucher  = new SSVoucher();
+     SSVoucher        iPrevious = SSVoucherMath.getPreviousVoucher();
+     SSNewAccountingYear iYear     = SSDB.getInstance().getCurrentYear();
 
-        Date iDate = iPrevious != null ? iPrevious.getDate() : (iYear != null) ? iYear.getFrom() :  new Date();
+     Date iDate = iPrevious != null ? iPrevious.getDate() : (iYear != null) ? iYear.getFrom() :  new Date();
 
-        iVoucher.doAutoIncrecement();
-        iVoucher.setDate  (iDate      );
+     iVoucher.doAutoIncrecement();
+     iVoucher.setDate  (iDate      );
 
-        return iVoucher;
-    }
+     return iVoucher;
+     }
 
-   */
+     */
 
     /**
      * Used to clean up references making sure the garbage collector
      * is able to clean up the object.
      */
-    public void dispose() {
-        //iDate=null;
-        //iDescription=null;
-        //iCorrects=null;
-        //iCorrectedBy=null;
-        //iVoucherRows.removeAll(iVoucherRows);
+    public void dispose() {// iDate=null;
+        // iDescription=null;
+        // iCorrects=null;
+        // iCorrectedBy=null;
+        // iVoucherRows.removeAll(iVoucherRows);
     }
 }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.graphics;
 
+
 import se.swedsoft.bookkeeping.app.Path;
 
 import javax.imageio.ImageIO;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.net.URL;
+
 
 /**
  * Date: 2006-feb-08
@@ -20,17 +22,19 @@ public class SSImage {
     private static Map<String, BufferedImage> graphics = new HashMap<String, BufferedImage>();
 
     // Ensure non-instantiability
-    private SSImage() { throw new AssertionError("Don't instantiate this class"); }
+    private SSImage() {
+        throw new AssertionError("Don't instantiate this class");
+    }
 
     // Standard graphics
     static {
-        loadImage("BACKGROUND"    , "Background.png" );
-        loadImage("LOGO"          , "logo.png" );
-        loadImage("OCRAVI"        , "OCRAvi.png" );
-        loadImage("OCRBackground" , "OCRBackground.png" );
-        loadImage("CHECK"         , "Check.png" );
-        loadImage("SERVER"        , "Server.png");
-        loadImage("ICON_LOGO"     , "Logo_Icon16.png");
+        loadImage("BACKGROUND", "Background.png");
+        loadImage("LOGO", "logo.png");
+        loadImage("OCRAVI", "OCRAvi.png");
+        loadImage("OCRBackground", "OCRBackground.png");
+        loadImage("CHECK", "Check.png");
+        loadImage("SERVER", "Server.png");
+        loadImage("ICON_LOGO", "Logo_Icon16.png");
     }
 
     /**
@@ -38,7 +42,7 @@ public class SSImage {
      * @param name     unique name of the image
      * @param filename the name of the image file
      */
-    private static void loadImage(String name, String filename){
+    private static void loadImage(String name, String filename) {
         if (graphics.containsKey(name)) {
             System.out.println("(SSImage): Already loaded image: " + name);
             return;
@@ -47,6 +51,7 @@ public class SSImage {
         URL url = Path.class.getResource("/graphics/" + filename);
 
         BufferedImage image = null;
+
         try {
             image = ImageIO.read(url);
         } catch (IOException e) {
@@ -65,7 +70,7 @@ public class SSImage {
      * @param name the unique name of the image
      * @return true if image exists
      */
-    public static boolean hasImage(String name){
+    public static boolean hasImage(String name) {
         return graphics.containsKey(name);
     }
 
@@ -74,9 +79,9 @@ public class SSImage {
      * @param name the unique name of the image
      * @return the image
      */
-    public static BufferedImage getImage(String name){
+    public static BufferedImage getImage(String name) {
         if (!graphics.containsKey(name)) {
-            System.out.println("(SSImage): Image not found: "+ name );
+            System.out.println("(SSImage): Image not found: " + name);
         }
         return graphics.get(name);
     }

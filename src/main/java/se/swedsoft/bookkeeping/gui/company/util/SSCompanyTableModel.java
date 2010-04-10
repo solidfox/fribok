@@ -1,21 +1,22 @@
 package se.swedsoft.bookkeeping.gui.company.util;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
+
 
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-02
  * Time: 15:17:22
  */
-public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
+public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany> {
 
-    public SSCompanyTableModel(){
+    public SSCompanyTableModel() {
         addColumn(getBundle().getString("companytable.column.1"));
         addColumn(getBundle().getString("companytable.column.2"));
     }
-
 
     @Override
     public Class getType() {
@@ -28,10 +29,11 @@ public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
         SSNewCompany iCompany = getObject(rowIndex);
 
         switch (columnIndex) {
-            case 0:
-                return iCompany.equals(SSDB.getInstance().getCurrentCompany());
-            case 1:
-                return iCompany.getName();
+        case 0:
+            return iCompany.equals(SSDB.getInstance().getCurrentCompany());
+
+        case 1:
+            return iCompany.getName();
 
         }
 
@@ -43,10 +45,11 @@ public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
 
         switch (columnIndex) {
 
-            case 0:
-                return Boolean.class;
-            case 1:
-                return String.class;
+        case 0:
+            return Boolean.class;
+
+        case 1:
+            return String.class;
         }
 
         return super.getColumnClass(columnIndex);

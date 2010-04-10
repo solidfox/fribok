@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.accountplans.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAccountPlanType;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
+
 
 /**
  * Date: 2006-feb-14
@@ -14,7 +16,7 @@ public class SSAccountPlanTypeModel extends SSTableModel<SSAccountPlanType> {
      * Default constructor.
      */
     public SSAccountPlanTypeModel() {
-        super( SSAccountPlanType.getAccountPlanTypes() );
+        super(SSAccountPlanType.getAccountPlanTypes());
     }
 
     /**
@@ -39,10 +41,11 @@ public class SSAccountPlanTypeModel extends SSTableModel<SSAccountPlanType> {
         return iModel;
     }
 
-     /**
+    /**
      * Namn
      */
-    public static SSTableColumn<SSAccountPlanType> COLUMN_NAME = new SSTableColumn<SSAccountPlanType>("") {
+    public static SSTableColumn<SSAccountPlanType> COLUMN_NAME = new SSTableColumn<SSAccountPlanType>(
+            "") {
         @Override
         public Object getValue(SSAccountPlanType iAccountPlanType) {
             return iAccountPlanType.getName();
@@ -50,7 +53,7 @@ public class SSAccountPlanTypeModel extends SSTableModel<SSAccountPlanType> {
 
         @Override
         public void setValue(SSAccountPlanType iAccountPlanType, Object iValue) {
-            iAccountPlanType.setName((String)iValue);
+            iAccountPlanType.setName((String) iValue);
         }
 
         @Override
@@ -63,7 +66,5 @@ public class SSAccountPlanTypeModel extends SSTableModel<SSAccountPlanType> {
             return 300;
         }
     };
-
-
 
 }

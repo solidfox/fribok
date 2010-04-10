@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.company.pages.*;
@@ -17,13 +18,13 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-25
  * Time: 10:19:35
  */
 public class SSCompanySettingsDialog extends SSDialog implements ListSelectionListener {
-
 
     private List<SSCompanyPage> iPages;
 
@@ -37,10 +38,6 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
 
     private JList iNavigator;
 
-
-  
-
-
     /**
      *
      * @param iMainFrame
@@ -50,40 +47,38 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
         super(iMainFrame, iDialogTitle);
 
         iPages = new LinkedList<SSCompanyPage>();
-        iPages.add( new SSCompanyPageGeneral(this) );
-        iPages.add( new SSCompanyPageAddress(this) );
-        iPages.add( new SSCompanyPageAdditional(this) );
-        iPages.add( new SSCompanyPageStandardText(this) );
-        iPages.add( new SSCompanyPageDefaultAccount(this) );
-        iPages.add( new SSCompanyPageTax(this) );
-        iPages.add( new SSCompanyPageAutoIncrement(this) );
+        iPages.add(new SSCompanyPageGeneral(this));
+        iPages.add(new SSCompanyPageAddress(this));
+        iPages.add(new SSCompanyPageAdditional(this));
+        iPages.add(new SSCompanyPageStandardText(this));
+        iPages.add(new SSCompanyPageDefaultAccount(this));
+        iPages.add(new SSCompanyPageTax(this));
+        iPages.add(new SSCompanyPageAutoIncrement(this));
 
         setPanel(iPanel);
 
-        iButtonPanel.addOkActionListener( new ActionListener() {
+        iButtonPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                closeDialog( JOptionPane.OK_OPTION );
+                closeDialog(JOptionPane.OK_OPTION);
             }
         });
 
-        iButtonPanel.addCancelActionListener( new ActionListener() {
+        iButtonPanel.addCancelActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                closeDialog( JOptionPane.CANCEL_OPTION );
+                closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
 
-        iContainer.setLayout(new BorderLayout() );
+        iContainer.setLayout(new BorderLayout());
 
-        iNavigator.setModel(new DefaultComboBoxModel(iPages.toArray()) );
+        iNavigator.setModel(new DefaultComboBoxModel(iPages.toArray()));
         iNavigator.addListSelectionListener(this);
         iNavigator.setFixedCellHeight(24);
 
         iNavigator.setCellRenderer(new NavigatorCellRenderer());
         iNavigator.setSelectedIndex(0);
 
-
     }
-
 
     /**
      * Called whenever the value of the selection changes.
@@ -98,15 +93,13 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
         iPage.setDialog(this);
 
         iContainer.removeAll();
-        iContainer.add( iPage.getPanel() , BorderLayout.CENTER );
-        //iContainer.setPreferredSize( iPage.getPanel().getPreferredSize() );
+        iContainer.add(iPage.getPanel(), BorderLayout.CENTER);
+        // iContainer.setPreferredSize( iPage.getPanel().getPreferredSize() );
         iContainer.validate();
-     //   iContainer.resize();
+        // iContainer.resize();
 
         repaint();
     }
-
-
 
     /**
      * Set the company to edit
@@ -133,31 +126,34 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
         return iCompany;
     }
 
-
     /**
      *
      */
     private class NavigatorCellRenderer extends JLabel implements ListCellRenderer {
 
-        public Component getListCellRendererComponent(JList list, Object value,  int index,  boolean isSelected, boolean cellHasFocus) {
-            String s = Integer.toString(index + 1) + ". " + ((SSCompanyPage)value).getName();
+        public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            String s = Integer.toString(index + 1) + ". "
+                    + ((SSCompanyPage) value).getName();
 
             setText(s);
 
-            setIcon( cellHasFocus ? SSIcon.getIcon("ICON_TASKLIST16", SSIcon.IconState.HIGHLIGHTED) : SSIcon.getIcon("ICON_TASKLIST16", SSIcon.IconState.NORMAL) );
+            setIcon(
+                    cellHasFocus
+                            ? SSIcon.getIcon("ICON_TASKLIST16",
+                            SSIcon.IconState.HIGHLIGHTED)
+                            : SSIcon.getIcon("ICON_TASKLIST16", SSIcon.IconState.NORMAL));
 
             if (isSelected) {
                 setBackground(list.getSelectionBackground());
                 setForeground(list.getSelectionForeground());
-            }
-            else {
+            } else {
                 setBackground(list.getBackground());
                 setForeground(list.getForeground());
             }
             setEnabled(list.isEnabled());
             setFont(list.getFont());
             setOpaque(true);
-            setBorder( new EmptyBorder(0, 3, 0, 0));
+            setBorder(new EmptyBorder(0, 3, 0, 0));
             return this;
         }
     }
@@ -165,6 +161,7 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSCompanySettingsDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCompany=").append(iCompany);

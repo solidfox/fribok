@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.util;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-20

@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * Date: 2006-jan-30
@@ -21,11 +23,9 @@ public class SSResultPrinterSetupPanel {
 
     private SSDateChooser iFrom;
 
-
     private JCheckBox iBudgetCheckbox;
 
     private JCheckBox iLastyearCheckBox;
-
 
     /**
      *
@@ -34,7 +34,6 @@ public class SSResultPrinterSetupPanel {
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      *
@@ -72,7 +71,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @param pPrintBudget
      */
-    public void setPrintBudget(boolean pPrintBudget){
+    public void setPrintBudget(boolean pPrintBudget) {
         iBudgetCheckbox.setSelected(pPrintBudget);
     }
 
@@ -80,7 +79,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @return
      */
-    public boolean getPrintBudget(){
+    public boolean getPrintBudget() {
         return iBudgetCheckbox.isSelected();
     }
 
@@ -88,7 +87,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @param pLastyear
      */
-    public void setPrintLastyear(boolean pLastyear){
+    public void setPrintLastyear(boolean pLastyear) {
         iLastyearCheckBox.setSelected(pLastyear);
     }
 
@@ -96,7 +95,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @return
      */
-    public boolean getPrintLastyear(){
+    public boolean getPrintLastyear() {
         return iLastyearCheckBox.isSelected();
     }
 
@@ -104,7 +103,7 @@ public class SSResultPrinterSetupPanel {
      *
      * @param pLastyearEnabled
      */
-    public void setPrintLastyearEnabled(boolean pLastyearEnabled){
+    public void setPrintLastyearEnabled(boolean pLastyearEnabled) {
         iLastyearCheckBox.setEnabled(pLastyearEnabled);
     }
 
@@ -127,6 +126,7 @@ public class SSResultPrinterSetupPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSResultPrinterSetupPanel");
         sb.append("{iBudgetCheckbox=").append(iBudgetCheckbox);
         sb.append(", iButtonPanel=").append(iButtonPanel);

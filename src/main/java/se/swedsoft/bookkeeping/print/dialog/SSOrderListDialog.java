@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
 import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
@@ -22,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -48,7 +50,7 @@ public class SSOrderListDialog extends SSDialog {
      * @param iMainFrame
      */
     public SSOrderListDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("orderlistreport.dialog.title") );
+        super(iMainFrame, SSBundle.getBundle().getString("orderlistreport.dialog.title"));
 
         setPanel(iPanel);
 
@@ -63,23 +65,21 @@ public class SSOrderListDialog extends SSDialog {
             }
         });
 
-
-        iCustomer.setModel( new SSCustomerDropdownModel() );
+        iCustomer.setModel(new SSCustomerDropdownModel());
         iCustomer.setSearchColumns(0);
-        iCustomer.setColumnWidths(60 , 200);
-        iCustomer.setPopupSize   (250, 150);
-
+        iCustomer.setColumnWidths(60, 200);
+        iCustomer.setPopupSize(250, 150);
 
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iCustomer.setEnabled( iCheckCustomer.isSelected() );
+                iCustomer.setEnabled(iCheckCustomer.isSelected());
 
-                iFromDate.setEnabled( iCheckDate.isSelected() );
-                iToDate  .setEnabled( iCheckDate.isSelected() );
+                iFromDate.setEnabled(iCheckDate.isSelected());
+                iToDate.setEnabled(iCheckDate.isSelected());
             }
         };
 
-        iCheckDate    .addChangeListener(iChangeListener);
+        iCheckDate.addChangeListener(iChangeListener);
         iCheckCustomer.addChangeListener(iChangeListener);
 
         ButtonGroup iGroup = new ButtonGroup();
@@ -98,15 +98,14 @@ public class SSOrderListDialog extends SSDialog {
         return iPanel;
     }
 
-
     /**
      * Returns the orders to print depending on the user selections
      *
      * @return
      */
-    public List<SSOrder> getOrdersToPrint(){
+    public List<SSOrder> getOrdersToPrint() {
 
-        final List<SSInvoice>  iInvoices  = SSDB.getInstance().getInvoices();
+        final List<SSInvoice>  iInvoices = SSDB.getInstance().getInvoices();
         final List<SSCustomer> iCustomers = SSDB.getInstance().getCustomers();
 
         List<SSOrder> iOrders = SSDB.getInstance().getOrders();
@@ -114,30 +113,30 @@ public class SSOrderListDialog extends SSDialog {
         SSFilterFactory<SSOrder> iFactory = new SSFilterFactory<SSOrder>(iOrders);
 
         // Filter by orders with invoices
-        if( iRadioInvoice.isSelected() ){
+        if (iRadioInvoice.isSelected()) {
 
             iFactory.applyFilter(new SSFilter<SSOrder>() {
                 public boolean applyFilter(SSOrder iOrder) {
-                    return iOrder.getInvoice( iInvoices ) == null;
+                    return iOrder.getInvoice(iInvoices) == null;
                 }
             });
         }
 
         // Filter by a customer
-        if(iCheckCustomer.isSelected() && iCustomer.hasSelected() ){
+        if (iCheckCustomer.isSelected() && iCustomer.hasSelected()) {
             final SSCustomer iCustomer = this.iCustomer.getSelected();
 
             iFactory.applyFilter(new SSFilter<SSOrder>() {
                 public boolean applyFilter(SSOrder iOrder) {
-                    return iCustomer.equals( iOrder.getCustomer(iCustomers) );
+                    return iCustomer.equals(iOrder.getCustomer(iCustomers));
                 }
             });
 
         }
         // Filter by date
-        if(iCheckDate.isSelected() ){
+        if (iCheckDate.isSelected()) {
             final Date iDateFrom = iFromDate.getDate();
-            final Date iDateTo   = iToDate.getDate();
+            final Date iDateTo = iToDate.getDate();
 
             iFactory.applyFilter(new SSFilter<SSOrder>() {
                 public boolean applyFilter(SSOrder iOrder) {
@@ -152,6 +151,7 @@ public class SSOrderListDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSOrderListDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCheckCustomer=").append(iCheckCustomer);

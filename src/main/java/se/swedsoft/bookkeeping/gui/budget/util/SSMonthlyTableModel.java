@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.budget.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSBudget;
 import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import java.math.BigDecimal;
+
 
 /**
  * Date: 2006-jan-30
@@ -21,7 +23,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      * @param pAccount
      */
     public SSMonthlyTableModel(SSBudget pBudget, SSAccount pAccount) {
-        iBudget  = pBudget;
+        iBudget = pBudget;
         iAccount = pAccount;
     }
 
@@ -33,6 +35,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
     public Class<?> getType() {
         return SSMonth.class;
     }
+
     /**
      *
      * @param columnIndex
@@ -41,14 +44,14 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch (columnIndex) {
-            case 0:
-                return String.class;
-            case 1:
-                return BigDecimal.class;
+        case 0:
+            return String.class;
+
+        case 1:
+            return BigDecimal.class;
         }
         return super.getColumnClass(columnIndex);
     }
-
 
     /**
      *
@@ -62,16 +65,20 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
         Object value = null;
 
         switch (columnIndex) {
-            case 0:
-                value = month.toString();
-                break;
-            case 1:
-                value= (iAccount == null) ? new BigDecimal(0) : iBudget.getValueForAccountAndMonth(iAccount, month);
-                break;
+        case 0:
+            value = month.toString();
+            break;
+
+        case 1:
+            value = (iAccount == null)
+                    ? new BigDecimal(0)
+                    : iBudget.getValueForAccountAndMonth(iAccount, month);
+            break;
         }
 
         return value;
     }
+
     /**
      *
      * @param rowIndex
@@ -94,7 +101,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
         SSMonth month = getObject(rowIndex);
 
         if ((columnIndex == 1) && (iAccount != null)) {
-            iBudget.setSaldoForAccountAndMonth(iAccount, month, (BigDecimal)aValue);
+            iBudget.setSaldoForAccountAndMonth(iAccount, month, (BigDecimal) aValue);
         }
         fireTableCellUpdated(rowIndex, columnIndex);
     }
@@ -103,15 +110,15 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
      *
      * @param pAccount
      */
-    public void setAccount(SSAccount pAccount){
+    public void setAccount(SSAccount pAccount) {
         iAccount = pAccount;
         fireTableDataChanged();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.budget.util.SSMonthlyTableModel");
         sb.append("{iAccount=").append(iAccount);
         sb.append(", iBudget=").append(iBudget);

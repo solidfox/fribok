@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
@@ -10,6 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+
 
 /**
  * Date: 2006-mar-20
@@ -52,7 +54,6 @@ public class SSSupplier implements Serializable, SSTableSearchable {
     // utbetalningsnummer
     private Integer iOutpaymentNumber;
 
-
     // Valuta
     private SSCurrency     iCurrency;
     // Betalningsvilkor
@@ -67,7 +68,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
 
     private String iComment;
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      * Default constructor
@@ -76,12 +77,13 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         iAddress = new SSAddress();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
-        if(iCompany != null){
-            iOurContact   = iCompany.getContactPerson();
-            iCurrency     = iCompany.getCurrency();
-            iPaymentTerm  = iCompany.getPaymentTerm();
+
+        if (iCompany != null) {
+            iOurContact = iCompany.getContactPerson();
+            iCurrency = iCompany.getCurrency();
+            iPaymentTerm = iCompany.getPaymentTerm();
             iDeliveryTerm = iCompany.getDeliveryTerm();
-            iDeliveryWay  = iCompany.getDeliveryWay();
+            iDeliveryWay = iCompany.getDeliveryWay();
         }
     }
 
@@ -91,27 +93,27 @@ public class SSSupplier implements Serializable, SSTableSearchable {
      * @param iSupplier
      */
     public SSSupplier(SSSupplier iSupplier) {
-        iNumber             = iSupplier.iNumber;
-        iName               = iSupplier.iName;
-        iPhone              = iSupplier.iPhone;
-        iPhone2             = iSupplier.iPhone2;
-        iTeleFax            = iSupplier.iTeleFax;
-        iEmail              = iSupplier.iEmail;
-        iHomepage           = iSupplier.iHomepage;
+        iNumber = iSupplier.iNumber;
+        iName = iSupplier.iName;
+        iPhone = iSupplier.iPhone;
+        iPhone2 = iSupplier.iPhone2;
+        iTeleFax = iSupplier.iTeleFax;
+        iEmail = iSupplier.iEmail;
+        iHomepage = iSupplier.iHomepage;
         iRegistrationNumber = iSupplier.iRegistrationNumber;
-        iYourContact        = iSupplier.iYourContact;
-        iOurContact         = iSupplier.iOurContact;
-        iOurCustomerNr      = iSupplier.iOurCustomerNr;
-        iBankAccountNumber  = iSupplier.iBankAccountNumber;
-        iPlusAccountNumber  = iSupplier.iPlusAccountNumber;
-        iCurrency           = iSupplier.iCurrency;
-        iPaymentTerm        = iSupplier.iPaymentTerm;
-        iDeliveryTerm       = iSupplier.iDeliveryTerm;
-        iDeliveryWay        = iSupplier.iDeliveryWay;
-        iAddress            = new SSAddress(iSupplier.iAddress);
+        iYourContact = iSupplier.iYourContact;
+        iOurContact = iSupplier.iOurContact;
+        iOurCustomerNr = iSupplier.iOurCustomerNr;
+        iBankAccountNumber = iSupplier.iBankAccountNumber;
+        iPlusAccountNumber = iSupplier.iPlusAccountNumber;
+        iCurrency = iSupplier.iCurrency;
+        iPaymentTerm = iSupplier.iPaymentTerm;
+        iDeliveryTerm = iSupplier.iDeliveryTerm;
+        iDeliveryWay = iSupplier.iDeliveryWay;
+        iAddress = new SSAddress(iSupplier.iAddress);
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -129,7 +131,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         iNumber = iSupplierNr;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -147,7 +149,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iName = iName;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -165,7 +167,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iPhone = iPhone;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -183,7 +185,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iPhone2 = iPhone2;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -201,7 +203,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         iTeleFax = iTelefax;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -219,7 +221,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iEmail = iEmail;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -237,7 +239,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iHomepage = iHomepage;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -255,7 +257,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iRegistrationNumber = iRegistrationNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -273,7 +275,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iYourContact = iYourContact;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -291,7 +293,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iOurContact = iOurContact;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -309,7 +311,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iBankAccountNumber = iBankAccountNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -326,7 +328,8 @@ public class SSSupplier implements Serializable, SSTableSearchable {
     public void setPlusGiro(String iPlusAccountNumber) {
         this.iPlusAccountNumber = iPlusAccountNumber;
     }
-    //////////////////////////////////////////////////////
+
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -344,7 +347,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iOutpaymentNumber = iOutpaymentNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -362,7 +365,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iCurrency = iCurrency;
     }
 
-//////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -380,7 +383,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iPaymentTerm = iPaymentTerm;
     }
 
-//////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -398,7 +401,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iDeliveryTerm = iDeliveryTerm;
     }
 
-//////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -416,7 +419,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iDeliveryWay = iDeliveryWay;
     }
 
-//////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -434,7 +437,7 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iAddress = iAddress;
     }
 
-//////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -460,24 +463,23 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         this.iComment = iComment;
     }
 
-//////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
-    
     public boolean equals(Object obj) {
-        if(iNumber == null){
+        if (iNumber == null) {
             return super.equals(obj);
         }
 
-        if(obj instanceof SSSupplier){
-            SSSupplier iSupplier = (SSSupplier)obj;
+        if (obj instanceof SSSupplier) {
+            SSSupplier iSupplier = (SSSupplier) obj;
+
             return iNumber.equals(iSupplier.iNumber);
         }
         return false;
     }
 
-    
     public int hashCode() {
-        if( iNumber != null){
+        if (iNumber != null) {
             return iNumber.hashCode();
         }
         return super.hashCode();
@@ -492,13 +494,12 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         return iNumber;
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(iNumber);
         sb.append(", ");
         sb.append(iName);
-
 
         return sb.toString();
     }
@@ -507,26 +508,29 @@ public class SSSupplier implements Serializable, SSTableSearchable {
         Double iSupplierInvoiceSum = 0.0;
 
         for (SSSupplierInvoice iSupplierInvoice : SSDB.getInstance().getSupplierInvoices()) {
-            if(iMonth.isDateInMonth(iSupplierInvoice.getDate())){
-                if(iSupplierInvoice.getSupplierNr() != null){
-                    if(iSupplierInvoice.getSupplierNr().equals(iNumber)){
-                        iSupplierInvoiceSum += SSSupplierInvoiceMath.getNetSum(iSupplierInvoice).doubleValue()*iSupplierInvoice.getCurrencyRate().doubleValue();
+            if (iMonth.isDateInMonth(iSupplierInvoice.getDate())) {
+                if (iSupplierInvoice.getSupplierNr() != null) {
+                    if (iSupplierInvoice.getSupplierNr().equals(iNumber)) {
+                        iSupplierInvoiceSum += SSSupplierInvoiceMath.getNetSum(iSupplierInvoice).doubleValue()
+                                * iSupplierInvoice.getCurrencyRate().doubleValue();
                     }
                 }
             }
         }
 
         Double iSupplierCreditInvoiceSum = 0.0;
+
         for (SSSupplierCreditInvoice iSupplierCreditInvoice : SSDB.getInstance().getSupplierCreditInvoices()) {
-            if(iMonth.isDateInMonth(iSupplierCreditInvoice.getDate())){
-                if(iSupplierCreditInvoice.getSupplierNr() != null){
-                    if(iSupplierCreditInvoice.getSupplierNr().equals(iNumber)){
-                        iSupplierCreditInvoiceSum += SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice).doubleValue()*iSupplierCreditInvoice.getCurrencyRate().doubleValue();
+            if (iMonth.isDateInMonth(iSupplierCreditInvoice.getDate())) {
+                if (iSupplierCreditInvoice.getSupplierNr() != null) {
+                    if (iSupplierCreditInvoice.getSupplierNr().equals(iNumber)) {
+                        iSupplierCreditInvoiceSum += SSSupplierInvoiceMath.getNetSum(iSupplierCreditInvoice).doubleValue()
+                                * iSupplierCreditInvoice.getCurrencyRate().doubleValue();
                     }
                 }
             }
         }
-        return new BigDecimal(iSupplierInvoiceSum-iSupplierCreditInvoiceSum);
+        return new BigDecimal(iSupplierInvoiceSum - iSupplierCreditInvoiceSum);
     }
 
 }

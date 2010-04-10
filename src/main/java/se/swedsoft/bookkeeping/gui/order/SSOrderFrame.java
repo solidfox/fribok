@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.order;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -39,6 +40,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -54,8 +56,8 @@ public class SSOrderFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSOrderFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSOrderFrame.cInstance.isClosed()) {
             cInstance = new SSOrderFrame(pMainFrame, pWidth, pHeight);
         }
         SSOrderFrame.cInstance.setVisible(true);
@@ -67,10 +69,9 @@ public class SSOrderFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSOrderFrame getInstance(){
+    public static SSOrderFrame getInstance() {
         return cInstance;
     }
-
 
     private JTabbedPane iTabbedPane;
 
@@ -88,7 +89,8 @@ public class SSOrderFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSOrderFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("orderframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("orderframe.title"), width,
+                height);
     }
 
     /**
@@ -103,29 +105,31 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "orderframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "orderframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOrderDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "orderframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "orderframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOrder iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getOrder(iSelected);
                 }
                 if (iSelected != null) {
                     SSOrderDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "orderframe.ordergone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "orderframe.ordergone", iNumber);
                 }
             }
         });
@@ -135,11 +139,13 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "orderframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "orderframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOrder iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getOrder(iSelected);
                 }
@@ -155,13 +161,14 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "orderframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "orderframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSOrder> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedOrder(toDelete);
             }
         });
@@ -169,32 +176,37 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-
         // Create invoice
         // ***************************
 
-        SSMenuButton iButton2 = new SSMenuButton("ICON_INVOICE24", "orderframe.createinvoicebutton");
-        iButton2.add("orderframe.customerinvoice", new ActionListener(){
+        SSMenuButton iButton2 = new SSMenuButton("ICON_INVOICE24",
+                "orderframe.createinvoicebutton");
+
+        iButton2.add("orderframe.customerinvoice", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSOrderDialog.invoiceDialog(getMainFrame(), iSelected, iModel);
                 }
             }
         });
-        iButton2.add("orderframe.cashreceipt", new ActionListener(){
+        iButton2.add("orderframe.cashreceipt", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSOrderDialog.cashReceiptDialog(getMainFrame(), iSelected, iModel);
                 }
             }
         });
-        iButton2.add("orderframe.periodicinvoice", new ActionListener(){
+        iButton2.add("orderframe.periodicinvoice",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSOrderDialog.periodicInvoiceDialog(getMainFrame(), iSelected, iModel);
@@ -207,63 +219,70 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         // if(!SSVersion.app_title.contains("JFS Fakturering")){
         // Create purchase order from this order
         // ***************************
-        iButton = new SSButton("ICON_INVOICE24", "orderframe.createspurchaseorderbutton", new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
-                    iSelected = getOrders(iSelected);
-                    if(iSelected == null){
+        iButton = new SSButton("ICON_INVOICE24", "orderframe.createspurchaseorderbutton",
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
+                iSelected = getOrders(iSelected);
+                if (iSelected == null) {
+                    return;
+                }
+
+                for (SSOrder iOrder : iSelected) {
+                    // if the selected order already has a purchase order assosiated we can't create a new one
+                    if (iOrder.getPurchaseOrderNr() != null) {
+                        SSInformationDialog.showDialog(getMainFrame(),
+                                "orderframe.orderhaspurchaseorder", iOrder.getNumber());
                         return;
-                    }
-
-                    for (SSOrder iOrder : iSelected) {
-                        // if the selected order already has a purchase order assosiated we can't create a new one
-                        if(iOrder.getPurchaseOrderNr() != null){
-                            SSInformationDialog.showDialog(getMainFrame(), "orderframe.orderhaspurchaseorder", iOrder.getNumber());
-                            return;
-                        }
-                    }
-
-                    Map<SSProduct, Integer> iProductCount = null;
-                    try {
-                        iProductCount = SSOrderMath.getProductCount(iSelected);
-                    } catch (NullPointerException e1) {
-                        new SSErrorDialog( getMainFrame(), "orderframe.orderwrong");
-                    }
-
-                    SSPurchaseOrder iPurchaseOrder = new SSPurchaseOrder();
-
-                    for (Map.Entry<SSProduct, Integer> ssProductIntegerEntry : iProductCount.entrySet()) {
-
-                        if(ssProductIntegerEntry.getKey().isParcel()) {
-                            for (SSProductRow iParcelRow : ssProductIntegerEntry.getKey().getParcelRows()) {
-                                SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
-
-                                iRow.setProduct ( iParcelRow.getProduct(SSDB.getInstance().getProducts()));
-                                iRow.setQuantity(ssProductIntegerEntry.getValue() * iParcelRow.getQuantity()  );
-
-                                iPurchaseOrder.getRows().add(iRow);
-                            }
-
-                        } else {
-                            SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
-
-                            iRow.setProduct (ssProductIntegerEntry.getKey());
-                            iRow.setQuantity(ssProductIntegerEntry.getValue());
-
-                            iPurchaseOrder.getRows().add(iRow);
-                        }
-                    }
-
-
-                    if( SSPurchaseOrderFrame.getInstance() != null){
-                        SSPurchaseOrderDialog.newDialog(getMainFrame(), iPurchaseOrder, iSelected, SSPurchaseOrderFrame.getInstance().getModel() );
-                    } else {
-                        SSPurchaseOrderDialog.newDialog(getMainFrame(), iPurchaseOrder, iSelected, null );
                     }
                 }
 
+                Map<SSProduct, Integer> iProductCount = null;
 
-            });
+                try {
+                    iProductCount = SSOrderMath.getProductCount(iSelected);
+                } catch (NullPointerException e1) {
+                    new SSErrorDialog(getMainFrame(), "orderframe.orderwrong");
+                }
+
+                SSPurchaseOrder iPurchaseOrder = new SSPurchaseOrder();
+
+                for (Map.Entry<SSProduct, Integer> ssProductIntegerEntry : iProductCount.entrySet()) {
+
+                    if (ssProductIntegerEntry.getKey().isParcel()) {
+                        for (SSProductRow iParcelRow : ssProductIntegerEntry.getKey().getParcelRows()) {
+                            SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
+
+                            iRow.setProduct(
+                                    iParcelRow.getProduct(SSDB.getInstance().getProducts()));
+                            iRow.setQuantity(
+                                    ssProductIntegerEntry.getValue()
+                                            * iParcelRow.getQuantity());
+
+                            iPurchaseOrder.getRows().add(iRow);
+                        }
+
+                    } else {
+                        SSPurchaseOrderRow iRow = new SSPurchaseOrderRow();
+
+                        iRow.setProduct(ssProductIntegerEntry.getKey());
+                        iRow.setQuantity(ssProductIntegerEntry.getValue());
+
+                        iPurchaseOrder.getRows().add(iRow);
+                    }
+                }
+
+                if (SSPurchaseOrderFrame.getInstance() != null) {
+                    SSPurchaseOrderDialog.newDialog(getMainFrame(), iPurchaseOrder,
+                            iSelected, SSPurchaseOrderFrame.getInstance().getModel());
+                } else {
+                    SSPurchaseOrderDialog.newDialog(getMainFrame(), iPurchaseOrder,
+                            iSelected, null);
+                }
+            }
+
+        });
         iTable.addSelectionDependentComponent(iButton);
         toolBar.add(iButton);
         toolBar.addSeparator();
@@ -271,44 +290,58 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         // Importera
         // ***************************
         iButton2 = new SSMenuButton("ICON_IMPORT", "orderframe.importbutton");
-        iButton2.add("orderframe.importxml", new ActionListener(){
+        iButton2.add("orderframe.importxml",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
+
                 iFilechooser.setSelectedFile(new File("Orderlista.xml"));
 
-                if( iFilechooser.showOpenDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    final SSOrderImporter iImporter = new SSOrderImporter(iFilechooser.getSelectedFile());
+                if (iFilechooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    final SSOrderImporter iImporter = new SSOrderImporter(
+                            iFilechooser.getSelectedFile());
+
                     try {
-                        SSInitDialog.runProgress(getMainFrame(), "Importerar ordrar", new Runnable(){
-                            public void run(){
+                        SSInitDialog.runProgress(getMainFrame(), "Importerar ordrar",
+                                new Runnable() {
+                            public void run() {
                                 iImporter.doImport();
                             }
                         });
                     } catch (SSImportException e1) {
-                        SSErrorDialog.showDialog(getMainFrame(), "", e1.getLocalizedMessage());
-                    } catch (Exception e2){
-                       e2.printStackTrace();
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                e1.getLocalizedMessage());
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
                     }
                 }
             }
         });
-        iButton2.add("orderframe.importebutik", new ActionListener(){
+        iButton2.add("orderframe.importebutik",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSDefaultFileChooser iFilechooser = new SSDefaultFileChooser();
-                //iFilechooser.setSelectedFile(new File("Orderlista.xml"));
 
-                if( iFilechooser.showOpenDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    final SSOrderImporter iImporter = new SSOrderImporter(iFilechooser.getSelectedFile());
+                // iFilechooser.setSelectedFile(new File("Orderlista.xml"));
+
+                if (iFilechooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    final SSOrderImporter iImporter = new SSOrderImporter(
+                            iFilechooser.getSelectedFile());
+
                     try {
-                        SSInitDialog.runProgress(getMainFrame(), "Importerar ordrar", new Runnable(){
-                            public void run(){
+                        SSInitDialog.runProgress(getMainFrame(), "Importerar ordrar",
+                                new Runnable() {
+                            public void run() {
                                 iImporter.doEbutikImport();
                             }
                         });
                     } catch (SSImportException e1) {
-                        SSErrorDialog.showDialog(getMainFrame(), "", e1.getLocalizedMessage());
-                    } catch (Exception e2){
-                       e2.printStackTrace();
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                e1.getLocalizedMessage());
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
                     }
                 }
             }
@@ -316,22 +349,31 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         toolBar.add(iButton2);
         // Exportera
         // ***************************
-        iButton = new SSButton("ICON_EXPORT", "orderframe.exportbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EXPORT", "orderframe.exportbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 List<SSOrder> iItems;
-                if( iSelected != null) {
-                    int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("orderframe.exportallorselected"));
-                    switch(select){
-                        case JOptionPane.YES_OPTION:
-                            iItems = iSelected;
-                            break;
-                        case JOptionPane.NO_OPTION :
-                            iItems = SSDB.getInstance().getOrders();
-                            break;
-                        default:
-                            return;
+
+                if (iSelected != null) {
+                    int select = SSQueryDialog.showDialog(getMainFrame(),
+                            JOptionPane.YES_NO_CANCEL_OPTION, getTitle(),
+                            SSBundle.getBundle().getString(
+                            "orderframe.exportallorselected"));
+
+                    switch (select) {
+                    case JOptionPane.YES_OPTION:
+                        iItems = iSelected;
+                        break;
+
+                    case JOptionPane.NO_OPTION:
+                        iItems = SSDB.getInstance().getOrders();
+                        break;
+
+                    default:
+                        return;
                     }
                 } else {
                     iItems = SSDB.getInstance().getOrders();
@@ -339,11 +381,15 @@ public class SSOrderFrame extends SSDefaultTableFrame {
                 if (!iItems.isEmpty()) {
 
                     SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
+
                     iFilechooser.setSelectedFile(new File("Orderlista.xml"));
 
-                    if( iFilechooser.showSaveDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                        SSOrderExporter iExporter = new SSOrderExporter(iFilechooser.getSelectedFile(), iItems);
-                        iExporter.doExport();  
+                    if (iFilechooser.showSaveDialog(getMainFrame())
+                            == JFileChooser.APPROVE_OPTION) {
+                        SSOrderExporter iExporter = new SSOrderExporter(
+                                iFilechooser.getSelectedFile(), iItems);
+
+                        iExporter.doExport();
                     }
                 }
             }
@@ -354,21 +400,28 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         // Print
         // ***************************
         iButton2 = new SSMenuButton("ICON_PRINT", "orderframe.printbutton");
-        JMenuItem iMenuItem = iButton2.add("orderframe.print.orderreport", new ActionListener() {
+        JMenuItem iMenuItem = iButton2.add("orderframe.print.orderreport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.OrderReport(getMainFrame(), iSelected);
                 }
             }
         });
+
         iTable.addSelectionDependentComponent(iMenuItem);
-        iMenuItem = iButton2.add("orderframe.print.emailorderreport", new ActionListener(){
+        iMenuItem = iButton2.add("orderframe.print.emailorderreport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOrder iSelected = iModel.getSelectedRow(iTable);
+
                 iSelected = getOrder(iSelected);
-                if(iSelected == null) return;
+                if (iSelected == null) {
+                    return;
+                }
                 if (!SSMail.isOk(iSelected.getCustomer())) {
                     return;
                 }
@@ -376,9 +429,10 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             }
         });
         iTable.addSelectionDependentComponent(iMenuItem);
-        iMenuItem = iButton2.add("orderframe.print.deliverynote", new ActionListener(){
+        iMenuItem = iButton2.add("orderframe.print.deliverynote", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.DeliverynoteReport(getMainFrame(), iSelected);
@@ -386,9 +440,10 @@ public class SSOrderFrame extends SSDefaultTableFrame {
             }
         });
         iTable.addSelectionDependentComponent(iMenuItem);
-        iMenuItem = iButton2.add("orderframe.print.pickingslip", new ActionListener(){
+        iMenuItem = iButton2.add("orderframe.print.pickingslip", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSOrder> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getOrders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.PickingslipReport(getMainFrame(), iSelected);
@@ -397,20 +452,15 @@ public class SSOrderFrame extends SSDefaultTableFrame {
         });
         iTable.addSelectionDependentComponent(iMenuItem);
         iButton2.addSeparator();
-        iButton2.add("orderframe.print.orderlistreport", new ActionListener(){
+        iButton2.add("orderframe.print.orderlistreport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSReportFactory.OrderListReport( getMainFrame() );
+                SSReportFactory.OrderListReport(getMainFrame());
             }
         });
         toolBar.add(iButton2);
 
-
-
-
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -422,26 +472,26 @@ public class SSOrderFrame extends SSDefaultTableFrame {
     public JComponent getMainContent() {
         iTable = new SSTable();
         iModel = new SSOrderTableModel();
-        iModel.addColumn( SSOrderTableModel.COLUMN_PRINTED);
-        iModel.addColumn( SSOrderTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSOrderTableModel.COLUMN_CUSTOMER_NR );
-        iModel.addColumn( SSOrderTableModel.COLUMN_CUSTOMER_NAME );
-        iModel.addColumn( SSOrderTableModel.COLUMN_DATE );
-        iModel.addColumn( SSOrderTableModel.COLUMN_NET_SUM );
-        iModel.addColumn( SSOrderTableModel.COLUMN_CURRENCY );
-        iModel.addColumn( SSOrderTableModel.COLUMN_ESTIMATED_DELIVERY );
-        iModel.addColumn( SSOrderTableModel.COLUMN_INVOICE );
+        iModel.addColumn(SSOrderTableModel.COLUMN_PRINTED);
+        iModel.addColumn(SSOrderTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSOrderTableModel.COLUMN_CUSTOMER_NR);
+        iModel.addColumn(SSOrderTableModel.COLUMN_CUSTOMER_NAME);
+        iModel.addColumn(SSOrderTableModel.COLUMN_DATE);
+        iModel.addColumn(SSOrderTableModel.COLUMN_NET_SUM);
+        iModel.addColumn(SSOrderTableModel.COLUMN_CURRENCY);
+        iModel.addColumn(SSOrderTableModel.COLUMN_ESTIMATED_DELIVERY);
+        iModel.addColumn(SSOrderTableModel.COLUMN_INVOICE);
         // if (!SSVersion.app_title.contains("JFS Fakturering")) {
-        iModel.addColumn( SSOrderTableModel.COLUMN_PURCHASEORDER );
+        iModel.addColumn(SSOrderTableModel.COLUMN_PURCHASEORDER);
         // }
 
         iModel.setupTable(iTable);
 
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOrder iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getOrder(iSelected);
@@ -451,29 +501,32 @@ public class SSOrderFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSOrderDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "orderframe.ordergone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "orderframe.ordergone", iNumber);
                 }
             }
         });
         iTabbedPane = new JTabbedPane();
 
-        iTabbedPane.add(SSBundle.getBundle().getString("orderframe.filter.1"), new SSTabbedPanePanel() );
-        iTabbedPane.add(SSBundle.getBundle().getString("orderframe.filter.2"), new SSTabbedPanePanel() );
+        iTabbedPane.add(SSBundle.getBundle().getString("orderframe.filter.1"),
+                new SSTabbedPanePanel());
+        iTabbedPane.add(SSBundle.getBundle().getString("orderframe.filter.2"),
+                new SSTabbedPanePanel());
 
         iTabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 iSearchPanel.ApplyFilter(SSDB.getInstance().getOrders());
             }
         });
-        //setFilterIndex(0);
+        // setFilterIndex(0);
 
-        //iModel.setObjects(SSDB.getInstance().getOrders());
+        // iModel.setObjects(SSDB.getInstance().getOrders());
         JPanel iPanel = new JPanel();
+
         iSearchPanel = new SSOrderSearchPanel(iModel);
         iPanel.setLayout(new BorderLayout());
-        iPanel.add(iSearchPanel,BorderLayout.NORTH);
+        iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(iTabbedPane, BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
@@ -483,8 +536,8 @@ public class SSOrderFrame extends SSDefaultTableFrame {
      * @param index
      * @param iOrders
      */
-    public void setFilterIndex(int index,List<SSOrder> iOrders){
-        JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );
+    public void setFilterIndex(int index, List<SSOrder> iOrders) {
+        JPanel iPanel = (JPanel) iTabbedPane.getComponentAt(index);
 
         iPanel.removeAll();
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
@@ -493,27 +546,26 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
         List<SSInvoice> iInvoices = SSDB.getInstance().getInvoices();
 
-        switch(index){
-            // Alla
-            case 0:
-                iFiltered = iOrders;
-                break;
-                // Ordrar utan faktura
-            case 1:
-                iFiltered = new LinkedList<SSOrder>();
-                for(SSOrder iOrder : iOrders){
+        switch (index) {
+        // Alla
+        case 0:
+            iFiltered = iOrders;
+            break;
 
-                    if(iOrder.getInvoiceNr() == null && iOrder.getPeriodicInvoiceNr() == null){
-                        iFiltered.add(iOrder);
-                    }
+        // Ordrar utan faktura
+        case 1:
+            iFiltered = new LinkedList<SSOrder>();
+            for (SSOrder iOrder : iOrders) {
+
+                if (iOrder.getInvoiceNr() == null && iOrder.getPeriodicInvoiceNr() == null) {
+                    iFiltered.add(iOrder);
                 }
-                break;
+            }
+            break;
         }
         iModel.setObjects(iFiltered);
         iTabbedPane.repaint();
     }
-
-
 
     /**
      * This method should return the status bar content, if any.
@@ -568,12 +620,18 @@ public class SSOrderFrame extends SSDefaultTableFrame {
 
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "orderframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSOrder iOrder : delete) {
-                if (SSPostLock.isLocked("order" + iOrder.getNumber() + SSDB.getInstance().getCurrentCompany().getId())) {
-                    new SSErrorDialog(getMainFrame(), "orderframe.orderopen", iOrder.getNumber());
+                if (SSPostLock.isLocked(
+                        "order" + iOrder.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "orderframe.orderopen",
+                            iOrder.getNumber());
                 } else {
-                    List<SSTender> iTenders = new LinkedList<SSTender>(SSDB.getInstance().getTenders());
+                    List<SSTender> iTenders = new LinkedList<SSTender>(
+                            SSDB.getInstance().getTenders());
+
                     for (SSTender iTender : iTenders) {
                         if (iTender.hasOrder(iOrder)) {
                             iTender.setOrder(null);
@@ -598,18 +656,18 @@ public class SSOrderFrame extends SSDefaultTableFrame {
     public void updateFrame() {
         iSearchPanel.ApplyFilter(SSDB.getInstance().getOrders());
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        iTabbedPane=null;
-        cInstance=null;
-    }
 
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        iTabbedPane = null;
+        cInstance = null;
+    }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.order.SSOrderFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

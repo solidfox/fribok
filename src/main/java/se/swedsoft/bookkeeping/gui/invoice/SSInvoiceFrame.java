@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.invoice;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSCustomerMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSPeriodicInvoiceMath;
@@ -39,12 +40,13 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:47:21
  */
-public class SSInvoiceFrame extends SSDefaultTableFrame{
+public class SSInvoiceFrame extends SSDefaultTableFrame {
 
     private static SSInvoiceFrame cInstance;
 
@@ -54,17 +56,22 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSInvoiceFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSInvoiceFrame.cInstance.isClosed()) {
             cInstance = new SSInvoiceFrame(pMainFrame, pWidth, pHeight);
         }
         SSInvoiceFrame.cInstance.setVisible(true);
         SSInvoiceFrame.cInstance.deIconize();
         SSInvoiceFrame.cInstance.updateFrame();
 
-        if( SSPeriodicInvoiceMath.hasPendingPeriodicInvoices() && new SSConfirmDialog("periodicinvoiceframe.pendingperiodicinvoices").openDialog(pMainFrame) == JOptionPane.OK_OPTION ){
-            if(SSPeriodicInvoiceDialog.pendingPeriodicInvoicesDialog( pMainFrame )){
-                SSPostLock.removeLock("periodicinvoicepending"+SSDB.getInstance().getCurrentCompany().getId());
+        if (SSPeriodicInvoiceMath.hasPendingPeriodicInvoices()
+                && new SSConfirmDialog("periodicinvoiceframe.pendingperiodicinvoices").openDialog(
+                        pMainFrame)
+                                == JOptionPane.OK_OPTION) {
+            if (SSPeriodicInvoiceDialog.pendingPeriodicInvoicesDialog(pMainFrame)) {
+                SSPostLock.removeLock(
+                        "periodicinvoicepending"
+                                + SSDB.getInstance().getCurrentCompany().getId());
             }
         }
     }
@@ -73,7 +80,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSInvoiceFrame getInstance(){
+    public static SSInvoiceFrame getInstance() {
         return cInstance;
     }
 
@@ -93,9 +100,9 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      * @param height    The height of the frame.
      */
     private SSInvoiceFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("invoiceframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("invoiceframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -109,29 +116,31 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "invoiceframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "invoiceframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInvoiceDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "invoiceframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "invoiceframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getInvoice(iSelected);
                 }
                 if (iSelected != null) {
                     SSInvoiceDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "invoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "invoiceframe.invoicegone", iNumber);
                 }
             }
         });
@@ -141,18 +150,20 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "invoiceframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "invoiceframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getInvoice(iSelected);
                 }
                 if (iSelected != null) {
                     SSInvoiceDialog.copyDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "invoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "invoiceframe.invoicegone", iNumber);
                 }
             }
         });
@@ -162,10 +173,12 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "invoiceframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "invoiceframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSInvoice> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedInvoice(toDelete);
             }
         });
@@ -173,21 +186,23 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-
-
         // Create inpayment for sales
         // ***************************
-        iButton = new SSButton("ICON_COINS24", "invoiceframe.inpaymentbutton", new ActionListener(){
+        iButton = new SSButton("ICON_COINS24", "invoiceframe.inpaymentbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(iTable.getSelectedRowCount() > 0 ){
+                if (iTable.getSelectedRowCount() > 0) {
                     List<SSInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
+
                     iSelected = getInvoices(iSelected);
-                    SSInpayment iInpayment  = new SSInpayment();
+                    SSInpayment iInpayment = new SSInpayment();
+
                     if (!iSelected.isEmpty()) {
                         iInpayment.addInvoices(iSelected);
 
                         if (SSInpaymentFrame.getInstance() != null) {
-                            SSInpaymentDialog.newDialog(getMainFrame(), iInpayment, SSInpaymentFrame.getInstance().getModel());
+                            SSInpaymentDialog.newDialog(getMainFrame(), iInpayment,
+                                    SSInpaymentFrame.getInstance().getModel());
                         } else {
                             SSInpaymentDialog.newDialog(getMainFrame(), iInpayment, null);
                         }
@@ -200,23 +215,26 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         // Create creditinvoice for sales
         // ***************************
-        iButton = new SSButton("ICON_CREATECHANGE", "invoiceframe.creditinvoicebutton", new ActionListener(){
+        iButton = new SSButton("ICON_CREATECHANGE", "invoiceframe.creditinvoicebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getInvoice(iSelected);
                 }
                 if (iSelected != null) {
 
                     if (SSCreditInvoiceFrame.getInstance() != null) {
-                        SSCreditInvoiceDialog.newDialog(getMainFrame(), iSelected, SSCreditInvoiceFrame.getInstance().getModel());
+                        SSCreditInvoiceDialog.newDialog(getMainFrame(), iSelected,
+                                SSCreditInvoiceFrame.getInstance().getModel());
                     } else {
                         SSCreditInvoiceDialog.newDialog(getMainFrame(), iSelected, null);
                     }
                 } else {
-                    new SSErrorDialog( getMainFrame(), "invoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "invoiceframe.invoicegone", iNumber);
                 }
             }
         });
@@ -225,24 +243,26 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         // Skriv ut påminellse för valda fakturor
         // ***************************
-        iButton = new SSButton("ICON_EXCLAMATION24", "invoiceframe.reminderbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EXCLAMATION24", "invoiceframe.reminderbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
+
                 iSelected = getInvoices(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.ReminderReport(getMainFrame(), iSelected);
-                    //updateFrame();
+                    // updateFrame();
                 }
-                //iModel.fireTableDataChanged();
+                // iModel.fireTableDataChanged();
             }
         });
         iTable.addSelectionDependentComponent(iButton);
         toolBar.add(iButton);
 
-
         // Skapa räntefakturor
         // ***************************
-        iButton = new SSButton("ICON_INVOICE24", "invoiceframe.interestinvoicebutton", new ActionListener(){
+        iButton = new SSButton("ICON_INVOICE24", "invoiceframe.interestinvoicebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInterestInvoiceDialog.showDialog(getMainFrame(), iModel);
             }
@@ -251,25 +271,32 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         toolBar.addSeparator();
 
-
         // Print
         // ***************************
-        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "invoiceframe.printbutton");
-        JMenuItem iMenuItem = iMenuButton.add("invoiceframe.print.invoicereport", new ActionListener() {
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT",
+                "invoiceframe.printbutton");
+        JMenuItem iMenuItem = iMenuButton.add("invoiceframe.print.invoicereport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getInvoices(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.InvoiceReport(getMainFrame(), iSelected);
                 }
             }
         });
+
         iTable.addSelectionDependentComponent(iMenuItem);
-        iMenuItem = iMenuButton.add("invoiceframe.print.emailinvoicereport", new ActionListener(){
+        iMenuItem = iMenuButton.add("invoiceframe.print.emailinvoicereport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInvoice iSelected = iModel.getSelectedRow(iTable);
+
                 iSelected = getInvoice(iSelected);
-                if(iSelected == null) return;
+                if (iSelected == null) {
+                    return;
+                }
                 if (!SSMail.isOk(iSelected.getCustomer())) {
                     return;
                 }
@@ -277,9 +304,10 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
             }
         });
         iTable.addSelectionDependentComponent(iMenuItem);
-        iMenuItem = iMenuButton.add("invoiceframe.print.reminder", new ActionListener(){
+        iMenuItem = iMenuButton.add("invoiceframe.print.reminder", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getObjects(iTable.getSelectedRows());
+
                 iSelected = getInvoices(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.ReminderReport(getMainFrame(), iSelected);
@@ -289,9 +317,11 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         iTable.addSelectionDependentComponent(iMenuItem);
 
         iMenuButton.addSeparator();
-        iMenuItem = iMenuButton.add("invoiceframe.print.ocrinvoicereport", new ActionListener(){
+        iMenuItem = iMenuButton.add("invoiceframe.print.ocrinvoicereport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getInvoices(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.OCRInvoiceReport(getMainFrame(), iSelected);
@@ -300,20 +330,16 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         });
         iTable.addSelectionDependentComponent(iMenuItem);
 
-
         iMenuButton.addSeparator();
-        iMenuButton.add("invoiceframe.print.invoicelistreport", new ActionListener(){
+        iMenuButton.add("invoiceframe.print.invoicelistreport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSReportFactory.InvoiceListReport( getMainFrame() );
+                SSReportFactory.InvoiceListReport(getMainFrame());
             }
         });
         toolBar.add(iMenuButton);
 
-
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -338,16 +364,18 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         iModel.addColumn(SSInvoiceTableModel.COLUMN_CURRENCY);
         iModel.addColumn(SSInvoiceTableModel.COLUMN_CURRENCY_RATE);
         iModel.addColumn(SSInvoiceTableModel.COLUMN_TOTAL_SUM);
-        //iModel.addColumn(SSInvoiceTableModel.COLUMN_SALDO);
+        // iModel.addColumn(SSInvoiceTableModel.COLUMN_SALDO);
         iModel.addColumn(SSInvoiceTableModel.getSaldoColumn());
         iModel.addColumn(SSInvoiceTableModel.COLUMN_REMINDERS);
 
-       iModel.setupTable(iTable);
+        iModel.setupTable(iTable);
 
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getInvoice(iSelected);
@@ -357,31 +385,34 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
                 if (iSelected != null) {
                     SSInvoiceDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "invoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "invoiceframe.invoicegone", iNumber);
                 }
             }
         });
 
         iTabbedPane = new JTabbedPane();
 
-        iTabbedPane.add(SSBundle.getBundle().getString("invoiceframe.filter.1"), new SSTabbedPanePanel() );
-        iTabbedPane.add(SSBundle.getBundle().getString("invoiceframe.filter.2"), new SSTabbedPanePanel() );
-        iTabbedPane.add(SSBundle.getBundle().getString("invoiceframe.filter.3"), new SSTabbedPanePanel() );
+        iTabbedPane.add(SSBundle.getBundle().getString("invoiceframe.filter.1"),
+                new SSTabbedPanePanel());
+        iTabbedPane.add(SSBundle.getBundle().getString("invoiceframe.filter.2"),
+                new SSTabbedPanePanel());
+        iTabbedPane.add(SSBundle.getBundle().getString("invoiceframe.filter.3"),
+                new SSTabbedPanePanel());
 
         iTabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 iSearchPanel.ApplyFilter(SSDB.getInstance().getInvoices());
             }
         });
-        //setFilterIndex(0);
-
+        // setFilterIndex(0);
 
         JPanel iPanel = new JPanel();
+
         iSearchPanel = new SSInvoiceSearchPanel(iModel);
         iPanel.setLayout(new BorderLayout());
-        iPanel.add(iSearchPanel,BorderLayout.NORTH);
+        iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(iTabbedPane, BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
@@ -391,46 +422,50 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      * @param index
      * @param iInvoices
      */
-    public void setFilterIndex(int index,List<SSInvoice> iInvoices){
-        JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );
+    public void setFilterIndex(int index, List<SSInvoice> iInvoices) {
+        JPanel iPanel = (JPanel) iTabbedPane.getComponentAt(index);
 
         iPanel.removeAll();
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
 
-
         List<SSInvoice> iFiltered = Collections.emptyList();
+
         //
 
+        switch (index) {
+        // Alla
+        case 0:
+            iFiltered = iInvoices;
+            break;
 
-        switch(index){
-            // Alla
-            case 0:
-                iFiltered = iInvoices;
-                break;
-                // Obetalda
-            case 1:
-                iFiltered = new LinkedList<SSInvoice>();
-                for (SSInvoice iInvoice : iInvoices) {
-                    /*if( SSInvoiceMath.getSaldo(iInvoice).signum() != 0){
+        // Obetalda
+        case 1:
+            iFiltered = new LinkedList<SSInvoice>();
+            for (SSInvoice iInvoice : iInvoices) {
+
+                /* if( SSInvoiceMath.getSaldo(iInvoice).signum() != 0){
+                 iFiltered.add(iInvoice);
+                 }*/
+                if (SSInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())) {
+                    if (SSInvoiceMath.iSaldoMap.get(iInvoice.getNumber()).signum() != 0) {
                         iFiltered.add(iInvoice);
-                    }*/
-                    if(SSInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())){
-                        if(SSInvoiceMath.iSaldoMap.get(iInvoice.getNumber()).signum() != 0)
-                            iFiltered.add(iInvoice);
                     }
                 }
-                break;
-                // Förfallna
-            case 2:
-                iFiltered = new LinkedList<SSInvoice>();
-                for (SSInvoice iInvoice : iInvoices) {
-                    if(SSInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())){
-                        if(SSInvoiceMath.iSaldoMap.get(iInvoice.getNumber()).signum() != 0 && SSInvoiceMath.expired(iInvoice) ){
-                            iFiltered.add(iInvoice);
-                        }
+            }
+            break;
+
+        // Förfallna
+        case 2:
+            iFiltered = new LinkedList<SSInvoice>();
+            for (SSInvoice iInvoice : iInvoices) {
+                if (SSInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())) {
+                    if (SSInvoiceMath.iSaldoMap.get(iInvoice.getNumber()).signum() != 0
+                            && SSInvoiceMath.expired(iInvoice)) {
+                        iFiltered.add(iInvoice);
                     }
                 }
-                break;
+            }
+            break;
         }
         iModel.setObjects(iFiltered);
         iTabbedPane.repaint();
@@ -447,6 +482,7 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
     public JTabbedPane getTabbedPane() {
         return iTabbedPane;
     }
+
     /**
      * This method should return the status bar content, if any.
      *
@@ -477,8 +513,6 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
         return false;
     }
 
-
-
     /**
      *
      * @param delete
@@ -490,25 +524,33 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
 
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "invoiceframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSInvoice iInvoice : delete) {
-                if (SSPostLock.isLocked("invoice" + iInvoice.getNumber() + SSDB.getInstance().getCurrentCompany().getId())) {
-                    new SSErrorDialog(getMainFrame(), "invoiceframe.invoiceopen", iInvoice.getNumber());
+                if (SSPostLock.isLocked(
+                        "invoice" + iInvoice.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "invoiceframe.invoiceopen",
+                            iInvoice.getNumber());
                 } else {
                     List<SSOrder> iOrdersToUpdate = new LinkedList<SSOrder>();
+
                     for (SSOrder iOrder : SSDB.getInstance().getOrders()) {
                         if (iOrder.hasInvoice(iInvoice)) {
                             iOrder.setInvoice(null);
                             iOrdersToUpdate.add(iOrder);
                         }
                     }
-                    for(SSOrder iOrder : iOrdersToUpdate){
+                    for (SSOrder iOrder : iOrdersToUpdate) {
                         SSDB.getInstance().updateOrder(iOrder);
                     }
                     iOrdersToUpdate = null;
-                    int iIndex = SSCustomerMath.iInvoicesForCustomers.get(iInvoice.getCustomerNr()).indexOf(iInvoice);
-                    if(iIndex != -1){
-                        SSCustomerMath.iInvoicesForCustomers.get(iInvoice.getCustomerNr()).remove(iIndex);
+                    int iIndex = SSCustomerMath.iInvoicesForCustomers.get(iInvoice.getCustomerNr()).indexOf(
+                            iInvoice);
+
+                    if (iIndex != -1) {
+                        SSCustomerMath.iInvoicesForCustomers.get(iInvoice.getCustomerNr()).remove(
+                                iIndex);
                     }
                     SSDB.getInstance().deleteInvoice(iInvoice);
                 }
@@ -528,23 +570,25 @@ public class SSInvoiceFrame extends SSDefaultTableFrame{
      *
      */
     public static void fireTableDataChanged() {
-        if(cInstance != null) cInstance.iModel.fireTableDataChanged();
+        if (cInstance != null) {
+            cInstance.iModel.fireTableDataChanged();
+        }
     }
 
     public void updateFrame() {
         iSearchPanel.ApplyFilter(SSDB.getInstance().getInvoices());
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.invoice.SSInvoiceFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

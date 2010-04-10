@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -14,12 +15,12 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.*;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
  */
 public class SSStockValuePrinter extends SSPrinter {
-
 
     private List<SSProduct> iProducts;
 
@@ -29,49 +30,46 @@ public class SSStockValuePrinter extends SSPrinter {
 
     private Map<SSProduct, BigDecimal> iInprices;
 
-
-
-
     /**
      *
      */
     public SSStockValuePrinter() {
         // Get all orders
-        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        iStock    = new SSStock();
-        iDate     = null;
+        iProducts = SSProductMath.getStockProducts(SSDB.getInstance().getProducts());
+        iStock = new SSStock();
+        iDate = null;
         iInprices = SSProductMath.getInprices(iProducts);
 
         iStock.update();
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("stockvalue.jrxml");
-        setDetail      ("stockvalue.jrxml");
-        setSummary     ("stockvalue.jrxml");
+        setDetail("stockvalue.jrxml");
+        setSummary("stockvalue.jrxml");
     }
 
     /**
      *
      * @param iDate
      */
-    public SSStockValuePrinter(Date iDate){
+    public SSStockValuePrinter(Date iDate) {
         // Get all orders
-        iProducts  = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
-        iStock     = new SSStock();
+        iProducts = SSProductMath.getStockProducts(SSDB.getInstance().getProducts());
+        iStock = new SSStock();
         this.iDate = iDate;
-        iInprices  = SSProductMath.getInprices(iProducts, iDate);
+        iInprices = SSProductMath.getInprices(iProducts, iDate);
 
         iStock.update(iDate);
 
-        addParameter("periodTitle",  SSBundle.getBundle().getString("stockvaluereport.periodtitle"));
-        addParameter("periodText" ,  iDate );
+        addParameter("periodTitle",
+                SSBundle.getBundle().getString("stockvaluereport.periodtitle"));
+        addParameter("periodText", iDate);
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("stockvalue.jrxml");
-        setDetail      ("stockvalue.jrxml");
-        setSummary     ("stockvalue.jrxml");
+        setDetail("stockvalue.jrxml");
+        setSummary("stockvalue.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -105,29 +103,37 @@ public class SSStockValuePrinter extends SSPrinter {
                 SSProduct iProduct = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0:
-                        value = iProduct.getNumber();
-                        break;
-                    case 1:
-                        value = iProduct.getDescription();
-                        break;
-                    case 2:
-                        value = iProduct.isExpired();
-                        break;
-                    case 3:
-                        value = iStock.getQuantity(iProduct);
-                        break;
-                    case 4:
-                        value = iProduct.getUnit() == null ? null : iProduct.getUnit().getName();
-                        break;
-                    case 5:
-                        value = iInprices.get(iProduct);
-                        break;
+                case 0:
+                    value = iProduct.getNumber();
+                    break;
+
+                case 1:
+                    value = iProduct.getDescription();
+                    break;
+
+                case 2:
+                    value = iProduct.isExpired();
+                    break;
+
+                case 3:
+                    value = iStock.getQuantity(iProduct);
+                    break;
+
+                case 4:
+                    value = iProduct.getUnit() == null
+                            ? null
+                            : iProduct.getUnit().getName();
+                    break;
+
+                case 5:
+                    value = iInprices.get(iProduct);
+                    break;
                 }
 
                 return value;
             }
         };
+
         iModel.addColumn("product.number");
         iModel.addColumn("product.description");
         iModel.addColumn("product.expired");
@@ -137,7 +143,7 @@ public class SSStockValuePrinter extends SSPrinter {
 
         Collections.sort(iProducts, new Comparator<SSProduct>() {
             public int compare(SSProduct o1, SSProduct o2) {
-                return o1.getNumber().compareTo( o2.getNumber() );
+                return o1.getNumber().compareTo(o2.getNumber());
             }
         });
 
@@ -146,10 +152,10 @@ public class SSStockValuePrinter extends SSPrinter {
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSStockValuePrinter");
         sb.append("{iDate=").append(iDate);
         sb.append(", iInprices=").append(iInprices);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice.util;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -7,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.*;
+
 
 /**
  * User: Andreas Lago
@@ -27,7 +29,9 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPendingInvoiceTableModel.Entry");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPendingInvoiceTableModel.Entry");
             sb.append("{iInvoice=").append(iInvoice);
             sb.append(", iPeriodicInvoice=").append(iPeriodicInvoice);
             sb.append(", iSelected=").append(iSelected);
@@ -47,9 +51,10 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
 
             for (SSInvoice iInvoice : iInvoices.get(iPeriodicInvoice)) {
                 Entry iEntry = new Entry();
+
                 iEntry.iPeriodicInvoice = iPeriodicInvoice;
-                iEntry.iInvoice         = iInvoice;
-                iEntry.iSelected        = false;
+                iEntry.iInvoice = iInvoice;
+                iEntry.iSelected = false;
                 iItems.add(iEntry);
             }
         }
@@ -66,35 +71,33 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
         return Entry.class;
     }
 
-
     /**
      *
      * @return
      */
-    public Map<SSPeriodicInvoice,List<SSInvoice>> getSelected() {
-        Map<SSPeriodicInvoice,List<SSInvoice>> iSelected = new HashMap<SSPeriodicInvoice, List<SSInvoice>>();
+    public Map<SSPeriodicInvoice, List<SSInvoice>> getSelected() {
+        Map<SSPeriodicInvoice, List<SSInvoice>> iSelected = new HashMap<SSPeriodicInvoice, List<SSInvoice>>();
 
         for (Entry iEntry : getObjects()) {
 
             List<SSInvoice> iInvoices = iSelected.get(iEntry.iPeriodicInvoice);
 
-            if(iInvoices == null) {
+            if (iInvoices == null) {
                 iInvoices = new LinkedList<SSInvoice>();
                 iSelected.put(iEntry.iPeriodicInvoice, iInvoices);
             }
 
-            if(iEntry.iSelected){
+            if (iEntry.iSelected) {
                 iInvoices.add(iEntry.iInvoice);
             }
         }
         return iSelected;
     }
 
-
     /**
      *
      */
-    public void selectAll(){
+    public void selectAll() {
         for (Entry entry : getObjects()) {
             entry.iSelected = true;
         }
@@ -105,8 +108,9 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
      *  Vald
      * @return
      */
-    public SSTableColumn<Entry> getSelectionColumn(){
-        return new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.5")) {
+    public SSTableColumn<Entry> getSelectionColumn() {
+        return new SSTableColumn<Entry>(
+                SSBundle.getBundle().getString("periodicinvoicetable.column.5")) {
             @Override
             public Object getValue(Entry iEntry) {
                 return iEntry.iSelected;
@@ -114,7 +118,7 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
 
             @Override
             public void setValue(Entry iEntry, Object iValue) {
-                iEntry.iSelected = (Boolean)iValue;
+                iEntry.iSelected = (Boolean) iValue;
             }
 
             @Override
@@ -132,15 +136,15 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
     /**
      * Number column
      */
-    public static SSTableColumn<Entry> COLUMN_NUMBER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.1")) {
+    public static SSTableColumn<Entry> COLUMN_NUMBER = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("periodicinvoicetable.column.1")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iPeriodicInvoice.getNumber();
         }
 
         @Override
-        public void setValue(Entry iEntry, Object iValue) {
-        }
+        public void setValue(Entry iEntry, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -156,7 +160,8 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
     /**
      * Description column
      */
-    public static SSTableColumn<Entry> COLUMN_DESCRIPTION = new SSTableColumn<Entry>(SSBundle.getBundle().getString("periodicinvoicetable.column.2")) {
+    public static SSTableColumn<Entry> COLUMN_DESCRIPTION = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("periodicinvoicetable.column.2")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iPeriodicInvoice.getDescription();
@@ -164,7 +169,7 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
 
         @Override
         public void setValue(Entry iEntry, Object iValue) {
-            iEntry.iPeriodicInvoice.setDescription((String)iValue);
+            iEntry.iPeriodicInvoice.setDescription((String) iValue);
 
         }
 
@@ -182,15 +187,15 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
     /**
      * Date column
      */
-    public static SSTableColumn<Entry> COLUMN_DATE = new SSTableColumn<Entry>(SSBundle.getBundle().getString("invoicetable.column.5")) {
+    public static SSTableColumn<Entry> COLUMN_DATE = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("invoicetable.column.5")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iInvoice.getDate();
         }
 
         @Override
-        public void setValue(Entry iEntry, Object iValue) {
-        }
+        public void setValue(Entry iEntry, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -203,19 +208,18 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
         }
     };
 
-
     /**
      *  Kund nummer
      */
-    public static SSTableColumn<Entry> COLUMN_CUSTOMER_NR = new SSTableColumn<Entry>(SSBundle.getBundle().getString("invoicetable.column.3")) {
+    public static SSTableColumn<Entry> COLUMN_CUSTOMER_NR = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("invoicetable.column.3")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iInvoice.getCustomerNr();
         }
 
         @Override
-        public void setValue(Entry iObject, Object iValue) {
-        }
+        public void setValue(Entry iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -227,18 +231,19 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
             return 100;
         }
     };
+
     /**
      *  Kund namn
      */
-    public static SSTableColumn<Entry> COLUMN_CUSTOMER_NAME = new SSTableColumn<Entry>(SSBundle.getBundle().getString("invoicetable.column.4")) {
+    public static SSTableColumn<Entry> COLUMN_CUSTOMER_NAME = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("invoicetable.column.4")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iInvoice.getCustomerName();
         }
 
         @Override
-        public void setValue(Entry iInvoice, Object iValue) {
-        }
+        public void setValue(Entry iInvoice, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -250,6 +255,5 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
             return 150;
         }
     };
-
 
 }

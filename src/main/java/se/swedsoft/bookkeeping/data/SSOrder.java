@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.base.SSSale;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -33,7 +35,7 @@ public class SSOrder extends SSSale {
     // Inköpsorder nummer
     private Integer iPurchaseOrderNr;
 
-    //Dölj enhetspris på följesedel
+    // Dölj enhetspris på följesedel
     private boolean iHideUnitprice;
     // Transient sales
     private transient SSInvoice       iInvoice;
@@ -42,7 +44,7 @@ public class SSOrder extends SSSale {
 
     protected BigDecimal iCurrencyRate;
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
@@ -50,26 +52,26 @@ public class SSOrder extends SSSale {
     public SSOrder() {
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-        if(iCompany != null){
-            setDelayInterest    ( iCompany.getDelayInterest()   );
-            setText             ( iCompany.getStandardText( SSStandardText.Saleorder ));
-            setTaxRate1         ( iCompany.getTaxRate1()   );
-            setTaxRate2         ( iCompany.getTaxRate2()   );
-            setTaxRate3         ( iCompany.getTaxRate3()   );
-            setDefaultAccounts  ( iCompany.getDefaultAccounts());
-            setOurContactPerson ( iCompany.getContactPerson  () );
+        if (iCompany != null) {
+            setDelayInterest(iCompany.getDelayInterest());
+            setText(iCompany.getStandardText(SSStandardText.Saleorder));
+            setTaxRate1(iCompany.getTaxRate1());
+            setTaxRate2(iCompany.getTaxRate2());
+            setTaxRate3(iCompany.getTaxRate3());
+            setDefaultAccounts(iCompany.getDefaultAccounts());
+            setOurContactPerson(iCompany.getContactPerson());
             iEstimatedDelivery = iCompany.getEstimatedDelivery();
-            setPaymentTerm      ( iCompany.getPaymentTerm());
-            setDeliveryTerm     ( iCompany.getDeliveryTerm());
-            setDeliveryWay      ( iCompany.getDeliveryWay());
-            setCurrency         ( iCompany.getCurrency());
+            setPaymentTerm(iCompany.getPaymentTerm());
+            setDeliveryTerm(iCompany.getDeliveryTerm());
+            setDeliveryWay(iCompany.getDeliveryWay());
+            setCurrency(iCompany.getCurrency());
             iCurrencyRate = iCurrency.getExchangeRate();
 
         }
     }
 
     @Override
-    public void setCustomer(SSCustomer iCustomer){
+    public void setCustomer(SSCustomer iCustomer) {
         super.setCustomer(iCustomer);
         iCurrencyRate = iCurrency.getExchangeRate();
     }
@@ -82,6 +84,7 @@ public class SSOrder extends SSSale {
     public SSOrder(SSOrder iOrder) {
         copyFrom(iOrder);
     }
+
     /**
      *  Creates an order based on a tender
      *
@@ -90,24 +93,24 @@ public class SSOrder extends SSSale {
     public SSOrder(SSTender iTender) {
         copyFrom(iTender);
 
-        iDate         = new Date();
+        iDate = new Date();
         iCurrencyRate = iTender.getCurrencyRate();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
+
         for (SSCustomer pCustomer : SSDB.getInstance().getCustomers()) {
             if (pCustomer.getNumber().equals(iCustomerNr)) {
                 iHideUnitprice = pCustomer.getHideUnitprice();
             }
         }
-        if(iCompany != null){
+        if (iCompany != null) {
             iEstimatedDelivery = iCompany.getEstimatedDelivery();
-            iText              = iCompany.getStandardText(SSStandardText.Saleorder);
+            iText = iCompany.getStandardText(SSStandardText.Saleorder);
         }
         iNumber = null;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * @param iOrder
@@ -115,19 +118,19 @@ public class SSOrder extends SSSale {
     public void copyFrom(SSOrder iOrder) {
         super.copyFrom(iOrder);
 
-        iInvoice           = iOrder.iInvoice;
-        iInvoiceNr         = iOrder.iInvoiceNr;
-        iPeriodicInvoice   = iOrder.iPeriodicInvoice;
+        iInvoice = iOrder.iInvoice;
+        iInvoiceNr = iOrder.iInvoiceNr;
+        iPeriodicInvoice = iOrder.iPeriodicInvoice;
         iPeriodicInvoiceNr = iOrder.iPeriodicInvoiceNr;
-        iPurchaseOrder     = iOrder.iPurchaseOrder;
-        iPurchaseOrderNr   = iOrder.iPurchaseOrderNr;
-        iYourOrderNumber   = iOrder.iYourOrderNumber;
+        iPurchaseOrder = iOrder.iPurchaseOrder;
+        iPurchaseOrderNr = iOrder.iPurchaseOrderNr;
+        iYourOrderNumber = iOrder.iYourOrderNumber;
         iEstimatedDelivery = iOrder.iEstimatedDelivery;
-        iHideUnitprice     = iOrder.iHideUnitprice;
-        iCurrencyRate      = iOrder.iCurrencyRate;
+        iHideUnitprice = iOrder.iHideUnitprice;
+        iCurrencyRate = iOrder.iCurrencyRate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Sets the number of this sale as the maxinum mumber + 1
@@ -139,16 +142,17 @@ public class SSOrder extends SSSale {
         int iNumber = iCompany.getAutoIncrement().getNumber("order");
 
         List<SSOrder> iOrders = SSDB.getInstance().getOrders();
-        for(SSOrder iOrder: iOrders){
 
-            if(iOrder.getNumber() != null && iOrder.getNumber() > iNumber){
+        for (SSOrder iOrder: iOrders) {
+
+            if (iOrder.getNumber() != null && iOrder.getNumber() > iNumber) {
                 iNumber = iOrder.getNumber();
             }
         }
         setNumber(iNumber + 1);
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      *
      * @return
@@ -165,7 +169,7 @@ public class SSOrder extends SSSale {
         this.iYourOrderNumber = iYourOrderNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -184,7 +188,7 @@ public class SSOrder extends SSSale {
 
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public void setHideUnitprice(boolean iHideUnitprice) {
         this.iHideUnitprice = iHideUnitprice;
@@ -198,7 +202,7 @@ public class SSOrder extends SSSale {
         return iHideUnitprice;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -214,7 +218,7 @@ public class SSOrder extends SSSale {
      */
     public void setInvoiceNr(Integer iInvoiceNr) {
         this.iInvoiceNr = iInvoiceNr;
-        iInvoice        = null;
+        iInvoice = null;
     }
 
     public Integer getPeriodicInvoiceNr() {
@@ -227,28 +231,22 @@ public class SSOrder extends SSSale {
      */
     public void setPeriodicInvoiceNr(Integer iInvoiceNr) {
         iPeriodicInvoiceNr = iInvoiceNr;
-        iPeriodicInvoice   = null;
+        iPeriodicInvoice = null;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getCurrencyRate() {
-        if(iCurrencyRate!=null)
-        {
+        if (iCurrencyRate != null) {
             return iCurrencyRate;
-        }
-        else
-        {
-            if(iCustomer!=null)
-            {
+        } else {
+            if (iCustomer != null) {
                 return iCustomer.getInvoiceCurrency().getExchangeRate();
-            }
-            else
-            {
+            } else {
                 return new BigDecimal(1);
             }
         }
@@ -262,7 +260,7 @@ public class SSOrder extends SSSale {
         this.iCurrencyRate = iCurrencyRate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      *
      * @return
@@ -277,9 +275,9 @@ public class SSOrder extends SSSale {
      * @return
      */
     public SSInvoice getInvoice(List<SSInvoice> iInvoices) {
-        if(iInvoice == null && iInvoiceNr != null){
+        if (iInvoice == null && iInvoiceNr != null) {
             for (SSInvoice iCurrent : iInvoices) {
-                if(iInvoiceNr.equals(iCurrent.getNumber())){
+                if (iInvoiceNr.equals(iCurrent.getNumber())) {
                     iInvoice = iCurrent;
                 }
             }
@@ -293,7 +291,7 @@ public class SSOrder extends SSSale {
      */
     public void setInvoice(SSInvoice iInvoice) {
         this.iInvoice = iInvoice;
-        iInvoiceNr    = iInvoice == null ? null : iInvoice.getNumber();
+        iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
     }
 
     public SSPeriodicInvoice getPeriodicInvoice() {
@@ -306,9 +304,9 @@ public class SSOrder extends SSSale {
      * @return
      */
     public SSPeriodicInvoice getPeriodicInvoice(List<SSPeriodicInvoice> iPeriodicInvoices) {
-        if(iPeriodicInvoice == null && iPeriodicInvoiceNr != null){
+        if (iPeriodicInvoice == null && iPeriodicInvoiceNr != null) {
             for (SSPeriodicInvoice iCurrent : iPeriodicInvoices) {
-                if(iPeriodicInvoiceNr.equals(iCurrent.getNumber())){
+                if (iPeriodicInvoiceNr.equals(iCurrent.getNumber())) {
                     iPeriodicInvoice = iCurrent;
                 }
             }
@@ -322,10 +320,12 @@ public class SSOrder extends SSSale {
      */
     public void setPeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
         this.iPeriodicInvoice = iPeriodicInvoice;
-        iPeriodicInvoiceNr    = iPeriodicInvoice == null ? null : iPeriodicInvoice.getNumber();
+        iPeriodicInvoiceNr = iPeriodicInvoice == null
+                ? null
+                : iPeriodicInvoice.getNumber();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -335,16 +335,15 @@ public class SSOrder extends SSSale {
         return getPurchaseOrder(SSDB.getInstance().getPurchaseOrders());
     }
 
-
     /**
      *
      * @param iPurchaseOrders
      * @return
      */
     public SSPurchaseOrder getPurchaseOrder(List<SSPurchaseOrder> iPurchaseOrders) {
-        if(iPurchaseOrder == null && iPurchaseOrderNr != null){
+        if (iPurchaseOrder == null && iPurchaseOrderNr != null) {
             for (SSPurchaseOrder iCurrent : iPurchaseOrders) {
-                if(iPurchaseOrderNr.equals(iCurrent.getNumber())){
+                if (iPurchaseOrderNr.equals(iCurrent.getNumber())) {
                     iPurchaseOrder = iCurrent;
                 }
             }
@@ -358,11 +357,10 @@ public class SSOrder extends SSSale {
      */
     public void setPurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
         this.iPurchaseOrder = iPurchaseOrder;
-        iPurchaseOrderNr    = iPurchaseOrder == null ? null : iPurchaseOrder.getNumber();
+        iPurchaseOrderNr = iPurchaseOrder == null ? null : iPurchaseOrder.getNumber();
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      * Returns true if this order is assosiated to the specified sales
@@ -384,7 +382,8 @@ public class SSOrder extends SSSale {
     }
 
     public boolean hasPeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
-        return iPeriodicInvoiceNr != null && iPeriodicInvoiceNr.equals(iPeriodicInvoice.getNumber());
+        return iPeriodicInvoiceNr != null
+                && iPeriodicInvoiceNr.equals(iPeriodicInvoice.getNumber());
     }
 
     /**
@@ -397,21 +396,21 @@ public class SSOrder extends SSSale {
     }
 
     public boolean hasPurchaseOrder(SSPurchaseOrder iPurchaseOrder) {
-        return iPurchaseOrderNr != null && iPurchaseOrderNr.equals(iPurchaseOrder.getNumber());
+        return iPurchaseOrderNr != null
+                && iPurchaseOrderNr.equals(iPurchaseOrder.getNumber());
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSOrder)) {
             return false;
         }
-        return iNumber.equals(((SSOrder)obj).getNumber());
+        return iNumber.equals(((SSOrder) obj).getNumber());
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSOrder");
         sb.append("{iCurrencyRate=").append(iCurrencyRate);
         sb.append(", iEstimatedDelivery='").append(iEstimatedDelivery).append('\'');

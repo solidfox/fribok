@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.base;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
@@ -14,6 +15,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
+
 
 /**
  * User: Andreas Lago
@@ -57,14 +59,12 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
     // Transient reference to the result init
     private transient SSNewResultUnit iResultUnit;
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
-    public SSSaleRow() {
-    }
+    public SSSaleRow() {}
 
     /**
      * Copy constructor
@@ -73,22 +73,22 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iTenderRow
      */
     public SSSaleRow(SSSaleRow iTenderRow) {
-        iDescription         = iTenderRow.iDescription;
-        iProductNr           = iTenderRow.iProductNr;
-        iUnitprice           = iTenderRow.iUnitprice;
-        iCount               = iTenderRow.iCount;
-        iUnit                = iTenderRow.iUnit;
-        iDiscount            = iTenderRow.iDiscount;
-        iTaxCode             = iTenderRow.iTaxCode ;
-        iProduct             = iTenderRow.iProduct;
-        iAccountNr           = iTenderRow.iAccountNr;
-        //this.iProjectNr    = iTenderRow.iProjectNr;
-        iProjectNumber       = iTenderRow.iProjectNumber;
-        //this.iResultUnitNr = iTenderRow.iResultUnitNr;
-        iResultUnitNumber    = iTenderRow.iResultUnitNumber;
-        iAccount             = iTenderRow.iAccount;
-        iProject             = iTenderRow.iProject;
-        iResultUnit          = iTenderRow.iResultUnit;
+        iDescription = iTenderRow.iDescription;
+        iProductNr = iTenderRow.iProductNr;
+        iUnitprice = iTenderRow.iUnitprice;
+        iCount = iTenderRow.iCount;
+        iUnit = iTenderRow.iUnit;
+        iDiscount = iTenderRow.iDiscount;
+        iTaxCode = iTenderRow.iTaxCode;
+        iProduct = iTenderRow.iProduct;
+        iAccountNr = iTenderRow.iAccountNr;
+        // this.iProjectNr    = iTenderRow.iProjectNr;
+        iProjectNumber = iTenderRow.iProjectNumber;
+        // this.iResultUnitNr = iTenderRow.iResultUnitNr;
+        iResultUnitNumber = iTenderRow.iResultUnitNumber;
+        iAccount = iTenderRow.iAccount;
+        iProject = iTenderRow.iProject;
+        iResultUnit = iTenderRow.iResultUnit;
     }
 
     /**
@@ -96,20 +96,19 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iProduct
      */
     public SSSaleRow(SSProduct iProduct) {
-        iProductNr    = iProduct.getNumber();
-        iDescription  = iProduct.getDescription();
-        iUnitprice    = iProduct.getSellingPrice();
-        iUnit         = iProduct.getUnit();
-        iTaxCode      = iProduct.getTaxCode();
-        iAccountNr    = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
+        iProductNr = iProduct.getNumber();
+        iDescription = iProduct.getDescription();
+        iUnitprice = iProduct.getSellingPrice();
+        iUnit = iProduct.getUnit();
+        iTaxCode = iProduct.getTaxCode();
+        iAccountNr = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
         this.iProduct = iProduct;
-        iDiscount     = null;
-        iCount        = null;
-        iAccount      = null;
+        iDiscount = null;
+        iCount = null;
+        iAccount = null;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -128,7 +127,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         iProduct = null;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -144,10 +143,10 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @return
      */
     public String getDescription(Locale iLocale) {
-        if(getProduct() != null){
+        if (getProduct() != null) {
             String iProductDescription = iProduct.getDescription(iLocale);
 
-            if(iProductDescription != null){
+            if (iProductDescription != null) {
                 return iProductDescription;
             }
         }
@@ -162,7 +161,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         this.iDescription = iDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -180,7 +179,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         this.iUnitprice = iUnitprice;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -198,7 +197,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         this.iCount = iCount;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -216,7 +215,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         this.iUnit = iUnit;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -243,7 +242,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
 
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -261,7 +260,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         this.iTaxCode = iTaxCode;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -277,10 +276,10 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      */
     public void setAccountNr(Integer iAccountNr) {
         this.iAccountNr = iAccountNr;
-        iAccount        = null;
+        iAccount = null;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -296,7 +295,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      */
     public void setResultUnitNr(String iResultUnitNr) {
         iResultUnitNumber = iResultUnitNr;
-        iResultUnit       = null;
+        iResultUnit = null;
     }
 
     public void fixResultUnitAndProject() {
@@ -307,7 +306,8 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
             iProjectNumber = iProjectNr.toString();
         }
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -323,11 +323,10 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      */
     public void setProjectNr(String iProjectNr) {
         iProjectNumber = iProjectNr;
-        iProject       = null;
+        iProject = null;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -335,9 +334,9 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @return
      */
     public SSAccount getAccount(List<SSAccount> iAccounts) {
-        if(iAccount == null && iAccountNr != null){
-            for(SSAccount iCurrent: iAccounts){
-                if(iAccountNr.equals( iCurrent.getNumber() )){
+        if (iAccount == null && iAccountNr != null) {
+            for (SSAccount iCurrent: iAccounts) {
+                if (iAccountNr.equals(iCurrent.getNumber())) {
                     iAccount = iCurrent;
                 }
             }
@@ -350,7 +349,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iAccount
      */
     public void setAccount(SSAccount iAccount) {
-        this.iAccount   = iAccount;
+        this.iAccount = iAccount;
 
         if (iAccount == null) {
             iAccountNr = -1;
@@ -359,7 +358,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         }
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Get the product for this row
@@ -377,9 +376,9 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
-        if(iProduct == null && iProductNr != null){
-            for(SSProduct iCurrent: iProducts){
-                if(iProductNr.equals(iCurrent.getNumber())){
+        if (iProduct == null && iProductNr != null) {
+            for (SSProduct iCurrent: iProducts) {
+                if (iProductNr.equals(iCurrent.getNumber())) {
                     iProduct = iCurrent;
                     break;
                 }
@@ -393,14 +392,14 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iProduct
      */
     public void setProduct(SSProduct iProduct) {
-        iProductNr    = iProduct.getNumber();
-        iDescription  = iProduct.getDescription();
-        iUnitprice    = iProduct.getSellingPrice();
-        iUnit         = iProduct.getUnit();
-        iTaxCode      = iProduct.getTaxCode();
-        iAccountNr    = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
-        iCount        = 1;
-        iAccount      = null;
+        iProductNr = iProduct.getNumber();
+        iDescription = iProduct.getDescription();
+        iUnitprice = iProduct.getSellingPrice();
+        iUnit = iProduct.getUnit();
+        iTaxCode = iProduct.getTaxCode();
+        iAccountNr = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
+        iCount = 1;
+        iAccount = null;
         this.iProduct = iProduct;
     }
 
@@ -412,14 +411,14 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         iTaxCode = iProduct.getTaxCode();
         iAccountNr = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
         iAccount = null;
-        this.iProduct     = iProduct;
+        this.iProduct = iProduct;
         iProject = iProduct.getProject();
         iProjectNumber = iProduct.getProjectNr();
         iResultUnit = iProduct.getResultUnit();
         iResultUnitNumber = iProduct.getResultUnitNr();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -427,11 +426,11 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
-        if(iResultUnit == null){
-            for(SSNewResultUnit iCurrent: iResultUnits){
+        if (iResultUnit == null) {
+            for (SSNewResultUnit iCurrent: iResultUnits) {
                 String iNumber = iCurrent.getNumber();
 
-                if(iNumber != null && iNumber.equals(iResultUnitNumber)){
+                if (iNumber != null && iNumber.equals(iResultUnitNumber)) {
                     iResultUnit = iCurrent;
                     break;
                 }
@@ -445,11 +444,11 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iResultUnit
      */
     public void setResultUnit(SSNewResultUnit iResultUnit) {
-        this.iResultUnit  = iResultUnit;
+        this.iResultUnit = iResultUnit;
         iResultUnitNumber = iResultUnit == null ? null : iResultUnit.getNumber();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -457,11 +456,11 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @return
      */
     public SSNewProject getProject(List<SSNewProject> iProjects) {
-        if(iProject == null){
-            for(SSNewProject iCurrent: iProjects){
+        if (iProject == null) {
+            for (SSNewProject iCurrent: iProjects) {
                 String iNumber = iCurrent.getNumber();
 
-                if(iNumber != null && iNumber.equals(iProjectNumber)){
+                if (iNumber != null && iNumber.equals(iProjectNumber)) {
                     iProject = iCurrent;
                     break;
                 }
@@ -475,16 +474,16 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iProject
      */
     public void setProject(SSNewProject iProject) {
-        this.iProject  = iProject;
+        this.iProject = iProject;
         iProjectNumber = iProject == null ? null : iProject.getNumber();
 
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(iProductNr);
         sb.append(", ");
         sb.append(iDescription);
@@ -503,6 +502,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
         sb.append(')');
         return sb.toString();
     }
+
     /**
      * Returns the render string to be shown in the tables
      *
@@ -518,29 +518,31 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
      * @param iProduct
      * @return if the row contains the product
      */
-    public boolean hasProduct(SSProduct iProduct){
-        return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
+    public boolean hasProduct(SSProduct iProduct) {
+        return iProductNr != null && iProductNr.equals(iProduct.getNumber());
     }
-
-
 
     /**
      * Calculate the sum of the row as (Count * Unitprice) * (1 / iDiscount)
-     * 
+     *
      * @return the sum of the row
      */
     public BigDecimal getSum() {
         // If either of the unitprice or count is null we cant have a sum
-        if(iUnitprice == null || iCount == null) return null;
+        if (iUnitprice == null || iCount == null) {
+            return null;
+        }
 
         // Calculate the sum of the products
-        BigDecimal iSum = iUnitprice.multiply( new BigDecimal(iCount) );
+        BigDecimal iSum = iUnitprice.multiply(new BigDecimal(iCount));
 
         // No discount
-        if(iDiscount == null) return iSum;
+        if (iDiscount == null) {
+            return iSum;
+        }
 
         // Subtract the discount from the sum
-        return iSum.subtract( iSum.multiply( getNormalizedDiscount() )  );
+        return iSum.subtract(iSum.multiply(getNormalizedDiscount()));
     }
 
 }

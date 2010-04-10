@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outpayment;
 
+
 import se.swedsoft.bookkeeping.data.SSOutpayment;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -20,6 +21,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -27,12 +29,9 @@ import java.util.ResourceBundle;
  */
 public class SSOutpaymentDialog {
 
-
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSOutpaymentDialog() {
-    }
-
+    private SSOutpaymentDialog() {}
 
     /**
      *
@@ -40,10 +39,12 @@ public class SSOutpaymentDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
-        final SSDialog          iDialog = new SSDialog(iMainFrame, SSOutpaymentDialog.bundle.getString("outpaymentframe.new.title"));
-        final SSOutpaymentPanel iPanel  = new SSOutpaymentPanel(iDialog);
+        final SSDialog          iDialog = new SSDialog(iMainFrame,
+                SSOutpaymentDialog.bundle.getString("outpaymentframe.new.title"));
+        final SSOutpaymentPanel iPanel = new SSOutpaymentPanel(iDialog);
 
         SSOutpayment iOutpayment = new SSOutpayment();
+
         iOutpayment.setNumber(null);
         iPanel.setOutpayment(iOutpayment);
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
@@ -54,7 +55,9 @@ public class SSOutpaymentDialog {
 
                 SSDB.getInstance().addOutpayment(iOutpayment);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 if (SSSupplierInvoiceFrame.getInstance() != null) {
                     SSSupplierInvoiceFrame.getInstance().updateFrame();
                 }
@@ -62,6 +65,7 @@ public class SSOutpaymentDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -71,10 +75,13 @@ public class SSOutpaymentDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "outpaymentframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "outpaymentframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -82,11 +89,10 @@ public class SSOutpaymentDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
-
 
     /**
      *
@@ -94,12 +100,13 @@ public class SSOutpaymentDialog {
      * @param iOutpayment
      * @param pModel
      */
-    public static void newDialog(final SSMainFrame iMainFrame, SSOutpayment iOutpayment ,final AbstractTableModel pModel) {
-        final SSDialog          iDialog = new SSDialog(iMainFrame, SSOutpaymentDialog.bundle.getString("outpaymentframe.new.title"));
-        final SSOutpaymentPanel iPanel  = new SSOutpaymentPanel(iDialog);
+    public static void newDialog(final SSMainFrame iMainFrame, SSOutpayment iOutpayment, final AbstractTableModel pModel) {
+        final SSDialog          iDialog = new SSDialog(iMainFrame,
+                SSOutpaymentDialog.bundle.getString("outpaymentframe.new.title"));
+        final SSOutpaymentPanel iPanel = new SSOutpaymentPanel(iDialog);
 
         iOutpayment.setNumber(null);
-        iPanel.setOutpayment( iOutpayment);
+        iPanel.setOutpayment(iOutpayment);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -109,7 +116,9 @@ public class SSOutpaymentDialog {
 
                 SSDB.getInstance().addOutpayment(iOutpayment);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 if (SSSupplierInvoiceFrame.getInstance() != null) {
                     SSSupplierInvoiceFrame.getInstance().updateFrame();
                 }
@@ -117,6 +126,7 @@ public class SSOutpaymentDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -125,10 +135,13 @@ public class SSOutpaymentDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "outpaymentframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "outpaymentframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -136,11 +149,10 @@ public class SSOutpaymentDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
-
 
     /**
      *
@@ -149,15 +161,19 @@ public class SSOutpaymentDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSOutpayment iSelected, final AbstractTableModel pModel) {
-        final String lockString = "outpayment" + iSelected.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog( iMainFrame, "outpaymentframe.outpaymentopen",iSelected.getNumber());
+        final String lockString = "outpayment" + iSelected.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "outpaymentframe.outpaymentopen",
+                    iSelected.getNumber());
             return;
         }
-        final SSDialog          iDialog = new SSDialog(iMainFrame, SSOutpaymentDialog.bundle.getString("outpaymentframe.edit.title"));
-        final SSOutpaymentPanel iPanel  = new SSOutpaymentPanel(iDialog);
+        final SSDialog          iDialog = new SSDialog(iMainFrame,
+                SSOutpaymentDialog.bundle.getString("outpaymentframe.edit.title"));
+        final SSOutpaymentPanel iPanel = new SSOutpaymentPanel(iDialog);
 
-        iPanel.setOutpayment( new SSOutpayment(iSelected));
+        iPanel.setOutpayment(new SSOutpayment(iSelected));
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -167,7 +183,9 @@ public class SSOutpaymentDialog {
 
                 SSDB.getInstance().updateOutpayment(iOutpayment);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 SSPostLock.removeLock(lockString);
 
@@ -178,6 +196,7 @@ public class SSOutpaymentDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -187,10 +206,13 @@ public class SSOutpaymentDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "outpaymentframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "outpaymentframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -199,7 +221,7 @@ public class SSOutpaymentDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }

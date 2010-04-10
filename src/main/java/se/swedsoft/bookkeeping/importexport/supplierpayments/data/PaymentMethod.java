@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+
 
 /**
  * User: Andreas Lago
@@ -9,9 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
  */
 public enum PaymentMethod {
 
-    BANKGIRO ("supplierpaymentframe.method.1"),
-    PLUSGIRO ("supplierpaymentframe.method.2"),
-    CASH     ("supplierpaymentframe.method.3");
+    BANKGIRO ("supplierpaymentframe.method.1"), PLUSGIRO ("supplierpaymentframe.method.2"), CASH     ("supplierpaymentframe.method.3");
 
     private String iBundleName;
 
@@ -23,12 +23,11 @@ public enum PaymentMethod {
         this.iBundleName = iBundleName;
     }
 
-
     /**
      *
      * @return
      */
-    public String getDescription(){
+    public String getDescription() {
         return SSBundle.getBundle().getString(iBundleName);
     }
 

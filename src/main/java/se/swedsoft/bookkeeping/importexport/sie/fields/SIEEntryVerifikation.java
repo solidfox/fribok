@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSVoucher;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
+
 
 /**
  * Date: 2006-feb-24
@@ -36,42 +38,46 @@ public class SIEEntryVerifikation implements SIEEntry {
     @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         // #VER serie vernr [verdatum] [vertext] [regdatum]
-        if(!iReader.hasFields(STRING, STRING, STRING )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, STRING, STRING)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         SSVoucher iVoucher = new SSVoucher();
 
-        String     iSerie       = iReader.nextString();
-        Integer    iNumber      = iReader.nextInteger();
-        Date       iDate        = iReader.hasNextDate   () ? iReader.nextDate()   : new Date();
-        String     iDescription = iReader.hasNextString () ? iReader.nextString() : null;
+        String     iSerie = iReader.nextString();
+        Integer    iNumber = iReader.nextInteger();
+        Date       iDate = iReader.hasNextDate() ? iReader.nextDate() : new Date();
+        String     iDescription = iReader.hasNextString() ? iReader.nextString() : null;
 
-        if( !iSerie.equals("A") && iSerie.length() > 0  ){
-            iNumber = iNumber + (iSerie.charAt(0)-'A') * 100000;
+        if (!iSerie.equals("A") && iSerie.length() > 0) {
+            iNumber = iNumber + (iSerie.charAt(0) - 'A') * 100000;
         }
         boolean iHasNumber = false;
-        if(iNumber != null && ! SSVoucherMath.hasVoucher(iNumber) ){
+
+        if (iNumber != null && !SSVoucherMath.hasVoucher(iNumber)) {
             iVoucher.setNumber(iNumber);
             iHasNumber = true;
         }
 
-        iVoucher.setDate       (iDate );
+        iVoucher.setDate(iDate);
         iVoucher.setDescription(iDescription);
 
-        while(iReader.hasNextLine()){
+        while (iReader.hasNextLine()) {
             iReader.nextLine();
 
             String iLabel = iReader.next();
 
             SIEEntry iEntry = iImporter.getFactory().get(iLabel);
 
-            if(iEntry == null || !(iEntry instanceof SIEEntryTransaktion))
+            if (iEntry == null || !(iEntry instanceof SIEEntryTransaktion)) {
                 throw new SSImportException("Row of voucher is not #TRANS");
+            }
 
-            ((SIEEntryTransaktion)iEntry).importEntry(iVoucher, iImporter, iReader, iYearData);
+            ((SIEEntryTransaktion) iEntry).importEntry(iVoucher, iImporter, iReader,
+                    iYearData);
         }
-        SSDB.getInstance().addVoucher(iVoucher,iHasNumber);
+        SSDB.getInstance().addVoucher(iVoucher, iHasNumber);
         return true;
     }
 
@@ -91,14 +97,13 @@ public class SIEEntryVerifikation implements SIEEntry {
         SIEEntryTransaktion iEntry = new SIEEntryTransaktion();
 
         // #VER serie vernr [verdatum] [vertext] [regdatum]
-        for(SSVoucher iVoucher: iVouchers){
-            iWriter.append( SIELabel.SIE_VER);
-            iWriter.append( "A");  // Serie A
-            iWriter.append( iVoucher.getNumber() );
-            iWriter.append( iVoucher.getDate  () );
-            iWriter.append( iVoucher.getDescription() );
+        for (SSVoucher iVoucher: iVouchers) {
+            iWriter.append(SIELabel.SIE_VER);
+            iWriter.append("A"); // Serie A
+            iWriter.append(iVoucher.getNumber());
+            iWriter.append(iVoucher.getDate());
+            iWriter.append(iVoucher.getDescription());
             iWriter.newLine();
-
 
             iWriter.newLine("{");
             iEntry.exportEntry(iVoucher, iExporter, iWriter);

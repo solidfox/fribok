@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.vouchertemplate;
 
+
 import se.swedsoft.bookkeeping.data.SSVoucherTemplate;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -24,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-07
@@ -31,10 +33,9 @@ import java.util.List;
  */
 public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
 
-
     private SSTable iTable;
 
-    private  SSVoucherTemplateTableModel iModel;
+    private SSVoucherTemplateTableModel iModel;
 
     private static SSVoucherTemplateFrame cInstance;
 
@@ -49,6 +50,7 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
     public static SSVoucherTemplateFrame getInstance() {
         return cInstance;
     }
+
     /**
      * Default constructor.
      * @param frame
@@ -56,9 +58,9 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
      * @param height
      */
     public SSVoucherTemplateFrame(SSMainFrame frame, int width, int height) {
-        super(frame, SSBundle.getBundle().getString("vouchertemplateframe.title"), width, height);
+        super(frame, SSBundle.getBundle().getString("vouchertemplateframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -70,69 +72,84 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-
         // Importera
         // ***************************
-        SSButton iButton = new SSButton("ICON_IMPORT", "vouchertemplateframe.importbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_IMPORT", "vouchertemplateframe.importbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
-                if (iFilechooser.showOpenDialog(getMainFrame()) == JFileChooser.APPROVE_OPTION) {
-                    SSVoucherTemplateImporter iImporter = new SSVoucherTemplateImporter(iFilechooser.getSelectedFile());
+                if (iFilechooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    SSVoucherTemplateImporter iImporter = new SSVoucherTemplateImporter(
+                            iFilechooser.getSelectedFile());
 
                     try {
                         iImporter.Import();
 
                     } catch (IOException ex) {
-                        SSErrorDialog.showDialog(getMainFrame(), "", ex.getLocalizedMessage());
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     } catch (SSImportException ex) {
-                        SSErrorDialog.showDialog(getMainFrame(), "", ex.getLocalizedMessage());
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     }
                     iModel.fireTableDataChanged();
                 }
 
             }
         });
+
         iToolBar.add(iButton);
 
         // Exportera
         // ***************************
-        iButton = new SSButton("ICON_EXPORT", "vouchertemplateframe.exportbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EXPORT", "vouchertemplateframe.exportbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
                 List<SSVoucherTemplate> iItems;
                 List<SSVoucherTemplate> iSelected = iModel.getSelectedRows(iTable);
 
-                if( iSelected != null ) {
-                    int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("vouchertemplateframe.import.allorselected"));
+                if (iSelected != null) {
+                    int select = SSQueryDialog.showDialog(getMainFrame(),
+                            JOptionPane.YES_NO_CANCEL_OPTION, getTitle(),
+                            SSBundle.getBundle().getString(
+                            "vouchertemplateframe.import.allorselected"));
+
                     switch (select) {
-                        case JOptionPane.YES_OPTION:
-                            iItems = getVoucherTemplates(iSelected);
-                            break;
-                        case JOptionPane.NO_OPTION :
-                            iItems = SSDB.getInstance().getVoucherTemplates();
-                            break;
-                        default:
-                            return;
+                    case JOptionPane.YES_OPTION:
+                        iItems = getVoucherTemplates(iSelected);
+                        break;
+
+                    case JOptionPane.NO_OPTION:
+                        iItems = SSDB.getInstance().getVoucherTemplates();
+                        break;
+
+                    default:
+                        return;
                     }
                 } else {
                     iItems = SSDB.getInstance().getVoucherTemplates();
                 }
 
-
                 iFilechooser.setSelectedFile(new File("Konteringsmallar.xls"));
 
-                if( iFilechooser.showSaveDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
+                if (iFilechooser.showSaveDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
 
-                    SSVoucherTemplateExporter iExporter = new SSVoucherTemplateExporter( iFilechooser.getSelectedFile(), iItems );
+                    SSVoucherTemplateExporter iExporter = new SSVoucherTemplateExporter(
+                            iFilechooser.getSelectedFile(), iItems);
 
                     try {
                         iExporter.export();
                     } catch (IOException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     } catch (SSExportException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     }
                 }
 
@@ -143,18 +160,17 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
 
         // Ta bort verifikation
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "vouchertemplateframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "vouchertemplateframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSVoucherTemplate> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedTemplates(toDelete);
             }
         });
         iToolBar.add(iButton);
         iTable.addSelectionDependentComponent(iButton);
-
-
-
 
         return iToolBar;
     }
@@ -174,11 +190,11 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
         iModel.addColumn(SSVoucherTemplateTableModel.COLUMN_DATE);
         iModel.setupTable(iTable);
 
-
         JPanel iPanel = new JPanel();
-        iPanel.setLayout( new BorderLayout() );
-        iPanel.add( new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,2,2));
+
+        iPanel.setLayout(new BorderLayout());
+        iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
         return iPanel;
     }
@@ -213,19 +229,19 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
         return true;
     }
 
-
     /**
      *
      * @return
      */
-    private SSVoucherTemplate getSelected(){
+    private SSVoucherTemplate getSelected() {
         int selected = iTable.getSelectedRow();
 
-        if (selected >= 0) return iModel.getObject(selected);
+        if (selected >= 0) {
+            return iModel.getObject(selected);
+        }
 
         return null;
     }
-
 
     /**
      *
@@ -236,9 +252,11 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
             return;
         }
 
-        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "vouchertemplateframe.delete");
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(),
+                "vouchertemplateframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSVoucherTemplate iVoucherTemplate : delete) {
                 SSDB.getInstance().deleteVoucherTemplate(iVoucherTemplate);
             }
@@ -248,21 +266,22 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
     private List<SSVoucherTemplate> getVoucherTemplates(List<SSVoucherTemplate> iVoucherTemplates) {
         return SSDB.getInstance().getVoucherTemplates(iVoucherTemplates);
     }
+
     public void updateFrame() {
         iModel.setObjects(SSDB.getInstance().getVoucherTemplates());
     }
-    public void actionPerformed(ActionEvent e)
-    {
 
-        iTable=null;
-        iModel=null;
+    public void actionPerformed(ActionEvent e) {
+
+        iTable = null;
+        iModel = null;
         cInstance = null;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.vouchertemplate.SSVoucherTemplateFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iTable=").append(iTable);
@@ -270,7 +289,4 @@ public class SSVoucherTemplateFrame extends SSDefaultTableFrame {
         return sb.toString();
     }
 }
-
-
-
 

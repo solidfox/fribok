@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.indelivery;
 
+
 import se.swedsoft.bookkeeping.data.SSIndelivery;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -18,14 +19,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-26
  * Time: 11:50:08
  */
 public class SSIndeliveryDialog {
-    private SSIndeliveryDialog() {
-    }
+    private SSIndeliveryDialog() {}
 
     /**
      *
@@ -33,20 +34,25 @@ public class SSIndeliveryDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
-        final SSDialog         iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("indeliveryframe.new.title"));
-        final SSIndeliveryPanel iPanel  = new SSIndeliveryPanel(iDialog);
+        final SSDialog         iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("indeliveryframe.new.title"));
+        final SSIndeliveryPanel iPanel = new SSIndeliveryPanel(iDialog);
 
         SSIndelivery iIndelivery = new SSIndelivery();
+
         iIndelivery.setNumber(null);
-        iPanel.setIndelivery(  iIndelivery );
+        iPanel.setIndelivery(iIndelivery);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         iPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSIndelivery iIndelivery = iPanel.getIndelivery();
+
                 SSDB.getInstance().addIndelivery(iIndelivery);
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
@@ -58,22 +64,28 @@ public class SSIndeliveryDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter(){
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
 
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "indeliveryframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "indeliveryframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
                 SSIndelivery iIndelivery = iPanel.getIndelivery();
+
                 SSDB.getInstance().addIndelivery(iIndelivery);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
@@ -85,16 +97,20 @@ public class SSIndeliveryDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSIndelivery iIndelivery, final AbstractTableModel pModel) {
-        final String lockString = "indelivery" + iIndelivery.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "indelivery" + iIndelivery.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog(iMainFrame, "indeliveryframe.indeliveryopen", iIndelivery.getNumber());
+            new SSErrorDialog(iMainFrame, "indeliveryframe.indeliveryopen",
+                    iIndelivery.getNumber());
             return;
         }
 
-        final SSDialog         iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("indeliveryframe.edit.title"));
-        final SSIndeliveryPanel iPanel  = new SSIndeliveryPanel(iDialog);
+        final SSDialog         iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("indeliveryframe.edit.title"));
+        final SSIndeliveryPanel iPanel = new SSIndeliveryPanel(iDialog);
 
-        iPanel.setIndelivery(  new SSIndelivery(iIndelivery) );
+        iPanel.setIndelivery(new SSIndelivery(iIndelivery));
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -104,7 +120,9 @@ public class SSIndeliveryDialog {
 
                 SSDB.getInstance().updateIndelivery(iIndelivery);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
                 iDialog.closeDialog();
             }
@@ -117,11 +135,14 @@ public class SSIndeliveryDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter(){
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
 
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "indeliveryframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "indeliveryframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -129,16 +150,17 @@ public class SSIndeliveryDialog {
 
                 SSDB.getInstance().updateIndelivery(iIndelivery);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
                 iDialog.closeDialog();
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
-
 
     /**
      *
@@ -147,28 +169,35 @@ public class SSIndeliveryDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSIndelivery iCopyFrom, final AbstractTableModel pModel) {
-        final String lockString = "indelivery" + iCopyFrom.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "indelivery" + iCopyFrom.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (SSPostLock.isLocked(lockString)) {
-            new SSErrorDialog(iMainFrame, "indeliveryframe.indeliveryopen", iCopyFrom.getNumber());
+            new SSErrorDialog(iMainFrame, "indeliveryframe.indeliveryopen",
+                    iCopyFrom.getNumber());
             return;
         }
-        final SSDialog          iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("indeliveryframe.copy.title"));
-        final SSIndeliveryPanel iPanel  = new SSIndeliveryPanel(iDialog);
+        final SSDialog          iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("indeliveryframe.copy.title"));
+        final SSIndeliveryPanel iPanel = new SSIndeliveryPanel(iDialog);
 
         SSIndelivery iIndelivery = new SSIndelivery(iCopyFrom);
 
         iIndelivery.setNumber(null);
 
-        iPanel.setIndelivery(  iIndelivery );
+        iPanel.setIndelivery(iIndelivery);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         iPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSIndelivery iIndelivery = iPanel.getIndelivery();
+
                 SSDB.getInstance().addIndelivery(iIndelivery);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
@@ -180,23 +209,29 @@ public class SSIndeliveryDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter(){
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
 
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "indeliveryframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "indeliveryframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
                 SSIndelivery iIndelivery = iPanel.getIndelivery();
+
                 SSDB.getInstance().addIndelivery(iIndelivery);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }

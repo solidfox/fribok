@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.SSInpaymentRow;
@@ -11,15 +12,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-07
  * Time: 15:18:22
  */
 public class SSInpaymentMath {
-    private SSInpaymentMath() {
-    }
-
+    private SSInpaymentMath() {}
 
     /**
      *
@@ -28,14 +28,13 @@ public class SSInpaymentMath {
      * @param pTo
      * @return
      */
-    public static boolean inPeriod( SSInpayment iInpayment, Date pFrom, Date pTo){
+    public static boolean inPeriod(SSInpayment iInpayment, Date pFrom, Date pTo) {
         Date iDate = iInpayment.getDate();
         Date iFrom = SSDateMath.floor(pFrom);
-        Date iTo   = SSDateMath.ceil (pTo);
+        Date iTo = SSDateMath.ceil(pTo);
 
         return (iFrom.getTime() <= iDate.getTime()) && (iDate.getTime() <= iTo.getTime());
     }
-
 
     /**
      * Convers a value from a row currency to the company currency
@@ -44,21 +43,15 @@ public class SSInpaymentMath {
      * @param iValue
      * @return the converted value
      */
-    public static BigDecimal convertToLocal(SSInpaymentRow iRow, BigDecimal iValue){
+    public static BigDecimal convertToLocal(SSInpaymentRow iRow, BigDecimal iValue) {
         BigDecimal iCurrencyRate = iRow.getCurrencyRate();
 
-        if(iCurrencyRate != null){
-            iValue = iValue.multiply( iCurrencyRate );
+        if (iCurrencyRate != null) {
+            iValue = iValue.multiply(iCurrencyRate);
         }
 
         return iValue;
     }
-
-
-
-
-
-
 
     /**
      * Get the sum of the inpayments for the supplied sales in the sales currency
@@ -67,14 +60,14 @@ public class SSInpaymentMath {
      * @param iInvoice
      * @return the sum
      */
-    public static BigDecimal getSumForInvoice(SSInpayment iInpayment, SSInvoice iInvoice){
+    public static BigDecimal getSumForInvoice(SSInpayment iInpayment, SSInvoice iInvoice) {
 
         BigDecimal iSum = new BigDecimal(0);
 
-        for( SSInpaymentRow iRow: iInpayment.getRows()){
-            BigDecimal iRowValue   = iRow.getValue();
+        for (SSInpaymentRow iRow: iInpayment.getRows()) {
+            BigDecimal iRowValue = iRow.getValue();
 
-            if(iRowValue != null && iRow.isPaying(iInvoice) ) {
+            if (iRowValue != null && iRow.isPaying(iInvoice)) {
                 iSum = iSum.add(iRowValue);
             }
         }
@@ -82,17 +75,17 @@ public class SSInpaymentMath {
         return iSum;
     }
 
-
     /**
      * Get the sum of all inpayments for the supplied sales in the sales currency
      *
      * @param iInvoice
      * @return the sum
      */
-    public static BigDecimal getSumForInvoice(SSInvoice iInvoice){
+    public static BigDecimal getSumForInvoice(SSInvoice iInvoice) {
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
 
         BigDecimal iSum = new BigDecimal(0);
+
         for (SSInpayment iInpayment : iInpayments) {
             BigDecimal iRowSum = getSumForInvoice(iInpayment, iInvoice);
 
@@ -102,18 +95,19 @@ public class SSInpaymentMath {
         return iSum;
     }
 
-    public static HashMap<Integer,BigDecimal> getSumsForInvoices(){
-        HashMap<Integer,BigDecimal> iSums = new HashMap<Integer,BigDecimal>();
+    public static HashMap<Integer, BigDecimal> getSumsForInvoices() {
+        HashMap<Integer, BigDecimal> iSums = new HashMap<Integer, BigDecimal>();
 
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
+
         for (SSInpayment iInpayment : iInpayments) {
-            for(SSInpaymentRow iRow : iInpayment.getRows()){
-                if(iRow.getValue() != null){
-                    if(iSums.containsKey(iRow.getInvoiceNr())){
-                        iSums.put(iRow.getInvoiceNr(), iSums.get(iRow.getInvoiceNr()).add(iRow.getValue()));
-                    }
-                    else{
-                        iSums.put(iRow.getInvoiceNr(),iRow.getValue());
+            for (SSInpaymentRow iRow : iInpayment.getRows()) {
+                if (iRow.getValue() != null) {
+                    if (iSums.containsKey(iRow.getInvoiceNr())) {
+                        iSums.put(iRow.getInvoiceNr(),
+                                iSums.get(iRow.getInvoiceNr()).add(iRow.getValue()));
+                    } else {
+                        iSums.put(iRow.getInvoiceNr(), iRow.getValue());
                     }
                 }
             }
@@ -121,19 +115,20 @@ public class SSInpaymentMath {
         return iSums;
     }
 
-    public static HashMap<Integer,BigDecimal> getSumsForInvoices(Date iDate){
-        HashMap<Integer,BigDecimal> iSums = new HashMap<Integer,BigDecimal>();
+    public static HashMap<Integer, BigDecimal> getSumsForInvoices(Date iDate) {
+        HashMap<Integer, BigDecimal> iSums = new HashMap<Integer, BigDecimal>();
 
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
+
         for (SSInpayment iInpayment : iInpayments) {
-            if(iInpayment.getDate().before(iDate)){
-                for(SSInpaymentRow iRow : iInpayment.getRows()){
-                    if(iRow.getValue() != null){
-                        if(iSums.containsKey(iRow.getInvoiceNr())){
-                            iSums.put(iRow.getInvoiceNr(), iSums.get(iRow.getInvoiceNr()).add(iRow.getValue()));
-                        }
-                        else{
-                            iSums.put(iRow.getInvoiceNr(),iRow.getValue());
+            if (iInpayment.getDate().before(iDate)) {
+                for (SSInpaymentRow iRow : iInpayment.getRows()) {
+                    if (iRow.getValue() != null) {
+                        if (iSums.containsKey(iRow.getInvoiceNr())) {
+                            iSums.put(iRow.getInvoiceNr(),
+                                    iSums.get(iRow.getInvoiceNr()).add(iRow.getValue()));
+                        } else {
+                            iSums.put(iRow.getInvoiceNr(), iRow.getValue());
                         }
                     }
                 }
@@ -154,12 +149,13 @@ public class SSInpaymentMath {
 
         iDate = SSDateMath.ceil(iDate);
         BigDecimal iSum = new BigDecimal(0);
+
         for (SSInpayment iInpayment : iInpayments) {
-            Date iCurrent = SSDateMath.floor(  iInpayment.getDate() );
+            Date iCurrent = SSDateMath.floor(iInpayment.getDate());
 
             BigDecimal iRowSum = getSumForInvoice(iInpayment, iInvoice);
 
-            if(iCurrent.before(iDate)){
+            if (iCurrent.before(iDate)) {
                 iSum = iSum.add(iRowSum);
             }
         }
@@ -167,24 +163,22 @@ public class SSInpaymentMath {
         return iSum;
     }
 
-
-
-
     /**
      * Get the date of the last inpayment for the supplied sales, or
      *
      * @param iInvoice
      * @return the sum
      */
-    public static Date getLastInpaymentForInvoice(SSInvoice iInvoice){
+    public static Date getLastInpaymentForInvoice(SSInvoice iInvoice) {
 
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
 
         Date iDate = null;
+
         for (SSInpayment iInpayment : iInpayments) {
             Date iRowDate = iInpayment.getDate();
 
-            if(iInpayment.isPaying(iInvoice) && (iDate == null || iRowDate.after(iDate)) ){
+            if (iInpayment.isPaying(iInvoice) && (iDate == null || iRowDate.after(iDate))) {
                 iDate = iRowDate;
             }
 
@@ -193,21 +187,20 @@ public class SSInpaymentMath {
         return iDate;
     }
 
-
     /**
      * Get the sum for the inpayment in the payment currency
      *
      * @param iInpayment
      * @return the sum
      */
-    public static BigDecimal getSum(SSInpayment iInpayment){
+    public static BigDecimal getSum(SSInpayment iInpayment) {
 
         BigDecimal iSum = new BigDecimal(0);
 
-        for( SSInpaymentRow iRow: iInpayment.getRows()){
+        for (SSInpaymentRow iRow: iInpayment.getRows()) {
             BigDecimal iValue = iRow.getValue();
 
-            if(iValue != null) {
+            if (iValue != null) {
                 // Convert to the local currency
                 iValue = convertToLocal(iRow, iValue);
 
@@ -219,7 +212,6 @@ public class SSInpaymentMath {
 
     }
 
-
     /**
      * Get the saldo for the sales of the current row in the sales currency, returns null if no sales
      *
@@ -227,13 +219,14 @@ public class SSInpaymentMath {
      * @return the saldo
      */
     public static BigDecimal getSaldo(SSInpaymentRow iInpaymentRow) {
-        SSInvoice iInvoice = iInpaymentRow.getInvoice( SSDB.getInstance().getInvoices() );
+        SSInvoice iInvoice = iInpaymentRow.getInvoice(SSDB.getInstance().getInvoices());
 
-        if(iInvoice == null) return null;
+        if (iInvoice == null) {
+            return null;
+        }
 
         return SSInvoiceMath.getSaldo(iInvoice.getNumber());
     }
-
 
     /**
      * Get the difference between the value of the sales in the sales currency and the payed value, in the company currency such as
@@ -243,16 +236,17 @@ public class SSInpaymentMath {
      * @param iInpaymentRow
      * @return the currency rate difference
      */
-    public static BigDecimal getCurrencyRateDifference(SSInpaymentRow iInpaymentRow){
-        BigDecimal iPaymentRate   = iInpaymentRow.getCurrencyRate();
-        BigDecimal iCurrencyRate  = iInpaymentRow.getInvoiceCurrencyRate();
-        BigDecimal iValue         = iInpaymentRow.getValue();
+    public static BigDecimal getCurrencyRateDifference(SSInpaymentRow iInpaymentRow) {
+        BigDecimal iPaymentRate = iInpaymentRow.getCurrencyRate();
+        BigDecimal iCurrencyRate = iInpaymentRow.getInvoiceCurrencyRate();
+        BigDecimal iValue = iInpaymentRow.getValue();
 
-        if(iPaymentRate == null || iCurrencyRate == null || iValue == null) return null;
+        if (iPaymentRate == null || iCurrencyRate == null || iValue == null) {
+            return null;
+        }
 
-        return iValue.multiply(  iPaymentRate.subtract(iCurrencyRate) );
+        return iValue.multiply(iPaymentRate.subtract(iCurrencyRate));
     }
-
 
     /**
      * Get the currency rate difference for the whole inpayment, in the company currency
@@ -260,13 +254,13 @@ public class SSInpaymentMath {
      * @param iInpayment
      * @return the currency rate difference
      */
-    public static BigDecimal getCurrencyRateDifference(SSInpayment iInpayment){
+    public static BigDecimal getCurrencyRateDifference(SSInpayment iInpayment) {
         BigDecimal iSum = new BigDecimal(0);
 
-        for( SSInpaymentRow iRow: iInpayment.getRows()){
+        for (SSInpaymentRow iRow: iInpayment.getRows()) {
             BigDecimal iRowSum = getCurrencyRateDifference(iRow);
 
-            if(iRowSum != null) {
+            if (iRowSum != null) {
                 iSum = iSum.add(iRowSum);
             }
         }
@@ -274,7 +268,6 @@ public class SSInpaymentMath {
         return iSum;
 
     }
-
 
     /**
      *
@@ -288,7 +281,9 @@ public class SSInpaymentMath {
         for (SSInpaymentRow iRow : iInpayment.getRows()) {
             SSInvoice iInvoice = iRow.getInvoice(iInvoices);
 
-            if(iInvoice != null && iInvoice.hasCustomer(iCustomer)) return true;
+            if (iInvoice != null && iInvoice.hasCustomer(iCustomer)) {
+                return true;
+            }
         }
         return false;
     }
@@ -302,7 +297,9 @@ public class SSInpaymentMath {
     public static boolean hasInvoice(SSInpayment iInpayment, SSInvoice iInvoice) {
 
         for (SSInpaymentRow iRow : iInpayment.getRows()) {
-            if(iRow.isPaying(iInvoice)) return true;
+            if (iRow.isPaying(iInvoice)) {
+                return true;
+            }
         }
         return false;
     }

@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-10
@@ -17,12 +19,13 @@ public class SSImageFilter extends SSFileFilter {
     public static final String gif = "gif";
     public static final String png = "png";
 
-    public SSImageFilter(){
-        addExtension(gif );
+    public SSImageFilter() {
+        addExtension(gif);
         addExtension(jpeg);
-        addExtension(jpg );
-        addExtension(png );
+        addExtension(jpg);
+        addExtension(png);
     }
+
     /**
      * @return The description of this filter
      */
@@ -31,8 +34,5 @@ public class SSImageFilter extends SSFileFilter {
         return bundle.getString("filechooser.image.filter");
     }
 
-
-
 }
-
 

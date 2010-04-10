@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outpayment.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSOutpayment;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.outpayment.util.SSOutpaymentTableModel;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-nov-15
@@ -21,9 +23,7 @@ public class SSOutpaymentSearchPanel extends JPanel {
 
     private JTextField iTextField;
 
-
     private SSOutpaymentTableModel iModel;
-
 
     public SSOutpaymentSearchPanel(SSOutpaymentTableModel iModel) {
         this.iModel = iModel;
@@ -31,7 +31,6 @@ public class SSOutpaymentSearchPanel extends JPanel {
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,22 +40,26 @@ public class SSOutpaymentSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSOutpayment> iOutpayments = SSDB.getInstance().getOutpayments();
         List<SSOutpayment> iFiltered = new LinkedList<SSOutpayment>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSOutpayment iOutpayment : iOutpayments) {
-            String iNumber      = iOutpayment.getNumber().toString();
+            String iNumber = iOutpayment.getNumber().toString();
             String iDescription = iOutpayment.getText();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iOutpayment);
             }
         }
@@ -66,6 +69,7 @@ public class SSOutpaymentSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.outpayment.panel.SSOutpaymentSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

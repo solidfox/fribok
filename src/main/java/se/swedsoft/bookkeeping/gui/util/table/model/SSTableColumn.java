@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.table.model;
 
+
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -22,7 +24,6 @@ public abstract class SSTableColumn<T> {
         this.iName = iName;
     }
 
-
     /**
      * Gets the value of the column at a specific row
      *
@@ -39,7 +40,6 @@ public abstract class SSTableColumn<T> {
      */
     public abstract void setValue(T iObject, Object iValue);
 
-
     /**
      * Get the class the getInvoiceValue returns for this table column
      *
@@ -47,14 +47,12 @@ public abstract class SSTableColumn<T> {
      */
     public abstract Class<?> getColumnClass();
 
-
     /**
      * Returns the default width for this column
      *
      * @return the default width
      */
     public abstract int getDefaultWidth();
-
 
     /**
      * Returns the name of this colunn
@@ -99,7 +97,7 @@ public abstract class SSTableColumn<T> {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public TableCellRenderer getCellRenderer() {
@@ -112,14 +110,14 @@ public abstract class SSTableColumn<T> {
      * @param iRow
      * @return if this column is editable at the row
      */
-    public boolean isEditable(int iRow){
+    public boolean isEditable(int iRow) {
         return true;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn");
         sb.append("{iModel=").append(iModel);
         sb.append(", iName='").append(iName).append('\'');

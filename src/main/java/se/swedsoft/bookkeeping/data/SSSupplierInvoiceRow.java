@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -8,6 +9,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -32,8 +34,6 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
     // Frakt / Enhet
     private BigDecimal iUnitFreight;
 
-
-
     // Konto
     private Integer iAccountNr;
     // Projekt
@@ -42,8 +42,6 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
     // Resultatenhet
     private String iResultUnitNumber;
     private Integer iResultUnitNr;
-
-
 
     // Transient reference to the product
     private transient SSProduct iProduct;
@@ -54,14 +52,12 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
     // Transient reference to the result init
     private transient SSNewResultUnit iResultUnit;
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
-    public SSSupplierInvoiceRow() {
-    }
+    public SSSupplierInvoiceRow() {}
 
     /**
      * Copy constructor
@@ -70,21 +66,21 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @param iSupplierInvoiceRow
      */
     public SSSupplierInvoiceRow(SSSupplierInvoiceRow iSupplierInvoiceRow) {
-        iDescription         = iSupplierInvoiceRow.iDescription;
-        iProductNr           = iSupplierInvoiceRow.iProductNr;
-        iUnitprice           = iSupplierInvoiceRow.iUnitprice;
-        iQuantity            = iSupplierInvoiceRow.iQuantity;
-        iUnit                = iSupplierInvoiceRow.iUnit;
-        iUnitFreight         = iSupplierInvoiceRow.iUnitFreight;
-        iAccountNr           = iSupplierInvoiceRow.iAccountNr;
-        //this.iProjectNr    = iSupplierInvoiceRow.iProjectNr;
-        //this.iResultUnitNr = iSupplierInvoiceRow.iResultUnitNr;
-        iProjectNumber       = iSupplierInvoiceRow.iProjectNumber;
-        iResultUnitNumber    = iSupplierInvoiceRow.iResultUnitNumber;
-        iProduct             = iSupplierInvoiceRow.iProduct;
-        iAccount             = iSupplierInvoiceRow.iAccount;
-        iProject             = iSupplierInvoiceRow.iProject;
-        iResultUnit          = iSupplierInvoiceRow.iResultUnit;
+        iDescription = iSupplierInvoiceRow.iDescription;
+        iProductNr = iSupplierInvoiceRow.iProductNr;
+        iUnitprice = iSupplierInvoiceRow.iUnitprice;
+        iQuantity = iSupplierInvoiceRow.iQuantity;
+        iUnit = iSupplierInvoiceRow.iUnit;
+        iUnitFreight = iSupplierInvoiceRow.iUnitFreight;
+        iAccountNr = iSupplierInvoiceRow.iAccountNr;
+        // this.iProjectNr    = iSupplierInvoiceRow.iProjectNr;
+        // this.iResultUnitNr = iSupplierInvoiceRow.iResultUnitNr;
+        iProjectNumber = iSupplierInvoiceRow.iProjectNumber;
+        iResultUnitNumber = iSupplierInvoiceRow.iResultUnitNumber;
+        iProduct = iSupplierInvoiceRow.iProduct;
+        iAccount = iSupplierInvoiceRow.iAccount;
+        iProject = iSupplierInvoiceRow.iProject;
+        iResultUnit = iSupplierInvoiceRow.iResultUnit;
     }
 
     /**
@@ -92,14 +88,14 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @param iProduct
      */
     public SSSupplierInvoiceRow(SSProduct iProduct) {
-        iProductNr    = iProduct.getNumber();
-        iDescription  = iProduct.getDescription();
-        iUnitprice    = iProduct.getSellingPrice();
-        iUnit         = iProduct.getUnit();
-        iAccountNr    = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
+        iProductNr = iProduct.getNumber();
+        iDescription = iProduct.getDescription();
+        iUnitprice = iProduct.getSellingPrice();
+        iUnit = iProduct.getUnit();
+        iAccountNr = iProduct.getDefaultAccount(SSDefaultAccount.Sales);
         this.iProduct = iProduct;
-        iQuantity     = null;
-        iAccount      = null;
+        iQuantity = null;
+        iAccount = null;
     }
 
     /**
@@ -108,14 +104,14 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      */
     public SSSupplierInvoiceRow(SSPurchaseOrderRow iRow) {
         iDescription = iRow.getDescription();
-        iProductNr   = iRow.getProductNr();
-        iUnitprice   = iRow.getUnitPrice();
-        iQuantity    = iRow.getQuantity();
-        iUnit        = iRow.getUnit();
-        iAccountNr   = iRow.getAccountNr();
+        iProductNr = iRow.getProductNr();
+        iUnitprice = iRow.getUnitPrice();
+        iQuantity = iRow.getQuantity();
+        iUnit = iRow.getUnit();
+        iAccountNr = iRow.getAccountNr();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -133,7 +129,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         this.iProductNr = iProductNr;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -151,7 +147,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         this.iDescription = iDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -169,10 +165,10 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         this.iUnitprice = iUnitprice;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
-     * 
+     *
      * @return
      */
     public BigDecimal getUnitFreight() {
@@ -186,7 +182,8 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
     public void setUnitFreight(BigDecimal iUnitFreight) {
         this.iUnitFreight = iUnitFreight;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
     /**
      *
      * @return
@@ -203,7 +200,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         this.iQuantity = iQuantity;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -221,9 +218,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         this.iUnit = iUnit;
     }
 
-
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -239,10 +234,10 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      */
     public void setAccountNr(Integer iAccountNr) {
         this.iAccountNr = iAccountNr;
-        iAccount        = null;
+        iAccount = null;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -258,7 +253,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      */
     public void setResultUnitNr(String iResultUnitNr) {
         iResultUnitNumber = iResultUnitNr;
-        iResultUnit       = null;
+        iResultUnit = null;
     }
 
     public void fixResultUnitAndProject() {
@@ -269,7 +264,8 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
             iProjectNumber = iProjectNr.toString();
         }
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -285,11 +281,10 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      */
     public void setProjectNr(String iProjectNr) {
         iProjectNumber = iProjectNr;
-        iProject       = null;
+        iProject = null;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -297,9 +292,9 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @return
      */
     public SSAccount getAccount(List<SSAccount> iAccounts) {
-        if(iAccount == null && iAccountNr != null){
-            for(SSAccount iCurrent: iAccounts){
-                if(iAccountNr.equals( iCurrent.getNumber() )){
+        if (iAccount == null && iAccountNr != null) {
+            for (SSAccount iCurrent: iAccounts) {
+                if (iAccountNr.equals(iCurrent.getNumber())) {
                     iAccount = iCurrent;
                 }
             }
@@ -312,7 +307,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @param iAccount
      */
     public void setAccount(SSAccount iAccount) {
-        this.iAccount   = iAccount;
+        this.iAccount = iAccount;
 
         if (iAccount == null) {
             iAccountNr = -1;
@@ -321,7 +316,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         }
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Get the product for this row
@@ -339,11 +334,11 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
-        if(iProduct == null){
-            for(SSProduct iCurrent: iProducts){
+        if (iProduct == null) {
+            for (SSProduct iCurrent: iProducts) {
                 String iNumber = iCurrent.getNumber();
 
-                if(iNumber != null && iNumber.equals(iProductNr)){
+                if (iNumber != null && iNumber.equals(iProductNr)) {
                     iProduct = iCurrent;
                     break;
                 }
@@ -358,20 +353,20 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      */
     public void setProduct(SSProduct iProduct) {
         this.iProduct = iProduct;
-        iProductNr    = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
 
-        if(iProduct != null){
+        if (iProduct != null) {
             iDescription = iProduct.getDescription();
-            iUnitprice   = iProduct.getPurchasePrice();
+            iUnitprice = iProduct.getPurchasePrice();
             iUnitFreight = iProduct.getUnitFreight();
-            iUnit        = iProduct.getUnit();
-            iAccountNr   = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);
-            iAccount     = null;
-            iQuantity    = 1;
+            iUnit = iProduct.getUnit();
+            iAccountNr = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);
+            iAccount = null;
+            iQuantity = 1;
         }
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -379,11 +374,11 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
-        if(iResultUnit == null){
-            for(SSNewResultUnit iCurrent: iResultUnits){
+        if (iResultUnit == null) {
+            for (SSNewResultUnit iCurrent: iResultUnits) {
                 String iNumber = iCurrent.getNumber();
 
-                if(iNumber != null && iNumber.equals(iResultUnitNumber)){
+                if (iNumber != null && iNumber.equals(iResultUnitNumber)) {
                     iResultUnit = iCurrent;
                     break;
                 }
@@ -397,11 +392,11 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @param iResultUnit
      */
     public void setResultUnit(SSNewResultUnit iResultUnit) {
-        this.iResultUnit  = iResultUnit;
+        this.iResultUnit = iResultUnit;
         iResultUnitNumber = iResultUnit == null ? null : iResultUnit.getNumber();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -409,11 +404,11 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @return
      */
     public SSNewProject getProject(List<SSNewProject> iProjects) {
-        if(iProject == null){
-            for(SSNewProject iCurrent: iProjects){
+        if (iProject == null) {
+            for (SSNewProject iCurrent: iProjects) {
                 String iNumber = iCurrent.getNumber();
 
-                if(iNumber != null && iNumber.equals(iProjectNumber)){
+                if (iNumber != null && iNumber.equals(iProjectNumber)) {
                     iProject = iCurrent;
                     break;
                 }
@@ -427,13 +422,12 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @param iProject
      */
     public void setProject(SSNewProject iProject) {
-        this.iProject  = iProject;
+        this.iProject = iProject;
         iProjectNumber = iProject == null ? null : iProject.getNumber();
 
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      * Returns {@code true} if the product is contained in the row
@@ -441,16 +435,13 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      * @param iProduct
      * @return if the row contains the product
      */
-    public boolean hasProduct(SSProduct iProduct){
-        return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
+    public boolean hasProduct(SSProduct iProduct) {
+        return iProductNr != null && iProductNr.equals(iProduct.getNumber());
     }
 
-
-
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(iProductNr);
         sb.append(", ");
         sb.append(iDescription);
@@ -465,6 +456,7 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         sb.append(')');
         return sb.toString();
     }
+
     /**
      * Returns the render string to be shown in the tables
      *
@@ -474,8 +466,6 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
         return iProductNr;
     }
 
-
-
     /**
      * Calculate the sum of the row as (Count * Unitprice) * (1 / iDiscount)
      *
@@ -483,10 +473,12 @@ public class SSSupplierInvoiceRow  implements SSTableSearchable, Serializable {
      */
     public BigDecimal getSum() {
         // If either of the unitprice or count is null we cant have a sum
-        if(iUnitprice == null || iQuantity == null) return null;
+        if (iUnitprice == null || iQuantity == null) {
+            return null;
+        }
 
         // Calculate the sum of the products
-        return iUnitprice.multiply( new BigDecimal(iQuantity) );
+        return iUnitprice.multiply(new BigDecimal(iQuantity));
     }
 
 }

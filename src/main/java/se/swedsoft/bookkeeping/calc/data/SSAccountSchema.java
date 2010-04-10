@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.data;
 
+
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -15,6 +16,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.util.*;
 
+
 /**
  * Date: 2006-feb-27
  * Time: 12:48:13
@@ -23,7 +25,6 @@ public class SSAccountSchema implements Serializable {
 
     private static String cParserClass = "org.apache.xerces.parsers.SAXParser";
 
-
     private List<SSAccountGroup> iResultGroups;
 
     private List<SSAccountGroup> iBalanceGroups;
@@ -31,8 +32,8 @@ public class SSAccountSchema implements Serializable {
     /**
      *
      */
-    private SSAccountSchema(){
-        iResultGroups  = new LinkedList<SSAccountGroup>();
+    private SSAccountSchema() {
+        iResultGroups = new LinkedList<SSAccountGroup>();
         iBalanceGroups = new LinkedList<SSAccountGroup>();
     }
 
@@ -52,20 +53,17 @@ public class SSAccountSchema implements Serializable {
         return iBalanceGroups;
     }
 
-
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("ResultGroups: {\n");
-        for(SSAccountGroup iLevelOne : iResultGroups ){
+        for (SSAccountGroup iLevelOne : iResultGroups) {
             sb.append(iLevelOne);
         }
         sb.append("}\n");
 
         sb.append("BalanceGroups: {\n");
-        for(SSAccountGroup iLevelOne : iBalanceGroups ){
+        for (SSAccountGroup iLevelOne : iBalanceGroups) {
             sb.append(iLevelOne);
         }
         sb.append("}\n");
@@ -80,13 +78,15 @@ public class SSAccountSchema implements Serializable {
      * @param iSchema
      * @return
      */
-    public static SSAccountSchema getAccountSchema(String iSchema){
+    public static SSAccountSchema getAccountSchema(String iSchema) {
         SSAccountSchema iAccountSchema;
 
         if (iSchemaCache.containsKey(iSchema)) {
             iAccountSchema = iSchemaCache.get(iSchema);
         } else {
-            InputStream is = SSAccountSchema.class.getResourceAsStream("/account/" + iSchema);
+            InputStream is = SSAccountSchema.class.getResourceAsStream(
+                    "/account/" + iSchema);
+
             iAccountSchema = createAccountSchema(is);
             iSchemaCache.put(iSchema, iAccountSchema);
         }
@@ -99,7 +99,7 @@ public class SSAccountSchema implements Serializable {
      * @param pYearData
      * @return
      */
-    public static SSAccountSchema getAccountSchema(SSNewAccountingYear pYearData){
+    public static SSAccountSchema getAccountSchema(SSNewAccountingYear pYearData) {
         String iSchema = pYearData.getAccountPlan().getType().getSchema();
 
         return getAccountSchema(iSchema);
@@ -114,14 +114,15 @@ public class SSAccountSchema implements Serializable {
         SSAccountSchema iSchema = new SSAccountSchema();
 
         XMLReader iReader;
-        try{
+
+        try {
             iReader = XMLReaderFactory.createXMLReader(cParserClass);
         } catch (SAXException e) {
             e.printStackTrace();
             return iSchema;
         }
 
-        iReader.setContentHandler(new AccountGroupLoader( iSchema ));
+        iReader.setContentHandler(new AccountGroupLoader(iSchema));
 
         try {
             iReader.parse(new InputSource(is));
@@ -133,11 +134,10 @@ public class SSAccountSchema implements Serializable {
         return iSchema;
     }
 
-
     /**
      *
      */
-    private static class AccountGroupLoader extends DefaultHandler{
+    private static class AccountGroupLoader extends DefaultHandler {
 
         private SSAccountSchema iSchema;
 
@@ -145,13 +145,12 @@ public class SSAccountSchema implements Serializable {
 
         private Stack<SSAccountGroup> iLevelTwo;
 
-
         /**
          *
          * @param pSchema
          */
-        public AccountGroupLoader(SSAccountSchema pSchema){
-            iSchema   = pSchema;
+        public AccountGroupLoader(SSAccountSchema pSchema) {
+            iSchema = pSchema;
             iLevelOne = null;
             iLevelTwo = new Stack<SSAccountGroup>();
         }
@@ -161,19 +160,23 @@ public class SSAccountSchema implements Serializable {
          * @param iAttributes
          * @return
          */
-        private SSAccountGroup createGroup(Attributes iAttributes){
-            String iId          = iAttributes.getValue("id");
-            String iBundle      = iAttributes.getValue("bundle");
+        private SSAccountGroup createGroup(Attributes iAttributes) {
+            String iId = iAttributes.getValue("id");
+            String iBundle = iAttributes.getValue("bundle");
             String iFromAccount = iAttributes.getValue("fromAccount");
-            String iToAccount   = iAttributes.getValue("toAccount");
-
+            String iToAccount = iAttributes.getValue("toAccount");
 
             SSAccountGroup iAccountGroup = new SSAccountGroup();
-            iAccountGroup.setBundle     ( iBundle);
-            iAccountGroup.setId         ( Integer.decode(iId) );
 
-            if(iFromAccount != null) iAccountGroup.setFromAccount( Integer.decode(iFromAccount));
-            if(iToAccount   != null) iAccountGroup.setToAccount  ( Integer.decode(iToAccount  ));
+            iAccountGroup.setBundle(iBundle);
+            iAccountGroup.setId(Integer.decode(iId));
+
+            if (iFromAccount != null) {
+                iAccountGroup.setFromAccount(Integer.decode(iFromAccount));
+            }
+            if (iToAccount != null) {
+                iAccountGroup.setToAccount(Integer.decode(iToAccount));
+            }
 
             add(iAccountGroup);
 
@@ -184,8 +187,8 @@ public class SSAccountSchema implements Serializable {
          *
          * @param pGroup
          */
-        private void add(SSAccountGroup pGroup){
-            if(iLevelTwo.isEmpty()){
+        private void add(SSAccountGroup pGroup) {
+            if (iLevelTwo.isEmpty()) {
                 iLevelOne.add(pGroup);
             } else {
                 iLevelTwo.peek().addAccountGroup(pGroup);
@@ -202,17 +205,16 @@ public class SSAccountSchema implements Serializable {
          */
         @Override
         public void startElement(String uri, String localName, String qName, Attributes iAttributes) throws SAXException {
-            if(localName.equalsIgnoreCase("result")){
+            if (localName.equalsIgnoreCase("result")) {
                 iLevelOne = iSchema.iResultGroups;
             }
-            if(localName.equalsIgnoreCase("balance")){
+            if (localName.equalsIgnoreCase("balance")) {
                 iLevelOne = iSchema.iBalanceGroups;
             }
 
-            if(localName.equalsIgnoreCase("group")){
-                iLevelTwo.push( createGroup(iAttributes) );
+            if (localName.equalsIgnoreCase("group")) {
+                iLevelTwo.push(createGroup(iAttributes));
             }
-
 
         }
 
@@ -225,13 +227,13 @@ public class SSAccountSchema implements Serializable {
          */
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-            if(localName.equalsIgnoreCase("result")){
+            if (localName.equalsIgnoreCase("result")) {
                 iLevelOne = null;
             }
-            if(localName.equalsIgnoreCase("balance")){
+            if (localName.equalsIgnoreCase("balance")) {
                 iLevelOne = null;
             }
-            if(localName.equalsIgnoreCase("group")){
+            if (localName.equalsIgnoreCase("group")) {
                 iLevelTwo.pop();
             }
 
@@ -240,7 +242,9 @@ public class SSAccountSchema implements Serializable {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.calc.data.SSAccountSchema.AccountGroupLoader");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.calc.data.SSAccountSchema.AccountGroupLoader");
             sb.append("{iLevelOne=").append(iLevelOne);
             sb.append(", iLevelTwo=").append(iLevelTwo);
             sb.append(", iSchema=").append(iSchema);

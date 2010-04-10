@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
@@ -13,6 +14,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
+
 
 /**
  * Date: 2006-feb-20
@@ -29,12 +31,13 @@ public class SIEEntryTyp implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
 
         // #SIETYP typ
-        if(!iReader.hasFields(STRING, INT )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
-        SIEType iType = SIEType.decode( iReader.next() );
+        SIEType iType = SIEType.decode(iReader.next());
 
-        iImporter.setType( iType );
+        iImporter.setType(iType);
 
         return true;
     }
@@ -45,9 +48,9 @@ public class SIEEntryTyp implements SIEEntry {
      * @param iWriter
      */
     @Override
-    public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter , SSNewAccountingYear iCurrentYearData) throws SSExportException {
-        iWriter.append( SIELabel.SIE_SIETYP   );
-        iWriter.append( iExporter.getType() );
+    public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
+        iWriter.append(SIELabel.SIE_SIETYP);
+        iWriter.append(iExporter.getType());
         iWriter.newLine();
 
         return true;

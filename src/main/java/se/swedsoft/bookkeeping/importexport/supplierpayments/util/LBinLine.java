@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.util;
 
+
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -13,18 +15,16 @@ import java.util.Date;
  */
 public class LBinLine {
 
-
-    private char [] iChars;
+    private char[] iChars;
 
     private int iPosition;
-
 
     /**
      *
      * @param iLength
      */
     public LBinLine(int iLength) {
-        iChars    = new char[iLength];
+        iChars = new char[iLength];
         iPosition = 0;
     }
 
@@ -34,7 +34,7 @@ public class LBinLine {
      */
     public LBinLine(char[] iChars) {
         this.iChars = iChars;
-        iPosition   = 0;
+        iPosition = 0;
     }
 
     /**
@@ -42,20 +42,20 @@ public class LBinLine {
      * @param iLine
      */
     public LBinLine(String iLine) {
-        this(iLine.length() );
+        this(iLine.length());
         iLine.getChars(0, iLine.length(), iChars, 0);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      * Resets the position to the first id
      */
-    public void reset(){
+    public void reset() {
         iPosition = 0;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -73,7 +73,7 @@ public class LBinLine {
         return iChars.length;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      * Append a string
@@ -83,16 +83,17 @@ public class LBinLine {
      */
     public int append(String iString) {
 
-        if( iString == null ) return iPosition;
+        if (iString == null) {
+            return iPosition;
+        }
 
-        for(int i = 0; i < iString.length(); i++){
+        for (int i = 0; i < iString.length(); i++) {
             iChars[iPosition] = iString.charAt(i);
 
-            iPosition++ ;
+            iPosition++;
         }
         return iPosition;
     }
-
 
     /**
      * Append a string
@@ -104,22 +105,23 @@ public class LBinLine {
      */
     public int append(String iString, int iLength, char iBlank) {
 
-        if( iString == null ) iString = "";
+        if (iString == null) {
+            iString = "";
+        }
 
         // Fill the string with blanks
-        for(int i = iString.length(); i < iLength; i++ ){
+        for (int i = iString.length(); i < iLength; i++) {
             iString = iBlank + iString;
         }
 
-        for(int i = 0; i < iLength; i++){
+        for (int i = 0; i < iLength; i++) {
             iChars[iPosition] = iString.charAt(i);
 
-            iPosition++ ;
+            iPosition++;
         }
 
         return iPosition;
     }
-
 
     /**
      * Append a string
@@ -132,7 +134,6 @@ public class LBinLine {
         return append(iString, iLength, ' ');
     }
 
-
     /**
      * Append a date
      *
@@ -144,7 +145,7 @@ public class LBinLine {
     public int append(Date iDate, int iLength, String iFormat) {
         DateFormat iDateFormat = new SimpleDateFormat(iFormat);
 
-        return append( iDateFormat.format(iDate), iLength, ' ' );
+        return append(iDateFormat.format(iDate), iLength, ' ');
     }
 
     /**
@@ -154,7 +155,7 @@ public class LBinLine {
      * @return
      */
     public int append(BigDecimal iValue, int iLength) {
-        String iText = Long.toString( Math.round(iValue.doubleValue() * 100) );
+        String iText = Long.toString(Math.round(iValue.doubleValue() * 100));
 
         return append(iText, iLength, '0');
     }
@@ -171,18 +172,14 @@ public class LBinLine {
         return append(iText, iLength, '0');
     }
 
-
-
     // Read
-
-
 
     /**
      *
      * @param iStart
      * @return
      */
-    public String readString(int iStart){
+    public String readString(int iStart) {
         return String.valueOf(iChars[iStart - 1]);
 
     }
@@ -193,11 +190,13 @@ public class LBinLine {
      * @param iEnd
      * @return
      */
-    public String readString(int iStart, int iEnd){
+    public String readString(int iStart, int iEnd) {
         String iField = "";
 
-        for(int i = iStart; i <= iEnd; i++){
-            if(i - 1 < iChars.length) iField = iField + iChars[i - 1];
+        for (int i = iStart; i <= iEnd; i++) {
+            if (i - 1 < iChars.length) {
+                iField = iField + iChars[i - 1];
+            }
         }
         return iField.trim();
     }
@@ -209,7 +208,7 @@ public class LBinLine {
      * @param iFormat
      * @return
      */
-    public Date readDate(int iStart, int iEnd, String iFormat){
+    public Date readDate(int iStart, int iEnd, String iFormat) {
         DateFormat iDateFormat = new SimpleDateFormat(iFormat);
 
         String iValue = readString(iStart, iEnd);
@@ -227,7 +226,7 @@ public class LBinLine {
      * @param iEnd
      * @return
      */
-    public BigDecimal readBigDecimal(int iStart, int iEnd){
+    public BigDecimal readBigDecimal(int iStart, int iEnd) {
         String iText = readString(iStart, iEnd);
 
         try {
@@ -239,31 +238,21 @@ public class LBinLine {
         }
     }
 
-
-
     /**
      *
      * @param iStart
      * @param iEnd
      * @return
      */
-    public Integer readInteger(int iStart, int iEnd){
+    public Integer readInteger(int iStart, int iEnd) {
         String iValue = readString(iStart, iEnd);
-        
+
         try {
             return new Integer(iValue);
         } catch (NumberFormatException e) {
             return 0;
         }
     }
-
-
-
-
-
-
-
-
 
     /**
      *
@@ -272,9 +261,5 @@ public class LBinLine {
     public String toString() {
         return new String(iChars);
     }
-
-
-
-
 
 }

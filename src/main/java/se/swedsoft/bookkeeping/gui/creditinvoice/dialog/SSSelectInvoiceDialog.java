@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.creditinvoice.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-21
@@ -27,15 +29,15 @@ public class SSSelectInvoiceDialog extends SSDialog {
 
     private SSButtonPanel iButtonPanel;
 
-
     /**
      *
      * @param iMainFrame
      */
     public SSSelectInvoiceDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("creditinvoiceframe.selectinvoice.title"));
+        super(iMainFrame,
+                SSBundle.getBundle().getString("creditinvoiceframe.selectinvoice.title"));
 
-        setLayout(new BorderLayout() );
+        setLayout(new BorderLayout());
         add(iPanel, BorderLayout.CENTER);
 
         pack();
@@ -56,8 +58,6 @@ public class SSSelectInvoiceDialog extends SSDialog {
 
         iInvoice.setModel(SSInvoiceTableModel.getDropDownModel());
     }
-
-
 
     /**
      *
@@ -83,20 +83,21 @@ public class SSSelectInvoiceDialog extends SSDialog {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     /**
      *
      * @param iMainFrame
      * @return
      */
-    public static SSInvoice showDialog(SSMainFrame iMainFrame){
+    public static SSInvoice showDialog(SSMainFrame iMainFrame) {
         SSSelectInvoiceDialog iDialog = new SSSelectInvoiceDialog(iMainFrame);
+
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible(true);
         int iResult = iDialog.getModalResult();
 
-        if(iResult != JOptionPane.OK_OPTION ){
+        if (iResult != JOptionPane.OK_OPTION) {
             SSInvoice iTemp = new SSInvoice();
+
             iTemp.setNumber(-1);
             return iTemp;
         }
@@ -109,6 +110,7 @@ public class SSSelectInvoiceDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.creditinvoice.dialog.SSSelectInvoiceDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iInvoice=").append(iInvoice);

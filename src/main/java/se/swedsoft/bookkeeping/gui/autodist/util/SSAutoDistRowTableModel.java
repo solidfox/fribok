@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.autodist.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAutoDistRow;
 import se.swedsoft.bookkeeping.data.SSNewProject;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.math.BigDecimal;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -18,9 +20,7 @@ import java.math.BigDecimal;
  */
 public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
-
     private SSAutoDistRow iEditing;
-
 
     /**
      * Default constructor.
@@ -41,7 +41,7 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
     @Override
     public SSAutoDistRow getObject(int row) {
-        if( row == super.getRowCount()){
+        if (row == super.getRowCount()) {
             return iEditing;
         } else {
             return super.getObject(row);
@@ -52,7 +52,7 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
-        if(getObject(rowIndex) == iEditing && aValue != null && !"".equals(aValue)){
+        if (getObject(rowIndex) == iEditing && aValue != null && !"".equals(aValue)) {
             add(iEditing);
 
             iEditing = new SSAutoDistRow();
@@ -63,7 +63,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     /**
      * Account column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_ACCOUNT = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.1")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_ACCOUNT = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.1")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             SSAccount iAccount = iAutoDistRow.getAccount(SSDB.getInstance().getAccounts());
@@ -73,8 +74,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
         @Override
         public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            if(iValue instanceof SSAccount){
-                iAutoDistRow.setAccount((SSAccount)iValue);
+            if (iValue instanceof SSAccount) {
+                iAutoDistRow.setAccount((SSAccount) iValue);
             }
         }
 
@@ -94,12 +95,11 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
         }
     };
 
-
-
     /**
      * Account column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_DESCRIPTION = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.2")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_DESCRIPTION = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.2")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             SSAccount iAccount = iAutoDistRow.getAccount(SSDB.getInstance().getAccounts());
@@ -108,8 +108,7 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
         }
 
         @Override
-        public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            // Read only
+        public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {// Read only
         }
 
         @Override
@@ -132,7 +131,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     /**
      * % column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_PERCENTAGE = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.3")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_PERCENTAGE = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.3")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             return  iAutoDistRow.getPercentage();
@@ -140,7 +140,7 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
         @Override
         public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            iAutoDistRow.setPercentage((BigDecimal)iValue);
+            iAutoDistRow.setPercentage((BigDecimal) iValue);
             iAutoDistRow.setDebet(null);
             iAutoDistRow.setCredit(null);
         }
@@ -165,7 +165,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     /**
      * Debet column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_DEBET = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.4")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_DEBET = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.4")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             return iAutoDistRow.getDebet();
@@ -173,7 +174,7 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
         @Override
         public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            iAutoDistRow.setDebet ((BigDecimal)iValue);
+            iAutoDistRow.setDebet((BigDecimal) iValue);
             iAutoDistRow.setCredit(null);
             iAutoDistRow.setPercentage(null);
         }
@@ -194,11 +195,11 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
         }
     };
 
-
     /**
      * Credit column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_CREDIT = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.5")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_CREDIT = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.5")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             return iAutoDistRow.getCredit();
@@ -206,7 +207,7 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
         @Override
         public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            iAutoDistRow.setCredit((BigDecimal)iValue);
+            iAutoDistRow.setCredit((BigDecimal) iValue);
             iAutoDistRow.setDebet(null);
             iAutoDistRow.setPercentage(null);
         }
@@ -230,7 +231,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     /**
      * Project column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_PROJECT = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.6")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_PROJECT = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.6")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             return iAutoDistRow.getProject();
@@ -238,8 +240,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
         @Override
         public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            if(iValue instanceof SSNewProject){
-                iAutoDistRow.setProject((SSNewProject)iValue);
+            if (iValue instanceof SSNewProject) {
+                iAutoDistRow.setProject((SSNewProject) iValue);
             }
         }
 
@@ -262,7 +264,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     /**
      * Result unit column
      */
-    public static SSTableColumn<SSAutoDistRow> COLUMN_RESULTUNIT = new SSTableColumn<SSAutoDistRow>(SSBundle.getBundle().getString("autodistrowtable.column.7")) {
+    public static SSTableColumn<SSAutoDistRow> COLUMN_RESULTUNIT = new SSTableColumn<SSAutoDistRow>(
+            SSBundle.getBundle().getString("autodistrowtable.column.7")) {
         @Override
         public Object getValue(SSAutoDistRow iAutoDistRow) {
             return  iAutoDistRow.getResultUnit();
@@ -270,8 +273,8 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
 
         @Override
         public void setValue(SSAutoDistRow iAutoDistRow, Object iValue) {
-            if(iValue instanceof SSNewResultUnit){
-                iAutoDistRow.setResultUnit((SSNewResultUnit)iValue);
+            if (iValue instanceof SSNewResultUnit) {
+                iAutoDistRow.setResultUnit((SSNewResultUnit) iValue);
             }
         }
 
@@ -294,11 +297,11 @@ public class SSAutoDistRowTableModel extends SSTableModel<SSAutoDistRow> {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.autodist.util.SSAutoDistRowTableModel");
         sb.append("{iEditing=").append(iEditing);
         sb.append('}');
         return sb.toString();
     }
 }
-
 

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
@@ -10,6 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * User: Andreas Lago
@@ -39,22 +41,22 @@ public class SSInpayment implements SSTableSearchable, Serializable {
     // Standard konton
     protected Map<SSDefaultAccount, Integer> iDefaultAccounts;
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
     public SSInpayment() {
-        iRows         = new LinkedList<SSInpaymentRow>();
-        iVoucher      = new SSVoucher();
-        iDifference   = new SSVoucher();
-        iEntered      = false;
-        iDefaultAccounts  = new HashMap<SSDefaultAccount, Integer>();
-        iDefaultAccounts.putAll(SSDB.getInstance().getCurrentCompany().getDefaultAccounts());
+        iRows = new LinkedList<SSInpaymentRow>();
+        iVoucher = new SSVoucher();
+        iDifference = new SSVoucher();
+        iEntered = false;
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        iDefaultAccounts.putAll(
+                SSDB.getInstance().getCurrentCompany().getDefaultAccounts());
 
-        //doAutoIncrecement();
+        // doAutoIncrecement();
     }
-
 
     /**
      * Copy constructor
@@ -64,7 +66,6 @@ public class SSInpayment implements SSTableSearchable, Serializable {
     public SSInpayment(SSInpayment iInpayment) {
         copyFrom(iInpayment);
     }
-
 
     /**
      * Clone constructor
@@ -77,32 +78,33 @@ public class SSInpayment implements SSTableSearchable, Serializable {
 
         this.iNumber = iNumber;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iInpayment
      */
     public void copyFrom(SSInpayment iInpayment) {
-        iNumber          = iInpayment.iNumber;
-        iDate            = iInpayment.iDate;
-        iText            = iInpayment.iText;
-        iEntered         = iInpayment.iEntered;
-        iVoucher         = new SSVoucher(iInpayment.iVoucher);
-        iDifference      = new SSVoucher(iInpayment.iDifference);
-        iRows            = new LinkedList<SSInpaymentRow>();
+        iNumber = iInpayment.iNumber;
+        iDate = iInpayment.iDate;
+        iText = iInpayment.iText;
+        iEntered = iInpayment.iEntered;
+        iVoucher = new SSVoucher(iInpayment.iVoucher);
+        iDifference = new SSVoucher(iInpayment.iDifference);
+        iRows = new LinkedList<SSInpaymentRow>();
         iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all rows
-        for(SSInpaymentRow iRow : iInpayment.iRows){
-            iRows.add( new SSInpaymentRow(iRow) );
+        for (SSInpaymentRow iRow : iInpayment.iRows) {
+            iRows.add(new SSInpaymentRow(iRow));
         }
 
         // Copy all default accounts
-        iDefaultAccounts.putAll( iInpayment.getDefaultAccounts() );
+        iDefaultAccounts.putAll(iInpayment.getDefaultAccounts());
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Sets the number of this voucher as the maxinum mumber + 1
@@ -112,8 +114,8 @@ public class SSInpayment implements SSTableSearchable, Serializable {
 
         int iNumber = SSDB.getInstance().getAutoIncrement().getNumber("inpayment");
 
-        for(SSInpayment iInpayment: iInpayments){
-            if(iInpayment.iNumber > iNumber){
+        for (SSInpayment iInpayment: iInpayments) {
+            if (iInpayment.iNumber > iNumber) {
                 iNumber = iInpayment.iNumber;
             }
         }
@@ -121,8 +123,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
 
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      *
      * @return
@@ -139,7 +140,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -157,7 +158,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iDate = iDate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -175,7 +176,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iText = iText;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -183,13 +184,12 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      */
     public Map<SSDefaultAccount, Integer> getDefaultAccounts() {
 
-        if(iDefaultAccounts == null)
-        {
+        if (iDefaultAccounts == null) {
             SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
-            if(iCompany!=null)
-            {
+
+            if (iCompany != null) {
                 iDefaultAccounts = iCompany.getDefaultAccounts();
-                iCompany=null;
+                iCompany = null;
             }
         }
         return iDefaultAccounts;
@@ -201,10 +201,12 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      * @param iDefaultAccount
      * @return
      */
-    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount){
+    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount) {
         Integer iAccountNumber = iDefaultAccounts.get(iDefaultAccount);
 
-        if(iAccountNumber == null) return null;
+        if (iAccountNumber == null) {
+            return null;
+        }
 
         return iAccountPlan.getAccount(iAccountNumber);
     }
@@ -214,7 +216,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      * @param iDefaultAccount
      * @return
      */
-    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount){
+    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {
         return iDefaultAccounts.get(iDefaultAccount);
     }
 
@@ -226,15 +228,16 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iDefaultAccounts = iDefaultAccounts;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public List<SSInpaymentRow> getRows() {
-        if(iRows == null) iRows = new LinkedList<SSInpaymentRow>();
+        if (iRows == null) {
+            iRows = new LinkedList<SSInpaymentRow>();
+        }
         return iRows;
     }
 
@@ -246,7 +249,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iRows = iRows;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -264,14 +267,16 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iVoucher = iVoucher;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSVoucher getDifference() {
-        if(iDifference == null) iDifference = new SSVoucher();
+        if (iDifference == null) {
+            iDifference = new SSVoucher();
+        }
 
         return iDifference;
     }
@@ -284,8 +289,7 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         this.iDifference = iDifference;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -309,7 +313,8 @@ public class SSInpayment implements SSTableSearchable, Serializable {
     public void setEntered() {
         iEntered = true;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -317,21 +322,22 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      */
     public void addInvoices(List<SSInvoice> iInvoices) {
         for (SSInvoice iInvoice : iInvoices) {
-            iRows.add( new SSInpaymentRow(iInvoice) );
+            iRows.add(new SSInpaymentRow(iInvoice));
         }
     }
 
     public List<SSInvoice> getInvoices() {
         List<SSInvoice> iInvoices = new LinkedList<SSInvoice>();
+
         for (SSInpaymentRow iRow : iRows) {
-            if(iRow.getInvoice(SSDB.getInstance().getInvoices())!=null)
+            if (iRow.getInvoice(SSDB.getInstance().getInvoices()) != null) {
                 iInvoices.add(iRow.getInvoice(SSDB.getInstance().getInvoices()));
+            }
         }
         return iInvoices;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Returns true if this inpayment contains the sales, false othervise
@@ -341,19 +347,19 @@ public class SSInpayment implements SSTableSearchable, Serializable {
      * @return if the inpayment contains the sales
      */
     public boolean isPaying(SSInvoice iInvoice) {
-        for( SSInpaymentRow iRow: iRows){
-            if(iRow.isPaying(iInvoice)) return true;
+        for (SSInpaymentRow iRow: iRows) {
+            if (iRow.isPaying(iInvoice)) {
+                return true;
+            }
         }
         return false;
     }
 
+    // //////////////////////////////////////////////////
 
-
-    ////////////////////////////////////////////////////
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(iNumber);
         sb.append(", ");
         sb.append(iText);
@@ -369,7 +375,6 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         return iNumber == null ? null : iNumber.toString();
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSInpayment)) {
             return false;
@@ -377,52 +382,59 @@ public class SSInpayment implements SSTableSearchable, Serializable {
         return iNumber.equals(((SSInpayment) obj).iNumber);
     }
 
-
-
     /**
      *
      * @return
      */
-    public SSVoucher generateVoucher(){
-        String iDescription = SSBundle.getBundle().getString("inpaymentframe.voucherdescription");
+    public SSVoucher generateVoucher() {
+        String iDescription = SSBundle.getBundle().getString(
+                "inpaymentframe.voucherdescription");
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
 
-        BigDecimal iSum                     = SSInpaymentMath.getSum(this);
-        BigDecimal iCurrencyRateDifference  = SSInpaymentMath.getCurrencyRateDifference(this);
-        BigDecimal iDifferenceSum           = SSVoucherMath.getCreditMinusDebetSum(iDifference);
+        BigDecimal iSum = SSInpaymentMath.getSum(this);
+        BigDecimal iCurrencyRateDifference = SSInpaymentMath.getCurrencyRateDifference(
+                this);
+        BigDecimal iDifferenceSum = SSVoucherMath.getCreditMinusDebetSum(iDifference);
 
-        iSum = iSum.subtract( iCurrencyRateDifference );
-        iSum = iSum.subtract( iDifferenceSum          );
+        iSum = iSum.subtract(iCurrencyRateDifference);
+        iSum = iSum.subtract(iDifferenceSum);
 
         iVoucher = new SSVoucher();
-        iVoucher.setDate       ( new Date() );
-        iVoucher.setNumber     ( 0  );
-        iVoucher.setDescription( String.format(iDescription, iNumber) );
+        iVoucher.setDate(new Date());
+        iVoucher.setNumber(0);
+        iVoucher.setDescription(String.format(iDescription, iNumber));
 
         // Add the sum
-        iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.CustomerClaim ), iSum.negate() );
+        iVoucher.addVoucherRow(
+                getDefaultAccount(iAccountPlan, SSDefaultAccount.CustomerClaim),
+                iSum.negate());
 
         // Add the currency change if not zero
-        if(iCurrencyRateDifference.signum() > 0 ){
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyProfit ), iCurrencyRateDifference.negate() );
+        if (iCurrencyRateDifference.signum() > 0) {
+            iVoucher.addVoucherRow(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyProfit),
+                    iCurrencyRateDifference.negate());
         } else {
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyLoss   ), iCurrencyRateDifference.negate() );
+            iVoucher.addVoucherRow(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyLoss),
+                    iCurrencyRateDifference.negate());
         }
 
         // Add all rows from the difference voucher
-        for(SSVoucherRow iVoucherRow : iDifference.getRows() ){
+        for (SSVoucherRow iVoucherRow : iDifference.getRows()) {
             iVoucher.addVoucherRow(new SSVoucherRow(iVoucherRow));
         }
 
         // Add all sales payments
-        for(SSInpaymentRow iRow : iRows){
+        for (SSInpaymentRow iRow : iRows) {
             SSVoucherRow iVoucherRow = new SSVoucherRow();
 
             BigDecimal iValue = SSInpaymentMath.convertToLocal(iRow, iRow.getValue());
 
-            iVoucherRow.setValue     (  iValue );
-            iVoucherRow.setAccount   ( getDefaultAccount(iAccountPlan, SSDefaultAccount.InPayment ) );
+            iVoucherRow.setValue(iValue);
+            iVoucherRow.setAccount(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.InPayment));
 
             iVoucher.addVoucherRow(iVoucherRow);
         }
@@ -430,6 +442,5 @@ public class SSInpayment implements SSTableSearchable, Serializable {
 
         return iVoucher;
     }
-
 
 }

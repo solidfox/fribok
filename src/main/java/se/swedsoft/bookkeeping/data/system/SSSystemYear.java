@@ -10,6 +10,7 @@ import java.rmi.server.UID;
 import java.text.DateFormat;
 import java.util.Date;
 
+
 /**
  * Date: 2006-feb-24
  *
@@ -19,7 +20,6 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
 
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     private UID iID;
 
@@ -36,26 +36,29 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
     /**
      * Creates a new systemyear
      */
-    public SSSystemYear(){
-        iID          = new UID();
-        iDateFrom    = new Date();
-        iDateTo      = new Date();
-        iCurrent     = false;
+    public SSSystemYear() {
+        iID = new UID();
+        iDateFrom = new Date();
+        iDateTo = new Date();
+        iCurrent = false;
         iAccountPlan = null;
     }
+
     /**
      *
      * @param pYear
      */
-    public SSSystemYear(SSNewAccountingYear pYear){
-        iYear        = pYear;
-        iCurrent     = false;
-        iID          = new UID();
-        iDateFrom    = pYear.getFrom();
-        iDateTo      = pYear.getTo  ();
-        iAccountPlan = pYear.getAccountPlan() != null ? pYear.getAccountPlan().getName() : null;
+    public SSSystemYear(SSNewAccountingYear pYear) {
+        iYear = pYear;
+        iCurrent = false;
+        iID = new UID();
+        iDateFrom = pYear.getFrom();
+        iDateTo = pYear.getTo();
+        iAccountPlan = pYear.getAccountPlan() != null
+                ? pYear.getAccountPlan().getName()
+                : null;
 
-      //  unloadYear();
+        // unloadYear();
     }
 
     /**
@@ -67,7 +70,7 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         return iID;
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      * Returns the start date of the accounting year
@@ -82,7 +85,7 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         this.iDateFrom = iDateFrom;
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      * Returns the stop date of the acoounting year
@@ -101,15 +104,14 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         this.iDateTo = iDateTo;
     }
 
-
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      * Return the accoutn plans name for the year
      *
      * @return the accountplan
      */
-    public String getAccountPlan(){
+    public String getAccountPlan() {
         return iAccountPlan;
     }
 
@@ -121,7 +123,6 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         this.iAccountPlan = iAccountPlan;
     }
 
-
     /**
      *
      * @param iAccountPlan
@@ -130,7 +131,7 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         this.iAccountPlan = iAccountPlan == null ? null : iAccountPlan.getName();
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -149,15 +150,18 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         iYear = iAccountingYear;
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     public void setCurrentYear(SSNewAccountingYear iAccountingYear) {
-        iDateFrom    = iAccountingYear.getFrom();
-        iDateTo      = iAccountingYear.getTo();
-        iCurrent     = true;
-        iAccountPlan = iAccountingYear.getAccountPlan() != null ? iAccountingYear.getAccountPlan().getName() : null;
+        iDateFrom = iAccountingYear.getFrom();
+        iDateTo = iAccountingYear.getTo();
+        iCurrent = true;
+        iAccountPlan = iAccountingYear.getAccountPlan() != null
+                ? iAccountingYear.getAccountPlan().getName()
+                : null;
         iYear = iAccountingYear;
     }
+
     /**
      *
      * @return if the year is the current year
@@ -166,34 +170,26 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
         return iCurrent;
     }
 
-
-
-
-
     /**
      * Set if the year shall be the current one, loads data if true, unloads if false
      *
      * @param pCurrent if the year shall be current
      */
-    public void setCurrent(boolean pCurrent){
+    public void setCurrent(boolean pCurrent) {
         iCurrent = pCurrent;
 
     }
 
-
-    
     public boolean equals(Object other) {
-        if(other instanceof SSSystemYear){
+        if (other instanceof SSSystemYear) {
             return iID.equals(((SSSystemYear) other).iID);
         }
-        if(other instanceof SSNewAccountingYear){
-            return iID.equals( ((SSNewAccountingYear)other).getId() );
+        if (other instanceof SSNewAccountingYear) {
+            return iID.equals(((SSNewAccountingYear) other).getId());
         }
         return false;
     }
 
-
-    
     public String toString() {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -221,6 +217,5 @@ public class SSSystemYear implements Serializable, SSTableSearchable {
 
         return format.format(iDateFrom) + " - " + format.format(iDateTo);
     }
-
 
 }

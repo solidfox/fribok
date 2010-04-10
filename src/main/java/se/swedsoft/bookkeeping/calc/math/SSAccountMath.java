@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+
 import se.swedsoft.bookkeeping.calc.data.SSAccountGroup;
 import se.swedsoft.bookkeeping.calc.data.SSAccountSchema;
 import se.swedsoft.bookkeeping.data.SSAccount;
@@ -12,13 +13,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Date: 2006-feb-17
  * Time: 10:55:55
  */
 public class SSAccountMath {
-    private SSAccountMath() {
-    }
+    private SSAccountMath() {}
 
     /**
      *
@@ -27,16 +28,17 @@ public class SSAccountMath {
      * @param iTo
      * @return
      */
-    public static boolean inPeriod( SSAccount iAccount, SSAccount iFrom, SSAccount iTo){
-        Integer iNumber     = iAccount.getNumber();
-        Integer iFromNumber = iFrom   .getNumber();
-        Integer iToNumber   = iTo     .getNumber();
+    public static boolean inPeriod(SSAccount iAccount, SSAccount iFrom, SSAccount iTo) {
+        Integer iNumber = iAccount.getNumber();
+        Integer iFromNumber = iFrom.getNumber();
+        Integer iToNumber = iTo.getNumber();
 
-        if(iNumber == null || iFromNumber == null || iToNumber == null) return false;
+        if (iNumber == null || iFromNumber == null || iToNumber == null) {
+            return false;
+        }
 
         return iFromNumber <= iNumber && iNumber <= iToNumber;
     }
-
 
     /**
      * Returns if the specified account is a result account
@@ -45,11 +47,12 @@ public class SSAccountMath {
      * @param pYearData
      * @return if the acoount is a result account
      */
-    public static boolean isResultAccount(SSAccount iAccount, SSNewAccountingYear pYearData){
+    public static boolean isResultAccount(SSAccount iAccount, SSNewAccountingYear pYearData) {
         SSAccountSchema iAccountSchema = SSAccountSchema.getAccountSchema(pYearData);
 
-        for(SSAccountGroup iAccountGroup : iAccountSchema.getResultGroups() ){
-            if( iAccountGroup.getFromAccount() <= iAccount.getNumber() && iAccountGroup.getToAccount() >= iAccount.getNumber() ){
+        for (SSAccountGroup iAccountGroup : iAccountSchema.getResultGroups()) {
+            if (iAccountGroup.getFromAccount() <= iAccount.getNumber()
+                    && iAccountGroup.getToAccount() >= iAccount.getNumber()) {
                 return true;
             }
         }
@@ -63,18 +66,17 @@ public class SSAccountMath {
      * @param pYearData
      * @return if the acoount is a balance account
      */
-    public static boolean isBalanceAccount(SSAccount iAccount, SSNewAccountingYear pYearData){
+    public static boolean isBalanceAccount(SSAccount iAccount, SSNewAccountingYear pYearData) {
         SSAccountSchema iAccountSchema = SSAccountSchema.getAccountSchema(pYearData);
 
-
-        for(SSAccountGroup iAccountGroup : iAccountSchema.getBalanceGroups() ){
-            if( iAccountGroup.getFromAccount() <= iAccount.getNumber() && iAccountGroup.getToAccount() >= iAccount.getNumber() ){
+        for (SSAccountGroup iAccountGroup : iAccountSchema.getBalanceGroups()) {
+            if (iAccountGroup.getFromAccount() <= iAccount.getNumber()
+                    && iAccountGroup.getToAccount() >= iAccount.getNumber()) {
                 return true;
             }
         }
         return false;
     }
-
 
     /**
      * Gets a account from the current year
@@ -83,9 +85,11 @@ public class SSAccountMath {
      * @return the account or null
      */
     public static SSAccount getAccount(Integer pAccountNr) {
-       SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
+        SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
 
-        if(iAccountPlan == null) return null;
+        if (iAccountPlan == null) {
+            return null;
+        }
 
         return iAccountPlan.getAccount(pAccountNr);
     }
@@ -100,8 +104,8 @@ public class SSAccountMath {
     public static List<SSAccount> getBalanceAccounts(SSNewAccountingYear pAccountingYear, List<SSAccount> pAccounts) {
         List<SSAccount> iFiltered = new LinkedList<SSAccount>();
 
-        for(SSAccount iAccount: pAccounts){
-            if( isBalanceAccount(iAccount, pAccountingYear) ){
+        for (SSAccount iAccount: pAccounts) {
+            if (isBalanceAccount(iAccount, pAccountingYear)) {
                 iFiltered.add(iAccount);
             }
         }
@@ -119,14 +123,13 @@ public class SSAccountMath {
     public static List<SSAccount> getResultAccounts(SSNewAccountingYear pAccountingYear, List<SSAccount> pAccounts) {
         List<SSAccount> iFiltered = new LinkedList<SSAccount>();
 
-        for(SSAccount iAccount: pAccounts){
-            if( isResultAccount(iAccount, pAccountingYear) ){
+        for (SSAccount iAccount: pAccounts) {
+            if (isResultAccount(iAccount, pAccountingYear)) {
                 iFiltered.add(iAccount);
             }
         }
         return iFiltered;
     }
-
 
     /**
      * Returns the account group.
@@ -135,18 +138,17 @@ public class SSAccountMath {
      * @param pYearData
      * @return The account group of the current account.
      */
-    public static int getResultGroup(SSAccount iAccount, SSNewAccountingYear pYearData){
+    public static int getResultGroup(SSAccount iAccount, SSNewAccountingYear pYearData) {
         SSAccountSchema iAccountSchema = SSAccountSchema.getAccountSchema(pYearData);
 
-
-        for(SSAccountGroup iAccountGroup : iAccountSchema.getBalanceGroups() ){
-            if( iAccountGroup.getFromAccount() <= iAccount.getNumber() && iAccountGroup.getToAccount() >= iAccount.getNumber() ){
+        for (SSAccountGroup iAccountGroup : iAccountSchema.getBalanceGroups()) {
+            if (iAccountGroup.getFromAccount() <= iAccount.getNumber()
+                    && iAccountGroup.getToAccount() >= iAccount.getNumber()) {
                 return iAccountGroup.getId();
             }
         }
         return -1;
     }
-
 
     /**
      * Returns a List of accounts that are balance accounts.
@@ -182,14 +184,13 @@ public class SSAccountMath {
         List<SSAccount> iFiltered = new LinkedList<SSAccount>();
 
         for (SSAccount iAccount : pAccounts) {
-            if (inPeriod(iAccount, pFrom,  pTo) ) {
+            if (inPeriod(iAccount, pFrom, pTo)) {
                 iFiltered.add(iAccount);
             }
         }
 
         return iFiltered;
     }
-
 
     /**
      * Returns the first account in the current accounting year.
@@ -226,11 +227,8 @@ public class SSAccountMath {
         return iLast;
     }
 
-
-
     // ****************************************************************************************
     // VAT
-
 
     /**
      * Returns the accounts with VAT codes specified.
@@ -240,13 +238,13 @@ public class SSAccountMath {
      *
      * @return A list with accounts with number between from and to.
      */
-    public static List<SSAccount> getAccountsByVATCode(List<SSAccount> pAccounts, String ... pVatCodes ) {
+    public static List<SSAccount> getAccountsByVATCode(List<SSAccount> pAccounts, String... pVatCodes) {
         List <SSAccount> filtered = new LinkedList<SSAccount>();
 
-        for( SSAccount iAccount : pAccounts){
+        for (SSAccount iAccount : pAccounts) {
 
-            for(String iVatCode : pVatCodes){
-                if( iVatCode.equals( iAccount.getVATCode() ) ) {
+            for (String iVatCode : pVatCodes) {
+                if (iVatCode.equals(iAccount.getVATCode())) {
                     filtered.add(iAccount);
                     break;
                 }
@@ -255,19 +253,19 @@ public class SSAccountMath {
         return filtered;
     }
 
-
     /**
      * @param pSums
      * @param pVatCodes
      *
      * @return BigDecimal
      */
-    public static BigDecimal getSumByVATCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String ... pVatCodes ) {
+    public static BigDecimal getSumByVATCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String... pVatCodes) {
         BigDecimal sum = new BigDecimal(0);
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()){
 
-            for(String iVatCode : pVatCodes){
-                if( iVatCode.equals(ssAccountBigDecimalEntry.getKey().getVATCode() ) ) {
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()) {
+
+            for (String iVatCode : pVatCodes) {
+                if (iVatCode.equals(ssAccountBigDecimalEntry.getKey().getVATCode())) {
                     sum = sum.add(ssAccountBigDecimalEntry.getValue());
                     break;
                 }
@@ -277,8 +275,6 @@ public class SSAccountMath {
         return sum;
     }
 
-
-
     /**
      * Returns the number of accounts with VAT codes specified.
      *
@@ -287,11 +283,9 @@ public class SSAccountMath {
      *
      * @return The number of codes.
      */
-    public static  int getNumAccountsByVatCode(List<SSAccount> pAccounts, String ... pVatCodes ) {
+    public static int getNumAccountsByVatCode(List<SSAccount> pAccounts, String... pVatCodes) {
         return getAccountsByVATCode(pAccounts, pVatCodes).size();
     }
-
-
 
     /**
      * Returns the accounts with VAT codes specified.
@@ -302,32 +296,25 @@ public class SSAccountMath {
      *
      * @return The account marked with the VAT code if exactly one match, defaultAccount if no match and null if more then one matching account
      */
-    public static SSAccount getAccountWithVATCode(List<SSAccount> pAccounts, String pVatCode, SSAccount pDefaultAccount ) {
+    public static SSAccount getAccountWithVATCode(List<SSAccount> pAccounts, String pVatCode, SSAccount pDefaultAccount) {
         // get the accounts marked with the VAT code
-        List<SSAccount> theAccounts = getAccountsByVATCode( pAccounts, pVatCode );
+        List<SSAccount> theAccounts = getAccountsByVATCode(pAccounts, pVatCode);
 
         // If more then one account is marked return null to let the caller know that there's inconsistency in the accountplan
-        if( theAccounts.size() > 1 ){
+        if (theAccounts.size() > 1) {
             return null;
         }
-        //openWarningDialog(iMainFrame, "vatBasis.dialogMoreThenOneAccount");
+        // openWarningDialog(iMainFrame, "vatBasis.dialogMoreThenOneAccount");
         // Return the wanter account if it exists, or return the default account
-        if(theAccounts.isEmpty()) {
+        if (theAccounts.isEmpty()) {
             return pDefaultAccount;
         } else {
             return theAccounts.get(0);
         }
     }
 
-
-
-
-
     // ****************************************************************************************
     // SRU
-
-
-
 
     /**
      * Returns the accounts with SRU codes specified.
@@ -337,16 +324,17 @@ public class SSAccountMath {
      *
      * @return A list with accounts with number between from and to.
      */
-    public static List<SSAccount> getAccountsBySRUCode(List<SSAccount> pAccounts, String ... pSruCodes ) {
+    public static List<SSAccount> getAccountsBySRUCode(List<SSAccount> pAccounts, String... pSruCodes) {
         List <SSAccount> filtered = new LinkedList<SSAccount>();
 
-        for( SSAccount iAccount : pAccounts){
+        for (SSAccount iAccount : pAccounts) {
 
-            if(iAccount.getSRUCode() == null) continue;
+            if (iAccount.getSRUCode() == null) {
+                continue;
+            }
 
-
-            for(String iSruCode : pSruCodes){
-                if( iSruCode.equals( iAccount.getSRUCode() ) ) {
+            for (String iSruCode : pSruCodes) {
+                if (iSruCode.equals(iAccount.getSRUCode())) {
                     filtered.add(iAccount);
                     break;
                 }
@@ -363,11 +351,9 @@ public class SSAccountMath {
      *
      * @return The number of codes.
      */
-    public static  int getNumAccountsBySRUCode(List<SSAccount> pAccounts, String ... pSruCodes ) {
+    public static int getNumAccountsBySRUCode(List<SSAccount> pAccounts, String... pSruCodes) {
         return getAccountsBySRUCode(pAccounts, pSruCodes).size();
     }
-
-
 
     /**
      * Returns the accounts without any SRU code specified.
@@ -376,17 +362,18 @@ public class SSAccountMath {
      *
      * @return A list with accounts with number between from and to.
      */
-    public static List<SSAccount> getAccountsWithoutSRUCode(List<SSAccount> pAccounts ) {
+    public static List<SSAccount> getAccountsWithoutSRUCode(List<SSAccount> pAccounts) {
         List <SSAccount> filtered = new LinkedList<SSAccount>();
 
-        for( SSAccount iAccount : pAccounts){
-            if( (iAccount.getSRUCode() == null) || (iAccount.getSRUCode().length() == 0) ) {
+        for (SSAccount iAccount : pAccounts) {
+            if ((iAccount.getSRUCode() == null) || (iAccount.getSRUCode().length() == 0)) {
                 filtered.add(iAccount);
                 break;
             }
         }
         return filtered;
     }
+
     /**
      * Returns the number of accounts without any SRU code specified.
      *
@@ -394,19 +381,9 @@ public class SSAccountMath {
      *
      * @return The number of codes.
      */
-    public static  int getNumAccountsWithoutSRUCode(List<SSAccount> pAccounts ) {
+    public static int getNumAccountsWithoutSRUCode(List<SSAccount> pAccounts) {
         return getAccountsWithoutSRUCode(pAccounts).size();
     }
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @param pSums
@@ -414,13 +391,14 @@ public class SSAccountMath {
      *
      * @return BigDecimal
      */
-    public static BigDecimal getSumBySRUCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String ... pSruCodes ) {
+    public static BigDecimal getSumBySRUCodeForAccounts(Map<SSAccount, BigDecimal> pSums, String... pSruCodes) {
 
         BigDecimal sum = new BigDecimal(0);
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()){
 
-            for(String iSruCode : pSruCodes){
-                if( iSruCode.equals(ssAccountBigDecimalEntry.getKey().getSRUCode() ) ) {
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : pSums.entrySet()) {
+
+            for (String iSruCode : pSruCodes) {
+                if (iSruCode.equals(ssAccountBigDecimalEntry.getKey().getSRUCode())) {
                     sum = sum.add(ssAccountBigDecimalEntry.getValue());
                     break;
                 }

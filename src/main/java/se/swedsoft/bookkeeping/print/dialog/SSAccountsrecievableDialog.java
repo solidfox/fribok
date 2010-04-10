@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
@@ -10,6 +11,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -24,12 +26,12 @@ public class SSAccountsrecievableDialog extends SSDialog {
 
     private SSButtonPanel iButtonPanel;
 
-
     /**
      * @param iFrame
      */
     public SSAccountsrecievableDialog(SSMainFrame iFrame) {
-        super(iFrame, SSBundle.getBundle().getString("accountsrecievablereport.dialog.title"));
+        super(iFrame,
+                SSBundle.getBundle().getString("accountsrecievablereport.dialog.title"));
 
         setPanel(iPanel);
 
@@ -56,6 +58,7 @@ public class SSAccountsrecievableDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSAccountsrecievableDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 import se.swedsoft.bookkeeping.gui.resultunit.util.SSResultUnitTableModel;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
@@ -13,6 +14,7 @@ import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * Date: 2006-feb-08
@@ -32,7 +34,6 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
 
     private SSDateChooser iTo;
 
-
     private SSTableComboBox<SSNewResultUnit> iResultUnit;
 
     /**
@@ -45,9 +46,9 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
 
         setPanel(iPanel);
 
-        iRadioSingle.addChangeListener( new ChangeListener(){
+        iRadioSingle.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iResultUnit.setEnabled( iRadioSingle.isSelected() );
+                iResultUnit.setEnabled(iRadioSingle.isSelected());
             }
         });
 
@@ -64,8 +65,7 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
 
         ButtonGroup iGroup = new ButtonGroup();
 
-
-        iGroup.add(iRadioAll   );
+        iGroup.add(iRadioAll);
         iGroup.add(iRadioSingle);
 
         iResultUnit.setModel(SSResultUnitTableModel.getDropDownModel());
@@ -73,13 +73,11 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
 
     }
 
-
-
     /**
      *
      * @param pDate
      */
-    public void setFrom(Date pDate){
+    public void setFrom(Date pDate) {
         iFrom.setDate(pDate);
     }
 
@@ -87,7 +85,7 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
      *
      * @param pDate
      */
-    public void setTo(Date pDate){
+    public void setTo(Date pDate) {
         iTo.setDate(pDate);
     }
 
@@ -95,7 +93,7 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
      *
      * @return
      */
-    public Date getFrom(){
+    public Date getFrom() {
         return iFrom.getDate();
     }
 
@@ -103,7 +101,7 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
      *
      * @return
      */
-    public Date getTo(){
+    public Date getTo() {
         return iTo.getDate();
     }
 
@@ -111,18 +109,18 @@ public class SSResultUnitResultSetupDialog extends SSDialog {
      *
      * @return
      */
-    public SSNewResultUnit getSelectedResultUnit(){
-        if( iRadioSingle.isSelected() ){
+    public SSNewResultUnit getSelectedResultUnit() {
+        if (iRadioSingle.isSelected()) {
             return iResultUnit.getSelected();
         } else {
             return null;
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSResultUnitResultSetupDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iFrom=").append(iFrom);

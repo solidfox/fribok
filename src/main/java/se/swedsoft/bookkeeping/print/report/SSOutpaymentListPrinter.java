@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOutpaymentMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -31,23 +33,22 @@ public class SSOutpaymentListPrinter extends SSPrinter {
      *
      */
     public SSOutpaymentListPrinter() {
-        this(SSDB.getInstance().getOutpayments() );
+        this(SSDB.getInstance().getOutpayments());
     }
 
     /**
      *
      * @param iInpayments
      */
-    public SSOutpaymentListPrinter( List<SSOutpayment> iInpayments){
+    public SSOutpaymentListPrinter(List<SSOutpayment> iInpayments) {
         // Get all orders
         iOutpayments = iInpayments;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("outpaymentlist.jrxml");
-        setDetail      ("outpaymentlist.jrxml");
-        setSummary     ("outpaymentlist.jrxml");
+        setDetail("outpaymentlist.jrxml");
+        setSummary("outpaymentlist.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -68,8 +69,8 @@ public class SSOutpaymentListPrinter extends SSPrinter {
         iPrinter = new SSOutpaymentRowPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -88,25 +89,29 @@ public class SSOutpaymentListPrinter extends SSPrinter {
                 SSOutpayment iOutpayment = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iOutpayment.getNumber();
-                        break;
-                    case 1:
-                        value = iFormat.format(iOutpayment.getDate());
-                        break;
-                    case 2:
-                        value = iOutpayment.getText();
-                        break;
-                    case 3:
-                        value = SSOutpaymentMath.getSum(iOutpayment);
-                        break;
-                    case 4:
-                        iPrinter.setOutpayment(iOutpayment);
+                case 0:
+                    value = iOutpayment.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iFormat.format(iOutpayment.getDate());
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 2:
+                    value = iOutpayment.getText();
+                    break;
+
+                case 3:
+                    value = SSOutpaymentMath.getSum(iOutpayment);
+                    break;
+
+                case 4:
+                    iPrinter.setOutpayment(iOutpayment);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -119,8 +124,6 @@ public class SSOutpaymentListPrinter extends SSPrinter {
         iModel.addColumn("outpayment.sum");
         iModel.addColumn("outpayment.rows");
 
-
-
         Collections.sort(iOutpayments, new Comparator<SSOutpayment>() {
             public int compare(SSOutpayment o1, SSOutpayment o2) {
                 return o1.getNumber() - o2.getNumber();
@@ -129,10 +132,8 @@ public class SSOutpaymentListPrinter extends SSPrinter {
 
         iModel.setObjects(iOutpayments);
 
-
         return iModel;
     }
-
 
     private class SSOutpaymentRowPrinter extends SSPrinter {
 
@@ -141,15 +142,13 @@ public class SSOutpaymentListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSOutpaymentRowPrinter( ){
-            setMargins(0,0,0,0);
+        public SSOutpaymentRowPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("outpaymentlist.row.jrxml");
+            setDetail("outpaymentlist.row.jrxml");
             setSummary("outpaymentlist.row.jrxml");
 
-
-
-            iModel = new SSDefaultTableModel<SSOutpaymentRow>(  ) {
+            iModel = new SSDefaultTableModel<SSOutpaymentRow>() {
 
                 @Override
                 public Class getType() {
@@ -162,24 +161,31 @@ public class SSOutpaymentListPrinter extends SSPrinter {
                     SSOutpaymentRow iRow = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iRow.getInvoiceNr();
-                            break;
-                        case 1:
-                            value = iRow.getInvoiceCurrencyRate();
-                            break;
-                        case 2:
-                            value = iRow.getInvoiceCurrency() == null ? null :  iRow.getInvoiceCurrency().getName();
-                            break;
-                        case 3:
-                            value = iRow.getValue();
-                            break;
-                        case 4:
-                            value = iRow.getCurrencyRate();
-                            break;
-                        case 5:
-                            value = iRow.getLocalValue();
-                            break;
+                    case 0:
+                        value = iRow.getInvoiceNr();
+                        break;
+
+                    case 1:
+                        value = iRow.getInvoiceCurrencyRate();
+                        break;
+
+                    case 2:
+                        value = iRow.getInvoiceCurrency() == null
+                                ? null
+                                : iRow.getInvoiceCurrency().getName();
+                        break;
+
+                    case 3:
+                        value = iRow.getValue();
+                        break;
+
+                    case 4:
+                        value = iRow.getCurrencyRate();
+                        break;
+
+                    case 5:
+                        value = iRow.getLocalValue();
+                        break;
                     }
 
                     return value;
@@ -193,7 +199,6 @@ public class SSOutpaymentListPrinter extends SSPrinter {
             iModel.addColumn("row.currencyrate");
             iModel.addColumn("row.payed");
         }
-
 
         /**
          * Gets the data model for this report
@@ -220,23 +225,25 @@ public class SSOutpaymentListPrinter extends SSPrinter {
          * @param iInpayment
          */
         public void setOutpayment(SSOutpayment iInpayment) {
-            iModel.setObjects( iInpayment.getRows() );
+            iModel.setObjects(iInpayment.getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSOutpaymentListPrinter.SSOutpaymentRowPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSOutpaymentListPrinter.SSOutpaymentRowPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSOutpaymentListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iOutpayments=").append(iOutpayments);

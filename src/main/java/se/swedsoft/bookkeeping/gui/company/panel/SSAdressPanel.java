@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSAddress;
 
 import javax.swing.*;
@@ -7,11 +8,12 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 /**
  * Date: 2006-feb-09
  * Time: 16:35:53
  */
-public class SSAdressPanel extends JPanel{
+public class SSAdressPanel extends JPanel {
 
     private JLabel iTitle;
 
@@ -31,15 +33,13 @@ public class SSAdressPanel extends JPanel{
 
     private JTextField iCity;
 
-
-    ///////////////////////////////////////////////////////////
-
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      */
-    public SSAdressPanel(){
-        setLayout(new BorderLayout() );
+    public SSAdressPanel() {
+        setLayout(new BorderLayout());
 
         add(iPanel, BorderLayout.CENTER);
     }
@@ -52,8 +52,7 @@ public class SSAdressPanel extends JPanel{
         return iPanel;
     }
 
-
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
@@ -68,77 +67,70 @@ public class SSAdressPanel extends JPanel{
      * @param iTitle
      */
     public void setTitle(String iTitle) {
-        this.iTitle.setText( iTitle);
+        this.iTitle.setText(iTitle);
     }
 
-
-    ///////////////////////////////////////////////////////////
-
-
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public String getAdress(){
+    public String getAdress() {
         return iAddress.getText();
     }
-
 
     /**
      *
      * @param pAdress
      */
-    public void setAdress(String pAdress){
+    public void setAdress(String pAdress) {
         iAddress.setText(pAdress);
     }
 
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public String getStreet(){
+    public String getStreet() {
         return iStreet.getText();
     }
-
 
     /**
      *
      * @param pStreet
      */
-    public void setStreet(String pStreet){
+    public void setStreet(String pStreet) {
         iStreet.setText(pStreet);
     }
 
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public String getCountry(){
+    public String getCountry() {
         return iCountry.getText();
     }
-
-
 
     /**
      *
      * @param pCountry
      */
-    public void setCountry(String pCountry){
+    public void setCountry(String pCountry) {
         iCountry.setText(pCountry);
     }
 
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public String getZipCode(){
+    public String getZipCode() {
         return iZipCode.getText();
     }
 
@@ -146,31 +138,31 @@ public class SSAdressPanel extends JPanel{
      *
      * @param pZipCode
      */
-    public void setZipCode(String pZipCode){
+    public void setZipCode(String pZipCode) {
         iZipCode.setText(pZipCode);
     }
 
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public String getCity(){
+    public String getCity() {
         return iCity.getText();
     }
 
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
      * @param pCity
      */
-    public void setCity(String pCity){
+    public void setCity(String pCity) {
         iCity.setText(pCity);
     }
 
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
 
     /**
      *
@@ -179,12 +171,12 @@ public class SSAdressPanel extends JPanel{
     public void setAdress(SSAddress iAddress) {
         iAdress = iAddress;
 
-        iName         .setText(iAddress.getName());
-        this.iAddress .setText(iAddress.getAddress1());
-        iStreet       .setText(iAddress.getAddress2());
-        iCountry      .setText(iAddress.getCountry());
-        iCity         .setText(iAddress.getCity());
-        iZipCode      .setText(iAddress.getZipCode());
+        iName.setText(iAddress.getName());
+        this.iAddress.setText(iAddress.getAddress1());
+        iStreet.setText(iAddress.getAddress2());
+        iCountry.setText(iAddress.getCountry());
+        iCity.setText(iAddress.getCity());
+        iZipCode.setText(iAddress.getZipCode());
     }
 
     /**
@@ -192,11 +184,11 @@ public class SSAdressPanel extends JPanel{
      * @return
      */
     public SSAddress getAddress() {
-        iAdress.setName   (iName   .getText());
+        iAdress.setName(iName.getText());
         iAdress.setAddress1(iAddress.getText());
-        iAdress.setAddress2 (iStreet .getText());
+        iAdress.setAddress2(iStreet.getText());
         iAdress.setCountry(iCountry.getText());
-        iAdress.setCity   (iCity   .getText());
+        iAdress.setCity(iCity.getText());
         iAdress.setZipCode(iZipCode.getText());
 
         return iAdress;
@@ -211,7 +203,6 @@ public class SSAdressPanel extends JPanel{
 
     }
 
-
     /**
      *
      * @param enabled
@@ -219,20 +210,20 @@ public class SSAdressPanel extends JPanel{
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        iName   .setEditable(enabled);
+        iName.setEditable(enabled);
         iAddress.setEditable(enabled);
-        iStreet .setEditable(enabled);
+        iStreet.setEditable(enabled);
         iCountry.setEditable(enabled);
-        iCity   .setEditable(enabled);
+        iCity.setEditable(enabled);
         iZipCode.setEditable(enabled);
     }
 
-    public void addKeyListeners(){
-        iName.addKeyListener(new KeyAdapter(){
+    public void addKeyListeners() {
+        iName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iAddress.requestFocusInWindow();
                         }
@@ -241,11 +232,11 @@ public class SSAdressPanel extends JPanel{
             }
         });
 
-        iAddress.addKeyListener(new KeyAdapter(){
+        iAddress.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iStreet.requestFocusInWindow();
                         }
@@ -254,11 +245,11 @@ public class SSAdressPanel extends JPanel{
             }
         });
 
-        iStreet.addKeyListener(new KeyAdapter(){
+        iStreet.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iZipCode.requestFocusInWindow();
                         }
@@ -267,11 +258,11 @@ public class SSAdressPanel extends JPanel{
             }
         });
 
-        iZipCode.addKeyListener(new KeyAdapter(){
+        iZipCode.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCity.requestFocusInWindow();
                         }
@@ -280,11 +271,11 @@ public class SSAdressPanel extends JPanel{
             }
         });
 
-        iCity.addKeyListener(new KeyAdapter(){
+        iCity.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCountry.requestFocusInWindow();
                         }
@@ -294,7 +285,7 @@ public class SSAdressPanel extends JPanel{
         });
     }
 
-    public void setFocus(){
+    public void setFocus() {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 iName.requestFocusInWindow();
@@ -302,10 +293,10 @@ public class SSAdressPanel extends JPanel{
         });
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel");
         sb.append("{iAddress=").append(iAddress);
         sb.append(", iAdress=").append(iAdress);

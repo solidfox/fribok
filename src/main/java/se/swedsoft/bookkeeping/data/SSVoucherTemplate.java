@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
@@ -17,6 +18,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 // Trade Extensions specific imports
 
 // Java specific imports
@@ -26,10 +28,8 @@ import java.util.List;
  */
 public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
-
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     //
     private String iDescription;
@@ -40,19 +40,16 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
     //
     private List<SSVoucherTemplateRow> iRows;
 
-
-    ////////////////////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////////////////////
 
     /**
      * Default constructor.
      */
     public SSVoucherTemplate() {
-        iRows        = new LinkedList<SSVoucherTemplateRow>();
+        iRows = new LinkedList<SSVoucherTemplateRow>();
         iDescription = null;
-        iDate        = new Date();
+        iDate = new Date();
     }
-
 
     /**
      * Create a new voucher template from the voucher
@@ -61,23 +58,23 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
      */
     public SSVoucherTemplate(SSVoucher pVoucher) {
         iDescription = pVoucher.getDescription();
-        iDate        = new Date();
+        iDate = new Date();
 
-        iRows        = new LinkedList<SSVoucherTemplateRow>();
+        iRows = new LinkedList<SSVoucherTemplateRow>();
 
-        for(SSVoucherRow iVoucherRow: pVoucher.getRows()){
+        for (SSVoucherRow iVoucherRow: pVoucher.getRows()) {
             SSVoucherTemplateRow iTemplateRow = new SSVoucherTemplateRow();
 
-            iTemplateRow.setAccount( iVoucherRow.getAccount()  );
-            iTemplateRow.setDebet  ( iVoucherRow.getDebet  () );
-            iTemplateRow.setCredit ( iVoucherRow.getCredit  () );
+            iTemplateRow.setAccount(iVoucherRow.getAccount());
+            iTemplateRow.setDebet(iVoucherRow.getDebet());
+            iTemplateRow.setCredit(iVoucherRow.getCredit());
 
             iRows.add(iTemplateRow);
 
         }
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -86,23 +83,23 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
     public void addToVoucher(SSVoucher pVoucher) {
         pVoucher.setDescription(iDescription);
 
-
-
-        for(SSVoucherTemplateRow iTemplateRow: iRows){
+        for (SSVoucherTemplateRow iTemplateRow: iRows) {
             SSVoucherRow iVoucherRow = new SSVoucherRow();
 
             // Dont add the row if the account is in the voucher
-            if( SSVoucherMath.hasAccount(pVoucher, iTemplateRow.getAccount() ) ) continue;
+            if (SSVoucherMath.hasAccount(pVoucher, iTemplateRow.getAccount())) {
+                continue;
+            }
 
-            iVoucherRow.setAccount(  iTemplateRow.getAccount() );
-            iVoucherRow.setDebet  (  iTemplateRow.getDebet() );
-            iVoucherRow.setCredit (  iTemplateRow.getCredit() );
+            iVoucherRow.setAccount(iTemplateRow.getAccount());
+            iVoucherRow.setDebet(iTemplateRow.getDebet());
+            iVoucherRow.setCredit(iTemplateRow.getCredit());
 
             pVoucher.addVoucherRow(iVoucherRow);
         }
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -119,7 +116,8 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
     public void setDescription(String iDescription) {
         this.iDescription = iDescription;
     }
-    ////////////////////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -136,7 +134,8 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
     public void setDate(Date iDate) {
         this.iDate = iDate;
     }
-    ////////////////////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -154,18 +153,17 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
         this.iRows = iRows;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
-    
     public String toString() {
 
         StringBuffer b = new StringBuffer();
+
         b.append(iDescription);
         b.append('\n');
 
         return b.toString();
     }
-
 
     /**
      * @return
@@ -174,17 +172,12 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
         return iDescription;
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSVoucherTemplate)) {
             return false;
         }
         return iDescription.equals(((SSVoucherTemplate) obj).iDescription);
     }
-
-
-
-
 
     /**
      *
@@ -193,7 +186,6 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
         // Constant for serialization versioning.
         static final long serialVersionUID = 1L;
-
 
         private Integer iAccountNr;
 
@@ -205,13 +197,12 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          *
          */
         public SSVoucherTemplateRow() {
-            iAccount   = null;
-            iDebet     = false;
+            iAccount = null;
+            iDebet = false;
             iAccountNr = null;
         }
 
-
-        ////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////////////////////////////////////
 
         /**
          *
@@ -227,11 +218,10 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          */
         public void setAccountNr(Integer iAccountNr) {
             this.iAccountNr = iAccountNr;
-            iAccount        = null;
+            iAccount = null;
         }
 
-
-        ////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////////////////////////////////////
 
         /**
          *
@@ -246,10 +236,10 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @return
          */
         public BigDecimal getCredit() {
-            return iDebet ?  null: new BigDecimal(0);
+            return iDebet ? null : new BigDecimal(0);
         }
 
-        ////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////////////////////////////////////
 
         /**
          *
@@ -267,8 +257,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
             iDebet = iCredit == null;
         }
 
-
-        ////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////////////////////////////////////
 
         /**
          *
@@ -283,10 +272,10 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @param iAccounts
          * @return
          */
-        public SSAccount getAccount(List<SSAccount> iAccounts ) {
-            if(iAccount == null && iAccountNr != null){
+        public SSAccount getAccount(List<SSAccount> iAccounts) {
+            if (iAccount == null && iAccountNr != null) {
                 for (SSAccount iCurrent : iAccounts) {
-                    if(iAccountNr.equals(iCurrent.getNumber() )){
+                    if (iAccountNr.equals(iCurrent.getNumber())) {
                         iAccount = iCurrent;
                         break;
                     }
@@ -300,12 +289,11 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @param iAccount
          */
         public void setAccount(SSAccount iAccount) {
-            this.iAccount   = iAccount;
+            this.iAccount = iAccount;
             iAccountNr = iAccount == null ? null : iAccount.getNumber();
         }
 
-
-        ////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////////////////////////////////////
 
         /**
          *
@@ -313,7 +301,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @throws IOException
          */
         private void writeObject(ObjectOutputStream out) throws IOException {
-            iAccount    = null;
+            iAccount = null;
             out.defaultWriteObject();
         }
 
@@ -323,15 +311,15 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
          * @throws IOException
          * @throws ClassNotFoundException
          */
-        private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
+        private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
             in.defaultReadObject();
-            if(iAccount    != null) iAccountNr    = iAccount   .getNumber();
+            if (iAccount != null) {
+                iAccountNr = iAccount.getNumber();
+            }
 
-            iAccount    = null;
+            iAccount = null;
         }
 
-
     }
-
 
 }

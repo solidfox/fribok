@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report.sales;
 
+
 import se.swedsoft.bookkeeping.calc.SSOCRNumber;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
 
 /**
  * User: Andreas Lago
@@ -28,39 +30,39 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
      */
     public SSOCRInvoicePrinter(SSInvoice iInvoice, Locale iLocale, boolean iShowBackground) {
         this.iInvoice = iInvoice;
-        this.iLocale  = iLocale;
+        this.iLocale = iLocale;
         super.iLocale = iLocale;
-        
+
         ResourceBundle iBundle = ResourceBundle.getBundle("reports.invoicereport", iLocale);
 
+        setBundle(iBundle);
+        setLocale(iLocale);
 
-        setBundle( iBundle );
-        setLocale( iLocale );
-
-        setPageHeader  ("sales/sale.header.jrxml");
-        setPageFooter  ("sales/ocrinvoice.jrxml");
-        setDetail      ("sales/ocrinvoice.jrxml");
+        setPageHeader("sales/sale.header.jrxml");
+        setPageFooter("sales/ocrinvoice.jrxml");
+        setDetail("sales/ocrinvoice.jrxml");
         setColumnHeader("sales/ocrinvoice.jrxml");
 
-        if(iShowBackground) setBackground  ("sales/ocrinvoice.jrxml");
+        if (iShowBackground) {
+            setBackground("sales/ocrinvoice.jrxml");
+        }
 
-        setMargins(0,0,0,0);
+        setMargins(0, 0, 0, 0);
 
-        /*SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
+        /* SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-        String iOCRNumber = SSOCRNumber.getOCRNumber(iInvoice);
+         String iOCRNumber = SSOCRNumber.getOCRNumber(iInvoice);
 
-        iInvoice.setOCRNumber(iOCRNumber);*/
+         iInvoice.setOCRNumber(iOCRNumber);*/
 
         iCodeRow = new SSORCInvoiceCodeRow();
-        //iCodeRow.setReferenceNumber( iOCRNumber );
-        //iCodeRow.setBankNumber     ( iCompany.getBankGiroNumber() );
-        iCodeRow.setReferenceNumber( iInvoice.getOCRNumber() );
-        iCodeRow.setBankNumber     ( SSDB.getInstance().getCurrentCompany().getBankGiroNumber() );
-        iCodeRow.setValue          ( SSInvoiceMath.getTotalSum(iInvoice) );
+        // iCodeRow.setReferenceNumber( iOCRNumber );
+        // iCodeRow.setBankNumber     ( iCompany.getBankGiroNumber() );
+        iCodeRow.setReferenceNumber(iInvoice.getOCRNumber());
+        iCodeRow.setBankNumber(SSDB.getInstance().getCurrentCompany().getBankGiroNumber());
+        iCodeRow.setValue(SSInvoiceMath.getTotalSum(iInvoice));
 
         addParameters();
-
 
     }
 
@@ -70,19 +72,16 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
     @Override
     protected void addParameters() {
         super.addParameters();
-        addParameter("number"               , Integer.decode(iInvoice.getOCRNumber() ) );
+        addParameter("number", Integer.decode(iInvoice.getOCRNumber()));
 
-        addParameter("ocrinvoice.coderow"   , iCodeRow.toString() );
+        addParameter("ocrinvoice.coderow", iCodeRow.toString());
         addParameter("ocrinvoice.background", SSImage.getImage("OCRBackground"));
     }
-
-
-
 
     /**
      *
      */
-    public static class SSORCInvoiceCodeRow{
+    public static class SSORCInvoiceCodeRow {
         private char[] iCharacters;
 
         /**
@@ -91,29 +90,29 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
         public SSORCInvoiceCodeRow() {
             iCharacters = new char[84];
 
-            for(int i = 0; i < 84; i++){
+            for (int i = 0; i < 84; i++) {
                 iCharacters[i] = ' ';
             }
             // Förtrykta fält
-           iCharacters[83] = 'H';
- /*            iCharacters[79] = '#';
-            iCharacters[51] = '#';
-            iCharacters[34] = '>';
-            iCharacters[ 8] = '#';
-            iCharacters[ 7] = '4';
-            iCharacters[ 6] = '1';
-            iCharacters[ 5] = '#';*/
-        }
+            iCharacters[83] = 'H';
 
+            /* iCharacters[79] = '#';
+             iCharacters[51] = '#';
+             iCharacters[34] = '>';
+             iCharacters[ 8] = '#';
+             iCharacters[ 7] = '4';
+             iCharacters[ 6] = '1';
+             iCharacters[ 5] = '#';*/
+        }
 
         /**
          *
          * @param iNumber
          */
-        public void setReferenceNumber(String iNumber){
+        public void setReferenceNumber(String iNumber) {
             String iText = iNumber.trim();
 
-            for(int i = 0; i < iText.length(); i++){
+            for (int i = 0; i < iText.length(); i++) {
                 iCharacters[53 + i] = iText.charAt(iText.length() - i - 1);
             }
         }
@@ -122,11 +121,11 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
          *
          * @param iValue
          */
-        public void setValue(BigDecimal iValue){
+        public void setValue(BigDecimal iValue) {
             DecimalFormat iFormat = new DecimalFormat("0.00");
-            String iText = iFormat.format( iValue.doubleValue() );
+            String iText = iFormat.format(iValue.doubleValue());
 
-            for(int i = 0; i < iText.length(); i++){
+            for (int i = 0; i < iText.length(); i++) {
                 iCharacters[40 + i] = iText.charAt(iText.length() - i - 1);
             }
             iText = iText.replaceAll("\\.", "");
@@ -143,9 +142,9 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
         public void setBankNumber(String iNumber) {
             String iText = iNumber.replaceAll("-", "");
 
-            int iLength =  iText.length();
+            int iLength = iText.length();
 
-            for(int i = 0; i < iLength; i++){
+            for (int i = 0; i < iLength; i++) {
                 iCharacters[9 + i] = iText.charAt(iLength - i - 1);
             }
         }
@@ -154,10 +153,11 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
          *
          * @return
          */
-        public String toString(){
+        public String toString() {
             String iText = "";
-            for(int i = 83; i > 0; i--){
-                iText =  iText + iCharacters[i];
+
+            for (int i = 83; i > 0; i--) {
+                iText = iText + iCharacters[i];
             }
             return iText;
         }
@@ -167,6 +167,7 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.sales.SSOCRInvoicePrinter");
         sb.append("{iCodeRow=").append(iCodeRow);
         sb.append('}');

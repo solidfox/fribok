@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.util;
 
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -21,7 +23,6 @@ public class SSButtonGroup implements ActionListener {
 
     // The currently selected button
     protected AbstractButton iSelected;
-
 
     /**
      *
@@ -54,17 +55,18 @@ public class SSButtonGroup implements ActionListener {
         this.iAllowNoneSelected = iAllowNoneSelected;
     }
 
-
     /**
      * Adds the button to the group.
      * @param iButton the button to be added
      */
     public void add(AbstractButton iButton) {
-        if(iButton == null || iButtons.contains(iButton) ) return;
+        if (iButton == null || iButtons.contains(iButton)) {
+            return;
+        }
 
         iButtons.add(iButton);
 
-        if(iButton.isSelected()) {
+        if (iButton.isSelected()) {
             setSelected(iButton);
         }
         iButton.addActionListener(this);
@@ -75,11 +77,13 @@ public class SSButtonGroup implements ActionListener {
      * @param iButton the button to be removed
      */
     public void remove(AbstractButton iButton) {
-        if(iButton == null) return;
+        if (iButton == null) {
+            return;
+        }
 
         iButtons.remove(iButton);
 
-        if(iButton == iSelected) {
+        if (iButton == iSelected) {
             iSelected = null;
         }
         iButton.addActionListener(this);
@@ -102,7 +106,6 @@ public class SSButtonGroup implements ActionListener {
         return Collections.unmodifiableList(iButtons);
     }
 
-
     /**
      * Returns the elected button.
      * @return the selected button
@@ -111,28 +114,23 @@ public class SSButtonGroup implements ActionListener {
         return iSelected;
     }
 
-   // private boolean iUpdating = false;
+    // private boolean iUpdating = false;
 
     /**
      *
      * @param iButton
      */
-    private void setSelected(AbstractButton iButton){
+    private void setSelected(AbstractButton iButton) {
         iSelected = iButton;
 
-//        iUpdating = true;
+        // iUpdating = true;
         for (AbstractButton iCurrent : iButtons) {
             iCurrent.removeActionListener(this);
             iCurrent.setSelected(iCurrent == iSelected);
             iCurrent.addActionListener(this);
         }
-        //   setUpdating(false);
+        // setUpdating(false);
     }
-
-
-
-
-
 
     boolean iUpdating;
 
@@ -141,9 +139,11 @@ public class SSButtonGroup implements ActionListener {
      * @param iNewUpdating
      * @return if the locking failed
      */
-    private boolean setUpdating(boolean iNewUpdating){
+    private boolean setUpdating(boolean iNewUpdating) {
 
-        if( iUpdating && iNewUpdating ) return true;
+        if (iUpdating && iNewUpdating) {
+            return true;
+        }
 
         iUpdating = iNewUpdating;
 
@@ -154,13 +154,15 @@ public class SSButtonGroup implements ActionListener {
      * Invoked when an action occurs.
      */
     public void actionPerformed(ActionEvent e) {
-        AbstractButton iButton = (AbstractButton)e.getSource();
+        AbstractButton iButton = (AbstractButton) e.getSource();
 
-        if( iButton.isSelected() ){
+        if (iButton.isSelected()) {
             setSelected(iButton);
         } else {
 
-            if(iAllowNoneSelected) setSelected(null);
+            if (iAllowNoneSelected) {
+                setSelected(null);
+            }
 
         }
     }
@@ -168,6 +170,7 @@ public class SSButtonGroup implements ActionListener {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.SSButtonGroup");
         sb.append("{iAllowNoneSelected=").append(iAllowNoneSelected);
         sb.append(", iButtons=").append(iButtons);

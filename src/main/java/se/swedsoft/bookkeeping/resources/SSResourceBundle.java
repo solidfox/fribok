@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.resources;
 
+
 import java.util.Enumeration;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+
 
 /**
  * User: Andreas Lago
@@ -36,7 +38,7 @@ public class SSResourceBundle extends ResourceBundle {
      * @param key
      * @return If the key exists in the bundle
      */
-    public boolean hasKey(String key){
+    public boolean hasKey(String key) {
         try {
             iBundle.getObject(key);
         } catch (MissingResourceException e) {
@@ -49,19 +51,20 @@ public class SSResourceBundle extends ResourceBundle {
     protected Object handleGetObject(String key) {
 
         Object iObject;
+
         try {
             iObject = iBundle.getObject(key);
         } catch (Exception e) {
             return null;
         }
-       return iObject ;
+        return iObject;
 
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.resources.SSResourceBundle");
         sb.append("{iBundle=").append(iBundle);
         sb.append('}');

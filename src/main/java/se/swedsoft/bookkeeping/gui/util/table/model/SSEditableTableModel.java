@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.table.model;
 
+
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -48,7 +50,7 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
     @Override
     public T getObject(int row) {
 
-        if( row == super.getRowCount() ) {
+        if (row == super.getRowCount()) {
             return iEditing;
         }
         return super.getObject(row);
@@ -59,7 +61,8 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
         // If we're editing the last row and the value is set add a new row
-        if( (rowIndex == super.getRowCount()) && (aValue != null) && !EMPTY_STRING.equals(aValue)) {
+        if ((rowIndex == super.getRowCount()) && (aValue != null)
+                && !EMPTY_STRING.equals(aValue)) {
             add(iEditing);
 
             iEditing = newObject();
@@ -89,13 +92,14 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
      *
      * @return
      */
-    public T getEditObject(){
+    public T getEditObject() {
         return iEditing;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel");
         sb.append("{EMPTY_STRING='").append(EMPTY_STRING).append('\'');
         sb.append(", iEditing=").append(iEditing);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.order.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.order.SSOrderFrame;
@@ -11,6 +12,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -24,14 +26,12 @@ public class SSOrderSearchPanel extends JPanel {
 
     private SSOrderTableModel iModel;
 
-
     public SSOrderSearchPanel(SSOrderTableModel iModel) {
         this.iModel = iModel;
 
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,33 +41,43 @@ public class SSOrderSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter(List<SSOrder> iList) {
         List<SSOrder> iFiltered = new LinkedList<SSOrder>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSOrder iOrder : iList) {
-            String iNumber      = iOrder.getNumber() == null ? "" : iOrder.getNumber().toString();
+            String iNumber = iOrder.getNumber() == null
+                    ? ""
+                    : iOrder.getNumber().toString();
             String iDescription = iOrder.getCustomerName();
             String iCustomerNumber = iOrder.getCustomerNr();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) || (iCustomerNumber != null && iCustomerNumber.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))
+                            || (iCustomerNumber != null
+                                    && iCustomerNumber.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iOrder);
             }
         }
-        SSOrderFrame.getInstance().setFilterIndex(SSOrderFrame.getInstance().getTabbedPane().getSelectedIndex(),iFiltered);
-        //iModel.setObjects(iFiltered);
+        SSOrderFrame.getInstance().setFilterIndex(
+                SSOrderFrame.getInstance().getTabbedPane().getSelectedIndex(), iFiltered);
+        // iModel.setObjects(iFiltered);
 
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.order.panel.SSOrderSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

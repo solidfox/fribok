@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.exportbgcadmission;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -16,6 +17,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-28
@@ -29,7 +31,6 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
 
     private SSExportBGCAdmissionTableModel iModel;
 
-
     private SSButtonPanel iButtonPanel;
 
     private JTextField iOurBankGiroNumber;
@@ -42,21 +43,23 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
      * @param iCustomers
      */
     public SSExportBGCAdmissionDialog(final SSMainFrame iMainFrame, List<SSCustomer> iCustomers) {
-        super(iMainFrame, SSBundle.getBundle().getString("customerframe.bgcadmission.title"));
-        setPanel(iPanel );
+        super(iMainFrame,
+                SSBundle.getBundle().getString("customerframe.bgcadmission.title"));
+        setPanel(iPanel);
         iTable.setColumnSortingEnabled(false);
         iTable.setColorReadOnly(true);
 
         iModel = new SSExportBGCAdmissionTableModel(iCustomers);
-        iModel.addColumn( SSExportBGCAdmissionTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSExportBGCAdmissionTableModel.COLUMN_NAME  );
-        iModel.addColumn( SSExportBGCAdmissionTableModel.COLUMN_BANKGIRO);
-        iModel.addColumn( SSExportBGCAdmissionTableModel.COLUMN_CLEARINGNUMBER);
-        iModel.addColumn( SSExportBGCAdmissionTableModel.COLUMN_ACCOUNTNR);
+        iModel.addColumn(SSExportBGCAdmissionTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSExportBGCAdmissionTableModel.COLUMN_NAME);
+        iModel.addColumn(SSExportBGCAdmissionTableModel.COLUMN_BANKGIRO);
+        iModel.addColumn(SSExportBGCAdmissionTableModel.COLUMN_CLEARINGNUMBER);
+        iModel.addColumn(SSExportBGCAdmissionTableModel.COLUMN_ACCOUNTNR);
 
         iModel.setupTable(iTable);
 
-        iOurBankGiroNumber.setText( SSDB.getInstance().getCurrentCompany().getBankGiroNumber() );
+        iOurBankGiroNumber.setText(
+                SSDB.getInstance().getCurrentCompany().getBankGiroNumber());
 
         iButtonPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -70,19 +73,19 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
             }
         });
 
-        addWindowListener(new WindowAdapter(){
+        addWindowListener(new WindowAdapter() {
             @Override
-            public void windowClosing(WindowEvent e) {
-            }
+            public void windowClosing(WindowEvent e) {}
         });
 
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.exportbgcadmission.SSExportBGCAdmissionDialog");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.exportbgcadmission.SSExportBGCAdmissionDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iMessage=").append(iMessage);
         sb.append(", iModel=").append(iModel);

@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import javax.swing.table.DefaultTableCellRenderer;
 import java.text.DateFormat;
 
@@ -14,11 +15,9 @@ import java.text.DateFormat;
  */
 public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
 
-
     // The formatter to use.
     private DateFormat iDateFormat;
     private DateFormat iTimeFormat;
-
 
     /**
      * Default constructor.
@@ -28,7 +27,6 @@ public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
         iTimeFormat = DateFormat.getTimeInstance(DateFormat.SHORT);
     }
 
-
     /**
      * Sets the value for the cell.
      *
@@ -36,16 +34,17 @@ public class SSDateTimeCellRenderer extends DefaultTableCellRenderer {
      */
     @Override
     public void setValue(Object value) {
-        if(value == null){
+        if (value == null) {
             setText("");
         } else {
-            setText( iDateFormat.format(value) + ' ' + iTimeFormat.format(value));
+            setText(iDateFormat.format(value) + ' ' + iTimeFormat.format(value));
         }
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSDateTimeCellRenderer");
         sb.append("{iDateFormat=").append(iDateFormat);
         sb.append(", iTimeFormat=").append(iTimeFormat);

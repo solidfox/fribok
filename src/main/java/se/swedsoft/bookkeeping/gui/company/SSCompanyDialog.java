@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.*;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -14,6 +15,7 @@ import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import javax.swing.*;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-25
@@ -23,18 +25,18 @@ public class SSCompanyDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSCompanyDialog() {
-    }
-
+    private SSCompanyDialog() {}
 
     public static void editDialog(SSMainFrame iMainFrame, SSNewCompany pCompany, final SSDefaultTableModel<SSNewCompany> pModel) {
-        if(SSPostLock.isLocked(pCompany.getId())){
-            new SSErrorDialog( iMainFrame, "postlock.company");
+        if (SSPostLock.isLocked(pCompany.getId())) {
+            new SSErrorDialog(iMainFrame, "postlock.company");
             return;
         }
         SSPostLock.applyLock(pCompany.getId());
 
-        SSCompanySettingsDialog iDialog = new SSCompanySettingsDialog(iMainFrame, bundle.getString("companyframe.edit.title"));
+        SSCompanySettingsDialog iDialog = new SSCompanySettingsDialog(iMainFrame,
+                bundle.getString("companyframe.edit.title"));
+
         iDialog.setSize(700, 550);
         iDialog.setLocationRelativeTo(iMainFrame);
 
@@ -42,9 +44,11 @@ public class SSCompanyDialog {
 
         final int iModalResult = iDialog.showDialog();
 
-        if(iModalResult != JOptionPane.OK_OPTION) {
-            if(iModalResult == JOptionPane.CLOSED_OPTION){
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "companyframe.saveonclose") != JOptionPane.OK_OPTION){
+        if (iModalResult != JOptionPane.OK_OPTION) {
+            if (iModalResult == JOptionPane.CLOSED_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "companyframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(pCompany.getId());
                     return;
                 }
@@ -55,13 +59,15 @@ public class SSCompanyDialog {
         }
 
         SSNewCompany iCompany = iDialog.getCompany();
+
         iCompany.setId(pCompany.getId());
 
         SSDB.getInstance().updateCompany(iCompany);
 
-        if(SSCompanyFrame.getInstance()!=null)
-        {
-            if(pModel != null) pModel.fireTableDataChanged();
+        if (SSCompanyFrame.getInstance() != null) {
+            if (pModel != null) {
+                pModel.fireTableDataChanged();
+            }
             SSCompanyFrame.getInstance().updateFrame();
         }
         SSPostLock.removeLock(pCompany.getId());
@@ -74,22 +80,26 @@ public class SSCompanyDialog {
      * @param pModel
      */
     public static void editCurrentDialog(SSMainFrame iMainFrame, SSNewCompany pCompany, final SSDefaultTableModel<SSNewCompany> pModel) {
-        if(SSPostLock.isLocked(pCompany.getId())){
-            new SSErrorDialog( iMainFrame, "postlock.company");
+        if (SSPostLock.isLocked(pCompany.getId())) {
+            new SSErrorDialog(iMainFrame, "postlock.company");
             return;
         }
         SSPostLock.applyLock(pCompany.getId());
 
-        SSCompanySettingsDialog iDialog = new SSCompanySettingsDialog(iMainFrame, bundle.getString("companyframe.editcurrent.title"));
+        SSCompanySettingsDialog iDialog = new SSCompanySettingsDialog(iMainFrame,
+                bundle.getString("companyframe.editcurrent.title"));
+
         iDialog.setSize(700, 550);
         iDialog.setLocationRelativeTo(iMainFrame);
 
         iDialog.setCompany(pCompany);
         final int iModalResult = iDialog.showDialog();
 
-        if(iModalResult != JOptionPane.OK_OPTION) {
-            if(iModalResult == JOptionPane.CLOSED_OPTION){
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "companyframe.saveonclose") != JOptionPane.OK_OPTION){
+        if (iModalResult != JOptionPane.OK_OPTION) {
+            if (iModalResult == JOptionPane.CLOSED_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "companyframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(pCompany.getId());
                     return;
                 }
@@ -99,13 +109,15 @@ public class SSCompanyDialog {
             }
         }
         SSNewCompany iCompany = iDialog.getCompany();
+
         iCompany.setId(pCompany.getId());
 
         SSDB.getInstance().updateCompany(iCompany);
 
-        if(SSCompanyFrame.getInstance()!=null)
-        {
-            if(pModel != null) pModel.fireTableDataChanged();
+        if (SSCompanyFrame.getInstance() != null) {
+            if (pModel != null) {
+                pModel.fireTableDataChanged();
+            }
             SSCompanyFrame.getInstance().updateFrame();
         }
         SSPostLock.removeLock(pCompany.getId());
@@ -117,7 +129,9 @@ public class SSCompanyDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final SSDefaultTableModel<SSNewCompany> pModel) {
-        SSCompanySettingsDialog iDialog = new SSCompanySettingsDialog(iMainFrame, bundle.getString("companyframe.new.title"));
+        SSCompanySettingsDialog iDialog = new SSCompanySettingsDialog(iMainFrame,
+                bundle.getString("companyframe.new.title"));
+
         iDialog.setSize(700, 550);
         iDialog.setLocationRelativeTo(iMainFrame);
 
@@ -125,36 +139,42 @@ public class SSCompanyDialog {
 
         final int iModalResult = iDialog.showDialog();
 
-        if(iModalResult != JOptionPane.OK_OPTION) {
-            if(iModalResult == JOptionPane.CLOSED_OPTION){
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "companyframe.saveonclose") != JOptionPane.OK_OPTION) return;
+        if (iModalResult != JOptionPane.OK_OPTION) {
+            if (iModalResult == JOptionPane.CLOSED_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "companyframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
+                    return;
+                }
             } else {
                 return;
             }
         }
         SSNewCompany iCompany = iDialog.getCompany();
+
         SSDB.getInstance().addCompany(iCompany);
         SSCompanyFrame.getInstance().updateFrame();
 
-        SSQueryDialog iQDialog = new SSQueryDialog(iMainFrame, SSBundle.getBundle(), "companyframe.replacecompany", iCompany.getName());
+        SSQueryDialog iQDialog = new SSQueryDialog(iMainFrame, SSBundle.getBundle(),
+                "companyframe.replacecompany", iCompany.getName());
 
-        if(iQDialog.getResponce() == JOptionPane.YES_OPTION){
-            //Lås upp det förra företaget
+        if (iQDialog.getResponce() == JOptionPane.YES_OPTION) {
+            // Lås upp det förra företaget
             SSCompanyLock.removeLock(SSDB.getInstance().getCurrentCompany());
             SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
 
-            //Sätt det valda företaget som nuvarande företag
+            // Sätt det valda företaget som nuvarande företag
             SSDB.getInstance().setCurrentCompany(iCompany);
             SSDB.getInstance().init(true);
             SSDBConfig.setCompanyId(iCompany.getId());
 
-            //Lås det nya företaget
+            // Lås det nya företaget
             SSCompanyLock.applyLock(iCompany);
             SSDB.getInstance().setCurrentYear(null);
 
             pModel.fireTableDataChanged();
 
-            //Stäng alla fönster
+            // Stäng alla fönster
             SSFrameManager.getInstance().close();
 
             SSAccountingYearFrame.showFrame(iMainFrame, 500, 300, true);

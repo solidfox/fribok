@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -31,18 +33,15 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
     // Valutakursen för inbetalt belopp
     private BigDecimal iCurrencyRate;
 
-
     // The transistient invoice
     private transient SSInvoice iInvoice;
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
-    public SSInpaymentRow() {
-    }
+    public SSInpaymentRow() {}
 
     /**
      * Default constructor
@@ -61,25 +60,23 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
         copyFrom(iRow);
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iInpaymentRow
      */
     public void copyFrom(SSInpaymentRow iInpaymentRow) {
-        iInvoiceNr           = iInpaymentRow.iInvoiceNr;
-        iInvoiceCurrency     = iInpaymentRow.iInvoiceCurrency;
+        iInvoiceNr = iInpaymentRow.iInvoiceNr;
+        iInvoiceCurrency = iInpaymentRow.iInvoiceCurrency;
         iInvoiceCurrencyRate = iInpaymentRow.iInvoiceCurrencyRate;
-        iValue               = iInpaymentRow.iValue;
-        iCurrencyRate        = iInpaymentRow.iCurrencyRate;
+        iValue = iInpaymentRow.iValue;
+        iCurrencyRate = iInpaymentRow.iCurrencyRate;
 
-        iInvoice             = iInpaymentRow.iInvoice;
+        iInvoice = iInpaymentRow.iInvoice;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -95,10 +92,10 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      */
     public void setInvoiceNr(Integer iInvoiceNr) {
         this.iInvoiceNr = iInvoiceNr;
-        iInvoice        = null;
+        iInvoice = null;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -116,7 +113,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
         this.iInvoiceCurrency = iInvoiceCurrency;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -134,7 +131,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
         iInvoiceCurrencyRate = iInvoiceExchangerate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -152,9 +149,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
         this.iValue = iValue;
     }
 
-    ////////////////////////////////////////////////////
-
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -172,8 +167,7 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
         return iCurrencyRate;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      * Returns the value in the company currency as
      *
@@ -183,7 +177,9 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      */
     public BigDecimal getLocalValue() {
 
-        if( iCurrencyRate == null || iValue == null) return null;
+        if (iCurrencyRate == null || iValue == null) {
+            return null;
+        }
 
         return iCurrencyRate.multiply(iValue);
     }
@@ -197,12 +193,14 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      */
     public void setLocalValue(BigDecimal iLocalValue) {
 
-        if( iCurrencyRate == null || iValue == null) return;
+        if (iCurrencyRate == null || iValue == null) {
+            return;
+        }
 
-        iCurrencyRate = iLocalValue.divide(iValue, 5, RoundingMode.HALF_UP );
+        iCurrencyRate = iLocalValue.divide(iValue, 5, RoundingMode.HALF_UP);
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -210,9 +208,9 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @return
      */
     public SSInvoice getInvoice(List<SSInvoice> iInvoices) {
-        if(iInvoice == null && iInvoiceNr != null){
-            for(SSInvoice iCurrent: iInvoices){
-                if(iInvoiceNr.equals(iCurrent.getNumber())){
+        if (iInvoice == null && iInvoiceNr != null) {
+            for (SSInvoice iCurrent: iInvoices) {
+                if (iInvoiceNr.equals(iCurrent.getNumber())) {
                     iInvoice = iCurrent;
                 }
             }
@@ -229,21 +227,20 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @param iInvoice
      */
     public void setInvoice(SSInvoice iInvoice) {
-        this.iInvoice   = iInvoice;
+        this.iInvoice = iInvoice;
         iInvoiceNr = iInvoice == null ? null : iInvoice.getNumber();
 
-        if( iInvoice != null){
-            BigDecimal iSaldo    = SSInvoiceMath.getSaldo(iInvoice.getNumber());
+        if (iInvoice != null) {
+            BigDecimal iSaldo = SSInvoiceMath.getSaldo(iInvoice.getNumber());
 
-            iInvoiceCurrency     = iInvoice.getCurrency();
+            iInvoiceCurrency = iInvoice.getCurrency();
             iInvoiceCurrencyRate = iInvoice.getCurrencyRate();
-            iValue               = iSaldo;
-            iCurrencyRate        = iInvoice.getCurrencyRate();
+            iValue = iSaldo;
+            iCurrencyRate = iInvoice.getCurrencyRate();
         }
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      * Returns if this row is paying the selected sales
@@ -251,9 +248,10 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @param pInvoice
      * @return if the row is paying the sales
      */
-    public boolean isPaying(SSInvoice pInvoice){
+    public boolean isPaying(SSInvoice pInvoice) {
         boolean answer = false;
-        if(pInvoice != null){
+
+        if (pInvoice != null) {
             answer = pInvoice.getNumber().equals(iInvoiceNr);
         }
         return answer;
@@ -265,16 +263,11 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
      * @param iInvoice
      * @return if the row is paying the sales
      */
-    public boolean isPaying(Integer iInvoice){
+    public boolean isPaying(Integer iInvoice) {
         return iInvoice != null && iInvoice.equals(iInvoiceNr);
     }
 
-
-    ////////////////////////////////////////////////////
-
-
-
-
+    // //////////////////////////////////////////////////
 
     /**
      * Returns the render string to be shown in the tables
@@ -285,10 +278,10 @@ public class SSInpaymentRow implements SSTableSearchable, Serializable {
         return String.valueOf(iInvoiceNr);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSInpaymentRow");
         sb.append("{iCurrencyRate=").append(iCurrencyRate);
         sb.append(", iInvoice=").append(iInvoice);

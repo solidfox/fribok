@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -14,8 +16,8 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
 
     @Override
     protected void setValue(Object value) {
-        if(value instanceof SSTableSearchable){
-            setValue( (T)value  );
+        if (value instanceof SSTableSearchable) {
+            setValue((T) value);
         } else {
             super.setValue(value);
         }
@@ -32,7 +34,5 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
     protected void setValue(T value) {
         super.setValue(value);
     }
-
-
 
 }

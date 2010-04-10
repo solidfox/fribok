@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inventory.util;
 
+
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.SSInventoryRow;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -7,6 +8,7 @@ import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
+
 
 /**
  * User: Andreas Lago
@@ -24,7 +26,6 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
     public SSInventoryRowTableModel(SSStock iStock) {
         SSInventoryRowTableModel.iStock = iStock;
     }
-
 
     /**
      * Returns the type of data in this model.
@@ -47,7 +48,8 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
     /**
      * Product
      */
-    public static SSTableColumn<SSInventoryRow> COLUMN_PRODUCT = new SSTableColumn<SSInventoryRow>(SSBundle.getBundle().getString("inventoryrowtable.column.1")) {
+    public static SSTableColumn<SSInventoryRow> COLUMN_PRODUCT = new SSTableColumn<SSInventoryRow>(
+            SSBundle.getBundle().getString("inventoryrowtable.column.1")) {
         @Override
         public Object getValue(SSInventoryRow iRow) {
             return iRow.getProduct();
@@ -55,13 +57,15 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
 
         @Override
         public void setValue(SSInventoryRow iRow, Object iValue) {
-            SSProduct iProduct = (SSProduct)iValue;
+            SSProduct iProduct = (SSProduct) iValue;
 
             iRow.setProduct(iProduct);
 
-            if( iStock == null || iProduct == null ) return;
+            if (iStock == null || iProduct == null) {
+                return;
+            }
 
-            iRow.setStockQuantity( iStock.getQuantity(iProduct) );
+            iRow.setStockQuantity(iStock.getQuantity(iProduct));
             iRow.setChange(0);
         }
 
@@ -79,7 +83,8 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
     /**
      * Product beskrivning
      */
-    public static SSTableColumn<SSInventoryRow> COLUMN_DESCRIPTION = new SSTableColumn<SSInventoryRow>(SSBundle.getBundle().getString("inventoryrowtable.column.2")) {
+    public static SSTableColumn<SSInventoryRow> COLUMN_DESCRIPTION = new SSTableColumn<SSInventoryRow>(
+            SSBundle.getBundle().getString("inventoryrowtable.column.2")) {
         @Override
         public Object getValue(SSInventoryRow iRow) {
             SSProduct iProduct = iRow.getProduct();
@@ -88,9 +93,7 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
         }
 
         @Override
-        public void setValue(SSInventoryRow iRow, Object iValue) {
-
-        }
+        public void setValue(SSInventoryRow iRow, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -103,13 +106,11 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
         }
     };
 
-
-
-
     /**
      * Inventerat antal
      */
-    public static SSTableColumn<SSInventoryRow> COLUMN_INVENTORYQUANTITY = new SSTableColumn<SSInventoryRow>(SSBundle.getBundle().getString("inventoryrowtable.column.3")) {
+    public static SSTableColumn<SSInventoryRow> COLUMN_INVENTORYQUANTITY = new SSTableColumn<SSInventoryRow>(
+            SSBundle.getBundle().getString("inventoryrowtable.column.3")) {
         @Override
         public Object getValue(SSInventoryRow iRow) {
             return iRow.getInventoryQuantity();
@@ -117,7 +118,7 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
 
         @Override
         public void setValue(SSInventoryRow iRow, Object iValue) {
-            iRow.setInventoryQuantity((Integer)iValue);
+            iRow.setInventoryQuantity((Integer) iValue);
         }
 
         @Override
@@ -131,28 +132,27 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
         }
     };
 
-
     /**
      * Antal i lager
      */
-    public static SSTableColumn<SSInventoryRow> COLUMN_STOCKQUANTITY = new SSTableColumn<SSInventoryRow>(SSBundle.getBundle().getString("inventoryrowtable.column.4")) {
+    public static SSTableColumn<SSInventoryRow> COLUMN_STOCKQUANTITY = new SSTableColumn<SSInventoryRow>(
+            SSBundle.getBundle().getString("inventoryrowtable.column.4")) {
         @Override
         public Object getValue(SSInventoryRow iRow) {
             Integer   iQuantity = iRow.getStockQuantity();
-            SSProduct iProduct  = iRow.getProduct();
+            SSProduct iProduct = iRow.getProduct();
 
-            if(iQuantity == null && iProduct != null && iStock != null){
+            if (iQuantity == null && iProduct != null && iStock != null) {
                 iQuantity = iStock.getQuantity(iProduct);
 
-                iRow.setStockQuantity( iQuantity );
+                iRow.setStockQuantity(iQuantity);
             }
 
             return iQuantity;
         }
 
         @Override
-        public void setValue(SSInventoryRow iRow, Object iValue) {
-          // read only
+        public void setValue(SSInventoryRow iRow, Object iValue) {// read only
         }
 
         @Override
@@ -166,11 +166,11 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
         }
     };
 
-
     /**
      * Skillnad
      */
-    public static SSTableColumn<SSInventoryRow> COLUMN_CHANGE = new SSTableColumn<SSInventoryRow>(SSBundle.getBundle().getString("inventoryrowtable.column.5")) {
+    public static SSTableColumn<SSInventoryRow> COLUMN_CHANGE = new SSTableColumn<SSInventoryRow>(
+            SSBundle.getBundle().getString("inventoryrowtable.column.5")) {
         @Override
         public Object getValue(SSInventoryRow iRow) {
             return iRow.getChange();
@@ -178,7 +178,7 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
 
         @Override
         public void setValue(SSInventoryRow iRow, Object iValue) {
-            iRow.setChange((Integer)iValue);
+            iRow.setChange((Integer) iValue);
         }
 
         @Override
@@ -192,17 +192,21 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
         }
     };
 
-
-    public static SSTableColumn<SSInventoryRow> COLUMN_WAREHOUSELOCATION = new SSTableColumn<SSInventoryRow>(SSBundle.getBundle().getString("inventoryrowtable.column.6")) {
+    public static SSTableColumn<SSInventoryRow> COLUMN_WAREHOUSELOCATION = new SSTableColumn<SSInventoryRow>(
+            SSBundle.getBundle().getString("inventoryrowtable.column.6")) {
         @Override
         public Object getValue(SSInventoryRow iRow) {
-            SSProduct iProduct  = iRow.getProduct();
-            return iProduct == null ? "" : (iProduct.getWarehouseLocation() == null ? "" : iProduct.getWarehouseLocation());
+            SSProduct iProduct = iRow.getProduct();
+
+            return iProduct == null
+                    ? ""
+                    : (iProduct.getWarehouseLocation() == null
+                            ? ""
+                            : iProduct.getWarehouseLocation());
         }
 
         @Override
-        public void setValue(SSInventoryRow iRow, Object iValue) {
-          // read only
+        public void setValue(SSInventoryRow iRow, Object iValue) {// read only
         }
 
         @Override
@@ -215,10 +219,6 @@ public class SSInventoryRowTableModel extends SSEditableTableModel<SSInventoryRo
             return 120;
         }
     };
-
-
-
-
 
     /**
      * Product nummer

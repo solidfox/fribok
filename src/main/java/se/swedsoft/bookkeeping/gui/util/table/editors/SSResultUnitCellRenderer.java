@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -12,19 +14,18 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class SSResultUnitCellRenderer extends DefaultTableCellRenderer {
 
     /**
-     * 
+     *
      * @param value
      */
     @Override
     public void setValue(Object value) {
-        if(value instanceof SSNewResultUnit){
+        if (value instanceof SSNewResultUnit) {
             SSNewResultUnit iResultUnit = (SSNewResultUnit) value;
 
-             setText(iResultUnit.getNumber());
-        }  else {
-            setText( "" );
+            setText(iResultUnit.getNumber());
+        } else {
+            setText("");
         }
     }
-
 
 }

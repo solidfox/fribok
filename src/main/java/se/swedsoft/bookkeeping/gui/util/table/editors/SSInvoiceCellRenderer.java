@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -11,17 +13,15 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class SSInvoiceCellRenderer extends DefaultTableCellRenderer {
 
-
     @Override
     public void setValue(Object value) {
-        if(value instanceof SSInvoice){
+        if (value instanceof SSInvoice) {
             SSInvoice iInvoice = (SSInvoice) value;
 
             setText(String.valueOf(iInvoice.getNumber()));
-        }  else {
-            setText( "" );
+        } else {
+            setText("");
         }
     }
-
 
 }

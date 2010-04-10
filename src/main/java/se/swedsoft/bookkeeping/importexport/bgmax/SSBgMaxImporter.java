@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.bgmax;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.SSInpaymentRow;
@@ -24,15 +25,14 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-22
  * Time: 15:00:47
  */
 public class SSBgMaxImporter {
-    private SSBgMaxImporter() {
-    }
-
+    private SSBgMaxImporter() {}
 
     /**
      *
@@ -45,10 +45,11 @@ public class SSBgMaxImporter {
         List<String> iLines = new LinkedList<String>();
 
         try {
-            BufferedReader iReader = new BufferedReader( new FileReader(iFile) );
+            BufferedReader iReader = new BufferedReader(new FileReader(iFile));
 
             String iLine;
-            while( (iLine = iReader.readLine()) != null){
+
+            while ((iLine = iReader.readLine()) != null) {
                 iLines.add(iLine);
             }
         } catch (IOException e) {
@@ -70,7 +71,7 @@ public class SSBgMaxImporter {
      * @param iBgMaxFile
      * @return
      */
-    public static List<SSInpayment> getInpayments(SSMainFrame iMainFrame, BgMaxFile iBgMaxFile){
+    public static List<SSInpayment> getInpayments(SSMainFrame iMainFrame, BgMaxFile iBgMaxFile) {
         BgMaxSelectInvoiceDialog iDialog = new BgMaxSelectInvoiceDialog(iMainFrame);
 
         iDialog.setLocationRelativeTo(iMainFrame);
@@ -84,33 +85,37 @@ public class SSBgMaxImporter {
 
             iInpayment.setText("Bankgiro inbetalning " + iAvsnitt.iLopnummer);
             try {
-                iInpayment.setDate( iDateFormat.parse(iAvsnitt.iBetalningsdag) );
+                iInpayment.setDate(iDateFormat.parse(iAvsnitt.iBetalningsdag));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
             for (BgMaxBetalning iBetalning : iAvsnitt.iBetalningar) {
 
-                SSInvoice iInvoice = SSInvoiceMath.getInvoiceByReference(iBetalning.iReferens);
+                SSInvoice iInvoice = SSInvoiceMath.getInvoiceByReference(
+                        iBetalning.iReferens);
 
-                if(iInvoice == null && !iBetalning.iReferenser.isEmpty()){
+                if (iInvoice == null && !iBetalning.iReferenser.isEmpty()) {
                     for (BgMaxReferens iReferens : iBetalning.iReferenser) {
-                         iInvoice = SSInvoiceMath.getInvoiceByReference(iReferens.iReferens);
+                        iInvoice = SSInvoiceMath.getInvoiceByReference(iReferens.iReferens);
                     }
                 }
-                if(iInvoice == null){
+                if (iInvoice == null) {
                     int iResponce = iDialog.showDialog(iBetalning);
-                    if( iResponce != JOptionPane.OK_OPTION ) return null;
+
+                    if (iResponce != JOptionPane.OK_OPTION) {
+                        return null;
+                    }
 
                     iInvoice = iDialog.getInvoice();
                 }
                 SSInpaymentRow iInpaymentRow = new SSInpaymentRow();
-                iInpaymentRow.setCurrencyRate( new BigDecimal(1));
-                iInpaymentRow.setInvoice     ( iInvoice );
-                iInpaymentRow.setValue       ( iBetalning.getBelopp() );
+
+                iInpaymentRow.setCurrencyRate(new BigDecimal(1));
+                iInpaymentRow.setInvoice(iInvoice);
+                iInpaymentRow.setValue(iBetalning.getBelopp());
 
                 iInpayment.getRows().add(iInpaymentRow);
-
 
             }
 
@@ -119,8 +124,5 @@ public class SSBgMaxImporter {
         return iInpayments;
 
     }
-
-
-
 
 }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.resultunit.util;
 
+
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -9,8 +10,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import java.util.List;
 
 
-public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
-
+public class SSResultUnitTableModel extends SSTableModel<SSNewResultUnit> {
 
     /**
      * Default constructor.
@@ -41,13 +41,12 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
      *
      * @return
      */
-    public static SSResultUnitTableModel getDropDownModel(){
+    public static SSResultUnitTableModel getDropDownModel() {
         SSResultUnitTableModel iModel = new SSResultUnitTableModel();
 
-
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_NAME   );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
         return iModel;
     }
 
@@ -56,22 +55,21 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
      * @param iResultUnits
      * @return
      */
-    public static SSResultUnitTableModel getDropDownModel(List<SSNewResultUnit> iResultUnits){
+    public static SSResultUnitTableModel getDropDownModel(List<SSNewResultUnit> iResultUnits) {
         SSResultUnitTableModel iModel = new SSResultUnitTableModel(iResultUnits);
 
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_NAME   );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
     }
 
-
-
     /**
      *  Nummer
      */
-    public static SSTableColumn<SSNewResultUnit> COLUMN_NUMBER = new SSTableColumn<SSNewResultUnit>(SSBundle.getBundle().getString("resultunittable.column.1")) {
+    public static SSTableColumn<SSNewResultUnit> COLUMN_NUMBER = new SSTableColumn<SSNewResultUnit>(
+            SSBundle.getBundle().getString("resultunittable.column.1")) {
         @Override
         public Object getValue(SSNewResultUnit iResultUnit) {
             return iResultUnit.getNumber();
@@ -79,7 +77,7 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
 
         @Override
         public void setValue(SSNewResultUnit iResultUnit, Object iValue) {
-            iResultUnit.setNumber((String)iValue);
+            iResultUnit.setNumber((String) iValue);
 
         }
 
@@ -97,7 +95,8 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
     /**
      *  Nummer
      */
-    public static SSTableColumn<SSNewResultUnit> COLUMN_NAME = new SSTableColumn<SSNewResultUnit>(SSBundle.getBundle().getString("resultunittable.column.2")) {
+    public static SSTableColumn<SSNewResultUnit> COLUMN_NAME = new SSTableColumn<SSNewResultUnit>(
+            SSBundle.getBundle().getString("resultunittable.column.2")) {
         @Override
         public Object getValue(SSNewResultUnit iResultUnit) {
             return iResultUnit.getName();
@@ -105,7 +104,7 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
 
         @Override
         public void setValue(SSNewResultUnit iResultUnit, Object iValue) {
-            iResultUnit.setName((String)iValue);
+            iResultUnit.setName((String) iValue);
 
         }
 
@@ -123,7 +122,8 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
     /**
      *  Beskrivning
      */
-    public static SSTableColumn<SSNewResultUnit> COLUMN_DESCRIPTION = new SSTableColumn<SSNewResultUnit>(SSBundle.getBundle().getString("resultunittable.column.3")) {
+    public static SSTableColumn<SSNewResultUnit> COLUMN_DESCRIPTION = new SSTableColumn<SSNewResultUnit>(
+            SSBundle.getBundle().getString("resultunittable.column.3")) {
         @Override
         public Object getValue(SSNewResultUnit iResultUnit) {
             return iResultUnit.getDescription();
@@ -131,7 +131,7 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
 
         @Override
         public void setValue(SSNewResultUnit iResultUnit, Object iValue) {
-            iResultUnit.setDescription((String)iValue);
+            iResultUnit.setDescription((String) iValue);
 
         }
 
@@ -147,5 +147,4 @@ public class SSResultUnitTableModel  extends SSTableModel<SSNewResultUnit> {
     };
 
 }
-
 

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.voucher.dialogs;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
@@ -28,7 +29,6 @@ import java.util.List;
  */
 public class SSAddAccountDialog extends SSDialog {
 
-
     private JPanel iPanel;
 
     private SSButtonPanel iButtonPanel;
@@ -42,60 +42,67 @@ public class SSAddAccountDialog extends SSDialog {
 
     private SSInputVerifier iInputVerifier;
 
-
-
-    public SSAddAccountDialog(final SSMainFrame iDialog){
-        super(iDialog, "Lägg till konto" );
+    public SSAddAccountDialog(final SSMainFrame iDialog) {
+        super(iDialog, "Lägg till konto");
 
         SSVATCodeTableModel iModel = new SSVATCodeTableModel();
+
         iModel.addColumn(SSVATCodeTableModel.COLUMN_NAME);
         iModel.addColumn(SSVATCodeTableModel.COLUMN_DESCRIPTION);
         iVatCode.setModel(iModel);
 
-
         add(iPanel, BorderLayout.CENTER);
         pack();
-        iButtonPanel.addOkActionListener(new ActionListener() {
+        iButtonPanel.addOkActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAccount iAccount = new SSAccount();
-                try{
+
+                try {
                     iAccount.setNumber(Integer.parseInt(iAccountNr.getText()));
-                }
-                catch(NumberFormatException ex){
-                    SSErrorDialog.showDialog(iDialog, "Felaktigt kontonummer", "Kontonummret får bara innehålla siffror.");
+                } catch (NumberFormatException ex) {
+                    SSErrorDialog.showDialog(iDialog, "Felaktigt kontonummer",
+                            "Kontonummret får bara innehålla siffror.");
                     return;
                 }
 
                 SSNewAccountingYear iCurrentYear = SSDB.getInstance().getCurrentYear();
-                List<SSAccount> iExistingAccounts = new LinkedList<SSAccount>(iCurrentYear.getAccounts());
-                if(iExistingAccounts.contains(iAccount)){
+                List<SSAccount> iExistingAccounts = new LinkedList<SSAccount>(
+                        iCurrentYear.getAccounts());
+
+                if (iExistingAccounts.contains(iAccount)) {
                     iAccount = iExistingAccounts.get(iExistingAccounts.indexOf(iAccount));
-                    if(iAccount.isActive()){
-                        SSErrorDialog.showDialog(iDialog, "Dubblett", "Kontot " + iAccount.getNumber() + " existerar redan.");
+                    if (iAccount.isActive()) {
+                        SSErrorDialog.showDialog(iDialog, "Dubblett",
+                                "Kontot " + iAccount.getNumber() + " existerar redan.");
                         return;
-                    }
-                    else{
-                        int result = SSConfirmDialog.showDialog(iDialog, "Kontot inaktivt", "Kontot " + iAccount.getNumber() + " är inaktivt. Vill du aktivera det?");
-                        if(result == JOptionPane.YES_OPTION){
+                    } else {
+                        int result = SSConfirmDialog.showDialog(iDialog, "Kontot inaktivt",
+                                "Kontot " + iAccount.getNumber()
+                                + " är inaktivt. Vill du aktivera det?");
+
+                        if (result == JOptionPane.YES_OPTION) {
                             iAccount.setActive(true);
                             SSDB.getInstance().updateAccountingYear(iCurrentYear);
-                        }
-                        else{
+                        } else {
                             return;
                         }
 
                     }
-                }
-                else{
+                } else {
                     iAccount.setDescription(iDescription.getText());
-                    iAccount.setVATCode(iVatCode.getSelected() == null ? null : iVatCode.getSelected().getName());
+                    iAccount.setVATCode(
+                            iVatCode.getSelected() == null
+                                    ? null
+                                    : iVatCode.getSelected().getName());
                     iAccount.setSRUCode(iSruCode.getText());
                     iAccount.setReportCode(iReportCode.getText());
                     iAccount.setProjectRequired(iProjectRequired.isSelected());
                     iAccount.setResultUnitRequired(iResultUnitRequired.isSelected());
 
                     iCurrentYear.getAccountPlan().addAccount(iAccount);
-                    iCurrentYear.getAccountPlan().setAccounts(iCurrentYear.getAccountPlan().getAccounts());
+                    iCurrentYear.getAccountPlan().setAccounts(
+                            iCurrentYear.getAccountPlan().getAccounts());
 
                     SSDB.getInstance().updateAccountingYear(iCurrentYear);
                 }
@@ -116,7 +123,7 @@ public class SSAddAccountDialog extends SSDialog {
         iInputVerifier.add(iDescription);
         iInputVerifier.addListener(new SSInputVerifier.SSVerifierListener() {
             public void updated(SSInputVerifier iVerifier, boolean iValid) {
-                //JComponent iCurrent = iVerifier.getCurrentComponent();
+                // JComponent iCurrent = iVerifier.getCurrentComponent();
                 iButtonPanel.getOkButton().setEnabled(iValid);
             }
         });
@@ -130,13 +137,13 @@ public class SSAddAccountDialog extends SSDialog {
         return iPanel;
     }
 
-
     /**
      *
      * @param iMainFrame
      */
     public static void showDialog(final SSMainFrame iMainFrame) {
         SSAddAccountDialog iDialog = new SSAddAccountDialog(iMainFrame);
+
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
@@ -144,6 +151,7 @@ public class SSAddAccountDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.voucher.dialogs.SSAddAccountDialog");
         sb.append("{iAccountNr=").append(iAccountNr);
         sb.append(", iButtonPanel=").append(iButtonPanel);
@@ -159,5 +167,4 @@ public class SSAddAccountDialog extends SSDialog {
         return sb.toString();
     }
 }
-
 

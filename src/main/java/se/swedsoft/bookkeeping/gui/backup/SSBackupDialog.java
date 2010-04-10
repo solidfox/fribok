@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.backup;
 
+
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
 import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupFactory;
 
 import javax.swing.*;
 import java.io.File;
+
 
 /**
  * Show the backup dialog.
@@ -25,9 +27,9 @@ public class SSBackupDialog {
      * @param backupDatabase the backup database instance
      */
     public SSBackupDialog(JFrame parent, JFileChooser fileChooser,
-                          SSBackupDatabase backupDatabase) {
-        this.parent         = parent;
-        this.fileChooser    = fileChooser;
+            SSBackupDatabase backupDatabase) {
+        this.parent = parent;
+        this.fileChooser = fileChooser;
         this.backupDatabase = backupDatabase;
     }
 
@@ -37,9 +39,11 @@ public class SSBackupDialog {
      */
     public boolean show() {
         String defaultFileName = SSBackupFactory.getDefaultFileName();
+
         fileChooser.setSelectedFile(new File(defaultFileName));
 
         int result = fileChooser.showSaveDialog(parent);
+
         if (result == JFileChooser.APPROVE_OPTION) {
             String filename = fileChooser.getSelectedFile().getAbsolutePath();
             SSBackup backup = SSBackupFactory.createBackup(filename);

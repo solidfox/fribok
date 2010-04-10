@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.*;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
@@ -17,12 +19,13 @@ import java.util.*;
 public class SSSupplierdebtPrinter extends SSPrinter {
 
     private Map<SSSupplierInvoice, BigDecimal> iSaldos;
+
     /**
      *
      * @param iDate
      */
-    public SSSupplierdebtPrinter( Date iDate ) {
-        this( iDate, SSDB.getInstance().getSupplierInvoices() );
+    public SSSupplierdebtPrinter(Date iDate) {
+        this(iDate, SSDB.getInstance().getSupplierInvoices());
     }
 
     /**
@@ -30,18 +33,17 @@ public class SSSupplierdebtPrinter extends SSPrinter {
      * @param iDate
      * @param iInvoices
      */
-    public SSSupplierdebtPrinter( Date iDate , List<SSSupplierInvoice> iInvoices){
+    public SSSupplierdebtPrinter(Date iDate, List<SSSupplierInvoice> iInvoices) {
         iSaldos = SSSupplierInvoiceMath.getSaldo(iInvoices, iDate);
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("supplierdebt.jrxml");
-        setDetail      ("supplierdebt.jrxml");
-        setSummary     ("supplierdebt.jrxml");
+        setDetail("supplierdebt.jrxml");
+        setSummary("supplierdebt.jrxml");
 
-        addParameter("periodTitle", iBundle.getString("supplierdebtreport.periodtitle") );
-        addParameter("periodText" , iDate);
+        addParameter("periodTitle", iBundle.getString("supplierdebtreport.periodtitle"));
+        addParameter("periodText", iDate);
     }
-
 
     /**
      * Gets the title file for this repport
@@ -59,7 +61,8 @@ public class SSSupplierdebtPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
         // Get all invoices
-        List<SSSupplierInvoice> iInvoices = new LinkedList<SSSupplierInvoice>( iSaldos.keySet() );
+        List<SSSupplierInvoice> iInvoices = new LinkedList<SSSupplierInvoice>(
+                iSaldos.keySet());
 
         // Sort the invoices
         Collections.sort(iInvoices, new Comparator<SSSupplierInvoice>() {
@@ -67,7 +70,6 @@ public class SSSupplierdebtPrinter extends SSPrinter {
                 return o1.getNumber() - o2.getNumber();
             }
         });
-
 
         SSDefaultTableModel<SSSupplierInvoice> iModel = new SSDefaultTableModel<SSSupplierInvoice>() {
 
@@ -84,33 +86,43 @@ public class SSSupplierdebtPrinter extends SSPrinter {
                 SSSupplierInvoice iInvoice = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iInvoice.getNumber();
-                        break;
-                    case 1:
-                        value = iInvoice.getSupplierNr();
-                        break;
-                    case 2:
-                        value = iInvoice.getSupplierName();
-                        break;
-                    case 3:
-                        value = iInvoice.getDate()     == null ? null : iFormat.format( iInvoice.getDate() );
-                        break;
-                    case 4:
-                        value = iInvoice.getCurrency() == null ? null : iInvoice.getCurrency().getName();
-                        break;
-                    case 5:
-                        value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
-                        break;
-                    case 6:
-                        value = iSaldos.get(iInvoice);
-                        break;
-                    case 7:
-                        BigDecimal iSaldo = iSaldos.get(iInvoice);
+                case 0:
+                    value = iInvoice.getNumber();
+                    break;
 
-                        value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo );
-                        break;
+                case 1:
+                    value = iInvoice.getSupplierNr();
+                    break;
 
+                case 2:
+                    value = iInvoice.getSupplierName();
+                    break;
+
+                case 3:
+                    value = iInvoice.getDate() == null
+                            ? null
+                            : iFormat.format(iInvoice.getDate());
+                    break;
+
+                case 4:
+                    value = iInvoice.getCurrency() == null
+                            ? null
+                            : iInvoice.getCurrency().getName();
+                    break;
+
+                case 5:
+                    value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
+                    break;
+
+                case 6:
+                    value = iSaldos.get(iInvoice);
+                    break;
+
+                case 7:
+                    BigDecimal iSaldo = iSaldos.get(iInvoice);
+
+                    value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo);
+                    break;
 
                 }
 
@@ -123,7 +135,6 @@ public class SSSupplierdebtPrinter extends SSPrinter {
         iModel.addColumn("supplier.number");
         iModel.addColumn("supplier.name");
 
-
         iModel.addColumn("supplierinvoice.date");
         iModel.addColumn("supplierinvoice.currency");
         iModel.addColumn("supplierinvoice.sum");
@@ -135,10 +146,10 @@ public class SSSupplierdebtPrinter extends SSPrinter {
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSSupplierdebtPrinter");
         sb.append("{iSaldos=").append(iSaldos);
         sb.append('}');

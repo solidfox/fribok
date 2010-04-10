@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * Date: 2006-feb-24
@@ -21,13 +23,12 @@ public class SSSystemData implements Serializable {
     // List of available account plans.
     private List<SSAccountPlan> iAccountPlans;
 
-
     /**
      *
      */
-    public SSSystemData(){
-        iCompanies      = new LinkedList<SSSystemCompany>();
-        iAccountPlans   = new LinkedList<SSAccountPlan>();
+    public SSSystemData() {
+        iCompanies = new LinkedList<SSSystemCompany>();
+        iAccountPlans = new LinkedList<SSAccountPlan>();
 
     }
 
@@ -54,14 +55,14 @@ public class SSSystemData implements Serializable {
      *
      * @return the companys
      */
-    public List<SSSystemCompany> getSystemCompanies(){
+    public List<SSSystemCompany> getSystemCompanies() {
         return iCompanies;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.system.SSSystemData");
         sb.append("{iAccountPlans=").append(iAccountPlans);
         sb.append(", iCompanies=").append(iCompanies);
@@ -69,5 +70,4 @@ public class SSSystemData implements Serializable {
         return sb.toString();
     }
 }
-
 

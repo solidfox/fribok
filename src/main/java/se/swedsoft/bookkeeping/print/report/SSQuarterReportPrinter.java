@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSCreditInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.print.report.sales.SSSalePrinterUtils;
 import java.math.BigDecimal;
 import java.text.DateFormatSymbols;
 import java.util.*;
+
 
 /**
  * Date: 2006-mar-03
@@ -36,94 +38,94 @@ public class SSQuarterReportPrinter extends SSPrinter {
      * @param iFrom
      * @param iTo
      */
-    public SSQuarterReportPrinter( Locale iLocale, Date iFrom, Date iTo){
+    public SSQuarterReportPrinter(Locale iLocale, Date iFrom, Date iTo) {
         // Get all orders
-        iCustomers   = SSDB.getInstance().getCustomers();
+        iCustomers = SSDB.getInstance().getCustomers();
         this.iLocale = iLocale;
-        this.iFrom   = iFrom;
-        this.iTo     = iTo;
+        this.iFrom = iFrom;
+        this.iTo = iTo;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("reports.quarterreport");//", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.quarterreport"); // ", iLocale);
 
-        setBundle( iBundle );
-        setLocale( iLocale );
+        setBundle(iBundle);
+        setLocale(iLocale);
 
-        setPageHeader  ("quarterreport.jrxml");
-        setDetail      ("quarterreport.jrxml");
+        setPageHeader("quarterreport.jrxml");
+        setDetail("quarterreport.jrxml");
         setColumnHeader("quarterreport.jrxml");
-        setSummary     ("quarterreport.jrxml");
-        setPageFooter  ("quarterreport.jrxml");
-
+        setSummary("quarterreport.jrxml");
+        setPageFooter("quarterreport.jrxml");
 
         addParameters();
 
-        iEuSaleCommodity          = new HashMap<SSCustomer, BigDecimal>();
+        iEuSaleCommodity = new HashMap<SSCustomer, BigDecimal>();
         iEuSaleThirdPartCommodity = new HashMap<SSCustomer, BigDecimal>();
 
-        Map<String,List<SSInvoice>> iInvoicesForCustomers = SSInvoiceMath.getInvoicesforCustomers();
-        Map<String,List<SSCreditInvoice>> iCreditInvoicesForCustomers = SSCreditInvoiceMath.getCreditInvoicesforCustomers();
+        Map<String, List<SSInvoice>> iInvoicesForCustomers = SSInvoiceMath.getInvoicesforCustomers();
+        Map<String, List<SSCreditInvoice>> iCreditInvoicesForCustomers = SSCreditInvoiceMath.getCreditInvoicesforCustomers();
 
-        //List<SSInvoice>       iInvoices       = SSDB.getInstance().getInvoices();
-        //List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
-
-
+        // List<SSInvoice>       iInvoices       = SSDB.getInstance().getInvoices();
+        // List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
 
         for (SSCustomer iCustomer : iCustomers) {
-            List<SSInvoice>       iInvoicesForCustomer       = iInvoicesForCustomers.get(iCustomer.getNumber());
-            List<SSCreditInvoice> iCreditInvoicesForCustomer = iCreditInvoicesForCustomers.get(iCustomer.getNumber());
+            List<SSInvoice>       iInvoicesForCustomer = iInvoicesForCustomers.get(
+                    iCustomer.getNumber());
+            List<SSCreditInvoice> iCreditInvoicesForCustomer = iCreditInvoicesForCustomers.get(
+                    iCustomer.getNumber());
 
-            iEuSaleCommodity         .put(iCustomer, new BigDecimal(0));
+            iEuSaleCommodity.put(iCustomer, new BigDecimal(0));
             iEuSaleThirdPartCommodity.put(iCustomer, new BigDecimal(0));
 
-            if(iInvoicesForCustomer != null){
+            if (iInvoicesForCustomer != null) {
                 for (SSInvoice iInvoice : iInvoicesForCustomer) {
 
-                    if( ! SSInvoiceMath.inPeriod(iInvoice,  iFrom, iTo) ) continue;
+                    if (!SSInvoiceMath.inPeriod(iInvoice, iFrom, iTo)) {
+                        continue;
+                    }
 
                     BigDecimal iTotalSum = SSInvoiceMath.getTotalSum(iInvoice);
 
-                    iTotalSum = SSInvoiceMath.convertToLocal(iInvoice,  iTotalSum);
+                    iTotalSum = SSInvoiceMath.convertToLocal(iInvoice, iTotalSum);
 
-                    if(iInvoice.getEuSaleCommodity()){
+                    if (iInvoice.getEuSaleCommodity()) {
                         BigDecimal iSum = iEuSaleCommodity.get(iCustomer);
 
-                        iEuSaleCommodity.put(iCustomer, iSum.add( iTotalSum ));
+                        iEuSaleCommodity.put(iCustomer, iSum.add(iTotalSum));
                     }
-                    if(iInvoice.getEuSaleThirdPartCommodity()){
+                    if (iInvoice.getEuSaleThirdPartCommodity()) {
                         BigDecimal iSum = iEuSaleThirdPartCommodity.get(iCustomer);
 
-                        iEuSaleThirdPartCommodity.put(iCustomer, iSum.add( iTotalSum ));
+                        iEuSaleThirdPartCommodity.put(iCustomer, iSum.add(iTotalSum));
                     }
                 }
             }
-            if(iCreditInvoicesForCustomer != null){
+            if (iCreditInvoicesForCustomer != null) {
                 for (SSCreditInvoice iCreditInvoice : iCreditInvoicesForCustomer) {
 
-                    if( ! SSCreditInvoiceMath.inPeriod(iCreditInvoice,  iFrom, iTo) ) continue;
-
-                    BigDecimal iTotalSum = SSCreditInvoiceMath.getTotalSum(iCreditInvoice);
-    
-                    iTotalSum = SSCreditInvoiceMath.convertToLocal(iCreditInvoice,  iTotalSum);
-
-                    if(iCreditInvoice.getEuSaleCommodity()){
-                        BigDecimal iSum = iEuSaleCommodity.get(iCustomer);
-
-                        iEuSaleCommodity.put(iCustomer, iSum.subtract(iTotalSum ));
+                    if (!SSCreditInvoiceMath.inPeriod(iCreditInvoice, iFrom, iTo)) {
+                        continue;
                     }
 
-                    if(iCreditInvoice.getEuSaleThirdPartCommodity()){
+                    BigDecimal iTotalSum = SSCreditInvoiceMath.getTotalSum(iCreditInvoice);
+
+                    iTotalSum = SSCreditInvoiceMath.convertToLocal(iCreditInvoice,
+                            iTotalSum);
+
+                    if (iCreditInvoice.getEuSaleCommodity()) {
+                        BigDecimal iSum = iEuSaleCommodity.get(iCustomer);
+
+                        iEuSaleCommodity.put(iCustomer, iSum.subtract(iTotalSum));
+                    }
+
+                    if (iCreditInvoice.getEuSaleThirdPartCommodity()) {
                         BigDecimal iSum = iEuSaleThirdPartCommodity.get(iCustomer);
 
-                        iEuSaleThirdPartCommodity.put(iCustomer, iSum.subtract( iTotalSum ));
+                        iEuSaleThirdPartCommodity.put(iCustomer, iSum.subtract(iTotalSum));
                     }
                 }
             }
         }
     }
-
-
-
-
 
     /**
      * Gets the title file for this repport
@@ -138,17 +140,15 @@ public class SSQuarterReportPrinter extends SSPrinter {
     /**
      *
      */
-    private void addParameters(){
+    private void addParameters() {
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
         SSSalePrinterUtils.addParametersForCompany(iCompany, this);
 
-
-
         // Sale parameters
-        addParameter("number"   , iCompany.getVATNumber());
-        addParameter("date"     , getPeriodText() );
-        addParameter("quater"   , getQuarterText() );
+        addParameter("number", iCompany.getVATNumber());
+        addParameter("date", getPeriodText());
+        addParameter("quater", getQuarterText());
     }
 
     /**
@@ -160,9 +160,8 @@ public class SSQuarterReportPrinter extends SSPrinter {
 
         iCalendar.setTime(iFrom);
 
-        String iYear  = Integer.toString( iCalendar.get(Calendar.YEAR )    ).substring(2);
-        String iMonth = Integer.toString( iCalendar.get(Calendar.MONTH) / 3 + 1 );
-
+        String iYear = Integer.toString(iCalendar.get(Calendar.YEAR)).substring(2);
+        String iMonth = Integer.toString(iCalendar.get(Calendar.MONTH) / 3 + 1);
 
         return iYear + '-' + iMonth;
     }
@@ -171,8 +170,8 @@ public class SSQuarterReportPrinter extends SSPrinter {
      *
      * @return
      */
-    private String getPeriodText(){
-        String [] iMonths = new DateFormatSymbols().getMonths();
+    private String getPeriodText() {
+        String[] iMonths = new DateFormatSymbols().getMonths();
 
         Calendar iCalendar = Calendar.getInstance();
 
@@ -190,7 +189,6 @@ public class SSQuarterReportPrinter extends SSPrinter {
 
     }
 
-
     /**
      *
      * @return
@@ -199,7 +197,6 @@ public class SSQuarterReportPrinter extends SSPrinter {
     protected SSDefaultTableModel getModel() {
 
         SSDefaultTableModel<SSCustomer> iModel = new SSDefaultTableModel<SSCustomer>() {
-
 
             @Override
             public Class getType() {
@@ -212,21 +209,25 @@ public class SSQuarterReportPrinter extends SSPrinter {
                 SSCustomer iCustomer = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iCustomer.getNumber();
-                        break;
-                    case 1:
-                        value = iCustomer.getName();
-                        break;
-                    case 2:
-                        value = iCustomer.getVATNumber();
-                        break;
-                    case 3:
-                        value = iEuSaleCommodity.get(iCustomer);
-                        break;
-                    case 4:
-                        value = iEuSaleThirdPartCommodity.get(iCustomer);
-                        break;
+                case 0:
+                    value = iCustomer.getNumber();
+                    break;
+
+                case 1:
+                    value = iCustomer.getName();
+                    break;
+
+                case 2:
+                    value = iCustomer.getVATNumber();
+                    break;
+
+                case 3:
+                    value = iEuSaleCommodity.get(iCustomer);
+                    break;
+
+                case 4:
+                    value = iEuSaleThirdPartCommodity.get(iCustomer);
+                    break;
                 }
                 return value;
             }
@@ -238,7 +239,6 @@ public class SSQuarterReportPrinter extends SSPrinter {
         iModel.addColumn("customer.eusalecommodity");
         iModel.addColumn("customer.eusalethirdpartcommodity");
 
-
         Collections.sort(iCustomers, new Comparator<SSCustomer>() {
             public int compare(SSCustomer o1, SSCustomer o2) {
                 return o1.getNumber().compareTo(o2.getNumber());
@@ -247,14 +247,13 @@ public class SSQuarterReportPrinter extends SSPrinter {
 
         iModel.setObjects(iCustomers);
 
-
         return iModel;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSQuarterReportPrinter");
         sb.append("{iCustomers=").append(iCustomers);
         sb.append(", iEuSaleCommodity=").append(iEuSaleCommodity);

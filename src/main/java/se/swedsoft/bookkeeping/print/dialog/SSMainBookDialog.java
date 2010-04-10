@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewProject;
@@ -19,6 +20,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * Date: 2006-feb-07
@@ -48,38 +50,36 @@ public class SSMainBookDialog extends SSDialog {
      *
      * @param iMainFrame
      */
-    public SSMainBookDialog(SSMainFrame iMainFrame){
-        super(iMainFrame, SSBundle.getBundle().getString("mainbookreport.dialog.title") );
+    public SSMainBookDialog(SSMainFrame iMainFrame) {
+        super(iMainFrame, SSBundle.getBundle().getString("mainbookreport.dialog.title"));
 
         setPanel(iPanel);
 
-        iProject   .setModel( SSProjectTableModel   .getDropDownModel() );
-        iResultunit.setModel( SSResultUnitTableModel.getDropDownModel() );
+        iProject.setModel(SSProjectTableModel.getDropDownModel());
+        iResultunit.setModel(SSResultUnitTableModel.getDropDownModel());
 
-        iFromAccount.setModel( SSAccountTableModel.getDropDownModel());
+        iFromAccount.setModel(SSAccountTableModel.getDropDownModel());
         iFromAccount.setSearchColumns(0);
 
-        iToAccount.setModel( SSAccountTableModel.getDropDownModel());
+        iToAccount.setModel(SSAccountTableModel.getDropDownModel());
         iToAccount.setSearchColumns(0);
 
-        iFromAccount.setSelected( SSAccountMath.getFirstAccount( SSDB.getInstance().getAccounts() ));
-        iToAccount  .setSelected( SSAccountMath.getLastAccount ( SSDB.getInstance().getAccounts() ));
+        iFromAccount.setSelected(
+                SSAccountMath.getFirstAccount(SSDB.getInstance().getAccounts()));
+        iToAccount.setSelected(
+                SSAccountMath.getLastAccount(SSDB.getInstance().getAccounts()));
 
-
-
-        iCheckProject   .addActionListener(this);
+        iCheckProject.addActionListener(this);
         iCheckResultunit.addActionListener(this);
 
         actionPerformed(null);
     }
 
-
-
     /**
      *
      * @param pDateFrom
      */
-    public void setDateFrom(Date pDateFrom){
+    public void setDateFrom(Date pDateFrom) {
         iFromDate.setDate(pDateFrom);
     }
 
@@ -87,17 +87,15 @@ public class SSMainBookDialog extends SSDialog {
      *
      * @param pDateTo
      */
-    public void setDateTo(Date pDateTo){
+    public void setDateTo(Date pDateTo) {
         iToDate.setDate(pDateTo);
     }
-
-
 
     /**
      *
      * @return
      */
-    public SSAccount getAccountFrom(){
+    public SSAccount getAccountFrom() {
         return iFromAccount.getSelected();
     }
 
@@ -105,7 +103,7 @@ public class SSMainBookDialog extends SSDialog {
      *
      * @return
      */
-    public SSAccount getAccountTo(){
+    public SSAccount getAccountTo() {
 
         return iToAccount.getSelected();
     }
@@ -114,7 +112,7 @@ public class SSMainBookDialog extends SSDialog {
      *
      * @return
      */
-    public Date getDateFrom(){
+    public Date getDateFrom() {
         return iFromDate.getDate();
     }
 
@@ -122,7 +120,7 @@ public class SSMainBookDialog extends SSDialog {
      *
      * @return
      */
-    public Date getDateTo(){
+    public Date getDateTo() {
         return iToDate.getDate();
     }
 
@@ -131,7 +129,7 @@ public class SSMainBookDialog extends SSDialog {
      * @return
      */
     public SSNewProject getProject() {
-        if( iCheckProject.isSelected()){
+        if (iCheckProject.isSelected()) {
             return iProject.getSelected();
         } else {
             return null;
@@ -143,13 +141,12 @@ public class SSMainBookDialog extends SSDialog {
      * @return
      */
     public SSNewResultUnit getResultUnit() {
-        if( iCheckResultunit.isSelected()){
+        if (iCheckResultunit.isSelected()) {
             return iResultunit.getSelected();
         } else {
             return null;
         }
     }
-
 
     /**
      *
@@ -166,7 +163,6 @@ public class SSMainBookDialog extends SSDialog {
     public boolean isResultUnitSelected() {
         return iCheckResultunit.isSelected();
     }
-
 
     /**
      *
@@ -189,13 +185,14 @@ public class SSMainBookDialog extends SSDialog {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        iProject   .setEnabled( iCheckProject   .isSelected() );
-        iResultunit.setEnabled( iCheckResultunit.isSelected() );
+        iProject.setEnabled(iCheckProject.isSelected());
+        iResultunit.setEnabled(iCheckResultunit.isSelected());
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSMainBookDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCheckProject=").append(iCheckProject);
@@ -211,5 +208,4 @@ public class SSMainBookDialog extends SSDialog {
         return sb.toString();
     }
 }
-
 

@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.print.util;
 
+
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
@@ -12,6 +13,7 @@ import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 // Trade Extensions specific imports
 
@@ -22,11 +24,11 @@ import java.util.Map;
  */
 public class SSDefaultJasperDataSource implements JRDataSource {
 
-    //--------------- Constants -------------------------------------
+    // --------------- Constants -------------------------------------
 
-    //--------------- Class variables -------------------------------
+    // --------------- Class variables -------------------------------
 
-    //--------------- Instance variables ----------------------------
+    // --------------- Instance variables ----------------------------
 
     /** The table model with the data to print. */
     private SSDefaultTableModel iModel;
@@ -37,7 +39,7 @@ public class SSDefaultJasperDataSource implements JRDataSource {
     /** A map from column names to column indices. */
     private Map<String, Integer> iColumnIndices;
 
-    //--------------- Constructors ----------------------------------
+    // --------------- Constructors ----------------------------------
 
     /**
      * Constructor.
@@ -49,13 +51,14 @@ public class SSDefaultJasperDataSource implements JRDataSource {
         iRow = -1;
 
         List<String> columns = iModel.getColumnNames();
+
         iColumnIndices = new HashMap<String, Integer>(columns.size() << 1);
         for (int i = 0, size = columns.size(); i < size; i++) {
             iColumnIndices.put(columns.get(i), i);
         }
     }
 
-    //--------------- Methods ---------------------------------------
+    // --------------- Methods ---------------------------------------
 
     /**
      *
@@ -63,7 +66,6 @@ public class SSDefaultJasperDataSource implements JRDataSource {
     public void reset() {
         iRow = -1;
     }
-
 
     /**
      *
@@ -94,6 +96,7 @@ public class SSDefaultJasperDataSource implements JRDataSource {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource");
         sb.append("{iColumnIndices=").append(iColumnIndices);
         sb.append(", iModel=").append(iModel);

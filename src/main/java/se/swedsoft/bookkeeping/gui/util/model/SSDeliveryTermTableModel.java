@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.model;
 
+
 import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -11,13 +12,13 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import javax.swing.*;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 12:13:59
  */
 public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
-
 
     /**
      * Default constructor.
@@ -44,7 +45,6 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
         return SSDeliveryTerm.class;
     }
 
-
     @Override
     public SSDeliveryTermTableModel getDropdownmodel() {
         return getDropDownModel();
@@ -54,30 +54,28 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
      *
      * @return
      */
-    public static SSDeliveryTermTableModel getDropDownModel(){
+    public static SSDeliveryTermTableModel getDropDownModel() {
         SSDeliveryTermTableModel iModel = new SSDeliveryTermTableModel();
 
-        iModel.addColumn( COLUMN_NAME );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
 
     }
 
-
-
     /**
      *  Name
      */
-    public static SSTableColumn<SSDeliveryTerm> COLUMN_NAME = new SSTableColumn<SSDeliveryTerm>(SSBundle.getBundle().getString("currencytable.column.1")) {
+    public static SSTableColumn<SSDeliveryTerm> COLUMN_NAME = new SSTableColumn<SSDeliveryTerm>(
+            SSBundle.getBundle().getString("currencytable.column.1")) {
         @Override
         public Object getValue(SSDeliveryTerm iCurrency) {
             return iCurrency.getName();
         }
 
         @Override
-        public void setValue(SSDeliveryTerm iCurrency, Object iValue) {
-        }
+        public void setValue(SSDeliveryTerm iCurrency, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -90,19 +88,18 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
         }
     };
 
-
     /**
      *  Description
      */
-    public static SSTableColumn<SSDeliveryTerm> COLUMN_DESCRIPTION = new SSTableColumn<SSDeliveryTerm>(SSBundle.getBundle().getString("currencytable.column.2")) {
+    public static SSTableColumn<SSDeliveryTerm> COLUMN_DESCRIPTION = new SSTableColumn<SSDeliveryTerm>(
+            SSBundle.getBundle().getString("currencytable.column.2")) {
         @Override
         public Object getValue(SSDeliveryTerm iCurrency) {
             return iCurrency.getDescription();
         }
 
         @Override
-        public void setValue(SSDeliveryTerm iCurrency, Object iValue) {
-        }
+        public void setValue(SSDeliveryTerm iCurrency, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -120,12 +117,13 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
      * @param iOwner
      * @return
      */
-    public static SSEditableTableComboBox.EditingFactory<SSDeliveryTerm> getEditingFactory(final JDialog iOwner){
+    public static SSEditableTableComboBox.EditingFactory<SSDeliveryTerm> getEditingFactory(final JDialog iOwner) {
         return new SSEditableTableComboBox.EditingFactory<SSDeliveryTerm>() {
             public SSDeliveryTerm newAction() {
-                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner, SSBundle.getBundle().getString("deliverytermtable.title"));
+                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner,
+                        SSBundle.getBundle().getString("deliverytermtable.title"));
 
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
                     SSDeliveryTerm iDeliveryTerm = new SSDeliveryTerm();
 
                     iDeliveryTerm.setName(iDialog.getName());
@@ -138,13 +136,15 @@ public class SSDeliveryTermTableModel extends SSTableModel<SSDeliveryTerm> {
             }
 
             public void editAction(SSDeliveryTerm iSelected) {
-                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner, SSBundle.getBundle().getString("deliverytermtable.title"));
-                iDialog.setName       ( iSelected.getName()       );
-                iDialog.setDescription( iSelected.getDescription());
+                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner,
+                        SSBundle.getBundle().getString("deliverytermtable.title"));
 
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
-                    iSelected.setName       ( iDialog.getName() );
-                    iSelected.setDescription( iDialog.getDescription() );
+                iDialog.setName(iSelected.getName());
+                iDialog.setDescription(iSelected.getDescription());
+
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
+                    iSelected.setName(iDialog.getName());
+                    iSelected.setDescription(iDialog.getDescription());
                     SSDB.getInstance().updateDeliveryTerm(iSelected);
                 }
             }

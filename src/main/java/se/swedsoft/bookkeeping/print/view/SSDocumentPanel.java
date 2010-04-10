@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.print.view;
 
+
 import javax.swing.*;
 import java.awt.*;
+
 
 /**
  * Date: 2006-feb-16
@@ -17,16 +19,15 @@ public class SSDocumentPanel {
 
     private Image iImage;
 
-
     /**
      *
      */
-    public SSDocumentPanel(){
+    public SSDocumentPanel() {
         iPanel.setBackground(Color.gray);
 
         iImagePanel = new ImagePanel();
         iImagePanel.setOpaque(true);
-        iImagePanel.setBorder    ( BorderFactory.createLineBorder(Color.BLACK));
+        iImagePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         iPage.setLayout(new BorderLayout());
         iPage.add(iImagePanel, BorderLayout.CENTER);
@@ -37,20 +38,20 @@ public class SSDocumentPanel {
      * @param iImage
      * @param iSize
      */
-    public void setDocument(Image iImage, Dimension iSize){
+    public void setDocument(Image iImage, Dimension iSize) {
         this.iImage = iImage;
 
-        Dimension iPanelSize = new Dimension(iSize.width+4, iSize.height+4 );
+        Dimension iPanelSize = new Dimension(iSize.width + 4, iSize.height + 4);
 
-        iPage.setMaximumSize  (iSize);
-        iPage.setMinimumSize  (iSize);
+        iPage.setMaximumSize(iSize);
+        iPage.setMinimumSize(iSize);
         iPage.setPreferredSize(iSize);
 
-        iPanel.setMaximumSize  (iPanelSize);
-        iPanel.setMinimumSize  (iPanelSize);
+        iPanel.setMaximumSize(iPanelSize);
+        iPanel.setMinimumSize(iPanelSize);
         iPanel.setPreferredSize(iPanelSize);
 
-         iImagePanel.revalidate();
+        iImagePanel.revalidate();
         iImagePanel.repaint();
 
     }
@@ -59,24 +60,23 @@ public class SSDocumentPanel {
      *
      * @return
      */
-    public JPanel getPanel(){
+    public JPanel getPanel() {
         return iPanel;
     }
 
+    private class ImagePanel extends JPanel {
 
-    private class ImagePanel extends JPanel{
-
-         @Override
-         protected void paintComponent(Graphics g) {
+        @Override
+        protected void paintComponent(Graphics g) {
             g.drawImage(iImage, 1, 1, this);
         }
-
 
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.view.SSDocumentPanel");
         sb.append("{iImage=").append(iImage);
         sb.append(", iImagePanel=").append(iImagePanel);
@@ -86,8 +86,4 @@ public class SSDocumentPanel {
         return sb.toString();
     }
 }
-
-
-
-
 

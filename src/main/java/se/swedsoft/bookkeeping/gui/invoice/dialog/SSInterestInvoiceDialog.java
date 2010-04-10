@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.invoice.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -19,6 +20,7 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-06
@@ -26,48 +28,53 @@ import java.util.ResourceBundle;
  */
 public class SSInterestInvoiceDialog {
 
-
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSInterestInvoiceDialog() {
-    }
+    private SSInterestInvoiceDialog() {}
 
     /**
      *
      * @param iMainFrame
      * @param pModel
      */
-    public static void showDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel ) {
-        final String lockString = "interestinvoice"+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog( iMainFrame, "interestinvoice.open");
+    public static void showDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
+        final String lockString = "interestinvoice"
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "interestinvoice.open");
             return;
         }
 
         List<SSInvoice> iRows = SSInterestInvoicePanel.getRows();
 
-        if(iRows.isEmpty()){
+        if (iRows.isEmpty()) {
             SSPostLock.removeLock(lockString);
             new SSInformationDialog(iMainFrame, "interestinvoice.noinvoices");
             return;
         }
 
-        final SSDialog               iDialog = new SSDialog(iMainFrame, SSInterestInvoiceDialog.bundle.getString("invoiceframe.interestinvoice.title"));
-        final SSInterestInvoicePanel iPanel  = new SSInterestInvoicePanel(iRows);
+        final SSDialog               iDialog = new SSDialog(iMainFrame,
+                SSInterestInvoiceDialog.bundle.getString(
+                "invoiceframe.interestinvoice.title"));
+        final SSInterestInvoicePanel iPanel = new SSInterestInvoicePanel(iRows);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         iPanel.addOkAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSInvoice> iInterestInvoices = iPanel.getInterestInvoices();
+
                 for (SSInvoice iInvoice : iInterestInvoices) {
                     SSDB.getInstance().addInvoice(iInvoice);
                 }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 SSPostLock.removeLock(lockString);
-                //iDialog.setVisible(false);
+                // iDialog.setVisible(false);
                 iDialog.closeDialog();
             }
         });
@@ -79,7 +86,7 @@ public class SSInterestInvoiceDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter(){
+        iDialog.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 SSPostLock.removeLock(lockString);

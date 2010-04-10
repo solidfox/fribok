@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
@@ -12,6 +13,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
+
 
 /**
  * Date: 2006-feb-22
@@ -32,14 +34,16 @@ public class SIEEntryKontoplanTyp implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #KPTYP typ
-        if(!iReader.hasFields(STRING, STRING )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, STRING)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         String iType = iReader.nextString();
 
         SSAccountPlan iAccountPlan = iCurrentYearData.getAccountPlan();
-        if( iAccountPlan != null){
+
+        if (iAccountPlan != null) {
             iAccountPlan.setType(iType);
         }
 
@@ -60,9 +64,9 @@ public class SIEEntryKontoplanTyp implements SIEEntry {
 
         SSAccountPlan iAccountPlan = iCurrentYearData.getAccountPlan();
 
-        if( iAccountPlan != null){
+        if (iAccountPlan != null) {
             // #KPTYP typ
-            iWriter.append( SIELabel.SIE_KPTYP);
+            iWriter.append(SIELabel.SIE_KPTYP);
             iWriter.append(iAccountPlan.getType());
             iWriter.newLine();
 

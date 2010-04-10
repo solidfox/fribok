@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
@@ -18,12 +19,14 @@ import java.util.Map;
 
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.*;
 
+
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-23
  * Time: 14:06:33
  */
 public class SIEEntryInBalance implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -36,19 +39,21 @@ public class SIEEntryInBalance implements SIEEntry {
     @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
-        if(!iReader.hasFields(STRING, INT, INT, FLOAT )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT, INT, FLOAT)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
-        int iYear          = iReader.nextInteger();
+        int iYear = iReader.nextInteger();
         int iAccountNumber = iReader.nextInteger();
 
-        if( (iYear == 0) && (iCurrentYearData != null) ){
+        if ((iYear == 0) && (iCurrentYearData != null)) {
             Map<SSAccount, BigDecimal> iInbalance = iCurrentYearData.getInBalance();
 
-            SSAccount iAccount = iCurrentYearData.getAccountPlan().getAccount(iAccountNumber);
+            SSAccount iAccount = iCurrentYearData.getAccountPlan().getAccount(
+                    iAccountNumber);
 
-            iInbalance.put(iAccount, iReader.nextBigDecimal() );
+            iInbalance.put(iAccount, iReader.nextBigDecimal());
         }
 
         return true;
@@ -68,31 +73,36 @@ public class SIEEntryInBalance implements SIEEntry {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 
         boolean iHasData = false;
-        if( iPreviousYearData != null ){
-            Map<SSAccount, BigDecimal> iInbalance = SSBalanceCalculator.getInBalance(iPreviousYearData);
 
-            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInbalance.entrySet()){
+        if (iPreviousYearData != null) {
+            Map<SSAccount, BigDecimal> iInbalance = SSBalanceCalculator.getInBalance(
+                    iPreviousYearData);
+
+            for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInbalance.entrySet()) {
                 BigDecimal iValue = ssAccountBigDecimalEntry.getValue();
-                if(iValue != null){
-                    iWriter.append( SIELabel.SIE_IB);
-                    iWriter.append( -1);
+
+                if (iValue != null) {
+                    iWriter.append(SIELabel.SIE_IB);
+                    iWriter.append(-1);
                     iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                    iWriter.append( iValue );
+                    iWriter.append(iValue);
                     iWriter.newLine();
                     iHasData = true;
                 }
             }
         }
-        if( iCurrentYearData != null ){
-            Map<SSAccount, BigDecimal> iInbalance = SSBalanceCalculator.getInBalance(iCurrentYearData);
+        if (iCurrentYearData != null) {
+            Map<SSAccount, BigDecimal> iInbalance = SSBalanceCalculator.getInBalance(
+                    iCurrentYearData);
 
-            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInbalance.entrySet()){
+            for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInbalance.entrySet()) {
                 BigDecimal iValue = ssAccountBigDecimalEntry.getValue();
-                if(iValue != null){
-                    iWriter.append( SIELabel.SIE_IB);
-                    iWriter.append( 0);
+
+                if (iValue != null) {
+                    iWriter.append(SIELabel.SIE_IB);
+                    iWriter.append(0);
                     iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                    iWriter.append( iValue );
+                    iWriter.append(iValue);
                     iWriter.newLine();
                     iHasData = true;
                 }

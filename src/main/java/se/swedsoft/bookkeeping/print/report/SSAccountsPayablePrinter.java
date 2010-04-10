@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.*;
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
@@ -14,12 +15,12 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.*;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
  */
 public class SSAccountsPayablePrinter extends SSPrinter {
-
 
     private SSInvoicePrinter iPrinter;
 
@@ -31,7 +32,7 @@ public class SSAccountsPayablePrinter extends SSPrinter {
 
     Map<String, List<SSSupplierInvoice>> iSupplierInvoicesMap;
 
-    HashMap<Integer,BigDecimal> iOutpaymentSum;
+    HashMap<Integer, BigDecimal> iOutpaymentSum;
 
     HashMap<Integer, BigDecimal> iSupplierCreditInvoiceSum;
 
@@ -40,7 +41,7 @@ public class SSAccountsPayablePrinter extends SSPrinter {
      * @param iDate
      */
     public SSAccountsPayablePrinter(Date iDate) {
-        this(iDate, SSDB.getInstance().getSuppliers() );
+        this(iDate, SSDB.getInstance().getSuppliers());
     }
 
     /**
@@ -48,38 +49,39 @@ public class SSAccountsPayablePrinter extends SSPrinter {
      * @param iDate
      * @param iSuppliers
      */
-    public SSAccountsPayablePrinter(Date iDate, List<SSSupplier> iSuppliers){
+    public SSAccountsPayablePrinter(Date iDate, List<SSSupplier> iSuppliers) {
         // Get all customers
         this.iSuppliers = iSuppliers;
-        this.iDate      = iDate;
+        this.iDate = iDate;
 
         Date iCeiledDate = SSDateMath.ceil(this.iDate);
 
         iOutpaymentSum = SSOutpaymentMath.getSumsForSupplierInvoices(iCeiledDate);
 
-        iSupplierCreditInvoiceSum = SSSupplierCreditInvoiceMath.getSumsForSupplierInvoices(iCeiledDate);
+        iSupplierCreditInvoiceSum = SSSupplierCreditInvoiceMath.getSumsForSupplierInvoices(
+                iCeiledDate);
 
         iSupplierInvoicesMap = new HashMap<String, List<SSSupplierInvoice>>();
 
-        for(String iSupplierNumber : SSSupplierMath.iInvoicesForSuppliers.keySet()){
+        for (String iSupplierNumber : SSSupplierMath.iInvoicesForSuppliers.keySet()) {
             List<SSSupplierInvoice> iInvoicesForCustomer = new LinkedList<SSSupplierInvoice>();
-            for(SSSupplierInvoice iInvoice : SSSupplierMath.iInvoicesForSuppliers.get(iSupplierNumber)){
-                if(iInvoice.getDate().before(iCeiledDate)){
+
+            for (SSSupplierInvoice iInvoice : SSSupplierMath.iInvoicesForSuppliers.get(
+                    iSupplierNumber)) {
+                if (iInvoice.getDate().before(iCeiledDate)) {
                     iInvoicesForCustomer.add(iInvoice);
                 }
             }
-            iSupplierInvoicesMap.put(iSupplierNumber,iInvoicesForCustomer);
+            iSupplierInvoicesMap.put(iSupplierNumber, iInvoicesForCustomer);
         }
-        addParameter("periodTitle", iBundle.getString("accountspayablereport.periodtitle") );
-        addParameter("periodText" , iDate);
+        addParameter("periodTitle", iBundle.getString("accountspayablereport.periodtitle"));
+        addParameter("periodText", iDate);
 
-
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("accountspayable.jrxml");
-        setDetail      ("accountspayable.jrxml");
-        setSummary     ("accountspayable.jrxml");
+        setDetail("accountspayable.jrxml");
+        setSummary("accountspayable.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -100,8 +102,8 @@ public class SSAccountsPayablePrinter extends SSPrinter {
         iPrinter = new SSInvoicePrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -118,38 +120,48 @@ public class SSAccountsPayablePrinter extends SSPrinter {
                 SSSupplier iSupplier = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iSupplier.getNumber();
-                        break;
-                    case 1:
-                        value = iSupplier.getName();
-                        break;
-                      case 2:
-                          List<SSSupplierInvoice> iInvoices = iSupplierInvoicesMap.get(iSupplier.getNumber());
+                case 0:
+                    value = iSupplier.getNumber();
+                    break;
 
-                        BigDecimal iSum = new BigDecimal(0);
-                        for (SSSupplierInvoice iInvoice : iInvoices) {
-                            BigDecimal iSaldo = SSSupplierInvoiceMath.getTotalSum(iInvoice);
-                            if(iOutpaymentSum.containsKey(iInvoice.getNumber()))
-                                iSaldo = iSaldo.subtract(iOutpaymentSum.get(iInvoice.getNumber()));
-                            if(iSupplierCreditInvoiceSum.containsKey(iInvoice.getNumber()))
-                                iSaldo = iSaldo.subtract(iSupplierCreditInvoiceSum.get(iInvoice.getNumber()));
+                case 1:
+                    value = iSupplier.getName();
+                    break;
 
-                            iSum = iSum.add(SSSupplierInvoiceMath.convertToLocal(iInvoice,  iSaldo));
+                case 2:
+                    List<SSSupplierInvoice> iInvoices = iSupplierInvoicesMap.get(
+                            iSupplier.getNumber());
+
+                    BigDecimal iSum = new BigDecimal(0);
+
+                    for (SSSupplierInvoice iInvoice : iInvoices) {
+                        BigDecimal iSaldo = SSSupplierInvoiceMath.getTotalSum(iInvoice);
+
+                        if (iOutpaymentSum.containsKey(iInvoice.getNumber())) {
+                            iSaldo = iSaldo.subtract(
+                                    iOutpaymentSum.get(iInvoice.getNumber()));
                         }
-                        value = iSum;
-                        break;
+                        if (iSupplierCreditInvoiceSum.containsKey(iInvoice.getNumber())) {
+                            iSaldo = iSaldo.subtract(
+                                    iSupplierCreditInvoiceSum.get(iInvoice.getNumber()));
+                        }
 
-                          //List<SSSupplierInvoice> iInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier, iDate);
+                        iSum = iSum.add(
+                                SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo));
+                    }
+                    value = iSum;
+                    break;
 
-                         //value = SSSupplierInvoiceMath.getSaldoSum(iInvoices, iDate);
-                    case 3:
-                        iPrinter.setSupplier(iSupplier);
+                // List<SSSupplierInvoice> iInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier, iDate);
 
-                        iDataSource.reset();
+                // value = SSSupplierInvoiceMath.getSaldoSum(iInvoices, iDate);
+                case 3:
+                    iPrinter.setSupplier(iSupplier);
 
-                        value = iDataSource;
-                        break;
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -161,40 +173,31 @@ public class SSAccountsPayablePrinter extends SSPrinter {
         iModel.addColumn("supplier.saldosum");
         iModel.addColumn("supplier.invoices");
 
-
         Collections.sort(iSuppliers, new Comparator<SSSupplier>() {
             public int compare(SSSupplier o1, SSSupplier o2) {
-                return o1.getNumber().compareTo( o2.getNumber() );
+                return o1.getNumber().compareTo(o2.getNumber());
             }
         });
 
         iModel.setObjects(iSuppliers);
 
-
         return iModel;
     }
-
-
-
-
 
     private class SSInvoicePrinter extends SSPrinter {
 
         private SSDefaultTableModel<SSSupplierInvoice> iModel;
 
-
-
         /**
          *
          */
-        public SSInvoicePrinter( ){
-            setMargins(0,0,0,0);
+        public SSInvoicePrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("accountspayable.row.jrxml");
+            setDetail("accountspayable.row.jrxml");
             setSummary("accountspayable.row.jrxml");
 
-
-            iModel = new SSDefaultTableModel<SSSupplierInvoice>(  ) {
+            iModel = new SSDefaultTableModel<SSSupplierInvoice>() {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -209,39 +212,59 @@ public class SSAccountsPayablePrinter extends SSPrinter {
                     SSSupplierInvoice iInvoice = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iInvoice.getNumber();
-                            break;
-                        case 1:
-                            value = iFormat.format(iInvoice.getDate());
-                            break;
-                        case 2:
-                            value = iInvoice.getCurrency() == null ? null : iInvoice.getCurrency().getName();
-                            break;
-                        case 3:
-                            value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
-                            break;
-                        case 4:
-                            value = iSupplierCreditInvoiceSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0) : iSupplierCreditInvoiceSum.get(iInvoice.getNumber());//value = SSSupplierCreditInvoiceMath.getSumForInvoice(iInvoice, iDate);
-                            break;
-                        case 5:
-                            value = iOutpaymentSum.get(iInvoice.getNumber()) == null ? new BigDecimal(0) : iOutpaymentSum.get(iInvoice.getNumber());//value = SSOutpaymentMath    .getSumForInvoice(iInvoice, iDate);
-                            break;
-                        case 6:
-                            value = iInvoice.getCurrencyRate();
-                            break;
-                        case 7:
-                            //BigDecimal iSaldo = SSSupplierInvoiceMath.getSaldo(iInvoice, iDate);
+                    case 0:
+                        value = iInvoice.getNumber();
+                        break;
 
-                            //value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo);
-                            //break;
-                            BigDecimal iSaldo = SSSupplierInvoiceMath.getTotalSum(iInvoice);//SSInvoiceMath.getSaldo(iInvoice, iDate);
-                            if(iOutpaymentSum.containsKey(iInvoice.getNumber()))
-                                iSaldo = iSaldo.subtract(iOutpaymentSum.get(iInvoice.getNumber()));
-                            if(iSupplierCreditInvoiceSum.containsKey(iInvoice.getNumber()))
-                                iSaldo = iSaldo.subtract(iSupplierCreditInvoiceSum.get(iInvoice.getNumber()));
+                    case 1:
+                        value = iFormat.format(iInvoice.getDate());
+                        break;
 
-                            value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo);
+                    case 2:
+                        value = iInvoice.getCurrency() == null
+                                ? null
+                                : iInvoice.getCurrency().getName();
+                        break;
+
+                    case 3:
+                        value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
+                        break;
+
+                    case 4:
+                        value = iSupplierCreditInvoiceSum.get(iInvoice.getNumber())
+                                == null
+                                        ? new BigDecimal(0)
+                                        : iSupplierCreditInvoiceSum.get(
+                                                iInvoice.getNumber()); // value = SSSupplierCreditInvoiceMath.getSumForInvoice(iInvoice, iDate);
+                        break;
+
+                    case 5:
+                        value = iOutpaymentSum.get(iInvoice.getNumber()) == null
+                                ? new BigDecimal(0)
+                                : iOutpaymentSum.get(iInvoice.getNumber()); // value = SSOutpaymentMath    .getSumForInvoice(iInvoice, iDate);
+                        break;
+
+                    case 6:
+                        value = iInvoice.getCurrencyRate();
+                        break;
+
+                    case 7:
+                        // BigDecimal iSaldo = SSSupplierInvoiceMath.getSaldo(iInvoice, iDate);
+
+                        // value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo);
+                        // break;
+                        BigDecimal iSaldo = SSSupplierInvoiceMath.getTotalSum(iInvoice); // SSInvoiceMath.getSaldo(iInvoice, iDate);
+
+                        if (iOutpaymentSum.containsKey(iInvoice.getNumber())) {
+                            iSaldo = iSaldo.subtract(
+                                    iOutpaymentSum.get(iInvoice.getNumber()));
+                        }
+                        if (iSupplierCreditInvoiceSum.containsKey(iInvoice.getNumber())) {
+                            iSaldo = iSaldo.subtract(
+                                    iSupplierCreditInvoiceSum.get(iInvoice.getNumber()));
+                        }
+
+                        value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iSaldo);
                     }
 
                     return value;
@@ -283,25 +306,28 @@ public class SSAccountsPayablePrinter extends SSPrinter {
          * @param iSupplier
          */
         public void setSupplier(SSSupplier iSupplier) {
-            List<SSSupplierInvoice> iInvoices = iSupplierInvoicesMap.get(iSupplier.getNumber());//SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier, iDate);
+            List<SSSupplierInvoice> iInvoices = iSupplierInvoicesMap.get(
+                    iSupplier.getNumber()); // SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier, iDate);
 
-            iModel.setObjects( iInvoices );
+            iModel.setObjects(iInvoices);
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSAccountsPayablePrinter.SSInvoicePrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSAccountsPayablePrinter.SSInvoicePrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSAccountsPayablePrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iDate=").append(iDate);

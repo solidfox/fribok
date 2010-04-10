@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.accountingyear.util;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSSystemYear;
@@ -8,6 +9,7 @@ import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 
 import java.util.Date;
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-15
@@ -20,11 +22,11 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
     /**
      * Default constructor.
      */
-    public SSSystemYearDataModel(){
-        addColumn(  cBunbdle.getString("accountingyeartable.column.1"));
-        addColumn(  cBunbdle.getString("accountingyeartable.column.2"));
-        addColumn(  cBunbdle.getString("accountingyeartable.column.3"));
-        addColumn(  cBunbdle.getString("accountingyeartable.column.4"));
+    public SSSystemYearDataModel() {
+        addColumn(cBunbdle.getString("accountingyeartable.column.1"));
+        addColumn(cBunbdle.getString("accountingyeartable.column.2"));
+        addColumn(cBunbdle.getString("accountingyeartable.column.3"));
+        addColumn(cBunbdle.getString("accountingyeartable.column.4"));
     }
 
     @Override
@@ -39,18 +41,21 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
         Object value = null;
 
         switch (columnIndex) {
-            case 0:
-                value = year.equals(SSDB.getInstance().getCurrentYear());
-                break;
-            case 1:
-                value = year.getFrom();
-                break;
-            case 2:
-                value = year.getTo();
-                break;
-            case 3:
-                value = year.getAccountPlan().getName();
-                break;
+        case 0:
+            value = year.equals(SSDB.getInstance().getCurrentYear());
+            break;
+
+        case 1:
+            value = year.getFrom();
+            break;
+
+        case 2:
+            value = year.getTo();
+            break;
+
+        case 3:
+            value = year.getAccountPlan().getName();
+            break;
         }
 
         return value;
@@ -60,12 +65,14 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
     public Class<?> getColumnClass(int columnIndex) {
 
         switch (columnIndex) {
-            case 0:
-                return Boolean.class;
-            case 1:
-                return Date.class;
-            case 2:
-                return Date.class;
+        case 0:
+            return Boolean.class;
+
+        case 1:
+            return Date.class;
+
+        case 2:
+            return Date.class;
         }
 
         return super.getColumnClass(columnIndex);

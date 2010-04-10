@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print;
 
+
 import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -25,6 +26,7 @@ import java.util.ResourceBundle;
 
 import static se.swedsoft.bookkeeping.print.SSReport.ReportField.*;
 
+
 /**
  *
  * $Id$
@@ -39,15 +41,14 @@ public abstract class SSPrinter {
      *
      */
     public SSPrinter() {
-        iReport     = new SSReport();
+        iReport = new SSReport();
 
-        iReport.addParameter("company"  , SSDB.getInstance().getCurrentCompany().getName());
+        iReport.addParameter("company", SSDB.getInstance().getCurrentCompany().getName());
         iReport.addParameter("reportdate", new Date());
 
         iReport.addParameter("lastvoucher", SSVoucherMath.getMaxNumber());
 
     }
-
 
     /**
      *
@@ -65,7 +66,7 @@ public abstract class SSPrinter {
      * @param toString
      */
     public void addParameter(String pName, Object pValue, boolean toString) {
-       iReport.addParameter(pName, pValue == null ? null : pValue.toString());
+        iReport.addParameter(pName, pValue == null ? null : pValue.toString());
     }
 
     /**
@@ -75,7 +76,6 @@ public abstract class SSPrinter {
      */
     public void addParameter(String pName, Date pDate) {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-
 
         iReport.addParameter(pName, pDate == null ? pDate : iFormat.format(pDate));
     }
@@ -88,78 +88,75 @@ public abstract class SSPrinter {
         iReport.addParameters(iParameters);
     }
 
-
-
-
     /**
      *
      * @param pPageHeader
      */
-    protected void setPageHeader(String pPageHeader){
-        iReport.setField(PAGE_HEADER,  pPageHeader);
+    protected void setPageHeader(String pPageHeader) {
+        iReport.setField(PAGE_HEADER, pPageHeader);
     }
 
     /**
      *
      * @param pPageFooter
      */
-    protected void setPageFooter(String pPageFooter){
-        iReport.setField(PAGE_FOOTER,  pPageFooter);
+    protected void setPageFooter(String pPageFooter) {
+        iReport.setField(PAGE_FOOTER, pPageFooter);
     }
+
     /**
      *
      * @param pColumnName
      */
-    protected void setColumnHeader(String pColumnName){
-        iReport.setField(COLUMN_HEADER,  pColumnName);
+    protected void setColumnHeader(String pColumnName) {
+        iReport.setField(COLUMN_HEADER, pColumnName);
     }
-      /**
+
+    /**
      *
      * @param pColumnName
      */
-    protected void setColumnFooter(String pColumnName){
-        iReport.setField(COLUMN_FOOTER,  pColumnName);
+    protected void setColumnFooter(String pColumnName) {
+        iReport.setField(COLUMN_FOOTER, pColumnName);
     }
 
     /**
      *
      * @param pDetailName
      */
-    protected void setDetail(String pDetailName){
-        iReport.setField(DETAIL,  pDetailName);
+    protected void setDetail(String pDetailName) {
+        iReport.setField(DETAIL, pDetailName);
     }
 
     /**
      *
      * @param pSummaryName
      */
-    protected void setSummary(String pSummaryName){
-        iReport.setField(SUMMARY,  pSummaryName);
+    protected void setSummary(String pSummaryName) {
+        iReport.setField(SUMMARY, pSummaryName);
     }
 
     /**
      *
      * @param pBackgroundName
      */
-    protected void setBackground(String pBackgroundName){
-        iReport.setField(BACKGROUND,  pBackgroundName);
+    protected void setBackground(String pBackgroundName) {
+        iReport.setField(BACKGROUND, pBackgroundName);
     }
+
     /**
      *
      * @param pLastPageFootername
      */
-    protected void setLastPageFooter(String pLastPageFootername){
-        iReport.setField(LAST_PAGE_FOOTER,  pLastPageFootername);
+    protected void setLastPageFooter(String pLastPageFootername) {
+        iReport.setField(LAST_PAGE_FOOTER, pLastPageFootername);
     }
-
-
-
 
     /**
      *
      * @param pMargins
      */
-    protected void setMargins(Insets pMargins){
+    protected void setMargins(Insets pMargins) {
         iReport.setMargins(pMargins);
     }
 
@@ -167,14 +164,15 @@ public abstract class SSPrinter {
      *
      * @param iColumnCount
      */
-    public void setColumnCount(int iColumnCount){
+    public void setColumnCount(int iColumnCount) {
         iReport.setColumnCount(iColumnCount);
     }
-       /**
+
+    /**
      *
      * @param iColumnSpacing
      */
-    public void setColumnSpacing(int iColumnSpacing){
+    public void setColumnSpacing(int iColumnSpacing) {
         iReport.setColumnSpacing(iColumnSpacing);
     }
 
@@ -182,8 +180,8 @@ public abstract class SSPrinter {
      *
      * @param iColumnWidth
      */
-    public void setColumnWidth(int iColumnWidth){
-       iReport.setColumnWidth(iColumnWidth);
+    public void setColumnWidth(int iColumnWidth) {
+        iReport.setColumnWidth(iColumnWidth);
     }
 
     /**
@@ -193,7 +191,7 @@ public abstract class SSPrinter {
      * @param bottom
      * @param right
      */
-    protected void setMargins(int top, int left, int bottom, int right){
+    protected void setMargins(int top, int left, int bottom, int right) {
         iReport.setMargins(new Insets(top, left, bottom, right));
     }
 
@@ -202,7 +200,7 @@ public abstract class SSPrinter {
      * @param width
      * @param height
      */
-    protected void setSize(int width, int height){
+    protected void setSize(int width, int height) {
         iReport.setSize(new Point(width, height));
     }
 
@@ -211,14 +209,14 @@ public abstract class SSPrinter {
      *
      * @param iBundle
      */
-    public void setBundle(ResourceBundle iBundle){
+    public void setBundle(ResourceBundle iBundle) {
         this.iBundle = iBundle;
 
-        addParameter(JRParameter.REPORT_RESOURCE_BUNDLE, iBundle );
+        addParameter(JRParameter.REPORT_RESOURCE_BUNDLE, iBundle);
     }
 
     /**
-     * 
+     *
      * @return
      */
     public ResourceBundle getBundle() {
@@ -230,13 +228,9 @@ public abstract class SSPrinter {
      *
      * @param iLocale
      */
-    public void setLocale(Locale iLocale){
-        addParameter(JRParameter.REPORT_LOCALE , iLocale);
+    public void setLocale(Locale iLocale) {
+        addParameter(JRParameter.REPORT_LOCALE, iLocale);
     }
-
-
-
-
 
     /**
      * Gets the title for this report
@@ -245,7 +239,6 @@ public abstract class SSPrinter {
      */
     public abstract String getTitle();
 
-
     /**
      *  Gets the data model for this report
      *
@@ -253,17 +246,14 @@ public abstract class SSPrinter {
      */
     protected abstract SSDefaultTableModel getModel();
 
-
-
     /**
      * Gets the sub title  for this report
      *
      * @return The sub title
      */
-    protected  String getSubTitle(){
+    protected String getSubTitle() {
         return null;
     }
-
 
     /**
      *
@@ -273,26 +263,23 @@ public abstract class SSPrinter {
         return iReport.getParameters();
     }
 
-
-
     /**
      *
      */
     public void generateReport() {
-        iReport.addParameter("title"   , getTitle() );
-        iReport.addParameter("subtitle", getSubTitle() );
-        iReport.setModel   (getModel());
+        iReport.addParameter("title", getTitle());
+        iReport.addParameter("subtitle", getSubTitle());
+        iReport.setModel(getModel());
 
         iReport.generateReport();
     }
-
 
     /**
      *
      */
     public void preview() {
-        iReport.addParameter("title"   , getTitle() );
-        iReport.addParameter("subtitle", getSubTitle() );
+        iReport.addParameter("title", getTitle());
+        iReport.addParameter("subtitle", getSubTitle());
         iReport.setModel(getModel());
 
         iReport.viewReport();
@@ -305,20 +292,19 @@ public abstract class SSPrinter {
      * @param iMainFrame
      */
     public void preview(SSMainFrame iMainFrame) {
-        iReport.addParameter("title"    , getTitle() );
-        iReport.addParameter("subtitle", getSubTitle() );
+        iReport.addParameter("title", getTitle());
+        iReport.addParameter("subtitle", getSubTitle());
         iReport.setModel(getModel());
         iReport.viewReport(iMainFrame);
     }
-
 
     /**
      *
      * @param iDialog
      */
     public void preview(JDialog iDialog) {
-        iReport.addParameter("title"    , getTitle() );
-        iReport.addParameter("subtitle", getSubTitle() );
+        iReport.addParameter("title", getTitle());
+        iReport.addParameter("subtitle", getSubTitle());
         iReport.setModel(getModel());
 
         iReport.viewReport(iDialog);
@@ -329,60 +315,64 @@ public abstract class SSPrinter {
      * @param iMainFrame
      * @param listener
      */
-    public void preview(SSMainFrame iMainFrame, InternalFrameListener listener ) {
-        iReport.addParameter("title"    , getTitle() );
-        iReport.addParameter("subtitle", getSubTitle() );
+    public void preview(SSMainFrame iMainFrame, InternalFrameListener listener) {
+        iReport.addParameter("title", getTitle());
+        iReport.addParameter("subtitle", getSubTitle());
         iReport.setModel(getModel());
 
         iReport.viewReport(iMainFrame, listener);
     }
 
     /**
-     * 
+     *
      * @param iMainFrame
      * @param iCloseListener
      */
-    public void preview(SSMainFrame iMainFrame, final ActionListener iCloseListener ) {
-       preview(iMainFrame, new InternalFrameAdapter() {
-           /**
-            * Invoked when an internal frame has been closed.
-            */
-           @Override
-           public void internalFrameClosed(InternalFrameEvent e) {
-               ActionEvent iEvent = new ActionEvent(e.getSource(), e.getID(), "close");
+    public void preview(SSMainFrame iMainFrame, final ActionListener iCloseListener) {
+        preview(iMainFrame, new InternalFrameAdapter() {
 
-               iCloseListener.actionPerformed(iEvent);
+            /**
+             * Invoked when an internal frame has been closed.
+             */
+            @Override
+            public void internalFrameClosed(InternalFrameEvent e) {
+                ActionEvent iEvent = new ActionEvent(e.getSource(), e.getID(), "close");
 
-               e.getInternalFrame().removeInternalFrameListener(this);
-           }
-       });
+                iCloseListener.actionPerformed(iEvent);
+
+                e.getInternalFrame().removeInternalFrameListener(this);
+            }
+        });
     }
 
     /**
      *
      * @return  SSReport
      */
-    public JasperPrint getPrinter(){
+    public JasperPrint getPrinter() {
         return iReport.getPrinter();
     }
+
     /**
      *
      * @return  JasperReport
      */
-    public JasperReport getReport(){
+    public JasperReport getReport() {
         return iReport.getReport();
     }
+
     /**
      *
      * @return  JasperReport
      */
-    public SSDefaultJasperDataSource getDataSource(){
+    public SSDefaultJasperDataSource getDataSource() {
         return iReport.getDataSource();
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.SSPrinter");
         sb.append("{iBundle=").append(iBundle);
         sb.append(", iReport=").append(iReport);

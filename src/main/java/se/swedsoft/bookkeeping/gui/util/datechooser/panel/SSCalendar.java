@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -33,31 +35,28 @@ public class SSCalendar implements ActionListener {
     // the change listeners
     private List<ActionListener> iChangeListeners;
 
-
     /**
      *
      */
     public SSCalendar() {
         iChangeListeners = new LinkedList<ActionListener>();
 
-        iYearPanel.setLayout ( new BorderLayout() );
-        iMonthPanel.setLayout( new BorderLayout() );
-        iDayPanel .setLayout ( new BorderLayout() );
+        iYearPanel.setLayout(new BorderLayout());
+        iMonthPanel.setLayout(new BorderLayout());
+        iDayPanel.setLayout(new BorderLayout());
 
-        iDayChooser   = new SSDayChooser  ();
+        iDayChooser = new SSDayChooser();
         iMonthChooser = new SSMonthChooser();
-        iYearChooser  = new SSYearChooser ();
+        iYearChooser = new SSYearChooser();
 
-        iDayChooser  .addChangeListener( this);
-        iMonthChooser.addChangeListener( this);
-        iYearChooser .addChangeListener( this);
+        iDayChooser.addChangeListener(this);
+        iMonthChooser.addChangeListener(this);
+        iYearChooser.addChangeListener(this);
 
-
-        iYearPanel .add(iYearChooser .getPanel(), BorderLayout.CENTER );
-        iMonthPanel.add(iMonthChooser.getPanel(), BorderLayout.CENTER );
-        iDayPanel  .add(iDayChooser  .getPanel(), BorderLayout.CENTER );
+        iYearPanel.add(iYearChooser.getPanel(), BorderLayout.CENTER);
+        iMonthPanel.add(iMonthChooser.getPanel(), BorderLayout.CENTER);
+        iDayPanel.add(iDayChooser.getPanel(), BorderLayout.CENTER);
     }
-
 
     /**
      *
@@ -82,9 +81,9 @@ public class SSCalendar implements ActionListener {
     public void setDate(Date iDate) {
         this.iDate = iDate;
 
-        iDayChooser  .setDate(iDate );
-        iMonthChooser.setDate(iDate );
-        iYearChooser .setDate(iDate );
+        iDayChooser.setDate(iDate);
+        iMonthChooser.setDate(iDate);
+        iYearChooser.setDate(iDate);
     }
 
     /**
@@ -121,7 +120,6 @@ public class SSCalendar implements ActionListener {
         return iDayChooser;
     }
 
-
     /**
      *
      * @param iEvent
@@ -137,24 +135,23 @@ public class SSCalendar implements ActionListener {
      * Invoked when an action occurs.
      */
     public void actionPerformed(ActionEvent e) {
-        ActionEvent iEvent = new ActionEvent(this, 0, e.getActionCommand() );
+        ActionEvent iEvent = new ActionEvent(this, 0, e.getActionCommand());
 
-        if(e.getSource() == iDayChooser  ) {
+        if (e.getSource() == iDayChooser) {
             iDate = iDayChooser.getDate();
 
             notifyChangeListeners(iEvent);
         }
-        if(e.getSource() == iYearChooser ) {
-            iDate = iYearChooser .getDate();
+        if (e.getSource() == iYearChooser) {
+            iDate = iYearChooser.getDate();
         }
-        if(e.getSource() == iMonthChooser) {
+        if (e.getSource() == iMonthChooser) {
             iDate = iMonthChooser.getDate();
         }
 
-        iDayChooser  .setDate(iDate );
-        iMonthChooser.setDate(iDate );
-        iYearChooser .setDate(iDate );
-
+        iDayChooser.setDate(iDate);
+        iMonthChooser.setDate(iDate);
+        iYearChooser.setDate(iDate);
 
     }
 
@@ -164,35 +161,36 @@ public class SSCalendar implements ActionListener {
      */
     public void dispose() {
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
 
         iDayPanel.removeAll();
-        iDayPanel=null;
+        iDayPanel = null;
 
         iYearPanel.removeAll();
-        iYearPanel=null;
+        iYearPanel = null;
 
         iMonthPanel.removeAll();
-        iMonthPanel=null;
+        iMonthPanel = null;
 
         iDayChooser.dispose();
-        iDayChooser=null;
+        iDayChooser = null;
 
         iMonthChooser.dispose();
-        iMonthChooser=null;
+        iMonthChooser = null;
 
         iYearChooser.dispose();
-        iYearChooser=null;
+        iYearChooser = null;
 
-        iDate=null;
+        iDate = null;
 
         iChangeListeners.removeAll(iChangeListeners);
-        iChangeListeners=null;
+        iChangeListeners = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSCalendar");
         sb.append("{iChangeListeners=").append(iChangeListeners);
         sb.append(", iDate=").append(iDate);

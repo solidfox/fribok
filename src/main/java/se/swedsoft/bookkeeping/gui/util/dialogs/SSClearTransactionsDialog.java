@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
@@ -10,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -24,7 +26,6 @@ public class SSClearTransactionsDialog extends SSDialog {
 
     private SSButtonPanel iButtonPanel;
 
-
     /**
      * @param iFrame
      */
@@ -34,6 +35,7 @@ public class SSClearTransactionsDialog extends SSDialog {
         setPanel(iPanel);
 
         Calendar iCal = Calendar.getInstance();
+
         iCal.setTime(SSDB.getInstance().getCurrentYear().getFrom());
         iCal.add(Calendar.DATE, -1);
 
@@ -61,6 +63,7 @@ public class SSClearTransactionsDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSClearTransactionsDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

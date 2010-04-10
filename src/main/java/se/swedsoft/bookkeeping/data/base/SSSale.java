@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.base;
 
+
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -8,6 +9,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * Base class that tender, orders and invouces inherit from
@@ -18,7 +20,6 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
 
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     // Nummer
     protected Integer iNumber;
@@ -64,10 +65,8 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     // Utskriven
     protected boolean iPrinted;
 
-
     // Standard konton
     protected Map<SSDefaultAccount, Integer> iDefaultAccounts;
-
 
     // Rader
     protected List<SSSaleRow> iRows;
@@ -75,24 +74,25 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     // Transient reference to the customer.
     protected transient SSCustomer iCustomer;
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
     public SSSale() {
-        iDate            = new Date();
-        iInvoiceAddress  = new SSAddress();
+        iDate = new Date();
+        iInvoiceAddress = new SSAddress();
         iDeliveryAddress = new SSAddress();
-        iRows            = new LinkedList<SSSaleRow>();
-        iPrinted         = false;
+        iRows = new LinkedList<SSSaleRow>();
+        iPrinted = false;
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
+
         if (iCompany != null) {
             iPaymentTerm = iCompany.getPaymentTerm();
-            
+
             iDeliveryTerm = iCompany.getDeliveryTerm();
             iDeliveryWay = iCompany.getDeliveryWay();
-            iCurrency    = iCompany.getCurrency();
+            iCurrency = iCompany.getCurrency();
         }
 
     }
@@ -118,57 +118,58 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iSale
      */
     public void copyFrom(SSSale iSale) {
-        iNumber                   = iSale.iNumber;
-        iDate                     = iSale.iDate;
-        iCustomerNr               = iSale.iCustomerNr;
-        iCustomerName             = iSale.iCustomerName;
-        iOurContactPerson         = iSale.iOurContactPerson;
-        iYourContactPerson        = iSale.iYourContactPerson;
-        iDelayInterest            = iSale.iDelayInterest;
-        iCurrency                 = iSale.iCurrency;
-        iPaymentTerm              = iSale.iPaymentTerm;
-        iDeliveryTerm             = iSale.iDeliveryTerm;
-        iDeliveryWay              = iSale.iDeliveryWay;
-        iTaxFree                  = iSale.iTaxFree;
-        iText                     = iSale.iText;
-        iTaxRate1                 = iSale.iTaxRate1;
-        iTaxRate2                 = iSale.iTaxRate2;
-        iTaxRate3                 = iSale.iTaxRate3;
-        iEuSaleCommodity          = iSale.iEuSaleCommodity;
+        iNumber = iSale.iNumber;
+        iDate = iSale.iDate;
+        iCustomerNr = iSale.iCustomerNr;
+        iCustomerName = iSale.iCustomerName;
+        iOurContactPerson = iSale.iOurContactPerson;
+        iYourContactPerson = iSale.iYourContactPerson;
+        iDelayInterest = iSale.iDelayInterest;
+        iCurrency = iSale.iCurrency;
+        iPaymentTerm = iSale.iPaymentTerm;
+        iDeliveryTerm = iSale.iDeliveryTerm;
+        iDeliveryWay = iSale.iDeliveryWay;
+        iTaxFree = iSale.iTaxFree;
+        iText = iSale.iText;
+        iTaxRate1 = iSale.iTaxRate1;
+        iTaxRate2 = iSale.iTaxRate2;
+        iTaxRate3 = iSale.iTaxRate3;
+        iEuSaleCommodity = iSale.iEuSaleCommodity;
         iEuSaleYhirdPartCommodity = iSale.iEuSaleYhirdPartCommodity;
-        iPrinted                  = iSale.iPrinted;
-        iCustomer                 = null;
-        iInvoiceAddress           = new SSAddress(iSale.iInvoiceAddress );
-        iDeliveryAddress          = new SSAddress(iSale.iDeliveryAddress);
-        iRows                     = new LinkedList<SSSaleRow>();
-        iDefaultAccounts          = new HashMap<SSDefaultAccount, Integer>();
+        iPrinted = iSale.iPrinted;
+        iCustomer = null;
+        iInvoiceAddress = new SSAddress(iSale.iInvoiceAddress);
+        iDeliveryAddress = new SSAddress(iSale.iDeliveryAddress);
+        iRows = new LinkedList<SSSaleRow>();
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all rows
-        for(SSSaleRow iRow : iSale.iRows){
-            iRows.add( new SSSaleRow(iRow) );
+        for (SSSaleRow iRow : iSale.iRows) {
+            iRows.add(new SSSaleRow(iRow));
         }
 
         // Copy all default accounts
         for (SSDefaultAccount iDefaultAccount : iSale.getDefaultAccounts().keySet()) {
-            iDefaultAccounts.put(iDefaultAccount, iSale.getDefaultAccounts().get(iDefaultAccount));
+            iDefaultAccounts.put(iDefaultAccount,
+                    iSale.getDefaultAccounts().get(iDefaultAccount));
         }
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Sets the number of this sale as the maxinum mumber + 1
      */
     public abstract void doAutoIncrecement();
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      *
      * @return
@@ -185,7 +186,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -203,7 +204,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iDate = iDate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -221,7 +222,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iCustomerNr = iCustomerNr;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -239,7 +240,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iCustomerName = iCustomerName;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -257,7 +258,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iOurContactPerson = iOurContactPerson;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -275,14 +276,16 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iYourContactPerson = iYourContactPerson;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getDelayInterest() {
-        if(iDelayInterest == null) iDelayInterest = new BigDecimal(0);
+        if (iDelayInterest == null) {
+            iDelayInterest = new BigDecimal(0);
+        }
         return iDelayInterest;
     }
 
@@ -294,7 +297,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iDelayInterest = iDelayInterest;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -312,7 +315,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iCurrency = iCurrency;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -330,7 +333,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iPaymentTerm = iPaymentTerm;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -348,7 +351,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iDeliveryTerm = iDeliveryTerm;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -366,7 +369,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iDeliveryWay = iDeliveryWay;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -384,14 +387,16 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iTaxFree = iTaxFree;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getTaxRate1() {
-        if(iTaxRate1 == null) iTaxRate1 = new BigDecimal(25);
+        if (iTaxRate1 == null) {
+            iTaxRate1 = new BigDecimal(25);
+        }
         return iTaxRate1;
     }
 
@@ -403,7 +408,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iTaxRate1 = iTaxRate1;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -418,18 +423,22 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iTaxRate2
      */
     public void setTaxRate2(BigDecimal iTaxRate2) {
-        if(iTaxRate2 == null) iTaxRate2 = new BigDecimal(12);
+        if (iTaxRate2 == null) {
+            iTaxRate2 = new BigDecimal(12);
+        }
         this.iTaxRate2 = iTaxRate2;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getTaxRate3() {
-        if(iTaxRate3 == null) iTaxRate3 = new BigDecimal(6);
+        if (iTaxRate3 == null) {
+            iTaxRate3 = new BigDecimal(6);
+        }
         return iTaxRate3;
     }
 
@@ -441,7 +450,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iTaxRate3 = iTaxRate3;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -459,7 +468,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iEuSaleCommodity = iEuSaleCommodity;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -477,8 +486,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iEuSaleYhirdPartCommodity = iEuSaleYhirdPartCommodity;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -496,7 +504,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         iText = iTenderText;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -521,8 +529,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         iPrinted = true;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -540,7 +547,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iInvoiceAddress = iInvoiceAddress;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -558,14 +565,16 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iDeliveryAddress = iDeliveryAddress;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public Map<SSDefaultAccount, Integer> getDefaultAccounts() {
-        if(iDefaultAccounts == null) iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        if (iDefaultAccounts == null) {
+            iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        }
         return iDefaultAccounts;
     }
 
@@ -575,10 +584,12 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iDefaultAccount
      * @return
      */
-    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount){
+    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount) {
         Integer iAccountNumber = iDefaultAccounts.get(iDefaultAccount);
 
-        if(iAccountNumber == null) return null;
+        if (iAccountNumber == null) {
+            return null;
+        }
 
         return iAccountPlan.getAccount(iAccountNumber);
     }
@@ -588,7 +599,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iDefaultAccount
      * @return
      */
-    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount){
+    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {
         return iDefaultAccounts.get(iDefaultAccount);
     }
 
@@ -601,14 +612,16 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         this.iDefaultAccounts.putAll(iDefaultAccounts);
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public List<SSSaleRow> getRows() {
-        if(iRows == null) iRows = new LinkedList<SSSaleRow>();
+        if (iRows == null) {
+            iRows = new LinkedList<SSSaleRow>();
+        }
         return iRows;
     }
 
@@ -619,16 +632,17 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     public void setRows(List<SSSaleRow> iRows) {
         this.iRows = iRows;
     }
+
     /**
      *
      * @param iRows
      */
-    public void setRows(SSSaleRow ... iRows) {
+    public void setRows(SSSaleRow... iRows) {
         this.iRows = new LinkedList<SSSaleRow>();
         this.iRows.addAll(Arrays.asList(iRows));
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -644,11 +658,11 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return
      */
     public SSCustomer getCustomer(List<SSCustomer> iCustomers) {
-        if(iCustomer == null){
-            for(SSCustomer iCurrent: iCustomers){
+        if (iCustomer == null) {
+            for (SSCustomer iCurrent: iCustomers) {
                 String iNumber = iCurrent.getNumber();
 
-                if(iNumber != null && iNumber.equals(iCustomerNr)){
+                if (iNumber != null && iNumber.equals(iCustomerNr)) {
                     iCustomer = iCurrent;
                     break;
                 }
@@ -663,33 +677,35 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @param iCustomer
      */
     public void setCustomer(SSCustomer iCustomer) {
-        this.iCustomer                                                  = iCustomer;
-        iCustomerName                                                   = iCustomer.getName();
-        iCustomerNr                                                     = iCustomer.getNumber();
-        iYourContactPerson                                              = iCustomer.getYourContactPerson();
-        iOurContactPerson                                               = iCustomer.getOurContactPerson();
-        iPaymentTerm                                                    = iCustomer.getPaymentTerm();
-        iDeliveryTerm                                                   = iCustomer.getDeliveryTerm();
-        iDeliveryWay                                                    = iCustomer.getDeliveryWay();
-        iCurrency                                                       = iCustomer.getInvoiceCurrency();
-        
-        //this.iCurrency.setExchangeRate(iCustomer.getInvoiceCurrency() == null ? null : iCustomer.getInvoiceCurrency().getExchangeRate());
-        iTaxFree                                                        = iCustomer.getTaxFree();
-        iEuSaleCommodity                                                = iCustomer.getEuSaleCommodity();
-        iEuSaleYhirdPartCommodity                                       = iCustomer.getEuSaleYhirdPartCommodity();
+        this.iCustomer = iCustomer;
+        iCustomerName = iCustomer.getName();
+        iCustomerNr = iCustomer.getNumber();
+        iYourContactPerson = iCustomer.getYourContactPerson();
+        iOurContactPerson = iCustomer.getOurContactPerson();
+        iPaymentTerm = iCustomer.getPaymentTerm();
+        iDeliveryTerm = iCustomer.getDeliveryTerm();
+        iDeliveryWay = iCustomer.getDeliveryWay();
+        iCurrency = iCustomer.getInvoiceCurrency();
 
-        iInvoiceAddress                                                 = new SSAddress(iCustomer.getInvoiceAddress () );
-        iDeliveryAddress                                                = new SSAddress(iCustomer.getDeliveryAddress() );
+        // this.iCurrency.setExchangeRate(iCustomer.getInvoiceCurrency() == null ? null : iCustomer.getInvoiceCurrency().getExchangeRate());
+        iTaxFree = iCustomer.getTaxFree();
+        iEuSaleCommodity = iCustomer.getEuSaleCommodity();
+        iEuSaleYhirdPartCommodity = iCustomer.getEuSaleYhirdPartCommodity();
+
+        iInvoiceAddress = new SSAddress(iCustomer.getInvoiceAddress());
+        iDeliveryAddress = new SSAddress(iCustomer.getDeliveryAddress());
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return the normalized tax rate 1
      */
     public BigDecimal getNormalizedTaxRate1() {
-        return iTaxRate1 == null ? new BigDecimal("0.25") : iTaxRate1.scaleByPowerOfTen(-2);
+        return iTaxRate1 == null
+                ? new BigDecimal("0.25")
+                : iTaxRate1.scaleByPowerOfTen(-2);
 
     }
 
@@ -698,7 +714,9 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return the normalized tax rate 2
      */
     public BigDecimal getNormalizedTaxRate2() {
-        return iTaxRate2 == null ? new BigDecimal("0.12") : iTaxRate2.scaleByPowerOfTen(-2);
+        return iTaxRate2 == null
+                ? new BigDecimal("0.12")
+                : iTaxRate2.scaleByPowerOfTen(-2);
 
     }
 
@@ -707,13 +725,14 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
      * @return the normalized tax rate 3
      */
     public BigDecimal getNormalizedTaxRate3() {
-        return iTaxRate3 == null ? new BigDecimal("0.06") : iTaxRate3.scaleByPowerOfTen(-2);
+        return iTaxRate3 == null
+                ? new BigDecimal("0.06")
+                : iTaxRate3.scaleByPowerOfTen(-2);
 
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
-    
     public boolean equals(Object obj) {
 
         if (iNumber == null) {
@@ -728,7 +747,6 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         return false;
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -738,7 +756,7 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         sb.append(", ");
         sb.append(iCustomerName);
         sb.append(") {\n");
-        for(SSSaleRow iRow : iRows){
+        for (SSSaleRow iRow : iRows) {
             sb.append("  ");
             sb.append(iRow);
             sb.append('\n');
@@ -748,7 +766,6 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
         return sb.toString();
     }
 
-    
     public int hashCode() {
         return iNumber;
     }
@@ -761,11 +778,5 @@ public abstract class SSSale implements SSTableSearchable, Serializable {
     public String toRenderString() {
         return iNumber == null ? "" : iNumber.toString();
     }
-
-
-
-
-
-
 
 }

@@ -4,9 +4,11 @@
  */
 package se.swedsoft.bookkeeping.gui.util;
 
+
 import java.util.Enumeration;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
+
 
 /**
  * The resourcebundle for this application
@@ -49,7 +51,7 @@ public class SSBundle extends ResourceBundle {
      * @param key
      * @return true if the key exists in the bundle
      */
-    public boolean hasKey(String key){
+    public boolean hasKey(String key) {
         try {
             iBundle.getObject(key);
         } catch (MissingResourceException e) {
@@ -72,10 +74,10 @@ public class SSBundle extends ResourceBundle {
         return o;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.SSBundle");
         sb.append("{iBundle=").append(iBundle);
         sb.append('}');

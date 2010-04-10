@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-13
@@ -12,9 +14,10 @@ public class SSFilterXLS extends SSFileFilter {
 
     public static ResourceBundle bundle = SSBundle.getBundle();
 
-    public SSFilterXLS(){
+    public SSFilterXLS() {
         addExtension("xls");
     }
+
     /**
      * @return The description of this filter
      */

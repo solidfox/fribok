@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSPeriodicInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
@@ -29,14 +30,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-jul-31
  * Time: 15:01:54
  */
 public class SSPeriodicInvoiceDialog {
-    private SSPeriodicInvoiceDialog() {
-    }
+    private SSPeriodicInvoiceDialog() {}
 
     /**
      *
@@ -44,28 +45,35 @@ public class SSPeriodicInvoiceDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
-        final SSDialog               iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("periodicinvoiceframe.new.title"));
-        final SSPeriodicInvoicePanel iPanel  = new SSPeriodicInvoicePanel(iDialog);
+        final SSDialog               iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("periodicinvoiceframe.new.title"));
+        final SSPeriodicInvoicePanel iPanel = new SSPeriodicInvoicePanel(iDialog);
         SSPeriodicInvoice iPeriodicInvoice = new SSPeriodicInvoice();
+
         iPeriodicInvoice.setNumber(null);
-        iPanel.setPeriodicInvoice( iPeriodicInvoice );
+        iPanel.setPeriodicInvoice(iPeriodicInvoice);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iPeriodicInvoice = iPanel.getPeriodicInvoice();
+
                 SSDB.getInstance().addPeriodicInvoice(iPeriodicInvoice);
 
-                if (iPanel.doSaveCustomerAndProducts())
+                if (iPanel.doSaveCustomerAndProducts()) {
                     SSInvoiceMath.addCustomerAndProducts(iPeriodicInvoice.getTemplate());
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -75,57 +83,67 @@ public class SSPeriodicInvoiceDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "periodicinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "periodicinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
 
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel, SSPeriodicInvoice iPeriodicInvoice, final List<SSOrder> iOrders) {
-        final SSDialog               iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("periodicinvoiceframe.new.title"));
-        final SSPeriodicInvoicePanel iPanel  = new SSPeriodicInvoicePanel(iDialog);
-        //SSPeriodicInvoice iPeriodicInvoice = new SSPeriodicInvoice();
+        final SSDialog               iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("periodicinvoiceframe.new.title"));
+        final SSPeriodicInvoicePanel iPanel = new SSPeriodicInvoicePanel(iDialog);
+
+        // SSPeriodicInvoice iPeriodicInvoice = new SSPeriodicInvoice();
         iPeriodicInvoice.setNumber(null);
 
-        iPanel.setPeriodicInvoice( iPeriodicInvoice );
+        iPanel.setPeriodicInvoice(iPeriodicInvoice);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iPeriodicInvoice = iPanel.getPeriodicInvoice();
+
                 SSDB.getInstance().addPeriodicInvoice(iPeriodicInvoice);
 
                 for (SSOrder iOrder : iOrders) {
                     // Set the invoice for the order
-                    if(SSDB.getInstance().getOrders().contains(iOrder)){
+                    if (SSDB.getInstance().getOrders().contains(iOrder)) {
                         iOrder.setPeriodicInvoice(iPeriodicInvoice);
                         SSDB.getInstance().updateOrder(iOrder);
                     }
                 }
 
-                if (iPanel.doSaveCustomerAndProducts())
+                if (iPanel.doSaveCustomerAndProducts()) {
                     SSInvoiceMath.addCustomerAndProducts(iPeriodicInvoice.getTemplate());
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -135,21 +153,24 @@ public class SSPeriodicInvoiceDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "periodicinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "periodicinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
@@ -161,50 +182,63 @@ public class SSPeriodicInvoiceDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, final SSPeriodicInvoice iEditInvoice, final AbstractTableModel pModel) {
-        final String lockString = "periodicinvoice" + iEditInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog( iMainFrame, "periodicinvoiceframe.invoiceopen",iEditInvoice.getNumber());
+        final String lockString = "periodicinvoice" + iEditInvoice.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "periodicinvoiceframe.invoiceopen",
+                    iEditInvoice.getNumber());
             return;
         }
-        final SSDialog               iDialog = new SSDialog(iMainFrame, SSBundle.getBundle().getString("periodicinvoiceframe.edit.title"));
-        final SSPeriodicInvoicePanel iPanel  = new SSPeriodicInvoicePanel(iDialog);
+        final SSDialog               iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("periodicinvoiceframe.edit.title"));
+        final SSPeriodicInvoicePanel iPanel = new SSPeriodicInvoicePanel(iDialog);
 
-        iPanel.setPeriodicInvoice( new SSPeriodicInvoice(iEditInvoice) );
+        iPanel.setPeriodicInvoice(new SSPeriodicInvoice(iEditInvoice));
         iPanel.setSavecustomerandproductsSelected(false);
         int iAddedInvoices = 0;
         List<SSInvoice> iInvoices = iEditInvoice.getInvoices();
-        for(SSInvoice iTempInvoice : iInvoices){
-            if(iEditInvoice.isAdded(iTempInvoice)){
+
+        for (SSInvoice iTempInvoice : iInvoices) {
+            if (iEditInvoice.isAdded(iTempInvoice)) {
                 iAddedInvoices++;
             }
         }
         final int iInvoiceCount = iAddedInvoices;
+
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iPeriodicInvoice = iPanel.getPeriodicInvoice();
 
-                if(iPeriodicInvoice.getCount() < iInvoiceCount){
-                    SSErrorDialog.showDialog(iMainFrame, "För få fakturor", "<html>" + iInvoiceCount + " fakturor är redan fakturerade för den här periodfakturan.<br>Du kan inte ange ett lägre antal än " + iInvoiceCount + '.');
+                if (iPeriodicInvoice.getCount() < iInvoiceCount) {
+                    SSErrorDialog.showDialog(iMainFrame, "För få fakturor",
+                            "<html>" + iInvoiceCount
+                            + " fakturor är redan fakturerade för den här periodfakturan.<br>Du kan inte ange ett lägre antal än "
+                            + iInvoiceCount + '.');
                     return;
                 }
-                for(int i=0; i<iInvoiceCount; i++){
+                for (int i = 0; i < iInvoiceCount; i++) {
                     iPeriodicInvoice.setAdded(iPeriodicInvoice.getInvoices().get(i));
                 }
-                
+
                 SSDB.getInstance().updatePeriodicInvoice(iPeriodicInvoice);
 
-                if (iPanel.doSaveCustomerAndProducts())
+                if (iPanel.doSaveCustomerAndProducts()) {
                     SSInvoiceMath.addCustomerAndProducts(iPeriodicInvoice.getTemplate());
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 SSPostLock.removeLock(lockString);
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -214,15 +248,18 @@ public class SSPeriodicInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "periodicinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "periodicinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -242,22 +279,25 @@ public class SSPeriodicInvoiceDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSPeriodicInvoice iPeriodicInvoice, final SSPeriodicInvoiceTableModel pModel) {
-        final String lockString = "periodicinvoice" + iPeriodicInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(SSPostLock.isLocked(lockString)){
-            new SSErrorDialog( iMainFrame, "peridodicinvoiceframe.invoiceopen",iPeriodicInvoice.getNumber());
+        final String lockString = "periodicinvoice" + iPeriodicInvoice.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (SSPostLock.isLocked(lockString)) {
+            new SSErrorDialog(iMainFrame, "peridodicinvoiceframe.invoiceopen",
+                    iPeriodicInvoice.getNumber());
             return;
         }
-        final SSDialog       iDialog = new SSDialog(iMainFrame, SSBundle.getBundle().getString("periodicinvoiceframe.copy.title"));
-        final SSPeriodicInvoicePanel iPanel  = new SSPeriodicInvoicePanel(iDialog);
+        final SSDialog       iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("periodicinvoiceframe.copy.title"));
+        final SSPeriodicInvoicePanel iPanel = new SSPeriodicInvoicePanel(iDialog);
         SSPeriodicInvoice iNew = new SSPeriodicInvoice(iPeriodicInvoice);
 
         iNew.setNumber(null);
-        iNew.setDate(new Date() );
+        iNew.setDate(new Date());
         for (SSInvoice iInvoice : iNew.getInvoices()) {
             iNew.setNotAdded(iInvoice);
         }
-        iPanel.setPeriodicInvoice( iNew );
-
+        iPanel.setPeriodicInvoice(iNew);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -267,12 +307,15 @@ public class SSPeriodicInvoiceDialog {
 
                 SSDB.getInstance().addPeriodicInvoice(iPeriodicInvoice);
 
-                if (iPanel.doSaveCustomerAndProducts()) SSInvoiceMath.addCustomerAndProducts(iPeriodicInvoice.getTemplate());
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSInvoiceMath.addCustomerAndProducts(iPeriodicInvoice.getTemplate());
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -281,14 +324,17 @@ public class SSPeriodicInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "periodicinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "periodicinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -300,44 +346,55 @@ public class SSPeriodicInvoiceDialog {
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
+
     /**
      *
      * @param iMainFrame
      * @return
      */
     public static boolean pendingPeriodicInvoicesDialog(SSMainFrame iMainFrame) {
-        final String lockString = "periodicinvoicepending"+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog( iMainFrame, "periodicinvoiceframe.periodicinvoice");
+        final String lockString = "periodicinvoicepending"
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "periodicinvoiceframe.periodicinvoice");
             return false;
         }
 
-        Map<SSPeriodicInvoice,List<SSInvoice>> iPeriodicInvoices = SSPeriodicInvoiceMath.getPeriodicInvoices();
-        Map<SSPeriodicInvoice,List<SSInvoice>> iSelected = SSPendingPeriodicInvoiceDialog.showDialog(iMainFrame, iPeriodicInvoices);
-        if( iSelected == null) {
+        Map<SSPeriodicInvoice, List<SSInvoice>> iPeriodicInvoices = SSPeriodicInvoiceMath.getPeriodicInvoices();
+        Map<SSPeriodicInvoice, List<SSInvoice>> iSelected = SSPendingPeriodicInvoiceDialog.showDialog(
+                iMainFrame, iPeriodicInvoices);
+
+        if (iSelected == null) {
             return true;
         }
-        Map<SSPeriodicInvoice, List<SSInvoice>> iTemp = new HashMap<SSPeriodicInvoice,List<SSInvoice>>(iSelected);
+        Map<SSPeriodicInvoice, List<SSInvoice>> iTemp = new HashMap<SSPeriodicInvoice, List<SSInvoice>>(
+                iSelected);
+
         for (SSPeriodicInvoice iPeriodicInvoice : iSelected.keySet()) {
 
-            if(SSPostLock.isLocked("periodicinvoice"+iPeriodicInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId())){
+            if (SSPostLock.isLocked(
+                    "periodicinvoice" + iPeriodicInvoice.getNumber()
+                    + SSDB.getInstance().getCurrentCompany().getId())) {
                 iTemp.remove(iPeriodicInvoice);
-                new SSErrorDialog(new JFrame(), "periodicinvoiceframe.invoiceopen", iPeriodicInvoice.getNumber());
+                new SSErrorDialog(new JFrame(), "periodicinvoiceframe.invoiceopen",
+                        iPeriodicInvoice.getNumber());
                 continue;
             }
-            if(SSDB.getInstance().getPeriodicInvoice(iPeriodicInvoice) == null){
+            if (SSDB.getInstance().getPeriodicInvoice(iPeriodicInvoice) == null) {
                 iTemp.remove(iPeriodicInvoice);
-                new SSErrorDialog(new JFrame(), "periodicinvoiceframe.invoicegone", iPeriodicInvoice.getNumber());
+                new SSErrorDialog(new JFrame(), "periodicinvoiceframe.invoicegone",
+                        iPeriodicInvoice.getNumber());
                 continue;
             }
 
             for (SSInvoice iInvoice : iTemp.get(iPeriodicInvoice)) {
 
-                iPeriodicInvoice.setAdded( iInvoice );
+                iPeriodicInvoice.setAdded(iInvoice);
                 SSDB.getInstance().updatePeriodicInvoice(iPeriodicInvoice);
 
                 iInvoice = new SSInvoice(iInvoice);
-                iInvoice.setDate(new Date() );
+                iInvoice.setDate(new Date());
                 iInvoice.setDueDate();
 
                 SSDB.getInstance().addInvoice(iInvoice);
@@ -349,6 +406,5 @@ public class SSPeriodicInvoiceDialog {
 
         return true;
     }
-
 
 }

@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.ownreport.panel;
 
+
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -40,15 +41,13 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  *
  */
 public class SSOwnReportPanel {
 
-
-
     private JPanel iPanel;
-
 
     private SSTable iHeadingTable;
     private SSOwnReportRowTableModel iHeadingTableModel;
@@ -75,6 +74,7 @@ public class SSOwnReportPanel {
     private SSButtonPanel iButtonPanel;
 
     List<SSOwnReportRow> iOwnReportRows;
+
     /**
      * Default constructor.
      * @param pOwnReport
@@ -84,7 +84,7 @@ public class SSOwnReportPanel {
         iOwnReportRows = iOwnReport.getHeadings();
 
         iName.setText(iOwnReport.getName());
-        
+
         iInputVerifier = new SSInputVerifier();
         iInputVerifier.add(iName);
         iInputVerifier.addListener(new SSInputVerifier.SSVerifierListener() {
@@ -108,44 +108,51 @@ public class SSOwnReportPanel {
         iHeadingComboBox.setAllowCustomValues(false);
 
         iAccountComboBox.setModel(SSAccountTableModel.getDropDownModel(getAccounts()));
-        iAccountComboBox.setSearchColumns(0,1);
+        iAccountComboBox.setSearchColumns(0, 1);
         iAccountComboBox.setAllowCustomValues(false);
 
         iProjectComboBox.setModel(SSProjectTableModel.getDropDownModel());
-        iProjectComboBox.setSearchColumns(0,1);
+        iProjectComboBox.setSearchColumns(0, 1);
         iProjectComboBox.setAllowCustomValues(false);
-        iProjectComboBox.addSelectionListener(new SSSelectionListener<SSNewProject>(){
-            public void selected(SSNewProject iProject ){
-                if(iProject != null){
+        iProjectComboBox.addSelectionListener(new SSSelectionListener<SSNewProject>() {
+            public void selected(SSNewProject iProject) {
+                if (iProject != null) {
                     iResultUnitComboBox.setSelected(null);
                 }
             }
         });
-        iProjectComboBox.setSelected(SSDB.getInstance().getProject(iOwnReport.getProjectNr()));
-        iProjectComboBox.getComponent(0).addKeyListener(new KeyAdapter(){
+        iProjectComboBox.setSelected(
+                SSDB.getInstance().getProject(iOwnReport.getProjectNr()));
+        iProjectComboBox.getComponent(0).addKeyListener(
+                new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_DELETE
+                        || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     iProjectComboBox.setSelected(null);
                 }
             }
         });
 
         iResultUnitComboBox.setModel(SSResultUnitTableModel.getDropDownModel());
-        iResultUnitComboBox.setSearchColumns(0,1);
+        iResultUnitComboBox.setSearchColumns(0, 1);
         iResultUnitComboBox.setAllowCustomValues(false);
-        iResultUnitComboBox.addSelectionListener(new SSSelectionListener<SSNewResultUnit>(){
-            public void selected(SSNewResultUnit iResultUnit ){
-                if(iResultUnit != null ){
+        iResultUnitComboBox.addSelectionListener(
+                new SSSelectionListener<SSNewResultUnit>() {
+            public void selected(SSNewResultUnit iResultUnit) {
+                if (iResultUnit != null) {
                     iProjectComboBox.setSelected(null);
                 }
             }
         });
-        iResultUnitComboBox.setSelected(SSDB.getInstance().getResultUnit(iOwnReport.getResultUnitNr()));
-        iResultUnitComboBox.getComponent(0).addKeyListener(new KeyAdapter(){
+        iResultUnitComboBox.setSelected(
+                SSDB.getInstance().getResultUnit(iOwnReport.getResultUnitNr()));
+        iResultUnitComboBox.getComponent(0).addKeyListener(
+                new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE){
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_DELETE
+                        || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     iResultUnitComboBox.setSelected(null);
                 }
             }
@@ -158,9 +165,10 @@ public class SSOwnReportPanel {
         iAccountTable.setSingleSelect();
 
         iAccountTableModel = new SSOwnReportAccountTableModel();
-        iAccountTableModel.addColumn(SSOwnReportAccountTableModel.COLUMN_ACCOUNT,true);
-        iAccountTableModel.addColumn(SSOwnReportAccountTableModel.COLUMN_DESCRIPTION,false);
-        iAccountTableModel.addColumn(SSOwnReportAccountTableModel.COLUMN_BUDGET,true);
+        iAccountTableModel.addColumn(SSOwnReportAccountTableModel.COLUMN_ACCOUNT, true);
+        iAccountTableModel.addColumn(SSOwnReportAccountTableModel.COLUMN_DESCRIPTION,
+                false);
+        iAccountTableModel.addColumn(SSOwnReportAccountTableModel.COLUMN_BUDGET, true);
         iAccountTableModel.setupTable(iAccountTable);
         iAccountTable.setEnabled(false);
 
@@ -170,10 +178,14 @@ public class SSOwnReportPanel {
 
         iMonthlyTableModel = new SSOwnReportMonthlyTableModel(null, iOwnReportRows);
 
-        List<SSMonth> iMonths = SSMonth.splitYearIntoMonths(SSDB.getInstance().getCurrentYear());
-        iMonthlyTableModel = new SSOwnReportMonthlyTableModel(null,iOwnReportRows);
-        iMonthlyTableModel.addColumn(SSBundle.getBundle().getString("ownreport.monthtable.column.1"));
-        iMonthlyTableModel.addColumn(SSBundle.getBundle().getString("ownreport.monthtable.column.2"));
+        List<SSMonth> iMonths = SSMonth.splitYearIntoMonths(
+                SSDB.getInstance().getCurrentYear());
+
+        iMonthlyTableModel = new SSOwnReportMonthlyTableModel(null, iOwnReportRows);
+        iMonthlyTableModel.addColumn(
+                SSBundle.getBundle().getString("ownreport.monthtable.column.1"));
+        iMonthlyTableModel.addColumn(
+                SSBundle.getBundle().getString("ownreport.monthtable.column.2"));
 
         Collections.sort(iMonths, new Comparator<SSMonth>() {
             public int compare(SSMonth o1, SSMonth o2) {
@@ -185,108 +197,128 @@ public class SSOwnReportPanel {
 
         iMonthlyTable.getColumnModel().getColumn(0).setMaxWidth(75);
         iMonthlyTable.getColumnModel().getColumn(1).setMaxWidth(100);
-        iMonthlyTable.getColumnModel().getColumn(1).setCellRenderer(new SSBigDecimalCellRenderer  (2, true));
-        iMonthlyTable.getColumnModel().getColumn(1).setCellEditor  (new SSBigDecimalCellEditor(2));
+        iMonthlyTable.getColumnModel().getColumn(1).setCellRenderer(
+                new SSBigDecimalCellRenderer(2, true));
+        iMonthlyTable.getColumnModel().getColumn(1).setCellEditor(
+                new SSBigDecimalCellEditor(2));
 
-
-        new SSDeleteAction(iHeadingTable){
+        new SSDeleteAction(iHeadingTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSOwnReportRow iSelected = iHeadingTableModel.getSelectedRow(iHeadingTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iHeadingTableModel.deleteRow(iSelected );
+                    iHeadingTableModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
         };
 
-        new SSDeleteAction(iAccountTable){
+        new SSDeleteAction(iAccountTable) {
             @Override
             protected Point doDelete(Point iPosition) {
-                SSOwnReportAccountRow iSelected = iAccountTableModel.getSelectedRow(iAccountTable);
+                SSOwnReportAccountRow iSelected = iAccountTableModel.getSelectedRow(
+                        iAccountTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iAccountTableModel.deleteRow(iSelected );
+                    iAccountTableModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
         };
 
-        iAddRowButton.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        iAddRowButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 int selected = iHeadingTable.getSelectedRow();
                 List<SSOwnReportRow> iObjects = iHeadingTableModel.getObjects();
+
                 iObjects.add(selected, new SSOwnReportRow());
                 iHeadingTableModel.fireTableDataChanged();
             }
         });
 
-        iTabbedPane.addChangeListener(new ChangeListener(){
-            public void stateChanged(ChangeEvent e){
-                switch (iTabbedPane.getSelectedIndex()){
-                    case 0:
-                        break;
-                    case 1:
-                        for(SSOwnReportRow iRow : iOwnReportRows){
-                            if(!iHeadingComboBox.getModel().getObjects().contains(iRow) && iRow.getType() == SSHeadingType.HEADING2)
-                                iHeadingComboBox.getModel().add(iRow);
-                        }
-                        iHeadingComboBox.getModel().fireTableDataChanged();
+        iTabbedPane.addChangeListener(
+                new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                switch (iTabbedPane.getSelectedIndex()) {
+                case 0:
+                    break;
 
-                        break;
-                    case 2:
-                        iAccountComboBox.setModel(SSAccountTableModel.getDropDownModel(getAccounts()));
-                        break;
+                case 1:
+                    for (SSOwnReportRow iRow : iOwnReportRows) {
+                        if (!iHeadingComboBox.getModel().getObjects().contains(iRow)
+                                && iRow.getType() == SSHeadingType.HEADING2) {
+                            iHeadingComboBox.getModel().add(iRow);
+                        }
+                    }
+                    iHeadingComboBox.getModel().fireTableDataChanged();
+
+                    break;
+
+                case 2:
+                    iAccountComboBox.setModel(
+                            SSAccountTableModel.getDropDownModel(getAccounts()));
+                    break;
                 }
             }
         });
 
-        iHeadingComboBox.addSelectionListener(new SSSelectionListener<SSOwnReportRow>() {
+        iHeadingComboBox.addSelectionListener(
+                new SSSelectionListener<SSOwnReportRow>() {
             public void selected(SSOwnReportRow selected) {
-                if(selected != null){
-                    if(selected.getHeading() != null && selected.getHeading().length() != 0) iAccountTable.setEnabled(true);
-                    else iAccountTable.setEnabled(false);
+                if (selected != null) {
+                    if (selected.getHeading() != null
+                            && selected.getHeading().length() != 0) {
+                        iAccountTable.setEnabled(true);
+                    } else {
+                        iAccountTable.setEnabled(false);
+                    }
 
                     iAccountTableModel.setObjects(selected.getAccountRows());
-                }
-                else{
+                } else {
                     iAccountTable.setEnabled(false);
                 }
             }
         });
 
-        iAccountComboBox.addSelectionListener(new SSSelectionListener<SSAccount>(){
-            public void selected(SSAccount iAccount){
+        iAccountComboBox.addSelectionListener(new SSSelectionListener<SSAccount>() {
+            public void selected(SSAccount iAccount) {
                 iMonthlyTableModel.setAccount(iAccount);
             }
         });
     }
 
-    public SSOwnReport getOwnReport(){
+    public SSOwnReport getOwnReport() {
         iOwnReport.setName(iName.getText());
 
-        if(iProjectComboBox.getText() != null && iProjectComboBox.getText().length() != 0) {
+        if (iProjectComboBox.getText() != null && iProjectComboBox.getText().length() != 0) {
             iOwnReport.setProjectNr(iProjectComboBox.getText());
-        }
-        else{
+        } else {
             iOwnReport.setProjectNr(null);
         }
 
-        if(iResultUnitComboBox.getText() != null && iResultUnitComboBox.getText().length() != 0){
+        if (iResultUnitComboBox.getText() != null
+                && iResultUnitComboBox.getText().length() != 0) {
             iOwnReport.setResultUnitNr(iResultUnitComboBox.getText());
-        }
-        else{
+        } else {
             iOwnReport.setResultUnitNr(null);
         }
 
@@ -295,9 +327,10 @@ public class SSOwnReportPanel {
         return iOwnReport;
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         return iName.getText().length() != 0;
     }
+
     /**
      * Returns the panel.
      *
@@ -307,19 +340,22 @@ public class SSOwnReportPanel {
         return iPanel;
     }
 
-    public void addOkAction(ActionListener al){
+    public void addOkAction(ActionListener al) {
         iButtonPanel.addOkActionListener(al);
     }
 
-    public void addCancelAction(ActionListener al){
+    public void addCancelAction(ActionListener al) {
         iButtonPanel.addCancelActionListener(al);
     }
 
-    public List<SSAccount> getAccounts(){
+    public List<SSAccount> getAccounts() {
         List<SSAccount> iAccounts = new LinkedList<SSAccount>();
-        for(SSOwnReportRow iRow : iOwnReportRows){
-            for(SSOwnReportAccountRow iAccountRow : iRow.getAccountRows()){
-                if(iAccountRow.getAccount() != null) iAccounts.add(iAccountRow.getAccount());
+
+        for (SSOwnReportRow iRow : iOwnReportRows) {
+            for (SSOwnReportAccountRow iAccountRow : iRow.getAccountRows()) {
+                if (iAccountRow.getAccount() != null) {
+                    iAccounts.add(iAccountRow.getAccount());
+                }
             }
         }
         return iAccounts;
@@ -328,6 +364,7 @@ public class SSOwnReportPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.ownreport.panel.SSOwnReportPanel");
         sb.append("{iAccountComboBox=").append(iAccountComboBox);
         sb.append(", iAccountTable=").append(iAccountTable);

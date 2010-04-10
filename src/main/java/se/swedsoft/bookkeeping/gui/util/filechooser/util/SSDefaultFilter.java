@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.filechooser.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-13
@@ -13,7 +15,6 @@ import java.util.ResourceBundle;
 public class SSDefaultFilter extends FileFilter {
 
     public static ResourceBundle bundle = SSBundle.getBundle();
-
 
     /**
      * @param f
@@ -34,5 +35,4 @@ public class SSDefaultFilter extends FileFilter {
     }
 
 }
-
 

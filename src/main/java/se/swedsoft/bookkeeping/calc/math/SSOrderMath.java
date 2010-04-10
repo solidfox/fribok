@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -12,14 +13,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-27
  * Time: 15:42:39
  */
-public class SSOrderMath extends SSTenderMath{
-
-
+public class SSOrderMath extends SSTenderMath {
 
     /**
      * Returns all the customers for the selected orders
@@ -33,14 +33,13 @@ public class SSOrderMath extends SSTenderMath{
         List<SSOrder> iFiltered = new LinkedList<SSOrder>();
 
         for (SSOrder iOrder : iOrders) {
-            if(iCustomerNr.equals(iOrder.getCustomerNr() )){
+            if (iCustomerNr.equals(iOrder.getCustomerNr())) {
                 iFiltered.add(iOrder);
             }
 
         }
         return iFiltered;
     }
-
 
     /**
      * Returns all the orders without any invoice
@@ -53,15 +52,13 @@ public class SSOrderMath extends SSTenderMath{
         List<SSOrder> iFiltered = new LinkedList<SSOrder>();
 
         for (SSOrder iOrder : iOrders) {
-            if( ! iOrder.hasInvoice() ){
+            if (!iOrder.hasInvoice()) {
                 iFiltered.add(iOrder);
             }
 
         }
         return iFiltered;
     }
-
-
 
     /**
      * Removes all references to the selected sales from the sales list
@@ -87,18 +84,12 @@ public class SSOrderMath extends SSTenderMath{
         }
     }
 
-
-
-
-
-
-
     /**
      *
      * @param iOrder
      * @return
      */
-    public static Map<SSProduct, Integer> getProductCount(SSOrder iOrder){
+    public static Map<SSProduct, Integer> getProductCount(SSOrder iOrder) {
         List<SSProduct> iProducts = SSDB.getInstance().getProducts();
 
         Map<SSProduct, Integer> iProductCount = new HashMap<SSProduct, Integer>();
@@ -107,13 +98,13 @@ public class SSOrderMath extends SSTenderMath{
             // Get the product for the row
             SSProduct iProduct = iRow.getProduct(iProducts);
 
-            if (iProduct != null){
+            if (iProduct != null) {
                 Integer iCount = iRow.getQuantity();
 
                 Integer iTotal = iProductCount.get(iProduct);
 
-                if( iTotal == null){
-                    iProductCount.put(iProduct, iCount );
+                if (iTotal == null) {
+                    iProductCount.put(iProduct, iCount);
                 } else {
                     iProductCount.put(iProduct, iCount + iTotal);
                 }
@@ -129,7 +120,7 @@ public class SSOrderMath extends SSTenderMath{
      * @param iOrders
      * @return
      */
-    public static Map<SSProduct, Integer> getProductCount(List<SSOrder> iOrders){
+    public static Map<SSProduct, Integer> getProductCount(List<SSOrder> iOrders) {
 
         Map<SSProduct, Integer> iProductCount = new HashMap<SSProduct, Integer>();
 
@@ -138,9 +129,11 @@ public class SSOrderMath extends SSTenderMath{
 
             for (Map.Entry<SSProduct, Integer> iEntry : iCounts.entrySet()) {
                 SSProduct iProduct = iEntry.getKey();
-                Integer   iValue   = iEntry.getValue();
+                Integer   iValue = iEntry.getValue();
 
-                Integer iTotal = iProductCount.containsKey(iProduct) ? iProductCount.get(iProduct) : 0;
+                Integer iTotal = iProductCount.containsKey(iProduct)
+                        ? iProductCount.get(iProduct)
+                        : 0;
 
                 iProductCount.put(iProduct, iTotal + iValue);
             }
@@ -152,7 +145,9 @@ public class SSOrderMath extends SSTenderMath{
     public static Map<String, Integer> getStockInfluencing(List<SSOrder> iOrders) {
         Map<String, Integer> iOrderCount = new HashMap<String, Integer>();
         List<String> iParcelProducts = new LinkedList<String>();
-        List<SSProduct> iProducts = new LinkedList<SSProduct>(SSDB.getInstance().getProducts());
+        List<SSProduct> iProducts = new LinkedList<SSProduct>(
+                SSDB.getInstance().getProducts());
+
         for (SSProduct iProduct : iProducts) {
             if (iProduct.isParcel() && iProduct.getNumber() != null) {
                 iParcelProducts.add(iProduct.getNumber());
@@ -160,18 +155,31 @@ public class SSOrderMath extends SSTenderMath{
         }
         for (SSOrder iOrder : iOrders) {
             for (SSSaleRow iRow : iOrder.getRows()) {
-                if(iRow.getQuantity() == null) continue;
+                if (iRow.getQuantity() == null) {
+                    continue;
+                }
                 Integer iReserved;
+
                 if (iParcelProducts.contains(iRow.getProductNr())) {
                     SSProduct iProduct = iRow.getProduct();
+
                     if (iProduct != null) {
                         for (SSProductRow iProductRow : iProduct.getParcelRows()) {
-                            iReserved = iOrderCount.get(iProductRow.getProductNr()) == null ? iProductRow.getQuantity()*iRow.getQuantity() : iOrderCount.get(iProductRow.getProductNr()) + (iProductRow.getQuantity()*iRow.getQuantity());
+                            iReserved = iOrderCount.get(iProductRow.getProductNr())
+                                    == null
+                                            ? iProductRow.getQuantity()
+                                                    * iRow.getQuantity()
+                                                    : iOrderCount.get(
+                                                            iProductRow.getProductNr())
+                                                                    + (iProductRow.getQuantity()
+                                                                            * iRow.getQuantity());
                             iOrderCount.put(iProductRow.getProductNr(), iReserved);
                         }
                     }
                 } else {
-                    iReserved = iOrderCount.get(iRow.getProductNr()) == null ? iRow.getQuantity() : iOrderCount.get(iRow.getProductNr()) + iRow.getQuantity();
+                    iReserved = iOrderCount.get(iRow.getProductNr()) == null
+                            ? iRow.getQuantity()
+                            : iOrderCount.get(iRow.getProductNr()) + iRow.getQuantity();
                     iOrderCount.put(iRow.getProductNr(), iReserved);
                 }
             }
@@ -179,25 +187,23 @@ public class SSOrderMath extends SSTenderMath{
         return iOrderCount;
     }
 
-    public static HashMap<Integer,String> iInvoiceForOrders;
+    public static HashMap<Integer, String> iInvoiceForOrders;
 
-    public static void setInvoiceForOrders(){
-        /*if(iInvoiceForOrders == null) iInvoiceForOrders = new HashMap<Integer,String>();
+    public static void setInvoiceForOrders() {/* if(iInvoiceForOrders == null) iInvoiceForOrders = new HashMap<Integer,String>();
 
-        List<SSOrder> iOrders = SSDB.getInstance().getOrders();
+         List<SSOrder> iOrders = SSDB.getInstance().getOrders();
 
-        for(SSOrder iOrder : iOrders){
-            SSInvoice iInvoice = iOrder.getInvoice();
-            if(iInvoice != null){
-                iInvoiceForOrders.put(iOrder.getNumber(), iInvoice.getNumber().toString());
-                continue;
-            }
+         for(SSOrder iOrder : iOrders){
+         SSInvoice iInvoice = iOrder.getInvoice();
+         if(iInvoice != null){
+         iInvoiceForOrders.put(iOrder.getNumber(), iInvoice.getNumber().toString());
+         continue;
+         }
 
-            SSPeriodicInvoice iPeriodicInvoice = iOrder.getPeriodicInvoice();
-            if(iPeriodicInvoice != null){
-                iInvoiceForOrders.put(iOrder.getNumber(), "P" + iPeriodicInvoice.getNumber().toString());
-            }
-        } */
-    }
+         SSPeriodicInvoice iPeriodicInvoice = iOrder.getPeriodicInvoice();
+         if(iPeriodicInvoice != null){
+         iInvoiceForOrders.put(iOrder.getNumber(), "P" + iPeriodicInvoice.getNumber().toString());
+         }
+         } */}
 
 }

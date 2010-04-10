@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.accountplans.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.accountplans.util.SSAccountPlanTableModel;
@@ -12,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * Date: 2006-feb-15
@@ -29,15 +31,15 @@ public class SSImportAccountplanDialog extends SSDialog {
     private JCheckBox iCheckREC;
     private JCheckBox iCheckVAT;
 
-
     /**
      *
      * @param iMainFrame
      */
     public SSImportAccountplanDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("accountplanframe.importfield.title"));
+        super(iMainFrame,
+                SSBundle.getBundle().getString("accountplanframe.importfield.title"));
 
-        setLayout(new BorderLayout() );
+        setLayout(new BorderLayout());
         add(iPanel, BorderLayout.CENTER);
 
         pack();
@@ -58,8 +60,6 @@ public class SSImportAccountplanDialog extends SSDialog {
         iAccountPlan.setModel(SSAccountPlanTableModel.getDropDownModel());
         iAccountPlan.setSelected(iAccountPlan.getFirst());
     }
-
-
 
     /**
      *
@@ -85,7 +85,6 @@ public class SSImportAccountplanDialog extends SSDialog {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     /**
      *
      * @return
@@ -96,7 +95,7 @@ public class SSImportAccountplanDialog extends SSDialog {
 
     /**
      *
-      * @return
+     * @return
      */
     public boolean isSRUSelected() {
         return iCheckSRU.isSelected();
@@ -118,11 +117,12 @@ public class SSImportAccountplanDialog extends SSDialog {
         return iCheckVAT.isSelected();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.accountplans.dialog.SSImportAccountplanDialog");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.accountplans.dialog.SSImportAccountplanDialog");
         sb.append("{iAccountPlan=").append(iAccountPlan);
         sb.append(", iButtonPanel=").append(iButtonPanel);
         sb.append(", iCheckREC=").append(iCheckREC);

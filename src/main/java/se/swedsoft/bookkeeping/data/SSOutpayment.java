@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOutpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
@@ -10,6 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * User: Andreas Lago
@@ -39,21 +41,21 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
     // Standard konton
     protected Map<SSDefaultAccount, Integer> iDefaultAccounts;
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
     public SSOutpayment() {
-        iRows         = new LinkedList<SSOutpaymentRow>();
-        iVoucher      = new SSVoucher();
-        iDifference   = new SSVoucher();
-        iEntered      = false;
-        iDefaultAccounts  = new HashMap<SSDefaultAccount, Integer>();
-        iDefaultAccounts.putAll(SSDB.getInstance().getCurrentCompany().getDefaultAccounts());
+        iRows = new LinkedList<SSOutpaymentRow>();
+        iVoucher = new SSVoucher();
+        iDifference = new SSVoucher();
+        iEntered = false;
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
+        iDefaultAccounts.putAll(
+                SSDB.getInstance().getCurrentCompany().getDefaultAccounts());
 
     }
-
 
     /**
      * Copy constructor
@@ -63,7 +65,6 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
     public SSOutpayment(SSOutpayment iOutpayment) {
         copyFrom(iOutpayment);
     }
-
 
     /**
      * Clone constructor
@@ -76,32 +77,33 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
 
         this.iNumber = iNumber;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iOutpayment
      */
     public void copyFrom(SSOutpayment iOutpayment) {
-        iNumber          = iOutpayment.iNumber;
-        iDate            = iOutpayment.iDate;
-        iText            = iOutpayment.iText;
-        iEntered         = iOutpayment.iEntered;
-        iVoucher         = new SSVoucher(iOutpayment.iVoucher);
-        iDifference      = new SSVoucher(iOutpayment.iDifference);
-        iRows            = new LinkedList<SSOutpaymentRow>();
+        iNumber = iOutpayment.iNumber;
+        iDate = iOutpayment.iDate;
+        iText = iOutpayment.iText;
+        iEntered = iOutpayment.iEntered;
+        iVoucher = new SSVoucher(iOutpayment.iVoucher);
+        iDifference = new SSVoucher(iOutpayment.iDifference);
+        iRows = new LinkedList<SSOutpaymentRow>();
         iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all rows
-        for(SSOutpaymentRow iRow : iOutpayment.iRows){
-            iRows.add( new SSOutpaymentRow(iRow) );
+        for (SSOutpaymentRow iRow : iOutpayment.iRows) {
+            iRows.add(new SSOutpaymentRow(iRow));
         }
 
         // Copy all default accounts
-        iDefaultAccounts.putAll( iOutpayment.getDefaultAccounts() );
+        iDefaultAccounts.putAll(iOutpayment.getDefaultAccounts());
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Sets the number of this voucher as the maxinum mumber + 1
@@ -111,15 +113,15 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
 
         int iNumber = SSDB.getInstance().getAutoIncrement().getNumber("outpayment");
 
-        for(SSOutpayment iOutpayment: iOutpayments){
-            if(iOutpayment.iNumber != null && iOutpayment.iNumber > iNumber){
+        for (SSOutpayment iOutpayment: iOutpayments) {
+            if (iOutpayment.iNumber != null && iOutpayment.iNumber > iNumber) {
                 iNumber = iOutpayment.iNumber;
             }
         }
         this.iNumber = iNumber + 1;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -137,7 +139,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -155,7 +157,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iDate = iDate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -173,20 +175,19 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iText = iText;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public Map<SSDefaultAccount, Integer> getDefaultAccounts() {
-        if(iDefaultAccounts == null)
-        {
+        if (iDefaultAccounts == null) {
             SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
-            if(iCompany!=null)
-            {
+
+            if (iCompany != null) {
                 iDefaultAccounts = iCompany.getDefaultAccounts();
-                iCompany=null;
+                iCompany = null;
             }
         }
         return iDefaultAccounts;
@@ -198,10 +199,12 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
      * @param iDefaultAccount
      * @return
      */
-    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount){
+    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount) {
         Integer iAccountNumber = getDefaultAccounts().get(iDefaultAccount);
 
-        if(iAccountNumber == null) return null;
+        if (iAccountNumber == null) {
+            return null;
+        }
 
         return iAccountPlan.getAccount(iAccountNumber);
     }
@@ -211,7 +214,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
      * @param iDefaultAccount
      * @return
      */
-    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount){
+    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {
         return iDefaultAccounts.get(iDefaultAccount);
     }
 
@@ -223,15 +226,16 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iDefaultAccounts = iDefaultAccounts;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public List<SSOutpaymentRow> getRows() {
-        if(iRows == null) iRows = new LinkedList<SSOutpaymentRow>();
+        if (iRows == null) {
+            iRows = new LinkedList<SSOutpaymentRow>();
+        }
         return iRows;
     }
 
@@ -243,7 +247,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iRows = iRows;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -261,14 +265,16 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iVoucher = iVoucher;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSVoucher getDifference() {
-        if(iDifference == null) iDifference = new SSVoucher();
+        if (iDifference == null) {
+            iDifference = new SSVoucher();
+        }
 
         return iDifference;
     }
@@ -281,8 +287,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         this.iDifference = iDifference;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -306,7 +311,8 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
     public void setEntered() {
         iEntered = true;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -316,7 +322,7 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         for (SSSupplierInvoice iSupplierInvoice : iSupplierInvoices) {
             SSOutpaymentRow iRow = new SSOutpaymentRow();
 
-            iRow.setSupplierInvoice( iSupplierInvoice );
+            iRow.setSupplierInvoice(iSupplierInvoice);
 
             iRows.add(iRow);
         }
@@ -324,15 +330,17 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
 
     public List<SSSupplierInvoice> getSupplierInvoices() {
         List<SSSupplierInvoice> iSupplierInvoices = new LinkedList<SSSupplierInvoice>();
+
         for (SSOutpaymentRow iRow : iRows) {
-            if(iRow.getSupplierInvoice(SSDB.getInstance().getSupplierInvoices())!=null)
-                iSupplierInvoices.add(iRow.getSupplierInvoice(SSDB.getInstance().getSupplierInvoices()));
+            if (iRow.getSupplierInvoice(SSDB.getInstance().getSupplierInvoices()) != null) {
+                iSupplierInvoices.add(
+                        iRow.getSupplierInvoice(SSDB.getInstance().getSupplierInvoices()));
+            }
         }
         return iSupplierInvoices;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Returns true if this inpayment contains the sales, false othervise
@@ -342,19 +350,19 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
      * @return if the inpayment contains the sales
      */
     public boolean isPaying(SSSupplierInvoice iInvoice) {
-        for( SSOutpaymentRow iRow: iRows){
-            if(iRow.isPaying(iInvoice)) return true;
+        for (SSOutpaymentRow iRow: iRows) {
+            if (iRow.isPaying(iInvoice)) {
+                return true;
+            }
         }
         return false;
     }
 
+    // //////////////////////////////////////////////////
 
-
-    ////////////////////////////////////////////////////
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(iNumber);
         sb.append(", ");
         sb.append(iText);
@@ -370,8 +378,6 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         return iNumber == null ? null : iNumber.toString();
     }
 
-
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSOutpayment)) {
             return false;
@@ -379,51 +385,58 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
         return iNumber.equals(((SSOutpayment) obj).iNumber);
     }
 
-
     /**
      *
      * @return
      */
-    public SSVoucher generateVoucher(){
-        String iDescription = SSBundle.getBundle().getString("outpaymentframe.voucherdescription");
+    public SSVoucher generateVoucher() {
+        String iDescription = SSBundle.getBundle().getString(
+                "outpaymentframe.voucherdescription");
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
 
-        BigDecimal iSum                     = SSOutpaymentMath.getSum(this);
-        BigDecimal iCurrencyRateDifference  = SSOutpaymentMath.getCurrencyRateDifference(this);
-        BigDecimal iDifferenceSum           = SSVoucherMath.getCreditMinusDebetSum(iDifference);
+        BigDecimal iSum = SSOutpaymentMath.getSum(this);
+        BigDecimal iCurrencyRateDifference = SSOutpaymentMath.getCurrencyRateDifference(
+                this);
+        BigDecimal iDifferenceSum = SSVoucherMath.getCreditMinusDebetSum(iDifference);
 
-        iSum = iSum.add( iCurrencyRateDifference );
-        iSum = iSum.add( iDifferenceSum          );
+        iSum = iSum.add(iCurrencyRateDifference);
+        iSum = iSum.add(iDifferenceSum);
 
         iVoucher = new SSVoucher();
-        iVoucher.setDate       ( new Date() );
-        iVoucher.setNumber     ( 0  );
-        iVoucher.setDescription( String.format(iDescription, iNumber) );
+        iVoucher.setDate(new Date());
+        iVoucher.setNumber(0);
+        iVoucher.setDescription(String.format(iDescription, iNumber));
 
-       // Add the sum
-        iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.SupplierDebt ), iSum );
+        // Add the sum
+        iVoucher.addVoucherRow(
+                getDefaultAccount(iAccountPlan, SSDefaultAccount.SupplierDebt), iSum);
 
-       // Add the currency change if not zero
-        if(iCurrencyRateDifference.signum() > 0 ){
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyProfit ), iCurrencyRateDifference.negate() );
+        // Add the currency change if not zero
+        if (iCurrencyRateDifference.signum() > 0) {
+            iVoucher.addVoucherRow(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyProfit),
+                    iCurrencyRateDifference.negate());
         } else {
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyLoss   ), iCurrencyRateDifference.negate() );
+            iVoucher.addVoucherRow(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.CurrencyLoss),
+                    iCurrencyRateDifference.negate());
         }
 
         // Add all rows from the difference voucher
-        for(SSVoucherRow iVoucherRow : iDifference.getRows() ){
+        for (SSVoucherRow iVoucherRow : iDifference.getRows()) {
             iVoucher.addVoucherRow(new SSVoucherRow(iVoucherRow));
         }
 
-       // Add all sales payments
-        for(SSOutpaymentRow iRow : iRows){
+        // Add all sales payments
+        for (SSOutpaymentRow iRow : iRows) {
             SSVoucherRow iVoucherRow = new SSVoucherRow();
 
             BigDecimal iValue = SSOutpaymentMath.convertToLocal(iRow, iRow.getValue());
 
-            iVoucherRow.setValue  (  iValue.negate() );
-            iVoucherRow.setAccount( getDefaultAccount(iAccountPlan, SSDefaultAccount.OutPayment ) );
+            iVoucherRow.setValue(iValue.negate());
+            iVoucherRow.setAccount(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.OutPayment));
 
             iVoucher.addVoucherRow(iVoucherRow);
         }
@@ -431,6 +444,5 @@ public class SSOutpayment implements SSTableSearchable, Serializable {
 
         return iVoucher;
     }
-
 
 }

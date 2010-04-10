@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inpayment;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.SSInpaymentRow;
@@ -24,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -39,8 +41,8 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSInpaymentFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSInpaymentFrame.cInstance.isClosed()) {
             cInstance = new SSInpaymentFrame(pMainFrame, pWidth, pHeight);
         }
         SSInpaymentFrame.cInstance.setVisible(true);
@@ -51,10 +53,9 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSInpaymentFrame getInstance(){
+    public static SSInpaymentFrame getInstance() {
         return cInstance;
     }
-
 
     private SSTable iTable;
 
@@ -70,9 +71,9 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSInpaymentFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("inpaymentframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("inpaymentframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -86,29 +87,32 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "inpaymentframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "inpaymentframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInpaymentDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "inpaymentframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "inpaymentframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInpayment iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getInpayment(iSelected);
                 }
                 if (iSelected != null) {
                     SSInpaymentDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "inpaymentframe.inpaymentgone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "inpaymentframe.inpaymentgone",
+                            iNumber);
                 }
             }
         });
@@ -118,11 +122,13 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "inpaymentframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "inpaymentframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 int[] selected = iTable.getSelectedRows();
                 List<SSInpayment> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedInpayment(toDelete);
             }
         });
@@ -132,8 +138,10 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT", "inpaymentframe.printbutton");
-        iMenuButton.add("inpaymentframe.print.inpaymentlist", new ActionListener(){
+        SSMenuButton<SSButton> iMenuButton = new SSMenuButton<SSButton>("ICON_PRINT",
+                "inpaymentframe.printbutton");
+
+        iMenuButton.add("inpaymentframe.print.inpaymentlist", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSReportFactory.InpaymentList(getMainFrame());
             }
@@ -141,8 +149,6 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
         toolBar.add(iMenuButton);
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -161,11 +167,12 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
 
         SSInpaymentTableModel.setupTable(iTable);
 
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInpayment iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getInpayment(iSelected);
@@ -175,7 +182,8 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSInpaymentDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "inpaymentframe.inpaymentgone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "inpaymentframe.inpaymentgone",
+                            iNumber);
                 }
             }
         });
@@ -186,13 +194,13 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
         iPanel.setLayout(new BorderLayout());
         iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
 
     /**
-     * 
+     *
      * @return
      */
     public SSDefaultTableModel<SSInpayment> getModel() {
@@ -229,7 +237,6 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
         return true;
     }
 
-
     /**
      *
      * @param delete
@@ -240,15 +247,21 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "inpaymentframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSInpayment iInpayment : delete) {
-                if (SSPostLock.isLocked("inpayment" + iInpayment.getNumber() + SSDB.getInstance().getCurrentCompany().getId())){
-                    new SSErrorDialog(getMainFrame(), "inpaymentframe.inpaymentopen",iInpayment.getNumber());
+                if (SSPostLock.isLocked(
+                        "inpayment" + iInpayment.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "inpaymentframe.inpaymentopen",
+                            iInpayment.getNumber());
                 } else {
-                    for(SSInpaymentRow iRow : iInpayment.getRows()){
-                        if(iRow.getValue() != null && iRow.getInvoiceNr() != null){
-                            if(SSInvoiceMath.iSaldoMap.containsKey(iRow.getInvoiceNr())){
-                                SSInvoiceMath.iSaldoMap.put(iRow.getInvoiceNr(), SSInvoiceMath.iSaldoMap.get(iRow.getInvoiceNr()).add(iRow.getValue()));
+                    for (SSInpaymentRow iRow : iInpayment.getRows()) {
+                        if (iRow.getValue() != null && iRow.getInvoiceNr() != null) {
+                            if (SSInvoiceMath.iSaldoMap.containsKey(iRow.getInvoiceNr())) {
+                                SSInvoiceMath.iSaldoMap.put(iRow.getInvoiceNr(),
+                                        SSInvoiceMath.iSaldoMap.get(iRow.getInvoiceNr()).add(
+                                        iRow.getValue()));
                             }
                         }
                     }
@@ -266,10 +279,10 @@ public class SSInpaymentFrame extends SSDefaultTableFrame {
         iSearchPanel.ApplyFilter();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.inpayment.SSInpaymentFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

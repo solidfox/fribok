@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.util.Date;
+
 
 /**
  * Date: 2006-feb-22
@@ -45,15 +47,14 @@ public class SIEEntryOmfattn implements SIEEntry {
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         Date iPrevious = SSVoucherMath.getNextVoucherDate();
 
-        if( iPrevious != null){
-            iWriter.append( SIELabel.SIE_OMFATTN );
-            iWriter.append( iPrevious  );
+        if (iPrevious != null) {
+            iWriter.append(SIELabel.SIE_OMFATTN);
+            iWriter.append(iPrevious);
             iWriter.newLine();
 
-             return true;
+            return true;
         }
         return false;
     }
-
 
 }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplier.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.supplier.util.SSSupplierTableModel;
@@ -24,14 +25,12 @@ public class SSSupplierSearchPanel extends JPanel {
 
     private SSSupplierTableModel iModel;
 
-
     public SSSupplierSearchPanel(SSSupplierTableModel iModel) {
         this.iModel = iModel;
 
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,22 +40,25 @@ public class SSSupplierSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSSupplier> iSuppliers = SSDB.getInstance().getSuppliers();
-        List<SSSupplier> iFiltered  = new LinkedList<SSSupplier>();
+        List<SSSupplier> iFiltered = new LinkedList<SSSupplier>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSSupplier iSupplier : iSuppliers) {
             String iNumber = iSupplier.getNumber();
-            String iName   = iSupplier.getName();
+            String iName = iSupplier.getName();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iName != null && iName.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iName != null && iName.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iSupplier);
             }
         }
@@ -66,6 +68,7 @@ public class SSSupplierSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.supplier.panel.SSSupplierSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report.journals;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOutpaymentMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
@@ -13,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -34,19 +36,18 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
      * @param iNumber
      * @param iDate
      */
-    public SSOutpaymentjournalPrinter( List<SSOutpayment> iOutpayments, Integer iNumber, Date iDate){
+    public SSOutpaymentjournalPrinter(List<SSOutpayment> iOutpayments, Integer iNumber, Date iDate) {
         this.iOutpayments = iOutpayments;
-        this.iNumber      = iNumber;
+        this.iNumber = iNumber;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("journals/outpaymentjournal.jrxml");
-        setDetail      ("journals/outpaymentjournal.jrxml");
-        setSummary     ("journals/outpaymentjournal.jrxml");
+        setDetail("journals/outpaymentjournal.jrxml");
+        setSummary("journals/outpaymentjournal.jrxml");
 
-        addParameter("periodTitle", iBundle.getString("outpaymentjournal.periodtitle") );
-        addParameter("periodText" , iDate );
+        addParameter("periodTitle", iBundle.getString("outpaymentjournal.periodtitle"));
+        addParameter("periodText", iDate);
     }
-
 
     /**
      * Gets the title file for this repport
@@ -66,11 +67,10 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
         iPrinter = new SSVoucherPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
-
 
         // Sort the invoices
         Collections.sort(iOutpayments, new Comparator<SSOutpayment>() {
@@ -94,27 +94,30 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
                 SSOutpayment iOutpayment = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iOutpayment.getNumber();
-                        break;
-                    case 1:
-                        value = iOutpayment.getText();
-                        break;
-                    case 2:
-                        value = iOutpayment.getDate();
-                        break;
-                    case 3:
-                        value = SSOutpaymentMath.getSum(iOutpayment);
-                        break;
-                    case 4:
-                        iPrinter.setOutpayment(iOutpayment);
+                case 0:
+                    value = iOutpayment.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iOutpayment.getText();
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 2:
+                    value = iOutpayment.getDate();
+                    break;
+
+                case 3:
+                    value = SSOutpaymentMath.getSum(iOutpayment);
+                    break;
+
+                case 4:
+                    iPrinter.setOutpayment(iOutpayment);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
-
 
                 return value;
             }
@@ -132,7 +135,6 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
         return iModel;
     }
 
-
     private class SSVoucherPrinter extends SSPrinter {
 
         private SSDefaultTableModel<SSVoucherRow> iModel;
@@ -140,13 +142,12 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
         /**
          *
          */
-        public SSVoucherPrinter( ){
-            setMargins(0,0,0,0);
+        public SSVoucherPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("journals/outpaymentjournal.rows.jrxml");
+            setDetail("journals/outpaymentjournal.rows.jrxml");
 
-
-            iModel = new SSDefaultTableModel<SSVoucherRow>(  ) {
+            iModel = new SSDefaultTableModel<SSVoucherRow>() {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -161,31 +162,43 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
                     SSVoucherRow iRow = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0:
-                            value = iRow.getAccount() == null ? null : iRow.getAccount().getNumber();
-                            break;
-                        case 1:
-                            value = iRow.getAccount() == null ? null : iRow.getAccount().getDescription();
-                            break;
-                        case 2:
-                            value = iRow.getDebet();
-                            break;
-                        case 3:
-                            value = iRow.getCredit();
-                            break;
-                        case 4:
-                            value = iRow.getProject() == null ? null : iRow.getProject().getNumber();
-                            break;
-                        case 5:
-                            value = iRow.getResultUnit() == null ? null : iRow.getResultUnit().getNumber();
-                            break;
+                    case 0:
+                        value = iRow.getAccount() == null
+                                ? null
+                                : iRow.getAccount().getNumber();
+                        break;
+
+                    case 1:
+                        value = iRow.getAccount() == null
+                                ? null
+                                : iRow.getAccount().getDescription();
+                        break;
+
+                    case 2:
+                        value = iRow.getDebet();
+                        break;
+
+                    case 3:
+                        value = iRow.getCredit();
+                        break;
+
+                    case 4:
+                        value = iRow.getProject() == null
+                                ? null
+                                : iRow.getProject().getNumber();
+                        break;
+
+                    case 5:
+                        value = iRow.getResultUnit() == null
+                                ? null
+                                : iRow.getResultUnit().getNumber();
+                        break;
 
                     }
 
                     return value;
                 }
             };
-
 
             iModel.addColumn("row.account");
             iModel.addColumn("row.description");
@@ -221,24 +234,27 @@ public class SSOutpaymentjournalPrinter extends SSPrinter {
          */
         public void setOutpayment(SSOutpayment iOutpayment) {
 
-            iModel.setObjects( iOutpayment.getVoucher().getRows() );
+            iModel.setObjects(iOutpayment.getVoucher().getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.journals.SSOutpaymentjournalPrinter.SSVoucherPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.journals.SSOutpaymentjournalPrinter.SSVoucherPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.print.report.journals.SSOutpaymentjournalPrinter");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.print.report.journals.SSOutpaymentjournalPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iNumber=").append(iNumber);
         sb.append(", iOutpayments=").append(iOutpayments);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.help.util;
 
+
 import javax.help.InvalidHelpSetContextException;
 import javax.help.JHelpContentViewer;
 import javax.help.event.HelpModelEvent;
@@ -9,12 +10,12 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * Date: 2006-mar-06
  * Time: 10:17:11
  */
 public class SSHelpHistory {
-
 
     private JHelpContentViewer   iViewer;
 
@@ -26,17 +27,16 @@ public class SSHelpHistory {
 
     private List<ActionListener> iListeners;
 
-
     /**
      *
      * @param pViewer
      */
-    public SSHelpHistory(JHelpContentViewer pViewer){
-        iViewer     = pViewer;
-        iHistory    = new LinkedList<HelpModelEvent>();
-        iIndex      = 0;
-        iUpdating   = false;
-        iListeners  = new LinkedList<ActionListener>();
+    public SSHelpHistory(JHelpContentViewer pViewer) {
+        iViewer = pViewer;
+        iHistory = new LinkedList<HelpModelEvent>();
+        iIndex = 0;
+        iUpdating = false;
+        iListeners = new LinkedList<ActionListener>();
 
         iViewer.addHelpModelListener(new HelpModelListener() {
             public void idChanged(HelpModelEvent helpModelEvent) {
@@ -49,17 +49,17 @@ public class SSHelpHistory {
      *
      * @param iListener
      */
-    public void addHistoryListener(ActionListener iListener){
+    public void addHistoryListener(ActionListener iListener) {
         iListeners.add(iListener);
     }
 
     /**
      *
      */
-    private void notifyListeners(){
-        ActionEvent iEvent =  new ActionEvent(this, 0, "");
+    private void notifyListeners() {
+        ActionEvent iEvent = new ActionEvent(this, 0, "");
 
-        for(ActionListener iListener: iListeners){
+        for (ActionListener iListener: iListeners) {
             iListener.actionPerformed(iEvent);
         }
     }
@@ -68,8 +68,10 @@ public class SSHelpHistory {
      *
      * @param pEvent
      */
-    private void addHistoryEvent(HelpModelEvent pEvent){
-        if(iUpdating) return;
+    private void addHistoryEvent(HelpModelEvent pEvent) {
+        if (iUpdating) {
+            return;
+        }
 
         iHistory = iHistory.subList(0, iIndex);
 
@@ -84,7 +86,7 @@ public class SSHelpHistory {
      *
      * @return
      */
-    public boolean hasNext(){
+    public boolean hasNext() {
         return getNext() != null;
     }
 
@@ -92,15 +94,14 @@ public class SSHelpHistory {
      *
      * @return
      */
-    public boolean hasPrevious(){
+    public boolean hasPrevious() {
         return getPrevious() != null;
     }
-
 
     /**
      *
      */
-    public void back(){
+    public void back() {
         iIndex--;
 
         navigate();
@@ -109,32 +110,30 @@ public class SSHelpHistory {
     /**
      *
      */
-    public void forward(){
+    public void forward() {
         iIndex++;
 
         navigate();
     }
 
-
     /**
      *
      */
-    private void navigate(){
+    private void navigate() {
         iUpdating = true;
 
         HelpModelEvent iEvent = getCurrent();
 
         try {
 
-            if(iEvent != null) {
-                iViewer.setCurrentID( iEvent.getID() );
+            if (iEvent != null) {
+                iViewer.setCurrentID(iEvent.getID());
                 notifyListeners();
             }
 
         } catch (InvalidHelpSetContextException e) {
             e.printStackTrace();
         }
-
 
         iUpdating = false;
     }
@@ -143,19 +142,18 @@ public class SSHelpHistory {
      *
      * @param pUpdating
      */
-    private void setUpdating(boolean pUpdating){
+    private void setUpdating(boolean pUpdating) {
         iUpdating = pUpdating;
     }
 
-
     /**
      *
      * @return
      */
-    private HelpModelEvent getCurrent(){
-        int theIndex = iIndex-1;
+    private HelpModelEvent getCurrent() {
+        int theIndex = iIndex - 1;
 
-        if(theIndex > 0 && theIndex < iHistory.size() ) {
+        if (theIndex > 0 && theIndex < iHistory.size()) {
             return iHistory.get(theIndex);
         }
         return null;
@@ -165,10 +163,10 @@ public class SSHelpHistory {
      *
      * @return
      */
-    private HelpModelEvent getNext(){
+    private HelpModelEvent getNext() {
         int theIndex = iIndex;
 
-        if(theIndex > 0 && theIndex < iHistory.size() ) {
+        if (theIndex > 0 && theIndex < iHistory.size()) {
             return iHistory.get(theIndex);
         }
         return null;
@@ -178,26 +176,25 @@ public class SSHelpHistory {
      *
      * @return
      */
-    private HelpModelEvent getPrevious(){
-        int theIndex = iIndex-2;
+    private HelpModelEvent getPrevious() {
+        int theIndex = iIndex - 2;
 
-        if(theIndex > 0 && theIndex < iHistory.size() ) {
+        if (theIndex > 0 && theIndex < iHistory.size()) {
             return iHistory.get(theIndex);
         }
         return null;
     }
 
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("SSHelpHistory {\n");
         int iCounter = 0;
-        for(HelpModelEvent iEvent: iHistory){
-            if(iCounter == iIndex){
+
+        for (HelpModelEvent iEvent: iHistory) {
+            if (iCounter == iIndex) {
                 sb.append(" *");
-            }else{
+            } else {
                 sb.append("  ");
             }
             sb.append(iEvent.getID());
@@ -211,6 +208,5 @@ public class SSHelpHistory {
 
         return sb.toString();
     }
-
 
 }

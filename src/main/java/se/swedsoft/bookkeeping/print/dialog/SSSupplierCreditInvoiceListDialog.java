@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierCreditInvoiceMath;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
 import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
@@ -21,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -45,7 +47,9 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
      * @param iMainFrame
      */
     public SSSupplierCreditInvoiceListDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("suppliercreditinvoicelistreport.dialog.title") );
+        super(iMainFrame,
+                SSBundle.getBundle().getString(
+                "suppliercreditinvoicelistreport.dialog.title"));
 
         setPanel(iPanel);
 
@@ -60,22 +64,20 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
             }
         });
 
-
-        iSupplier.setModel( SSSupplierTableModel.getDropDownModel() );
+        iSupplier.setModel(SSSupplierTableModel.getDropDownModel());
         iSupplier.setSearchColumns(0);
-
 
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iSupplier.setEnabled( iCheckSupplier.isSelected() );
+                iSupplier.setEnabled(iCheckSupplier.isSelected());
 
-                iFromDate.setEnabled( iCheckDate.isSelected() );
-                iToDate  .setEnabled( iCheckDate.isSelected() );
+                iFromDate.setEnabled(iCheckDate.isSelected());
+                iToDate.setEnabled(iCheckDate.isSelected());
             }
         };
 
-        iCheckDate     .addChangeListener(iChangeListener);
-        iCheckSupplier .addChangeListener(iChangeListener);
+        iCheckDate.addChangeListener(iChangeListener);
+        iCheckSupplier.addChangeListener(iChangeListener);
 
         iChangeListener.stateChanged(null);
     }
@@ -88,7 +90,6 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
         return iPanel;
     }
 
-
     /**
      * Returns the invoices to print depending on the user selections
      *
@@ -97,9 +98,8 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
     public List<SSSupplierCreditInvoice> getElementsToPrint() {
         List<SSSupplierCreditInvoice> iInvoices = SSDB.getInstance().getSupplierCreditInvoices();
 
-        SSFilterFactory<SSSupplierCreditInvoice> iFactory = new SSFilterFactory<SSSupplierCreditInvoice>(iInvoices);
-
-
+        SSFilterFactory<SSSupplierCreditInvoice> iFactory = new SSFilterFactory<SSSupplierCreditInvoice>(
+                iInvoices);
 
         // Filter by a customer
         if (iCheckSupplier.isSelected() && iSupplier.getSelected() != null) {
@@ -117,9 +117,11 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
             final Date iDateFrom = iFromDate.getDate();
             final Date iDateTo = iToDate.getDate();
 
-            iFactory.applyFilter(new SSFilter<SSSupplierCreditInvoice>() {
+            iFactory.applyFilter(
+                    new SSFilter<SSSupplierCreditInvoice>() {
                 public boolean applyFilter(SSSupplierCreditInvoice iInvoice) {
-                    return SSSupplierCreditInvoiceMath.inPeriod(iInvoice, iDateFrom, iDateTo);
+                    return SSSupplierCreditInvoiceMath.inPeriod(iInvoice, iDateFrom,
+                            iDateTo);
                 }
             });
         }
@@ -130,6 +132,7 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSSupplierCreditInvoiceListDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCheckDate=").append(iCheckDate);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.creditinvoice;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.calc.math.SSTenderMath;
 import se.swedsoft.bookkeeping.data.SSCreditInvoice;
@@ -25,6 +26,7 @@ import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-okt-10
@@ -34,8 +36,7 @@ public class SSCreditInvoiceDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSCreditInvoiceDialog() {
-    }
+    private SSCreditInvoiceDialog() {}
 
     /**
      *
@@ -44,15 +45,19 @@ public class SSCreditInvoiceDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSCreditInvoice iInvoice, final AbstractTableModel pModel) {
-        final String lockString = "creditinvoice" + iInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog( iMainFrame, "creditinvoiceframe.creditinvoiceopen",iInvoice.getNumber());
+        final String lockString = "creditinvoice" + iInvoice.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "creditinvoiceframe.creditinvoiceopen",
+                    iInvoice.getNumber());
             return;
         }
-        final SSDialog             iDialog = new SSDialog(iMainFrame, bundle.getString("creditinvoiceframe.edit.title"));
-        final SSCreditInvoicePanel iPanel  = new SSCreditInvoicePanel(iDialog);
+        final SSDialog             iDialog = new SSDialog(iMainFrame,
+                bundle.getString("creditinvoiceframe.edit.title"));
+        final SSCreditInvoicePanel iPanel = new SSCreditInvoicePanel(iDialog);
 
-        iPanel.setCreditInvoice( new SSCreditInvoice(iInvoice) );
+        iPanel.setCreditInvoice(new SSCreditInvoice(iInvoice));
         iPanel.setSavecustomerandproductsSelected(false);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
@@ -63,9 +68,13 @@ public class SSCreditInvoiceDialog {
 
                 SSDB.getInstance().updateCreditInvoice(iInvoice);
 
-                if (iPanel.doSaveCustomerAndProducts()) SSOrderMath.addCustomerAndProducts(iInvoice);
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSOrderMath.addCustomerAndProducts(iInvoice);
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 if (SSInvoiceFrame.getInstance() != null) {
                     SSInvoiceFrame.getInstance().updateFrame();
                 }
@@ -74,6 +83,7 @@ public class SSCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -84,15 +94,18 @@ public class SSCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "creditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "creditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -116,8 +129,8 @@ public class SSCreditInvoiceDialog {
 
         SSInvoice iCrediting = SSSelectInvoiceDialog.showDialog(iMainFrame);
 
-        if(iCrediting == null) {
-            new SSErrorDialog( iMainFrame, "creditinvoiceframe.creditinvoicenoinvoice");
+        if (iCrediting == null) {
+            new SSErrorDialog(iMainFrame, "creditinvoiceframe.creditinvoicenoinvoice");
             return;
         } else if (iCrediting.getNumber() == -1) {
             return;
@@ -133,9 +146,11 @@ public class SSCreditInvoiceDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, SSInvoice iCrediting, final AbstractTableModel pModel) {
-        final SSDialog             iDialog = new SSDialog(iMainFrame, bundle.getString("creditinvoiceframe.new.title"));
-        final SSCreditInvoicePanel iPanel  = new SSCreditInvoicePanel(iDialog);
-        SSCreditInvoice iCreditInvoice = new SSCreditInvoice( iCrediting );
+        final SSDialog             iDialog = new SSDialog(iMainFrame,
+                bundle.getString("creditinvoiceframe.new.title"));
+        final SSCreditInvoicePanel iPanel = new SSCreditInvoicePanel(iDialog);
+        SSCreditInvoice iCreditInvoice = new SSCreditInvoice(iCrediting);
+
         iCreditInvoice.setNumber(null);
 
         iPanel.setCreditInvoice(iCreditInvoice);
@@ -145,11 +160,16 @@ public class SSCreditInvoiceDialog {
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCreditInvoice iInvoice = iPanel.getCreditInvoice();
+
                 SSDB.getInstance().addCreditInvoice(iInvoice);
 
-                if (iPanel.doSaveCustomerAndProducts()) SSTenderMath.addCustomerAndProducts(iInvoice);
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSTenderMath.addCustomerAndProducts(iInvoice);
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 if (SSInvoiceFrame.getInstance() != null) {
                     SSInvoiceFrame.getInstance().updateFrame();
                 }
@@ -157,6 +177,7 @@ public class SSCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -165,14 +186,17 @@ public class SSCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "creditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "creditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -180,7 +204,7 @@ public class SSCreditInvoiceDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
@@ -192,25 +216,29 @@ public class SSCreditInvoiceDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSCreditInvoice iCreditInvoice, final AbstractTableModel pModel) {
-        final String lockString = "creditinvoice" + iCreditInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(SSPostLock.isLocked(lockString)){
-            new SSErrorDialog( iMainFrame, "creditinvoiceframe.creditinvoiceopen",iCreditInvoice.getNumber());
+        final String lockString = "creditinvoice" + iCreditInvoice.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (SSPostLock.isLocked(lockString)) {
+            new SSErrorDialog(iMainFrame, "creditinvoiceframe.creditinvoiceopen",
+                    iCreditInvoice.getNumber());
             return;
         }
-        final SSDialog             iDialog = new SSDialog(iMainFrame, bundle.getString("creditinvoiceframe.copy.title"));
-        final SSCreditInvoicePanel iPanel  = new SSCreditInvoicePanel(iDialog);
+        final SSDialog             iDialog = new SSDialog(iMainFrame,
+                bundle.getString("creditinvoiceframe.copy.title"));
+        final SSCreditInvoicePanel iPanel = new SSCreditInvoicePanel(iDialog);
 
         SSCreditInvoice iNew = new SSCreditInvoice(iCreditInvoice);
 
-        iNew.setDate(new Date() );
+        iNew.setDate(new Date());
         iNew.setNumber(null);
         iNew.setEntered(false);
         iNew.setPrinted(false);
         if (iCreditInvoice.getCrediting() == null) {
-            new SSErrorDialog( iMainFrame, "creditinvoiceframe.creditinvoicenoinvoice");
+            new SSErrorDialog(iMainFrame, "creditinvoiceframe.creditinvoicenoinvoice");
             return;
         }
-        iPanel.setCreditInvoice(iNew );
+        iPanel.setCreditInvoice(iNew);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -220,9 +248,13 @@ public class SSCreditInvoiceDialog {
 
                 SSDB.getInstance().addCreditInvoice(iInvoice);
 
-                if (iPanel.doSaveCustomerAndProducts()) SSTenderMath.addCustomerAndProducts(iInvoice);
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSTenderMath.addCustomerAndProducts(iInvoice);
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 if (SSInvoiceFrame.getInstance() != null) {
                     SSInvoiceFrame.getInstance().updateFrame();
                 }
@@ -230,6 +262,7 @@ public class SSCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -238,14 +271,17 @@ public class SSCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ){
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "creditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "creditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -253,7 +289,7 @@ public class SSCreditInvoiceDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }

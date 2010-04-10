@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.gui.supplierinvoice.util.SSSupplierInvoiceTableModel;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -18,7 +20,7 @@ public class SSSupplierInvoiceCellEditor extends SSTableComboBox.CellEditor<SSSu
      * @param iInvoices
      */
     public SSSupplierInvoiceCellEditor(List<SSSupplierInvoice> iInvoices) {
-        setModel( SSSupplierInvoiceTableModel.getDropDownModel(iInvoices) );
+        setModel(SSSupplierInvoiceTableModel.getDropDownModel(iInvoices));
         setSearchColumns(0);
         setAllowCustomValues(false);
 
@@ -28,7 +30,7 @@ public class SSSupplierInvoiceCellEditor extends SSTableComboBox.CellEditor<SSSu
      *
      */
     public SSSupplierInvoiceCellEditor() {
-        setModel( SSSupplierInvoiceTableModel.getDropDownModel() );
+        setModel(SSSupplierInvoiceTableModel.getDropDownModel());
         setSearchColumns(0);
         setAllowCustomValues(false);
     }

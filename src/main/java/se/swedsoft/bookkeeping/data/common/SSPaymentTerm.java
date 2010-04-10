@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
@@ -7,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -25,8 +27,7 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
     /**
      * Constructor.
      */
-    public SSPaymentTerm() {
-    }
+    public SSPaymentTerm() {}
 
     /**
      * Constructor.
@@ -35,16 +36,16 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public SSPaymentTerm(String pName, String pDescription) {
-        iName        = pName;
+        iName = pName;
         iDescription = pDescription;
     }
 
-    ////////////////////////////////////////////////////
-    public void dispose()
-    {
-        iName=null;
-        iDescription=null;
+    // //////////////////////////////////////////////////
+    public void dispose() {
+        iName = null;
+        iDescription = null;
     }
+
     /**
      *
      * @return the name
@@ -61,8 +62,7 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
         this.iName = iName;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -79,14 +79,15 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
     public void setDescription(String iDescription) {
         this.iDescription = iDescription;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      * Decodes the name as integer
-     * 
+     *
      * @return
      */
-    public Integer decodeValue(){
+    public Integer decodeValue() {
         try {
             return Integer.decode(iName);
         } catch (NumberFormatException e) {
@@ -109,7 +110,7 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
         return iCalendar.getTime();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Returns the render string to be shown in the tables
@@ -120,21 +121,18 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
         return iName;
     }
 
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSPaymentTerm){
-            SSPaymentTerm iUnit = (SSPaymentTerm)obj;
+        if (obj instanceof SSPaymentTerm) {
+            SSPaymentTerm iUnit = (SSPaymentTerm) obj;
 
             return iName.equals(iUnit.iName);
         }
         return false;
     }
 
-    
     public String toString() {
         return iDescription;
     }
-
 
     /**
      *
@@ -143,11 +141,11 @@ public class SSPaymentTerm implements Serializable, SSTableSearchable {
     public static List<SSPaymentTerm> getDefaultPaymentTerms() {
         List<SSPaymentTerm> iPaymentTerms = new LinkedList<SSPaymentTerm>();
 
-        iPaymentTerms.add( new SSPaymentTerm("K" , "Kontant"));
-        iPaymentTerms.add( new SSPaymentTerm("PF", "Postförskott"));
-        iPaymentTerms.add( new SSPaymentTerm("30", "30 dagar netto"));
-        iPaymentTerms.add( new SSPaymentTerm("52", "10 dagar netto"));
-        iPaymentTerms.add( new SSPaymentTerm("10", "10 dagar netto"));
+        iPaymentTerms.add(new SSPaymentTerm("K", "Kontant"));
+        iPaymentTerms.add(new SSPaymentTerm("PF", "Postförskott"));
+        iPaymentTerms.add(new SSPaymentTerm("30", "30 dagar netto"));
+        iPaymentTerms.add(new SSPaymentTerm("52", "10 dagar netto"));
+        iPaymentTerms.add(new SSPaymentTerm("10", "10 dagar netto"));
 
         return iPaymentTerms;
     }

@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.poster;
 
+
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPaymentConfig;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
 
 import java.math.BigDecimal;
+
 
 /**
  * User: Andreas Lago
@@ -19,8 +21,7 @@ public class LBinPostTK29 extends LBinPost {
     /**
      *
      */
-    public LBinPostTK29() {
-    }
+    public LBinPostTK29() {}
 
     /**
      *
@@ -29,24 +30,22 @@ public class LBinPostTK29 extends LBinPost {
      */
     public LBinPostTK29(int iSize, BigDecimal iSum) {
         iBankGiroNr = SupplierPaymentConfig.getOurBankGiroAccount().replaceAll("-", "");
-        this.iSize  = iSize;
-        this.iSum   = iSum;
+        this.iSize = iSize;
+        this.iSum = iSum;
     }
-
-
 
     /**
      *
      * @param iLine
      */
     @Override
-    public void write(LBinLine iLine){
+    public void write(LBinLine iLine) {
         iLine.append("29");
-        iLine.append( iBankGiroNr           , 10, '0'      ); // 3 => 12 : Avsändarens bankgiro nr
-        iLine.append( iSize                 ,  8           ); // 13 => 20: Antal poster
-        iLine.append( iSum                  ,  12          ); // 21 => 32: Totalbelopp
-        iLine.append( " "                   ,  1           ); // 33      : Minustecken om negativt
-        iLine.append( " "                   ,  47          ); // 34 => 80: Blanka
+        iLine.append(iBankGiroNr, 10, '0'); // 3 => 12 : Avsändarens bankgiro nr
+        iLine.append(iSize, 8); // 13 => 20: Antal poster
+        iLine.append(iSum, 12); // 21 => 32: Totalbelopp
+        iLine.append(" ", 1); // 33      : Minustecken om negativt
+        iLine.append(" ", 47); // 34 => 80: Blanka
     }
 
     /**
@@ -54,16 +53,18 @@ public class LBinPostTK29 extends LBinPost {
      * @param iLine
      */
     @Override
-    public void read(LBinLine iLine){
-        iBankGiroNr = iLine.readString    (3 , 12); // 3 => 12 : Avsändarens bankgiro nr
-        iSize       = iLine.readInteger   (13, 20); // 13 => 20: Antal poster
-        iSum        = iLine.readBigDecimal(21, 32); // 21 => 32: Totalbelopp
+    public void read(LBinLine iLine) {
+        iBankGiroNr = iLine.readString(3, 12); // 3 => 12 : Avsändarens bankgiro nr
+        iSize = iLine.readInteger(13, 20); // 13 => 20: Antal poster
+        iSum = iLine.readBigDecimal(21, 32); // 21 => 32: Totalbelopp
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK29");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK29");
         sb.append("{iBankGiroNr='").append(iBankGiroNr).append('\'');
         sb.append(", iSize=").append(iSize);
         sb.append(", iSum=").append(iSum);

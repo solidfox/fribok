@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import javax.swing.table.DefaultTableCellRenderer;
 import java.text.NumberFormat;
 
@@ -25,7 +26,8 @@ public class SSBigDecimalCellRenderer extends DefaultTableCellRenderer {
      */
     public SSBigDecimalCellRenderer(int pFractionDigits) {
         this(pFractionDigits, false);
-   }
+    }
+
     /**
      *
      * @param pFractionDigits
@@ -45,28 +47,30 @@ public class SSBigDecimalCellRenderer extends DefaultTableCellRenderer {
     @Override
     protected void setValue(Object value) {
         NumberFormat format = NumberFormat.getNumberInstance();
+
         format.setMinimumFractionDigits(iFractionDigits);
         format.setMaximumFractionDigits(iFractionDigits);
         format.setGroupingUsed(true);
 
-        if(value != null){
-            setText( format.format(value) );
-        } else{
+        if (value != null) {
+            setText(format.format(value));
+        } else {
 
-            if(iShowNullValues){
+            if (iShowNullValues) {
                 setText(format.format(0.00));
             } else {
                 setText("");
             }
         }
 
-
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellRenderer");
         sb.append("{iFractionDigits=").append(iFractionDigits);
         sb.append(", iShowNullValues=").append(iShowNullValues);
         sb.append('}');

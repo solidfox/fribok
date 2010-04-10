@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.autodist.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAutoDist;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -14,14 +15,13 @@ import java.util.List;
  * Date: 2006-mar-21
  * Time: 10:34:35
  */
-public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
-
+public class SSAutoDistTableModel extends SSTableModel<SSAutoDist> {
 
     /**
      * Default constructor.
      */
     public SSAutoDistTableModel() {
-        super(SSDB.getInstance().getAutoDists() );
+        super(SSDB.getInstance().getAutoDists());
     }
 
     /**
@@ -42,12 +42,11 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
         return SSAutoDist.class;
     }
 
-
-
     /**
      *  Kontonummer
      */
-    public static SSTableColumn<SSAutoDist> COLUMN_NUMBER = new SSTableColumn<SSAutoDist>(SSBundle.getBundle().getString("autodisttable.column.1")) {
+    public static SSTableColumn<SSAutoDist> COLUMN_NUMBER = new SSTableColumn<SSAutoDist>(
+            SSBundle.getBundle().getString("autodisttable.column.1")) {
         @Override
         public Object getValue(SSAutoDist iAutoDist) {
             return iAutoDist.getNumber();
@@ -55,7 +54,7 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
 
         @Override
         public void setValue(SSAutoDist iAutoDist, Object iValue) {
-            iAutoDist.setAccountNumber((Integer)iValue);
+            iAutoDist.setAccountNumber((Integer) iValue);
 
         }
 
@@ -70,12 +69,11 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
         }
     };
 
-
-
     /**
      *  Beskrivning
      */
-    public static SSTableColumn<SSAutoDist> COLUMN_DESCRIPTION = new SSTableColumn<SSAutoDist>(SSBundle.getBundle().getString("autodisttable.column.2")) {
+    public static SSTableColumn<SSAutoDist> COLUMN_DESCRIPTION = new SSTableColumn<SSAutoDist>(
+            SSBundle.getBundle().getString("autodisttable.column.2")) {
         @Override
         public Object getValue(SSAutoDist iAutoDist) {
             return iAutoDist.getDescription();
@@ -83,7 +81,7 @@ public class SSAutoDistTableModel  extends SSTableModel<SSAutoDist> {
 
         @Override
         public void setValue(SSAutoDist iInvoice, Object iValue) {
-            iInvoice.setDescrition((String)iValue);
+            iInvoice.setDescrition((String) iValue);
         }
 
         @Override

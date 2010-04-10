@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
@@ -8,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
+
 
 /**
  * User: Andreas Lago
@@ -28,7 +30,7 @@ public class SSOCRInvoiceDialog extends SSDialog {
      * @param iTitle
      */
     public SSOCRInvoiceDialog(SSMainFrame iMainFrame, String iTitle) {
-        super(iMainFrame, iTitle );
+        super(iMainFrame, iTitle);
 
         setPanel(iPanel);
 
@@ -54,20 +56,25 @@ public class SSOCRInvoiceDialog extends SSDialog {
      *
      * @return
      */
-    public Locale getLanguage(){
-        if(iLanguageRadioSwedish.isSelected()) return new Locale("se","","");
-        if(iLanguageRadioEnglish.isSelected()) return new Locale("en","","");
+    public Locale getLanguage() {
+        if (iLanguageRadioSwedish.isSelected()) {
+            return new Locale("se", "", "");
+        }
+        if (iLanguageRadioEnglish.isSelected()) {
+            return new Locale("en", "", "");
+        }
 
-        return Locale.getDefault() ;
+        return Locale.getDefault();
     }
 
-    public boolean doShowBackground(){
+    public boolean doShowBackground() {
         return false;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSOCRInvoiceDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iLanguageRadioEnglish=").append(iLanguageRadioEnglish);

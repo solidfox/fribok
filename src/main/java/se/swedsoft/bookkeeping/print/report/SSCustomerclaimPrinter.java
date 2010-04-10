@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.util.*;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
@@ -17,12 +19,13 @@ import java.util.*;
 public class SSCustomerclaimPrinter extends SSPrinter {
 
     private Map<SSInvoice, BigDecimal> iSaldos;
+
     /**
      *
      * @param iDate
      */
-    public SSCustomerclaimPrinter( Date iDate ) {
-        this( iDate, SSDB.getInstance().getInvoices() );
+    public SSCustomerclaimPrinter(Date iDate) {
+        this(iDate, SSDB.getInstance().getInvoices());
     }
 
     /**
@@ -30,18 +33,17 @@ public class SSCustomerclaimPrinter extends SSPrinter {
      * @param iDate
      * @param iInvoices
      */
-    public SSCustomerclaimPrinter( Date iDate , List<SSInvoice> iInvoices){
+    public SSCustomerclaimPrinter(Date iDate, List<SSInvoice> iInvoices) {
         iSaldos = SSInvoiceMath.getSaldo(iInvoices, iDate);
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("customerclaim.jrxml");
-        setDetail      ("customerclaim.jrxml");
-        setSummary     ("customerclaim.jrxml");
+        setDetail("customerclaim.jrxml");
+        setSummary("customerclaim.jrxml");
 
-        addParameter("periodTitle", iBundle.getString("customerclaimreport.periodtitle") );
-        addParameter("periodText" , iDate);
+        addParameter("periodTitle", iBundle.getString("customerclaimreport.periodtitle"));
+        addParameter("periodText", iDate);
     }
-
 
     /**
      * Gets the title file for this repport
@@ -59,7 +61,7 @@ public class SSCustomerclaimPrinter extends SSPrinter {
     @Override
     protected SSDefaultTableModel getModel() {
         // Get all invoices
-        List<SSInvoice> iInvoices = new LinkedList<SSInvoice>( iSaldos.keySet() );
+        List<SSInvoice> iInvoices = new LinkedList<SSInvoice>(iSaldos.keySet());
 
         // Sort the invoices
         Collections.sort(iInvoices, new Comparator<SSInvoice>() {
@@ -67,7 +69,6 @@ public class SSCustomerclaimPrinter extends SSPrinter {
                 return o1.getNumber() - o2.getNumber();
             }
         });
-
 
         SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>() {
 
@@ -84,33 +85,43 @@ public class SSCustomerclaimPrinter extends SSPrinter {
                 SSInvoice iInvoice = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iInvoice.getNumber();
-                        break;
-                    case 1:
-                        value = iInvoice.getCustomerNr();
-                        break;
-                    case 2:
-                        value = iInvoice.getCustomerName();
-                        break;
-                    case 3:
-                        value = iInvoice.getDate()     == null ? null : iFormat.format( iInvoice.getDate() );
-                        break;
-                    case 4:
-                        value = iInvoice.getCurrency() == null ? null : iInvoice.getCurrency().getName();
-                        break;
-                    case 5:
-                        value = SSInvoiceMath.getTotalSum(iInvoice);
-                        break;
-                    case 6:
-                        value = iSaldos.get(iInvoice);
-                        break;
-                    case 7:
-                        BigDecimal iSaldo = iSaldos.get(iInvoice);
+                case 0:
+                    value = iInvoice.getNumber();
+                    break;
 
-                        value = SSInvoiceMath.convertToLocal(iInvoice, iSaldo );
-                        break;
+                case 1:
+                    value = iInvoice.getCustomerNr();
+                    break;
 
+                case 2:
+                    value = iInvoice.getCustomerName();
+                    break;
+
+                case 3:
+                    value = iInvoice.getDate() == null
+                            ? null
+                            : iFormat.format(iInvoice.getDate());
+                    break;
+
+                case 4:
+                    value = iInvoice.getCurrency() == null
+                            ? null
+                            : iInvoice.getCurrency().getName();
+                    break;
+
+                case 5:
+                    value = SSInvoiceMath.getTotalSum(iInvoice);
+                    break;
+
+                case 6:
+                    value = iSaldos.get(iInvoice);
+                    break;
+
+                case 7:
+                    BigDecimal iSaldo = iSaldos.get(iInvoice);
+
+                    value = SSInvoiceMath.convertToLocal(iInvoice, iSaldo);
+                    break;
 
                 }
 
@@ -123,7 +134,6 @@ public class SSCustomerclaimPrinter extends SSPrinter {
         iModel.addColumn("customer.number");
         iModel.addColumn("customer.name");
 
-
         iModel.addColumn("invoice.date");
         iModel.addColumn("invoice.currency");
         iModel.addColumn("invoice.sum");
@@ -135,10 +145,10 @@ public class SSCustomerclaimPrinter extends SSPrinter {
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSCustomerclaimPrinter");
         sb.append("{iSaldos=").append(iSaldos);
         sb.append('}');

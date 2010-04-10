@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.calc.data;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Johan Gunnarsson
@@ -21,12 +23,13 @@ public class SSOwnReportAccountGroup {
     private String iName;
 
     private String iSumTitle;
+
     /**
      *
      */
-    public SSOwnReportAccountGroup(){
+    public SSOwnReportAccountGroup() {
         iGroups = null;
-        iId     = -1;
+        iId = -1;
     }
 
     /**
@@ -48,7 +51,6 @@ public class SSOwnReportAccountGroup {
     public void setAccounts(List<SSAccount> iAccounts) {
         this.iAccounts = iAccounts;
     }
-
 
     /**
      *
@@ -82,7 +84,7 @@ public class SSOwnReportAccountGroup {
         return iGroups;
     }
 
-    public void setGroups(List<SSOwnReportAccountGroup> iGroups){
+    public void setGroups(List<SSOwnReportAccountGroup> iGroups) {
         this.iGroups = iGroups;
     }
 
@@ -90,52 +92,48 @@ public class SSOwnReportAccountGroup {
      *
      * @param pAccountGroup
      */
-    public void addAccountGroup(SSOwnReportAccountGroup pAccountGroup){
-        if(iGroups == null ){
+    public void addAccountGroup(SSOwnReportAccountGroup pAccountGroup) {
+        if (iGroups == null) {
             iGroups = new LinkedList<SSOwnReportAccountGroup>();
         }
 
         iGroups.add(pAccountGroup);
     }
 
-    public void setSumTitle(String iSumTitle){
+    public void setSumTitle(String iSumTitle) {
         this.iSumTitle = iSumTitle;
     }
-    public String getSumTitle(){
+
+    public String getSumTitle() {
         return iSumTitle;
     }
 
-
-
-
-
-    
     public String toString() {
         return toString("");
     }
 
-    
     public String toString(String Seperator) {
-        /*StringBuilder sb = new StringBuilder();
 
-        sb.append(Seperator);
-        sb.append( iId );
-        sb.append(": ");
-        sb.append( getTitle() );
-        sb.append(", ");
-        sb.append( iFromAccount );
-        sb.append(" - ");
-        sb.append( iToAccount );
+        /* StringBuilder sb = new StringBuilder();
 
-        if(iGroups  != null){
-            sb.append("{\n");
-            for(SSAccountGroup iGroup : iGroups ){
-                sb.append(iGroup.toString(Seperator + "  ") );
-            }
-            sb.append("  }\n");
-        }
-        sb.append("\n");
-        return sb.toString();*/
+         sb.append(Seperator);
+         sb.append( iId );
+         sb.append(": ");
+         sb.append( getTitle() );
+         sb.append(", ");
+         sb.append( iFromAccount );
+         sb.append(" - ");
+         sb.append( iToAccount );
+
+         if(iGroups  != null){
+         sb.append("{\n");
+         for(SSAccountGroup iGroup : iGroups ){
+         sb.append(iGroup.toString(Seperator + "  ") );
+         }
+         sb.append("  }\n");
+         }
+         sb.append("\n");
+         return sb.toString();*/
         return iName;
     }
 
@@ -144,13 +142,14 @@ public class SSOwnReportAccountGroup {
      * @param iAccounts
      * @return
      */
-    /*public List<SSAccount> getGroupAccounts(List<SSAccount> iAccounts){
-        List<SSAccount> iGroupAccounts = new LinkedList<SSAccount>();
-        for(SSAccount iAccount: iAccounts){
-            if( iAccount.getNumber() >= getFromAccount() && iAccount.getNumber() <= getToAccount()  ){
-                iGroupAccounts.add(iAccount);
-            }
-        }
-        return iGroupAccounts;
-    } */
+
+    /* public List<SSAccount> getGroupAccounts(List<SSAccount> iAccounts){
+     List<SSAccount> iGroupAccounts = new LinkedList<SSAccount>();
+     for(SSAccount iAccount: iAccounts){
+     if( iAccount.getNumber() >= getFromAccount() && iAccount.getNumber() <= getToAccount()  ){
+     iGroupAccounts.add(iAccount);
+     }
+     }
+     return iGroupAccounts;
+     } */
 }

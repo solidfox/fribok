@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping;
 
+
 import org.hsqldb.Trigger;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
 
 import java.io.*;
 import java.net.Socket;
+
 
 /**
  * User: Andreas Lago
@@ -15,9 +17,9 @@ import java.net.Socket;
 public class SSTriggerHandler extends Thread implements Trigger {
     Socket iSocket;
     public SSTriggerHandler() {
-        if(SSDB.getInstance().getLocking()){
+        if (SSDB.getInstance().getLocking()) {
             try {
-                iSocket = new Socket(SSDBConfig.getServerAddress(),2223);
+                iSocket = new Socket(SSDBConfig.getServerAddress(), 2223);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -27,8 +29,10 @@ public class SSTriggerHandler extends Thread implements Trigger {
     @Override
     public void run() {
         try {
-            PrintWriter iOut = new PrintWriter(new OutputStreamWriter(iSocket.getOutputStream()), true);
-            BufferedReader iIn = new BufferedReader(new InputStreamReader(iSocket.getInputStream()));
+            PrintWriter iOut = new PrintWriter(
+                    new OutputStreamWriter(iSocket.getOutputStream()), true);
+            BufferedReader iIn = new BufferedReader(
+                    new InputStreamReader(iSocket.getInputStream()));
 
             while (SSDB.getInstance().getLocking()) {
 
@@ -43,11 +47,15 @@ public class SSTriggerHandler extends Thread implements Trigger {
                 if (SSDB.getInstance().getCurrentCompany() == null) {
                     continue;
                 }
-                //System.out.println("Trigger: "+iTableName+" ; "+iTriggerName+" ; "+iNumber+" ; "+iCompanyId);
-                if(iCompanyId != null){
+                // System.out.println("Trigger: "+iTableName+" ; "+iTriggerName+" ; "+iNumber+" ; "+iCompanyId);
+                if (iCompanyId != null) {
                     Integer iId = Integer.parseInt(iCompanyId);
 
-                    if (iId.equals(SSDB.getInstance().getCurrentCompany().getId()) || (iTableName.equals("TBL_VOUCHER")&& SSDB.getInstance().getCurrentYear()!=null && iId.equals(SSDB.getInstance().getCurrentYear().getId()))) {
+                    if (iId.equals(SSDB.getInstance().getCurrentCompany().getId())
+                            || (iTableName.equals("TBL_VOUCHER")
+                                    && SSDB.getInstance().getCurrentYear() != null
+                                    && iId.equals(
+                                            SSDB.getInstance().getCurrentYear().getId()))) {
                         SSDB.getInstance().triggerAction(iTriggerName, iTableName, iNumber);
                     }
                 }
@@ -61,13 +69,15 @@ public class SSTriggerHandler extends Thread implements Trigger {
     }
 
     public void fire(int type, String trigName, String tabName, Object[] oldRow, Object[] newRow) {
-        if(type == UPDATE_BEFORE_ROW){
+        if (type == UPDATE_BEFORE_ROW) {
             oldRow = null;
         }
         String iNumber = null;
         Integer iCompanyId = null;
-        if (trigName.contains("PROJECT") || trigName.contains("RESULTUNIT") || trigName.contains("VOUCHERTEMPLATE") || trigName.contains("OWNREPORT")) {
-            if(oldRow != null){
+
+        if (trigName.contains("PROJECT") || trigName.contains("RESULTUNIT")
+                || trigName.contains("VOUCHERTEMPLATE") || trigName.contains("OWNREPORT")) {
+            if (oldRow != null) {
                 iNumber = oldRow[0].toString();
                 iCompanyId = (Integer) oldRow[2];
             }
@@ -78,7 +88,7 @@ public class SSTriggerHandler extends Thread implements Trigger {
             }
         } else {
             // "Normala objekt"
-            if(oldRow != null){
+            if (oldRow != null) {
                 iNumber = oldRow[1].toString();
                 iCompanyId = (Integer) oldRow[3];
             }
@@ -88,11 +98,14 @@ public class SSTriggerHandler extends Thread implements Trigger {
                 iCompanyId = (Integer) newRow[3];
             }
         }
-        //System.out.println("Trigger: " + trigName + "\nNummer: " + iNumber + "\n\n");
-        
-        if(iCompanyId != null && SSDB.getInstance().getCurrentCompany() != null){
+        // System.out.println("Trigger: " + trigName + "\nNummer: " + iNumber + "\n\n");
 
-            if (iCompanyId.equals(SSDB.getInstance().getCurrentCompany().getId()) || (tabName != null && tabName.equals("TBL_VOUCHER")&& SSDB.getInstance().getCurrentYear()!=null && iCompanyId.equals(SSDB.getInstance().getCurrentYear().getId()))) {
+        if (iCompanyId != null && SSDB.getInstance().getCurrentCompany() != null) {
+
+            if (iCompanyId.equals(SSDB.getInstance().getCurrentCompany().getId())
+                    || (tabName != null && tabName.equals("TBL_VOUCHER")
+                    && SSDB.getInstance().getCurrentYear() != null
+                    && iCompanyId.equals(SSDB.getInstance().getCurrentYear().getId()))) {
                 SSDB.getInstance().triggerAction(trigName, tabName, iNumber);
             }
         }
@@ -102,6 +115,7 @@ public class SSTriggerHandler extends Thread implements Trigger {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.SSTriggerHandler");
         sb.append("{iSocket=").append(iSocket);
         sb.append('}');

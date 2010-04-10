@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -14,29 +15,26 @@ import se.swedsoft.bookkeeping.print.SSPrinter;
  */
 public class SSAccountPlanPrinter extends SSPrinter {
 
-
     SSAccountPlan iAccountPlan;
 
     /**
      *
      */
-    public SSAccountPlanPrinter(  ){
-        this( SSDB.getInstance().getCurrentYear().getAccountPlan()  );
+    public SSAccountPlanPrinter() {
+        this(SSDB.getInstance().getCurrentYear().getAccountPlan());
     }
 
     /**
      *
      * @param pAccountPlan The accountplan
      */
-    public SSAccountPlanPrinter(SSAccountPlan pAccountPlan ){
+    public SSAccountPlanPrinter(SSAccountPlan pAccountPlan) {
         iAccountPlan = pAccountPlan;
 
-        setPageHeader  ("header.jrxml");
+        setPageHeader("header.jrxml");
         setColumnHeader("accountplan.jrxml");
-        setDetail      ("accountplan.jrxml");
+        setDetail("accountplan.jrxml");
     }
-
-
 
     /**
      * Gets the title file for this repport
@@ -54,11 +52,9 @@ public class SSAccountPlanPrinter extends SSPrinter {
      * @return The sub title
      */
     @Override
-    protected  String getSubTitle(){
+    protected String getSubTitle() {
         return iAccountPlan.getName();
     }
-
-
 
     /**
      * @return SSDefaultTableModel
@@ -78,40 +74,45 @@ public class SSAccountPlanPrinter extends SSPrinter {
                 Object value = null;
 
                 switch (columnIndex) {
-                    case 0:
-                        value = iAccount.getNumber();
-                        break;
-                    case 1:
-                        value = iAccount.getDescription();
-                        break;
-                    case 2:
-                        value = iAccount.getVATCode();
-                        break;
-                    case 3:
-                        value = iAccount.getSRUCode();
-                        break;
-                    case 4:
-                        value = iAccount.getReportCode();
-                        break;
+                case 0:
+                    value = iAccount.getNumber();
+                    break;
+
+                case 1:
+                    value = iAccount.getDescription();
+                    break;
+
+                case 2:
+                    value = iAccount.getVATCode();
+                    break;
+
+                case 3:
+                    value = iAccount.getSRUCode();
+                    break;
+
+                case 4:
+                    value = iAccount.getReportCode();
+                    break;
                 }
 
                 return value;
             }
         };
+
         iModel.addColumn("account.number");
         iModel.addColumn("account.description");
         iModel.addColumn("account.vat");
         iModel.addColumn("account.sru");
         iModel.addColumn("account.report");
-        iModel.setObjects( iAccountPlan.getActiveAccounts() );
+        iModel.setObjects(iAccountPlan.getActiveAccounts());
 
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSAccountPlanPrinter");
         sb.append("{iAccountPlan=").append(iAccountPlan);
         sb.append('}');

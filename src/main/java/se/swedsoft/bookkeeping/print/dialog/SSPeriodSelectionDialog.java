@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -31,7 +33,7 @@ public class SSPeriodSelectionDialog extends SSDialog {
      * @param iTitle
      */
     public SSPeriodSelectionDialog(SSMainFrame iMainFrame, String iTitle) {
-        super(iMainFrame, iTitle );
+        super(iMainFrame, iTitle);
 
         setPanel(iPanel);
 
@@ -83,6 +85,7 @@ public class SSPeriodSelectionDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSPeriodSelectionDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iFrom=").append(iFrom);

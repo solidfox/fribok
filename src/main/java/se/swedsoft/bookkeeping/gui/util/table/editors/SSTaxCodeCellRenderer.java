@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -10,6 +11,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * User: Andreas Lago
@@ -28,11 +30,11 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-        if(iCompany != null){
-            setValue(SSTaxCode.TAXRATE_0, new BigDecimal(0)       );
-            setValue(SSTaxCode.TAXRATE_1, iCompany.getTaxRate1() );
-            setValue(SSTaxCode.TAXRATE_2, iCompany.getTaxRate2() );
-            setValue(SSTaxCode.TAXRATE_3, iCompany.getTaxRate3() );
+        if (iCompany != null) {
+            setValue(SSTaxCode.TAXRATE_0, new BigDecimal(0));
+            setValue(SSTaxCode.TAXRATE_1, iCompany.getTaxRate1());
+            setValue(SSTaxCode.TAXRATE_2, iCompany.getTaxRate2());
+            setValue(SSTaxCode.TAXRATE_3, iCompany.getTaxRate3());
         }
         setHorizontalAlignment(DefaultTableCellRenderer.RIGHT);
 
@@ -46,18 +48,18 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
     public void setValue(Object value) {
         NumberFormat iFormat = new DecimalFormat("0");
 
-        if(value instanceof SSTaxCode){
+        if (value instanceof SSTaxCode) {
             SSTaxCode iTaxCode = (SSTaxCode) value;
 
             BigDecimal iValue = iValues.get(iTaxCode);
 
-            if(iValue != null){
-                setText( iFormat.format(iValue) + '%');
+            if (iValue != null) {
+                setText(iFormat.format(iValue) + '%');
             } else {
-                setText( "" );
+                setText("");
             }
-        }  else {
-            setText( "" );
+        } else {
+            setText("");
         }
     }
 
@@ -66,13 +68,14 @@ public class SSTaxCodeCellRenderer extends DefaultTableCellRenderer {
      * @param iTaxCode
      * @param iValue
      */
-    public void setValue(SSTaxCode iTaxCode, BigDecimal iValue){
-        iValues.put(iTaxCode, iValue );
+    public void setValue(SSTaxCode iTaxCode, BigDecimal iValue) {
+        iValues.put(iTaxCode, iValue);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSTaxCodeCellRenderer");
         sb.append("{iValues=").append(iValues);
         sb.append('}');

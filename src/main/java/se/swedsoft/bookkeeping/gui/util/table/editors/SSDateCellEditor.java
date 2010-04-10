@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
@@ -15,6 +16,7 @@ import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.EventObject;
+
 
 /**
  *
@@ -38,33 +40,32 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         iDateChooser = new SSDateChooser();
-        iDateChooser.addChangeListener( new ActionListener() {
+        iDateChooser.addChangeListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                setDate( iDateChooser.getDate() );
+                setDate(iDateChooser.getDate());
             }
-        }); 
+        });
 
         iTextField = new JFormattedTextField(iFormat);
         iTextField.setHorizontalAlignment(JTextField.TRAILING);
         iTextField.addPropertyChangeListener("value", new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent evt) {
-                setDate( (Date)iTextField.getValue() );
+                setDate((Date) iTextField.getValue());
             }
         });
 
         iButton = new SSButton("ICON_CALENDAR16");
-        iButton.setToolTipText( SSBundle.getBundle().getString("date.tooltip"));
+        iButton.setToolTipText(SSBundle.getBundle().getString("date.tooltip"));
         iButton.setPreferredSize(new Dimension(20, 20));
-        iButton.setMaximumSize  (new Dimension(20, 20));
-        iButton.setMinimumSize  (new Dimension(20, 20));
+        iButton.setMaximumSize(new Dimension(20, 20));
+        iButton.setMinimumSize(new Dimension(20, 20));
 
         iButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                iDateChooser.setDate( iDate );
+                iDateChooser.setDate(iDate);
                 iDateChooser.show(iButton, 0, iButton.getHeight());
             }
         });
-
 
         iPanel = new JPanel();
         iPanel.setLayout(new BorderLayout());
@@ -83,10 +84,10 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        if( value instanceof Date){
-           setDate( (Date) value );
+        if (value instanceof Date) {
+            setDate((Date) value);
         } else {
-           setDate( new Date() );
+            setDate(new Date());
         }
 
         return iPanel;
@@ -96,7 +97,6 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
     public boolean isCellEditable(EventObject e) {
         if (e instanceof MouseEvent) {
             MouseEvent iMouseEvent = (MouseEvent) e;
-
 
             return iMouseEvent.getClickCount() >= 2;
         }
@@ -118,13 +118,14 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
     public void setDate(Date iDate) {
         this.iDate = iDate;
 
-        iTextField  .setValue(iDate);
-        iDateChooser.setDate (iDate);
+        iTextField.setValue(iDate);
+        iDateChooser.setDate(iDate);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellEditor");
         sb.append("{iButton=").append(iButton);
         sb.append(", iDate=").append(iDate);

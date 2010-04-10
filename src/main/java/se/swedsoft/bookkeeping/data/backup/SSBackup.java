@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.data.backup;
 
+
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupType;
 
 import java.io.*;
 import java.util.Date;
+
 
 /**
  * Date: 2006-mar-03
@@ -22,14 +24,11 @@ public class SSBackup implements Serializable {
     // The type of the backup
     private SSBackupType iType;
 
-
-
-
     /**
      *
      * @param pType
      */
-    public SSBackup(SSBackupType pType){
+    public SSBackup(SSBackupType pType) {
         iType = pType;
     }
 
@@ -49,7 +48,7 @@ public class SSBackup implements Serializable {
         this.iFilename = iFilename;
     }
 
-    /////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -67,7 +66,7 @@ public class SSBackup implements Serializable {
         this.iDate = iDate;
     }
 
-    /////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -85,20 +84,17 @@ public class SSBackup implements Serializable {
         this.iType = iType;
     }
 
-    /////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////
 
-
-
-
-
-    /////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////
 
     /**
      * Removes the backup from disk
      */
-    public void delete(){
+    public void delete() {
         File iFile = new File(iFilename);
-        if(iFile.exists()){
+
+        if (iFile.exists()) {
             iFile.delete();
         }
     }
@@ -107,12 +103,11 @@ public class SSBackup implements Serializable {
      *
      * @return if the backup exists
      */
-    public boolean exists(){
+    public boolean exists() {
         File iFile = new File(iFilename);
+
         return iFile.exists();
     }
-
-
 
     /**
      *
@@ -123,11 +118,12 @@ public class SSBackup implements Serializable {
      */
     public static SSBackup loadBackup(File iFile) throws IOException, ClassNotFoundException {
         SSBackup iBackup = null;
-        ObjectInputStream iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(iFile)));
+        ObjectInputStream iObjectInputStream = new ObjectInputStream(
+                new BufferedInputStream(new FileInputStream(iFile)));
 
-        try{
-            iBackup          = (SSBackup)iObjectInputStream.readObject();
-        } finally{
+        try {
+            iBackup = (SSBackup) iObjectInputStream.readObject();
+        } finally {
             iObjectInputStream.close();
         }
 
@@ -141,15 +137,14 @@ public class SSBackup implements Serializable {
      * @throws IOException
      */
     public static void storeBackup(File iFile, SSBackup iBackup) throws IOException {
-        ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(iFile)));
+        ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(
+                new BufferedOutputStream(new FileOutputStream(iFile)));
 
         iObjectOutputStream.writeObject(iBackup);
         iObjectOutputStream.flush();
         iObjectOutputStream.close();
     }
 
-
-    
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
@@ -163,10 +158,5 @@ public class SSBackup implements Serializable {
         return super.toString();
     }
 
-
-
 }
-
-
-
 

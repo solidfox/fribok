@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outdelivery.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.SSOutdelivery;
 import se.swedsoft.bookkeeping.data.SSOutdeliveryRow;
@@ -21,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-26
@@ -36,14 +38,11 @@ public class SSOutdeliveryPanel {
 
     private SSTable iTable;
 
-
-
     private JTextField iText;
 
     private SSDateChooser iDate;
 
     private JFormattedTextField iNumber;
-
 
     private SSOutdeliveryRowTableModel iModel;
 
@@ -62,20 +61,25 @@ public class SSOutdeliveryPanel {
         iModel.addColumn(SSOutdeliveryRowTableModel.COLUMN_CHANGE, true);
         iModel.setupTable(iTable);
 
-        iTable.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
+        iTable.setDefaultEditor(SSProduct.class,
+                new SSProductCellEditor(SSProductMath.getNormalProducts(), false));
 
-         new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSOutdeliveryRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
@@ -87,11 +91,11 @@ public class SSOutdeliveryPanel {
             }
         });
 
-        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iText.requestFocusInWindow();
                         }
@@ -100,24 +104,24 @@ public class SSOutdeliveryPanel {
             }
         });
 
-        iText.addKeyListener(new KeyAdapter(){
+        iText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -127,10 +131,10 @@ public class SSOutdeliveryPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -156,9 +160,9 @@ public class SSOutdeliveryPanel {
      */
     public SSOutdelivery getoutdelivery() {
         // Text
-        iOutdelivery.setText( iText.getText() );
+        iOutdelivery.setText(iText.getText());
         // Datum
-        iOutdelivery.setDate( iDate.getDate() );
+        iOutdelivery.setDate(iDate.getDate());
 
         return iOutdelivery;
     }
@@ -173,11 +177,11 @@ public class SSOutdeliveryPanel {
         iModel.setObjects(iInventory.getRows());
 
         // Number
-        iNumber.setValue( iInventory.getNumber() );
+        iNumber.setValue(iInventory.getNumber());
         // Text
-        iText.setText( iInventory.getText() );
+        iText.setText(iInventory.getText());
         // Datum
-        iDate.setDate( iInventory.getDate());
+        iDate.setDate(iInventory.getDate());
     }
 
     /**
@@ -196,10 +200,10 @@ public class SSOutdeliveryPanel {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.outdelivery.panel.SSOutdeliveryPanel");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

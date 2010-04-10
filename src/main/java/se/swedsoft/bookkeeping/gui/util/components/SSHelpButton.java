@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.help.SSHelpFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * User: Andreas Lago
@@ -28,7 +30,6 @@ public class SSHelpButton extends SSButton implements ActionListener {
         addActionListener(this);
     }
 
-
     /**
      * Invoked when an action occurs.
      */
@@ -36,20 +37,20 @@ public class SSHelpButton extends SSButton implements ActionListener {
         SSHelpFrame.showFrame(SSMainFrame.getInstance(), 980, 720, iHelpClass);
     }
 
-
     /**
      *
-      * @param iToolBar
+     * @param iToolBar
      * @param pHelpClass
      */
-    public static void addButton(JToolBar iToolBar, Class pHelpClass){
+    public static void addButton(JToolBar iToolBar, Class pHelpClass) {
         iToolBar.addSeparator();
-        iToolBar.add( new SSHelpButton(pHelpClass) );
+        iToolBar.add(new SSHelpButton(pHelpClass));
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.components.SSHelpButton");
         sb.append("{iHelpClass=").append(iHelpClass);
         sb.append('}');

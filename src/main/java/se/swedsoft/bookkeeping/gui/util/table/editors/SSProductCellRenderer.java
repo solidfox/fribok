@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSProduct;
 
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -11,22 +13,20 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class SSProductCellRenderer extends DefaultTableCellRenderer {
 
-
     @Override
     public void setValue(Object value) {
-        if(value instanceof SSProduct){
+        if (value instanceof SSProduct) {
             SSProduct iProduct = (SSProduct) value;
 
-            setText( iProduct.getNumber()  );
-        }  else {
-            if(value != null){
-                setText( value.toString() );
+            setText(iProduct.getNumber());
+        } else {
+            if (value != null) {
+                setText(value.toString());
             } else {
-                setText( "" );
+                setText("");
             }
 
         }
     }
-
 
 }

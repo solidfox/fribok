@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.IOException;
@@ -19,10 +20,8 @@ import java.util.List;
  */
 public class SSVoucherRow implements Serializable, Cloneable {
 
-
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     private Integer iAccountNr;
 
@@ -44,21 +43,16 @@ public class SSVoucherRow implements Serializable, Cloneable {
 
     private boolean iAdded;
 
+    private /* transient*/SSAccount iAccount;
 
-    private /*transient*/ SSAccount iAccount;
+    private /* transient*/SSNewProject iProject;
 
-    private /*transient*/ SSNewProject iProject;
-
-    private /*transient*/ SSNewResultUnit iResultUnit;
-
+    private /* transient*/SSNewResultUnit iResultUnit;
 
     /**
      * Default constructor.
      */
-    public SSVoucherRow() {
-
-    }
-
+    public SSVoucherRow() {}
 
     /**
      *
@@ -68,8 +62,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public SSVoucherRow(SSAccount pAccount, BigDecimal pDebet, BigDecimal pCredit) {
         iAccount = pAccount;
-        iDebet   = pDebet;
-        iCredit  = pCredit;
+        iDebet = pDebet;
+        iCredit = pCredit;
     }
 
     /**
@@ -81,14 +75,20 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param pResultUnit
      */
     public SSVoucherRow(SSAccount pAccount, BigDecimal pDebet, BigDecimal pCredit, SSNewProject pProject, SSNewResultUnit pResultUnit) {
-        iAccount    = pAccount;
-        if(iAccount != null) iAccountNr  = pAccount.getNumber();
-        iDebet      = pDebet;
-        iCredit     = pCredit;
-        iProject    = pProject;
-        if(iProject != null) iProjectNumber  = pProject.getNumber();
+        iAccount = pAccount;
+        if (iAccount != null) {
+            iAccountNr = pAccount.getNumber();
+        }
+        iDebet = pDebet;
+        iCredit = pCredit;
+        iProject = pProject;
+        if (iProject != null) {
+            iProjectNumber = pProject.getNumber();
+        }
         iResultUnit = pResultUnit;
-        if(iResultUnit != null) iResultUnitNumber = pResultUnit.getNumber();
+        if (iResultUnit != null) {
+            iResultUnitNumber = pResultUnit.getNumber();
+        }
     }
 
     /**
@@ -100,7 +100,6 @@ public class SSVoucherRow implements Serializable, Cloneable {
         copyFrom(pVoucherRow);
     }
 
-
     /**
      * Copy constructor.
      *
@@ -109,13 +108,13 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public SSVoucherRow(SSVoucherRow pVoucherRow, boolean iReverse) {
         copyFrom(pVoucherRow);
-        if(iReverse){
-            iDebet           = pVoucherRow.iCredit;
-            iCredit          = pVoucherRow.iDebet;
+        if (iReverse) {
+            iDebet = pVoucherRow.iCredit;
+            iCredit = pVoucherRow.iDebet;
         }
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -123,24 +122,24 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param pVoucherRow The row to copy.
      */
     public void copyFrom(SSVoucherRow pVoucherRow) {
-        iAccountNr       = pVoucherRow.iAccountNr;
-        //iProjectNr       = pVoucherRow.iProjectNr;
-        iProjectNumber   = pVoucherRow.iProjectNumber;
-        //iResultUnitNr    = pVoucherRow.iResultUnitNr;
-        iResultUnitNumber= pVoucherRow.iResultUnitNumber;
-        iDebet           = pVoucherRow.iDebet;
-        iCredit          = pVoucherRow.iCredit;
-        iEditedDate      = pVoucherRow.iEditedDate;
+        iAccountNr = pVoucherRow.iAccountNr;
+        // iProjectNr       = pVoucherRow.iProjectNr;
+        iProjectNumber = pVoucherRow.iProjectNumber;
+        // iResultUnitNr    = pVoucherRow.iResultUnitNr;
+        iResultUnitNumber = pVoucherRow.iResultUnitNumber;
+        iDebet = pVoucherRow.iDebet;
+        iCredit = pVoucherRow.iCredit;
+        iEditedDate = pVoucherRow.iEditedDate;
         iEditedSignature = pVoucherRow.iEditedSignature;
-        iCrossed         = pVoucherRow.iCrossed;
-        iAdded           = pVoucherRow.iAdded;
+        iCrossed = pVoucherRow.iCrossed;
+        iAdded = pVoucherRow.iAdded;
 
-        iProject         = pVoucherRow.iProject;
-        iResultUnit      = pVoucherRow.iResultUnit;
-        iAccount         = pVoucherRow.iAccount;
+        iProject = pVoucherRow.iProject;
+        iResultUnit = pVoucherRow.iResultUnit;
+        iAccount = pVoucherRow.iAccount;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -156,11 +155,10 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public void setAccountNr(Integer iAccountNr) {
         this.iAccountNr = iAccountNr;
-        iAccount        = null;
+        iAccount = null;
     }
 
-
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -176,10 +174,10 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public void setResultUnitNr(String iResultUnitNr) {
         iResultUnitNumber = iResultUnitNr;
-        iResultUnit       = null;
+        iResultUnit = null;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -195,7 +193,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public void setProjectNr(String iProjectNr) {
         iProjectNumber = iProjectNr;
-        iProject       = null;
+        iProject = null;
     }
 
     public void fixResultUnitAndProject() {
@@ -206,8 +204,8 @@ public class SSVoucherRow implements Serializable, Cloneable {
             iProjectNumber = iProjectNr.toString();
         }
     }
-    ////////////////////////////////////////////////////////////////////
 
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -225,7 +223,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
         iDebet = pDebet;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -243,8 +241,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
         iCredit = pCredit;
     }
 
-
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -262,7 +259,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
         iEditedDate = pEditedDate;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -280,7 +277,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
         iEditedSignature = pEditedSignature;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -289,12 +286,13 @@ public class SSVoucherRow implements Serializable, Cloneable {
     public boolean isCrossed() {
         return iCrossed;
     }
-     /**
+
+    /**
      *
      * @param iCrossed
      */
     public void setCrossed(boolean iCrossed) {
-        this.iCrossed         = iCrossed;
+        this.iCrossed = iCrossed;
     }
 
     /**
@@ -302,12 +300,12 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param pSignature
      */
     public void setCrossed(String pSignature) {
-        iCrossed         = true;
-        iEditedDate      = new Date();
+        iCrossed = true;
+        iEditedDate = new Date();
         iEditedSignature = pSignature;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -317,12 +315,12 @@ public class SSVoucherRow implements Serializable, Cloneable {
         return iAdded;
     }
 
-     /**
+    /**
      *
      * @param iAdded
      */
     public void setAdded(boolean iAdded) {
-        this.iAdded           = iAdded;
+        this.iAdded = iAdded;
     }
 
     /**
@@ -330,12 +328,12 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param pSignature
      */
     public void setAdded(String pSignature) {
-        iAdded           = true;
-        iEditedDate      = new Date();
+        iAdded = true;
+        iEditedDate = new Date();
         iEditedSignature = pSignature;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -350,10 +348,10 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iAccounts
      * @return
      */
-    public SSAccount getAccount(List<SSAccount> iAccounts ) {
-        if(iAccount == null && iAccountNr != null){
+    public SSAccount getAccount(List<SSAccount> iAccounts) {
+        if (iAccount == null && iAccountNr != null) {
             for (SSAccount iCurrent : iAccounts) {
-                if(iAccountNr.equals(iCurrent.getNumber() )){
+                if (iAccountNr.equals(iCurrent.getNumber())) {
                     iAccount = iCurrent;
                     break;
                 }
@@ -368,19 +366,18 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public void setAccount(SSAccount iAccount) {
         this.iAccount = iAccount;
-        iAccountNr    = iAccount == null ? null : iAccount.getNumber();
+        iAccountNr = iAccount == null ? null : iAccount.getNumber();
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSNewProject getProject() {
-        return getProject( SSDB.getInstance().getProjects() );
+        return getProject(SSDB.getInstance().getProjects());
     }
-
 
     /**
      *
@@ -388,9 +385,9 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @return
      */
     public SSNewProject getProject(List<SSNewProject> iProjects) {
-        if(iProject == null && iProjectNumber != null){
+        if (iProject == null && iProjectNumber != null) {
             for (SSNewProject iCurrent : iProjects) {
-                if(iProjectNumber.equals(iCurrent.getNumber() )){
+                if (iProjectNumber.equals(iCurrent.getNumber())) {
                     iProject = iCurrent;
                     break;
                 }
@@ -399,17 +396,16 @@ public class SSVoucherRow implements Serializable, Cloneable {
         return iProject;
     }
 
-
     /**
      *
      * @param iProject
      */
     public void setProject(SSNewProject iProject) {
-        this.iProject  = iProject;
+        this.iProject = iProject;
         iProjectNumber = iProject == null ? null : iProject.getNumber();
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -419,15 +415,16 @@ public class SSVoucherRow implements Serializable, Cloneable {
         return getResultUnit(SSDB.getInstance().getResultUnits());
 
     }
+
     /**
      *
      * @param iResultUnits
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
-        if(iResultUnit == null && iResultUnitNumber != null){
+        if (iResultUnit == null && iResultUnitNumber != null) {
             for (SSNewResultUnit iCurrent : iResultUnits) {
-                if(iResultUnitNumber.equals(iCurrent.getNumber() )){
+                if (iResultUnitNumber.equals(iCurrent.getNumber())) {
                     iResultUnit = iCurrent;
                     break;
                 }
@@ -441,7 +438,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param iResultUnit
      */
     public void setResultUnit(SSNewResultUnit iResultUnit) {
-        this.iResultUnit  = iResultUnit;
+        this.iResultUnit = iResultUnit;
         iResultUnitNumber = iResultUnit == null ? null : iResultUnit.getNumber();
 
     }
@@ -451,9 +448,9 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @param out
      * @throws IOException
      */
-    private void writeObject(ObjectOutputStream out) throws IOException{
-        iAccount    = null;
-        iProject    = null;
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        iAccount = null;
+        iProject = null;
         iResultUnit = null;
         out.defaultWriteObject();
     }
@@ -464,18 +461,24 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
         in.defaultReadObject();
-        if(iAccount    != null) iAccountNr    = iAccount   .getNumber();
-        if(iProject    != null) iProjectNumber    = iProject   .getNumber();
-        if(iResultUnit != null) iResultUnitNumber = iResultUnit.getNumber();
+        if (iAccount != null) {
+            iAccountNr = iAccount.getNumber();
+        }
+        if (iProject != null) {
+            iProjectNumber = iProject.getNumber();
+        }
+        if (iResultUnit != null) {
+            iResultUnitNumber = iResultUnit.getNumber();
+        }
 
-        iAccount    = null;
-        iProject    = null;
+        iAccount = null;
+        iProject = null;
         iResultUnit = null;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      * Set the value of this row, such as
@@ -490,10 +493,12 @@ public class SSVoucherRow implements Serializable, Cloneable {
      */
     public void setValue(BigDecimal iValue) {
         // Dont add a empty row
-        if(iValue == null) return;
+        if (iValue == null) {
+            return;
+        }
 
         // Add the value
-        if( iValue.signum() > 0){
+        if (iValue.signum() > 0) {
             iDebet = iValue;
             iCredit = null;
         } else {
@@ -507,18 +512,17 @@ public class SSVoucherRow implements Serializable, Cloneable {
      *
      * @return
      */
-    public BigDecimal getValue(){
-        if( iDebet != null ){
+    public BigDecimal getValue() {
+        if (iDebet != null) {
             return iDebet;
         }
-        if( iCredit != null){
+        if (iCredit != null) {
             return iCredit.negate();
         }
         return new BigDecimal(0);
     }
 
-
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -528,11 +532,11 @@ public class SSVoucherRow implements Serializable, Cloneable {
         return iDebet != null;
     }
 
-    
     public String toString() {
 
         StringBuffer b = new StringBuffer();
-        if( iCrossed ){
+
+        if (iCrossed) {
             b.append('-');
         }
         b.append(iAccountNr);
@@ -541,33 +545,31 @@ public class SSVoucherRow implements Serializable, Cloneable {
         b.append(", C=");
         b.append(iCredit);
 
-        if( iProjectNumber != null ){
+        if (iProjectNumber != null) {
             b.append(" (Project ");
-            b.append(iProjectNumber );
+            b.append(iProjectNumber);
             b.append(" )");
         }
 
-        if( iResultUnitNumber != null ){
+        if (iResultUnitNumber != null) {
             b.append(" (Resultunit ");
             b.append(iResultUnitNumber);
             b.append(" )");
         }
 
-
         return b.toString();
     }
-
-
 
     /**
      * Creates a new voucher row that is the inverse of this one
      *
      * @return A row that is the reverse of this one in debet and credit.
 
-    public SSVoucherRow createReversedRow() {
-    return new SSVoucherRow(getAccount(), getCredit(), getDebet(), getProject(), getResultUnit());
-    }
+     public SSVoucherRow createReversedRow() {
+     return new SSVoucherRow(getAccount(), getCredit(), getDebet(), getProject(), getResultUnit());
+     }
      */
+    
     /**
      * Indicates that this row has an account and one value in one of credit or debet.
      * Also, empty rows are isValid rows.
@@ -593,11 +595,7 @@ public class SSVoucherRow implements Serializable, Cloneable {
      * @return
      */
     public boolean hasAccount(SSAccount iAccount) {
-        return (iAccountNr != null) && iAccountNr.equals( iAccount.getNumber() );
+        return (iAccountNr != null) && iAccountNr.equals(iAccount.getNumber());
     }
-
-
-
-
 
 }

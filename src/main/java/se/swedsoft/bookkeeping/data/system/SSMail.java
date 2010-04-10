@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSStandardText;
@@ -22,31 +23,32 @@ import javax.swing.*;
 import java.io.File;
 import java.util.Properties;
 
+
 /**
  * Utility methods for sending mail
- * 
- * 
+ *
+ *
  * User: Johan Gunnarsson
  * Date: 2007-mar-26
  * Time: 16:35:15
  */
 public class SSMail {
-    
+
     // Used to encrypt password
-    public static SymetricCrypter crypter = new SymetricCrypter( new byte[] { 0x4f,0x53,-0x71,-0x28,0x0d,0x21,0x1c,-0x1c} );
+    public static SymetricCrypter crypter = new SymetricCrypter(
+            new byte[] { 0x4f, 0x53, -0x71, -0x28, 0x0d, 0x21, 0x1c, -0x1c});
 
     // Change this to get detailed debug info form JavaMail
-    private static final boolean SHOULD_DEBUG_PRINT = false; 
+    private static final boolean SHOULD_DEBUG_PRINT = false;
 
     // This dir where to look for pdf to send as attachments. This is hardcoded thouhg out the
     // application, so dont change.
-    private static final String PDF_FILE_DIR =  "pdftoemail" + File.separator;
+    private static final String PDF_FILE_DIR = "pdftoemail" + File.separator;
 
-    private SSMail() {
-    }
+    private SSMail() {}
 
     /**
-     * Asks if the user really wants to send a mail, gets data from db, and calls 
+     * Asks if the user really wants to send a mail, gets data from db, and calls
      * doSendMail to send it
      * @param pTo
      * @param pSubject
@@ -55,33 +57,31 @@ public class SSMail {
      * @throws AddressException
      * @throws MessagingException
      */
-    public static boolean sendMail(String pTo, String pSubject, String pFileName) 
-        throws AddressException, MessagingException  {
-        
-        SSUtil.verifyNotNull("Arguments to sendMail can not be null", pTo, pSubject, pFileName);
-        
-        if (SSQueryDialog.showDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "mail.send", pTo) 
+    public static boolean sendMail(String pTo, String pSubject, String pFileName)
+        throws AddressException, MessagingException {
+
+        SSUtil.verifyNotNull("Arguments to sendMail can not be null", pTo, pSubject,
+                pFileName);
+
+        if (SSQueryDialog.showDialog(SSMainFrame.getInstance(), SSBundle.getBundle(),
+                "mail.send", pTo)
                 != JOptionPane.OK_OPTION) {
             return false;
         }
-        
+
         SSNewCompany company = SSDB.getInstance().getCurrentCompany();
-        
-        
-        SSMailMessage message = new SSMailMessage(
-                company.getEMail(), 
-                pTo, 
-                pSubject,
-                company.getStandardText(SSStandardText.Email), 
-                PDF_FILE_DIR + pFileName);
-        
+
+        SSMailMessage message = new SSMailMessage(company.getEMail(), pTo, pSubject,
+                company.getStandardText(SSStandardText.Email), PDF_FILE_DIR + pFileName);
+
         // Send message
         MimeMessage mimeMessage = makeMessage(company.getMailServer(), message);
+
         Transport.send(mimeMessage);
-        
+
         return true;
     }
-    
+
     /**
      * Makes a MimeMessage ready to be send from the arguments
      * @param server
@@ -89,25 +89,26 @@ public class SSMail {
      * @return
      * @throws MessagingException
      */
-    public static MimeMessage makeMessage(SSMailServer server, SSMailMessage mail) 
+    public static MimeMessage makeMessage(SSMailServer server, SSMailMessage mail)
         throws MessagingException {
-        
-        SSUtil.verifyNotNull("server" , server);
-        SSUtil.verifyNotNull("Email message fields", 
-                mail.getFrom(), mail.getTo(), mail.getSubject());
-        
+
+        SSUtil.verifyNotNull("server", server);
+        SSUtil.verifyNotNull("Email message fields", mail.getFrom(), mail.getTo(),
+                mail.getSubject());
+
         Session session = makeSession(server);
         MimeMessage message = makeMime(mail, session);
         Multipart multipart = makeMultipart(mail);
-        
+
         // Put parts in message
         message.setContent(multipart);
-        
+
         return message;
     }
 
     private static MimeMessage makeMime(SSMailMessage mail, Session session) throws MessagingException {
-        MimeMessage message = new MimeMessage(session); 
+        MimeMessage message = new MimeMessage(session);
+
         message.setFrom(new InternetAddress(mail.getFrom()));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(mail.getTo()));
         message.setSubject(mail.getSubject());
@@ -124,28 +125,29 @@ public class SSMail {
     private static Multipart makeMultipart(SSMailMessage mail) throws MessagingException {
         // Create the multi-part
         Multipart multipart = new MimeMultipart();
-        
+
         // Create part one
         BodyPart messageBodyPart = new MimeBodyPart();
-        
+
         // Fill the message
         messageBodyPart.setText(SSUtil.convertNullToEmpty(mail.getBodyText()));
-        
+
         // Add the first part
         multipart.addBodyPart(messageBodyPart);
-        
+
         // Part two is attachment
         if (mail.getFileName() != null) {
-        
+
             messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(mail.getFileName());
+
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(mail.getFileName());
-            
+
             // Add the second part
             multipart.addBodyPart(messageBodyPart);
         }
-        
+
         return multipart;
     }
 
@@ -155,33 +157,35 @@ public class SSMail {
      * @return
      */
     private static Session makeSession(final SSMailServer server) {
-        
+
         // Get system properties
         Properties props = new Properties();
+
         System.getProperties();
-        
+
         // Setup mail server
         props.put("mail.smtp.host", server.getURI().getHost());
         props.put("mail.smtp.port", Integer.toString(server.getURI().getPort()));
         props.put("mail.smtp.auth", Boolean.toString(server.isAuth()));
-        
+
         Authenticator auth = null;
-        
+
         // Create Authenticator if it should be used
         if (server.isAuth()) {
             auth = new Authenticator() {
                 @Override
                 public PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(server.getUsername(), SSMail.crypter.decrypt(server.getPassword()));
+                    return new PasswordAuthentication(server.getUsername(),
+                            SSMail.crypter.decrypt(server.getPassword()));
                 }
             };
         }
-        
+
         // Get session
         Session session = Session.getInstance(props, auth);
-        
+
         session.setDebug(SHOULD_DEBUG_PRINT);
-        
+
         return session;
     }
 
@@ -205,36 +209,37 @@ public class SSMail {
      * @return
      */
     private static boolean isOk(SSNewCompany company, Object o, String resourceName) {
-        
+
         try {
             // Check company address and server
             if (company.getMailServer() == null) {
-                onError("invalid mail server at current company", "mail.nosmtpserver"); 
+                onError("invalid mail server at current company", "mail.nosmtpserver");
             }
-            
+
             if (SSUtil.isNullOrEmpty(company.getEMail())) {
-                onError("invalid mail address at current company", "mail.nocompanyemailaddress");
+                onError("invalid mail address at current company",
+                        "mail.nocompanyemailaddress");
             }
 
             // Check supplier or customer address
             if (o == null) {
                 onError("Argument object is null", resourceName);
             }
-                
+
             String s;
-            
+
             if (o instanceof SSCustomer) {
                 s = ((SSCustomer) o).getEMail();
-            } else if ( o instanceof SSSupplier) {
+            } else if (o instanceof SSSupplier) {
                 s = ((SSSupplier) o).getEMail();
             } else {
                 throw new ClassCastException("o is of wrong type");
             }
-                
+
             if (SSUtil.isNullOrEmpty(s)) {
-                onError("No mail address",  resourceName);
+                onError("No mail address", resourceName);
             }
-            
+
         } catch (MailValidationException e) {
             // Some nessesery field wasnt set, open an error dialog to notify the user
             new SSErrorDialog(SSMainFrame.getInstance(), e.getResourceName());
@@ -243,7 +248,7 @@ public class SSMail {
 
         return true;
     }
-    
+
     /**
      * Checks if the current company and iCustomer has mail addresses and servers. If not, opens a error dialog
      * and returns false.
@@ -251,9 +256,10 @@ public class SSMail {
      * @return
      */
     public static boolean isOk(SSCustomer iCustomer) {
-        return isOk(SSDB.getInstance().getCurrentCompany(), iCustomer, "mail.nocustomeremailaddress");
+        return isOk(SSDB.getInstance().getCurrentCompany(), iCustomer,
+                "mail.nocustomeremailaddress");
     }
-  
+
     /**
      * Checks if the current company and iSupplier has mail addresses and servers. If not, opens a error dialog
      * and returns false.
@@ -261,18 +267,18 @@ public class SSMail {
      * @return
      */
     public static boolean isOk(SSSupplier iSupplier) {
-        return isOk(SSDB.getInstance().getCurrentCompany(), iSupplier, "mail.nosupplieremailaddress");
+        return isOk(SSDB.getInstance().getCurrentCompany(), iSupplier,
+                "mail.nosupplieremailaddress");
     }
-    
-    private static class MailValidationException extends Exception
-    {
+
+    private static class MailValidationException extends Exception {
         private final String resourceName;
-        
+
         public MailValidationException(String message, String resourceName) {
             super(message);
             this.resourceName = resourceName;
         }
-        
+
         public String getResourceName() {
             return resourceName;
         }

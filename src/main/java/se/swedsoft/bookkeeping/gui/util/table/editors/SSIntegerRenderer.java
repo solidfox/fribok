@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import javax.swing.table.DefaultTableCellRenderer;
 import java.text.NumberFormat;
+
 
 /**
  * User: Andreas Lago
@@ -40,27 +42,28 @@ public class SSIntegerRenderer extends DefaultTableCellRenderer {
     @Override
     protected void setValue(Object value) {
         NumberFormat iFormat = NumberFormat.getNumberInstance();
+
         iFormat.setMinimumFractionDigits(0);
         iFormat.setMaximumFractionDigits(0);
         iFormat.setGroupingUsed(false);
 
-        if(value != null){
-            setText( iFormat.format(value) );
-        } else{
+        if (value != null) {
+            setText(iFormat.format(value));
+        } else {
 
-            if(iShowNullValues){
+            if (iShowNullValues) {
                 setText(iFormat.format(0.00));
             } else {
                 setText("");
             }
         }
 
-
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSIntegerRenderer");
         sb.append("{iShowNullValues=").append(iShowNullValues);
         sb.append('}');

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
@@ -10,6 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.*;
+
 
 /**
  * User: Andreas Lago
@@ -48,22 +50,22 @@ public class SSPeriodicInvoice implements Serializable {
     // Tillagta fakturor
     private Map<Integer, Boolean> iAdded;
 
-    //////////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
      */
     public SSPeriodicInvoice() {
-        iDate            = new Date();
-        iCount           = 1;
-        iPeriod          = 1;
-        iAppendPeriod    = false;
+        iDate = new Date();
+        iCount = 1;
+        iPeriod = 1;
+        iAppendPeriod = false;
         iAppendInformation = false;
         iInformation = "Detta är faktura [FAK] av [TOT].";
-        iPeriodStart     = SSDateMath.getFirstDayInMonth(iDate);
-        iPeriodEnd       = SSDateMath.getLastDayMonth   (iDate);
-        iInvoices        = new LinkedList<SSInvoice>();
-        iAdded           = new HashMap<Integer, Boolean>();
+        iPeriodStart = SSDateMath.getFirstDayInMonth(iDate);
+        iPeriodEnd = SSDateMath.getLastDayMonth(iDate);
+        iInvoices = new LinkedList<SSInvoice>();
+        iAdded = new HashMap<Integer, Boolean>();
         doAutoIncrecement();
     }
 
@@ -75,58 +77,55 @@ public class SSPeriodicInvoice implements Serializable {
         copyFrom(iPeriodicInvoice);
     }
 
-
     /**
      *
      * @param iPeriodicInvoice
      */
     public void copyFrom(SSPeriodicInvoice iPeriodicInvoice) {
-        iNumber            = iPeriodicInvoice.iNumber;
-        iPeriod            = iPeriodicInvoice.iPeriod;
-        iDate              = iPeriodicInvoice.iDate;
-        iCount             = iPeriodicInvoice.iCount;
-        iDescription       = iPeriodicInvoice.iDescription;
-        iPeriodStart       = iPeriodicInvoice.iPeriodStart;
-        iPeriodEnd         = iPeriodicInvoice.iPeriodEnd;
-        iAppendPeriod      = iPeriodicInvoice.iAppendPeriod;
+        iNumber = iPeriodicInvoice.iNumber;
+        iPeriod = iPeriodicInvoice.iPeriod;
+        iDate = iPeriodicInvoice.iDate;
+        iCount = iPeriodicInvoice.iCount;
+        iDescription = iPeriodicInvoice.iDescription;
+        iPeriodStart = iPeriodicInvoice.iPeriodStart;
+        iPeriodEnd = iPeriodicInvoice.iPeriodEnd;
+        iAppendPeriod = iPeriodicInvoice.iAppendPeriod;
         iAppendInformation = iPeriodicInvoice.iAppendInformation;
-        iInformation       = iPeriodicInvoice.iInformation;
-        iTemplate          = new SSInvoice(iPeriodicInvoice.iTemplate);
-        iInvoices          = new LinkedList<SSInvoice>();
-        iAdded             = new HashMap<Integer, Boolean>();
+        iInformation = iPeriodicInvoice.iInformation;
+        iTemplate = new SSInvoice(iPeriodicInvoice.iTemplate);
+        iInvoices = new LinkedList<SSInvoice>();
+        iAdded = new HashMap<Integer, Boolean>();
         iTemplate.setCurrency(iPeriodicInvoice.getTemplate().getCurrency());
         iTemplate.setCurrencyRate(iPeriodicInvoice.getTemplate().getCurrencyRate());
 
         for (SSInvoice iInvoice : iPeriodicInvoice.iInvoices) {
             boolean isAdded = iPeriodicInvoice.isAdded(iInvoice);
 
-            iInvoices.add( new SSInvoice(iInvoice) );
-            iAdded.put( iInvoice.getNumber(), isAdded);
+            iInvoices.add(new SSInvoice(iInvoice));
+            iAdded.put(iInvoice.getNumber(), isAdded);
         }
     }
 
-
-
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      * Auto increment the sales number
      */
-    public void doAutoIncrecement(){
+    public void doAutoIncrecement() {
         List<SSPeriodicInvoice> iPeriodicInvoices = SSDB.getInstance().getPeriodicInvoices();
 
         int iMax = 0;
-        for(SSPeriodicInvoice iPeriodicInvoice: iPeriodicInvoices){
 
-            if(iPeriodicInvoice.iNumber != null && iPeriodicInvoice.iNumber > iMax){
+        for (SSPeriodicInvoice iPeriodicInvoice: iPeriodicInvoices) {
+
+            if (iPeriodicInvoice.iNumber != null && iPeriodicInvoice.iNumber > iMax) {
                 iMax = iPeriodicInvoice.iNumber;
             }
         }
         iNumber = iMax + 1;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -144,14 +143,16 @@ public class SSPeriodicInvoice implements Serializable {
         this.iNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSInvoice getTemplate() {
-        if(iTemplate == null) iTemplate = new SSInvoice(SSInvoiceType.NORMAL);
+        if (iTemplate == null) {
+            iTemplate = new SSInvoice(SSInvoiceType.NORMAL);
+        }
 
         return iTemplate;
     }
@@ -163,10 +164,10 @@ public class SSPeriodicInvoice implements Serializable {
     public void setTemplate(SSInvoice iTemplate) {
         this.iTemplate = iTemplate;
 
-        //createInvoices();
+        // createInvoices();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -183,10 +184,10 @@ public class SSPeriodicInvoice implements Serializable {
     public void setDate(Date iValue) {
         iDate = iValue;
 
-        //createInvoices();
+        // createInvoices();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -203,10 +204,10 @@ public class SSPeriodicInvoice implements Serializable {
     public void setCount(Integer iValue) {
         iCount = iValue;
 
-        //createInvoices();
+        // createInvoices();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -222,10 +223,10 @@ public class SSPeriodicInvoice implements Serializable {
      */
     public void setPeriod(Integer iValue) {
         iPeriod = iValue;
-        //createInvoices();
+        // createInvoices();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -243,7 +244,7 @@ public class SSPeriodicInvoice implements Serializable {
         this.iDescription = iDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -260,10 +261,10 @@ public class SSPeriodicInvoice implements Serializable {
     public void setPeriodStart(Date iPeriodStart) {
         this.iPeriodStart = iPeriodStart;
 
-        //createInvoices();
+        // createInvoices();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -280,10 +281,10 @@ public class SSPeriodicInvoice implements Serializable {
     public void setPeriodEnd(Date iPeriodEnd) {
         this.iPeriodEnd = iPeriodEnd;
 
-        //createInvoices();
+        // createInvoices();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -301,9 +302,8 @@ public class SSPeriodicInvoice implements Serializable {
     public void setAppendPeriod(boolean iAppendPeriod) {
         this.iAppendPeriod = iAppendPeriod;
 
-        //createInvoices();
+        // createInvoices();
     }
-
 
     public boolean isAppendInformation() {
         return iAppendInformation;
@@ -321,19 +321,21 @@ public class SSPeriodicInvoice implements Serializable {
         this.iInformation = iInformation;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iInvoice
      * @return
      */
-    public boolean isAdded(SSInvoice iInvoice){
-        if(iAdded == null) iAdded = new HashMap<Integer, Boolean>();
+    public boolean isAdded(SSInvoice iInvoice) {
+        if (iAdded == null) {
+            iAdded = new HashMap<Integer, Boolean>();
+        }
 
         Integer iNumber = iInvoice.getNumber();
 
-        if(iNumber != null){
+        if (iNumber != null) {
             return iAdded.get(iNumber);
         } else {
             return true;
@@ -344,53 +346,58 @@ public class SSPeriodicInvoice implements Serializable {
      *
      * @param iInvoice
      */
-    public void setAdded(SSInvoice iInvoice){
-        if(iAdded == null) iAdded = new HashMap<Integer, Boolean>();
+    public void setAdded(SSInvoice iInvoice) {
+        if (iAdded == null) {
+            iAdded = new HashMap<Integer, Boolean>();
+        }
 
         Integer iNumber = iInvoice.getNumber();
 
-        if(iNumber != null){
+        if (iNumber != null) {
             iAdded.put(iNumber, true);
         }
     }
-
 
     /**
      *
      * @param iInvoice
      */
-    public void setNotAdded(SSInvoice iInvoice){
-        if(iAdded == null) return;
+    public void setNotAdded(SSInvoice iInvoice) {
+        if (iAdded == null) {
+            return;
+        }
 
         Integer iNumber = iInvoice.getNumber();
 
-        if(iNumber != null){
+        if (iNumber != null) {
             iAdded.put(iNumber, false);
         }
     }
-
-     /**
-     *
-     * @return
-     */
-    private Map<Integer, Boolean> getAdded() {
-        if(iAdded == null) iAdded = new HashMap<Integer, Boolean>();
-        return iAdded;
-    }
-
-    ////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public List<SSInvoice> getInvoices(){
-        if(iInvoices == null) iInvoices = new LinkedList<SSInvoice>();
+    private Map<Integer, Boolean> getAdded() {
+        if (iAdded == null) {
+            iAdded = new HashMap<Integer, Boolean>();
+        }
+        return iAdded;
+    }
+
+    // //////////////////////////////////////////////////
+
+    /**
+     *
+     * @return
+     */
+    public List<SSInvoice> getInvoices() {
+        if (iInvoices == null) {
+            iInvoices = new LinkedList<SSInvoice>();
+        }
 
         return iInvoices;
     }
-
-
 
     /**
      * Returns all invoices that isnt added up till the selected date
@@ -398,16 +405,18 @@ public class SSPeriodicInvoice implements Serializable {
      * @param iDate
      * @return
      */
-    public List<SSInvoice> getInvoices(Date iDate){
+    public List<SSInvoice> getInvoices(Date iDate) {
         List<SSInvoice> iFiltered = new LinkedList<SSInvoice>();
 
         for (SSInvoice iInvoice : getInvoices()) {
 
             // Skip the invoice if its already added
-            if(isAdded(iInvoice) ) continue;
+            if (isAdded(iInvoice)) {
+                continue;
+            }
 
             // The invoice date is before the date
-            if( SSInvoiceMath.inPeriod(iInvoice, iDate) ){
+            if (SSInvoiceMath.inPeriod(iInvoice, iDate)) {
                 iFiltered.add(iInvoice);
             }
         }
@@ -423,86 +432,102 @@ public class SSPeriodicInvoice implements Serializable {
 
         for (SSInvoice iInvoice : getInvoices()) {
             // Skip the invoice if its already added
-            if(isAdded(iInvoice) ) continue;
+            if (isAdded(iInvoice)) {
+                continue;
+            }
 
             return iInvoice.getDate();
         }
         return null;
     }
 
-
-
     /**
      *
      */
-    public void createInvoices(){
+    public void createInvoices() {
         iInvoices = new LinkedList<SSInvoice>();
 
-        if( iPeriod == null || iPeriodStart == null || iPeriodEnd == null || iTemplate == null) return;
+        if (iPeriod == null || iPeriodStart == null || iPeriodEnd == null
+                || iTemplate == null) {
+            return;
+        }
 
-        Date iDate        = this.iDate;
+        Date iDate = this.iDate;
         Date iPeriodStart = this.iPeriodStart;
-        Date iPeriodEnd   = this.iPeriodEnd;
+        Date iPeriodEnd = this.iPeriodEnd;
 
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
-        for(int i = 0; i < iCount; i++){
+        for (int i = 0; i < iCount; i++) {
             SSInvoice iInvoice = new SSInvoice(iTemplate);
 
-            iInvoice.setDate( iDate );
+            iInvoice.setDate(iDate);
             iInvoice.setDueDate();
-            iInvoice.setNumber( i );
+            iInvoice.setNumber(i);
             iInvoice.setOrderNumbers(iTemplate.getOrderNumbers());
-            
-            if(iAppendPeriod){
+
+            if (iAppendPeriod) {
                 String strPeriodStart = iFormat.format(iPeriodStart);
-                String strPeriodEnd   = iFormat.format(iPeriodEnd );
+                String strPeriodEnd = iFormat.format(iPeriodEnd);
 
                 SSSaleRow iRow = new SSSaleRow();
-                iRow.setDescription( String.format(SSBundle.getBundle().getString("periodicinvoiceframe.invoiceperiod"), strPeriodStart, strPeriodEnd ) );
-                iRow.setQuantity   ( null );
-                iRow.setUnitprice  ( null );
-                iRow.setTaxCode    ( null );
+
+                iRow.setDescription(
+                        String.format(
+                                SSBundle.getBundle().getString(
+                                        "periodicinvoiceframe.invoiceperiod"),
+                                        strPeriodStart,
+                                        strPeriodEnd));
+                iRow.setQuantity(null);
+                iRow.setUnitprice(null);
+                iRow.setTaxCode(null);
 
                 iInvoice.getRows().add(iRow);
             }
 
-            if(iAppendInformation){
+            if (iAppendInformation) {
                 String iInformationText = iInformation;
-                if(iInformationText.contains("[FAK]"))
-                    iInformationText = iInformationText.replace("[FAK]", String.valueOf(i + 1));
-                if(iInformationText.contains("[TOT]"))
-                    iInformationText = iInformationText.replace("[TOT]", String.valueOf(iCount));
+
+                if (iInformationText.contains("[FAK]")) {
+                    iInformationText = iInformationText.replace("[FAK]",
+                            String.valueOf(i + 1));
+                }
+                if (iInformationText.contains("[TOT]")) {
+                    iInformationText = iInformationText.replace("[TOT]",
+                            String.valueOf(iCount));
+                }
 
                 SSSaleRow iRow = new SSSaleRow();
-                iRow.setDescription( iInformationText );
-                iRow.setQuantity   ( null );
-                iRow.setUnitprice  ( null );
-                iRow.setTaxCode    ( null );
+
+                iRow.setDescription(iInformationText);
+                iRow.setQuantity(null);
+                iRow.setUnitprice(null);
+                iRow.setTaxCode(null);
                 iInvoice.getRows().add(iRow);
             }
 
-            iDate        = SSDateMath.addMonths(iDate       , iPeriod);
+            iDate = SSDateMath.addMonths(iDate, iPeriod);
             iPeriodStart = SSDateMath.addMonths(iPeriodStart, iPeriod);
-            iPeriodEnd   = SSDateMath.addMonths(iPeriodStart, iPeriod);
+            iPeriodEnd = SSDateMath.addMonths(iPeriodStart, iPeriod);
 
             Calendar iCal = Calendar.getInstance();
+
             iCal.setTime(iPeriodEnd);
             iCal.add(Calendar.DATE, -1);
             iPeriodEnd = iCal.getTime();
             iInvoices.add(iInvoice);
         }
 
-        if(iAdded == null || iAdded.size() != iInvoices.size()){
+        if (iAdded == null || iAdded.size() != iInvoices.size()) {
             iAdded = new HashMap<Integer, Boolean>();
             for (SSInvoice iInvoice : iInvoices) {
                 Integer iNumber = iInvoice.getNumber();
 
-                iAdded .put(iNumber,  false);
+                iAdded.put(iNumber, false);
             }
         }
     }
-    
+
     public boolean equals(Object obj) {
         if (!(obj instanceof SSPeriodicInvoice)) {
             return false;
@@ -513,6 +538,7 @@ public class SSPeriodicInvoice implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSPeriodicInvoice");
         sb.append("{iAdded=").append(iAdded);
         sb.append(", iAppendInformation=").append(iAppendInformation);

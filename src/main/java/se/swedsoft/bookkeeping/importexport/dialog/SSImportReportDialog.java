@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.importexport.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * User: Andreas Lago
@@ -15,7 +17,6 @@ import java.awt.event.ActionListener;
 public class SSImportReportDialog extends SSDialog {
 
     private JPanel iPanel;
-
 
     private JTextPane iTextPane;
     private SSButtonPanel iButtonPanel;
@@ -53,6 +54,7 @@ public class SSImportReportDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.dialog.SSImportReportDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iPanel=").append(iPanel);

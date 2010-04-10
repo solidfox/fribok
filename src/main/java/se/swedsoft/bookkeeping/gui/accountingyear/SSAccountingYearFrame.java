@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.accountingyear;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
@@ -40,7 +41,6 @@ import java.util.List;
  */
 public class SSAccountingYearFrame extends SSDefaultTableFrame {
 
-
     private static SSAccountingYearFrame cInstance;
 
     /**
@@ -49,8 +49,8 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSAccountingYearFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
@@ -64,17 +64,18 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      * @param pHeight
      * @param pShowNewDialog
      */
-    public static void showFrame(final SSMainFrame pMainFrame, int pWidth, int pHeight, boolean pShowNewDialog){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(final SSMainFrame pMainFrame, int pWidth, int pHeight, boolean pShowNewDialog) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSAccountingYearFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
         cInstance.deIconize();
 
-        if(pShowNewDialog){
-            SwingUtilities.invokeLater(new Runnable() {
+        if (pShowNewDialog) {
+            SwingUtilities.invokeLater(
+                    new Runnable() {
                 public void run() {
-                    SSNewAccountingYearDialog.showDialog(pMainFrame, cInstance.getModel() );
+                    SSNewAccountingYearDialog.showDialog(pMainFrame, cInstance.getModel());
                 }
             });
         }
@@ -85,19 +86,13 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewAccountingYearFrame
      */
-    public static SSAccountingYearFrame getInstance(){
+    public static SSAccountingYearFrame getInstance() {
         return cInstance;
     }
-
-
-
-
 
     private SSTable iTable;
 
     private SSDefaultTableModel<SSNewAccountingYear> iModel;
-
-
 
     /**
      * Constructor
@@ -106,16 +101,16 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      * @param height
      */
     private SSAccountingYearFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("accountingyearframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("accountingyearframe.title"),
+                width, height);
         addInternalFrameListener(new InternalFrameAdapter() {
             @Override
-            public void internalFrameActivated(InternalFrameEvent e){
+            public void internalFrameActivated(InternalFrameEvent e) {
                 updateFrame();
             }
         });
 
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -129,19 +124,21 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
 
         // Open
         // ***************************
-        SSButton iButton = new SSButton("ICON_OPENITEM", "accountingyearframe.openbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_OPENITEM", "accountingyearframe.openbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openSelectedAccountingYear();
             }
         });
+
         toolBar.add(iButton);
         toolBar.addSeparator();
         iTable.addSelectionDependentComponent(iButton);
 
-
         // New
         // ***************************
-        iButton = new SSButton("ICON_NEWITEM", "accountingyearframe.newbutton", new ActionListener(){
+        iButton = new SSButton("ICON_NEWITEM", "accountingyearframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 updateFrame();
                 SSNewAccountingYearDialog.showDialog(getMainFrame(), iModel);
@@ -152,7 +149,8 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "accountingyearframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "accountingyearframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 editSelectedAccountingYear();
             }
@@ -160,10 +158,10 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         iTable.addSelectionDependentComponent(iButton);
 
-
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "accountingyearframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "accountingyearframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 deleteSelectedAccountingYear();
             }
@@ -171,11 +169,8 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         iTable.addSelectionDependentComponent(iButton);
 
-
-
         return toolBar;
     }
-
 
     /**
      * This method should return the main content for the frame.
@@ -190,14 +185,12 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         // Get the objects.
         List<SSNewAccountingYear> iYears = SSDB.getInstance().getYears();
 
-
         Collections.sort(iYears, new Comparator<SSNewAccountingYear>() {
             public int compare(SSNewAccountingYear o1, SSNewAccountingYear o2) {
                 return o1.getFrom().compareTo(o2.getFrom());
             }
         });
         iModel.setObjects(iYears);
-
 
         iTable = new SSTable();
         iTable.setDefaultRenderer(Date.class, new SSDateCellRenderer());
@@ -211,18 +204,17 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         iTable.getColumnModel().getColumn(2).setPreferredWidth(70);
         iTable.getColumnModel().getColumn(3).setPreferredWidth(200);
 
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 openSelectedAccountingYear();
             }
         });
 
-
         JPanel iPanel = new JPanel();
 
         iPanel.setLayout(new BorderLayout());
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,2,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
         return iPanel;
     }
@@ -241,10 +233,10 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
      *
      * @return The selected yeardata, if any
      */
-    private SSNewAccountingYear getSelected(){
+    private SSNewAccountingYear getSelected() {
         int selected = iTable.getSelectedRow();
 
-        if (selected >= 0){
+        if (selected >= 0) {
             return iModel.getObject(selected);
         }
         return null;
@@ -257,6 +249,7 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
     public SSDefaultTableModel<SSNewAccountingYear> getModel() {
         return iModel;
     }
+
     /**
      * Indicates whether this frame is a company data related frame.
      *
@@ -277,73 +270,70 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         return false;
     }
 
-
-
-
-
-
-
     /**
      *
      */
     private void openSelectedAccountingYear() {
-        //Hämta markerat år
+        // Hämta markerat år
         SSNewAccountingYear iNewYear = getSelected();
 
         // Kontrollera att ett år blev valt
         if (iNewYear == null) {
-            //Inget år markerat. Visa felmeddelande.
+            // Inget år markerat. Visa felmeddelande.
             new SSErrorDialog(getMainFrame(), "accountingyearframe.selectone");
             return;
         }
-        //Stäng fönstret om året är öppet
+        // Stäng fönstret om året är öppet
         if (iNewYear.equals(SSDB.getInstance().getCurrentYear())) {
             cInstance.dispose();
             return;
         }
-        //Kontrollera att året fortfarande finns i databasen
+        // Kontrollera att året fortfarande finns i databasen
         iNewYear = SSDB.getInstance().getAccountingYear(iNewYear);
         if (iNewYear == null) {
-            //Året fanns inte kvar i databasen. Visa felmeddelande.
+            // Året fanns inte kvar i databasen. Visa felmeddelande.
             new SSErrorDialog(getMainFrame(), "accountingyearframe.yeargone");
             return;
         }
 
-        //Fråga om året ska öppnas.
-        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(), "accountingyearframe.replaceyear", iNewYear.toRenderString());
+        // Fråga om året ska öppnas.
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(),
+                "accountingyearframe.replaceyear", iNewYear.toRenderString());
+
         if (iDialog.getResponce() != JOptionPane.YES_OPTION) {
-            //Svarade inte ja. Avbryt funktionen
+            // Svarade inte ja. Avbryt funktionen
             return;
         }
-        //Lås upp förra året
+        // Lås upp förra året
         SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
-        //Sätt det valda året som nuvarande år
+        // Sätt det valda året som nuvarande år
         SSDB.getInstance().setCurrentYear(iNewYear);
         SSDB.getInstance().initYear(true);
-        SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),iNewYear.getId());
+        SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),
+                iNewYear.getId());
 
-        //Lås nya året
+        // Lås nya året
         SSYearLock.applyLock(iNewYear);
-        //Stäng alla fönster
+        // Stäng alla fönster
         SSFrameManager.getInstance().close();
     }
-
 
     /**
      *
      */
-    private void editSelectedAccountingYear(){
+    private void editSelectedAccountingYear() {
         SSNewAccountingYear iAccountingYear = getSelected();
+
         updateFrame();
-        if(iAccountingYear == null){
-            new SSErrorDialog( getMainFrame(), "accountingyearframe.selectone" );
+        if (iAccountingYear == null) {
+            new SSErrorDialog(getMainFrame(), "accountingyearframe.selectone");
             return;
         }
 
-        //Kontrollera att året fortfarande finns i databasen
+        // Kontrollera att året fortfarande finns i databasen
         iAccountingYear = SSDB.getInstance().getAccountingYear(iAccountingYear);
         if (iAccountingYear == null) {
-            //Året fanns inte kvar i databasen. Visa felmeddelande.
+            // Året fanns inte kvar i databasen. Visa felmeddelande.
             new SSErrorDialog(getMainFrame(), "accountingyearframe.yeargone");
             return;
         }
@@ -352,25 +342,29 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         if (!iAccountingYear.equals(SSDB.getInstance().getCurrentYear())) {
 
             // Ask to open the year
-            String iCurrent = SSDB.getInstance().getCurrentYear() == null ? "" : SSDB.getInstance().getCurrentYear().toRenderString();
+            String iCurrent = SSDB.getInstance().getCurrentYear() == null
+                    ? ""
+                    : SSDB.getInstance().getCurrentYear().toRenderString();
             String iNew = iAccountingYear.toRenderString();
 
-            SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(), "accountingyearframe.openyear", iNew, iCurrent);
+            SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(),
+                    "accountingyearframe.openyear", iNew, iCurrent);
 
             if (iDialog.getResponce() != JOptionPane.YES_OPTION) {
                 return;
             }
 
-            //Lås upp förra året
+            // Lås upp förra året
             SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
-            //Sätt det valda året som nuvarande år
+            // Sätt det valda året som nuvarande år
             SSDB.getInstance().setCurrentYear(iAccountingYear);
             SSDB.getInstance().initYear(true);
-            SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),iAccountingYear.getId());
+            SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),
+                    iAccountingYear.getId());
 
-            //Lås nya året
+            // Lås nya året
             SSYearLock.applyLock(iAccountingYear);
-            //Stäng alla fönster
+            // Stäng alla fönster
             SSFrameManager.getInstance().close();
         }
 
@@ -380,39 +374,43 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         updateFrame();
     }
 
-
     /**
      *
      */
-    private void deleteSelectedAccountingYear(){
+    private void deleteSelectedAccountingYear() {
         SSNewAccountingYear pAccountingYear = getSelected();
-        if(pAccountingYear == null){
-            new SSErrorDialog( getMainFrame(), "accountingyearframe.selectone" );
+
+        if (pAccountingYear == null) {
+            new SSErrorDialog(getMainFrame(), "accountingyearframe.selectone");
             return;
         }
         updateFrame();
-        boolean lockRemoved =false;
+        boolean lockRemoved = false;
+
         if (pAccountingYear.equals(SSDB.getInstance().getCurrentYear())) {
             SSYearLock.removeLock(pAccountingYear);
             lockRemoved = true;
         }
 
-        SSQueryDialog iDialog = new SSQueryDialog( getMainFrame(), SSBundle.getBundle(),  "accountingyearframe.delete", pAccountingYear.toRenderString());
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(),
+                "accountingyearframe.delete", pAccountingYear.toRenderString());
 
-        if( iDialog.getResponce() != JOptionPane.YES_OPTION ){
-            if(lockRemoved)
+        if (iDialog.getResponce() != JOptionPane.YES_OPTION) {
+            if (lockRemoved) {
                 SSYearLock.applyLock(pAccountingYear);
+            }
             return;
         }
         updateFrame();
 
-        if(SSYearLock.isLocked(pAccountingYear)){
-            new SSErrorDialog( getMainFrame(), "accountingyearframe.yearopen");
-            if(lockRemoved)
+        if (SSYearLock.isLocked(pAccountingYear)) {
+            new SSErrorDialog(getMainFrame(), "accountingyearframe.yearopen");
+            if (lockRemoved) {
                 SSYearLock.applyLock(pAccountingYear);
+            }
             return;
         }
-        if(pAccountingYear.equals(SSDB.getInstance().getCurrentYear())){
+        if (pAccountingYear.equals(SSDB.getInstance().getCurrentYear())) {
             SSYearLock.removeLock(SSDB.getInstance().getCurrentYear());
             SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(), null);
             SSDB.getInstance().setCurrentYear(null);
@@ -424,18 +422,20 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
 
     public void updateFrame() {
         iModel.setObjects(SSDB.getInstance().getYears());
-        SSDB.getInstance().notifyListeners("YEAR", SSDB.getInstance().getCurrentYear(), null);
+        SSDB.getInstance().notifyListeners("YEAR", SSDB.getInstance().getCurrentYear(),
+                null);
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.accountingyear.SSAccountingYearFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iTable=").append(iTable);
@@ -443,7 +443,4 @@ public class SSAccountingYearFrame extends SSDefaultTableFrame {
         return sb.toString();
     }
 }
-
-
-
 

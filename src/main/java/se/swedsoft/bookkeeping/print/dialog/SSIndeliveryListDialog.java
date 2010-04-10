@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSIndeliveryMath;
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
@@ -22,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -46,7 +48,8 @@ public class SSIndeliveryListDialog extends SSDialog {
      * @param iMainFrame
      */
     public SSIndeliveryListDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("indeliverylistreport.dialog.title") );
+        super(iMainFrame,
+                SSBundle.getBundle().getString("indeliverylistreport.dialog.title"));
 
         setPanel(iPanel);
 
@@ -61,21 +64,22 @@ public class SSIndeliveryListDialog extends SSDialog {
             }
         });
 
-        iProduct.setModel( SSProductTableModel.getDropDownModel( SSProductMath.getNormalProducts() ) );
+        iProduct.setModel(
+                SSProductTableModel.getDropDownModel(SSProductMath.getNormalProducts()));
         iProduct.setSearchColumns(0);
-        iProduct.setSelected( iProduct.getFirst() );
+        iProduct.setSelected(iProduct.getFirst());
 
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iProduct.setEnabled( iCheckProduct.isSelected() );
+                iProduct.setEnabled(iCheckProduct.isSelected());
 
-                iFromDate.setEnabled( iCheckDate.isSelected() );
-                iToDate  .setEnabled( iCheckDate.isSelected() );
+                iFromDate.setEnabled(iCheckDate.isSelected());
+                iToDate.setEnabled(iCheckDate.isSelected());
             }
         };
 
-        iCheckDate    .addChangeListener(iChangeListener);
-        iCheckProduct .addChangeListener(iChangeListener);
+        iCheckDate.addChangeListener(iChangeListener);
+        iCheckProduct.addChangeListener(iChangeListener);
 
         iChangeListener.stateChanged(null);
     }
@@ -88,34 +92,33 @@ public class SSIndeliveryListDialog extends SSDialog {
         return iPanel;
     }
 
-
     /**
      * Returns the invoices to print depending on the user selections
      *
      * @return
      */
-    public List<SSIndelivery> getElementsToPrint(){
+    public List<SSIndelivery> getElementsToPrint() {
         List<SSIndelivery> iIndeliveries = SSDB.getInstance().getIndeliveries();
 
-
         // Filter by a product
-        if(iCheckProduct.isSelected() && iProduct.getSelected() != null ){
+        if (iCheckProduct.isSelected() && iProduct.getSelected() != null) {
             final SSProduct iProduct = this.iProduct.getSelected();
 
-            iIndeliveries = SSFilterFactory.doFilter(iIndeliveries, new SSFilter<SSIndelivery>() {
+            iIndeliveries = SSFilterFactory.doFilter(iIndeliveries,
+                    new SSFilter<SSIndelivery>() {
                 public boolean applyFilter(SSIndelivery iIndelivery) {
-                    return  SSIndeliveryMath.hasProduct(iIndelivery, iProduct );
+                    return  SSIndeliveryMath.hasProduct(iIndelivery, iProduct);
                 }
             });
 
         }
         // Filter by date
-        if(iCheckDate.isSelected() ){
+        if (iCheckDate.isSelected()) {
             final Date iDateFrom = iFromDate.getDate();
-            final Date iDateTo   = iToDate.getDate();
+            final Date iDateTo = iToDate.getDate();
 
-
-            iIndeliveries = SSFilterFactory.doFilter(iIndeliveries, new SSFilter<SSIndelivery>() {
+            iIndeliveries = SSFilterFactory.doFilter(iIndeliveries,
+                    new SSFilter<SSIndelivery>() {
                 public boolean applyFilter(SSIndelivery iIndelivery) {
                     return SSIndeliveryMath.inPeriod(iIndelivery, iDateFrom, iDateTo);
                 }
@@ -168,6 +171,7 @@ public class SSIndeliveryListDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSIndeliveryListDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCheckDate=").append(iCheckDate);

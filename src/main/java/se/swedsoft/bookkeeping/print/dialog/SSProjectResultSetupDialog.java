@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * Date: 2006-feb-08
@@ -47,9 +49,9 @@ public class SSProjectResultSetupDialog extends SSDialog {
 
         setPanel(iPanel);
 
-        iRadioSingle.addChangeListener( new ChangeListener(){
+        iRadioSingle.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iProjects.setEnabled( iRadioSingle.isSelected() );
+                iProjects.setEnabled(iRadioSingle.isSelected());
             }
         });
 
@@ -66,34 +68,34 @@ public class SSProjectResultSetupDialog extends SSDialog {
 
         ButtonGroup iGroup = new ButtonGroup();
 
-        iGroup.add(iRadioAll   );
+        iGroup.add(iRadioAll);
         iGroup.add(iRadioSingle);
 
         iProjects.setModel(SSProjectTableModel.getDropDownModel());
         iProjects.setSelected(iProjects.getFirst());
 
         Date iFrom = new Date();
-        Date iTo   = new Date();
+        Date iTo = new Date();
 
         List<SSNewAccountingYear> iYears = SSDB.getInstance().getYears();
 
         for (SSNewAccountingYear iYear : iYears) {
-            if(iFrom.after (iYear.getFrom() ) ) iFrom = iYear.getFrom();
-            if(iTo  .before(iYear.getTo  () )  )iTo   = iYear.getTo();
+            if (iFrom.after(iYear.getFrom())) {
+                iFrom = iYear.getFrom();
+            }
+            if (iTo.before(iYear.getTo())) {
+                iTo = iYear.getTo();
+            }
         }
-        this.iFrom.setDate( iFrom );
-        this.iTo.setDate ( iTo  );
+        this.iFrom.setDate(iFrom);
+        this.iTo.setDate(iTo);
     }
-
-
-
-
 
     /**
      *
      * @param pDate
      */
-    public void setFrom(Date pDate){
+    public void setFrom(Date pDate) {
         iFrom.setDate(pDate);
     }
 
@@ -101,7 +103,7 @@ public class SSProjectResultSetupDialog extends SSDialog {
      *
      * @param pDate
      */
-    public void setTo(Date pDate){
+    public void setTo(Date pDate) {
         iTo.setDate(pDate);
     }
 
@@ -109,7 +111,7 @@ public class SSProjectResultSetupDialog extends SSDialog {
      *
      * @return
      */
-    public Date getFrom(){
+    public Date getFrom() {
         return iFrom.getDate();
     }
 
@@ -117,7 +119,7 @@ public class SSProjectResultSetupDialog extends SSDialog {
      *
      * @return
      */
-    public Date getTo(){
+    public Date getTo() {
         return iTo.getDate();
     }
 
@@ -125,18 +127,18 @@ public class SSProjectResultSetupDialog extends SSDialog {
      *
      * @return
      */
-    public SSNewProject getProject(){
-        if( iRadioSingle.isSelected() ){
+    public SSNewProject getProject() {
+        if (iRadioSingle.isSelected()) {
             return iProjects.getSelected();
         } else {
             return null;
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSProjectResultSetupDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iFrom=").append(iFrom);

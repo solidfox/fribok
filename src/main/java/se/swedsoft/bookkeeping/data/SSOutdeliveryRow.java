@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -14,19 +16,16 @@ public class SSOutdeliveryRow implements Serializable {
 
     private static final long serialVersionUID = -9210187383331088946L;
 
-
     private String iProductNr;
 
     private Integer iChange;
 
     private transient SSProduct iProduct;
 
-
     /**
      *
      */
-    public SSOutdeliveryRow() {
-    }
+    public SSOutdeliveryRow() {}
 
     /**
      *
@@ -42,21 +41,21 @@ public class SSOutdeliveryRow implements Serializable {
      * @param iChange
      */
     public SSOutdeliveryRow(SSProduct iProduct, int iChange) {
-        this.iChange  = iChange;
+        this.iChange = iChange;
         this.iProduct = iProduct;
-        iProductNr    = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
 
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     public void copyFrom(SSOutdeliveryRow iOutdeliveryRow) {
         iProductNr = iOutdeliveryRow.iProductNr;
-        iChange    = iOutdeliveryRow.iChange;
-        iProduct   = iOutdeliveryRow.iProduct;
+        iChange = iOutdeliveryRow.iChange;
+        iProduct = iOutdeliveryRow.iProduct;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -73,11 +72,12 @@ public class SSOutdeliveryRow implements Serializable {
     public void setProductNr(String iProductNr) {
         this.iProductNr = iProductNr;
     }
-    /////////////////////////////////////////////////////////////////////////////
+
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      *
-      * @return
+     * @return
      */
     public Integer getChange() {
         return iChange;
@@ -91,18 +91,18 @@ public class SSOutdeliveryRow implements Serializable {
         this.iChange = iChange;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSProduct getProduct() {
-        if(iProduct == null && iProductNr != null){
+        if (iProduct == null && iProductNr != null) {
             List<SSProduct> iProducts = SSDB.getInstance().getProducts();
 
             for (SSProduct iCurrent : iProducts) {
-                if(iProductNr.equals( iCurrent.getNumber() )){
+                if (iProductNr.equals(iCurrent.getNumber())) {
                     iProduct = iCurrent;
                     break;
                 }
@@ -117,10 +117,10 @@ public class SSOutdeliveryRow implements Serializable {
      */
     public void setProduct(SSProduct iProduct) {
         this.iProduct = iProduct;
-        iProductNr    = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      * Returns true if the product is the same as in this row
@@ -129,12 +129,13 @@ public class SSOutdeliveryRow implements Serializable {
      * @return
      */
     public boolean hasProduct(SSProduct iProduct) {
-        return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
+        return iProductNr != null && iProductNr.equals(iProduct.getNumber());
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSOutdeliveryRow");
         sb.append("{iChange=").append(iChange);
         sb.append(", iProduct=").append(iProduct);

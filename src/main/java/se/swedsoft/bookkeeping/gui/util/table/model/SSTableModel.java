@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.table.model;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 import se.swedsoft.bookkeeping.gui.util.table.editors.SSTableEditor;
 
@@ -10,6 +11,7 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.*;
+
 
 /**
  * User: Andreas Lago
@@ -27,16 +29,15 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     // Editable columns
     private Map<SSTableColumn<T>, Boolean> iEditable;
 
-    //////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////
 
     /**
      * Default constructor.
      */
     public SSTableModel() {
-        iColumns  = new LinkedList<SSTableColumn<T>>();
-        iObjects  = new LinkedList<T     >();
+        iColumns = new LinkedList<SSTableColumn<T>>();
+        iObjects = new LinkedList<T     >();
         iEditable = new HashMap<SSTableColumn<T>, Boolean>();
-
 
     }
 
@@ -55,13 +56,13 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      *
      * @param pObjects The data for the table model.
      */
-    public SSTableModel(T ... pObjects) {
+    public SSTableModel(T... pObjects) {
         this();
 
         iObjects.addAll(Arrays.asList(pObjects));
     }
 
-    //////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////
 
     public SSTableModel<T> getDropdownmodel() {
         return null;
@@ -82,7 +83,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      *
      * @param pObjects The objects to display.
      */
-    public void setObjects(T ... pObjects) {
+    public void setObjects(T... pObjects) {
         iObjects = new LinkedList<T>();
         iObjects.addAll(Arrays.asList(pObjects));
         fireTableDataChanged();
@@ -110,7 +111,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     public void addColumn(SSTableColumn<T> iColumn, boolean iEditable) {
         iColumns.add(iColumn);
 
-        this.iEditable.put(iColumn,  iEditable);
+        this.iEditable.put(iColumn, iEditable);
         fireTableDataChanged();
     }
 
@@ -137,9 +138,9 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         // Inside the bounds ?
-        if(column >= 0 && column < iColumns.size() ) {
+        if (column >= 0 && column < iColumns.size()) {
 
-            SSTableColumn iColumn =  iColumns.get(column);
+            SSTableColumn iColumn = iColumns.get(column);
 
             return iColumn.getName();
         }
@@ -241,8 +242,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-
-
     /**
      * Deletes the data at the given index if the index i within the limits of
      * the underlaying structure.
@@ -321,7 +320,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         return iFiltered;
     }
 
-
     /**
      *
      * @param iObject
@@ -330,9 +328,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         iObjects.remove(iObject);
         fireTableDataChanged();
     }
-
-
-
 
     /**
      * Returns the index in this list of the first occurrence of the specified
@@ -348,17 +343,15 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         return iObjects.indexOf(iObject);
     }
 
-
-
     /**
      *
      * @param iTable
      * @return the selected row
      */
-    public T getSelectedRow(JTable iTable){
+    public T getSelectedRow(JTable iTable) {
         int selected = iTable.getSelectedRow();
 
-        if (selected >= 0){
+        if (selected >= 0) {
             return getObject(selected);
         }
         return null;
@@ -370,10 +363,10 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
      * @param iTable
      * @return
      */
-    public List<T> getSelectedRows(JTable iTable){
-        int [] selected = iTable.getSelectedRows();
+    public List<T> getSelectedRows(JTable iTable) {
+        int[] selected = iTable.getSelectedRows();
 
-        if (selected.length > 0){
+        if (selected.length > 0) {
             return getObjects(selected);
         }
         return null;
@@ -391,9 +384,10 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         SSTableEditor.setDefaultEditors(iTable);
 
         int iIndex = 0;
+
         for (SSTableColumn<T> iColumn : iColumns) {
-            int iWidth                  = iColumn.getDefaultWidth();
-            TableCellEditor   iEditor   = iColumn.getCellEditor();
+            int iWidth = iColumn.getDefaultWidth();
+            TableCellEditor   iEditor = iColumn.getCellEditor();
             TableCellRenderer iRenderer = iColumn.getCellRenderer();
 
             iTable.getColumnModel().getColumn(iIndex).setPreferredWidth(iWidth);
@@ -405,12 +399,11 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         }
     }
 
-
     /**
      *
      * @param iTable
      */
-    public void addDeleteAction(final JTable iTable){
+    public void addDeleteAction(final JTable iTable) {
 
         // The delete action.
         Action iDelete = new AbstractAction() {
@@ -418,48 +411,51 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
                 int col = iTable.getSelectedColumn();
                 int row = iTable.getSelectedRow();
 
-                if ( iTable.isEditing() ) {
+                if (iTable.isEditing()) {
                     return;
                 }
                 T iSelected = getSelectedRow(iTable);
 
-                if(iSelected != null) {
-                    deleteRow(iSelected );
+                if (iSelected != null) {
+                    deleteRow(iSelected);
 
-                    iTable.changeSelection(row-1, col, false, false);
+                    iTable.changeSelection(row - 1, col, false, false);
                 }
             }
         };
-        iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "DELETE_ROW");
-        iTable.getActionMap().put("DELETE_ROW"     , iDelete);
+
+        iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0),
+                "DELETE_ROW");
+        iTable.getActionMap().put("DELETE_ROW", iDelete);
     }
 
-/*    public void dispose()
-    {
-        TableModelListener[] iTableModelListeners = this.getTableModelListeners();
-        for(int i=0;i<iTableModelListeners.length;i++)
-        {
-            this.removeTableModelListener(iTableModelListeners[i]);
-        }
-        if(iObjects!=null)
-            iObjects.removeAll(iObjects);
+    /* public void dispose()
+     {
+     TableModelListener[] iTableModelListeners = this.getTableModelListeners();
+     for(int i=0;i<iTableModelListeners.length;i++)
+     {
+     this.removeTableModelListener(iTableModelListeners[i]);
+     }
+     if(iObjects!=null)
+     iObjects.removeAll(iObjects);
 
-        iObjects=null;
-        if(iColumns!=null)
-            iColumns.removeAll(iColumns);
+     iObjects=null;
+     if(iColumns!=null)
+     iColumns.removeAll(iColumns);
 
-        iColumns=null;
-        if(iEditable!=null)
-            iEditable.clear();
+     iColumns=null;
+     if(iEditable!=null)
+     iEditable.clear();
 
-        iEditable=null;
+     iEditable=null;
 
-    }
-*/
+     }
+     */
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel");
         sb.append("{iColumns=").append(iColumns);
         sb.append(", iEditable=").append(iEditable);

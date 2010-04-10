@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.customer;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -38,6 +39,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -53,8 +55,8 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSCustomerFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSCustomerFrame.cInstance.isClosed()) {
             cInstance = new SSCustomerFrame(pMainFrame, pWidth, pHeight);
         }
         SSCustomerFrame.cInstance.setVisible(true);
@@ -65,10 +67,9 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSCustomerFrame getInstance(){
+    public static SSCustomerFrame getInstance() {
         return cInstance;
     }
-
 
     private SSTable iTable;
 
@@ -84,9 +85,9 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSCustomerFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("customerframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("customerframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -98,52 +99,58 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "customerframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "customerframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCustomerDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         iToolBar.add(iButton);
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "customerframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "customerframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCustomer iSelected = iModel.getSelectedRow(iTable);
                 String iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getCustomer(iSelected);
                 }
                 if (iSelected != null) {
                     SSCustomerDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "customerframe.customergone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "customerframe.customergone",
+                            iNumber);
                 }
             }
         });
         iToolBar.add(iButton);
         iToolBar.addSeparator();
         iTable.addSelectionDependentComponent(iButton);
-
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "customerframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "customerframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCustomer iSelected = iModel.getSelectedRow(iTable);
                 String iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getCustomer(iSelected);
                 }
-                if(iSelected != null){
+                if (iSelected != null) {
                     SSCustomerDialog.copyDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "customerframe.customergone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "customerframe.customergone",
+                            iNumber);
                 }
             }
         });
@@ -151,13 +158,14 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         iToolBar.addSeparator();
         iTable.addSelectionDependentComponent(iButton);
 
-
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "customerframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "customerframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSCustomer> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedCustomers(toDelete);
             }
         });
@@ -165,65 +173,84 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         iTable.addSelectionDependentComponent(iButton);
         iToolBar.addSeparator();
 
-
         // Importera
         // ***************************
-        SSMenuButton iButton2 = new SSMenuButton("ICON_IMPORT", "customerframe.importbutton");
-        iButton2.add("customerframe.import.excel", new ActionListener(){
+        SSMenuButton iButton2 = new SSMenuButton("ICON_IMPORT",
+                "customerframe.importbutton");
+
+        iButton2.add("customerframe.import.excel",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
-                if( iFilechooser.showOpenDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    final SSCustomerImporter iImporter = new SSCustomerImporter( iFilechooser.getSelectedFile() );
+                if (iFilechooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    final SSCustomerImporter iImporter = new SSCustomerImporter(
+                            iFilechooser.getSelectedFile());
 
                     try {
-                        SSInitDialog.runProgress(getMainFrame(), "Importerar kunder", new Runnable(){
-                            public void run(){
+                        SSInitDialog.runProgress(getMainFrame(), "Importerar kunder",
+                                new Runnable() {
+                            public void run() {
                                 iImporter.Import();
                             }
                         });
                     } catch (SSImportException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     }
                     iModel.fireTableDataChanged();
                 }
 
             }
         });
-        iButton2.add("customerframe.import.xml", new ActionListener(){
+        iButton2.add("customerframe.import.xml",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
+
                 iFilechooser.setSelectedFile(new File("Kundlista.xml"));
 
-                if( iFilechooser.showOpenDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    final SSCustomerImporter iImporter = new SSCustomerImporter(iFilechooser.getSelectedFile());
+                if (iFilechooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    final SSCustomerImporter iImporter = new SSCustomerImporter(
+                            iFilechooser.getSelectedFile());
+
                     try {
-                        SSInitDialog.runProgress(getMainFrame(), "Importerar kunder", new Runnable(){
-                            public void run(){
+                        SSInitDialog.runProgress(getMainFrame(), "Importerar kunder",
+                                new Runnable() {
+                            public void run() {
                                 iImporter.doImport();
                             }
                         });
-                    } catch (SSImportException e1){
-                        SSErrorDialog.showDialog( getMainFrame(), "", e1.getLocalizedMessage() );
+                    } catch (SSImportException e1) {
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                e1.getLocalizedMessage());
                     }
 
                 }
             }
         });
-        iButton2.add("customerframe.import.ebutik", new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+        iButton2.add("customerframe.import.ebutik",
+                new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 SSDefaultFileChooser iFileChooser = new SSDefaultFileChooser();
 
-                if(iFileChooser.showOpenDialog(getMainFrame()) == JFileChooser.APPROVE_OPTION){
-                    final SSCustomerImporter iImporter = new SSCustomerImporter(iFileChooser.getSelectedFile());
-                    try{
-                        SSInitDialog.runProgress(getMainFrame(), "Importerar kunder", new Runnable(){
-                            public void run(){
+                if (iFileChooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    final SSCustomerImporter iImporter = new SSCustomerImporter(
+                            iFileChooser.getSelectedFile());
+
+                    try {
+                        SSInitDialog.runProgress(getMainFrame(), "Importerar kunder",
+                                new Runnable() {
+                            public void run() {
                                 iImporter.doEbutikImport();
                             }
                         });
-                    } catch (SSImportException e1){
-                        SSErrorDialog.showDialog(getMainFrame(), "" , e1.getLocalizedMessage());
+                    } catch (SSImportException e1) {
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                e1.getLocalizedMessage());
                     }
                 }
             }
@@ -232,25 +259,32 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         // Exportera
         // ***************************
         iButton2 = new SSMenuButton("ICON_EXPORT", "customerframe.exportbutton");
-        iButton2.add("customerframe.export.excel", new ActionListener(){
+        iButton2.add("customerframe.export.excel",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
                 List<SSCustomer> iItems;
                 List<SSCustomer> iSelected = iModel.getSelectedRows(iTable);
 
-                if( iSelected != null) {
-                    int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("customerframe.import.allorselected"));
-                    switch(select){
-                        case JOptionPane.YES_OPTION:
-                            iItems = iSelected;
-                            iItems = getCustomers(iItems);
-                            break;
-                        case JOptionPane.NO_OPTION :
-                            iItems = SSDB.getInstance().getCustomers();
-                            break;
-                        default:
-                            return;
+                if (iSelected != null) {
+                    int select = SSQueryDialog.showDialog(getMainFrame(),
+                            JOptionPane.YES_NO_CANCEL_OPTION, getTitle(),
+                            SSBundle.getBundle().getString(
+                            "customerframe.import.allorselected"));
+
+                    switch (select) {
+                    case JOptionPane.YES_OPTION:
+                        iItems = iSelected;
+                        iItems = getCustomers(iItems);
+                        break;
+
+                    case JOptionPane.NO_OPTION:
+                        iItems = SSDB.getInstance().getCustomers();
+                        break;
+
+                    default:
+                        return;
                     }
                 } else {
                     iItems = SSDB.getInstance().getCustomers();
@@ -258,35 +292,48 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
 
                 iFilechooser.setSelectedFile(new File("Kundlista.xls"));
 
-                if( iFilechooser.showSaveDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    SSCustomerExporter iExporter = new SSCustomerExporter( iFilechooser.getSelectedFile(), iItems );
+                if (iFilechooser.showSaveDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    SSCustomerExporter iExporter = new SSCustomerExporter(
+                            iFilechooser.getSelectedFile(), iItems);
 
                     try {
                         iExporter.export();
                     } catch (IOException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     } catch (SSExportException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     }
                 }
             }
         });
-        iButton2.add("customerframe.export.xml", new ActionListener(){
+        iButton2.add("customerframe.export.xml",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSCustomer> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getCustomers(iSelected);
                 List<SSCustomer> iItems;
-                if( iSelected != null) {
-                    int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("customerframe.import.allorselected"));
-                    switch(select){
-                        case JOptionPane.YES_OPTION:
-                            iItems = iSelected;
-                            break;
-                        case JOptionPane.NO_OPTION :
-                            iItems = SSDB.getInstance().getCustomers();
-                            break;
-                        default:
-                            return;
+
+                if (iSelected != null) {
+                    int select = SSQueryDialog.showDialog(getMainFrame(),
+                            JOptionPane.YES_NO_CANCEL_OPTION, getTitle(),
+                            SSBundle.getBundle().getString(
+                            "customerframe.import.allorselected"));
+
+                    switch (select) {
+                    case JOptionPane.YES_OPTION:
+                        iItems = iSelected;
+                        break;
+
+                    case JOptionPane.NO_OPTION:
+                        iItems = SSDB.getInstance().getCustomers();
+                        break;
+
+                    default:
+                        return;
                     }
                 } else {
                     iItems = SSDB.getInstance().getCustomers();
@@ -294,10 +341,14 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
                 if (!iItems.isEmpty()) {
 
                     SSXMLFileChooser iFilechooser = SSXMLFileChooser.getInstance();
+
                     iFilechooser.setSelectedFile(new File("Kundlista.xml"));
 
-                    if( iFilechooser.showSaveDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                        SSCustomerExporter iExporter = new SSCustomerExporter(iFilechooser.getSelectedFile(), iItems);
+                    if (iFilechooser.showSaveDialog(getMainFrame())
+                            == JFileChooser.APPROVE_OPTION) {
+                        SSCustomerExporter iExporter = new SSCustomerExporter(
+                                iFilechooser.getSelectedFile(), iItems);
+
                         iExporter.doXMLExport();
                     }
                 }
@@ -310,53 +361,56 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         // Print
         // ***************************
         iButton2 = new SSMenuButton("ICON_PRINT", "customerframe.printbutton");
-        iButton2.add("customerframe.print.customerrevenue", new ActionListener(){
+        iButton2.add("customerframe.print.customerrevenue", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CustomerRevenueReport();
             }
         });
-        iButton2.add("customerframe.print.customerlist", new ActionListener(){
+        iButton2.add("customerframe.print.customerlist", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CustomerListReport();
             }
         });
         iToolBar.add(iButton2);
-        /*iToolBar.addSeparator();
-        iButton2 = new SSMenuButton("ICON_INVOICE24", "customerframe.bgcadmissionbutton");
-        JMenuItem iMenuItem = iButton2.add("customerframe.bgcadmissionexport", new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                exportBGCAdmissions();
-            }
-        });
-        iTable.addSelectionDependentComponent(iMenuItem);
-        iButton2.add("customerframe.bgcadmissionimport", new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        iToolBar.add(iButton2);*/
+        /* iToolBar.addSeparator();
+         iButton2 = new SSMenuButton("ICON_INVOICE24", "customerframe.bgcadmissionbutton");
+         JMenuItem iMenuItem = iButton2.add("customerframe.bgcadmissionexport", new ActionListener(){
+         public void actionPerformed(ActionEvent e) {
+         exportBGCAdmissions();
+         }
+         });
+         iTable.addSelectionDependentComponent(iMenuItem);
+         iButton2.add("customerframe.bgcadmissionimport", new ActionListener(){
+         public void actionPerformed(ActionEvent e) {
+
+         }
+         });
+         iToolBar.add(iButton2);*/
         return iToolBar;
     }
 
     public void exportBGCAdmissions() {
-        final String lockString = "bgcadmission"+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "bgcadmission"
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog( getMainFrame(), "customerframe.bgcadmission");
+            new SSErrorDialog(getMainFrame(), "customerframe.bgcadmission");
             return;
         }
         List<SSCustomer> iSelected = iModel.getSelectedRows(iTable);
+
         iSelected = getCustomers(iSelected);
-        if(iSelected.isEmpty()) {
+        if (iSelected.isEmpty()) {
             SSPostLock.removeLock(lockString);
             return;
         }
 
         List<SSCustomer> iFiltered = new LinkedList<SSCustomer>();
 
-        for (SSCustomer iCustomer : iSelected) {
-
-        }
-        SSExportBGCAdmissionDialog iDialog = new SSExportBGCAdmissionDialog(getMainFrame(), iSelected);
+        for (SSCustomer iCustomer : iSelected) {}
+        SSExportBGCAdmissionDialog iDialog = new SSExportBGCAdmissionDialog(getMainFrame(),
+                iSelected);
 
         iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(getMainFrame());
@@ -372,22 +426,24 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
     @Override
     public JComponent getMainContent() {
         iModel = new SSCustomerTableModel();
-        iModel.addColumn( SSCustomerTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_NAME );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_YOUR_CONTACT );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_REGISTRATION_NUMBER );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_PHONE );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_CUSTOMER_CLAIM );
-        iModel.addColumn( SSCustomerTableModel.COLUMN_CREDIT_LIMIT );
+        iModel.addColumn(SSCustomerTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSCustomerTableModel.COLUMN_NAME);
+        iModel.addColumn(SSCustomerTableModel.COLUMN_YOUR_CONTACT);
+        iModel.addColumn(SSCustomerTableModel.COLUMN_REGISTRATION_NUMBER);
+        iModel.addColumn(SSCustomerTableModel.COLUMN_PHONE);
+        iModel.addColumn(SSCustomerTableModel.COLUMN_CUSTOMER_CLAIM);
+        iModel.addColumn(SSCustomerTableModel.COLUMN_CREDIT_LIMIT);
 
         iTable = new SSTable();
 
         iModel.setupTable(iTable);
 
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCustomer iSelected = iModel.getSelectedRow(iTable);
                 String iNumber = null;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getCustomer(iSelected);
@@ -397,7 +453,8 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSCustomerDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "customerframe.customergone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "customerframe.customergone",
+                            iNumber);
                 }
             }
         });
@@ -408,13 +465,10 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         iPanel.setLayout(new BorderLayout());
         iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
-
-
-
 
     /**
      * This method should return the status bar content, if any.
@@ -446,8 +500,6 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         return false;
     }
 
-
-
     /**
      *
      * @return the model
@@ -467,10 +519,14 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
 
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "customerframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSCustomer iCustomer : delete) {
-                if (SSPostLock.isLocked("customer" + iCustomer.getNumber() + SSDB.getInstance().getCurrentCompany().getId())) {
-                    new SSErrorDialog(getMainFrame(), "customerframe.customeropen", iCustomer.getNumber());
+                if (SSPostLock.isLocked(
+                        "customer" + iCustomer.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "customerframe.customeropen",
+                            iCustomer.getNumber());
                 } else {
                     SSDB.getInstance().deleteCustomer(iCustomer);
                 }
@@ -478,30 +534,33 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
         }
     }
 
-
-
     /**
      *
      */
     private void CustomerListReport() {
         final SSCustomerListPrinter iPrinter;
         List<SSCustomer> iCustomers;
+
         if (iTable.getSelectedRowCount() > 0) {
 
-            int iOption = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "customerframe.printallorselected");
+            int iOption = SSQueryDialog.showDialog(getMainFrame(),
+                    JOptionPane.YES_NO_CANCEL_OPTION, "customerframe.printallorselected");
+
             switch (iOption) {
-                case JOptionPane.YES_OPTION:
-                    iCustomers = iModel.getObjects(iTable.getSelectedRows());
-                    iCustomers = getCustomers(iCustomers);
-                    iPrinter = new SSCustomerListPrinter(iCustomers);
-                    break;
-                case JOptionPane.NO_OPTION :
-                    iCustomers = iModel.getObjects();
-                    iCustomers = getCustomers(iCustomers);
-                    iPrinter = new SSCustomerListPrinter(iCustomers);
-                    break;
-                default:
-                    return;
+            case JOptionPane.YES_OPTION:
+                iCustomers = iModel.getObjects(iTable.getSelectedRows());
+                iCustomers = getCustomers(iCustomers);
+                iPrinter = new SSCustomerListPrinter(iCustomers);
+                break;
+
+            case JOptionPane.NO_OPTION:
+                iCustomers = iModel.getObjects();
+                iCustomers = getCustomers(iCustomers);
+                iPrinter = new SSCustomerListPrinter(iCustomers);
+                break;
+
+            default:
+                return;
             }
         } else {
             iCustomers = iModel.getObjects(iTable.getSelectedRows());
@@ -509,54 +568,64 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
             iPrinter = new SSCustomerListPrinter(iCustomers);
         }
 
-        SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
+        SSProgressDialog.runProgress(getMainFrame(), new Runnable() {
             public void run() {
                 iPrinter.preview(getMainFrame());
             }
         });
 
-
     }
 
     private void CustomerRevenueReport() {
         List<SSCustomer> iCustomers;
+
         if (iTable.getSelectedRowCount() > 0) {
 
-            int iOption = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "customerframe.printallorselected");
-            switch(iOption ){
-                case JOptionPane.YES_OPTION:
-                    iCustomers = iModel.getObjects(iTable.getSelectedRows());
-                    iCustomers = getCustomers(iCustomers);
-                    break;
-                case JOptionPane.NO_OPTION :
-                    iCustomers = SSDB.getInstance().getCustomers();
-                    break;
-                default:
-                    return;
+            int iOption = SSQueryDialog.showDialog(getMainFrame(),
+                    JOptionPane.YES_NO_CANCEL_OPTION, "customerframe.printallorselected");
+
+            switch (iOption) {
+            case JOptionPane.YES_OPTION:
+                iCustomers = iModel.getObjects(iTable.getSelectedRows());
+                iCustomers = getCustomers(iCustomers);
+                break;
+
+            case JOptionPane.NO_OPTION:
+                iCustomers = SSDB.getInstance().getCustomers();
+                break;
+
+            default:
+                return;
             }
         } else {
             iCustomers = SSDB.getInstance().getCustomers();
         }
 
-        SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(getMainFrame(), SSBundle.getBundle().getString("customerrevenue.perioddialog.title"));
+        SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(getMainFrame(),
+                SSBundle.getBundle().getString("customerrevenue.perioddialog.title"));
+
         if (SSDB.getInstance().getCurrentYear() != null) {
             iDialog.setFrom(SSDB.getInstance().getCurrentYear().getFrom());
             iDialog.setTo(SSDB.getInstance().getCurrentYear().getTo());
         } else {
             Calendar iCal = Calendar.getInstance();
+
             iDialog.setFrom(iCal.getTime());
-            iCal.add(Calendar.MONTH,1);
+            iCal.add(Calendar.MONTH, 1);
             iDialog.setTo(iCal.getTime());
         }
         iDialog.setLocationRelativeTo(getMainFrame());
-        if( iDialog.showDialog() != JOptionPane.OK_OPTION) return;
+        if (iDialog.showDialog() != JOptionPane.OK_OPTION) {
+            return;
+        }
 
         final Date iFrom = iDialog.getFrom();
-        final Date iTo   = iDialog.getTo();
+        final Date iTo = iDialog.getTo();
 
-        final SSCustomerRevenuePrinter iPrinter = new SSCustomerRevenuePrinter(iCustomers, iFrom, iTo);
+        final SSCustomerRevenuePrinter iPrinter = new SSCustomerRevenuePrinter(iCustomers,
+                iFrom, iTo);
 
-        SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
+        SSProgressDialog.runProgress(getMainFrame(), new Runnable() {
             public void run() {
                 iPrinter.preview(getMainFrame());
             }
@@ -577,17 +646,17 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
 
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        iSearchPanel=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        iSearchPanel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.customer.SSCustomerFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

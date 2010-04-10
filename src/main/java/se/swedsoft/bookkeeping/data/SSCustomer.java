@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.data.common.SSDeliveryTerm;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-22
@@ -20,7 +22,6 @@ public class SSCustomer implements Serializable, SSTableSearchable {
 
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     // Kund nr:
     private String      iCustomerNr;
@@ -41,7 +42,6 @@ public class SSCustomer implements Serializable, SSTableSearchable {
     // Er kontaktperson:
     private String      iYourContactPerson;
 
-
     // VAT nr:
     private String      iVATNumber;
     // Bankgiro nummer:
@@ -59,7 +59,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
     private boolean        iEuSaleYhirdPartCommodity;
     // Momsfri försäljning
     private boolean        iVatFreeSale;
-    //Göm enhetspris på följesedel
+    // Göm enhetspris på följesedel
     private boolean        iHideUnitprice;
 
     // Fakureringsvaluta
@@ -83,24 +83,24 @@ public class SSCustomer implements Serializable, SSTableSearchable {
 
     private String iComment;
 
-
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
     public SSCustomer() {
-        iInvoiceAddress  = new SSAddress();
+        iInvoiceAddress = new SSAddress();
         iDeliveryAddress = new SSAddress();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
-        if(iCompany != null){
+
+        if (iCompany != null) {
             iOurContactPerson = iCompany.getContactPerson();
-            iInvoiceCurrency  = iCompany.getCurrency();
-            iPaymentTerm      = iCompany.getPaymentTerm();
-            iDeliveryTerm     = iCompany.getDeliveryTerm();
-            iDeliveryWay      = iCompany.getDeliveryWay();
-        //     setCurrency         ( iCompany.getCurrency()  );
+            iInvoiceCurrency = iCompany.getCurrency();
+            iPaymentTerm = iCompany.getPaymentTerm();
+            iDeliveryTerm = iCompany.getDeliveryTerm();
+            iDeliveryWay = iCompany.getDeliveryWay();
+            // setCurrency         ( iCompany.getCurrency()  );
         }
     }
 
@@ -110,35 +110,35 @@ public class SSCustomer implements Serializable, SSTableSearchable {
      * @param iCustomer
      */
     public SSCustomer(SSCustomer iCustomer) {
-        iCustomerNr               = iCustomer.iCustomerNr;
-        iName                     = iCustomer.iName;
-        iEMail                    = iCustomer.iEMail;
-        iPhone                    = iCustomer.iPhone;
-        iPhone2                   = iCustomer.iPhone2;
-        iTelefax                  = iCustomer.iTelefax;
-        iRegistrationNumber       = iCustomer.iRegistrationNumber;
-        iOurContactPerson         = iCustomer.iOurContactPerson;
-        iYourContactPerson        = iCustomer.iYourContactPerson;
-        iVATNumber                = iCustomer.iVATNumber;
-        iBankAccountNumber        = iCustomer.iBankAccountNumber;
-        iPlusAccountNumber        = iCustomer.iPlusAccountNumber;
-        iAccountNumber            = iCustomer.iAccountNumber;
-        iClearingNumber           = iCustomer.iClearingNumber;
-        iEuSaleCommodity          = iCustomer.iEuSaleCommodity;
+        iCustomerNr = iCustomer.iCustomerNr;
+        iName = iCustomer.iName;
+        iEMail = iCustomer.iEMail;
+        iPhone = iCustomer.iPhone;
+        iPhone2 = iCustomer.iPhone2;
+        iTelefax = iCustomer.iTelefax;
+        iRegistrationNumber = iCustomer.iRegistrationNumber;
+        iOurContactPerson = iCustomer.iOurContactPerson;
+        iYourContactPerson = iCustomer.iYourContactPerson;
+        iVATNumber = iCustomer.iVATNumber;
+        iBankAccountNumber = iCustomer.iBankAccountNumber;
+        iPlusAccountNumber = iCustomer.iPlusAccountNumber;
+        iAccountNumber = iCustomer.iAccountNumber;
+        iClearingNumber = iCustomer.iClearingNumber;
+        iEuSaleCommodity = iCustomer.iEuSaleCommodity;
         iEuSaleYhirdPartCommodity = iCustomer.iEuSaleYhirdPartCommodity;
-        iVatFreeSale              = iCustomer.iVatFreeSale;
-        iHideUnitprice            = iCustomer.iHideUnitprice;
-        iInvoiceCurrency          = iCustomer.iInvoiceCurrency;
-        iPaymentTerm              = iCustomer.iPaymentTerm;
-        iDeliveryTerm             = iCustomer.iDeliveryTerm;
-        iDeliveryWay              = iCustomer.iDeliveryWay;
-        iCreditLimit              = iCustomer.iCreditLimit;
-        iDiscount                 = iCustomer.iDiscount;
-        iInvoiceAddress           = new SSAddress(iCustomer.iInvoiceAddress );
-        iDeliveryAddress          = new SSAddress(iCustomer.iDeliveryAddress);
+        iVatFreeSale = iCustomer.iVatFreeSale;
+        iHideUnitprice = iCustomer.iHideUnitprice;
+        iInvoiceCurrency = iCustomer.iInvoiceCurrency;
+        iPaymentTerm = iCustomer.iPaymentTerm;
+        iDeliveryTerm = iCustomer.iDeliveryTerm;
+        iDeliveryWay = iCustomer.iDeliveryWay;
+        iCreditLimit = iCustomer.iCreditLimit;
+        iDiscount = iCustomer.iDiscount;
+        iInvoiceAddress = new SSAddress(iCustomer.iInvoiceAddress);
+        iDeliveryAddress = new SSAddress(iCustomer.iDeliveryAddress);
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -156,7 +156,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         iCustomerNr = iNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -174,7 +174,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iName = iName;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -192,7 +192,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iEMail = iEMail;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -210,7 +210,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iPhone = iPhone;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -228,7 +228,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iPhone2 = iPhone2;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -246,7 +246,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iTelefax = iTelefax;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -264,7 +264,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iRegistrationNumber = iRegistrationNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -282,7 +282,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iOurContactPerson = iOurContactPerson;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -300,7 +300,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iYourContactPerson = iYourContactPerson;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -318,7 +318,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iVATNumber = iVATNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -336,7 +336,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iBankAccountNumber = iBankAccountNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -354,7 +354,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iPlusAccountNumber = iPlusAccountNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     public String getAccountNumber() {
         return iAccountNumber;
@@ -372,7 +372,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iClearingNumber = iClearingNumber;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -390,7 +390,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iEuSaleCommodity = iEuSaleCommodity;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -408,7 +408,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iEuSaleYhirdPartCommodity = iEuSaleYhirdPartCommodity;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -419,7 +419,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
     }
 
     /**
-     * 
+     *
      * @param iHideUnitprice
      */
     public void setHideUnitprice(boolean iHideUnitprice) {
@@ -442,7 +442,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         iVatFreeSale = iTaxFree;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -460,7 +460,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iInvoiceCurrency = iInvoiceCurrency;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -478,7 +478,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iPaymentTerm = iPaymentTerm;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -496,7 +496,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iDeliveryTerm = iDeliveryTerm;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -514,7 +514,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iDeliveryWay = iDeliveryWay;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -532,7 +532,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iCreditLimit = iCreditLimit;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -550,7 +550,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iDiscount = iDiscount;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -568,7 +568,7 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iInvoiceAddress = iInvoiceAddress;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -594,16 +594,14 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         this.iDeliveryAddress = iDeliveryAddress;
     }
 
+    // ////////////////////////////////////////////////////
 
-    //////////////////////////////////////////////////////
-
-    
     public boolean equals(Object obj) {
-        if(iCustomerNr == null){
+        if (iCustomerNr == null) {
             return false;
         }
-        if(obj instanceof SSCustomer){
-            SSCustomer iCustomer = (SSCustomer)obj;
+        if (obj instanceof SSCustomer) {
+            SSCustomer iCustomer = (SSCustomer) obj;
 
             return iCustomerNr.equals(iCustomer.iCustomerNr);
         }
@@ -619,12 +617,10 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         return iCustomerNr;
     }
 
-    
     public int hashCode() {
         return iCustomerNr == null ? super.hashCode() : iCustomerNr.hashCode();
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -635,15 +631,15 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         return sb.toString();
     }
 
-
     public BigDecimal getCustomerRevenueForMonth(SSMonth iMonth) {
         Double iInvoiceSum = 0.0;
 
         for (SSInvoice iInvoice : SSDB.getInstance().getInvoices()) {
-            if(iMonth.isDateInMonth(iInvoice.getDate())){
-                if(iInvoice.getCustomerNr() != null){
-                    if(iInvoice.getCustomerNr().equals(iCustomerNr)){
-                        iInvoiceSum += SSInvoiceMath.getNetSum(iInvoice).doubleValue()*iInvoice.getCurrencyRate().doubleValue();
+            if (iMonth.isDateInMonth(iInvoice.getDate())) {
+                if (iInvoice.getCustomerNr() != null) {
+                    if (iInvoice.getCustomerNr().equals(iCustomerNr)) {
+                        iInvoiceSum += SSInvoiceMath.getNetSum(iInvoice).doubleValue()
+                                * iInvoice.getCurrencyRate().doubleValue();
                     }
                 }
 
@@ -651,17 +647,18 @@ public class SSCustomer implements Serializable, SSTableSearchable {
         }
 
         Double iCreditInvoiceSum = 0.0;
+
         for (SSCreditInvoice iCreditInvoice : SSDB.getInstance().getCreditInvoices()) {
-            if(iMonth.isDateInMonth(iCreditInvoice.getDate())){
-                if(iCreditInvoice.getCustomerNr() != null){
-                    if(iCreditInvoice.getCustomerNr().equals(iCustomerNr)){
-                        iCreditInvoiceSum += SSInvoiceMath.getNetSum(iCreditInvoice).doubleValue()*iCreditInvoice.getCurrencyRate().doubleValue();
+            if (iMonth.isDateInMonth(iCreditInvoice.getDate())) {
+                if (iCreditInvoice.getCustomerNr() != null) {
+                    if (iCreditInvoice.getCustomerNr().equals(iCustomerNr)) {
+                        iCreditInvoiceSum += SSInvoiceMath.getNetSum(iCreditInvoice).doubleValue()
+                                * iCreditInvoice.getCurrencyRate().doubleValue();
                     }
                 }
             }
         }
-        return new BigDecimal(iInvoiceSum-iCreditInvoiceSum);
+        return new BigDecimal(iInvoiceSum - iCreditInvoiceSum);
     }
-
 
 }

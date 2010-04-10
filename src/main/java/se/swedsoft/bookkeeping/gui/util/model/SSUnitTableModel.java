@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.model;
 
+
 import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -11,19 +12,19 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import javax.swing.*;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 12:13:59
  */
-public class SSUnitTableModel  extends SSTableModel<SSUnit> {
-
+public class SSUnitTableModel extends SSTableModel<SSUnit> {
 
     /**
      * Default constructor.
      */
     public SSUnitTableModel() {
-        super(SSDB.getInstance().getUnits() );
+        super(SSDB.getInstance().getUnits());
     }
 
     /**
@@ -44,39 +45,37 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
         return SSUnit.class;
     }
 
-
     @Override
     public SSUnitTableModel getDropdownmodel() {
         return getDropDownModel();
     }
+
     /**
      *
      * @return
      */
-    public static SSUnitTableModel getDropDownModel(){
+    public static SSUnitTableModel getDropDownModel() {
         SSUnitTableModel iModel = new SSUnitTableModel();
 
-        iModel.addColumn( COLUMN_NAME );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
 
     }
 
-
-
     /**
      *  Name
      */
-    public static SSTableColumn<SSUnit> COLUMN_NAME = new SSTableColumn<SSUnit>(SSBundle.getBundle().getString("currencytable.column.1")) {
+    public static SSTableColumn<SSUnit> COLUMN_NAME = new SSTableColumn<SSUnit>(
+            SSBundle.getBundle().getString("currencytable.column.1")) {
         @Override
         public Object getValue(SSUnit iCurrency) {
             return iCurrency.getName();
         }
 
         @Override
-        public void setValue(SSUnit iCurrency, Object iValue) {
-        }
+        public void setValue(SSUnit iCurrency, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -89,19 +88,18 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
         }
     };
 
-
     /**
      *  Description
      */
-    public static SSTableColumn<SSUnit> COLUMN_DESCRIPTION = new SSTableColumn<SSUnit>(SSBundle.getBundle().getString("currencytable.column.2")) {
+    public static SSTableColumn<SSUnit> COLUMN_DESCRIPTION = new SSTableColumn<SSUnit>(
+            SSBundle.getBundle().getString("currencytable.column.2")) {
         @Override
         public Object getValue(SSUnit iCurrency) {
             return iCurrency.getDescription();
         }
 
         @Override
-        public void setValue(SSUnit iCurrency, Object iValue) {
-        }
+        public void setValue(SSUnit iCurrency, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -114,18 +112,18 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
         }
     };
 
-
     /**
      *
      * @param iOwner
      * @return
      */
-    public static SSEditableTableComboBox.EditingFactory<SSUnit> getEditingFactory(final JDialog iOwner){
+    public static SSEditableTableComboBox.EditingFactory<SSUnit> getEditingFactory(final JDialog iOwner) {
         return new SSEditableTableComboBox.EditingFactory<SSUnit>() {
             public SSUnit newAction() {
-                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner, SSBundle.getBundle().getString("unittable.title"));
+                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner,
+                        SSBundle.getBundle().getString("unittable.title"));
 
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
                     SSUnit iUnit = new SSUnit();
 
                     iUnit.setName(iDialog.getName());
@@ -139,10 +137,12 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
             }
 
             public void editAction(SSUnit iSelected) {
-                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner, SSBundle.getBundle().getString("unittable.title"));
-                iDialog.setName       ( iSelected.getName()       );
-                iDialog.setDescription( iSelected.getDescription());
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
+                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner,
+                        SSBundle.getBundle().getString("unittable.title"));
+
+                iDialog.setName(iSelected.getName());
+                iDialog.setDescription(iSelected.getDescription());
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
                     iSelected.setName(iDialog.getName());
                     iSelected.setDescription(iDialog.getDescription());
                     SSDB.getInstance().updateUnit(iSelected);
@@ -152,9 +152,7 @@ public class SSUnitTableModel  extends SSTableModel<SSUnit> {
             public void deleteAction(SSUnit iSelected) {
                 SSDB.getInstance().deleteUnit(iSelected);
             }
-        } ;
+        };
     }
-
-
 
 }

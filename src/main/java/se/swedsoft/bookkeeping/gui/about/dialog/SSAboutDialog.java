@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.about.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.about.panel.SSAboutPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -10,17 +11,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
 
+
 /**
  * Date: 2006-mar-14
  * Time: 15:57:57
  */
 public class SSAboutDialog {
 
-
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSAboutDialog() {
-    }
+    private SSAboutDialog() {}
 
     /**
      *
@@ -28,8 +28,9 @@ public class SSAboutDialog {
      */
     public static void showDialog(final SSMainFrame iMainFrame) {
 
-        final SSDialog       iDialog = new SSDialog(iMainFrame, bundle.getString("aboutframe.title"));
-        final SSAboutPanel   iPanel  = new SSAboutPanel();
+        final SSDialog       iDialog = new SSDialog(iMainFrame,
+                bundle.getString("aboutframe.title"));
+        final SSAboutPanel   iPanel = new SSAboutPanel();
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
         iDialog.setResizable(false);

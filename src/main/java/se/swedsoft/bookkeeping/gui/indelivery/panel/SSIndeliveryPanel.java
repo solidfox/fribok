@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.indelivery.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.SSIndelivery;
 import se.swedsoft.bookkeeping.data.SSIndeliveryRow;
@@ -21,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-26
@@ -28,7 +30,7 @@ import java.awt.event.KeyEvent;
  */
 public class SSIndeliveryPanel {
 
-    private  SSIndelivery iIndelivery;
+    private SSIndelivery iIndelivery;
 
     private JPanel iPanel;
 
@@ -36,14 +38,11 @@ public class SSIndeliveryPanel {
 
     private SSTable iTable;
 
-
-
     private JTextField iText;
 
     private SSDateChooser iDate;
 
     private JFormattedTextField iNumber;
-
 
     private SSIndeliveryRowTableModel iModel;
 
@@ -64,20 +63,25 @@ public class SSIndeliveryPanel {
         iModel.setupTable(iTable);
 
         iTable.setSingleSelect();
-        iTable.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
+        iTable.setDefaultEditor(SSProduct.class,
+                new SSProductCellEditor(SSProductMath.getNormalProducts(), false));
 
-        new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSIndeliveryRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
@@ -89,11 +93,11 @@ public class SSIndeliveryPanel {
             }
         });
 
-        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iText.requestFocusInWindow();
                         }
@@ -102,24 +106,24 @@ public class SSIndeliveryPanel {
             }
         });
 
-        iText.addKeyListener(new KeyAdapter(){
+        iText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -129,10 +133,10 @@ public class SSIndeliveryPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -157,9 +161,9 @@ public class SSIndeliveryPanel {
      */
     public SSIndelivery getIndelivery() {
         // Text
-        iIndelivery.setText( iText.getText() );
+        iIndelivery.setText(iText.getText());
         // Datum
-        iIndelivery.setDate( iDate.getDate() );
+        iIndelivery.setDate(iDate.getDate());
 
         return iIndelivery;
     }
@@ -174,11 +178,11 @@ public class SSIndeliveryPanel {
         iModel.setObjects(iInventory.getRows());
 
         // Number
-        iNumber.setValue( iInventory.getNumber() );
+        iNumber.setValue(iInventory.getNumber());
         // Text
-        iText.setText( iInventory.getText() );
+        iText.setText(iInventory.getText());
         // Datum
-        iDate.setDate( iInventory.getDate());
+        iDate.setDate(iInventory.getDate());
     }
 
     /**
@@ -197,10 +201,10 @@ public class SSIndeliveryPanel {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.indelivery.panel.SSIndeliveryPanel");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

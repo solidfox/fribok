@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -26,7 +27,8 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
         super(new JCheckBox());
         iPanel = new JPanel();
 
-        JCheckBox checkBox = (JCheckBox)getComponent();
+        JCheckBox checkBox = (JCheckBox) getComponent();
+
         checkBox.setHorizontalAlignment(JCheckBox.CENTER);
     }
 
@@ -35,9 +37,10 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
      */
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        Component c =  super.getTableCellEditorComponent(table, value, isSelected, row, column);
+        Component c = super.getTableCellEditorComponent(table, value, isSelected, row,
+                column);
 
-        if(value == null){
+        if (value == null) {
             if (isSelected) {
                 iPanel.setForeground(table.getSelectionForeground());
                 iPanel.setBackground(table.getSelectionBackground());
@@ -57,6 +60,7 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSBooleanCellEditor");
         sb.append("{iPanel=").append(iPanel);
         sb.append('}');

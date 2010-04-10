@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.tender;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSTenderMath;
 import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -21,6 +22,7 @@ import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-21
@@ -30,8 +32,7 @@ public class SSTenderDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSTenderDialog() {
-    }
+    private SSTenderDialog() {}
 
     /**
      *
@@ -40,21 +41,24 @@ public class SSTenderDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSTender iTender, final SSTenderTableModel pModel) {
-        final String lockString = "tender" + iTender.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(SSPostLock.isLocked(lockString)){
-            new SSErrorDialog( iMainFrame, "tenderframe.tenderopen",iTender.getNumber());
+        final String lockString = "tender" + iTender.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (SSPostLock.isLocked(lockString)) {
+            new SSErrorDialog(iMainFrame, "tenderframe.tenderopen", iTender.getNumber());
             return;
         }
-        final SSDialog      iDialog = new SSDialog(iMainFrame, bundle.getString("tenderframe.copy.title"));
-        final SSTenderPanel iPanel  = new SSTenderPanel(iDialog);
+        final SSDialog      iDialog = new SSDialog(iMainFrame,
+                bundle.getString("tenderframe.copy.title"));
+        final SSTenderPanel iPanel = new SSTenderPanel(iDialog);
         SSTender iNew = new SSTender(iTender);
 
         iNew.setNumber(null);
-        iNew.setDate(new Date() );
+        iNew.setDate(new Date());
         iNew.setOrder(null);
         iNew.setPrinted(false);
 
-        iPanel.setTender( iNew );
+        iPanel.setTender(iNew);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -64,13 +68,18 @@ public class SSTenderDialog {
 
                 SSDB.getInstance().addTender(iTender);
 
-                if (iPanel.doSaveCustomerAndProducts()) SSTenderMath.addCustomerAndProducts(iTender);
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSTenderMath.addCustomerAndProducts(iTender);
+                }
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -80,14 +89,17 @@ public class SSTenderDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "tenderframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "tenderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -106,15 +118,18 @@ public class SSTenderDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSTender iTender, final SSTenderTableModel pModel) {
-        final String lockString = "tender" + iTender.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "tender" + iTender.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
 
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog( iMainFrame, "tenderframe.tenderopen",iTender.getNumber());
+            new SSErrorDialog(iMainFrame, "tenderframe.tenderopen", iTender.getNumber());
             return;
         }
-        final SSDialog      iDialog = new SSDialog(iMainFrame, bundle.getString("tenderframe.edit.title"));
-        final SSTenderPanel iPanel  = new SSTenderPanel(iDialog);
-        iPanel.setTender( new SSTender(iTender) );
+        final SSDialog      iDialog = new SSDialog(iMainFrame,
+                bundle.getString("tenderframe.edit.title"));
+        final SSTenderPanel iPanel = new SSTenderPanel(iDialog);
+
+        iPanel.setTender(new SSTender(iTender));
         iPanel.setSavecustomerandproductsSelected(false);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
@@ -124,14 +139,19 @@ public class SSTenderDialog {
                 SSTender iTender = iPanel.getTender();
 
                 SSDB.getInstance().updateTender(iTender);
-                if (iPanel.doSaveCustomerAndProducts()) SSTenderMath.addCustomerAndProducts(iTender);
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSTenderMath.addCustomerAndProducts(iTender);
+                }
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -141,15 +161,18 @@ public class SSTenderDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "tenderframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "tenderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -168,9 +191,11 @@ public class SSTenderDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final SSTenderTableModel pModel) {
-        final SSDialog      iDialog = new SSDialog(iMainFrame, bundle.getString("tenderframe.new.title"));
-        final SSTenderPanel iPanel  = new SSTenderPanel(iDialog);
-        iPanel.setTender( SSTenderMath.newTender() );
+        final SSDialog      iDialog = new SSDialog(iMainFrame,
+                bundle.getString("tenderframe.new.title"));
+        final SSTenderPanel iPanel = new SSTenderPanel(iDialog);
+
+        iPanel.setTender(SSTenderMath.newTender());
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -180,12 +205,15 @@ public class SSTenderDialog {
 
                 SSDB.getInstance().addTender(iTender);
 
-                if (iPanel.doSaveCustomerAndProducts()) SSTenderMath.addCustomerAndProducts(iTender);
+                if (iPanel.doSaveCustomerAndProducts()) {
+                    SSTenderMath.addCustomerAndProducts(iTender);
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -194,20 +222,23 @@ public class SSTenderDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ){
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "tenderframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "tenderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }

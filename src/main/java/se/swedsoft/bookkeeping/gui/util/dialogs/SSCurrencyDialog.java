@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
 import se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField;
@@ -9,12 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-23
  * Time: 14:25:51
  */
-public class SSCurrencyDialog extends SSDialog{
+public class SSCurrencyDialog extends SSDialog {
 
     private JPanel iPanel;
 
@@ -70,7 +72,7 @@ public class SSCurrencyDialog extends SSDialog{
         setLocationRelativeTo(iDialog);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -90,7 +92,7 @@ public class SSCurrencyDialog extends SSDialog{
         this.iName.setText(iName);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -108,7 +110,7 @@ public class SSCurrencyDialog extends SSDialog{
         this.iDescription.setText(iDescription);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -126,10 +128,10 @@ public class SSCurrencyDialog extends SSDialog{
         iExchangeRate.setValue(iValue);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSCurrencyDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDescription=").append(iDescription);

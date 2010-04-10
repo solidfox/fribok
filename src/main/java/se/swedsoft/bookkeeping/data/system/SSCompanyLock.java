@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 
 /**
  * User: Johan Gunnarsson
@@ -14,9 +16,7 @@ import java.io.PrintWriter;
  * inte kan tas bort av en annan användare.
  */
 public class SSCompanyLock {
-    private SSCompanyLock() {
-    }
-
+    private SSCompanyLock() {}
 
     /**
      * Låser företag iCompany så att flera instanser av programmet inte kan editera det samtidigt.
@@ -40,6 +40,7 @@ public class SSCompanyLock {
             iOut.println(iCompany.getId().toString());
             iOut.flush();
             String iReply = iIn.readLine();
+
             return iReply.equals("goahead");
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,7 +53,7 @@ public class SSCompanyLock {
      * @param iCompany - Det objekt som ska låsas upp
      */
     public static void removeLock(SSNewCompany iCompany) {
-        if(iCompany == null){
+        if (iCompany == null) {
             return;
         }
         if (!SSDB.getInstance().getLocking()) {
@@ -73,7 +74,7 @@ public class SSCompanyLock {
      * @return Företaget låst eller inte
      */
     public static boolean isLocked(SSNewCompany iCompany) {
-        if(iCompany == null){
+        if (iCompany == null) {
             return false;
         }
         if (!SSDB.getInstance().getLocking()) {
@@ -88,6 +89,7 @@ public class SSCompanyLock {
             iOut.println(iCompany.getId().toString());
             iOut.flush();
             String iReply = iIn.readLine();
+
             return iReply.equals("true");
         } catch (IOException e) {
             e.printStackTrace();

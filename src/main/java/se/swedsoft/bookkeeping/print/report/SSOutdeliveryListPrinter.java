@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.SSOutdelivery;
 import se.swedsoft.bookkeeping.data.SSOutdeliveryRow;
@@ -15,6 +16,7 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -32,22 +34,21 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
      *
      */
     public SSOutdeliveryListPrinter() {
-        this(SSDB.getInstance().getOutdeliveries() );
+        this(SSDB.getInstance().getOutdeliveries());
     }
 
     /**
      *
      * @param iOutdeliveries
      */
-    public SSOutdeliveryListPrinter( List<SSOutdelivery> iOutdeliveries){
+    public SSOutdeliveryListPrinter(List<SSOutdelivery> iOutdeliveries) {
         // Get all orders
         this.iOutdeliveries = iOutdeliveries;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("outdeliverylist.jrxml");
-        setDetail      ("outdeliverylist.jrxml");
+        setDetail("outdeliverylist.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -68,8 +69,8 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
         iPrinter = new SSInventoryRowPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -88,22 +89,25 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
                 SSOutdelivery iOutdelivery = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iOutdelivery.getNumber();
-                        break;
-                    case 1:
-                        value = iFormat.format(iOutdelivery.getDate());
-                        break;
-                    case 2:
-                        value = iOutdelivery.getText();
-                        break;
-                    case 3:
-                        iPrinter.setOutdelivery(iOutdelivery);
+                case 0:
+                    value = iOutdelivery.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iFormat.format(iOutdelivery.getDate());
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 2:
+                    value = iOutdelivery.getText();
+                    break;
+
+                case 3:
+                    iPrinter.setOutdelivery(iOutdelivery);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -115,8 +119,6 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
         iModel.addColumn("outdelivery.text");
         iModel.addColumn("outdelivery.rows");
 
-
-
         Collections.sort(iOutdeliveries, new Comparator<SSOutdelivery>() {
             public int compare(SSOutdelivery o1, SSOutdelivery o2) {
                 return o1.getNumber() - o2.getNumber();
@@ -125,10 +127,8 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
 
         iModel.setObjects(iOutdeliveries);
 
-
         return iModel;
     }
-
 
     private class SSInventoryRowPrinter extends SSPrinter {
 
@@ -137,15 +137,13 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSInventoryRowPrinter( ){
-            setMargins(0,0,0,0);
+        public SSInventoryRowPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("outdeliverylist.row.jrxml");
+            setDetail("outdeliverylist.row.jrxml");
             setSummary("outdeliverylist.row.jrxml");
 
-
-
-            iModel = new SSDefaultTableModel<SSOutdeliveryRow>(  ) {
+            iModel = new SSDefaultTableModel<SSOutdeliveryRow>() {
 
                 @Override
                 public Class getType() {
@@ -160,15 +158,17 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
                     SSProduct iProduct = iRow.getProduct();
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iRow.getProductNr();
-                            break;
-                        case 1:
-                            value = iProduct == null ? null : iProduct.getDescription();
-                            break;
-                        case 2:
-                            value = iRow.getChange();
-                            break;
+                    case 0:
+                        value = iRow.getProductNr();
+                        break;
+
+                    case 1:
+                        value = iProduct == null ? null : iProduct.getDescription();
+                        break;
+
+                    case 2:
+                        value = iRow.getChange();
+                        break;
 
                     }
 
@@ -180,7 +180,6 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
             iModel.addColumn("outdeliveryrow.descripion");
             iModel.addColumn("outdeliveryrow.change");
         }
-
 
         /**
          * Gets the data model for this report
@@ -206,24 +205,26 @@ public class SSOutdeliveryListPrinter extends SSPrinter {
          *
          * @param iOutdelivery
          */
-        public void setOutdelivery(SSOutdelivery iOutdelivery ) {
-            iModel.setObjects( iOutdelivery.getRows() );
+        public void setOutdelivery(SSOutdelivery iOutdelivery) {
+            iModel.setObjects(iOutdelivery.getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSOutdeliveryListPrinter.SSInventoryRowPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSOutdeliveryListPrinter.SSInventoryRowPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSOutdeliveryListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iOutdeliveries=").append(iOutdeliveries);

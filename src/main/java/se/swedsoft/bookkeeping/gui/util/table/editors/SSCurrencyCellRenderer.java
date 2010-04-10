@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -11,17 +13,15 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class SSCurrencyCellRenderer extends DefaultTableCellRenderer {
 
-
     @Override
     public void setValue(Object value) {
-        if(value instanceof SSCurrency){
+        if (value instanceof SSCurrency) {
             SSCurrency iCurrency = (SSCurrency) value;
 
-            setText( iCurrency.getName()  );
-        }  else {
-            setText( "" );
+            setText(iCurrency.getName());
+        } else {
+            setText("");
         }
     }
-
 
 }

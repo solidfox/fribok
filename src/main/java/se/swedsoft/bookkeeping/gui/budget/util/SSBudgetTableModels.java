@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.budget.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSBudget;
 import se.swedsoft.bookkeeping.data.SSMonth;
@@ -11,23 +12,24 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+
 /**
  * Date: 2006-jan-27
  * Time: 16:23:32
  */
 public class SSBudgetTableModels {
-    private SSBudgetTableModels() {
-    }
+    private SSBudgetTableModels() {}
 
     /**
      *
      * @param pBudget
      * @return SSDefaultTableModel
      */
-    public static  SSDefaultTableModel<SSAccount> createBudgetTableModel(final SSBudget pBudget) {
+    public static SSDefaultTableModel<SSAccount> createBudgetTableModel(final SSBudget pBudget) {
         List<SSAccount> iAccounts = pBudget.getAccounts();
 
-        SSDefaultTableModel<SSAccount> iTableModel =  new SSDefaultTableModel<SSAccount>() {
+        SSDefaultTableModel<SSAccount> iTableModel = new SSDefaultTableModel<SSAccount>() {
+
             /**
              *
              * @return Class
@@ -45,12 +47,14 @@ public class SSBudgetTableModels {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 switch (columnIndex) {
-                    case 0:
-                        return String.class;
-                    case 1:
-                        return String.class;
-                    case 2:
-                        return BigDecimal.class;
+                case 0:
+                    return String.class;
+
+                case 1:
+                    return String.class;
+
+                case 2:
+                    return BigDecimal.class;
                 }
                 return super.getColumnClass(columnIndex);
             }
@@ -67,15 +71,17 @@ public class SSBudgetTableModels {
                 Object value = null;
 
                 switch (columnIndex) {
-                    case 0:
-                        value = account.getNumber();
-                        break;
-                    case 1:
-                        value = account.getDescription();
-                        break;
-                    case 2:
-                        value = pBudget.getSumForAccount(account);
-                        break;
+                case 0:
+                    value = account.getNumber();
+                    break;
+
+                case 1:
+                    value = account.getDescription();
+                    break;
+
+                case 2:
+                    value = pBudget.getSumForAccount(account);
+                    break;
                 }
 
                 return value;
@@ -92,7 +98,7 @@ public class SSBudgetTableModels {
                 SSAccount account = getObject(rowIndex);
 
                 if (columnIndex == 2) {
-                    pBudget.setSumForAccount(account, (BigDecimal)aValue);
+                    pBudget.setSumForAccount(account, (BigDecimal) aValue);
                 }
 
                 fireTableCellUpdated(rowIndex, columnIndex);
@@ -110,9 +116,13 @@ public class SSBudgetTableModels {
             }
 
         };
-        iTableModel.addColumn(SSBundle.getBundle().getString("budgetframe.budgettable.column.1"));
-        iTableModel.addColumn(SSBundle.getBundle().getString("budgetframe.budgettable.column.2"));
-        iTableModel.addColumn(SSBundle.getBundle().getString("budgetframe.budgettable.column.3"));
+
+        iTableModel.addColumn(
+                SSBundle.getBundle().getString("budgetframe.budgettable.column.1"));
+        iTableModel.addColumn(
+                SSBundle.getBundle().getString("budgetframe.budgettable.column.2"));
+        iTableModel.addColumn(
+                SSBundle.getBundle().getString("budgetframe.budgettable.column.3"));
 
         iTableModel.setObjects(iAccounts);
 
@@ -129,8 +139,11 @@ public class SSBudgetTableModels {
         List<SSMonth> iMonths = pBudget.getMonths();
 
         SSMonthlyTableModel iTableModel = new SSMonthlyTableModel(pBudget, pAccount);
-        iTableModel.addColumn(SSBundle.getBundle().getString("budgetframe.monthlytable.column.1"));
-        iTableModel.addColumn(SSBundle.getBundle().getString("budgetframe.monthlytable.column.2"));
+
+        iTableModel.addColumn(
+                SSBundle.getBundle().getString("budgetframe.monthlytable.column.1"));
+        iTableModel.addColumn(
+                SSBundle.getBundle().getString("budgetframe.monthlytable.column.2"));
 
         Collections.sort(iMonths, new Comparator<SSMonth>() {
             public int compare(SSMonth o1, SSMonth o2) {
@@ -138,10 +151,8 @@ public class SSBudgetTableModels {
             }
         });
 
-
         iTableModel.setObjects(iMonths);
         return iTableModel;
     }
-
 
 }

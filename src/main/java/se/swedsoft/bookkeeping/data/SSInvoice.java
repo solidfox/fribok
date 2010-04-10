@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.base.SSSale;
@@ -12,6 +13,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * User: Andreas Lago
@@ -46,23 +48,24 @@ public class SSInvoice extends SSSale {
 
     private String iOrderNumbers;
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
     public SSInvoice() {
-        iType              = SSInvoiceType.NORMAL;
-        iCurrencyRate      = new BigDecimal(1);
-        iVoucher           = new SSVoucher();
-        iOCRNumber         = null;
-        iOrderNumbers      = "Fakturan har inga ordrar";
-        iPrinted           = false;
-        iInterestInvoiced  = false;
-        iStockInfluencing  = true;
-        iNumReminders      = 0;
-        if(iPaymentTerm != null)
+        iType = SSInvoiceType.NORMAL;
+        iCurrencyRate = new BigDecimal(1);
+        iVoucher = new SSVoucher();
+        iOCRNumber = null;
+        iOrderNumbers = "Fakturan har inga ordrar";
+        iPrinted = false;
+        iInterestInvoiced = false;
+        iStockInfluencing = true;
+        iNumReminders = 0;
+        if (iPaymentTerm != null) {
             iPaymentDay = iPaymentTerm.addDaysToDate(new Date());
+        }
     }
 
     /**
@@ -74,32 +77,30 @@ public class SSInvoice extends SSSale {
         copyFrom(iInvoice);
     }
 
-
-
     /**
      * Creates a new sales with the number as the lastest sales number + 1
      *
      * @param iInvoiceType
      */
-    public SSInvoice(SSInvoiceType iInvoiceType ){
+    public SSInvoice(SSInvoiceType iInvoiceType) {
         this();
 
         iType = iInvoiceType;
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-        if(iCompany != null){
-            setDelayInterest    ( iCompany.getDelayInterest()   );
+        if (iCompany != null) {
+            setDelayInterest(iCompany.getDelayInterest());
 
-            setText( iCompany.getStandardText( SSStandardText.Customerinvoice ));
+            setText(iCompany.getStandardText(SSStandardText.Customerinvoice));
 
-            setTaxRate1         ( iCompany.getTaxRate1()   );
-            setTaxRate2         ( iCompany.getTaxRate2()   );
-            setTaxRate3         ( iCompany.getTaxRate3()   );
-            setDefaultAccounts  ( iCompany.getDefaultAccounts());
-            setOurContactPerson ( iCompany.getContactPerson  () );
+            setTaxRate1(iCompany.getTaxRate1());
+            setTaxRate2(iCompany.getTaxRate2());
+            setTaxRate3(iCompany.getTaxRate3());
+            setDefaultAccounts(iCompany.getDefaultAccounts());
+            setOurContactPerson(iCompany.getContactPerson());
         }
-        //doAutoIncrecement();
+        // doAutoIncrecement();
     }
 
     /**
@@ -113,19 +114,18 @@ public class SSInvoice extends SSSale {
         copyFrom(iOrder);
 
         iCurrencyRate = iOrder.getCurrencyRate();
-        iVoucher      = new SSVoucher();
-        iDate         = new Date();
-        iRows         = new LinkedList<SSSaleRow>();
+        iVoucher = new SSVoucher();
+        iDate = new Date();
+        iRows = new LinkedList<SSSaleRow>();
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-        if(iCompany != null){
+        if (iCompany != null) {
             iText = iCompany.getStandardText(SSStandardText.Customerinvoice);
         }
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * @param iInvoice
@@ -133,46 +133,48 @@ public class SSInvoice extends SSSale {
     public void copyFrom(SSInvoice iInvoice) {
         super.copyFrom(iInvoice);
 
-        //this.iCurrencyRate = iInvoice.getCustomer().getInvoiceCurrency().getExchangeRate();
-        iCurrencyRate        = iInvoice.getCurrencyRate();
-        iPaymentDay          = iInvoice.iPaymentDay;
-        iYourOrderNumber     = iInvoice.iYourOrderNumber;
-        iType                = iInvoice.iType;
-        iEntered             = iInvoice.iEntered;
-        iStockInfluencing    = iInvoice.iStockInfluencing;
-        iInterestInvoiced    = iInvoice.iInterestInvoiced;
-        iNumReminders        = iInvoice.iNumReminders;
-        iOCRNumber           = iInvoice.iOCRNumber;
-        iOrderNumbers        = iInvoice.iOrderNumbers;
-        iVoucher             = new SSVoucher(iInvoice.iVoucher);
+        // this.iCurrencyRate = iInvoice.getCustomer().getInvoiceCurrency().getExchangeRate();
+        iCurrencyRate = iInvoice.getCurrencyRate();
+        iPaymentDay = iInvoice.iPaymentDay;
+        iYourOrderNumber = iInvoice.iYourOrderNumber;
+        iType = iInvoice.iType;
+        iEntered = iInvoice.iEntered;
+        iStockInfluencing = iInvoice.iStockInfluencing;
+        iInterestInvoiced = iInvoice.iInterestInvoiced;
+        iNumReminders = iInvoice.iNumReminders;
+        iOCRNumber = iInvoice.iOCRNumber;
+        iOrderNumbers = iInvoice.iOrderNumbers;
+        iVoucher = new SSVoucher(iInvoice.iVoucher);
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Auto increment the sales number
      */
     @Override
-    public void doAutoIncrecement(){
-        int iNumber =  SSDB.getInstance().getAutoIncrement().getNumber("invoice");
+    public void doAutoIncrecement() {
+        int iNumber = SSDB.getInstance().getAutoIncrement().getNumber("invoice");
 
-        for(SSInvoice iInvoice: SSDB.getInstance().getInvoices()){
+        for (SSInvoice iInvoice: SSDB.getInstance().getInvoices()) {
 
-            if(iInvoice.getNumber() != null && iInvoice.getNumber() > iNumber){
+            if (iInvoice.getNumber() != null && iInvoice.getNumber() > iNumber) {
                 iNumber = iInvoice.getNumber();
             }
         }
         setNumber(iNumber + 1);
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSInvoiceType getType() {
-        if(iType == null) iType = SSInvoiceType.NORMAL;
+        if (iType == null) {
+            iType = SSInvoiceType.NORMAL;
+        }
         return iType;
     }
 
@@ -184,8 +186,7 @@ public class SSInvoice extends SSSale {
         this.iType = iType;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -203,7 +204,7 @@ public class SSInvoice extends SSSale {
         this.iCurrencyRate = iCurrencyRate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -227,18 +228,17 @@ public class SSInvoice extends SSSale {
     public void setDueDate() {
         Calendar iCalendar = Calendar.getInstance();
 
-        if(iPaymentTerm != null){
-            iCalendar.setTime( iDate );
+        if (iPaymentTerm != null) {
+            iCalendar.setTime(iDate);
             iCalendar.add(Calendar.DAY_OF_MONTH, iPaymentTerm.decodeValue());
 
-            iPaymentDay = iCalendar.getTime() ;
+            iPaymentDay = iCalendar.getTime();
         } else {
             iPaymentDay = iDate;
         }
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -256,15 +256,16 @@ public class SSInvoice extends SSSale {
         this.iYourOrderNumber = iYourOrderNumber;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public SSVoucher getVoucher() {
-        if(iVoucher == null) generateVoucher();
+        if (iVoucher == null) {
+            generateVoucher();
+        }
         return iVoucher;
     }
 
@@ -276,13 +277,13 @@ public class SSInvoice extends SSSale {
         this.iVoucher = iVoucher;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-    public boolean hasOCRNumber(){
+    public boolean hasOCRNumber() {
         return iOCRNumber != null;
     }
 
@@ -298,12 +299,11 @@ public class SSInvoice extends SSSale {
      *
      * @param iOCRNumber
      */
-    public void setOCRNumber(String iOCRNumber){
+    public void setOCRNumber(String iOCRNumber) {
         this.iOCRNumber = iOCRNumber;
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -328,9 +328,7 @@ public class SSInvoice extends SSSale {
         iEntered = true;
     }
 
-   
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public String getOrderNumbers() {
         return iOrderNumbers;
@@ -340,14 +338,17 @@ public class SSInvoice extends SSSale {
         this.iOrderNumbers = iOrderNumbers;
     }
 
-    public void setOrderNumers(List<SSOrder> iOrders){
+    public void setOrderNumers(List<SSOrder> iOrders) {
         String iOrdersForInvoice = "";
+
         for (SSOrder iOrder : iOrders) {
             iOrdersForInvoice += iOrder.getNumber() + ", ";
         }
-        iOrdersForInvoice = iOrdersForInvoice.substring(0,iOrdersForInvoice.lastIndexOf(", "));
+        iOrdersForInvoice = iOrdersForInvoice.substring(0,
+                iOrdersForInvoice.lastIndexOf(", "));
         iOrderNumbers = iOrdersForInvoice;
     }
+
     /**
      *
      * @return
@@ -364,7 +365,7 @@ public class SSInvoice extends SSSale {
         this.iInterestInvoiced = iInterestInvoiced;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -382,7 +383,7 @@ public class SSInvoice extends SSSale {
         this.iNumReminders = iNumReminders;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -400,7 +401,7 @@ public class SSInvoice extends SSSale {
         this.iStockInfluencing = iStockInfluencing;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Adds the rows from an order to this invoice
@@ -412,21 +413,20 @@ public class SSInvoice extends SSSale {
 
             SSSaleRow iMatchingRow = SSInvoiceMath.getMatchingRow(this, iRow);
 
-            if( iMatchingRow != null){
+            if (iMatchingRow != null) {
                 Integer iQuantity = iMatchingRow.getQuantity();
 
-                if(iQuantity != null){
-                    iMatchingRow.setQuantity( iQuantity + iRow.getQuantity() );
+                if (iQuantity != null) {
+                    iMatchingRow.setQuantity(iQuantity + iRow.getQuantity());
                 } else {
-                    iMatchingRow.setQuantity(  iRow.getQuantity() );
+                    iMatchingRow.setQuantity(iRow.getQuantity());
 
                 }
             } else {
-                iRows.add( new SSSaleRow(iRow) );
+                iRows.add(new SSSaleRow(iRow));
             }
         }
     }
-
 
     /**
      * Returns true if sales customer is the same customer as the supplied
@@ -438,28 +438,28 @@ public class SSInvoice extends SSSale {
         return (iCustomerNr != null) && iCustomerNr.equals(iCustomer.getNumber());
     }
 
-    
     public int hashCode() {
-        if(iNumber != null) return iNumber;
+        if (iNumber != null) {
+            return iNumber;
+        }
 
         return super.hashCode();
     }
-
 
     /**
      *
      * @return
      */
-    public SSVoucher generateVoucher(){
-        String iDescription = SSBundle.getBundle().getString("invoiceframe.voucherdescription");
+    public SSVoucher generateVoucher() {
+        String iDescription = SSBundle.getBundle().getString(
+                "invoiceframe.voucherdescription");
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
 
-
         iVoucher = new SSVoucher();
-        iVoucher.setDate       ( new Date() );
-        iVoucher.setNumber     ( 0  );
-        iVoucher.setDescription( String.format(iDescription, iNumber) );
+        iVoucher.setDate(new Date());
+        iVoucher.setNumber(0);
+        iVoucher.setDescription(String.format(iDescription, iNumber));
 
         // Get the total sum for the sales
         BigDecimal iTotalSum = SSInvoiceMath.getTotalSum(this);
@@ -469,45 +469,58 @@ public class SSInvoice extends SSSale {
         BigDecimal iRoundingSum = SSInvoiceMath.getRounding(this);
 
         // Add the total sum to the voucher
-        if(iType == SSInvoiceType.NORMAL) iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.CustomerClaim), iTotalSum, null);
-        if(iType == SSInvoiceType.CASH  ) iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.Cash         ), iTotalSum, null);
+        if (iType == SSInvoiceType.NORMAL) {
+            iVoucher.addVoucherRow(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.CustomerClaim),
+                    iTotalSum, null);
+        }
+        if (iType == SSInvoiceType.CASH) {
+            iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.Cash),
+                    iTotalSum, null);
+        }
 
         // Add the rounding
-        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff()) iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.Rounding), iRoundingSum.negate());
+        if (!SSDB.getInstance().getCurrentCompany().isRoundingOff()) {
+            iVoucher.addVoucherRow(
+                    getDefaultAccount(iAccountPlan, SSDefaultAccount.Rounding),
+                    iRoundingSum.negate());
+        }
 
         // Add the tax if not tax free
-        if(! iTaxFree){
+        if (!iTaxFree) {
             // Add the tax 1
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.Tax1), null, iTaxSum.get(SSTaxCode.TAXRATE_1)  );
+            iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.Tax1),
+                    null, iTaxSum.get(SSTaxCode.TAXRATE_1));
             // Add the tax 2
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.Tax2), null, iTaxSum.get(SSTaxCode.TAXRATE_2)  );
+            iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.Tax2),
+                    null, iTaxSum.get(SSTaxCode.TAXRATE_2));
             // Add the tax 3
-            iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.Tax3), null, iTaxSum.get(SSTaxCode.TAXRATE_3)  );
+            iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.Tax3),
+                    null, iTaxSum.get(SSTaxCode.TAXRATE_3));
         }
 
         // Add all products
-        for(SSSaleRow iRow : iRows){
+        for (SSSaleRow iRow : iRows) {
             SSVoucherRow iVoucherRow = new SSVoucherRow();
 
-            iVoucherRow.setCredit    ( iRow.getSum() );
-            iVoucherRow.setAccount   ( iRow.getAccount   ( iAccountPlan.getAccounts() ) );
-            iVoucherRow.setProject   ( iRow.getProject   ( SSDB.getInstance().getProjects()));
-            iVoucherRow.setResultUnit( iRow.getResultUnit( SSDB.getInstance().getResultUnits()));
-            if(iVoucherRow.getAccountNr()!=null)
-            {
+            iVoucherRow.setCredit(iRow.getSum());
+            iVoucherRow.setAccount(iRow.getAccount(iAccountPlan.getAccounts()));
+            iVoucherRow.setProject(iRow.getProject(SSDB.getInstance().getProjects()));
+            iVoucherRow.setResultUnit(
+                    iRow.getResultUnit(SSDB.getInstance().getResultUnits()));
+            if (iVoucherRow.getAccountNr() != null) {
                 iVoucher.addVoucherRow(iVoucherRow);
             }
         }
 
-        for(SSVoucherRow iRow : iVoucher.getRows()){
-            if(iRow.isDebet()){
-                if(iRow.getDebet().compareTo(new BigDecimal(0)) == -1){
+        for (SSVoucherRow iRow : iVoucher.getRows()) {
+            if (iRow.isDebet()) {
+                if (iRow.getDebet().compareTo(new BigDecimal(0)) == -1) {
                     iRow.setCredit(iRow.getDebet().negate());
                     iRow.setDebet(null);
                 }
-            }
-            else {
-                if(iRow.getCredit().compareTo(new BigDecimal(0)) == -1){
+            } else {
+                if (iRow.getCredit().compareTo(new BigDecimal(0)) == -1) {
                     iRow.setDebet(iRow.getCredit().negate());
                     iRow.setCredit(null);
                 }
@@ -515,24 +528,26 @@ public class SSInvoice extends SSSale {
         }
 
         // Convert all rows to the local currency
-        if(iCurrencyRate != null)  SSVoucherMath.multiplyRowsBy(iVoucher, iCurrencyRate);
+        if (iCurrencyRate != null) {
+            SSVoucherMath.multiplyRowsBy(iVoucher, iCurrencyRate);
+        }
 
         iVoucher = SSVoucherMath.compress(iVoucher);
 
         return iVoucher;
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSInvoice)) {
             return false;
         }
-        return iNumber.equals(((SSInvoice)obj).getNumber());
+        return iNumber.equals(((SSInvoice) obj).getNumber());
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSInvoice");
         sb.append("{iCurrencyRate=").append(iCurrencyRate);
         sb.append(", iEntered=").append(iEntered);

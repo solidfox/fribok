@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inventory.util;
 
+
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -9,13 +10,13 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:34:35
  */
 public class SSInventoryTableModel extends SSTableModel<SSInventory> {
-
 
     /**
      * Default constructor.
@@ -42,12 +43,11 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
         return SSInventory.class;
     }
 
-
-
     /**
      *  Inventerings nummer
      */
-    public static SSTableColumn<SSInventory> COLUMN_NUMBER = new SSTableColumn<SSInventory>(SSBundle.getBundle().getString("inventorytable.column.1")) {
+    public static SSTableColumn<SSInventory> COLUMN_NUMBER = new SSTableColumn<SSInventory>(
+            SSBundle.getBundle().getString("inventorytable.column.1")) {
         @Override
         public Object getValue(SSInventory iInventory) {
             return iInventory.getNumber();
@@ -55,7 +55,7 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
 
         @Override
         public void setValue(SSInventory iInvoice, Object iValue) {
-            iInvoice.setNumber((Integer)iValue);
+            iInvoice.setNumber((Integer) iValue);
 
         }
 
@@ -73,7 +73,8 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
     /**
      * Datum
      */
-    public static SSTableColumn<SSInventory> COLUMN_DATE = new SSTableColumn<SSInventory>(SSBundle.getBundle().getString("inventorytable.column.2")) {
+    public static SSTableColumn<SSInventory> COLUMN_DATE = new SSTableColumn<SSInventory>(
+            SSBundle.getBundle().getString("inventorytable.column.2")) {
         @Override
         public Object getValue(SSInventory iInventory) {
             return iInventory.getDate();
@@ -81,7 +82,7 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
 
         @Override
         public void setValue(SSInventory iInventory, Object iValue) {
-            iInventory.setDate((Date)iValue);
+            iInventory.setDate((Date) iValue);
         }
 
         @Override
@@ -98,7 +99,8 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
     /**
      * Text
      */
-    public static SSTableColumn<SSInventory> COLUMN_TEXT = new SSTableColumn<SSInventory>(SSBundle.getBundle().getString("inventorytable.column.3")) {
+    public static SSTableColumn<SSInventory> COLUMN_TEXT = new SSTableColumn<SSInventory>(
+            SSBundle.getBundle().getString("inventorytable.column.3")) {
         @Override
         public Object getValue(SSInventory iInventory) {
             return iInventory.getText();
@@ -106,7 +108,7 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
 
         @Override
         public void setValue(SSInventory iInventory, Object iValue) {
-            iInventory.setText((String)iValue);
+            iInventory.setText((String) iValue);
         }
 
         @Override
@@ -119,15 +121,5 @@ public class SSInventoryTableModel extends SSTableModel<SSInventory> {
             return 400;
         }
     };
-
-
-
-
-
-
-
-
-
-
 
 }

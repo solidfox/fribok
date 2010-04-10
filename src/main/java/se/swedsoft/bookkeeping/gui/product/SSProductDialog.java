@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product;
 
+
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -20,6 +21,7 @@ import java.awt.event.WindowEvent;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-05
@@ -31,8 +33,7 @@ public class SSProductDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSProductDialog() {
-    }
+    private SSProductDialog() {}
 
     /**
      *
@@ -40,8 +41,9 @@ public class SSProductDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
-        final SSDialog       iDialog = new SSDialog(iMainFrame, bundle.getString("productframe.new.title"));
-        final SSProductPanel iPanel  = new SSProductPanel(iDialog, false);
+        final SSDialog       iDialog = new SSDialog(iMainFrame,
+                bundle.getString("productframe.new.title"));
+        final SSProductPanel iPanel = new SSProductPanel(iDialog, false);
 
         iPanel.setProduct(new SSProduct());
 
@@ -52,20 +54,25 @@ public class SSProductDialog {
                 SSProduct iProduct = iPanel.getProduct();
 
                 List<SSProduct> iProducts = SSDB.getInstance().getProducts();
+
                 for (SSProduct pProduct : iProducts) {
                     if (iProduct.getNumber().equals(pProduct.getNumber())) {
-                        new SSErrorDialog(iMainFrame, "productframe.duplicate", iProduct.getNumber());
+                        new SSErrorDialog(iMainFrame, "productframe.duplicate",
+                                iProduct.getNumber());
                         return;
                     }
                 }
 
                 SSDB.getInstance().addProduct(iProduct);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -73,14 +80,17 @@ public class SSProductDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(!iPanel.isValid()) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "productframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "productframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -99,19 +109,22 @@ public class SSProductDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSProduct iProduct, final AbstractTableModel pModel) {
-        final String lockString = "product"+iProduct.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "product" + iProduct.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
             new SSErrorDialog(iMainFrame, "productframe.productopen", iProduct.getNumber());
             return;
         }
-        final SSDialog       iDialog = new SSDialog(iMainFrame, bundle.getString("productframe.edit.title"));
-        final SSProductPanel iPanel  = new SSProductPanel(iDialog, true);
-        //iPanel.setEditPanel();
+        final SSDialog       iDialog = new SSDialog(iMainFrame,
+                bundle.getString("productframe.edit.title"));
+        final SSProductPanel iPanel = new SSProductPanel(iDialog, true);
 
-        iPanel.setProduct( new SSProduct(iProduct) );
+        // iPanel.setEditPanel();
+
+        iPanel.setProduct(new SSProduct(iProduct));
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
-
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -119,11 +132,14 @@ public class SSProductDialog {
 
                 SSDB.getInstance().updateProduct(iProduct);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -132,15 +148,18 @@ public class SSProductDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(!iPanel.isValid()) {
+                if (!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "productframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "productframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -160,13 +179,16 @@ public class SSProductDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSProduct iProduct, final AbstractTableModel pModel) {
-        final String lockString = "product"+iProduct.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "product" + iProduct.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (SSPostLock.isLocked(lockString)) {
             new SSErrorDialog(iMainFrame, "productframe.productopen", iProduct.getNumber());
             return;
         }
-        final SSDialog       iDialog = new SSDialog(iMainFrame, bundle.getString("productframe.copy.title"));
-        final SSProductPanel iPanel  = new SSProductPanel(iDialog, false);
+        final SSDialog       iDialog = new SSDialog(iMainFrame,
+                bundle.getString("productframe.copy.title"));
+        final SSProductPanel iPanel = new SSProductPanel(iDialog, false);
 
         iPanel.setProduct(new SSProduct(iProduct));
 
@@ -178,20 +200,25 @@ public class SSProductDialog {
                 SSProduct iProduct = iPanel.getProduct();
 
                 List<SSProduct> iProducts = SSDB.getInstance().getProducts();
+
                 for (SSProduct pProduct : iProducts) {
                     if (iProduct.getNumber().equals(pProduct.getNumber())) {
-                        new SSErrorDialog(iMainFrame, "productframe.duplicate", iProduct.getNumber());
+                        new SSErrorDialog(iMainFrame, "productframe.duplicate",
+                                iProduct.getNumber());
                         return;
                     }
                 }
 
                 SSDB.getInstance().addProduct(iProduct);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -199,14 +226,17 @@ public class SSProductDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(!iPanel.isValid()) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "productframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "productframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 

@@ -4,8 +4,10 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import javax.swing.table.DefaultTableCellRenderer;
 import java.text.DateFormat;
+
 
 // Trade Extensions specific imports
 
@@ -19,10 +21,8 @@ import java.text.DateFormat;
  */
 public class SSDateCellRenderer extends DefaultTableCellRenderer {
 
-
     // The formatter to use.
     private DateFormat iFormat;
-
 
     /**
      * Default constructor.
@@ -30,7 +30,6 @@ public class SSDateCellRenderer extends DefaultTableCellRenderer {
     public SSDateCellRenderer() {
         setHorizontalAlignment(DefaultTableCellRenderer.LEFT);
     }
-
 
     /**
      * Sets the value for the cell.
@@ -48,6 +47,7 @@ public class SSDateCellRenderer extends DefaultTableCellRenderer {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSDateCellRenderer");
         sb.append("{iFormat=").append(iFormat);
         sb.append('}');

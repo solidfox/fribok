@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
@@ -10,6 +11,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.util.Date;
+
 
 /**
  * Date: 2006-feb-22
@@ -35,11 +37,10 @@ public class SIEEntryGenererat implements SIEEntry {
     @Override
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iYear) throws SSExportException {
         iWriter.append(SIELabel.SIE_GEN);
-        iWriter.append( new Date() );
+        iWriter.append(new Date());
         iWriter.newLine();
 
-         return true;
+        return true;
     }
-
 
 }

@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * Date: 2006-feb-13
@@ -22,13 +24,12 @@ public class SSCurrency implements Serializable, SSTableSearchable {
 
     private BigDecimal iExchangeRate;
 
-
     /**
      *
      */
-    public SSCurrency(){
-        iCode         = null;
-        iDescription  = null;
+    public SSCurrency() {
+        iCode = null;
+        iDescription = null;
         iExchangeRate = new BigDecimal(1);
     }
 
@@ -37,10 +38,10 @@ public class SSCurrency implements Serializable, SSTableSearchable {
      * @param iCode
      * @param iDescription
      */
-    public SSCurrency( String iCode, String iDescription){
-        this.iCode        = iCode;
+    public SSCurrency(String iCode, String iDescription) {
+        this.iCode = iCode;
         this.iDescription = iDescription;
-        iExchangeRate     = new BigDecimal(1);
+        iExchangeRate = new BigDecimal(1);
     }
 
     /**
@@ -51,20 +52,17 @@ public class SSCurrency implements Serializable, SSTableSearchable {
         copyFrom(iCurrency);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
-
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @param iCurrency
      */
     public void copyFrom(SSCurrency iCurrency) {
-        iCode         = iCurrency.iCode;
-        iDescription  = iCurrency.iDescription;
+        iCode = iCurrency.iCode;
+        iDescription = iCurrency.iDescription;
         iExchangeRate = iCurrency.iExchangeRate;
     }
-
 
     /**
      *
@@ -82,8 +80,7 @@ public class SSCurrency implements Serializable, SSTableSearchable {
         iCode = pCode;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -101,14 +98,16 @@ public class SSCurrency implements Serializable, SSTableSearchable {
         iDescription = pDescription;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getExchangeRate() {
-        if(iExchangeRate == null) iExchangeRate = new BigDecimal(1);
+        if (iExchangeRate == null) {
+            iExchangeRate = new BigDecimal(1);
+        }
         return iExchangeRate;
     }
 
@@ -120,27 +119,24 @@ public class SSCurrency implements Serializable, SSTableSearchable {
         this.iExchangeRate = iExchangeRate;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     /**
      * @return
      */
     public String toRenderString() {
-        return iCode ;
+        return iCode;
     }
 
-    
     public String toString() {
         return iCode;
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSCurrency)) {
             return false;
         }
         return iCode.equals(((SSCurrency) obj).iCode);
     }
-
 
     /**
      * Returns the default currencies to our db (EUR, SEK, USD);
@@ -150,12 +146,11 @@ public class SSCurrency implements Serializable, SSTableSearchable {
     public static List<SSCurrency> getDefaultCurrencies() {
         List<SSCurrency> iCurrencies = new LinkedList<SSCurrency>();
 
-        iCurrencies.add( new SSCurrency("EUR", "Euro") );
-        iCurrencies.add( new SSCurrency("SEK", "Svenska kronor") );
-        iCurrencies.add( new SSCurrency("USD", "US Dollar") );
+        iCurrencies.add(new SSCurrency("EUR", "Euro"));
+        iCurrencies.add(new SSCurrency("SEK", "Svenska kronor"));
+        iCurrencies.add(new SSCurrency("USD", "US Dollar"));
 
         return iCurrencies;
     }
-
 
 }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -9,15 +10,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-04
  * Time: 13:58:10
  */
 public class SSSupplierMath {
-    private SSSupplierMath() {
-    }
-
+    private SSSupplierMath() {}
 
     /**
      * Returns the customer claim for the specified cistpmer
@@ -26,9 +26,11 @@ public class SSSupplierMath {
      * @return
      */
     public static BigDecimal getSupplierDebt(SSSupplier iSupplier) {
-        List<SSSupplierInvoice> iInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier);
+        List<SSSupplierInvoice> iInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(
+                iSupplier);
 
         BigDecimal iSum = new BigDecimal(0);
+
         for (SSSupplierInvoice iInvoice : iInvoices) {
             BigDecimal iSaldo = SSSupplierInvoiceMath.getSaldo(iInvoice.getNumber());
 
@@ -40,20 +42,24 @@ public class SSSupplierMath {
         return iSum;
     }
 
-    public static HashMap<String,List<SSSupplierInvoice>> iInvoicesForSuppliers;
+    public static HashMap<String, List<SSSupplierInvoice>> iInvoicesForSuppliers;
 
-    public static void getInvoicesForSuppliers(){
-        if(iInvoicesForSuppliers == null) iInvoicesForSuppliers = new HashMap<String,List<SSSupplierInvoice>>();
+    public static void getInvoicesForSuppliers() {
+        if (iInvoicesForSuppliers == null) {
+            iInvoicesForSuppliers = new HashMap<String, List<SSSupplierInvoice>>();
+        }
 
         List<SSSupplier> iSuppliers = SSDB.getInstance().getSuppliers();
 
-        for(SSSupplier iSupplier:iSuppliers){
-            List<SSSupplierInvoice> iSupplierInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(iSupplier);
+        for (SSSupplier iSupplier:iSuppliers) {
+            List<SSSupplierInvoice> iSupplierInvoices = SSSupplierInvoiceMath.getInvoicesForSupplier(
+                    iSupplier);
             List<SSSupplierInvoice> iInvoices = new LinkedList<SSSupplierInvoice>();
-            for(SSSupplierInvoice iSupplierInvoice:iSupplierInvoices){
+
+            for (SSSupplierInvoice iSupplierInvoice:iSupplierInvoices) {
                 iInvoices.add(iSupplierInvoice);
             }
-            iInvoicesForSuppliers.put(iSupplier.getNumber(),iInvoices);
+            iInvoicesForSuppliers.put(iSupplier.getNumber(), iInvoices);
         }
     }
 
@@ -61,9 +67,12 @@ public class SSSupplierMath {
         Integer iOutpaymentNumber = 0;
 
         List<SSSupplier> iSuppliers = SSDB.getInstance().getSuppliers();
+
         for (SSSupplier iSupplier : iSuppliers) {
-            if(iSupplier.getOutpaymentNumber() != null && iSupplier.getOutpaymentNumber() > iOutpaymentNumber)
+            if (iSupplier.getOutpaymentNumber() != null
+                    && iSupplier.getOutpaymentNumber() > iOutpaymentNumber) {
                 iOutpaymentNumber = iSupplier.getOutpaymentNumber();
+            }
         }
         iOutpaymentNumber++;
 

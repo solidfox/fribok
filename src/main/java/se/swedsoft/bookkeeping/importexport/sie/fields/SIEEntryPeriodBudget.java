@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSBudget;
 import se.swedsoft.bookkeeping.data.SSMonth;
@@ -19,11 +20,13 @@ import java.util.Map;
 
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.*;
 
+
 /**
  * Date: 2006-feb-23
  * Time: 16:26:38
  */
 public class SIEEntryPeriodBudget implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -37,29 +40,34 @@ public class SIEEntryPeriodBudget implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #PBUDGET årsnr period konto {dimensionsnr objectkod} saldo [kvantitet]
-        if(!iReader.hasFields(STRING, INT, INT, INT, ARRAY, FLOAT)) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT, INT, INT, ARRAY, FLOAT)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
-        int        iYear          = iReader.nextInteger();
-        SSMonth    iMonth         = iReader.nextMonth();
+        int        iYear = iReader.nextInteger();
+        SSMonth    iMonth = iReader.nextMonth();
         int        iAccountNumber = iReader.nextInteger();
-        iReader.nextArray(); // We don't support result budget for objects
-        BigDecimal iSaldo         = iReader.nextBigDecimal();
 
-        if( (iYear == 0) && (iCurrentYearData != null) ){
+        iReader.nextArray(); // We don't support result budget for objects
+        BigDecimal iSaldo = iReader.nextBigDecimal();
+
+        if ((iYear == 0) && (iCurrentYearData != null)) {
             SSBudget iBudget = iCurrentYearData.getBudget();
 
-            SSAccount iAccount = iCurrentYearData.getAccountPlan().getAccount(iAccountNumber);
-            iMonth             = iBudget.getMonth(iMonth);
+            SSAccount iAccount = iCurrentYearData.getAccountPlan().getAccount(
+                    iAccountNumber);
 
-            if(iSaldo == null) iSaldo = new BigDecimal(0);
+            iMonth = iBudget.getMonth(iMonth);
+
+            if (iSaldo == null) {
+                iSaldo = new BigDecimal(0);
+            }
 
             iBudget.setSaldoForAccountAndMonth(iAccount, iMonth, iSaldo.negate());
         }
         return true;
     }
-
 
     /**
      * Exports the entry
@@ -76,24 +84,27 @@ public class SIEEntryPeriodBudget implements SIEEntry {
 
         boolean iHasData = false;
 
-        if(iPreviousYearData != null){
+        if (iPreviousYearData != null) {
             SSBudget iBudget = iPreviousYearData.getBudget();
 
             Map<SSMonth, Map<SSAccount, BigDecimal>> iBudgetData = iBudget.getBudget();
 
-            for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudgetData.entrySet()){
+            for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudgetData.entrySet()) {
                 Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
-                for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                     BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                    if(iSaldo == null) continue;
-                    
-                    iWriter.append( SIELabel.SIE_PBUDGET);
-                    iWriter.append( -1);
+                    if (iSaldo == null) {
+                        continue;
+                    }
+
+                    iWriter.append(SIELabel.SIE_PBUDGET);
+                    iWriter.append(-1);
                     iWriter.append(ssMonthMapEntry.getKey());
                     iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                    iWriter.append( "{}");
-                    iWriter.append( iSaldo.negate()  );
+                    iWriter.append("{}");
+                    iWriter.append(iSaldo.negate());
                     iWriter.newLine();
 
                     iHasData = true;
@@ -101,24 +112,27 @@ public class SIEEntryPeriodBudget implements SIEEntry {
             }
         }
 
-        if(iCurrentYearData != null){
+        if (iCurrentYearData != null) {
             SSBudget iBudget = iCurrentYearData.getBudget();
 
             Map<SSMonth, Map<SSAccount, BigDecimal>> iBudgetData = iBudget.getBudget();
 
-            for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudgetData.entrySet()){
+            for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iBudgetData.entrySet()) {
                 Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
-                for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                     BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                    if(iSaldo == null) continue;
+                    if (iSaldo == null) {
+                        continue;
+                    }
 
-                    iWriter.append( SIELabel.SIE_PBUDGET);
-                    iWriter.append( 0);
+                    iWriter.append(SIELabel.SIE_PBUDGET);
+                    iWriter.append(0);
                     iWriter.append(ssMonthMapEntry.getKey());
                     iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                    iWriter.append( "{}");
-                    iWriter.append( iSaldo.negate()  );
+                    iWriter.append("{}");
+                    iWriter.append(iSaldo.negate());
                     iWriter.newLine();
 
                     iHasData = true;

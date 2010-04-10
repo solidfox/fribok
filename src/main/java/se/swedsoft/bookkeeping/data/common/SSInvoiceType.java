@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
+
 
 /**
  * User: Andreas Lago
@@ -8,13 +10,10 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
  * Time: 09:52:04
  */
 public enum SSInvoiceType {
-    NORMAL("invoiceframe.typename.1"),
-    CASH  ("invoiceframe.typename.2");
-
+    NORMAL("invoiceframe.typename.1"), CASH  ("invoiceframe.typename.2");
 
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     private String iResouceName;
 
@@ -23,8 +22,8 @@ public enum SSInvoiceType {
      * @param iResouceName
      */
     SSInvoiceType(String iResouceName) {
-       this.iResouceName = iResouceName;
-   }
+        this.iResouceName = iResouceName;
+    }
 
     /**
      *

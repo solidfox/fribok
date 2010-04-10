@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.voucher.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -22,7 +23,6 @@ import java.util.List;
  */
 
 public class SSVoucherTableModel extends SSTableModel<SSVoucher> {
-
 
     /**
      * Default constructor.
@@ -53,20 +53,20 @@ public class SSVoucherTableModel extends SSTableModel<SSVoucher> {
      *
      * @return
      */
-    public static SSVoucherTableModel getDropDownModel(){
+    public static SSVoucherTableModel getDropDownModel() {
         SSVoucherTableModel iModel = new SSVoucherTableModel();
 
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_DESCRIPTION );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
     }
 
-
-     /**
+    /**
      *  Fakturanr
      */
-    public static SSTableColumn<SSVoucher> COLUMN_NUMBER = new SSTableColumn<SSVoucher>(SSBundle.getBundle().getString("vouchertable.column.1")) {
+    public static SSTableColumn<SSVoucher> COLUMN_NUMBER = new SSTableColumn<SSVoucher>(
+            SSBundle.getBundle().getString("vouchertable.column.1")) {
         @Override
         public Object getValue(SSVoucher iVoucher) {
             return iVoucher.getNumber();
@@ -74,7 +74,7 @@ public class SSVoucherTableModel extends SSTableModel<SSVoucher> {
 
         @Override
         public void setValue(SSVoucher iVoucher, Object iValue) {
-            iVoucher.setNumber((Integer)iValue);
+            iVoucher.setNumber((Integer) iValue);
 
         }
 
@@ -89,146 +89,139 @@ public class SSVoucherTableModel extends SSTableModel<SSVoucher> {
         }
     };
 
+    /**
+     *  Fakturanr
+     */
+    public static SSTableColumn<SSVoucher> COLUMN_DATE = new SSTableColumn<SSVoucher>(
+            SSBundle.getBundle().getString("vouchertable.column.2")) {
+        @Override
+        public Object getValue(SSVoucher iVoucher) {
+            return iVoucher.getDate();
+        }
+
+        @Override
+        public void setValue(SSVoucher iVoucher, Object iValue) {
+            iVoucher.setDate((Date) iValue);
+
+        }
+
+        @Override
+        public Class getColumnClass() {
+            return Date.class;
+        }
+
+        @Override
+        public int getDefaultWidth() {
+            return 85;
+        }
+    };
 
     /**
-    *  Fakturanr
-    */
-   public static SSTableColumn<SSVoucher> COLUMN_DATE = new SSTableColumn<SSVoucher>(SSBundle.getBundle().getString("vouchertable.column.2")) {
-       @Override
-       public Object getValue(SSVoucher iVoucher) {
-           return iVoucher.getDate();
-       }
+     *  Fakturanr
+     */
+    public static SSTableColumn<SSVoucher> COLUMN_DESCRIPTION = new SSTableColumn<SSVoucher>(
+            SSBundle.getBundle().getString("vouchertable.column.3")) {
+        @Override
+        public Object getValue(SSVoucher iVoucher) {
+            return iVoucher.getDescription();
+        }
 
-       @Override
-       public void setValue(SSVoucher iVoucher, Object iValue) {
-           iVoucher.setDate((Date)iValue);
+        @Override
+        public void setValue(SSVoucher iVoucher, Object iValue) {
+            iVoucher.setDescription((String) iValue);
 
-       }
+        }
 
-       @Override
-       public Class getColumnClass() {
-           return Date.class;
-       }
+        @Override
+        public Class getColumnClass() {
+            return String.class;
+        }
 
-       @Override
-       public int getDefaultWidth() {
-           return 85;
-       }
-   };
-
-
-
+        @Override
+        public int getDefaultWidth() {
+            return 300;
+        }
+    };
 
     /**
-    *  Fakturanr
-    */
-   public static SSTableColumn<SSVoucher> COLUMN_DESCRIPTION = new SSTableColumn<SSVoucher>(SSBundle.getBundle().getString("vouchertable.column.3")) {
-       @Override
-       public Object getValue(SSVoucher iVoucher) {
-           return iVoucher.getDescription();
-       }
+     *  Fakturanr
+     */
+    public static SSTableColumn<SSVoucher> COLUMN_CORRECTS = new SSTableColumn<SSVoucher>(
+            SSBundle.getBundle().getString("vouchertable.column.4")) {
+        @Override
+        public Object getValue(SSVoucher iVoucher) {
+            return iVoucher.getCorrects();
+        }
 
-       @Override
-       public void setValue(SSVoucher iVoucher, Object iValue) {
-           iVoucher.setDescription((String)iValue);
+        @Override
+        public void setValue(SSVoucher iVoucher, Object iValue) {
+            iVoucher.setCorrects((SSVoucher) iValue);
 
-       }
+        }
 
-       @Override
-       public Class getColumnClass() {
-           return String.class;
-       }
+        @Override
+        public Class getColumnClass() {
+            return SSVoucher.class;
+        }
 
-       @Override
-       public int getDefaultWidth() {
-           return 300;
-       }
-   };
-
-
-
+        @Override
+        public int getDefaultWidth() {
+            return 80;
+        }
+    };
 
     /**
-    *  Fakturanr
-    */
-   public static SSTableColumn<SSVoucher> COLUMN_CORRECTS = new SSTableColumn<SSVoucher>(SSBundle.getBundle().getString("vouchertable.column.4")) {
-       @Override
-       public Object getValue(SSVoucher iVoucher) {
-           return iVoucher.getCorrects();
-       }
+     *  Fakturanr
+     */
+    public static SSTableColumn<SSVoucher> COLUMN_CORRECTEDBY = new SSTableColumn<SSVoucher>(
+            SSBundle.getBundle().getString("vouchertable.column.5")) {
+        @Override
+        public Object getValue(SSVoucher iVoucher) {
+            return iVoucher.getCorrectedBy();
+        }
 
-       @Override
-       public void setValue(SSVoucher iVoucher, Object iValue) {
-           iVoucher.setCorrects((SSVoucher)iValue);
+        @Override
+        public void setValue(SSVoucher iVoucher, Object iValue) {
+            iVoucher.setCorrectedBy((SSVoucher) iValue);
 
-       }
+        }
 
-       @Override
-       public Class getColumnClass() {
-           return SSVoucher.class;
-       }
+        @Override
+        public Class getColumnClass() {
+            return SSVoucher.class;
+        }
 
-       @Override
-       public int getDefaultWidth() {
-           return 80;
-       }
-   };
-
-
-    /**
-    *  Fakturanr
-    */
-   public static SSTableColumn<SSVoucher> COLUMN_CORRECTEDBY = new SSTableColumn<SSVoucher>(SSBundle.getBundle().getString("vouchertable.column.5")) {
-       @Override
-       public Object getValue(SSVoucher iVoucher) {
-           return iVoucher.getCorrectedBy();
-       }
-
-       @Override
-       public void setValue(SSVoucher iVoucher, Object iValue) {
-           iVoucher.setCorrectedBy((SSVoucher)iValue);
-
-       }
-
-       @Override
-       public Class getColumnClass() {
-           return SSVoucher.class;
-       }
-
-       @Override
-       public int getDefaultWidth() {
-           return 80;
-       }
-   };
-
-
+        @Override
+        public int getDefaultWidth() {
+            return 80;
+        }
+    };
 
     /**
-    *  Omslutning
-    */
-   public static SSTableColumn<SSVoucher> COLUMN_SUM = new SSTableColumn<SSVoucher>(SSBundle.getBundle().getString("vouchertable.column.6")) {
-       @Override
-       public Object getValue(SSVoucher iVoucher) {
-           return SSVoucherMath.getCreditSum(iVoucher);
-       }
+     *  Omslutning
+     */
+    public static SSTableColumn<SSVoucher> COLUMN_SUM = new SSTableColumn<SSVoucher>(
+            SSBundle.getBundle().getString("vouchertable.column.6")) {
+        @Override
+        public Object getValue(SSVoucher iVoucher) {
+            return SSVoucherMath.getCreditSum(iVoucher);
+        }
 
-       @Override
-       public void setValue(SSVoucher iVoucher, Object iValue) {
-           iVoucher.setCorrectedBy((SSVoucher)iValue);
+        @Override
+        public void setValue(SSVoucher iVoucher, Object iValue) {
+            iVoucher.setCorrectedBy((SSVoucher) iValue);
 
-       }
+        }
 
-       @Override
-       public Class getColumnClass() {
-           return BigDecimal.class;
-       }
+        @Override
+        public Class getColumnClass() {
+            return BigDecimal.class;
+        }
 
-       @Override
-       public int getDefaultWidth() {
-           return 120;
-       }
-   };
-
-
+        @Override
+        public int getDefaultWidth() {
+            return 120;
+        }
+    };
 
 }

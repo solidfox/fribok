@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -23,19 +25,18 @@ public class SSInventoryRow implements Serializable {
 
     private transient SSProduct iProduct;
 
-
     /**
      *
      */
     public SSInventoryRow() {
-        iChange    = 0;
-        iQuantity  = 0;
+        iChange = 0;
+        iQuantity = 0;
         iProductNr = null;
-        iProduct   = null;
+        iProduct = null;
     }
 
     /**
-     * 
+     *
      * @param iInventoryRow
      */
     public SSInventoryRow(SSInventoryRow iInventoryRow) {
@@ -48,23 +49,22 @@ public class SSInventoryRow implements Serializable {
      * @param iChange
      */
     public SSInventoryRow(SSProduct iProduct, int iChange) {
-        this.iChange  = iChange;
+        this.iChange = iChange;
         this.iProduct = iProduct;
-        iProductNr    = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
 
     }
 
-    /////////////////////////////////////////////////////////////////////////////
-
+    // ///////////////////////////////////////////////////////////////////////////
 
     public void copyFrom(SSInventoryRow iInventoryRow) {
         iProductNr = iInventoryRow.iProductNr;
-        iChange    = iInventoryRow.iChange;
-        iQuantity  = iInventoryRow.iQuantity;
-        iProduct   = iInventoryRow.iProduct;
+        iChange = iInventoryRow.iChange;
+        iQuantity = iInventoryRow.iQuantity;
+        iProduct = iInventoryRow.iProduct;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -81,7 +81,8 @@ public class SSInventoryRow implements Serializable {
     public void setProductNr(String iProductNr) {
         this.iProductNr = iProductNr;
     }
-    /////////////////////////////////////////////////////////////////////////////
+
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      *  Lagerantal
@@ -101,7 +102,7 @@ public class SSInventoryRow implements Serializable {
         this.iQuantity = iQuantity;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      * Inventerat antal
@@ -109,7 +110,9 @@ public class SSInventoryRow implements Serializable {
      * @return
      */
     public Integer getInventoryQuantity() {
-        if(iQuantity == null || iChange == null) return null;
+        if (iQuantity == null || iChange == null) {
+            return null;
+        }
 
         return iQuantity + iChange;
     }
@@ -120,13 +123,14 @@ public class SSInventoryRow implements Serializable {
      * @param iValue
      */
     public void setInventoryQuantity(Integer iValue) {
-        if(iQuantity == null || iValue == null) return;
+        if (iQuantity == null || iValue == null) {
+            return;
+        }
 
         iChange = iValue - iQuantity;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
-
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      * Skillnad
@@ -146,7 +150,7 @@ public class SSInventoryRow implements Serializable {
         this.iChange = iChange;
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -162,9 +166,9 @@ public class SSInventoryRow implements Serializable {
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
-        if(iProduct == null && iProductNr != null){
+        if (iProduct == null && iProductNr != null) {
             for (SSProduct iCurrent : iProducts) {
-                if(iProductNr.equals( iCurrent.getNumber() )){
+                if (iProductNr.equals(iCurrent.getNumber())) {
                     iProduct = iCurrent;
                     break;
                 }
@@ -178,11 +182,11 @@ public class SSInventoryRow implements Serializable {
      * @param iProduct
      */
     public void setProduct(SSProduct iProduct) {
-        this.iProduct   = iProduct;
+        this.iProduct = iProduct;
         iProductNr = iProduct == null ? null : iProduct.getNumber();
     }
 
-    /////////////////////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////////////////
 
     /**
      * Returns true if the product is the same as in this row
@@ -191,12 +195,13 @@ public class SSInventoryRow implements Serializable {
      * @return
      */
     public boolean hasProduct(SSProduct iProduct) {
-        return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
+        return iProductNr != null && iProductNr.equals(iProduct.getNumber());
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSInventoryRow");
         sb.append("{iChange=").append(iChange);
         sb.append(", iProduct=").append(iProduct);

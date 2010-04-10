@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.purchaseorder.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
 import se.swedsoft.bookkeeping.data.SSPurchaseOrderRow;
 import se.swedsoft.bookkeeping.data.SSSupplier;
@@ -41,6 +42,7 @@ import java.awt.event.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-24
@@ -74,8 +76,6 @@ public class SSPurchaseOrderPanel {
 
     private SSDateChooser iEstimatedDelivery;
 
-
-
     private SSEditableTableComboBox<SSDeliveryWay > iDeliveryWay;
 
     private SSEditableTableComboBox<SSDeliveryTerm> iDeliveryTerm;
@@ -88,9 +88,7 @@ public class SSPurchaseOrderPanel {
 
     private SSDefaultAccountPanel iDefaultAccounts;
 
-
     private SSBigDecimalTextField iTotalSum;
-
 
     private SSPurchaseOrderRowTableModel  iModel;
 
@@ -102,7 +100,8 @@ public class SSPurchaseOrderPanel {
      * @param iOwner
      */
     public SSPurchaseOrderPanel(final SSDialog iOwner) {
-        iNumber.setFormatterFactory( new DefaultFormatterFactory(new NumberFormatter( new DecimalFormat("0") ) ) );
+        iNumber.setFormatterFactory(
+                new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("0"))));
         iNumber.setHorizontalAlignment(JTextField.RIGHT);
 
         iTable.setColorReadOnly(true);
@@ -110,14 +109,13 @@ public class SSPurchaseOrderPanel {
         iTable.setSingleSelect();
 
         iModel = new SSPurchaseOrderRowTableModel();
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_PRODUCT              , true);
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_DESCRIPTION          , true);
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_SUPPLIER_ARTICLE_NR  , true);
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_UNITPRICE            , true);
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_QUANTITY             , true);
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_UNIT                 , true);
-        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_SUM                 , false);
-
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_PRODUCT, true);
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_DESCRIPTION, true);
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_SUPPLIER_ARTICLE_NR, true);
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_UNITPRICE, true);
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_QUANTITY, true);
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_UNIT, true);
+        iModel.addColumn(SSPurchaseOrderRowTableModel.COLUMN_SUM, false);
 
         iModel.setupTable(iTable);
 
@@ -127,21 +125,25 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iSupplier.setModel( SSSupplierTableModel.getDropDownModel() );
-        iSupplier.setSearchColumns(0,1);
+        iSupplier.setModel(SSSupplierTableModel.getDropDownModel());
+        iSupplier.setSearchColumns(0, 1);
         iSupplier.setAllowCustomValues(true);
 
-        iSupplier.addSelectionListener(new SSSelectionListener<SSSupplier>() {
+        iSupplier.addSelectionListener(
+                new SSSelectionListener<SSSupplier>() {
             public void selected(SSSupplier selected) {
-                if(selected != null){
+                if (selected != null) {
                     iPurchaseOrder.setSupplier(selected);
-                    iPurchaseOrder.setCurrencyRate(selected.getCurrency() == null ? new BigDecimal(1) : selected.getCurrency().getExchangeRate());
+                    iPurchaseOrder.setCurrencyRate(
+                            selected.getCurrency() == null
+                                    ? new BigDecimal(1)
+                                    : selected.getCurrency().getExchangeRate());
                     setOrder(iPurchaseOrder);
                 }
             }
         });
 
-        new SSTraversalAction(iTable){
+        new SSTraversalAction(iTable) {
             @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 5) {
@@ -152,7 +154,7 @@ public class SSPurchaseOrderPanel {
                     iPosition.y = iPosition.y + 1;
                     iPosition.x = 0;
 
-                    if(iPosition.y == iModel.getRowCount()) {
+                    if (iPosition.y == iModel.getRowCount()) {
                         iButtonPanel.getOkButton().requestFocus();
                         return null;
                     }
@@ -162,45 +164,51 @@ public class SSPurchaseOrderPanel {
             }
         };
 
-        new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSPurchaseOrderRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
         };
 
-        iCurrency.getComboBox().setModel( SSCurrencyTableModel.getDropDownModel() );
+        iCurrency.getComboBox().setModel(SSCurrencyTableModel.getDropDownModel());
         iCurrency.getComboBox().setSearchColumns(0);
-        iCurrency.setEditingFactory( SSCurrencyTableModel.getEditingFactory(iOwner) );
-        iCurrency.getComboBox().addSelectionListener(new SSSelectionListener<SSCurrency>() {
+        iCurrency.setEditingFactory(SSCurrencyTableModel.getEditingFactory(iOwner));
+        iCurrency.getComboBox().addSelectionListener(
+                new SSSelectionListener<SSCurrency>() {
             public void selected(SSCurrency selected) {
-                if(selected != null) iCurrencyRate.setValue(selected.getExchangeRate());
+                if (selected != null) {
+                    iCurrencyRate.setValue(selected.getExchangeRate());
+                }
 
                 iModel.fireTableDataChanged();
             }
         });
-        iDeliveryWay.getComboBox().setModel( SSDeliveryWayTableModel.getDropDownModel() );
+        iDeliveryWay.getComboBox().setModel(SSDeliveryWayTableModel.getDropDownModel());
         iDeliveryWay.getComboBox().setSearchColumns(0);
-        iDeliveryWay.setEditingFactory( SSDeliveryWayTableModel.getEditingFactory(iOwner) );
+        iDeliveryWay.setEditingFactory(SSDeliveryWayTableModel.getEditingFactory(iOwner));
 
-        iDeliveryTerm.getComboBox().setModel( SSDeliveryTermTableModel.getDropDownModel() );
+        iDeliveryTerm.getComboBox().setModel(SSDeliveryTermTableModel.getDropDownModel());
         iDeliveryTerm.getComboBox().setSearchColumns(0);
-        iDeliveryTerm.setEditingFactory( SSDeliveryTermTableModel.getEditingFactory(iOwner) );
+        iDeliveryTerm.setEditingFactory(SSDeliveryTermTableModel.getEditingFactory(iOwner));
 
-        iPaymentTerm.getComboBox().setModel( SSPaymentTermTableModel.getDropDownModel() );
+        iPaymentTerm.getComboBox().setModel(SSPaymentTermTableModel.getDropDownModel());
         iPaymentTerm.getComboBox().setSearchColumns(0);
-        iPaymentTerm.setEditingFactory( SSPaymentTermTableModel.getEditingFactory(iOwner) );
-
+        iPaymentTerm.setEditingFactory(SSPaymentTermTableModel.getEditingFactory(iOwner));
 
         iInputVerifier = new SSInputVerifier();
 
@@ -233,7 +241,6 @@ public class SSPurchaseOrderPanel {
         return iPanel;
     }
 
-
     /**
      *
      * @param pActionListener
@@ -251,7 +258,6 @@ public class SSPurchaseOrderPanel {
         iButtonPanel.addCancelActionListener(pActionListener);
     }
 
-
     /**
      * @param iPurchaseOrder
      */
@@ -268,7 +274,8 @@ public class SSPurchaseOrderPanel {
         iEstimatedDelivery.setDate(iPurchaseOrder.getEstimatedDelivery());
 
         // Kund nummer
-        iSupplier.setSelected(iPurchaseOrder.getSupplier(SSDB.getInstance().getSuppliers()));
+        iSupplier.setSelected(
+                iPurchaseOrder.getSupplier(SSDB.getInstance().getSuppliers()));
         // Kund namn
         iSupplierName.setText(iPurchaseOrder.getSupplierName());
         // Vår kontaktperson:
@@ -278,7 +285,7 @@ public class SSPurchaseOrderPanel {
 
         // Valuta
         iCurrency.setSelected(iPurchaseOrder.getCurrency());
-        //Valutakurs
+        // Valutakurs
         iCurrencyRate.setValue(iPurchaseOrder.getCurrencyRate());
         // Betalningsvilkor
         iPaymentTerm.setSelected(iPurchaseOrder.getPaymentTerm());
@@ -286,7 +293,6 @@ public class SSPurchaseOrderPanel {
         iDeliveryTerm.setSelected(iPurchaseOrder.getDeliveryTerm());
         // Leveranssätt
         iDeliveryWay.setSelected(iPurchaseOrder.getDeliveryWay());
-
 
         // Offerttext
         iText.setText(iPurchaseOrder.getText());
@@ -296,7 +302,7 @@ public class SSPurchaseOrderPanel {
         // Leveransadress
         iDeliveryAddress.setAdress(iPurchaseOrder.getDeliveryAddress());
         // Standard konton
-        iDefaultAccounts.setDefaultAccounts( iPurchaseOrder.getDefaultAccounts());
+        iDefaultAccounts.setDefaultAccounts(iPurchaseOrder.getDefaultAccounts());
 
         updateSumFields();
 
@@ -313,7 +319,6 @@ public class SSPurchaseOrderPanel {
         // Leveransdatum
         iPurchaseOrder.setEstimatedDelivery(iEstimatedDelivery.getDate());
 
-
         // Kund nummer
         iPurchaseOrder.setSupplier(iSupplier.getSelected());
         // Kund namn
@@ -325,7 +330,7 @@ public class SSPurchaseOrderPanel {
 
         // Valuta
         iPurchaseOrder.setCurrency(iCurrency.getSelected());
-        //Valutakurs
+        // Valutakurs
         iPurchaseOrder.setCurrencyRate(iCurrencyRate.getValue());
         // Betalningsvilkor
         iPurchaseOrder.setPaymentTerm(iPaymentTerm.getSelected());
@@ -333,7 +338,6 @@ public class SSPurchaseOrderPanel {
         iPurchaseOrder.setDeliveryTerm(iDeliveryTerm.getSelected());
         // Leveranssätt
         iPurchaseOrder.setDeliveryWay(iDeliveryWay.getSelected());
-
 
         // Offerttext
         iPurchaseOrder.setText(iText.getText());
@@ -347,59 +351,58 @@ public class SSPurchaseOrderPanel {
 
     }
 
-
     /**
      *
      */
-    private void updateSumFields(){
+    private void updateSumFields() {
         BigDecimal iTotalSum = iPurchaseOrder.getSum();
 
-        this.iTotalSum .setValue(iTotalSum);
+        this.iTotalSum.setValue(iTotalSum);
     }
 
     public void dispose() {
 
         iSupplier.dispose();
-        iSupplier=null;
+        iSupplier = null;
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
         iButtonPanel.dispose();
-        iButtonPanel=null;
+        iButtonPanel = null;
         iTable.dispose();
-        iTable=null;
+        iTable = null;
         iNumber.removeAll();
-        iNumber=null;
+        iNumber = null;
         iDate.dispose();
-        iDate=null;
-        iSupplierAddress=null;
-        iSupplierName=null;
-        iDeliveryAddress=null;
+        iDate = null;
+        iSupplierAddress = null;
+        iSupplierName = null;
+        iDeliveryAddress = null;
         iText.removeAll();
-        iText=null;
+        iText = null;
         iYourContactPerson.removeAll();
-        iYourContactPerson=null;
+        iYourContactPerson = null;
         iOurContactPerson.removeAll();
-        iOurContactPerson=null;
-        iEstimatedDelivery=null;
+        iOurContactPerson = null;
+        iEstimatedDelivery = null;
         iDeliveryWay.dispose();
-        iDeliveryWay=null;
+        iDeliveryWay = null;
         iDeliveryTerm.dispose();
-        iDeliveryTerm=null;
+        iDeliveryTerm = null;
         iPaymentTerm.dispose();
-        iPaymentTerm=null;
+        iPaymentTerm = null;
         iCurrency.dispose();
-        iCurrency=null;
+        iCurrency = null;
         iDefaultAccounts.dispose();
-        iDefaultAccounts=null;
+        iDefaultAccounts = null;
         iTotalSum.removeAll();
-        iTotalSum=null;
-        iModel=null;
-        iInputVerifier=null;
+        iTotalSum = null;
+        iModel = null;
+        iInputVerifier = null;
         iCurrencyRate.removeAll();
-        iCurrencyRate=null;
+        iCurrencyRate = null;
     }
 
-    public void addKeyListeners(){
+    public void addKeyListeners() {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -407,10 +410,10 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iSupplier.getComponent(0).addKeyListener(new KeyAdapter(){
+        iSupplier.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iSupplierName.requestFocusInWindow();
@@ -420,10 +423,10 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iSupplierName.addKeyListener(new KeyAdapter(){
+        iSupplierName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOurContactPerson.requestFocusInWindow();
@@ -433,10 +436,10 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iOurContactPerson.addKeyListener(new KeyAdapter(){
+        iOurContactPerson.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iYourContactPerson.requestFocusInWindow();
@@ -446,10 +449,10 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iYourContactPerson.addKeyListener(new KeyAdapter(){
+        iYourContactPerson.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iDate.getEditor().getComponent(0).requestFocusInWindow();
@@ -459,11 +462,12 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iEstimatedDelivery.getEditor().getComponent(0).requestFocusInWindow();
                         }
@@ -472,11 +476,12 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iEstimatedDelivery.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iEstimatedDelivery.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iPaymentTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -485,11 +490,12 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -498,11 +504,12 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryWay.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -511,11 +518,12 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iCurrency.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -524,10 +532,10 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCurrencyRate.requestFocusInWindow();
@@ -537,24 +545,24 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iCurrencyRate.addKeyListener(new KeyAdapter(){
+        iCurrencyRate.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -564,10 +572,10 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -577,9 +585,9 @@ public class SSPurchaseOrderPanel {
             }
         });
 
-        iNumber.addFocusListener(new FocusAdapter(){
+        iNumber.addFocusListener(new FocusAdapter() {
             @Override
-            public void focusGained(FocusEvent e){
+            public void focusGained(FocusEvent e) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         iSupplier.getComponent(0).requestFocusInWindow();
@@ -595,6 +603,7 @@ public class SSPurchaseOrderPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.purchaseorder.panel.SSPurchaseOrderPanel");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCurrency=").append(iCurrency);

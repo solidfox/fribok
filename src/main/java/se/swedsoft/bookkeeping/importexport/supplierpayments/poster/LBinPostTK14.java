@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.poster;
 
+
 import se.swedsoft.bookkeeping.importexport.supplierpayments.data.SupplierPayment;
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -17,15 +19,14 @@ public class LBinPostTK14 extends LBinPost {
 
     private String     iNumber;
     private String     iReference;
-    private BigDecimal iValue    ;
-    private Date       iDate     ;
+    private BigDecimal iValue;
+    private Date       iDate;
     private Integer    iInvoiceNr;
 
     /**
      *
      */
-    public LBinPostTK14() {
-    }
+    public LBinPostTK14() {}
 
     /**
      *
@@ -34,10 +35,10 @@ public class LBinPostTK14 extends LBinPost {
      */
     public LBinPostTK14(SupplierPayment iPayment, String iNumber) {
         this.iNumber = iNumber.replaceAll("-", "");
-        iReference   = iPayment.getReference();
-        iValue       = iPayment.getValue();
-        iDate        = iPayment.getDate();
-        iInvoiceNr   = iPayment.getNumber();
+        iReference = iPayment.getReference();
+        iValue = iPayment.getValue();
+        iDate = iPayment.getDate();
+        iInvoiceNr = iPayment.getNumber();
     }
 
     /**
@@ -45,14 +46,14 @@ public class LBinPostTK14 extends LBinPost {
      * @param iLine
      */
     @Override
-    public void write(LBinLine iLine){
+    public void write(LBinLine iLine) {
         iLine.append("14");
-        iLine.append( iNumber   , 10, '0'     ); // 3 => 12 : Postgiro eller utbet nr
-        iLine.append( iReference, 25          ); // 13 => 37: Referens
-        iLine.append( iValue    , 12          ); // 38 => 49: Belopp
-        iLine.append( iDate     , 6, "yyMMdd" ); // 50 => 55: Betalningsdatum
-        iLine.append( ""        , 5           ); // 56 => 60: Blanka
-        iLine.append( iInvoiceNr, 20          ); // 61 => 80: Användarinformation
+        iLine.append(iNumber, 10, '0'); // 3 => 12 : Postgiro eller utbet nr
+        iLine.append(iReference, 25); // 13 => 37: Referens
+        iLine.append(iValue, 12); // 38 => 49: Belopp
+        iLine.append(iDate, 6, "yyMMdd"); // 50 => 55: Betalningsdatum
+        iLine.append("", 5); // 56 => 60: Blanka
+        iLine.append(iInvoiceNr, 20); // 61 => 80: Användarinformation
     }
 
     /**
@@ -60,13 +61,13 @@ public class LBinPostTK14 extends LBinPost {
      * @param iLine
      */
     @Override
-    public void read(LBinLine iLine){
-        iNumber    = iLine.readString    (3 , 12);              // 3 => 12 : Postgiro eller utbet nr
-        iReference = iLine.readString    (13, 37);              // 13 => 37: Referens
-        iValue     = iLine.readBigDecimal(38, 49);              // 38 => 49: Belopp
-        iInvoiceNr = iLine.readInteger   (61, 80);              // 61 => 80: Användarinformation
+    public void read(LBinLine iLine) {
+        iNumber = iLine.readString(3, 12); // 3 => 12 : Postgiro eller utbet nr
+        iReference = iLine.readString(13, 37); // 13 => 37: Referens
+        iValue = iLine.readBigDecimal(38, 49); // 38 => 49: Belopp
+        iInvoiceNr = iLine.readInteger(61, 80); // 61 => 80: Användarinformation
 
-      //  iDate      = iLine.readDate      (50, 55, "yyMMdd");    // 50 => 55: Betalningsdatum
+        // iDate      = iLine.readDate      (50, 55, "yyMMdd");    // 50 => 55: Betalningsdatum
 
     }
 
@@ -153,7 +154,9 @@ public class LBinPostTK14 extends LBinPost {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK14");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.importexport.supplierpayments.poster.LBinPostTK14");
         sb.append("{iDate=").append(iDate);
         sb.append(", iInvoiceNr=").append(iInvoiceNr);
         sb.append(", iNumber='").append(iNumber).append('\'');

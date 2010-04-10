@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -37,25 +39,25 @@ public class SSIndelivery implements Serializable {
 
     /**
      * Copy constructor
-     * 
+     *
      * @param iIndelivery
      */
     public SSIndelivery(SSIndelivery iIndelivery) {
         copyFrom(iIndelivery);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
      */
-    public void doAutoIncrement(){
+    public void doAutoIncrement() {
         iNumber = 1;
 
         List<SSIndelivery> iIndeliveries = SSDB.getInstance().getIndeliveries();
 
         for (SSIndelivery iIndelivery : iIndeliveries) {
-            if(iIndelivery.iNumber >= iNumber){
+            if (iIndelivery.iNumber >= iNumber) {
                 iNumber = iIndelivery.iNumber + 1;
             }
         }
@@ -66,19 +68,18 @@ public class SSIndelivery implements Serializable {
      *
      * @param iIndelivery
      */
-    public void copyFrom(SSIndelivery iIndelivery){
+    public void copyFrom(SSIndelivery iIndelivery) {
         iNumber = iIndelivery.iNumber;
-        iDate   = iIndelivery.iDate;
-        iText   = iIndelivery.iText;
-        iRows   = new LinkedList<SSIndeliveryRow>();
+        iDate = iIndelivery.iDate;
+        iText = iIndelivery.iText;
+        iRows = new LinkedList<SSIndeliveryRow>();
 
         for (SSIndeliveryRow iRow : iIndelivery.iRows) {
-            iRows.add( new SSIndeliveryRow(iRow) );
+            iRows.add(new SSIndeliveryRow(iRow));
         }
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -96,7 +97,7 @@ public class SSIndelivery implements Serializable {
         this.iNumber = iNumber;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -114,7 +115,7 @@ public class SSIndelivery implements Serializable {
         this.iDate = iDate;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -132,7 +133,7 @@ public class SSIndelivery implements Serializable {
         this.iText = iText;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -150,7 +151,6 @@ public class SSIndelivery implements Serializable {
         this.iRows = iRows;
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSIndelivery)) {
             return false;
@@ -158,7 +158,7 @@ public class SSIndelivery implements Serializable {
         return iNumber.equals(((SSIndelivery) obj).iNumber);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Return the correction for the supplied product.
@@ -166,10 +166,11 @@ public class SSIndelivery implements Serializable {
      * @param iProduct
      * @return the correction
      */
-    public Integer getChange(SSProduct iProduct){
+    public Integer getChange(SSProduct iProduct) {
         Integer iChange = 0;
+
         for (SSIndeliveryRow iRow : iRows) {
-            if( iRow.hasProduct( iProduct) ){
+            if (iRow.hasProduct(iProduct)) {
                 iChange = iChange + iRow.getChange();
             }
 
@@ -179,10 +180,10 @@ public class SSIndelivery implements Serializable {
 
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSIndelivery");
         sb.append("{iDate=").append(iDate);
         sb.append(", iNumber=").append(iNumber);

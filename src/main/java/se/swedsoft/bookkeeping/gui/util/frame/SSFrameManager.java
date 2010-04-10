@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.frame;
 
+
 import se.swedsoft.bookkeeping.data.util.SSConfig;
 
 import javax.swing.event.InternalFrameAdapter;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -20,7 +22,7 @@ public class SSFrameManager {
     // The offset between frames.
     private static final int FRAME_OFFSET = 20;
     // The maximum number of frames before we shall reset the counter
-    private static final int FRAME_RESET  = 20;
+    private static final int FRAME_RESET = 20;
 
     // The instance of the frame manager
     private static SSFrameManager cInstance;
@@ -31,14 +33,13 @@ public class SSFrameManager {
      * @return the frame manager
      */
     public static SSFrameManager getInstance() {
-        if(cInstance == null){
+        if (cInstance == null) {
             cInstance = new SSFrameManager();
         }
         return cInstance;
     }
 
-
-    /////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////
 
     // All frames
     private Set<SSInternalFrame> iFrames;
@@ -48,8 +49,8 @@ public class SSFrameManager {
     /**
      *
      */
-    private SSFrameManager(){
-        iFrames         = new HashSet<SSInternalFrame>();
+    private SSFrameManager() {
+        iFrames = new HashSet<SSInternalFrame>();
         iFrameListeners = new LinkedList<ActionListener>();
     }
 
@@ -61,17 +62,16 @@ public class SSFrameManager {
         return Collections.unmodifiableSet(iFrames);
     }
 
-
     /**
      * Add a frame to the frame manager
      *
      * @param iFrame
      */
-    public synchronized void addFrame(SSInternalFrame iFrame){
+    public synchronized void addFrame(SSInternalFrame iFrame) {
 
         iFrames.add(iFrame);
 
-        iFrame.addInternalFrameListener( new FrameListener(iFrame) );
+        iFrame.addInternalFrameListener(new FrameListener(iFrame));
 
         notifyFrameListeners();
     }
@@ -81,7 +81,7 @@ public class SSFrameManager {
      *
      * @param iFrame
      */
-    public synchronized void removeFrame(SSInternalFrame iFrame){
+    public synchronized void removeFrame(SSInternalFrame iFrame) {
         iFrames.remove(iFrame);
 
         notifyFrameListeners();
@@ -91,28 +91,27 @@ public class SSFrameManager {
      *
      * @param iActionListener
      */
-    public void addFrameListener(ActionListener iActionListener){
+    public void addFrameListener(ActionListener iActionListener) {
         iFrameListeners.add(iActionListener);
     }
 
     /**
      *
      */
-    private void notifyFrameListeners(){
+    private void notifyFrameListeners() {
         ActionEvent iAction = new ActionEvent(this, 0, "");
 
-        for(ActionListener iActionListener: iFrameListeners){
+        for (ActionListener iActionListener: iFrameListeners) {
             iActionListener.actionPerformed(iAction);
         }
     }
 
-
-    //////////////////////////////////////////////
+    // ////////////////////////////////////////////
 
     /**
      * Cascades all  frames
      */
-    public synchronized void cascade(){
+    public synchronized void cascade() {
         List<SSInternalFrame> iFramesToCascade = new LinkedList<SSInternalFrame>(iFrames);
 
         Collections.sort(iFramesToCascade, new Comparator<SSInternalFrame>() {
@@ -120,18 +119,23 @@ public class SSFrameManager {
                 String iTitle1 = o1.getTitle();
                 String iTitle2 = o2.getTitle();
 
-                if( iTitle1 == null || iTitle2 == null) return 0;
+                if (iTitle1 == null || iTitle2 == null) {
+                    return 0;
+                }
 
                 return iTitle1.compareTo(iTitle2);
             }
         });
 
         int iFrameCounter = 1;
-        for(SSInternalFrame iFrame : iFramesToCascade ){
+
+        for (SSInternalFrame iFrame : iFramesToCascade) {
             int x = iFrameCounter * FRAME_OFFSET;
             int y = iFrameCounter * FRAME_OFFSET;
 
-            if (iFrameCounter == FRAME_RESET) iFrameCounter = 0;
+            if (iFrameCounter == FRAME_RESET) {
+                iFrameCounter = 0;
+            }
 
             iFrameCounter++;
 
@@ -141,7 +145,6 @@ public class SSFrameManager {
             storeFrame(iFrame);
         }
     }
-
 
     /**
      * Close all frames
@@ -160,39 +163,49 @@ public class SSFrameManager {
         notifyFrameListeners();
     }
 
-
-
     /**
      *
      * @param iFrame
      */
-    public void storeFrame(SSInternalFrame iFrame){
-        String    iName     = iFrame.getClass().getName();
+    public void storeFrame(SSInternalFrame iFrame) {
+        String    iName = iFrame.getClass().getName();
         Point     iLocation = iFrame.getLocation();
-        Dimension iSize     = iFrame.getSize();
+        Dimension iSize = iFrame.getSize();
 
-        if(iLocation != null) SSConfig.getInstance().set(iName + ".location", iLocation);
-        if(iSize     != null) SSConfig.getInstance().set(iName + ".size"    , iSize);
+        if (iLocation != null) {
+            SSConfig.getInstance().set(iName + ".location", iLocation);
+        }
+        if (iSize != null) {
+            SSConfig.getInstance().set(iName + ".size", iSize);
+        }
     }
 
     /**
      *
      * @param iFrame
      */
-    public void restoreFrame(SSInternalFrame iFrame){
-        String    iName    = iFrame.getClass().getName();
-        Point     iLocation = (Point    )SSConfig.getInstance().get(iName + ".location");
-        Dimension iSize     = (Dimension)SSConfig.getInstance().get(iName + ".size");
+    public void restoreFrame(SSInternalFrame iFrame) {
+        String    iName = iFrame.getClass().getName();
+        Point     iLocation = (Point) SSConfig.getInstance().get(iName + ".location");
+        Dimension iSize = (Dimension) SSConfig.getInstance().get(iName + ".size");
 
-        if(iSize != null){
-            if(iSize.width  < 80) iSize.width  = 80;
-            if(iSize.height < 60) iSize.height = 60;
+        if (iSize != null) {
+            if (iSize.width < 80) {
+                iSize.width = 80;
+            }
+            if (iSize.height < 60) {
+                iSize.height = 60;
+            }
 
-            iFrame.setSize (iSize);
+            iFrame.setSize(iSize);
         }
-        if(iLocation != null){
-            if(iLocation.x  < 0) iLocation.x =  FRAME_OFFSET * (iFrames.size() % FRAME_RESET);
-            if(iLocation.y  < 0) iLocation.y =  FRAME_OFFSET * (iFrames.size() % FRAME_RESET);
+        if (iLocation != null) {
+            if (iLocation.x < 0) {
+                iLocation.x = FRAME_OFFSET * (iFrames.size() % FRAME_RESET);
+            }
+            if (iLocation.y < 0) {
+                iLocation.y = FRAME_OFFSET * (iFrames.size() % FRAME_RESET);
+            }
 
             iFrame.setLocation(iLocation);
         }
@@ -201,16 +214,13 @@ public class SSFrameManager {
     /**
      *
      */
-    public void storeAllFrames(){
+    public void storeAllFrames() {
         Set<SSInternalFrame> iFramesToStore = new HashSet<SSInternalFrame>(iFrames);
 
         for (SSInternalFrame iFrame : iFramesToStore) {
             storeFrame(iFrame);
         }
     }
-
-
-
 
     /**
      *
@@ -244,7 +254,6 @@ public class SSFrameManager {
             storeFrame(iFrame);
         }
 
-
         /**
          * Invoked when an internal frame has been closed.
          */
@@ -254,21 +263,22 @@ public class SSFrameManager {
 
         }
 
-
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager.FrameListener");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager.FrameListener");
             sb.append("{iFrame=").append(iFrame);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.frame.SSFrameManager");
         sb.append("{iFrameListeners=").append(iFrameListeners);
         sb.append(", iFrames=").append(iFrames);

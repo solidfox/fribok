@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.model.SSAccountTableModel;
+
 
 /**
  * User: Andreas Lago
@@ -15,13 +17,10 @@ public class SSAccountCellEditor extends SSTableComboBox.CellEditor<SSAccount> {
      *
      */
     public SSAccountCellEditor() {
-        setModel( SSAccountTableModel.getDropDownModel() );
+        setModel(SSAccountTableModel.getDropDownModel());
 
-        setSearchColumns(0,1);
+        setSearchColumns(0, 1);
         setAllowCustomValues(false);
     }
-
-
-
 
 }

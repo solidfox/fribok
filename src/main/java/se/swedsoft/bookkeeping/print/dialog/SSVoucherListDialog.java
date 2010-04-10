@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
 import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
@@ -21,16 +22,15 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Date: 2006-feb-17
  * Time: 15:54:16
  */
 public class SSVoucherListDialog extends SSDialog {
 
-    public enum SSVoucherRange{
-        ALL_VOUCHERS,
-        BETWEEN_NUMBER,
-        BETWEEN_DATE
+    public enum SSVoucherRange {
+        ALL_VOUCHERS, BETWEEN_NUMBER, BETWEEN_DATE
     }
 
     private JPanel iPanel;
@@ -55,7 +55,7 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @param iMainFrame
      */
-    public SSVoucherListDialog(SSMainFrame iMainFrame){
+    public SSVoucherListDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("voucherlistreport.dialog.title"));
 
         List<SSVoucher> iVouchers = SSDB.getInstance().getCurrentYear().getVouchers();
@@ -63,18 +63,18 @@ public class SSVoucherListDialog extends SSDialog {
         setPanel(iPanel);
 
         ButtonGroup iButtonGroup = new ButtonGroup();
+
         iButtonGroup.add(iRadioNumber);
         iButtonGroup.add(iRadioDate);
         iButtonGroup.add(iRadioAll);
 
-
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iFromVoucher.setEnabled( iRadioNumber.isSelected() );
-                iToVoucher  .setEnabled( iRadioNumber.isSelected() );
+                iFromVoucher.setEnabled(iRadioNumber.isSelected());
+                iToVoucher.setEnabled(iRadioNumber.isSelected());
 
-                iFromDate.setEnabled( iRadioDate.isSelected() );
-                iToDate  .setEnabled( iRadioDate.isSelected() );
+                iFromDate.setEnabled(iRadioDate.isSelected());
+                iToDate.setEnabled(iRadioDate.isSelected());
             }
         };
 
@@ -90,15 +90,15 @@ public class SSVoucherListDialog extends SSDialog {
             }
         });
 
-        iRadioAll   .addChangeListener(iChangeListener);
-        iRadioDate  .addChangeListener(iChangeListener);
+        iRadioAll.addChangeListener(iChangeListener);
+        iRadioDate.addChangeListener(iChangeListener);
         iRadioNumber.addChangeListener(iChangeListener);
 
-        iFromVoucher.setModel( SSVoucherTableModel.getDropDownModel() );
-        iToVoucher  .setModel( SSVoucherTableModel.getDropDownModel() );
+        iFromVoucher.setModel(SSVoucherTableModel.getDropDownModel());
+        iToVoucher.setModel(SSVoucherTableModel.getDropDownModel());
 
-        iFromVoucher.setSelected( SSVoucherMath.getFirst(iVouchers) );
-        iToVoucher  .setSelected( SSVoucherMath.getLast(iVouchers) );
+        iFromVoucher.setSelected(SSVoucherMath.getFirst(iVouchers));
+        iToVoucher.setSelected(SSVoucherMath.getLast(iVouchers));
 
         iFromVoucher.setSearchColumns(0);
         iToVoucher.setSearchColumns(0);
@@ -106,23 +106,25 @@ public class SSVoucherListDialog extends SSDialog {
         iRadioAll.setSelected(true);
     }
 
-
     /**
      *
      * @return
      */
-    public JPanel getPanel(){
+    public JPanel getPanel() {
         return iPanel;
     }
 
-
     /**
      *
      * @return
      */
-    public SSVoucherRange getVoucherRange(){
-        if( iRadioNumber.isSelected() ) return SSVoucherRange.BETWEEN_NUMBER;
-        if( iRadioDate  .isSelected() ) return SSVoucherRange.BETWEEN_DATE;
+    public SSVoucherRange getVoucherRange() {
+        if (iRadioNumber.isSelected()) {
+            return SSVoucherRange.BETWEEN_NUMBER;
+        }
+        if (iRadioDate.isSelected()) {
+            return SSVoucherRange.BETWEEN_DATE;
+        }
 
         return SSVoucherRange.ALL_VOUCHERS;
     }
@@ -131,7 +133,7 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @param pDateFrom
      */
-    public void setDateFrom(Date pDateFrom){
+    public void setDateFrom(Date pDateFrom) {
         iFromDate.setDate(pDateFrom);
     }
 
@@ -139,17 +141,15 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @param pDateTo
      */
-    public void setDateTo(Date pDateTo){
+    public void setDateTo(Date pDateTo) {
         iToDate.setDate(pDateTo);
     }
-
-
 
     /**
      *
      * @return
      */
-    public Integer getNumberFrom(){
+    public Integer getNumberFrom() {
         SSVoucher iSelected = iFromVoucher.getSelected();
 
         return iSelected == null ? 0 : iSelected.getNumber();
@@ -159,7 +159,7 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @return
      */
-    public Integer getNumberTo(){
+    public Integer getNumberTo() {
         SSVoucher iSelected = iToVoucher.getSelected();
 
         return iSelected == null ? 0 : iSelected.getNumber();
@@ -169,7 +169,7 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @return
      */
-    public Date getDateFrom(){
+    public Date getDateFrom() {
         return iFromDate.getDate();
     }
 
@@ -177,10 +177,9 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @return
      */
-    public Date getDateTo(){
+    public Date getDateTo() {
         return iToDate.getDate();
     }
-
 
     /**
      *
@@ -203,14 +202,14 @@ public class SSVoucherListDialog extends SSDialog {
      *
      * @return
      */
-    public List<SSVoucher> getElementsToPrint(){
+    public List<SSVoucher> getElementsToPrint() {
 
         List<SSVoucher> iVouchers = SSDB.getInstance().getVouchers();
 
         // Filter by non payed invoices
-        if( iRadioNumber.isSelected() ){
+        if (iRadioNumber.isSelected()) {
             final Integer iNumberFrom = iFromVoucher.getSelected().getNumber();
-            final Integer iNumberTo   = iToVoucher.getSelected().getNumber();
+            final Integer iNumberTo = iToVoucher.getSelected().getNumber();
 
             iVouchers = SSFilterFactory.doFilter(iVouchers, new SSFilter<SSVoucher>() {
                 public boolean applyFilter(SSVoucher iObject) {
@@ -222,10 +221,9 @@ public class SSVoucherListDialog extends SSDialog {
 
         }
         // Filter by date
-        if(iRadioDate.isSelected() ){
+        if (iRadioDate.isSelected()) {
             final Date iDateFrom = iFromDate.getDate();
-            final Date iDateTo   = iToDate.getDate();
-
+            final Date iDateTo = iToDate.getDate();
 
             iVouchers = SSFilterFactory.doFilter(iVouchers, new SSFilter<SSVoucher>() {
                 public boolean applyFilter(SSVoucher iInvoice) {
@@ -240,6 +238,7 @@ public class SSVoucherListDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSVoucherListDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iFromDate=").append(iFromDate);

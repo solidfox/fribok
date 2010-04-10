@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.ownreport;
 
+
 import se.swedsoft.bookkeeping.data.SSOwnReport;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -20,6 +21,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -35,8 +37,8 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSOwnReportFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSOwnReportFrame.cInstance.isClosed()) {
             cInstance = new SSOwnReportFrame(pMainFrame, pWidth, pHeight);
         }
         SSOwnReportFrame.cInstance.setVisible(true);
@@ -47,10 +49,9 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSOwnReportFrame getInstance(){
+    public static SSOwnReportFrame getInstance() {
         return cInstance;
     }
-
 
     private SSTable iTable;
 
@@ -64,9 +65,9 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSOwnReportFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("ownreportframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("ownreportframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -80,29 +81,32 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "ownreportframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "ownreportframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOwnReportDialog.newDialog(getMainFrame());
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "ownreportframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "ownreportframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOwnReport iSelected = iModel.getSelectedRow(iTable);
                 String iName = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iName = iSelected.getName();
                     iSelected = getOwnReport(iSelected);
                 }
                 if (iSelected != null) {
                     SSOwnReportDialog.editDialog(getMainFrame(), iSelected);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "ownreportframe.ownreportgone",iName);
+                    new SSErrorDialog(getMainFrame(), "ownreportframe.ownreportgone",
+                            iName);
                 }
             }
         });
@@ -112,11 +116,13 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "ownreportframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "ownreportframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 int[] selected = iTable.getSelectedRows();
                 List<SSOwnReport> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedOwnReport(toDelete);
             }
         });
@@ -126,18 +132,21 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        iButton = new SSButton("ICON_PRINT", "ownreportframe.printbutton", new ActionListener(){
+        iButton = new SSButton("ICON_PRINT", "ownreportframe.printbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOwnReport iSelected = iModel.getSelectedRow(iTable);
                 String iName = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iName = iSelected.getName();
                     iSelected = getOwnReport(iSelected);
                 }
                 if (iSelected != null) {
                     SSReportFactory.buildOwnReport(getMainFrame(), iSelected);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "ownreportframe.ownreportgone",iName);
+                    new SSErrorDialog(getMainFrame(), "ownreportframe.ownreportgone",
+                            iName);
                 }
             }
         });
@@ -145,8 +154,6 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -159,17 +166,18 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
 
         iTable = new SSTable();
         iModel = new SSOwnReportTableModel();
-        iModel.addColumn( SSOwnReportTableModel.COLUMN_NAME);
-        iModel.addColumn( SSOwnReportTableModel.COLUMN_PROJECT);
-        iModel.addColumn( SSOwnReportTableModel.COLUMN_RESULTUNIT);
+        iModel.addColumn(SSOwnReportTableModel.COLUMN_NAME);
+        iModel.addColumn(SSOwnReportTableModel.COLUMN_PROJECT);
+        iModel.addColumn(SSOwnReportTableModel.COLUMN_RESULTUNIT);
 
         iModel.setupTable(iTable);
 
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSOwnReport iSelected = iModel.getSelectedRow(iTable);
                 String iName;
+
                 if (iSelected != null) {
                     iName = iSelected.getName();
                     iSelected = getOwnReport(iSelected);
@@ -179,7 +187,8 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSOwnReportDialog.editDialog(getMainFrame(), iSelected);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "ownreportframe.ownreportgone",iName);
+                    new SSErrorDialog(getMainFrame(), "ownreportframe.ownreportgone",
+                            iName);
                 }
             }
         });
@@ -187,13 +196,13 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
 
         iPanel.setLayout(new BorderLayout());
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
 
     /**
-     * 
+     *
      * @return
      */
     public SSTableModel<SSOwnReport> getModel() {
@@ -230,7 +239,6 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
         return true;
     }
 
-
     /**
      *
      * @param delete
@@ -241,10 +249,14 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "ownreportframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSOwnReport iOwnReport : delete) {
-                if (SSPostLock.isLocked("ownreport" + iOwnReport.getId() + SSDB.getInstance().getCurrentCompany().getId())){
-                    new SSErrorDialog(getMainFrame(), "ownreportframe.ownreportopen",iOwnReport.getName());
+                if (SSPostLock.isLocked(
+                        "ownreport" + iOwnReport.getId()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "ownreportframe.ownreportopen",
+                            iOwnReport.getName());
                 } else {
                     SSDB.getInstance().deleteOwnReport(iOwnReport);
                 }
@@ -260,10 +272,10 @@ public class SSOwnReportFrame extends SSDefaultTableFrame {
         iModel.setObjects(SSDB.getInstance().getOwnReports());
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.ownreport.SSOwnReportFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iTable=").append(iTable);

@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.calc.util;
 
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -28,16 +30,15 @@ public class SSFilterFactory<T> {
         this.iObjects = iObjects;
     }
 
-
     /**
      *
      * @param iFilter
      */
-    public void applyFilter(SSFilter<T> iFilter){
+    public void applyFilter(SSFilter<T> iFilter) {
         List<T> iFiltered = new LinkedList<T>();
 
         for (T iObject : iObjects) {
-            if(iFilter.applyFilter(iObject)){
+            if (iFilter.applyFilter(iObject)) {
                 iFiltered.add(iObject);
             }
         }
@@ -50,7 +51,7 @@ public class SSFilterFactory<T> {
      *
      * @param iFilters
      */
-    public void applyFilter(SSFilter<T> ... iFilters){
+    public void applyFilter(SSFilter<T>... iFilters) {
         for (SSFilter<T> iFilter : iFilters) {
             applyFilter(iFilter);
 
@@ -73,7 +74,7 @@ public class SSFilterFactory<T> {
         this.iObjects = iObjects;
     }
 
-    //public static <T> void sort(List<T> list, Comparator<? super T> c) {
+    // public static <T> void sort(List<T> list, Comparator<? super T> c) {
 
     /**
      *
@@ -81,7 +82,7 @@ public class SSFilterFactory<T> {
      * @param iFilter
      * @return
      */
-    public static <T> List<T> doFilter(List<T> iObjects, SSFilter<T> iFilter){
+    public static <T> List<T> doFilter(List<T> iObjects, SSFilter<T> iFilter) {
         SSFilterFactory<T> iFactory = new SSFilterFactory<T>(iObjects);
 
         iFactory.applyFilter(iFilter);
@@ -89,10 +90,10 @@ public class SSFilterFactory<T> {
         return iFactory.iObjects;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.calc.util.SSFilterFactory");
         sb.append("{iObjects=").append(iObjects);
         sb.append('}');

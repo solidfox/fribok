@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.voucher.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.data.SSVoucherRow;
@@ -18,6 +19,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 /**
  * Tests if a voucher is isValid
@@ -42,17 +44,16 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
 
     private OnUpdate iOnUpdate;
 
-
     /**
      *
      * @param pComponents
      */
-    public  SSVoucherVerifier(JComponent ... pComponents){
-        iVoucher    = null;
+    public SSVoucherVerifier(JComponent... pComponents) {
+        iVoucher = null;
         iComponents = new LinkedList<JComponent>();
-        iError      = null;
-        iOnUpdate   = null;
-        iValid      = false;
+        iError = null;
+        iOnUpdate = null;
+        iValid = false;
 
         iComponents.addAll(Arrays.asList(pComponents));
     }
@@ -62,11 +63,11 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
      * @param pVoucher
      * @param pComponents
      */
-    public  SSVoucherVerifier(SSVoucher pVoucher,  JComponent ... pComponents){
-        iVoucher    = pVoucher;
+    public SSVoucherVerifier(SSVoucher pVoucher, JComponent... pComponents) {
+        iVoucher = pVoucher;
         iComponents = new LinkedList<JComponent>();
-        iError      = null;
-        iOnUpdate   = null;
+        iError = null;
+        iOnUpdate = null;
 
         iComponents.addAll(Arrays.asList(pComponents));
     }
@@ -75,11 +76,9 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
      *
      * @param pVoucher
      */
-    public void setVoucher(SSVoucher pVoucher){
-        iVoucher    = pVoucher;
+    public void setVoucher(SSVoucher pVoucher) {
+        iVoucher = pVoucher;
     }
-
-
 
     /**
      *
@@ -109,27 +108,27 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
      *
      * @return If the voucher is isValid
      */
-    private boolean validate(){
+    private boolean validate() {
         iError = null;
 
-        String description  = iVoucher.getDescription();
+        String description = iVoucher.getDescription();
 
-        if(description == null || description.length() == 0){
-            //Verifikationen saknar beskrivning.
+        if (description == null || description.length() == 0) {
+            // Verifikationen saknar beskrivning.
             iError = bundle.getString("voucherframe.error.1");
             return false;
         }
 
-        if(iVoucher.getRows().isEmpty()){
+        if (iVoucher.getRows().isEmpty()) {
             // Verifikationen saknar rader.
             iError = bundle.getString("voucherframe.error.2");
             return false;
         }
 
-        for (SSVoucherRow iRow : iVoucher.getRows() ) {
+        for (SSVoucherRow iRow : iVoucher.getRows()) {
 
-            if(iRow.isCrossed()) {
-                if( iRow.getEditedSignature() == null  ){
+            if (iRow.isCrossed()) {
+                if (iRow.getEditedSignature() == null) {
                     // Tillagd rad saknar signatur.
                     iError = bundle.getString("voucherframe.error.7");
                     return false;
@@ -137,47 +136,47 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
                 continue;
             }
 
-            if( iRow.getAccount() == null  ){
-                //Raden saknar konto.
+            if (iRow.getAccount() == null) {
+                // Raden saknar konto.
                 iError = bundle.getString("voucherframe.error.3");
                 return false;
             }
 
-            if(iRow.getDebet() == null && iRow.getCredit() == null /*|| (iRow.getDebet() != null && iRow.getDebet().signum() == 0) || (iRow.getCredit() != null && iRow.getCredit().signum() == 0)*/ ){
+            if (iRow.getDebet() == null && iRow.getCredit() == null/* || (iRow.getDebet() != null && iRow.getDebet().signum() == 0) || (iRow.getCredit() != null && iRow.getCredit().signum() == 0)*/) {
                 // Raden saknar debit eller credit.
                 iError = bundle.getString("voucherframe.error.4");
                 return false;
             }
 
-            if(iRow.getAccount().isProjectRequired() && iRow.getProject() == null){
+            if (iRow.getAccount().isProjectRequired() && iRow.getProject() == null) {
                 iError = bundle.getString("voucherframe.error.9");
                 return false;
             }
 
-            if(iRow.getAccount().isResultUnitRequired() && iRow.getResultUnit() == null){
+            if (iRow.getAccount().isResultUnitRequired() && iRow.getResultUnit() == null) {
                 iError = bundle.getString("voucherframe.error.10");
                 return false;
             }
 
-            if( iRow.isAdded() && iRow.getEditedSignature() == null  ){
+            if (iRow.isAdded() && iRow.getEditedSignature() == null) {
                 // Tillagd rad saknar signatur.
                 iError = bundle.getString("voucherframe.error.5");
                 return false;
             }
         }
-        BigDecimal iDebetSum = SSVoucherMath.getDebetSum (iVoucher);
+        BigDecimal iDebetSum = SSVoucherMath.getDebetSum(iVoucher);
         BigDecimal iCreditSum = SSVoucherMath.getCreditSum(iVoucher);
 
-        if( iDebetSum.subtract(iCreditSum).setScale(2, RoundingMode.HALF_UP).signum() != 0 ){
+        if (iDebetSum.subtract(iCreditSum).setScale(2, RoundingMode.HALF_UP).signum() != 0) {
             // Verifikationens differans är inte noll.
             iError = bundle.getString("voucherframe.error.6");
             return false;
         }
 
-        if( iDebetSum.setScale(2, RoundingMode.HALF_UP).signum() == 0 ){
+        if (iDebetSum.setScale(2, RoundingMode.HALF_UP).signum() == 0) {
             // Omslutningen är noll
-            for(SSVoucherRow iRow : iVoucher.getRows()){
-                if(!iRow.isCrossed()){
+            for (SSVoucherRow iRow : iVoucher.getRows()) {
+                if (!iRow.isCrossed()) {
                     iError = bundle.getString("voucherframe.error.8");
                     return false;
                 }
@@ -187,38 +186,39 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
         return true;
     }
 
-
-
     /**
      *
      */
     public void update() {
-        if(iVoucher == null) return;
+        if (iVoucher == null) {
+            return;
+        }
 
         iValid = validate();
 
-        if( iOnUpdate != null ) iOnUpdate.update(iValid, iError);
+        if (iOnUpdate != null) {
+            iOnUpdate.update(iValid, iError);
+        }
 
         setComponentsEnabled(iValid);
     }
-
 
     /**
      *
      * @param enabled
      */
-    private void setComponentsEnabled(boolean enabled){
-        for(JComponent iComponent: iComponents){
-            iComponent.setEnabled( enabled );
+    private void setComponentsEnabled(boolean enabled) {
+        for (JComponent iComponent: iComponents) {
+            iComponent.setEnabled(enabled);
         }
 
     }
 
     /**
-     * 
+     *
      * @return
      */
-    public boolean isValid(){
+    public boolean isValid() {
         return iValid;
     }
 
@@ -229,7 +229,6 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
     public String getError() {
         return iError;
     }
-
 
     /**
      *
@@ -242,6 +241,7 @@ public class SSVoucherVerifier  implements PropertyChangeListener, TableModelLis
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.voucher.util.SSVoucherVerifier");
         sb.append("{iComponents=").append(iComponents);
         sb.append(", iError='").append(iError).append('\'');

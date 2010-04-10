@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSNewProject;
 
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -17,14 +19,13 @@ public class SSProjectCellRenderer extends DefaultTableCellRenderer {
      */
     @Override
     public void setValue(Object value) {
-        if(value instanceof SSNewProject){
+        if (value instanceof SSNewProject) {
             SSNewProject iProject = (SSNewProject) value;
 
             setText(iProject.getNumber());
-        }  else {
-            setText( "" );
+        } else {
+            setText("");
         }
     }
-
 
 }

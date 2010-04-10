@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inpayment.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.data.SSInpaymentRow;
 import se.swedsoft.bookkeeping.data.SSInvoice;
@@ -14,6 +15,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import java.math.BigDecimal;
+
 
 /**
  * User: Andreas Lago
@@ -43,7 +45,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
     @Override
     public SSInpaymentRow getObject(int row) {
-        if( row == super.getRowCount()){
+        if (row == super.getRowCount()) {
             return iEditing;
         } else {
             return super.getObject(row);
@@ -54,7 +56,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
 
-        if(getObject(rowIndex) == iEditing && aValue != null && !"".equals(aValue)){
+        if (getObject(rowIndex) == iEditing && aValue != null && !"".equals(aValue)) {
             add(iEditing);
 
             iEditing = new SSInpaymentRow();
@@ -65,7 +67,8 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     /**
      * Supplier invoice column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_INVOICE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.1")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_INVOICE = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.1")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getInvoice(SSDB.getInstance().getInvoices());
@@ -73,7 +76,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
         @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
-            iObject.setInvoice((SSInvoice)iValue);
+            iObject.setInvoice((SSInvoice) iValue);
         }
 
         @Override
@@ -90,7 +93,8 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     /**
      * Currency column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCY = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.2")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCY = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.2")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getInvoiceCurrency();
@@ -98,7 +102,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
         @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
-            iObject.setInvoiceCurrency((SSCurrency)iValue);
+            iObject.setInvoiceCurrency((SSCurrency) iValue);
         }
 
         @Override
@@ -112,11 +116,11 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         }
     };
 
-
     /**
      * Currencyrate column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_INVOICE_CURRENCYRATE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.3")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_INVOICE_CURRENCYRATE = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.3")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getInvoiceCurrencyRate();
@@ -124,7 +128,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
         @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
-            iObject.setCurrencyRate((BigDecimal)iValue);
+            iObject.setCurrencyRate((BigDecimal) iValue);
 
         }
 
@@ -159,7 +163,8 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     /**
      * Value column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_VALUE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.4")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_VALUE = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.4")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getValue();
@@ -167,7 +172,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
         @Override
         public void setValue(SSInpaymentRow iOutpaymentRow, Object iValue) {
-            iOutpaymentRow.setValue((BigDecimal)iValue);
+            iOutpaymentRow.setValue((BigDecimal) iValue);
         }
 
         @Override
@@ -184,7 +189,8 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     /**
      * Value column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCYRATE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.5")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCYRATE = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.5")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getCurrencyRate();
@@ -192,7 +198,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
         @Override
         public void setValue(SSInpaymentRow iOutpaymentRow, Object iCurrencyRate) {
-            iOutpaymentRow.setCurrencyRate((BigDecimal)iCurrencyRate);
+            iOutpaymentRow.setCurrencyRate((BigDecimal) iCurrencyRate);
         }
 
         @Override
@@ -216,11 +222,11 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         }
     };
 
-
     /**
      * Payed column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_PAYED = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.6")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_PAYED = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.6")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return iObject.getLocalValue();
@@ -228,7 +234,7 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
         @Override
         public void setValue(SSInpaymentRow iObject, Object iValue) {
-            iObject.setLocalValue((BigDecimal)iValue);
+            iObject.setLocalValue((BigDecimal) iValue);
 
         }
 
@@ -246,15 +252,15 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
     /**
      * Value column
      */
-    public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCYRATEDIFFERENCE = new SSTableColumn<SSInpaymentRow>(SSBundle.getBundle().getString("outpaymentrowtable.column.7")) {
+    public static SSTableColumn<SSInpaymentRow> COLUMN_CURRENCYRATEDIFFERENCE = new SSTableColumn<SSInpaymentRow>(
+            SSBundle.getBundle().getString("outpaymentrowtable.column.7")) {
         @Override
         public Object getValue(SSInpaymentRow iObject) {
             return SSInpaymentMath.getCurrencyRateDifference(iObject);
         }
 
         @Override
-        public void setValue(SSInpaymentRow iObject, Object iValue) {
-        }
+        public void setValue(SSInpaymentRow iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -267,10 +273,10 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         }
     };
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.inpayment.util.SSInpaymentRowTableModel");
         sb.append("{iEditing=").append(iEditing);
         sb.append('}');

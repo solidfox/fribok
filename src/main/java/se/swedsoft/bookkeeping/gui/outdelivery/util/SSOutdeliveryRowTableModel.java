@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outdelivery.util;
 
+
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.SSOutdeliveryRow;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -7,13 +8,13 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSEditableTableModel;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:34:35
  */
 public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdeliveryRow> {
-
 
     /**
      * Returns the type of data in this model.
@@ -36,7 +37,8 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
     /**
      * Product
      */
-    public static SSTableColumn<SSOutdeliveryRow> COLUMN_PRODUCT = new SSTableColumn<SSOutdeliveryRow>(SSBundle.getBundle().getString("outdeliveryrowtable.column.1")) {
+    public static SSTableColumn<SSOutdeliveryRow> COLUMN_PRODUCT = new SSTableColumn<SSOutdeliveryRow>(
+            SSBundle.getBundle().getString("outdeliveryrowtable.column.1")) {
         @Override
         public Object getValue(SSOutdeliveryRow iRow) {
             return iRow.getProduct();
@@ -44,7 +46,9 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
 
         @Override
         public void setValue(SSOutdeliveryRow iRow, Object iValue) {
-            if(iValue instanceof SSProduct) iRow.setProduct((SSProduct)iValue);
+            if (iValue instanceof SSProduct) {
+                iRow.setProduct((SSProduct) iValue);
+            }
         }
 
         @Override
@@ -61,7 +65,8 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
     /**
      * Product beskrivning
      */
-    public static SSTableColumn<SSOutdeliveryRow> COLUMN_DESCRIPTION = new SSTableColumn<SSOutdeliveryRow>(SSBundle.getBundle().getString("outdeliveryrowtable.column.2")) {
+    public static SSTableColumn<SSOutdeliveryRow> COLUMN_DESCRIPTION = new SSTableColumn<SSOutdeliveryRow>(
+            SSBundle.getBundle().getString("outdeliveryrowtable.column.2")) {
         @Override
         public Object getValue(SSOutdeliveryRow iRow) {
             SSProduct iProduct = iRow.getProduct();
@@ -70,9 +75,7 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
         }
 
         @Override
-        public void setValue(SSOutdeliveryRow iRow, Object iValue) {
-
-        }
+        public void setValue(SSOutdeliveryRow iRow, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -88,7 +91,8 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
     /**
      * Skillnad
      */
-    public static SSTableColumn<SSOutdeliveryRow> COLUMN_CHANGE = new SSTableColumn<SSOutdeliveryRow>(SSBundle.getBundle().getString("outdeliveryrowtable.column.3")) {
+    public static SSTableColumn<SSOutdeliveryRow> COLUMN_CHANGE = new SSTableColumn<SSOutdeliveryRow>(
+            SSBundle.getBundle().getString("outdeliveryrowtable.column.3")) {
         @Override
         public Object getValue(SSOutdeliveryRow iRow) {
             return iRow.getChange();
@@ -96,7 +100,7 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
 
         @Override
         public void setValue(SSOutdeliveryRow iRow, Object iValue) {
-            iRow.setChange((Integer)iValue);
+            iRow.setChange((Integer) iValue);
         }
 
         @Override
@@ -109,6 +113,5 @@ public class SSOutdeliveryRowTableModel extends SSEditableTableModel<SSOutdelive
             return 120;
         }
     };
-
 
 }

@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.accountingyear;
 
+
 import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
@@ -35,7 +36,6 @@ import java.util.Map;
  */
 public class SSStartingAmountFrame extends SSDefaultTableFrame {
 
-
     private static SSStartingAmountFrame cInstance;
 
     /**
@@ -44,8 +44,8 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSStartingAmountFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
@@ -56,10 +56,9 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewAccountingYearFrame
      */
-    public static SSStartingAmountFrame getInstance(){
+    public static SSStartingAmountFrame getInstance() {
         return cInstance;
     }
-
 
     private SSStartingAmountPanel iStartingAmountPanel;
 
@@ -72,29 +71,38 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
      * @param height
      */
     private SSStartingAmountFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("startingammountframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("startingammountframe.title"),
+                width, height);
 
         iAccountingYear = SSDB.getInstance().getCurrentYear();
 
-
-        iStartingAmountPanel.setInBalance( iAccountingYear.getInBalance(),  SSAccountMath.getBalanceAccounts( iAccountingYear) );
-        addCloseListener(new ActionListener() {
+        iStartingAmountPanel.setInBalance(iAccountingYear.getInBalance(),
+                SSAccountMath.getBalanceAccounts(iAccountingYear));
+        addCloseListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(cInstance != null ){
-                    SSQueryDialog iDialog = new SSQueryDialog( getMainFrame(), SSBundle.getBundle(),  "startingammountpanel.saveonclose" );
+                if (cInstance != null) {
+                    SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(),
+                            SSBundle.getBundle(), "startingammountpanel.saveonclose");
                     int iResponce = iDialog.getResponce();
-                    if(iResponce != JOptionPane.YES_OPTION) {
-                        SSPostLock.removeLock("startingamount"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+
+                    if (iResponce != JOptionPane.YES_OPTION) {
+                        SSPostLock.removeLock(
+                                "startingamount"
+                                        + SSDB.getInstance().getCurrentCompany().getId()
+                                        + SSDB.getInstance().getCurrentYear().getId());
                         return;
                     }
-                    iAccountingYear.setInBalance( iStartingAmountPanel.getInBalance()  );
+                    iAccountingYear.setInBalance(iStartingAmountPanel.getInBalance());
                     SSDB.getInstance().updateAccountingYear(iAccountingYear);
-                    SSPostLock.removeLock("startingamount"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+                    SSPostLock.removeLock(
+                            "startingamount"
+                                    + SSDB.getInstance().getCurrentCompany().getId()
+                                    + SSDB.getInstance().getCurrentYear().getId());
                 }
             }
         });
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -108,52 +116,61 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
 
         // Save
         // ***************************
-        SSButton iButton = new SSButton("ICON_SAVEITEM", "startingammountframe.savebutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_SAVEITEM", "startingammountframe.savebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iAccountingYear.setInBalance(iStartingAmountPanel.getInBalance());
                 SSDB.getInstance().updateAccountingYear(iAccountingYear);
-                SSPostLock.removeLock("startingamount" + SSDB.getInstance().getCurrentCompany().getId() + SSDB.getInstance().getCurrentYear().getId());
+                SSPostLock.removeLock(
+                        "startingamount" + SSDB.getInstance().getCurrentCompany().getId()
+                        + SSDB.getInstance().getCurrentYear().getId());
                 cInstance = null;
                 setVisible(false);
             }
         });
+
         toolBar.add(iButton);
 
         // Cancel
         // ***************************
-        iButton = new SSButton("ICON_CANCELITEM", "startingammountframe.cancelbutton", new ActionListener(){
+        iButton = new SSButton("ICON_CANCELITEM", "startingammountframe.cancelbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSPostLock.removeLock("startingamount"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+                SSPostLock.removeLock(
+                        "startingamount" + SSDB.getInstance().getCurrentCompany().getId()
+                        + SSDB.getInstance().getCurrentYear().getId());
                 cInstance = null;
                 setVisible(false);
             }
         });
         toolBar.add(iButton);
         toolBar.addSeparator();
-            /*
-        // Import
-        // ***************************
-        iButton = new SSButton("ICON_IMPORT", "startingammountframe.importbutton", false, new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
-        toolBar.add(iButton);
+        /*
+         // Import
+         // ***************************
+         iButton = new SSButton("ICON_IMPORT", "startingammountframe.importbutton", false, new ActionListener(){
+         public void actionPerformed(ActionEvent e) {
 
-        // Export
-        // ***************************
-        iButton = new SSButton("ICON_EXPORT", "startingammountframe.exportbutton", false, new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
+         }
+         });
+         toolBar.add(iButton);
 
-            }
-        });
-        toolBar.add(iButton);
-        toolBar.addSeparator();
-               */
+         // Export
+         // ***************************
+         iButton = new SSButton("ICON_EXPORT", "startingammountframe.exportbutton", false, new ActionListener(){
+         public void actionPerformed(ActionEvent e) {
+
+         }
+         });
+         toolBar.add(iButton);
+         toolBar.addSeparator();
+         */
 
         // Import from balance budget
         // ***************************
-        iButton = new SSButton("ICON_REDO", "startingammountframe.importbalancebutton", new ActionListener(){
+        iButton = new SSButton("ICON_REDO", "startingammountframe.importbalancebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 importFromLastYearBalanceReport();
             }
@@ -163,17 +180,16 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
 
         // Print
         // ***************************
-        iButton = new SSButton("ICON_PRINT", "startingammountframe.printbutton", new ActionListener(){
+        iButton = new SSButton("ICON_PRINT", "startingammountframe.printbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 printStartingAmmounts();
             }
         });
         toolBar.add(iButton);
 
-
         return toolBar;
     }
-
 
     /**
      * This method should return the main content for the frame.
@@ -185,9 +201,10 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
     public JComponent getMainContent() {
         iStartingAmountPanel = new SSStartingAmountPanel();
         JPanel iPanel = new JPanel();
+
         iPanel.setLayout(new BorderLayout());
-        iPanel.add(iStartingAmountPanel.getPanel() , BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,2,2));
+        iPanel.add(iStartingAmountPanel.getPanel(), BorderLayout.CENTER);
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         return iPanel;
     }
 
@@ -200,7 +217,6 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
     public JComponent getStatusBar() {
         return null;
     }
-
 
     /**
      * Indicates whether this frame is a company data related frame.
@@ -226,57 +242,61 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
      *
      */
     private void printStartingAmmounts() {
-        SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
+        SSProgressDialog.runProgress(getMainFrame(),
+                new Runnable() {
             public void run() {
                 SSNewAccountingYear iAccountingYear = SSDB.getInstance().getCurrentYear();
 
                 Date iFrom = iAccountingYear.getFrom();
                 Date iTo = iAccountingYear.getTo();
-                SSStartingAmountPrinter iPrinter = new SSStartingAmountPrinter(iStartingAmountPanel.getInBalance(), iFrom, iTo);
+                SSStartingAmountPrinter iPrinter = new SSStartingAmountPrinter(
+                        iStartingAmountPanel.getInBalance(), iFrom, iTo);
 
-                iPrinter.preview( getMainFrame() );
+                iPrinter.preview(getMainFrame());
             }
         });
     }
 
-
     /**
      *
      */
-    private void importFromLastYearBalanceReport(){
+    private void importFromLastYearBalanceReport() {
         SSNewAccountingYear iPreviousYear = SSDB.getInstance().getPreviousYear();
 
         // If nothing selected, return
-        if(iPreviousYear == null){
-            new SSErrorDialog( getMainFrame(), "startingammountpanel.nopreviousyear" );
+        if (iPreviousYear == null) {
+            new SSErrorDialog(getMainFrame(), "startingammountpanel.nopreviousyear");
             return;
         }
-        SSQueryDialog iDialog = new SSQueryDialog( getMainFrame(), SSBundle.getBundle(),  "startingammountpanel.importbalance" );
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(),
+                "startingammountpanel.importbalance");
         int iResponce = iDialog.getResponce();
-        if(iResponce != JOptionPane.YES_OPTION) {
+
+        if (iResponce != JOptionPane.YES_OPTION) {
             return;
         }
-        //SSBalanceCalculator iCalculator = new SSBalanceCalculator(iPreviousYear);
+        // SSBalanceCalculator iCalculator = new SSBalanceCalculator(iPreviousYear);
 
-       // iCalculator.calculate();
+        // iCalculator.calculate();
 
-        Map<SSAccount, BigDecimal > iOutBalance = SSBalanceCalculator.getOutBalance(iPreviousYear);
+        Map<SSAccount, BigDecimal > iOutBalance = SSBalanceCalculator.getOutBalance(
+                iPreviousYear);
 
-           //     iCalculator.getOutSaldo();
+        // iCalculator.getOutSaldo();
 
-        iStartingAmountPanel.setInBalance(iOutBalance );
+        iStartingAmountPanel.setInBalance(iOutBalance);
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iStartingAmountPanel=null;
-        iAccountingYear=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iStartingAmountPanel = null;
+        iAccountingYear = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.accountingyear.SSStartingAmountFrame");
         sb.append("{iAccountingYear=").append(iAccountingYear);
         sb.append(", iStartingAmountPanel=").append(iStartingAmountPanel);
@@ -284,7 +304,4 @@ public class SSStartingAmountFrame extends SSDefaultTableFrame {
         return sb.toString();
     }
 }
-
-
-
 

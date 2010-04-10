@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.purchasesuggestion.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSStock;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -30,7 +32,9 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.purchasesuggestion.util.SSPurchaseSuggestionTableModel.Entry");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.purchasesuggestion.util.SSPurchaseSuggestionTableModel.Entry");
             sb.append("{iOrderVolume=").append(iOrderVolume);
             sb.append(", iProduct=").append(iProduct);
             sb.append(", iSelected=").append(iSelected);
@@ -41,6 +45,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     }
 
     private static SSStock iStock;
+
     /**
      *
      * @param iProducts
@@ -51,6 +56,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         iStock = new SSStock(true);
         for (SSProduct iProduct : iProducts) {
             Entry iEntry = new Entry();
+
             iEntry.iProduct = iProduct;
             iEntry.iSelected = false;
             iEntry.iOrderVolume = iProduct.getOrdercount();
@@ -70,7 +76,6 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         return Entry.class;
     }
 
-
     /**
      *
      * @return
@@ -80,11 +85,12 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
 
         for (Entry iEntry : getObjects()) {
 
-            if(iEntry.iSelected) {
+            if (iEntry.iSelected) {
                 if (iEntry.iSupplier == null) {
                     return null;
                 }
                 SSProduct iProduct = new SSProduct(iEntry.iProduct);
+
                 iProduct.setSupplier(iEntry.iSupplier);
                 iProduct.setOrdercount(iEntry.iOrderVolume);
                 iSelected.add(iProduct);
@@ -93,11 +99,10 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         return iSelected;
     }
 
-
     /**
      *
      */
-    public void selectAll(){
+    public void selectAll() {
         for (Entry entry : getObjects()) {
             entry.iSelected = true;
         }
@@ -108,8 +113,9 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
      *  Vald
      * @return
      */
-    public SSTableColumn<Entry> getSelectionColumn(){
-        return new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.1")) {
+    public SSTableColumn<Entry> getSelectionColumn() {
+        return new SSTableColumn<Entry>(
+                SSBundle.getBundle().getString("purchasesuggestiontable.column.1")) {
             @Override
             public Object getValue(Entry iEntry) {
                 return iEntry.iSelected;
@@ -117,7 +123,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
 
             @Override
             public void setValue(Entry iEntry, Object iValue) {
-                iEntry.iSelected = (Boolean)iValue;
+                iEntry.iSelected = (Boolean) iValue;
             }
 
             @Override
@@ -135,15 +141,15 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     /**
      * Number column
      */
-    public static SSTableColumn<Entry> COLUMN_NUMBER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.2")) {
+    public static SSTableColumn<Entry> COLUMN_NUMBER = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.2")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iProduct.getNumber();
         }
 
         @Override
-        public void setValue(Entry iEntry, Object iValue) {
-        }
+        public void setValue(Entry iEntry, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -159,7 +165,8 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     /**
      * Description column
      */
-    public static SSTableColumn<Entry> COLUMN_DESCRIPTION = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.3")) {
+    public static SSTableColumn<Entry> COLUMN_DESCRIPTION = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.3")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iProduct.getDescription();
@@ -167,7 +174,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
 
         @Override
         public void setValue(Entry iEntry, Object iValue) {
-            iEntry.iProduct.setDescription((String)iValue);
+            iEntry.iProduct.setDescription((String) iValue);
 
         }
 
@@ -185,15 +192,17 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     /**
      * Beställningspunktkolumn
      */
-    public static SSTableColumn<Entry> COLUMN_ORDERPOINT = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.4")) {
+    public static SSTableColumn<Entry> COLUMN_ORDERPOINT = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.4")) {
         @Override
         public Object getValue(Entry iEntry) {
-            return iEntry.iProduct.getOrderpoint() == null ? 0 : iEntry.iProduct.getOrderpoint();
+            return iEntry.iProduct.getOrderpoint() == null
+                    ? 0
+                    : iEntry.iProduct.getOrderpoint();
         }
 
         @Override
-        public void setValue(Entry iEntry, Object iValue) {
-        }
+        public void setValue(Entry iEntry, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -206,20 +215,21 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
         }
     };
 
-
     /**
      *  Lagerantal
      */
-    public static SSTableColumn<Entry> COLUMN_STOCK_QUANTITY = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.5")) {
+    public static SSTableColumn<Entry> COLUMN_STOCK_QUANTITY = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.5")) {
         @Override
         public Object getValue(Entry iEntry) {
 
-            return iStock.getQuantity(iEntry.iProduct) == null ? 0 : iStock.getQuantity(iEntry.iProduct);
+            return iStock.getQuantity(iEntry.iProduct) == null
+                    ? 0
+                    : iStock.getQuantity(iEntry.iProduct);
         }
 
         @Override
-        public void setValue(Entry iObject, Object iValue) {
-        }
+        public void setValue(Entry iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -235,15 +245,15 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     /**
      *  Väntas
      */
-    public static SSTableColumn<Entry> COLUMN_INCOMMING = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.6")) {
+    public static SSTableColumn<Entry> COLUMN_INCOMMING = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.6")) {
         @Override
         public Object getValue(Entry iEntry) {
             return SSPurchaseOrderMath.getNumberOfIncommingProducts(iEntry.iProduct);
         }
 
         @Override
-        public void setValue(Entry iObject, Object iValue) {
-        }
+        public void setValue(Entry iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -255,10 +265,12 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
             return 90;
         }
     };
+
     /**
      *  Beställningsantal
      */
-    public static SSTableColumn<Entry> COLUMN_ORDER_VOLUME = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.7")) {
+    public static SSTableColumn<Entry> COLUMN_ORDER_VOLUME = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.7")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iOrderVolume == null ? 0 : iEntry.iOrderVolume;
@@ -283,7 +295,8 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
     /**
      *  Leverantör
      */
-    public static SSTableColumn<Entry> COLUMN_SUPPLIER = new SSTableColumn<Entry>(SSBundle.getBundle().getString("purchasesuggestiontable.column.8")) {
+    public static SSTableColumn<Entry> COLUMN_SUPPLIER = new SSTableColumn<Entry>(
+            SSBundle.getBundle().getString("purchasesuggestiontable.column.8")) {
         @Override
         public Object getValue(Entry iEntry) {
             return iEntry.iSupplier;
@@ -291,7 +304,7 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
 
         @Override
         public void setValue(Entry iEntry, Object iValue) {
-            if(iValue instanceof SSSupplier){
+            if (iValue instanceof SSSupplier) {
                 iEntry.iSupplier = (SSSupplier) iValue;
             }
         }
@@ -311,6 +324,5 @@ public class SSPurchaseSuggestionTableModel extends SSTableModel<SSPurchaseSugge
             return true;
         }
     };
-
 
 }

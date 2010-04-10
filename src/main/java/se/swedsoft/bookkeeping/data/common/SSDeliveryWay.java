@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -23,8 +25,7 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
     /**
      * Constructor.
      */
-    public SSDeliveryWay() {
-    }
+    public SSDeliveryWay() {}
 
     /**
      * Constructor.
@@ -33,11 +34,11 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public SSDeliveryWay(String pName, String pDescription) {
-        iName        = pName;
+        iName = pName;
         iDescription = pDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -55,8 +56,7 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
         this.iName = iName;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -73,7 +73,8 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
     public void setDescription(String iDescription) {
         this.iDescription = iDescription;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      * Returns the render string to be shown in the tables
@@ -84,21 +85,18 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
         return iName;
     }
 
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSDeliveryWay){
-            SSDeliveryWay iUnit = (SSDeliveryWay)obj;
+        if (obj instanceof SSDeliveryWay) {
+            SSDeliveryWay iUnit = (SSDeliveryWay) obj;
 
             return iName.equals(iUnit.iName);
         }
         return false;
     }
 
-    
     public String toString() {
         return iDescription;
     }
-
 
     /**
      *
@@ -106,8 +104,9 @@ public class SSDeliveryWay implements Serializable, SSTableSearchable {
      */
     public static List<SSDeliveryWay> getDefaultDeliveryWays() {
         List<SSDeliveryWay> iDeliveryWays = new LinkedList<SSDeliveryWay>();
-        iDeliveryWays.add( new SSDeliveryWay("P"  , "Post") );
-        iDeliveryWays.add( new SSDeliveryWay("HÄM", "Hämtas") );
+
+        iDeliveryWays.add(new SSDeliveryWay("P", "Post"));
+        iDeliveryWays.add(new SSDeliveryWay("HÄM", "Hämtas"));
 
         return iDeliveryWays;
     }

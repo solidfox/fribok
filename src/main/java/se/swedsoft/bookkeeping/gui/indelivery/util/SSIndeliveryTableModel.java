@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.indelivery.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSIndeliveryMath;
 import se.swedsoft.bookkeeping.data.SSIndelivery;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -9,6 +10,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -42,12 +44,11 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
         return SSIndelivery.class;
     }
 
-
-
     /**
      *  Inventerings nummer
      */
-    public static SSTableColumn<SSIndelivery> COLUMN_NUMBER = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.1")) {
+    public static SSTableColumn<SSIndelivery> COLUMN_NUMBER = new SSTableColumn<SSIndelivery>(
+            SSBundle.getBundle().getString("indeliverytable.column.1")) {
         @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return iIndelivery.getNumber();
@@ -55,7 +56,7 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
 
         @Override
         public void setValue(SSIndelivery iInvoice, Object iValue) {
-            iInvoice.setNumber((Integer)iValue);
+            iInvoice.setNumber((Integer) iValue);
         }
 
         @Override
@@ -72,7 +73,8 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
     /**
      * Datum
      */
-    public static SSTableColumn<SSIndelivery> COLUMN_DATE = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.2")) {
+    public static SSTableColumn<SSIndelivery> COLUMN_DATE = new SSTableColumn<SSIndelivery>(
+            SSBundle.getBundle().getString("indeliverytable.column.2")) {
         @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return iIndelivery.getDate();
@@ -80,7 +82,7 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
 
         @Override
         public void setValue(SSIndelivery iIndelivery, Object iValue) {
-            iIndelivery.setDate((Date)iValue);
+            iIndelivery.setDate((Date) iValue);
         }
 
         @Override
@@ -97,7 +99,8 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
     /**
      * Text
      */
-    public static SSTableColumn<SSIndelivery> COLUMN_TEXT = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.3")) {
+    public static SSTableColumn<SSIndelivery> COLUMN_TEXT = new SSTableColumn<SSIndelivery>(
+            SSBundle.getBundle().getString("indeliverytable.column.3")) {
         @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return iIndelivery.getText();
@@ -105,7 +108,7 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
 
         @Override
         public void setValue(SSIndelivery iIndelivery, Object iValue) {
-            iIndelivery.setText((String)iValue);
+            iIndelivery.setText((String) iValue);
         }
 
         @Override
@@ -119,12 +122,11 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
         }
     };
 
-
-
     /**
      * Totalt antal
      */
-    public static SSTableColumn<SSIndelivery> COLUMN_TOTALCOUNT = new SSTableColumn<SSIndelivery>(SSBundle.getBundle().getString("indeliverytable.column.4")) {
+    public static SSTableColumn<SSIndelivery> COLUMN_TOTALCOUNT = new SSTableColumn<SSIndelivery>(
+            SSBundle.getBundle().getString("indeliverytable.column.4")) {
         @Override
         public Object getValue(SSIndelivery iIndelivery) {
             return SSIndeliveryMath.getTotalCount(iIndelivery);
@@ -132,7 +134,7 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
 
         @Override
         public void setValue(SSIndelivery iIndelivery, Object iValue) {
-            iIndelivery.setText((String)iValue);
+            iIndelivery.setText((String) iValue);
         }
 
         @Override
@@ -145,14 +147,5 @@ public class SSIndeliveryTableModel extends SSTableModel<SSIndelivery> {
             return 120;
         }
     };
-
-
-
-
-
-
-
-
-
 
 }

@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import se.swedsoft.bookkeeping.gui.util.graphics.SSImage;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+
 
 /**
  * User: Andreas Lago
@@ -12,7 +14,6 @@ import java.awt.image.BufferedImage;
  * Time: 15:16:54
  */
 public class SSImagePanel extends JPanel {
-
 
     private String iImageName;
 
@@ -36,17 +37,18 @@ public class SSImagePanel extends JPanel {
     public void setImageName(String pImageName) {
         iImageName = pImageName;
 
-        if(SSImage.hasImage(iImageName)){
+        if (SSImage.hasImage(iImageName)) {
             BufferedImage iImage = SSImage.getImage(iImageName);
 
-            iImageWidth  = iImage.getWidth();
+            iImageWidth = iImage.getWidth();
             iImageHeight = iImage.getHeight();
 
-            iPaint = new TexturePaint(iImage, new Rectangle(0,0, iImageWidth, iImageHeight));
+            iPaint = new TexturePaint(iImage,
+                    new Rectangle(0, 0, iImageWidth, iImageHeight));
 
-            setPreferredSize( new Dimension(iImageWidth, iImageHeight));
+            setPreferredSize(new Dimension(iImageWidth, iImageHeight));
 
-        }  else {
+        } else {
             iPaint = null;
         }
 
@@ -64,19 +66,19 @@ public class SSImagePanel extends JPanel {
 
             g2.setPaint(iPaint);
 
-             int w = getWidth();
+            int w = getWidth();
             int h = getHeight();
             int x = (w - iImageWidth) / 2;
             int y = (h - iImageHeight) / 2;
 
-
-            g2.fillRect(x,y,w, h);
+            g2.fillRect(x, y, w, h);
         }
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.components.SSImagePanel");
         sb.append("{iImageHeight=").append(iImageHeight);
         sb.append(", iImageName='").append(iImageName).append('\'');

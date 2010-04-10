@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
+
 import se.swedsoft.bookkeeping.data.system.SSMail;
 import se.swedsoft.bookkeeping.data.util.SSMailServer;
 import se.swedsoft.bookkeeping.data.util.SSMailServerException;
@@ -14,14 +15,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 
-
-
 /**
  * A dialog where the user can enter info about a mail server used to send mail.
- * 
+ *
  * When opened it takes a SSMailServer and sets the fields of the dialog, and
  * returns a new SSMailServer with the new information.
- * 
+ *
  * Opened from SSCompanyPageAdditional.
  *
  * @author jensli
@@ -51,7 +50,8 @@ public class SSMailServerDialog extends SSDialog {
 
     public SSMailServerDialog(JDialog iParent) {
 
-        super(iParent, SSBundle.getBundle().getString("companypanel.basic.server_dialog_title"));
+        super(iParent,
+                SSBundle.getBundle().getString("companypanel.basic.server_dialog_title"));
 
         this.iParent = iParent;
 
@@ -79,7 +79,6 @@ public class SSMailServerDialog extends SSDialog {
             }
         });
 
-
         pack();
     }
 
@@ -106,21 +105,17 @@ public class SSMailServerDialog extends SSDialog {
      */
     private SSMailServer getServerFromFields() throws SSMailServerException {
 
-
         int port;
+
         try {
             port = Integer.parseInt(portField.getText());
         } catch (NumberFormatException e) {
-            throw new SSMailServerException("parse error for portField", "mailserver.number_error");
+            throw new SSMailServerException("parse error for portField",
+                    "mailserver.number_error");
         }
 
-
-        return SSMailServer.makeIfValid(
-                "NONAME",
-                addressText.getText(),
-                port,
-                authCheckbox.isSelected(),
-                usernameText.getText(),
+        return SSMailServer.makeIfValid("NONAME", addressText.getText(), port,
+                authCheckbox.isSelected(), usernameText.getText(),
                 SSMail.crypter.encrypt(String.valueOf(passwordField.getPassword())));
     }
 
@@ -155,11 +150,10 @@ public class SSMailServerDialog extends SSDialog {
         userNameLabel.setEnabled(isEnabled);
     }
 
-
     /**
      * Called when the Ok button is clicked. Reads the fields of the dialog, constructs a
      * SSMailServer from them and sets iMailServer with that. Then close the dialog.
-     * 
+     *
      * If there was an error in the fields, open a dialog to inform about that.
      */
     private void onOK() {
@@ -169,7 +163,8 @@ public class SSMailServerDialog extends SSDialog {
         try {
             iMailServer = getServerFromFields();
         } catch (SSMailServerException exc) {
-            shouldDiscard = queryShouldDiscard(SSBundle.getBundle().getString(exc.getResourceName()));
+            shouldDiscard = queryShouldDiscard(
+                    SSBundle.getBundle().getString(exc.getResourceName()));
         }
 
         // Close the dialog, else leave dialog open and let user
@@ -188,10 +183,11 @@ public class SSMailServerDialog extends SSDialog {
     private boolean queryShouldDiscard(String message) {
 
         int res = JOptionPane.showConfirmDialog(this,
-                message + "\n\n" +
-                        SSBundle.getBundle().getString("companypanel.basic.server_error_message"),
+                message + "\n\n"
+                + SSBundle.getBundle().getString("companypanel.basic.server_error_message"),
                 SSBundle.getBundle().getString("companypanel.basic.server_error_title"),
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.ERROR_MESSAGE);
 
         return res == JOptionPane.OK_OPTION;
     }
@@ -206,6 +202,7 @@ public class SSMailServerDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog");
         sb.append("{addressLabel=").append(addressLabel);
         sb.append(", addressText=").append(addressText);

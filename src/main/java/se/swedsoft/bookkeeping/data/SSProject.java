@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
@@ -18,7 +19,6 @@ public class SSProject implements Serializable, SSTableSearchable {
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
 
-
     private int iNumber;
 
     private String iName;
@@ -29,13 +29,10 @@ public class SSProject implements Serializable, SSTableSearchable {
 
     private Date iConcludedDate;
 
-
     /**
      * Default constructor.
      */
-    public SSProject() {
-
-    }
+    public SSProject() {}
 
     /**
      *
@@ -44,21 +41,20 @@ public class SSProject implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public SSProject(int pNumber, String pName, String pDescription) {
-        iNumber        = pNumber;
-        iName          = pName;
-        iDescription   = pDescription;
-        iConcluded     = false;
+        iNumber = pNumber;
+        iName = pName;
+        iDescription = pDescription;
+        iConcluded = false;
         iConcludedDate = null;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      */
 
-
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -76,7 +72,7 @@ public class SSProject implements Serializable, SSTableSearchable {
         iNumber = number;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -94,7 +90,7 @@ public class SSProject implements Serializable, SSTableSearchable {
         iName = name;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -112,7 +108,7 @@ public class SSProject implements Serializable, SSTableSearchable {
         iDescription = description;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -130,7 +126,7 @@ public class SSProject implements Serializable, SSTableSearchable {
         iConcluded = pConcluded;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -148,35 +144,34 @@ public class SSProject implements Serializable, SSTableSearchable {
         iConcludedDate = pConcluded;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @param iDate
      * @return
      */
-    public boolean isConcluded(Date iDate){
-        return iConcluded && (iConcludedDate != null) &&   iConcludedDate.getTime() <= iDate.getTime();
+    public boolean isConcluded(Date iDate) {
+        return iConcluded && (iConcludedDate != null)
+                && iConcludedDate.getTime() <= iDate.getTime();
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
-
-    
     public String toString() {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append( iNumber );
-        sb.append( " - " );
-        sb.append( iName);
-        sb.append( ", " );
-        sb.append( iDescription );
-        if(iConcluded){
-            sb.append( "(Concluded " );
-            sb.append( iFormat.format( iConcludedDate ) );
-            sb.append( ") " );
+        sb.append(iNumber);
+        sb.append(" - ");
+        sb.append(iName);
+        sb.append(", ");
+        sb.append(iDescription);
+        if (iConcluded) {
+            sb.append("(Concluded ");
+            sb.append(iFormat.format(iConcludedDate));
+            sb.append(") ");
         }
         return sb.toString();
     }
@@ -187,8 +182,9 @@ public class SSProject implements Serializable, SSTableSearchable {
      * @return
      */
     public boolean equals(Object obj) {
-        if(obj instanceof SSProject)
-            return ((SSProject)obj).iNumber == iNumber;
+        if (obj instanceof SSProject) {
+            return ((SSProject) obj).iNumber == iNumber;
+        }
 
         return false;
     }
@@ -199,8 +195,5 @@ public class SSProject implements Serializable, SSTableSearchable {
     public String toRenderString() {
         return Integer.toString(iNumber);
     }
-
-
-
 
 }

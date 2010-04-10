@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -11,12 +12,14 @@ import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
+
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-23
  * Time: 09:59:18
  */
 public class SIEEntryOrgnummer implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -45,7 +48,7 @@ public class SIEEntryOrgnummer implements SIEEntry {
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
         iWriter.append(SIELabel.SIE_ORGNR);
-        iWriter.append( iCompany.getCorporateID() );
+        iWriter.append(iCompany.getCorporateID());
         iWriter.newLine();
         return true;
     }

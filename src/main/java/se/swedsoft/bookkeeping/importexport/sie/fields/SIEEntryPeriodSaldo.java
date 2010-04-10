@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.calc.SSSaldoCalculator;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -16,11 +17,13 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Date: 2006-feb-23
  * Time: 15:03:23
  */
 public class SIEEntryPeriodSaldo implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -49,71 +52,74 @@ public class SIEEntryPeriodSaldo implements SIEEntry {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 
         List<SSNewResultUnit> iResultUnits = SSDB.getInstance().getResultUnits();
-        List<SSNewProject   > iProjects    = SSDB.getInstance().getProjects();
-
+        List<SSNewProject   > iProjects = SSDB.getInstance().getProjects();
 
         Map<SSMonth, Map<SSAccount, BigDecimal>> iMonths;
 
         boolean iHasData = false;
-        if( iPreviousYearData != null ){
+
+        if (iPreviousYearData != null) {
 
             iMonths = SSSaldoCalculator.getSaldo(iPreviousYearData);
 
-            for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry1 : iMonths.entrySet()){
+            for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry1 : iMonths.entrySet()) {
                 Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry1.getValue();
-                for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                     BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                    iWriter.append( SIELabel.SIE_PSALDO);
-                    iWriter.append( -1);
+                    iWriter.append(SIELabel.SIE_PSALDO);
+                    iWriter.append(-1);
                     iWriter.append(ssMonthMapEntry1.getKey());
                     iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                    iWriter.append( "{}");
-                    iWriter.append( iSaldo  );
+                    iWriter.append("{}");
+                    iWriter.append(iSaldo);
                     iWriter.newLine();
                     iHasData = true;
                 }
             }
 
-            if(iExporter.getType() == SIEType.SIE_3 ){
+            if (iExporter.getType() == SIEType.SIE_3) {
 
                 // Resultatenhet, #DIM 1
-                for(SSNewResultUnit iResultUnit: iResultUnits){
+                for (SSNewResultUnit iResultUnit: iResultUnits) {
 
                     iMonths = SSSaldoCalculator.getSaldo(iPreviousYearData, iResultUnit);
 
-                    for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()){
+                    for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()) {
                         Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
-                        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                             BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                            iWriter.append( SIELabel.SIE_PSALDO);
-                            iWriter.append( -1);
+                            iWriter.append(SIELabel.SIE_PSALDO);
+                            iWriter.append(-1);
                             iWriter.append(ssMonthMapEntry.getKey());
                             iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                            iWriter.append( 1, iResultUnit.getNumber() );
-                            iWriter.append( iSaldo  );
+                            iWriter.append(1, iResultUnit.getNumber());
+                            iWriter.append(iSaldo);
                             iWriter.newLine();
                             iHasData = true;
                         }
                     }
                 }
                 // Projekt, #DIM 6
-                for(SSNewProject iProject: iProjects){
+                for (SSNewProject iProject: iProjects) {
 
                     iMonths = SSSaldoCalculator.getSaldo(iPreviousYearData, iProject);
 
-                    for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()){
+                    for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()) {
                         Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
-                        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                             BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                            iWriter.append( SIELabel.SIE_PSALDO);
-                            iWriter.append( -1);
+                            iWriter.append(SIELabel.SIE_PSALDO);
+                            iWriter.append(-1);
                             iWriter.append(ssMonthMapEntry.getKey());
                             iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                            iWriter.append( 6, iProject.getNumber() );
-                            iWriter.append( iSaldo  );
+                            iWriter.append(6, iProject.getNumber());
+                            iWriter.append(iSaldo);
                             iWriter.newLine();
                             iHasData = true;
                         }
@@ -122,63 +128,66 @@ public class SIEEntryPeriodSaldo implements SIEEntry {
             }
         }
 
-        if( iCurrentYearData != null ){
+        if (iCurrentYearData != null) {
             iMonths = SSSaldoCalculator.getSaldo(iCurrentYearData);
 
-            for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry1 : iMonths.entrySet()){
+            for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry1 : iMonths.entrySet()) {
                 Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry1.getValue();
-                for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                     BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                    iWriter.append( SIELabel.SIE_PSALDO);
-                    iWriter.append( 0);
+                    iWriter.append(SIELabel.SIE_PSALDO);
+                    iWriter.append(0);
                     iWriter.append(ssMonthMapEntry1.getKey());
                     iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                    iWriter.append( "{}");
-                    iWriter.append( iSaldo  );
+                    iWriter.append("{}");
+                    iWriter.append(iSaldo);
                     iWriter.newLine();
                     iHasData = true;
                 }
 
             }
 
-            if(iExporter.getType() == SIEType.SIE_3 ){
+            if (iExporter.getType() == SIEType.SIE_3) {
 
                 // Resultatenhet, #DIM 1
-                for(SSNewResultUnit iResultUnit: iResultUnits){
+                for (SSNewResultUnit iResultUnit: iResultUnits) {
                     iMonths = SSSaldoCalculator.getSaldo(iCurrentYearData, iResultUnit);
 
-                    for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()){
+                    for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()) {
                         Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
-                        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                             BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                            iWriter.append( SIELabel.SIE_PSALDO);
-                            iWriter.append( 0);
+                            iWriter.append(SIELabel.SIE_PSALDO);
+                            iWriter.append(0);
                             iWriter.append(ssMonthMapEntry.getKey());
                             iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                            iWriter.append( 1, iResultUnit.getNumber() );
-                            iWriter.append( iSaldo  );
+                            iWriter.append(1, iResultUnit.getNumber());
+                            iWriter.append(iSaldo);
                             iWriter.newLine();
                             iHasData = true;
                         }
                     }
                 }
                 // Projekt, #DIM 6
-                for(SSNewProject iProject: iProjects){
+                for (SSNewProject iProject: iProjects) {
                     iMonths = SSSaldoCalculator.getSaldo(iCurrentYearData, iProject);
 
-                    for(Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()){
+                    for (Map.Entry<SSMonth, Map<SSAccount, BigDecimal>> ssMonthMapEntry : iMonths.entrySet()) {
                         Map<SSAccount, BigDecimal> iAccounts = ssMonthMapEntry.getValue();
-                        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()){
+
+                        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iAccounts.entrySet()) {
                             BigDecimal iSaldo = ssAccountBigDecimalEntry.getValue();
 
-                            iWriter.append( SIELabel.SIE_PSALDO);
-                            iWriter.append( 0);
+                            iWriter.append(SIELabel.SIE_PSALDO);
+                            iWriter.append(0);
                             iWriter.append(ssMonthMapEntry.getKey());
                             iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
-                            iWriter.append( 6, iProject.getNumber() );
-                            iWriter.append( iSaldo  );
+                            iWriter.append(6, iProject.getNumber());
+                            iWriter.append(iSaldo);
                             iWriter.newLine();
                             iHasData = true;
                         }

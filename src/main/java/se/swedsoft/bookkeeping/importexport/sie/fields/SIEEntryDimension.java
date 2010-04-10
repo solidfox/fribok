@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
@@ -16,12 +17,12 @@ import java.util.List;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
 
+
 /**
  * Date: 2006-feb-23
  * Time: 11:21:42
  */
 public class SIEEntryDimension implements SIEEntry {
-
 
     /**
      * Imports the entry
@@ -36,20 +37,22 @@ public class SIEEntryDimension implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
         List<SIEDimension> iDimensions = iImporter.getDimensions();
 
-        if(!iReader.hasFields(STRING, INT, STRING )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT, STRING)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         SIEDimension iDimension = new SIEDimension();
-        iDimension.setNumber( iReader.nextInteger() );
-        iDimension.setName  ( iReader.nextString() );
 
-        if(iDimensions.contains(iDimension)){
+        iDimension.setNumber(iReader.nextInteger());
+        iDimension.setName(iReader.nextString());
+
+        if (iDimensions.contains(iDimension)) {
             System.out.println("Duplicate dimension:" + iDimension);
             return false;
         }
 
-        iDimensions.add( iDimension );
+        iDimensions.add(iDimension);
 
         return true;
     }

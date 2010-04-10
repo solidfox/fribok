@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.model.SSCurrencyTableModel;
 
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -17,7 +19,7 @@ public class SSCurrencyCellEditor extends SSTableComboBox.CellEditor<SSCurrency>
      *
      */
     public SSCurrencyCellEditor() {
-        setModel( SSCurrencyTableModel.getDropDownModel() );
+        setModel(SSCurrencyTableModel.getDropDownModel());
         setSearchColumns(0);
         setAllowCustomValues(false);
     }
@@ -27,7 +29,7 @@ public class SSCurrencyCellEditor extends SSTableComboBox.CellEditor<SSCurrency>
      * @param iCurrencies
      */
     public SSCurrencyCellEditor(List<SSCurrency> iCurrencies) {
-        setModel( SSCurrencyTableModel.getDropDownModel(iCurrencies) );
+        setModel(SSCurrencyTableModel.getDropDownModel(iCurrencies));
         setSearchColumns(0);
         setAllowCustomValues(false);
     }

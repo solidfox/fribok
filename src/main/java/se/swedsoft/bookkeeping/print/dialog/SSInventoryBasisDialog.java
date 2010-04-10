@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
@@ -13,12 +14,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-25
  * Time: 09:12:13
  */
-public class SSInventoryBasisDialog  extends SSDialog {
+public class SSInventoryBasisDialog extends SSDialog {
 
     private JPanel iPanel;
 
@@ -34,7 +36,8 @@ public class SSInventoryBasisDialog  extends SSDialog {
      * @param iMainFrame
      */
     public SSInventoryBasisDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("inventorybasisreport.dialog.title") );
+        super(iMainFrame,
+                SSBundle.getBundle().getString("inventorybasisreport.dialog.title"));
 
         setPanel(iPanel);
 
@@ -52,12 +55,12 @@ public class SSInventoryBasisDialog  extends SSDialog {
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
 
-                iDate.setEnabled( iRadioDate.isSelected() );
+                iDate.setEnabled(iRadioDate.isSelected());
             }
         };
 
         iRadioDate.addChangeListener(iChangeListener);
-        iRadioAll .addChangeListener(iChangeListener);
+        iRadioAll.addChangeListener(iChangeListener);
 
         ButtonGroup iGroup = new ButtonGroup();
 
@@ -79,11 +82,9 @@ public class SSInventoryBasisDialog  extends SSDialog {
      *
      * @return
      */
-    public boolean isDateSelected(){
+    public boolean isDateSelected() {
         return iRadioDate.isSelected();
     }
-
-
 
     /**
      *
@@ -96,6 +97,7 @@ public class SSInventoryBasisDialog  extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSInventoryBasisDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

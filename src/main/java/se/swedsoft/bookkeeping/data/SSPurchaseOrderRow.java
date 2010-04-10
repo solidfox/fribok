@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
 import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -8,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
+
 
 /**
  * User: Andreas Lago
@@ -39,13 +41,12 @@ public class SSPurchaseOrderRow implements Serializable {
     // Transient product
     private transient SSProduct iProduct;
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
-    public SSPurchaseOrderRow() {
-    }
+    public SSPurchaseOrderRow() {}
 
     /**
      * Copy constructor
@@ -53,17 +54,17 @@ public class SSPurchaseOrderRow implements Serializable {
      * @param iPurchaseOrderRow
      */
     public SSPurchaseOrderRow(SSPurchaseOrderRow iPurchaseOrderRow) {
-        iProductNr         = iPurchaseOrderRow.iProductNr;
-        iDescription       = iPurchaseOrderRow.iDescription;
+        iProductNr = iPurchaseOrderRow.iProductNr;
+        iDescription = iPurchaseOrderRow.iDescription;
         iSupplierArticleNr = iPurchaseOrderRow.iSupplierArticleNr;
-        iUnitprice         = iPurchaseOrderRow.iUnitprice;
-        iQuantity          = iPurchaseOrderRow.iQuantity;
-        iUnit              = iPurchaseOrderRow.iUnit;
-        iProduct           = iPurchaseOrderRow.iProduct;
-        iAccountNr         = iPurchaseOrderRow.iAccountNr;
+        iUnitprice = iPurchaseOrderRow.iUnitprice;
+        iQuantity = iPurchaseOrderRow.iQuantity;
+        iUnit = iPurchaseOrderRow.iUnit;
+        iProduct = iPurchaseOrderRow.iProduct;
+        iAccountNr = iPurchaseOrderRow.iAccountNr;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -79,10 +80,10 @@ public class SSPurchaseOrderRow implements Serializable {
      */
     public void setProductNr(String iProductNr) {
         this.iProductNr = iProductNr;
-        iProduct        = null;
+        iProduct = null;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -106,17 +107,17 @@ public class SSPurchaseOrderRow implements Serializable {
      * @return
      */
     public String getDescription(Locale iLocale) {
-        if(getProduct() != null){
+        if (getProduct() != null) {
             String iProductDescription = iProduct.getDescription(iLocale);
 
-            if(iProductDescription != null){
+            if (iProductDescription != null) {
                 return iProductDescription;
             }
         }
         return iDescription;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -134,7 +135,7 @@ public class SSPurchaseOrderRow implements Serializable {
         this.iSupplierArticleNr = iSupplierArticleNr;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -152,7 +153,7 @@ public class SSPurchaseOrderRow implements Serializable {
         this.iUnitprice = iUnitprice;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -170,7 +171,7 @@ public class SSPurchaseOrderRow implements Serializable {
         this.iQuantity = iQuantity;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -188,7 +189,7 @@ public class SSPurchaseOrderRow implements Serializable {
         this.iUnit = iUnit;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -197,15 +198,16 @@ public class SSPurchaseOrderRow implements Serializable {
     public SSProduct getProduct() {
         return getProduct(SSDB.getInstance().getProducts());
     }
+
     /**
      *
      * @param iProducts
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
-        if(iProduct == null && iProductNr != null){
+        if (iProduct == null && iProductNr != null) {
             for (SSProduct iCurrent : iProducts) {
-                if(iCurrent.getNumber().equals(iProductNr)){
+                if (iCurrent.getNumber().equals(iProductNr)) {
                     iProduct = iCurrent;
                 }
             }
@@ -220,19 +222,19 @@ public class SSPurchaseOrderRow implements Serializable {
      */
     public void setProduct(SSProduct iProduct) {
         this.iProduct = iProduct;
-        iProductNr    = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
 
-        if( iProduct != null){
-            iDescription       = iProduct.getDescription();
-            iUnitprice         = iProduct.getPurchasePrice();
-            iUnit              = iProduct.getUnit();
+        if (iProduct != null) {
+            iDescription = iProduct.getDescription();
+            iUnitprice = iProduct.getPurchasePrice();
+            iUnit = iProduct.getUnit();
             iSupplierArticleNr = iProduct.getSupplierProductNr();
-            iAccountNr         = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);
-            iQuantity          = 1;
+            iAccountNr = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);
+            iQuantity = 1;
         }
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -250,7 +252,7 @@ public class SSPurchaseOrderRow implements Serializable {
         this.iAccountNr = iAccountNr;
     }
 
-    ////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////
 
     /**
      * Returns {@code true} if the product is contained in the row
@@ -258,30 +260,28 @@ public class SSPurchaseOrderRow implements Serializable {
      * @param iProduct
      * @return if the row contains the product
      */
-    public boolean hasProduct(SSProduct iProduct){
-        return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
+    public boolean hasProduct(SSProduct iProduct) {
+        return iProductNr != null && iProductNr.equals(iProduct.getNumber());
     }
-
-
-
 
     /**
      * Retuns the sum of this row
      *
      * @return the sum
      */
-    public BigDecimal getSum(){
+    public BigDecimal getSum() {
         // If either of the unitprice or count is null we cant have a sum
-        if(iUnitprice == null || iQuantity == null) return null;
-
+        if (iUnitprice == null || iQuantity == null) {
+            return null;
+        }
 
         return iUnitprice.multiply(new BigDecimal(iQuantity));
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSPurchaseOrderRow");
         sb.append("{iAccountNr=").append(iAccountNr);
         sb.append(", iDescription='").append(iDescription).append('\'');

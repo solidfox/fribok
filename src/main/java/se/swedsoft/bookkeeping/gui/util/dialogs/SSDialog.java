@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;
@@ -11,15 +12,14 @@ import java.awt.event.WindowEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+
 /**
  * Date: 2006-jan-25
  * Time: 11:04:32
  */
-public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListener {
+public class SSDialog extends JDialog implements KeyEventDispatcher, ActionListener {
 
-    private int iModalResult;
-
-    {
+    private int iModalResult; {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
@@ -77,21 +77,20 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
     /**
      * Call setVisible(true)
      */
-    public void setVisible(){
+    public void setVisible() {
         setVisible(true);
     }
 
     /**
      *
      */
-    public void closeDialog(){
+    public void closeDialog() {
         setVisible(false);
-        //dispose();
+        // dispose();
     }
 
     @Override
-    public void dispose()
-    {
+    public void dispose() {
         removeAll();
         getContentPane().removeAll();
         super.dispose();
@@ -101,11 +100,11 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
      *
      * @param iModalResult the JOptionPane modal result
      */
-    public void closeDialog(int iModalResult){
+    public void closeDialog(int iModalResult) {
         this.iModalResult = iModalResult;
 
         setVisible(false);
-        //dispose();
+        // dispose();
     }
 
     /*
@@ -113,18 +112,20 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
      *
      * @param The option pane
      */
-    public void setOptionPane(final JOptionPane pOptionPane){
+    public void setOptionPane(final JOptionPane pOptionPane) {
         // Add in option pane
         add(pOptionPane, BorderLayout.CENTER);
 
         // make the OptionPane close the window
-        pOptionPane.addPropertyChangeListener( new PropertyChangeListener() {
+        pOptionPane.addPropertyChangeListener(
+                new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent event) {
                 String iEvent = event.getPropertyName();
 
-                if (iEvent.equals(JOptionPane.VALUE_PROPERTY) || iEvent.equals(JOptionPane.INPUT_VALUE_PROPERTY)) {
+                if (iEvent.equals(JOptionPane.VALUE_PROPERTY)
+                        || iEvent.equals(JOptionPane.INPUT_VALUE_PROPERTY)) {
 
-                    if( pOptionPane.getValue() instanceof Integer ){
+                    if (pOptionPane.getValue() instanceof Integer) {
                         Integer iModalresult = (Integer) pOptionPane.getValue();
 
                         setModalResult(iModalresult);
@@ -140,18 +141,17 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
      *
      * @param iPanel
      */
-    public void setPanel(JPanel iPanel){
+    public void setPanel(JPanel iPanel) {
         add(iPanel, BorderLayout.CENTER);
         pack();
     }
 
     /*
-      * @param iMainFrame
-    */
-    public void setLocationRelativeTo(SSMainFrame iMainFrame){
+     * @param iMainFrame
+     */
+    public void setLocationRelativeTo(SSMainFrame iMainFrame) {
         setLocationRelativeTo(iMainFrame.getDesktopPane());
     }
-
 
     /**
      * Sets the modal result for the dialog
@@ -171,7 +171,9 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
     public void setModalResult(int iModalResult, boolean doHide) {
         this.iModalResult = iModalResult;
 
-        if(doHide) setVisible(false);
+        if (doHide) {
+            setVisible(false);
+        }
     }
 
     /**
@@ -188,7 +190,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
      * @return the modal result
      * @see JOptionPane
      */
-    public int showDialog(){
+    public int showDialog() {
         iModalResult = JOptionPane.CLOSED_OPTION;
 
         setVisible(true);
@@ -196,14 +198,13 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         return iModalResult;
     }
 
-
     /**
      *
      * @param iFrame
      * @return the modal result
      * @see JOptionPane
      */
-    public int showDialog(JFrame iFrame){
+    public int showDialog(JFrame iFrame) {
         iModalResult = JOptionPane.CLOSED_OPTION;
 
         setLocationRelativeTo(iFrame);
@@ -212,14 +213,13 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         return iModalResult;
     }
 
-
     /**
      *
      * @param iDialog
      * @return the modal result
      * @see JOptionPane
      */
-    public int showDialog(JDialog iDialog){
+    public int showDialog(JDialog iDialog) {
         iModalResult = JOptionPane.CLOSED_OPTION;
 
         setLocationRelativeTo(iDialog);
@@ -234,7 +234,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
      * @param iTitle
      * @return the modal result
      */
-    public static int showDialog(JFrame iOwner, String iTitle){
+    public static int showDialog(JFrame iOwner, String iTitle) {
         SSDialog iDialog = new SSDialog(iOwner, iTitle);
 
         return iDialog.showDialog();
@@ -246,7 +246,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
      * @param iTitle
      * @return the modal result
      */
-    public static int showDialog(JDialog iOwner, String iTitle){
+    public static int showDialog(JDialog iOwner, String iTitle) {
         SSDialog iDialog = new SSDialog(iOwner, iTitle);
 
         return iDialog.showDialog();
@@ -254,16 +254,20 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             iModalResult = JOptionPane.CLOSED_OPTION;
 
-            if(KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow() != this) return false;
-
-            if(e.getID() == KeyEvent.KEY_PRESSED) {
-                processWindowEvent( new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            if (KeyboardFocusManager.getCurrentKeyboardFocusManager().getActiveWindow()
+                    != this) {
+                return false;
             }
 
-            KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(this);
+            if (e.getID() == KeyEvent.KEY_PRESSED) {
+                processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            }
+
+            KeyboardFocusManager.getCurrentKeyboardFocusManager().removeKeyEventDispatcher(
+                    this);
 
             return true;
         }
@@ -271,14 +275,12 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
     }
 
     @Override
-    public void actionPerformed(ActionEvent e)
-    {
-
-    }
+    public void actionPerformed(ActionEvent e) {}
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog");
         sb.append("{iModalResult=").append(iModalResult);
         sb.append('}');

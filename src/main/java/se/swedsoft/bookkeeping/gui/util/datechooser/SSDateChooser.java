@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
@@ -15,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -56,49 +58,54 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iChangeListeners = new LinkedList<ActionListener>();
 
         iDateFormatString = "yyyy-MM-dd";
-        iCalendarField    = Calendar.DAY_OF_MONTH;
+        iCalendarField = Calendar.DAY_OF_MONTH;
 
-        iModel = new SpinnerDateModel(){
+        iModel = new SpinnerDateModel() {
             @Override
             public void setCalendarField(int calendarField) {
                 // Always use the prefered calendar field
                 super.setCalendarField(iCalendarField);
             }
         };
-        iModel.setCalendarField( Calendar.MONTH );
+        iModel.setCalendarField(Calendar.MONTH);
         iModel.addChangeListener(this);
 
         iSpinner = new JSpinner();
-        iSpinner.setModel ( iModel );
+        iSpinner.setModel(iModel);
         iSpinner.setPreferredSize(new Dimension(-1, 20));
-        iSpinner.setMaximumSize  (new Dimension(-1, 20));
-        iSpinner.setMinimumSize  (new Dimension(-1, 20));
+        iSpinner.setMaximumSize(new Dimension(-1, 20));
+        iSpinner.setMinimumSize(new Dimension(-1, 20));
 
         iEditor = new JSpinner.DateEditor(iSpinner, iDateFormatString);
-        iSpinner.setEditor( iEditor);
+        iSpinner.setEditor(iEditor);
 
         iCalendar = new SSCalendar();
         iCalendar.addChangeListener(this);
 
         iPanel = iCalendar.getPanel();
-        iPanel.setBorder( BorderFactory.createCompoundBorder( BorderFactory.createLineBorder(new Color(102,101,84),1), BorderFactory.createLineBorder(new Color(247,236,249),1)));
+        iPanel.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createLineBorder(new Color(102, 101, 84), 1),
+                        BorderFactory.createLineBorder(new Color(247, 236, 249), 1)));
 
         iCalendarButton = new SSButton("ICON_CALENDAR16");
-        iCalendarButton.setToolTipText( SSBundle.getBundle().getString("date.tooltip"));
+        iCalendarButton.setToolTipText(SSBundle.getBundle().getString("date.tooltip"));
         iCalendarButton.setPreferredSize(new Dimension(20, 20));
-        iCalendarButton.setMaximumSize  (new Dimension(20, 20));
-        iCalendarButton.setMinimumSize  (new Dimension(20, 20));
+        iCalendarButton.setMaximumSize(new Dimension(20, 20));
+        iCalendarButton.setMinimumSize(new Dimension(20, 20));
 
         iCalendarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if( iPopup == null ) createPopup(SSDateChooser.this);
+                if (iPopup == null) {
+                    createPopup(SSDateChooser.this);
+                }
 
                 int x = iCalendarButton.getWidth() - iPopup.getPreferredSize().width;
-                int y = iCalendarButton.getY()     + iCalendarButton.getHeight();
+                int y = iCalendarButton.getY() + iCalendarButton.getHeight();
 
                 isDateSelected = false;
 
-                iCalendar.setDate( getDate() );
+                iCalendar.setDate(getDate());
 
                 // iPopup
                 show(iCalendarButton, x, y);
@@ -106,8 +113,8 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         });
 
         setLayout(new BorderLayout());
-        add(iSpinner       , BorderLayout.CENTER );
-        add(iCalendarButton, BorderLayout.EAST );
+        add(iSpinner, BorderLayout.CENTER);
+        add(iCalendarButton, BorderLayout.EAST);
         setDate(new Date());
     }
 
@@ -118,7 +125,9 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      * @param y
      */
     public void show(Component invoker, int x, int y) {
-        if( iPopup == null ) createPopup(invoker);
+        if (iPopup == null) {
+            createPopup(invoker);
+        }
 
         if (invoker != null) {
             Point invokerOrigin = invoker.getLocationOnScreen();
@@ -127,7 +136,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         } else {
             iPopup.setLocation(x, y);
         }
-        //  iPopup.set  getWindow
+        // iPopup.set  getWindow
         iPopup.setVisible(true);
         iPopup.requestFocusInWindow();
 
@@ -136,19 +145,19 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
     /**
      * @param invoker
      */
-    private void createPopup(Component invoker){
+    private void createPopup(Component invoker) {
         JDialog iDialog = getDialog(invoker);
 
-        if( iDialog != null){
+        if (iDialog != null) {
             iPopup = new JDialog(iDialog);
-        } else  {
+        } else {
             iPopup = new JDialog();
         }
 
         iPopup.setUndecorated(true);
         iPopup.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
         iPopup.setAlwaysOnTop(true);
-        iPopup.addWindowListener( new WindowAdapter() {
+        iPopup.addWindowListener(new WindowAdapter() {
             @Override
             public void windowDeactivated(WindowEvent e) {
                 iPopup.setVisible(false);
@@ -158,7 +167,6 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         iPopup.pack();
     }
 
-
     /**
      * Get the parent dialog for this component, or null
      *
@@ -167,15 +175,17 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      */
     private JDialog getDialog(Component c) {
         Component w = c;
-        while( w != null ) {
 
-            if(w instanceof JDialog) return (JDialog)w;
+        while (w != null) {
+
+            if (w instanceof JDialog) {
+                return (JDialog) w;
+            }
 
             w = w.getParent();
         }
         return null;
     }
-
 
     /**
      *
@@ -191,7 +201,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      * @param iDate the date
      */
     public void setDate(Date iDate) {
-        if(iDate != null){
+        if (iDate != null) {
             iModel.setValue(iDate);
         } else {
             iModel.setValue(new Date());
@@ -218,7 +228,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         this.iDateFormatString = iDateFormatString;
 
         iEditor.getFormat().applyPattern(iDateFormatString);
-        iEditor.getTextField().setValue(iModel.getDate() );
+        iEditor.getTextField().setValue(iModel.getDate());
 
         invalidate();
     }
@@ -274,29 +284,30 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
 
         iModel.setValue(iDate);
 
-        if(e.getActionCommand().equals("day")) {
+        if (e.getActionCommand().equals("day")) {
             isDateSelected = true;
 
             iPopup.setVisible(false);
         }
     }
 
-
     public JComponent getEditor() {
         return iSpinner.getEditor();
     }
-    public boolean isInCurrentAccountYear()
-    {
-        Date iAccountYearTo= SSDB.getInstance().getCurrentYear().getTo();
-        Date iAccountYearFrom=SSDB.getInstance().getCurrentYear().getFrom();
+
+    public boolean isInCurrentAccountYear() {
+        Date iAccountYearTo = SSDB.getInstance().getCurrentYear().getTo();
+        Date iAccountYearFrom = SSDB.getInstance().getCurrentYear().getFrom();
 
         Calendar iCalTo = Calendar.getInstance();
+
         iCalTo.setTime(iAccountYearTo);
         iCalTo.add(Calendar.HOUR, 23);
         iCalTo.add(Calendar.MINUTE, 59);
         iAccountYearTo = iCalTo.getTime();
 
-        Date iCurrent=iModel.getDate();
+        Date iCurrent = iModel.getDate();
+
         return !(iCurrent.before(iAccountYearFrom) || iCurrent.after(iAccountYearTo));
     }
 
@@ -309,7 +320,6 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         notifyChangeListeners();
     }
 
-
     /**
      *
      * @param enabled
@@ -319,8 +329,8 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
         super.setEnabled(enabled);
 
         iCalendarButton.setEnabled(enabled);
-        iSpinner       .setEnabled(enabled);
-        iEditor        .setEnabled(enabled);
+        iSpinner.setEnabled(enabled);
+        iEditor.setEnabled(enabled);
 
     }
 
@@ -330,20 +340,21 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
      */
     public void dispose() {
         iSpinner.removeAll();
-        iSpinner=null;
+        iSpinner = null;
         iEditor.removeAll();
-        iEditor=null;
+        iEditor = null;
 
-        ActionListener[] iActionListeners=iCalendarButton.getActionListeners();
+        ActionListener[] iActionListeners = iCalendarButton.getActionListeners();
+
         for (ActionListener iActionListener : iActionListeners) {
             iCalendarButton.removeActionListener(iActionListener);
         }
         iCalendarButton.removeAll();
-        iCalendarButton=null;
+        iCalendarButton = null;
 
-        if(iPopup!=null)
-        {
-            WindowListener[] iWindowListeners= iPopup.getWindowListeners();
+        if (iPopup != null) {
+            WindowListener[] iWindowListeners = iPopup.getWindowListeners();
+
             for (WindowListener iWindowListener : iWindowListeners) {
                 iPopup.removeWindowListener(iWindowListener);
             }
@@ -353,22 +364,24 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
             iPopup.dispose();
         }
         iChangeListeners.removeAll(iChangeListeners);
-        iChangeListeners=null;
+        iChangeListeners = null;
         iCalendar.dispose();
-        iCalendar=null;
-        ChangeListener[] iChangeListeners=iModel.getChangeListeners();
+        iCalendar = null;
+        ChangeListener[] iChangeListeners = iModel.getChangeListeners();
+
         for (ChangeListener iChangeListener : iChangeListeners) {
             iModel.removeChangeListener(iChangeListener);
         }
-        iModel=null;
-        iDateFormatString=null;
+        iModel = null;
+        iDateFormatString = null;
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser");
         sb.append("{iCalendar=").append(iCalendar);
         sb.append(", iCalendarButton=").append(iCalendarButton);

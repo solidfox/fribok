@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.creditinvoice.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSCreditInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.creditinvoice.util.SSCreditInvoiceTableModel;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-nov-15
@@ -21,9 +23,7 @@ public class SSCreditInvoiceSearchPanel extends JPanel {
 
     private JTextField iTextField;
 
-
     private SSCreditInvoiceTableModel iModel;
-
 
     public SSCreditInvoiceSearchPanel(SSCreditInvoiceTableModel iModel) {
         this.iModel = iModel;
@@ -31,7 +31,6 @@ public class SSCreditInvoiceSearchPanel extends JPanel {
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,23 +40,29 @@ public class SSCreditInvoiceSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
         List<SSCreditInvoice> iFiltered = new LinkedList<SSCreditInvoice>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
-            String iNumber      = iCreditInvoice.getNumber().toString();
+            String iNumber = iCreditInvoice.getNumber().toString();
             String iDescription = iCreditInvoice.getCustomerName();
             String iCustomerNumber = iCreditInvoice.getCustomerNr();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) || (iCustomerNumber != null && iCustomerNumber.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))
+                            || (iCustomerNumber != null
+                                    && iCustomerNumber.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iCreditInvoice);
             }
         }
@@ -67,7 +72,9 @@ public class SSCreditInvoiceSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.creditinvoice.panel.SSCreditInvoiceSearchPanel");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.creditinvoice.panel.SSCreditInvoiceSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);
         sb.append(", iTextField=").append(iTextField);

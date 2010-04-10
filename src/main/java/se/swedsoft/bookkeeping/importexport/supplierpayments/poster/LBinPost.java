@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.importexport.supplierpayments.poster;
 
+
 import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
+
 
 /**
  * User: Andreas Lago
@@ -9,21 +11,18 @@ import se.swedsoft.bookkeeping.importexport.supplierpayments.util.LBinLine;
  */
 public abstract class LBinPost {
 
-
     /**
      *
      */
-    protected LBinPost() {
-    }
+    protected LBinPost() {}
 
     /**
      *
      * @return
      */
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return false;
     }
-
 
     /**
      *
@@ -36,6 +35,5 @@ public abstract class LBinPost {
      * @param iLine
      */
     public abstract void read(LBinLine iLine);
-
 
 }

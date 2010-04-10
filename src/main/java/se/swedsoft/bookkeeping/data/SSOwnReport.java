@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Johan Gunnarsson
@@ -23,7 +25,7 @@ public class SSOwnReport implements Serializable {
 
     private String iResultUnitNr;
 
-    public SSOwnReport(){
+    public SSOwnReport() {
         iId = -1;
         iName = "";
         iHeadings = new LinkedList<SSOwnReportRow>();
@@ -35,7 +37,7 @@ public class SSOwnReport implements Serializable {
      *
      * @return iNumber - Nummret för rapporten
      */
-    public Integer getId(){
+    public Integer getId() {
         return iId;
     }
 
@@ -98,19 +100,24 @@ public class SSOwnReport implements Serializable {
      */
 
     public boolean equals(Object obj) {
-        if(obj == null) return false;
+        if (obj == null) {
+            return false;
+        }
 
-        if(obj instanceof SSOwnReport){
+        if (obj instanceof SSOwnReport) {
             SSOwnReport iOwnReport = (SSOwnReport) obj;
-            if(iOwnReport.iId.equals(iId)) return true;
+
+            if (iOwnReport.iId.equals(iId)) {
+                return true;
+            }
         }
         return false;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSOwnReport");
         sb.append("{iHeadings=").append(iHeadings);
         sb.append(", iId=").append(iId);

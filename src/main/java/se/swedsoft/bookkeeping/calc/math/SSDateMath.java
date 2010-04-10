@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+
 import java.util.Calendar;
 import java.util.Date;
+
 
 /**
  * Date: 2006-mar-09
@@ -11,8 +13,7 @@ public class SSDateMath {
 
     private static Calendar cCalendar = Calendar.getInstance();
 
-    private SSDateMath() {
-    }
+    private SSDateMath() {}
 
     /**
      * Sets the time parts of a date to 00:00:00
@@ -20,12 +21,14 @@ public class SSDateMath {
      * @param pDate
      * @return
      */
-    public static Date floor(Date pDate){
+    public static Date floor(Date pDate) {
         cCalendar.setTime(pDate);
-        cCalendar.set(Calendar.HOUR_OF_DAY, cCalendar.getActualMinimum(Calendar.HOUR_OF_DAY));
-        cCalendar.set(Calendar.MINUTE     , cCalendar.getActualMinimum(Calendar.MINUTE));
-        cCalendar.set(Calendar.SECOND     , cCalendar.getActualMinimum(Calendar.SECOND));
-        cCalendar.set(Calendar.MILLISECOND, cCalendar.getActualMinimum(Calendar.MILLISECOND));
+        cCalendar.set(Calendar.HOUR_OF_DAY,
+                cCalendar.getActualMinimum(Calendar.HOUR_OF_DAY));
+        cCalendar.set(Calendar.MINUTE, cCalendar.getActualMinimum(Calendar.MINUTE));
+        cCalendar.set(Calendar.SECOND, cCalendar.getActualMinimum(Calendar.SECOND));
+        cCalendar.set(Calendar.MILLISECOND,
+                cCalendar.getActualMinimum(Calendar.MILLISECOND));
 
         return cCalendar.getTime();
     }
@@ -36,12 +39,14 @@ public class SSDateMath {
      * @param pDate
      * @return the
      */
-    public static Date ceil(Date pDate){
+    public static Date ceil(Date pDate) {
         cCalendar.setTime(pDate);
-        cCalendar.set(Calendar.HOUR_OF_DAY, cCalendar.getActualMaximum(Calendar.HOUR_OF_DAY));
-        cCalendar.set(Calendar.MINUTE     , cCalendar.getActualMaximum(Calendar.MINUTE));
-        cCalendar.set(Calendar.SECOND     , cCalendar.getActualMaximum(Calendar.SECOND));
-        cCalendar.set(Calendar.MILLISECOND, cCalendar.getActualMaximum(Calendar.MILLISECOND));
+        cCalendar.set(Calendar.HOUR_OF_DAY,
+                cCalendar.getActualMaximum(Calendar.HOUR_OF_DAY));
+        cCalendar.set(Calendar.MINUTE, cCalendar.getActualMaximum(Calendar.MINUTE));
+        cCalendar.set(Calendar.SECOND, cCalendar.getActualMaximum(Calendar.SECOND));
+        cCalendar.set(Calendar.MILLISECOND,
+                cCalendar.getActualMaximum(Calendar.MILLISECOND));
 
         return cCalendar.getTime();
     }
@@ -54,11 +59,14 @@ public class SSDateMath {
     public static Date getFirstDayInMonth(Date pDate) {
         cCalendar.setTime(pDate);
 
-        cCalendar.set(Calendar.DAY_OF_MONTH, cCalendar.getActualMinimum(Calendar.DAY_OF_MONTH));
-        cCalendar.set(Calendar.HOUR_OF_DAY , cCalendar.getActualMinimum(Calendar.HOUR_OF_DAY));
-        cCalendar.set(Calendar.MINUTE      , cCalendar.getActualMinimum(Calendar.MINUTE));
-        cCalendar.set(Calendar.SECOND      , cCalendar.getActualMinimum(Calendar.SECOND));
-        cCalendar.set(Calendar.MILLISECOND , cCalendar.getActualMinimum(Calendar.MILLISECOND));
+        cCalendar.set(Calendar.DAY_OF_MONTH,
+                cCalendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+        cCalendar.set(Calendar.HOUR_OF_DAY,
+                cCalendar.getActualMinimum(Calendar.HOUR_OF_DAY));
+        cCalendar.set(Calendar.MINUTE, cCalendar.getActualMinimum(Calendar.MINUTE));
+        cCalendar.set(Calendar.SECOND, cCalendar.getActualMinimum(Calendar.SECOND));
+        cCalendar.set(Calendar.MILLISECOND,
+                cCalendar.getActualMinimum(Calendar.MILLISECOND));
 
         return cCalendar.getTime();
 
@@ -72,11 +80,14 @@ public class SSDateMath {
     public static Date getLastDayMonth(Date pDate) {
         cCalendar.setTime(pDate);
 
-        cCalendar.set(Calendar.DAY_OF_MONTH, cCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-        cCalendar.set(Calendar.HOUR_OF_DAY, cCalendar.getActualMaximum(Calendar.HOUR_OF_DAY));
-        cCalendar.set(Calendar.MINUTE     , cCalendar.getActualMaximum(Calendar.MINUTE));
-        cCalendar.set(Calendar.SECOND     , cCalendar.getActualMaximum(Calendar.SECOND));
-        cCalendar.set(Calendar.MILLISECOND, cCalendar.getActualMaximum(Calendar.MILLISECOND));
+        cCalendar.set(Calendar.DAY_OF_MONTH,
+                cCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        cCalendar.set(Calendar.HOUR_OF_DAY,
+                cCalendar.getActualMaximum(Calendar.HOUR_OF_DAY));
+        cCalendar.set(Calendar.MINUTE, cCalendar.getActualMaximum(Calendar.MINUTE));
+        cCalendar.set(Calendar.SECOND, cCalendar.getActualMaximum(Calendar.SECOND));
+        cCalendar.set(Calendar.MILLISECOND,
+                cCalendar.getActualMaximum(Calendar.MILLISECOND));
 
         return cCalendar.getTime();
     }
@@ -90,12 +101,15 @@ public class SSDateMath {
     public static int getMonthsBetween(Date iFrom, Date iTo) {
         Calendar iCalendar = Calendar.getInstance();
 
-        if( iFrom.before(iTo) ) return 0;
+        if (iFrom.before(iTo)) {
+            return 0;
+        }
 
         iCalendar.setTime(iFrom);
 
         int iMonths = 0;
-        while( iCalendar.getTime().before(iTo) ) {
+
+        while (iCalendar.getTime().before(iTo)) {
             iCalendar.add(Calendar.MONTH, 1);
             iMonths++;
         }
@@ -111,23 +125,23 @@ public class SSDateMath {
     public static int getDaysBetween(Date iFrom, Date iTo) {
         Calendar iCalendar = Calendar.getInstance();
 
-        if( iTo.before(iFrom) ) return 0;
+        if (iTo.before(iFrom)) {
+            return 0;
+        }
 
         iCalendar.setTime(iFrom);
 
         int iDays = 0;
-        while( iCalendar.getTime().before(iTo) ) {
+
+        while (iCalendar.getTime().before(iTo)) {
             iCalendar.add(Calendar.DAY_OF_MONTH, 1);
             iDays++;
         }
         return iDays;
     }
 
-
-
-
     /**
-     * Add the specified number of months to the specified date 
+     * Add the specified number of months to the specified date
      *
      * @param iDate
      * @param iCount

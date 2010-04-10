@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplier;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplier;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -33,6 +34,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -48,8 +50,8 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSSupplierFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSSupplierFrame.cInstance.isClosed()) {
             cInstance = new SSSupplierFrame(pMainFrame, pWidth, pHeight);
         }
         SSSupplierFrame.cInstance.setVisible(true);
@@ -60,17 +62,15 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSSupplierFrame getInstance(){
+    public static SSSupplierFrame getInstance() {
         return cInstance;
     }
-
 
     private SSTable iTable;
 
     private SSSupplierTableModel iModel;
 
     private SSSupplierSearchPanel iSearchPanel;
-
 
     /**
      * Constructor.
@@ -80,9 +80,9 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSSupplierFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("supplierframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("supplierframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -94,32 +94,34 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
     public JToolBar getToolBar() {
         JToolBar iToolBar = new JToolBar();
 
-
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "supplierframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "supplierframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplierDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         iToolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "supplierframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "supplierframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplier iSelected = iModel.getSelectedRow(iTable);
                 String iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getSupplier(iSelected);
                 }
                 if (iSelected != null) {
                     SSSupplierDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "supplierframe.suppliergone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "supplierframe.suppliergone",
+                            iNumber);
                 }
             }
         });
@@ -129,18 +131,21 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "supplierframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "supplierframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplier iSelected = iModel.getSelectedRow(iTable);
                 String iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getSupplier(iSelected);
                 }
                 if (iSelected != null) {
                     SSSupplierDialog.copyDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "supplierframe.suppliergone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "supplierframe.suppliergone",
+                            iNumber);
                 }
             }
         });
@@ -150,10 +155,12 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "supplierframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "supplierframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSSupplier> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedSuppliers(toDelete);
             }
         });
@@ -163,13 +170,17 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
         // Importera
         // ***************************
-        iButton = new SSButton("ICON_IMPORT", "supplierframe.importbutton", new ActionListener(){
+        iButton = new SSButton("ICON_IMPORT", "supplierframe.importbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
-                if( iFilechooser.showOpenDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
-                    SSSupplierImporter iImporter = new SSSupplierImporter( iFilechooser.getSelectedFile() );
-                    if(!SSPostLock.applyLock("importsupplier")){
+                if (iFilechooser.showOpenDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
+                    SSSupplierImporter iImporter = new SSSupplierImporter(
+                            iFilechooser.getSelectedFile());
+
+                    if (!SSPostLock.applyLock("importsupplier")) {
                         new SSErrorDialog(getMainFrame(), "supplierframe.import.locked");
                         return;
                     }
@@ -177,10 +188,12 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
                         iImporter.Import();
 
                     } catch (IOException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                         SSPostLock.removeLock("importsupplier");
                     } catch (SSImportException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                         SSPostLock.removeLock("importsupplier");
                     }
                     iModel.fireTableDataChanged();
@@ -191,24 +204,31 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         iToolBar.add(iButton);
         // Exportera
         // ***************************
-        iButton = new SSButton("ICON_EXPORT", "supplierframe.exportbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EXPORT", "supplierframe.exportbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSExcelFileChooser iFilechooser = SSExcelFileChooser.getInstance();
 
                 List<SSSupplier> iItems;
                 List<SSSupplier> iSelected = iModel.getSelectedRows(iTable);
 
-                if( iSelected != null) {
-                    int select = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, getTitle(), SSBundle.getBundle().getString("supplierframe.import.allorselected"));
+                if (iSelected != null) {
+                    int select = SSQueryDialog.showDialog(getMainFrame(),
+                            JOptionPane.YES_NO_CANCEL_OPTION, getTitle(),
+                            SSBundle.getBundle().getString(
+                            "supplierframe.import.allorselected"));
+
                     switch (select) {
-                        case JOptionPane.YES_OPTION:
-                            iItems = getSuppliers(iSelected);
-                            break;
-                        case JOptionPane.NO_OPTION :
-                            iItems = SSDB.getInstance().getSuppliers();
-                            break;
-                        default:
-                            return;
+                    case JOptionPane.YES_OPTION:
+                        iItems = getSuppliers(iSelected);
+                        break;
+
+                    case JOptionPane.NO_OPTION:
+                        iItems = SSDB.getInstance().getSuppliers();
+                        break;
+
+                    default:
+                        return;
                     }
                 } else {
                     iItems = SSDB.getInstance().getSuppliers();
@@ -216,16 +236,20 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
                 iFilechooser.setSelectedFile(new File("Leverantörslista.xls"));
 
-                if( iFilechooser.showSaveDialog( getMainFrame() ) == JFileChooser.APPROVE_OPTION  ){
+                if (iFilechooser.showSaveDialog(getMainFrame())
+                        == JFileChooser.APPROVE_OPTION) {
 
                     try {
-                        SSSupplierExporter iExporter = new SSSupplierExporter( iFilechooser.getSelectedFile(), iItems );
+                        SSSupplierExporter iExporter = new SSSupplierExporter(
+                                iFilechooser.getSelectedFile(), iItems);
 
                         iExporter.export();
                     } catch (IOException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     } catch (SSExportException ex) {
-                        SSErrorDialog.showDialog( getMainFrame(), "", ex.getLocalizedMessage() );
+                        SSErrorDialog.showDialog(getMainFrame(), "",
+                                ex.getLocalizedMessage());
                     }
                 }
             }
@@ -236,23 +260,21 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         // Print
         // ***************************
         SSMenuButton iButton2 = new SSMenuButton("ICON_PRINT", "supplierframe.printbutton");
-        iButton2.add("supplierframe.print.supplierrevenue", new ActionListener(){
+
+        iButton2.add("supplierframe.print.supplierrevenue", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SupplierRevenueReport();
             }
         });
-        iButton2.add("supplierframe.print.supplierlist", new ActionListener(){
+        iButton2.add("supplierframe.print.supplierlist", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SupplierListReport();
             }
         });
         iToolBar.add(iButton2);
 
-
         return iToolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -263,22 +285,23 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
     @Override
     public JComponent getMainContent() {
         iModel = new SSSupplierTableModel();
-        iModel.addColumn( SSSupplierTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSSupplierTableModel.COLUMN_NAME );
-        iModel.addColumn( SSSupplierTableModel.COLUMN_PHONE );
-        iModel.addColumn( SSSupplierTableModel.COLUMN_OUR_CUSTOMER_NR );
-        iModel.addColumn( SSSupplierTableModel.COLUMN_YOUR_CONTACT );
-        iModel.addColumn( SSSupplierTableModel.COLUMN_SUPPLIERDEBT );
+        iModel.addColumn(SSSupplierTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSSupplierTableModel.COLUMN_NAME);
+        iModel.addColumn(SSSupplierTableModel.COLUMN_PHONE);
+        iModel.addColumn(SSSupplierTableModel.COLUMN_OUR_CUSTOMER_NR);
+        iModel.addColumn(SSSupplierTableModel.COLUMN_YOUR_CONTACT);
+        iModel.addColumn(SSSupplierTableModel.COLUMN_SUPPLIERDEBT);
 
         iTable = new SSTable();
 
         iModel.setupTable(iTable);
 
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplier iSelected = iModel.getSelectedRow(iTable);
                 String iNumber;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getSupplier(iSelected);
@@ -288,7 +311,8 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSSupplierDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "supplierframe.suppliergone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "supplierframe.suppliergone",
+                            iNumber);
                 }
             }
         });
@@ -299,13 +323,10 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         iPanel.setLayout(new BorderLayout());
         iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
-
-
-
 
     /**
      * This method should return the status bar content, if any.
@@ -348,10 +369,14 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
 
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "supplierframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSSupplier iSupplier : delete) {
-                if (SSPostLock.isLocked("supplier" + iSupplier.getNumber() + SSDB.getInstance().getCurrentCompany().getId())) {
-                    new SSErrorDialog(getMainFrame(), "supplierframe.supplieropen", iSupplier.getNumber());
+                if (SSPostLock.isLocked(
+                        "supplier" + iSupplier.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "supplierframe.supplieropen",
+                            iSupplier.getNumber());
                 } else {
                     SSDB.getInstance().deleteSupplier(iSupplier);
                 }
@@ -359,73 +384,89 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         }
     }
 
-
     private void SupplierRevenueReport() {
         List<SSSupplier> iSuppliers;
+
         if (iTable.getSelectedRowCount() > 0) {
 
-            int iOption = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "supplierframe.printallorselected");
-            switch(iOption ){
-                case JOptionPane.YES_OPTION:
-                    iSuppliers = iModel.getObjects(iTable.getSelectedRows());
-                    iSuppliers = getSuppliers(iSuppliers);
-                    break;
-                case JOptionPane.NO_OPTION :
-                    iSuppliers = SSDB.getInstance().getSuppliers();
-                    break;
-                default:
-                    return;
+            int iOption = SSQueryDialog.showDialog(getMainFrame(),
+                    JOptionPane.YES_NO_CANCEL_OPTION, "supplierframe.printallorselected");
+
+            switch (iOption) {
+            case JOptionPane.YES_OPTION:
+                iSuppliers = iModel.getObjects(iTable.getSelectedRows());
+                iSuppliers = getSuppliers(iSuppliers);
+                break;
+
+            case JOptionPane.NO_OPTION:
+                iSuppliers = SSDB.getInstance().getSuppliers();
+                break;
+
+            default:
+                return;
             }
         } else {
             iSuppliers = SSDB.getInstance().getSuppliers();
         }
 
-        SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(getMainFrame(), SSBundle.getBundle().getString("supplierrevenue.perioddialog.title"));
+        SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(getMainFrame(),
+                SSBundle.getBundle().getString("supplierrevenue.perioddialog.title"));
+
         if (SSDB.getInstance().getCurrentYear() != null) {
             iDialog.setFrom(SSDB.getInstance().getCurrentYear().getFrom());
             iDialog.setTo(SSDB.getInstance().getCurrentYear().getTo());
         } else {
             Calendar iCal = Calendar.getInstance();
+
             iDialog.setFrom(iCal.getTime());
-            iCal.add(Calendar.MONTH,1);
+            iCal.add(Calendar.MONTH, 1);
             iDialog.setTo(iCal.getTime());
         }
         iDialog.setLocationRelativeTo(getMainFrame());
-        if( iDialog.showDialog() != JOptionPane.OK_OPTION) return;
+        if (iDialog.showDialog() != JOptionPane.OK_OPTION) {
+            return;
+        }
 
         final Date iFrom = iDialog.getFrom();
-        final Date iTo   = iDialog.getTo();
+        final Date iTo = iDialog.getTo();
 
-        final SSSupplierRevenuePrinter iPrinter = new SSSupplierRevenuePrinter(iSuppliers, iFrom, iTo);
+        final SSSupplierRevenuePrinter iPrinter = new SSSupplierRevenuePrinter(iSuppliers,
+                iFrom, iTo);
 
-        SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
+        SSProgressDialog.runProgress(getMainFrame(), new Runnable() {
             public void run() {
                 iPrinter.preview(getMainFrame());
             }
         });
     }
+
     /**
      *
      */
-        private void SupplierListReport() {
+    private void SupplierListReport() {
         final SSSupplierListPrinter iPrinter;
         List<SSSupplier> iSuppliers;
+
         if (iTable.getSelectedRowCount() > 0) {
 
-            int iOption = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "supplierframe.printallorselected");
+            int iOption = SSQueryDialog.showDialog(getMainFrame(),
+                    JOptionPane.YES_NO_CANCEL_OPTION, "supplierframe.printallorselected");
+
             switch (iOption) {
-                case JOptionPane.YES_OPTION:
-                    iSuppliers = iModel.getObjects(iTable.getSelectedRows());
-                    iSuppliers = getSuppliers(iSuppliers);
-                    iPrinter = new SSSupplierListPrinter(iSuppliers);
-                    break;
-                case JOptionPane.NO_OPTION :
-                    iSuppliers = iModel.getObjects();
-                    iSuppliers = getSuppliers(iSuppliers);
-                    iPrinter = new SSSupplierListPrinter(iSuppliers);
-                    break;
-                default:
-                    return;
+            case JOptionPane.YES_OPTION:
+                iSuppliers = iModel.getObjects(iTable.getSelectedRows());
+                iSuppliers = getSuppliers(iSuppliers);
+                iPrinter = new SSSupplierListPrinter(iSuppliers);
+                break;
+
+            case JOptionPane.NO_OPTION:
+                iSuppliers = iModel.getObjects();
+                iSuppliers = getSuppliers(iSuppliers);
+                iPrinter = new SSSupplierListPrinter(iSuppliers);
+                break;
+
+            default:
+                return;
             }
         } else {
             iSuppliers = iModel.getObjects();
@@ -433,12 +474,11 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
             iPrinter = new SSSupplierListPrinter(iSuppliers);
         }
 
-        SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
+        SSProgressDialog.runProgress(getMainFrame(), new Runnable() {
             public void run() {
                 iPrinter.preview(getMainFrame());
             }
         });
-
 
     }
 
@@ -455,17 +495,17 @@ public class SSSupplierFrame extends SSDefaultTableFrame {
         iSearchPanel.ApplyFilter();
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        iSearchPanel=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        iSearchPanel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.supplier.SSSupplierFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

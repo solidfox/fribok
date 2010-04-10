@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.util.SSFilter;
 import se.swedsoft.bookkeeping.calc.util.SSFilterFactory;
@@ -21,6 +22,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -45,7 +47,8 @@ public class SSInpaymentListDialog extends SSDialog {
      * @param iMainFrame
      */
     public SSInpaymentListDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("inpaymentlistreport.dialog.title") );
+        super(iMainFrame,
+                SSBundle.getBundle().getString("inpaymentlistreport.dialog.title"));
 
         setPanel(iPanel);
 
@@ -60,21 +63,20 @@ public class SSInpaymentListDialog extends SSDialog {
             }
         });
 
-
-        iInvoice.setModel( SSInvoiceTableModel.getDropDownModel() );
+        iInvoice.setModel(SSInvoiceTableModel.getDropDownModel());
         iInvoice.setSearchColumns(0);
 
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                iInvoice.setEnabled( iCheckInvoice.isSelected() );
+                iInvoice.setEnabled(iCheckInvoice.isSelected());
 
-                iFromDate.setEnabled( iCheckDate.isSelected() );
-                iToDate  .setEnabled( iCheckDate.isSelected() );
+                iFromDate.setEnabled(iCheckDate.isSelected());
+                iToDate.setEnabled(iCheckDate.isSelected());
             }
         };
 
-        iCheckDate     .addChangeListener(iChangeListener);
-        iCheckInvoice .addChangeListener(iChangeListener);
+        iCheckDate.addChangeListener(iChangeListener);
+        iCheckInvoice.addChangeListener(iChangeListener);
 
         iChangeListener.stateChanged(null);
     }
@@ -87,33 +89,32 @@ public class SSInpaymentListDialog extends SSDialog {
         return iPanel;
     }
 
-
     /**
      * Returns the invoices to print depending on the user selections
      *
      * @return
      */
-    public List<SSInpayment> getElementsToPrint(){
+    public List<SSInpayment> getElementsToPrint() {
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
 
-        SSFilterFactory<SSInpayment> iFactory = new SSFilterFactory<SSInpayment>(iInpayments);
-
+        SSFilterFactory<SSInpayment> iFactory = new SSFilterFactory<SSInpayment>(
+                iInpayments);
 
         // Filter by a customer
-        if(iCheckInvoice.isSelected() && iInvoice.getSelected() != null ){
+        if (iCheckInvoice.isSelected() && iInvoice.getSelected() != null) {
             final SSInvoice iInvoice = this.iInvoice.getSelected();
 
             iFactory.applyFilter(new SSFilter<SSInpayment>() {
                 public boolean applyFilter(SSInpayment iInpayment) {
-                    return SSInpaymentMath.hasInvoice(iInpayment, iInvoice );
+                    return SSInpaymentMath.hasInvoice(iInpayment, iInvoice);
                 }
             });
 
         }
         // Filter by date
-        if(iCheckDate.isSelected() ){
+        if (iCheckDate.isSelected()) {
             final Date iDateFrom = iFromDate.getDate();
-            final Date iDateTo   = iToDate.getDate();
+            final Date iDateTo = iToDate.getDate();
 
             iFactory.applyFilter(new SSFilter<SSInpayment>() {
                 public boolean applyFilter(SSInpayment iInpayment) {
@@ -124,7 +125,6 @@ public class SSInpaymentListDialog extends SSDialog {
 
         return iFactory.getObjects();
     }
-
 
     /**
      *
@@ -169,6 +169,7 @@ public class SSInpaymentListDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSInpaymentListDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCheckDate=").append(iCheckDate);

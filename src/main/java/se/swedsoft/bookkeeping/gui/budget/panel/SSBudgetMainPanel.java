@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.budget.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSBudget;
 import se.swedsoft.bookkeeping.gui.budget.util.SSBudgetTableModels;
@@ -27,12 +28,11 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.List;
 
+
 /**
  *
  */
 public class SSBudgetMainPanel {
-
-
 
     private JPanel iPanel;
 
@@ -56,20 +56,20 @@ public class SSBudgetMainPanel {
 
     private JTextField iSumTextField;
 
-
     /**
      * Default constructor.
      * @param pBudget
      */
     public SSBudgetMainPanel(SSBudget pBudget) {
-        iBudget            = pBudget;
-        iBudgetTableModel  = SSBudgetTableModels.createBudgetTableModel (pBudget);
+        iBudget = pBudget;
+        iBudgetTableModel = SSBudgetTableModels.createBudgetTableModel(pBudget);
         iMonthlyTableModel = SSBudgetTableModels.createMonthlyTableModel(pBudget, null);
 
         final List<SSAccount> iAccounts = pBudget.getAccounts();
 
         // Get the available accounts.
-        SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>(iAccounts) {
+        SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>(
+                iAccounts) {
 
             @Override
             public Class getType() {
@@ -81,13 +81,15 @@ public class SSBudgetMainPanel {
 
                 SSAccount account = getObject(rowIndex);
                 Object value = null;
+
                 switch (columnIndex) {
-                    case 0:
-                        value = account.getNumber();
-                        break;
-                    case 1:
-                        value = account.getDescription();
-                        break;
+                case 0:
+                    value = account.getNumber();
+                    break;
+
+                case 1:
+                    value = account.getDescription();
+                    break;
                 }
                 return value;
             }
@@ -98,9 +100,9 @@ public class SSBudgetMainPanel {
 
         iAccountNumber.setModel(iModel);
         iAccountNumber.setSearchColumns(0);
-        iAccountNumber.setColumnWidths (60, 270);
+        iAccountNumber.setColumnWidths(60, 270);
 
-        iAccountNumber.addSelectionListener(new SSSelectionListener<SSAccount>(){
+        iAccountNumber.addSelectionListener(new SSSelectionListener<SSAccount>() {
             public void selected(SSAccount selected) {
                 iMonthlyTable.removeEditor();
 
@@ -110,53 +112,54 @@ public class SSBudgetMainPanel {
 
         iBudgetTable.setModel(iBudgetTableModel);
 
-
-
         iBudgetTable.getColumnModel().getColumn(0).setPreferredWidth(60);
         iBudgetTable.getColumnModel().getColumn(1).setPreferredWidth(600);
         iBudgetTable.getColumnModel().getColumn(2).setPreferredWidth(120);
 
-        iBudgetTable.getColumnModel().getColumn(2).setCellRenderer(new SSBigDecimalCellRenderer  (2, true));
-        iBudgetTable.getColumnModel().getColumn(2).setCellEditor  (new SSBigDecimalCellEditor(2));
-
-
+        iBudgetTable.getColumnModel().getColumn(2).setCellRenderer(
+                new SSBigDecimalCellRenderer(2, true));
+        iBudgetTable.getColumnModel().getColumn(2).setCellEditor(
+                new SSBigDecimalCellEditor(2));
 
         iMonthlyTable.setDefaultEditor(BigDecimal.class, new SSBigDecimalCellEditor(2));
         iMonthlyTable.setModel(iMonthlyTableModel);
 
         iMonthlyTable.getColumnModel().getColumn(0).setMaxWidth(60);
-        iMonthlyTable.getColumnModel().getColumn(1).setCellRenderer(new SSBigDecimalCellRenderer  (2, true));
-        iMonthlyTable.getColumnModel().getColumn(1).setCellEditor  (new SSBigDecimalCellEditor(2));
+        iMonthlyTable.getColumnModel().getColumn(1).setCellRenderer(
+                new SSBigDecimalCellRenderer(2, true));
+        iMonthlyTable.getColumnModel().getColumn(1).setCellEditor(
+                new SSBigDecimalCellEditor(2));
 
-        iBudgetTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        iBudgetTable.getSelectionModel().addListSelectionListener(
+                new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
 
-                if( iBudgetTable.getSelectedRowCount()  > 0) {
+                if (iBudgetTable.getSelectedRowCount() > 0) {
 
-                    SSAccount account = iBudgetTableModel.getObject(iBudgetTable.getSelectedRow());
-                    if (account != null) setCurrentAccount(account);
+                    SSAccount account = iBudgetTableModel.getObject(
+                            iBudgetTable.getSelectedRow());
+
+                    if (account != null) {
+                        setCurrentAccount(account);
+                    }
                 }
             }
         });
 
         iBudgetTable.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2 && iBudgetTable.getSelectedColumn() != 2 ) {
+                if (e.getClickCount() == 2 && iBudgetTable.getSelectedColumn() != 2) {
                     iTabbedPane.setSelectedIndex(1);
                 }
             }
 
-            public void mousePressed(MouseEvent e) {
-            }
+            public void mousePressed(MouseEvent e) {}
 
-            public void mouseReleased(MouseEvent e) {
-            }
+            public void mouseReleased(MouseEvent e) {}
 
-            public void mouseEntered(MouseEvent e) {
-            }
+            public void mouseEntered(MouseEvent e) {}
 
-            public void mouseExited(MouseEvent e) {
-            }
+            public void mouseExited(MouseEvent e) {}
         });
 
         iBudgetTableModel.addTableModelListener(new TableModelListener() {
@@ -176,7 +179,7 @@ public class SSBudgetMainPanel {
      *
      * @param pAccount
      */
-    private void setCurrentAccount(SSAccount pAccount){
+    private void setCurrentAccount(SSAccount pAccount) {
         iCurrentAccount = pAccount;
 
         iMonthlyTableModel.setAccount(pAccount);
@@ -185,34 +188,31 @@ public class SSBudgetMainPanel {
 
         iAccountDescription.setText(pAccount.getDescription());
 
-        iAccountNumber.setSelected( pAccount );
+        iAccountNumber.setSelected(pAccount);
     }
-
-
 
     /**
      *
      */
-    private void updateSumLabel(){
+    private void updateSumLabel() {
         NumberFormat format = NumberFormat.getNumberInstance();
 
         format.setMinimumFractionDigits(2);
         format.setMaximumFractionDigits(2);
         format.setGroupingUsed(true);
 
-        if(iCurrentAccount == null ){
-            iSumTextField.setText( format.format( 0 ) );
+        if (iCurrentAccount == null) {
+            iSumTextField.setText(format.format(0));
         } else {
-            BigDecimal value = iBudget.getSumForAccount( iCurrentAccount );
+            BigDecimal value = iBudget.getSumForAccount(iCurrentAccount);
 
-            if(value == null) {
-                iSumTextField.setText( format.format( 0 ) );
-            }  else {
-                iSumTextField.setText( format.format( value ) );
+            if (value == null) {
+                iSumTextField.setText(format.format(0));
+            } else {
+                iSumTextField.setText(format.format(value));
             }
         }
     }
-
 
     /**
      * Returns the panel.
@@ -223,22 +223,22 @@ public class SSBudgetMainPanel {
         return iPanel;
     }
 
-
     /**
      *
      * @return the budget
      */
-    public SSBudget getBudget(){
+    public SSBudget getBudget() {
         return iBudget;
     }
 
-    public void setBudget(SSBudget pBudget){
+    public void setBudget(SSBudget pBudget) {
         iBudget = pBudget;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.budget.panel.SSBudgetMainPanel");
         sb.append("{iAccountDescription=").append(iAccountDescription);
         sb.append(", iAccountNumber=").append(iAccountNumber);

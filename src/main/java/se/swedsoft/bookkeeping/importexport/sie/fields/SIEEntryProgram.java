@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
@@ -10,13 +11,14 @@ import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
+
 /**
  * Date: 2006-feb-20
  * Time: 15:59:24
  */
 public class SIEEntryProgram implements SIEEntry {
 
-     /**
+    /**
      * Imports the field
      *
      * @param iReader

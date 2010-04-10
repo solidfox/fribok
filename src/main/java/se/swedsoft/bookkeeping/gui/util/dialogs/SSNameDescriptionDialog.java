@@ -1,16 +1,18 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * User: Andreas Lago
  * Date: 2006-mar-23
  * Time: 14:25:51
  */
-public class SSNameDescriptionDialog extends SSDialog{
+public class SSNameDescriptionDialog extends SSDialog {
 
     private JPanel iPanel;
 
@@ -117,15 +119,15 @@ public class SSNameDescriptionDialog extends SSDialog{
      * @return
      */
     @Override
-    public int showDialog(){
+    public int showDialog() {
         setVisible(true);
         return iModalResult;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSNameDescriptionDialog");
         sb.append("{iCancelButton=").append(iCancelButton);
         sb.append(", iDescription=").append(iDescription);

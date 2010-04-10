@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import javax.swing.*;
 import java.awt.*;
+
 
 /**
  * User: Andreas Lago
@@ -17,8 +19,7 @@ public class SSTabbedPanePanel extends JPanel {
     public SSTabbedPanePanel() {
         setLayout(new BorderLayout());
 
-        setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
     }
-
 
 }

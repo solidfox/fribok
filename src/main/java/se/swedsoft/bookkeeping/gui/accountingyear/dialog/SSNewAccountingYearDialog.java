@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.accountingyear.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;
@@ -22,13 +23,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ResourceBundle;
 
+
 public class SSNewAccountingYearDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSNewAccountingYearDialog() {
-    }
-
+    private SSNewAccountingYearDialog() {}
 
     /**
      *
@@ -37,25 +37,31 @@ public class SSNewAccountingYearDialog {
      */
     public static void showDialog(final SSMainFrame iMainFrame, final SSDefaultTableModel<SSNewAccountingYear> pModel) {
 
-        final SSDialog              iDialog = new SSDialog(iMainFrame, bundle.getString("accountingyearframe.new.title"));
-        final SSAccountingYearPanel iPanel  = new SSAccountingYearPanel();
+        final SSDialog              iDialog = new SSDialog(iMainFrame,
+                bundle.getString("accountingyearframe.new.title"));
+        final SSAccountingYearPanel iPanel = new SSAccountingYearPanel();
 
-        iPanel.setAccountingYear( new SSNewAccountingYear() );
+        iPanel.setAccountingYear(new SSNewAccountingYear());
         iPanel.setYearFromAndTo();
 
-
-        iPanel.addOkAction(new ActionListener() {
+        iPanel.addOkAction(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSNewAccountingYear iAccountingYear = iPanel.getAccountingYear();
+
                 SSDB.getInstance().addAccountingYear(iAccountingYear);
 
-                int iResponce = SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "accountingyearframe.replaceyear", iAccountingYear.toRenderString());
-                if(iResponce == JOptionPane.YES_OPTION){
+                int iResponce = SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "accountingyearframe.replaceyear",
+                        iAccountingYear.toRenderString());
+
+                if (iResponce == JOptionPane.YES_OPTION) {
 
                     SSDB.getInstance().setCurrentYear(iAccountingYear);
                     SSDB.getInstance().initYear(true);
                     SSYearLock.applyLock(iAccountingYear);
-                    SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),iAccountingYear.getId());
+                    SSDBConfig.setYearId(SSDB.getInstance().getCurrentCompany().getId(),
+                            iAccountingYear.getId());
                     // Close all year related frames
                     SSFrameManager.getInstance().close();
                 }
@@ -75,10 +81,5 @@ public class SSNewAccountingYearDialog {
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
-
-
-
-
-
 
 }

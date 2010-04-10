@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -15,6 +16,7 @@ import java.util.Date;
 
 import static se.swedsoft.bookkeeping.print.report.SSSaleReportPrinter.SortingMode;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-19
@@ -26,7 +28,6 @@ public class SSSaleReportDialog extends SSDialog {
 
     private SSButtonPanel iButtonPanel;
 
-
     private SSDateChooser iToDate;
     private SSDateChooser iFromDate;
 
@@ -35,18 +36,18 @@ public class SSSaleReportDialog extends SSDialog {
 
     private JComboBox iSort;
 
-
     /**
      *
      * @param iMainFrame
      */
     public SSSaleReportDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("salereport.dialog.title") );
+        super(iMainFrame, SSBundle.getBundle().getString("salereport.dialog.title"));
 
         SSNewAccountingYear iCurrentYear = SSDB.getInstance().getCurrentYear();
-        if(iCurrentYear != null){
-            iFromDate.setDate( iCurrentYear.getFrom() );
-            iToDate  .setDate( iCurrentYear.getTo() );
+
+        if (iCurrentYear != null) {
+            iFromDate.setDate(iCurrentYear.getFrom());
+            iToDate.setDate(iCurrentYear.getTo());
         }
 
         setPanel(iPanel);
@@ -62,8 +63,8 @@ public class SSSaleReportDialog extends SSDialog {
             }
         });
 
-        iSort.setModel(new DefaultComboBoxModel( SortingMode.values() ));
-        iSort.setSelectedItem( SortingMode.Product);
+        iSort.setModel(new DefaultComboBoxModel(SortingMode.values()));
+        iSort.setSelectedItem(SortingMode.Product);
 
         ButtonGroup iGroup = new ButtonGroup();
 
@@ -84,15 +85,15 @@ public class SSSaleReportDialog extends SSDialog {
      *
      * @return
      */
-    public SortingMode getSortingMode(){
-        return (SortingMode)iSort.getSelectedItem();
+    public SortingMode getSortingMode() {
+        return (SortingMode) iSort.getSelectedItem();
     }
 
     /**
      *
      * @return
      */
-    public boolean getAscending(){
+    public boolean getAscending() {
         return iSortAscending.isSelected();
     }
 
@@ -100,7 +101,7 @@ public class SSSaleReportDialog extends SSDialog {
      *
      * @return
      */
-    public Date getFrom(){
+    public Date getFrom() {
         return iFromDate.getDate();
     }
 
@@ -108,14 +109,14 @@ public class SSSaleReportDialog extends SSDialog {
      *
      * @return
      */
-    public Date getTo(){
+    public Date getTo() {
         return iToDate.getDate();
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSSaleReportDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iFromDate=").append(iFromDate);

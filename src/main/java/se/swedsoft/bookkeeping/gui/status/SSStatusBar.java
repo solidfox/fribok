@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.status;
 
+
 import javax.swing.*;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -14,7 +16,7 @@ import java.util.List;
  */
 public class SSStatusBar extends JPanel {
 
-    public static class SSStatusBarPanel{
+    public static class SSStatusBarPanel {
         int        fill;
         JComponent component;
         double     weightx;
@@ -22,6 +24,7 @@ public class SSStatusBar extends JPanel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.SSStatusBarPanel");
             sb.append("{component=").append(component);
             sb.append(", fill=").append(fill);
@@ -33,7 +36,7 @@ public class SSStatusBar extends JPanel {
 
     private List<SSStatusBarPanel> iPanels;
 
-    //private static int width
+    // private static int width
 
     /**
      * Creates a new {@code JPanel} with a double buffer
@@ -44,26 +47,25 @@ public class SSStatusBar extends JPanel {
 
         Border iBorder = new StatusBorder();
 
-        setMinimumSize  (new Dimension(-1, 24));
-        setMaximumSize  (new Dimension(-1, 24));
+        setMinimumSize(new Dimension(-1, 24));
+        setMaximumSize(new Dimension(-1, 24));
         setPreferredSize(new Dimension(-1, 24));
-
 
         setBorder(iBorder);
         setLayout(null);
-        setBackground( new Color(236, 233, 216));
+        setBackground(new Color(236, 233, 216));
     }
 
     /**
      *
      * @param iComponent
      */
-    public void addPanel( JComponent iComponent ){
+    public void addPanel(JComponent iComponent) {
         SSStatusBarPanel iPanel = new SSStatusBarPanel();
 
-        iPanel.component   = iComponent;
-        iPanel.fill        = GridBagConstraints.NONE;
-        iPanel.weightx     = 0;
+        iPanel.component = iComponent;
+        iPanel.fill = GridBagConstraints.NONE;
+        iPanel.weightx = 0;
 
         iPanels.add(iPanel);
 
@@ -73,12 +75,12 @@ public class SSStatusBar extends JPanel {
     /**
      *
      */
-    public void addSeparator(){
+    public void addSeparator() {
         SSStatusBarPanel iPanel = new SSStatusBarPanel();
 
-        iPanel.component  = new SeparatorPanel();
-        iPanel.fill       = GridBagConstraints.NONE;
-        iPanel.weightx    = 0;
+        iPanel.component = new SeparatorPanel();
+        iPanel.fill = GridBagConstraints.NONE;
+        iPanel.weightx = 0;
 
         iPanels.add(iPanel);
 
@@ -93,22 +95,22 @@ public class SSStatusBar extends JPanel {
         SSStatusBarPanel iPanel = new SSStatusBarPanel();
 
         JPanel iSpacer = new JPanel();
-        iSpacer.setBackground( new Color(236, 233, 216));
 
-        iPanel.component  = iSpacer;
-        iPanel.fill       = GridBagConstraints.BOTH;
-        iPanel.weightx     = 1;
+        iSpacer.setBackground(new Color(236, 233, 216));
+
+        iPanel.component = iSpacer;
+        iPanel.fill = GridBagConstraints.BOTH;
+        iPanel.weightx = 1;
 
         iPanels.add(iPanel);
 
         layoutPanels();
     }
 
-
     /**
      *
      */
-    private void layoutPanels(){
+    private void layoutPanels() {
         int x = 0;
         int w = getWidth();
 
@@ -117,8 +119,8 @@ public class SSStatusBar extends JPanel {
         GridBagConstraints iConstraints = new GridBagConstraints();
 
         setLayout(iLayout);
-        for(SSStatusBarPanel iPanel: iPanels){
-            iConstraints.fill    = iPanel.fill;
+        for (SSStatusBarPanel iPanel: iPanels) {
+            iConstraints.fill = iPanel.fill;
             iConstraints.weightx = iPanel.weightx;
 
             iLayout.setConstraints(iPanel.component, iConstraints);
@@ -131,19 +133,19 @@ public class SSStatusBar extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
 
-        int w = getWidth () - 12;
+        int w = getWidth() - 12;
         int h = getHeight() - 14;
 
-        for(int x = 0; x < 12; x = x + 4){
+        for (int x = 0; x < 12; x = x + 4) {
 
-            for(int y = 0; y < 12; y = y + 4){
+            for (int y = 0; y < 12; y = y + 4) {
 
-                if(x + y > 4){
+                if (x + y > 4) {
                     g.setColor(new Color(255, 255, 255));
-                    g.fillRect(w+x+1, h+y+1, 2, 2);
+                    g.fillRect(w + x + 1, h + y + 1, 2, 2);
 
                     g.setColor(new Color(184, 180, 168));
-                    g.fillRect(w+x  , h+y  , 2, 2);
+                    g.fillRect(w + x, h + y, 2, 2);
                 }
             }
         }
@@ -162,21 +164,22 @@ public class SSStatusBar extends JPanel {
          */
         public SeparatorPanel() {
             setPreferredSize(new Dimension(8, 18));
-            setMinimumSize  (new Dimension(8, 18));
+            setMinimumSize(new Dimension(8, 18));
         }
 
         @Override
         public void paint(Graphics g) {
             g.setColor(cColor1);
-            g.drawLine(4, 0 , 4, getHeight() );
+            g.drawLine(4, 0, 4, getHeight());
 
             g.setColor(cColor2);
-            g.drawLine(5, 0 , 5, getHeight() );
+            g.drawLine(5, 0, 5, getHeight());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.SeparatorPanel");
             sb.append("{cColor1=").append(cColor1);
             sb.append(", cColor2=").append(cColor2);
@@ -199,26 +202,26 @@ public class SSStatusBar extends JPanel {
             Color oldColor = g.getColor();
 
             g.setColor(cOuterColor);
-            g.drawLine(x, y       , width, y     );
-            g.drawLine(x, height-1, width, height-1);
+            g.drawLine(x, y, width, y);
+            g.drawLine(x, height - 1, width, height - 1);
 
             g.setColor(cInnerColor);
-            g.drawLine(x, y     +1, width, y     +1);
-            g.drawLine(x, height-2, width, height-2);
+            g.drawLine(x, y + 1, width, y + 1);
+            g.drawLine(x, height - 2, width, height - 2);
 
             g.setColor(oldColor);
         }
 
         @Override
         public Insets getBorderInsets(Component c) {
-            return new Insets(2,4,2,12);
+            return new Insets(2, 4, 2, 12);
         }
 
         @Override
         public Insets getBorderInsets(Component c, Insets insets) {
-            insets.left   = 4;
-            insets.top    = 2;
-            insets.right  = 12;
+            insets.left = 4;
+            insets.top = 2;
+            insets.right = 12;
             insets.bottom = 2;
 
             return insets;
@@ -227,6 +230,7 @@ public class SSStatusBar extends JPanel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar.StatusBorder");
             sb.append("{cInnerColor=").append(cInnerColor);
             sb.append(", cOuterColor=").append(cOuterColor);
@@ -238,6 +242,7 @@ public class SSStatusBar extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.status.SSStatusBar");
         sb.append("{iPanels=").append(iPanels);
         sb.append('}');

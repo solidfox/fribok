@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * Date: 2006-feb-02
@@ -12,16 +14,12 @@ public class SSMenuButton<T extends JButton> extends SSButton {
 
     private JPopupMenu iPopup;
 
-
     /**
      *
      */
-    public SSMenuButton(){
+    public SSMenuButton() {
         createPopup();
     }
-
-
-
 
     /**
      * @param pIcon
@@ -49,7 +47,7 @@ public class SSMenuButton<T extends JButton> extends SSButton {
         addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                iPopup.show(SSMenuButton.this, 0, getHeight() );
+                iPopup.show(SSMenuButton.this, 0, getHeight());
             }
         });
     }
@@ -64,7 +62,6 @@ public class SSMenuButton<T extends JButton> extends SSButton {
 
         return iComponent;
     }
-        
 
     /**
      *
@@ -72,15 +69,16 @@ public class SSMenuButton<T extends JButton> extends SSButton {
      * @param iListener
      * @return the newly added menuitem
      */
-    public JMenuItem add(String pBundleName, ActionListener iListener){
+    public JMenuItem add(String pBundleName, ActionListener iListener) {
         JMenuItem iMenuItem = new JMenuItem();
 
-        if( iBundle.hasKey( pBundleName + ".title" )  ){
-            iMenuItem.setText(SSMenuButton.iBundle.getString(pBundleName + ".title") );
+        if (iBundle.hasKey(pBundleName + ".title")) {
+            iMenuItem.setText(SSMenuButton.iBundle.getString(pBundleName + ".title"));
         }
 
-        if( iBundle.hasKey( pBundleName + ".tooltip" )  ){
-            iMenuItem.setToolTipText(SSMenuButton.iBundle.getString(pBundleName + ".tooltip") );
+        if (iBundle.hasKey(pBundleName + ".tooltip")) {
+            iMenuItem.setToolTipText(
+                    SSMenuButton.iBundle.getString(pBundleName + ".tooltip"));
         }
         iMenuItem.addActionListener(iListener);
 
@@ -91,7 +89,7 @@ public class SSMenuButton<T extends JButton> extends SSButton {
     }
 
     /**
-     * 
+     *
      */
     public void addSeparator() {
         iPopup.addSeparator();
@@ -101,6 +99,7 @@ public class SSMenuButton<T extends JButton> extends SSButton {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.components.SSMenuButton");
         sb.append("{iPopup=").append(iPopup);
         sb.append('}');

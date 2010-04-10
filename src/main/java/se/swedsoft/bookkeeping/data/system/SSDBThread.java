@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 /**
  * Date: 2006-feb-24
  * Time: 17:13:25
@@ -13,66 +14,58 @@ public class SSDBThread extends Thread {
     private SSSystemData iData;
 
     public SSDBThread(SSDB pDatabase, SSSystemData pData) {
-        iData     = pData;
+        iData = pData;
         iDatabase = pDatabase;
         setName("SSDBThread");
     }
 
     @Override
-    public void run() {
+    public void run() {/*
+         // Companydata changed
+         if(iDatabase.iCompanyDataChanged) {
+         iDatabase.iCompanyDataChanged = false;
 
+         SSSystemCompany iCompanyData = iData.getCurrentCompany();
 
-                /*
-                // Companydata changed
-                if(iDatabase.iCompanyDataChanged) {
-                    iDatabase.iCompanyDataChanged = false;
+         if(iCompanyData != null) {
+         iCompanyData.storeCompany();
+         }
+         } else
 
-                    SSSystemCompany iCompanyData = iData.getCurrentCompany();
+         // Yeardata changed
+         if(iDatabase.iYearDataChanged) {
+         iDatabase.iYearDataChanged = false;
 
-                    if(iCompanyData != null) {
-                        iCompanyData.storeCompany();
-                    }
-                } else
+         SSSystemYear iYearData = iData.getCurrentYear();
 
-                // Yeardata changed
-                if(iDatabase.iYearDataChanged) {
-                    iDatabase.iYearDataChanged = false;
+         if(iYearData != null) {
+         iYearData.storeYear();
+         }
+         } else
+         */ // Database changed
+        /* if(iDatabase.changed ) {
+         iDatabase.changed = false;
 
-                    SSSystemYear iYearData = iData.getCurrentYear();
+         iDatabase.SaveDatabase();
+         /*
+         if(!iDatabase.isReadonly()){
+         System.out.println(getClass().getName() + ": Saving database...");
 
-                    if(iYearData != null) {
-                        iYearData.storeYear();
-                    }
-                } else
-                    */
-                // Database changed
-                /*if(iDatabase.changed ) {
-                    iDatabase.changed = false;
+         SSSystemCompany iSystemCompany = iData.getCurrentCompany();
+         SSSystemYear    iSystemYear    = iData.getCurrentYear();
 
-                    iDatabase.SaveDatabase();
-                                /*
-                    if(!iDatabase.isReadonly()){
-                        System.out.println(getClass().getName() + ": Saving database...");
+         if(iSystemCompany != null) iSystemCompany.storeCompany();
+         if(iSystemYear    != null) iSystemYear   .storeYear();
 
-                        SSSystemCompany iSystemCompany = iData.getCurrentCompany();
-                        SSSystemYear    iSystemYear    = iData.getCurrentYear();
-
-
-                        if(iSystemCompany != null) iSystemCompany.storeCompany();
-                        if(iSystemYear    != null) iSystemYear   .storeYear();
-
-                        iDatabase.storeDatabase();
-                    }   */
-
-                //}
-                // Sleep
-
-
+         iDatabase.storeDatabase();
+         }   */ // }
+        // Sleep
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.system.SSDBThread");
         sb.append("{iData=").append(iData);
         sb.append(", iDatabase=").append(iDatabase);

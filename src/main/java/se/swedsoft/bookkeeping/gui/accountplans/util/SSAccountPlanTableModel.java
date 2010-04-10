@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.accountplans.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.SSAccountPlanType;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -18,7 +19,7 @@ public class SSAccountPlanTableModel extends SSTableModel<SSAccountPlan> {
      * Default constructor.
      */
     public SSAccountPlanTableModel() {
-        super( SSDB.getInstance().getAccountPlans() );
+        super(SSDB.getInstance().getAccountPlans());
     }
 
     /**
@@ -43,10 +44,11 @@ public class SSAccountPlanTableModel extends SSTableModel<SSAccountPlan> {
         return iModel;
     }
 
-     /**
+    /**
      * Namn
      */
-    public static SSTableColumn<SSAccountPlan> COLUMN_NAME = new SSTableColumn<SSAccountPlan>(SSBundle.getBundle().getString("accountplantable.column.1")) {
+    public static SSTableColumn<SSAccountPlan> COLUMN_NAME = new SSTableColumn<SSAccountPlan>(
+            SSBundle.getBundle().getString("accountplantable.column.1")) {
         @Override
         public Object getValue(SSAccountPlan iAccountPlan) {
             return iAccountPlan.getName();
@@ -54,7 +56,7 @@ public class SSAccountPlanTableModel extends SSTableModel<SSAccountPlan> {
 
         @Override
         public void setValue(SSAccountPlan iAccountPlan, Object iValue) {
-            iAccountPlan.setName((String)iValue);
+            iAccountPlan.setName((String) iValue);
         }
 
         @Override
@@ -68,58 +70,57 @@ public class SSAccountPlanTableModel extends SSTableModel<SSAccountPlan> {
         }
     };
 
+    /**
+     * Namn
+     */
+    public static SSTableColumn<SSAccountPlan> COLUMN_TYPE = new SSTableColumn<SSAccountPlan>(
+            SSBundle.getBundle().getString("accountplantable.column.2")) {
+        @Override
+        public Object getValue(SSAccountPlan iAccountPlan) {
+            return iAccountPlan.getType();
+        }
+
+        @Override
+        public void setValue(SSAccountPlan iAccountPlan, Object iValue) {
+            iAccountPlan.setType((SSAccountPlanType) iValue);
+        }
+
+        @Override
+        public Class getColumnClass() {
+            return SSAccountPlanType.class;
+        }
+
+        @Override
+        public int getDefaultWidth() {
+            return 85;
+        }
+    };
 
     /**
-    * Namn
-    */
-   public static SSTableColumn<SSAccountPlan> COLUMN_TYPE = new SSTableColumn<SSAccountPlan>(SSBundle.getBundle().getString("accountplantable.column.2")) {
-       @Override
-       public Object getValue(SSAccountPlan iAccountPlan) {
-           return iAccountPlan.getType();
-       }
+     * Namn
+     */
+    public static SSTableColumn<SSAccountPlan> COLUMN_ASSESSMENTYEAR = new SSTableColumn<SSAccountPlan>(
+            SSBundle.getBundle().getString("accountplantable.column.3")) {
+        @Override
+        public Object getValue(SSAccountPlan iAccountPlan) {
+            return iAccountPlan.getAssessementYear();
+        }
 
-       @Override
-       public void setValue(SSAccountPlan iAccountPlan, Object iValue) {
-           iAccountPlan.setType((SSAccountPlanType)iValue);
-       }
+        @Override
+        public void setValue(SSAccountPlan iAccountPlan, Object iValue) {
+            iAccountPlan.setAssessementYear((String) iValue);
+        }
 
-       @Override
-       public Class getColumnClass() {
-           return SSAccountPlanType.class;
-       }
+        @Override
+        public Class getColumnClass() {
+            return String.class;
+        }
 
-       @Override
-       public int getDefaultWidth() {
-           return 85;
-       }
-   };
-
-
-    /**
-    * Namn
-    */
-   public static SSTableColumn<SSAccountPlan> COLUMN_ASSESSMENTYEAR = new SSTableColumn<SSAccountPlan>(SSBundle.getBundle().getString("accountplantable.column.3")) {
-       @Override
-       public Object getValue(SSAccountPlan iAccountPlan) {
-           return iAccountPlan.getAssessementYear();
-       }
-
-       @Override
-       public void setValue(SSAccountPlan iAccountPlan, Object iValue) {
-           iAccountPlan.setAssessementYear((String)iValue);
-       }
-
-       @Override
-       public Class getColumnClass() {
-           return String.class;
-       }
-
-       @Override
-       public int getDefaultWidth() {
-           return 85;
-       }
-   };
-
+        @Override
+        public int getDefaultWidth() {
+            return 85;
+        }
+    };
 
 }
 

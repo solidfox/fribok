@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.importexport.sie.util;
 
+
 import se.swedsoft.bookkeeping.data.SSMonth;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
+
 
 /**
  * Date: 2006-feb-22
@@ -21,19 +23,19 @@ public class SIEReader implements Iterator<String> {
     /**
      *
      */
-    public SIEReader(){
-        iLines    = new LinkedList<String>();
-        iIndex    = 0;
-        iValues   = null;
+    public SIEReader() {
+        iLines = new LinkedList<String>();
+        iIndex = 0;
+        iValues = null;
     }
 
     /**
      *
      * @param pLine
      */
-    public SIEReader(String pLine){
-        iLines    = new ArrayList<String>(1);
-        iValues   = null;
+    public SIEReader(String pLine) {
+        iLines = new ArrayList<String>(1);
+        iValues = null;
         iLines.add(pLine);
         reset();
     }
@@ -42,8 +44,8 @@ public class SIEReader implements Iterator<String> {
      *
      * @param pLines
      */
-    public SIEReader(List<String> pLines){
-        iLines    = pLines;
+    public SIEReader(List<String> pLines) {
+        iLines = pLines;
 
         reset();
     }
@@ -52,9 +54,11 @@ public class SIEReader implements Iterator<String> {
      *
      */
     private void reset() {
-        iIndex    = 0;
+        iIndex = 0;
 
-        if(iLines.isEmpty()) return;
+        if (iLines.isEmpty()) {
+            return;
+        }
 
         String iLine = iLines.get(0);
 
@@ -69,7 +73,7 @@ public class SIEReader implements Iterator<String> {
      * @return {@code true} if the iterator has more elements.
      */
     public boolean hasNextLine() {
-        return iIndex+1 < iLines.size();
+        return iIndex + 1 < iLines.size();
     }
 
     /**
@@ -84,7 +88,7 @@ public class SIEReader implements Iterator<String> {
     public String nextLine() {
         iIndex++;
 
-        if(iIndex >= iLines.size()){
+        if (iIndex >= iLines.size()) {
             throw new NoSuchElementException();
         }
         String iLine = iLines.get(iIndex);
@@ -104,7 +108,7 @@ public class SIEReader implements Iterator<String> {
      */
     public String peekLine() {
 
-        if(iIndex >= iLines.size()){
+        if (iIndex >= iLines.size()) {
             throw new NoSuchElementException();
         }
 
@@ -139,13 +143,8 @@ public class SIEReader implements Iterator<String> {
         throw new UnsupportedOperationException();
     }
 
-
-    public enum SIEDataType{
-        STRING,
-        INT,
-        FLOAT,
-        BOOLEAN,
-        ARRAY
+    public enum SIEDataType {
+        STRING, INT, FLOAT, BOOLEAN, ARRAY
     }
 
     /**
@@ -153,29 +152,37 @@ public class SIEReader implements Iterator<String> {
      * @param pDataTypes
      * @return
      */
-    public boolean hasFields(SIEDataType ... pDataTypes) {
+    public boolean hasFields(SIEDataType... pDataTypes) {
 
-        SIEIterator iIterator = new SIEIterator( peekLine() );
+        SIEIterator iIterator = new SIEIterator(peekLine());
 
-        for(SIEDataType iDataType: pDataTypes){
-            boolean hasNext         = iIterator.hasNext();
-            boolean hasNextInteger  = iIterator.hasNextInteger();
-            boolean hasNextFloat    = iIterator.hasNextFloat();
-            boolean hasNextBoolean  = iIterator.hasNextBoolean();
-            boolean hasNextArray    = iIterator.hasNextArray();
+        for (SIEDataType iDataType: pDataTypes) {
+            boolean hasNext = iIterator.hasNext();
+            boolean hasNextInteger = iIterator.hasNextInteger();
+            boolean hasNextFloat = iIterator.hasNextFloat();
+            boolean hasNextBoolean = iIterator.hasNextBoolean();
+            boolean hasNextArray = iIterator.hasNextArray();
 
-            if((iDataType == SIEDataType.STRING ) && !hasNext       ) return false;
-            if((iDataType == SIEDataType.INT    ) && !hasNextInteger) return false;
-            if((iDataType == SIEDataType.FLOAT  ) && !hasNextFloat  ) return false;
-            if((iDataType == SIEDataType.BOOLEAN) && !hasNextBoolean) return false;
-            if((iDataType == SIEDataType.ARRAY  ) && !hasNextArray  ) return false;
+            if ((iDataType == SIEDataType.STRING) && !hasNext) {
+                return false;
+            }
+            if ((iDataType == SIEDataType.INT) && !hasNextInteger) {
+                return false;
+            }
+            if ((iDataType == SIEDataType.FLOAT) && !hasNextFloat) {
+                return false;
+            }
+            if ((iDataType == SIEDataType.BOOLEAN) && !hasNextBoolean) {
+                return false;
+            }
+            if ((iDataType == SIEDataType.ARRAY) && !hasNextArray) {
+                return false;
+            }
 
             iIterator.next();
         }
         return true;
     }
-
-
 
     /**
      *
@@ -184,6 +191,7 @@ public class SIEReader implements Iterator<String> {
     public boolean hasNextString() {
         return iValues.hasNext();
     }
+
     /**
      *
      * @return
@@ -256,8 +264,6 @@ public class SIEReader implements Iterator<String> {
         return iValues.hasNextMonth();
     }
 
-
-
     /**
      *
      * @return
@@ -318,7 +324,7 @@ public class SIEReader implements Iterator<String> {
      *
      * @return
      */
-    public  List<String> nextArray() {
+    public List<String> nextArray() {
         return iValues.nextArray();
     }
 
@@ -342,8 +348,8 @@ public class SIEReader implements Iterator<String> {
         StringBuilder sb = new StringBuilder();
 
         sb.append("SIEReader {\n");
-        for(String iLine: iLines){
-            SIEIterator iIterator = new SIEIterator( iLine );
+        for (String iLine: iLines) {
+            SIEIterator iIterator = new SIEIterator(iLine);
 
             sb.append("  ");
             sb.append(iIterator);
@@ -353,6 +359,5 @@ public class SIEReader implements Iterator<String> {
 
         return sb.toString();
     }
-
 
 }

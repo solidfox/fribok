@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplier.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierMath;
 import se.swedsoft.bookkeeping.data.SSSupplier;
@@ -12,6 +13,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import java.math.BigDecimal;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -19,12 +21,11 @@ import java.util.List;
  */
 public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
 
-
     /**
      * Default constructor.
      */
     public SSSupplierTableModel() {
-        super(SSDB.getInstance().getSuppliers() );
+        super(SSDB.getInstance().getSuppliers());
     }
 
     /**
@@ -35,7 +36,6 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
     public SSSupplierTableModel(List<SSSupplier> pObjects) {
         super(pObjects);
     }
-
 
     /**
      * Returns the type of data in this model.
@@ -53,26 +53,25 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
      */
     public static SSTableModel<SSSupplier> getDropDownModel() {
         SSSupplierTableModel iModel = new SSSupplierTableModel();
+
         iModel.addColumn(COLUMN_NUMBER);
         iModel.addColumn(COLUMN_NAME);
         return iModel;
 
     }
 
-
-
     /**
      * Number column
      */
-    public static SSTableColumn<SSSupplier> COLUMN_NUMBER = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.1")) {
+    public static SSTableColumn<SSSupplier> COLUMN_NUMBER = new SSTableColumn<SSSupplier>(
+            SSBundle.getBundle().getString("suppliertable.column.1")) {
         @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getNumber();
         }
 
         @Override
-        public void setValue(SSSupplier iObject, Object iValue) {
-        }
+        public void setValue(SSSupplier iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -85,26 +84,24 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
         }
     };
 
-
-
-
     /**
      * Name
      */
-    public static SSTableColumn<SSSupplier> COLUMN_NAME = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.2")) {
+    public static SSTableColumn<SSSupplier> COLUMN_NAME = new SSTableColumn<SSSupplier>(
+            SSBundle.getBundle().getString("suppliertable.column.2")) {
         @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getName();
         }
 
         @Override
-        public void setValue(SSSupplier iObject, Object iValue) {
-        }
+        public void setValue(SSSupplier iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 142;
@@ -114,7 +111,8 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
     /**
      * Your contact
      */
-    public static SSTableColumn<SSSupplier> COLUMN_YOUR_CONTACT = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.3")) {
+    public static SSTableColumn<SSSupplier> COLUMN_YOUR_CONTACT = new SSTableColumn<SSSupplier>(
+            SSBundle.getBundle().getString("suppliertable.column.3")) {
         @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getYourContact();
@@ -122,24 +120,25 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
 
         @Override
         public void setValue(SSSupplier iObject, Object iValue) {
-            iObject.setYourContact((String)iValue);
+            iObject.setYourContact((String) iValue);
         }
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 142;
         }
     };
 
-
     /**
      * Date column
      */
-    public static SSTableColumn<SSSupplier> COLUMN_PHONE = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.4")) {
+    public static SSTableColumn<SSSupplier> COLUMN_PHONE = new SSTableColumn<SSSupplier>(
+            SSBundle.getBundle().getString("suppliertable.column.4")) {
         @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getPhone1();
@@ -147,7 +146,7 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
 
         @Override
         public void setValue(SSSupplier iObject, Object iValue) {
-            iObject.setPhone1((String)iValue);
+            iObject.setPhone1((String) iValue);
         }
 
         @Override
@@ -162,11 +161,11 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
 
     };
 
-
     /**
      * Our customer nr
      */
-    public static SSTableColumn<SSSupplier> COLUMN_OUR_CUSTOMER_NR = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.5")) {
+    public static SSTableColumn<SSSupplier> COLUMN_OUR_CUSTOMER_NR = new SSTableColumn<SSSupplier>(
+            SSBundle.getBundle().getString("suppliertable.column.5")) {
         @Override
         public Object getValue(SSSupplier iObject) {
             return iObject.getOurCustomerNr();
@@ -174,7 +173,7 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
 
         @Override
         public void setValue(SSSupplier iObject, Object iValue) {
-            iObject.setOurCustomerNr((String)iValue);
+            iObject.setOurCustomerNr((String) iValue);
         }
 
         @Override
@@ -192,24 +191,33 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
     /**
      * Supplier debt
      */
-    public static SSTableColumn<SSSupplier> COLUMN_SUPPLIERDEBT = new SSTableColumn<SSSupplier>(SSBundle.getBundle().getString("suppliertable.column.6")) {
+    public static SSTableColumn<SSSupplier> COLUMN_SUPPLIERDEBT = new SSTableColumn<SSSupplier>(
+            SSBundle.getBundle().getString("suppliertable.column.6")) {
         @Override
         public Object getValue(SSSupplier iObject) {
-            List<SSSupplierInvoice> iInvoices = SSSupplierMath.iInvoicesForSuppliers.get(iObject.getNumber());
-            if(iInvoices == null) return new BigDecimal(0);
+            List<SSSupplierInvoice> iInvoices = SSSupplierMath.iInvoicesForSuppliers.get(
+                    iObject.getNumber());
+
+            if (iInvoices == null) {
+                return new BigDecimal(0);
+            }
             BigDecimal iTotalSum = new BigDecimal(0);
-            for(SSSupplierInvoice iInvoice:iInvoices){
-                if(SSSupplierInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())){
-                    BigDecimal iSupplierInvoiceSaldo = SSSupplierInvoiceMath.iSaldoMap.get(iInvoice.getNumber());
-                    iTotalSum = iTotalSum.add(SSSupplierInvoiceMath.convertToLocal(iInvoice,iSupplierInvoiceSaldo));
+
+            for (SSSupplierInvoice iInvoice:iInvoices) {
+                if (SSSupplierInvoiceMath.iSaldoMap.containsKey(iInvoice.getNumber())) {
+                    BigDecimal iSupplierInvoiceSaldo = SSSupplierInvoiceMath.iSaldoMap.get(
+                            iInvoice.getNumber());
+
+                    iTotalSum = iTotalSum.add(
+                            SSSupplierInvoiceMath.convertToLocal(iInvoice,
+                            iSupplierInvoiceSaldo));
                 }
             }
             return iTotalSum;
         }
 
         @Override
-        public void setValue(SSSupplier iObject, Object iValue) {
-        }
+        public void setValue(SSSupplier iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -222,7 +230,5 @@ public class SSSupplierTableModel extends SSTableModel<SSSupplier> {
         }
 
     };
-
-
 
 }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc.math;
 
+
 import se.swedsoft.bookkeeping.data.SSAddress;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -14,13 +15,13 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-27
  * Time: 15:42:39
  */
 public class SSSaleMath {
-
 
     /**
      *
@@ -29,10 +30,10 @@ public class SSSaleMath {
      * @param pTo
      * @return
      */
-    public static boolean inPeriod( SSSale iSale, Date pFrom, Date pTo){
+    public static boolean inPeriod(SSSale iSale, Date pFrom, Date pTo) {
         Date iDate = iSale.getDate();
         Date iFrom = SSDateMath.floor(pFrom);
-        Date iTo   = SSDateMath.ceil (pTo);
+        Date iTo = SSDateMath.ceil(pTo);
 
         return (iFrom.getTime() <= iDate.getTime()) && (iDate.getTime() <= iTo.getTime());
     }
@@ -43,9 +44,9 @@ public class SSSaleMath {
      * @param pTo
      * @return
      */
-    public static boolean inPeriod( SSSale iSale, Date pTo){
+    public static boolean inPeriod(SSSale iSale, Date pTo) {
         Date iDate = iSale.getDate();
-        Date iTo   = SSDateMath.ceil (pTo);
+        Date iTo = SSDateMath.ceil(pTo);
 
         return iDate.getTime() <= iTo.getTime();
     }
@@ -56,15 +57,12 @@ public class SSSaleMath {
      * @param iValue
      * @return the rounded value and the rounding
      */
-    public static BigDecimal[] round(BigDecimal iValue){
-        BigDecimal iRounded  = iValue.setScale (0, RoundingMode.HALF_UP);
+    public static BigDecimal[] round(BigDecimal iValue) {
+        BigDecimal iRounded = iValue.setScale(0, RoundingMode.HALF_UP);
         BigDecimal iRounding = iValue.subtract(iRounded);
 
-        return new BigDecimal [] { iRounded, iRounding };
+        return new BigDecimal[] { iRounded, iRounding };
     }
-
-
-
 
     /**
      * Returns the net sum for the specified sale
@@ -72,14 +70,14 @@ public class SSSaleMath {
      * @param iSale
      * @return the sum
      */
-    public static BigDecimal getNetSum(SSSale iSale){
+    public static BigDecimal getNetSum(SSSale iSale) {
 
-        BigDecimal iNetSum  = new BigDecimal(0);
+        BigDecimal iNetSum = new BigDecimal(0);
 
-        for(SSSaleRow iRow: iSale.getRows()){
+        for (SSSaleRow iRow: iSale.getRows()) {
             BigDecimal iRowSum = iRow.getSum();
 
-            if(iRowSum != null) {
+            if (iRowSum != null) {
                 iNetSum = iNetSum.add(iRowSum);
             }
         }
@@ -94,7 +92,7 @@ public class SSSaleMath {
      *
      * @return the sum for the tax codes
      */
-    public static Map<SSTaxCode, BigDecimal> getTaxSum(SSSale iSale){
+    public static Map<SSTaxCode, BigDecimal> getTaxSum(SSSale iSale) {
         BigDecimal iTaxRate1 = iSale.getNormalizedTaxRate1();
         BigDecimal iTaxRate2 = iSale.getNormalizedTaxRate2();
         BigDecimal iTaxRate3 = iSale.getNormalizedTaxRate3();
@@ -106,18 +104,26 @@ public class SSSaleMath {
         iTaxSum.put(SSTaxCode.TAXRATE_2, new BigDecimal(0));
         iTaxSum.put(SSTaxCode.TAXRATE_3, new BigDecimal(0));
 
-        if( iSale.getTaxFree() ) return iTaxSum;
+        if (iSale.getTaxFree()) {
+            return iTaxSum;
+        }
 
-        for(SSSaleRow iRow: iSale.getRows()){
+        for (SSSaleRow iRow: iSale.getRows()) {
             BigDecimal iRowSum = iRow.getSum();
             SSTaxCode  iRowTax = iRow.getTaxCode();
 
-            if(iRowSum != null) {
+            if (iRowSum != null) {
                 BigDecimal iSum = iTaxSum.get(iRowTax);
 
-                if(iRowTax == SSTaxCode.TAXRATE_1) iSum = iSum.add( iRowSum.multiply(iTaxRate1)  );
-                if(iRowTax == SSTaxCode.TAXRATE_2) iSum = iSum.add( iRowSum.multiply(iTaxRate2)  );
-                if(iRowTax == SSTaxCode.TAXRATE_3) iSum = iSum.add( iRowSum.multiply(iTaxRate3)  );
+                if (iRowTax == SSTaxCode.TAXRATE_1) {
+                    iSum = iSum.add(iRowSum.multiply(iTaxRate1));
+                }
+                if (iRowTax == SSTaxCode.TAXRATE_2) {
+                    iSum = iSum.add(iRowSum.multiply(iTaxRate2));
+                }
+                if (iRowTax == SSTaxCode.TAXRATE_3) {
+                    iSum = iSum.add(iRowSum.multiply(iTaxRate3));
+                }
 
                 iTaxSum.put(iRowTax, iSum);
             }
@@ -133,14 +139,14 @@ public class SSSaleMath {
      *
      * @return the sum
      */
-    public static BigDecimal getTotalTaxSum(SSSale iSale){
+    public static BigDecimal getTotalTaxSum(SSSale iSale) {
         Map<SSTaxCode, BigDecimal> iTaxSum = getTaxSum(iSale);
 
-        BigDecimal iTax1 =  iTaxSum.get(SSTaxCode.TAXRATE_1);
-        BigDecimal iTax2 =  iTaxSum.get(SSTaxCode.TAXRATE_2);
-        BigDecimal iTax3 =  iTaxSum.get(SSTaxCode.TAXRATE_3);
+        BigDecimal iTax1 = iTaxSum.get(SSTaxCode.TAXRATE_1);
+        BigDecimal iTax2 = iTaxSum.get(SSTaxCode.TAXRATE_2);
+        BigDecimal iTax3 = iTaxSum.get(SSTaxCode.TAXRATE_3);
 
-        return iTax1.add( iTax2 ).add(iTax3);
+        return iTax1.add(iTax2).add(iTax3);
     }
 
     /**
@@ -151,27 +157,28 @@ public class SSSaleMath {
      * @param iSale
      * @return the total sum
      */
-    public static BigDecimal getTotalSum(SSSale iSale){
+    public static BigDecimal getTotalSum(SSSale iSale) {
         // Get the tax sum
         Map<SSTaxCode, BigDecimal> iTaxSum = getTaxSum(iSale);
 
-        BigDecimal iNetSum  = getNetSum(iSale);
+        BigDecimal iNetSum = getNetSum(iSale);
         BigDecimal iTaxSum1 = iTaxSum.get(SSTaxCode.TAXRATE_1);
         BigDecimal iTaxSum2 = iTaxSum.get(SSTaxCode.TAXRATE_2);
         BigDecimal iTaxSum3 = iTaxSum.get(SSTaxCode.TAXRATE_3);
 
         BigDecimal iSum;
-        if(iSale.getTaxFree()){
-            iSum =  iNetSum;
+
+        if (iSale.getTaxFree()) {
+            iSum = iNetSum;
         } else {
             iSum = iNetSum.add(iTaxSum1).add(iTaxSum2).add(iTaxSum3);
         }
-        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff())
+        if (!SSDB.getInstance().getCurrentCompany().isRoundingOff()) {
             return iSum.setScale(0, RoundingMode.HALF_UP);
-        else
+        } else {
             return iSum;
+        }
     }
-
 
     /**
      * Returns the rounding for a sale
@@ -181,30 +188,29 @@ public class SSSaleMath {
      * @param iSale
      * @return the total sum
      */
-    public static BigDecimal getRounding(SSSale iSale){
+    public static BigDecimal getRounding(SSSale iSale) {
         // Get the tax sum
         Map<SSTaxCode, BigDecimal> iTaxSum = getTaxSum(iSale);
 
-        BigDecimal iNetSum  = getNetSum(iSale);
+        BigDecimal iNetSum = getNetSum(iSale);
         BigDecimal iTaxSum1 = iTaxSum.get(SSTaxCode.TAXRATE_1);
         BigDecimal iTaxSum2 = iTaxSum.get(SSTaxCode.TAXRATE_2);
         BigDecimal iTaxSum3 = iTaxSum.get(SSTaxCode.TAXRATE_3);
 
         BigDecimal iSum;
-        if(iSale.getTaxFree()){
-            iSum =  iNetSum;
+
+        if (iSale.getTaxFree()) {
+            iSum = iNetSum;
         } else {
             iSum = iNetSum.add(iTaxSum1).add(iTaxSum2).add(iTaxSum3);
         }
-        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff())
+        if (!SSDB.getInstance().getCurrentCompany().isRoundingOff()) {
             return iSum.setScale(0, RoundingMode.HALF_UP).subtract(iSum);
-        else
+        } else {
             return new BigDecimal(0);
-        //return iSum.subtract( iSum.setScale(0, RoundingMode.HALF_UP) );
+        }
+        // return iSum.subtract( iSum.setScale(0, RoundingMode.HALF_UP) );
     }
-
-
-
 
     /**
      *
@@ -212,22 +218,22 @@ public class SSSaleMath {
      * @return the new customer
      */
     public static SSCustomer getNewCustomer(SSSale iSale) {
-        if (iSale.getCustomer( SSDB.getInstance().getCustomers() ) == null) {
+        if (iSale.getCustomer(SSDB.getInstance().getCustomers()) == null) {
             SSCustomer iCustomer = new SSCustomer();
 
-            iCustomer.setNumber                     ( iSale.getCustomerNr());
-            iCustomer.setName                       ( iSale.getCustomerName());
-            iCustomer.setYourContactPerson          ( iSale.getYourContactPerson());
-            iCustomer.setOurContactPerson           ( iSale.getOurContactPerson());
-            iCustomer.setPaymentTerm                ( iSale.getPaymentTerm());
-            iCustomer.setDeliveryTerm               ( iSale.getDeliveryTerm());
-            iCustomer.setDeliveryWay                ( iSale.getDeliveryWay());
-            iCustomer.setInvoiceCurrency            ( iSale.getCurrency());
-            iCustomer.setTaxFree                    ( iSale.getTaxFree());
-            iCustomer.setEuSaleCommodity            ( iSale.getEuSaleCommodity() );
-            iCustomer.setEuSaleYhirdPartCommodity   ( iSale.getEuSaleThirdPartCommodity());
-            iCustomer.setInvoiceAddress             ( new SSAddress(iSale.getInvoiceAddress()));
-            iCustomer.setDeliveryAddress            ( new SSAddress(iSale.getDeliveryAddress()));
+            iCustomer.setNumber(iSale.getCustomerNr());
+            iCustomer.setName(iSale.getCustomerName());
+            iCustomer.setYourContactPerson(iSale.getYourContactPerson());
+            iCustomer.setOurContactPerson(iSale.getOurContactPerson());
+            iCustomer.setPaymentTerm(iSale.getPaymentTerm());
+            iCustomer.setDeliveryTerm(iSale.getDeliveryTerm());
+            iCustomer.setDeliveryWay(iSale.getDeliveryWay());
+            iCustomer.setInvoiceCurrency(iSale.getCurrency());
+            iCustomer.setTaxFree(iSale.getTaxFree());
+            iCustomer.setEuSaleCommodity(iSale.getEuSaleCommodity());
+            iCustomer.setEuSaleYhirdPartCommodity(iSale.getEuSaleThirdPartCommodity());
+            iCustomer.setInvoiceAddress(new SSAddress(iSale.getInvoiceAddress()));
+            iCustomer.setDeliveryAddress(new SSAddress(iSale.getDeliveryAddress()));
 
             return iCustomer;
         }
@@ -239,26 +245,28 @@ public class SSSaleMath {
      * @param iSale
      * @return the new products for the tender
      */
-    public static List<SSProduct> getNewProducts(SSSale iSale){
+    public static List<SSProduct> getNewProducts(SSSale iSale) {
         List<SSProduct> iProducts = new LinkedList<SSProduct>();
 
-        for(SSSaleRow iTenderRow: iSale.getRows()){
-
+        for (SSSaleRow iTenderRow: iSale.getRows()) {
 
             SSProduct iProduct = iTenderRow.getProduct(SSDB.getInstance().getProducts());
 
             // Get the product nr, trim any spaces
-            String iProductNr = iTenderRow.getProductNr() == null ? ""  : iTenderRow.getProductNr().trim();
+            String iProductNr = iTenderRow.getProductNr() == null
+                    ? ""
+                    : iTenderRow.getProductNr().trim();
 
             // This is a new product
-            if(iProduct == null && iProductNr.length() > 0 && SSProductMath.getProduct(iProducts, iProductNr) == null) {
+            if (iProduct == null && iProductNr.length() > 0
+                    && SSProductMath.getProduct(iProducts, iProductNr) == null) {
                 iProduct = new SSProduct();
 
-                iProduct.setNumber     (  iProductNr );
-                iProduct.setDescription(  iTenderRow.getDescription() );
-                iProduct.setSellingPrice  (  iTenderRow.getUnitprice  () );
-                iProduct.setUnit       (  iTenderRow.getUnit       () );
-                iProduct.setTaxCode    (  iTenderRow.getTaxCode    () );
+                iProduct.setNumber(iProductNr);
+                iProduct.setDescription(iTenderRow.getDescription());
+                iProduct.setSellingPrice(iTenderRow.getUnitprice());
+                iProduct.setUnit(iTenderRow.getUnit());
+                iProduct.setTaxCode(iTenderRow.getTaxCode());
 
                 iProducts.add(iProduct);
             }
@@ -267,28 +275,29 @@ public class SSSaleMath {
 
     }
 
-
     /**
      *
      * @param iSale
      * @param iProduct
      * @return
      */
-    public static Integer getProductCount(SSSale iSale, SSProduct iProduct){
+    public static Integer getProductCount(SSSale iSale, SSProduct iProduct) {
         Integer iCount = 0;
 
         for (SSSaleRow iRow : iSale.getRows()) {
             SSProduct iRowProduct = iRow.getProduct();
 
             // Skip if no product or no quantity
-            if(iRowProduct == null || iRow.getQuantity() == null) continue;
+            if (iRowProduct == null || iRow.getQuantity() == null) {
+                continue;
+            }
 
             // This is the product we want to get the quantity for
-            if(iRowProduct.equals(iProduct)){
+            if (iRowProduct.equals(iProduct)) {
                 iCount = iCount + iRow.getQuantity();
             }
             // Get the quantity if this is a parcel product
-            if(iRowProduct.isParcel()){
+            if (iRowProduct.isParcel()) {
                 Integer iQuantity = SSProductMath.getProductCount(iRowProduct, iProduct);
 
                 iCount = iCount + iRow.getQuantity() * iQuantity;
@@ -298,7 +307,6 @@ public class SSSaleMath {
         return iCount;
     }
 
-
     /**
      * Adds any new customer and all new products for the tender to the database
      *
@@ -306,20 +314,25 @@ public class SSSaleMath {
      */
     public static void addCustomerAndProducts(SSSale iSale) {
         SSCustomer iCustomer = getNewCustomer(iSale);
-        if(iCustomer != null){
+
+        if (iCustomer != null) {
             SSDB.getInstance().addCustomer(iCustomer);
         }
 
         List<SSProduct> iProducts = getNewProducts(iSale);
-        for(SSProduct iProduct : iProducts){
+
+        for (SSProduct iProduct : iProducts) {
             SSDB.getInstance().addProduct(iProduct);
 
         }
 
-        if( SSCustomerFrame.getInstance() != null) SSCustomerFrame.getInstance().getModel().fireTableDataChanged();
-        if( SSProductFrame .getInstance() != null) SSProductFrame .getInstance().getModel().fireTableDataChanged();
+        if (SSCustomerFrame.getInstance() != null) {
+            SSCustomerFrame.getInstance().getModel().fireTableDataChanged();
+        }
+        if (SSProductFrame.getInstance() != null) {
+            SSProductFrame.getInstance().getModel().fireTableDataChanged();
+        }
     }
-
 
     /**
      * Returns true if the sale contains a product with the product nr specified
@@ -333,7 +346,7 @@ public class SSSaleMath {
         for (SSSaleRow iRow : iSale.getRows()) {
             String iRowProductNr = iRow.getProductNr();
 
-            if( iRowProductNr != null && iRowProductNr.equals(iProductNr)){
+            if (iRowProductNr != null && iRowProductNr.equals(iProductNr)) {
                 return true;
             }
         }
@@ -351,13 +364,12 @@ public class SSSaleMath {
         List<SSSaleRow> iRows = new LinkedList<SSSaleRow>();
 
         for (SSSaleRow iRow : iSale.getRows()) {
-            if( iRow.hasProduct(iProduct)){
+            if (iRow.hasProduct(iProduct)) {
                 iRows.add(iRow);
             }
         }
         return iRows;
     }
-
 
     /**
      *
@@ -367,19 +379,20 @@ public class SSSaleMath {
      */
     public static SSSaleRow getMatchingRow(SSSale iSale, SSSaleRow iRow) {
 
-          String iProductNr = iRow.getProductNr();
+        String iProductNr = iRow.getProductNr();
 
-          if(iProductNr == null) return null;
+        if (iProductNr == null) {
+            return null;
+        }
 
-          for (SSSaleRow iCurrent : iSale.getRows()) {
+        for (SSSaleRow iCurrent : iSale.getRows()) {
 
-              if( iProductNr.equals(iCurrent.getProductNr() ) ){
-                  return iCurrent;
-              }
-          }
+            if (iProductNr.equals(iCurrent.getProductNr())) {
+                return iCurrent;
+            }
+        }
         return null;
     }
-
 
     /**
      *
@@ -388,7 +401,9 @@ public class SSSaleMath {
      */
     public static boolean hasDiscount(SSSale iSale) {
         for (SSSaleRow iRow : iSale.getRows()) {
-            if(iRow.getDiscount() != null) return true;
+            if (iRow.getDiscount() != null) {
+                return true;
+            }
         }
         return false;
     }

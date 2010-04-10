@@ -8,6 +8,7 @@ import java.rmi.server.UID;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * Date: 2006-feb-24
  * Time: 16:02:26
@@ -32,19 +33,17 @@ public class SSSystemCompany implements Serializable {
     // The years in the company
     private List<SSSystemYear> iYears;
 
-
     // Our placehoder for the company, if loaded
     private transient SSNewCompany iCompany;
-
 
     /**
      * Creates a new system company
      */
-    public SSSystemCompany(){
-        iID      = new UID();
-        iName    = "";
+    public SSSystemCompany() {
+        iID = new UID();
+        iName = "";
         iCompany = null;
-        iYears   = new LinkedList<SSSystemYear>();
+        iYears = new LinkedList<SSSystemYear>();
         iCurrent = false;
     }
 
@@ -52,15 +51,15 @@ public class SSSystemCompany implements Serializable {
      *
      * @param pCompany
      */
-    public SSSystemCompany(SSNewCompany pCompany){
+    public SSSystemCompany(SSNewCompany pCompany) {
         iCompany = pCompany;
         iCurrent = false;
-        iID      = new UID();
-        iName    = pCompany.getName();
-        iYears   = new LinkedList<SSSystemYear>();
+        iID = new UID();
+        iName = pCompany.getName();
+        iYears = new LinkedList<SSSystemYear>();
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      * returns the unique id for this company
@@ -70,7 +69,7 @@ public class SSSystemCompany implements Serializable {
         return iID;
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -88,7 +87,7 @@ public class SSSystemCompany implements Serializable {
         this.iName = iName;
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -107,7 +106,8 @@ public class SSSystemCompany implements Serializable {
         iCurrent = pCurrent;
 
     }
-    //////////////////////////////////////////////////////////////////////////////
+
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -122,13 +122,14 @@ public class SSSystemCompany implements Serializable {
      * @param iCompany
      */
     public void setData(SSNewCompany iCompany) {
-        if(iCompany != null)
+        if (iCompany != null) {
             iName = iCompany.getName();
-        
+        }
+
         this.iCompany = iCompany;
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      * The years for the company
@@ -159,10 +160,11 @@ public class SSSystemCompany implements Serializable {
     }
 
     public void setCurrentyear(SSSystemYear iNew) {
-        if(iNew == null)
+        if (iNew == null) {
             return;
-        
-        for(SSSystemYear iYear: iYears) {
+        }
+
+        for (SSSystemYear iYear: iYears) {
             if (iYear.isCurrent()) {
                 iYear.setCurrent(false);
             }
@@ -172,25 +174,23 @@ public class SSSystemCompany implements Serializable {
             }
         }
     }
-    //////////////////////////////////////////////////////////////////////////////
 
+    // ////////////////////////////////////////////////////////////////////////////
 
-    
     public boolean equals(Object other) {
-        if(other instanceof SSSystemCompany){
+        if (other instanceof SSSystemCompany) {
             SSSystemCompany iSystemCompany = (SSSystemCompany) other;
 
-            return iID.equals( iSystemCompany.iID );
+            return iID.equals(iSystemCompany.iID);
         }
-        if(other instanceof SSNewCompany){
+        if (other instanceof SSNewCompany) {
             SSNewCompany iCompany = (SSNewCompany) other;
 
-            return iID.equals( iCompany.getId() );
+            return iID.equals(iCompany.getId());
         }
         return false;
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -201,7 +201,5 @@ public class SSSystemCompany implements Serializable {
 
         return sb.toString();
     }
-
-
 
 }

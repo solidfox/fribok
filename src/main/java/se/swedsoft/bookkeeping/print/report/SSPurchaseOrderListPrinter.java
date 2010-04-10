@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
 import se.swedsoft.bookkeeping.data.SSPurchaseOrderRow;
@@ -16,6 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
@@ -23,7 +25,6 @@ import java.util.List;
 public class SSPurchaseOrderListPrinter extends SSPrinter {
 
     private SSOrderRowPrinter iPrinter;
-
 
     private SSDefaultJasperDataSource iDataSource;
 
@@ -40,16 +41,15 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
      *
      * @param iOrders
      */
-    public SSPurchaseOrderListPrinter( List<SSPurchaseOrder> iOrders){
+    public SSPurchaseOrderListPrinter(List<SSPurchaseOrder> iOrders) {
         // Get all orders
         this.iOrders = iOrders;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("purchaseorderlist.jrxml");
-        setDetail      ("purchaseorderlist.jrxml");
-        setSummary     ("purchaseorderlist.jrxml");
+        setDetail("purchaseorderlist.jrxml");
+        setSummary("purchaseorderlist.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -70,8 +70,8 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
         iPrinter = new SSOrderRowPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -90,33 +90,42 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
                 SSPurchaseOrder iOrder = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iOrder.getNumber();
-                        break;
-                    case 1:
-                        value = iOrder.getSupplierNr();
-                        break;
-                    case 2:
-                        value = iOrder.getSupplierName();
-                        break;
-                    case 3:
-                        value = iFormat.format(iOrder.getDate());
-                        break;
-                    case 4:
-                        value = iOrder.getCurrency() == null ? null : iOrder.getCurrency().getName();
-                        break;
-                    case 5:
-                        iPrinter.setOrder(iOrder);
+                case 0:
+                    value = iOrder.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iOrder.getSupplierNr();
+                    break;
 
-                        value = iDataSource;
-                        break;
-                    case 6:
-                        BigDecimal iSum = new BigDecimal(0);
-                        iSum = iSum.add(iOrder.getSum().multiply(iOrder.getCurrencyRate()));
-                        value = iSum;
-                        break;
+                case 2:
+                    value = iOrder.getSupplierName();
+                    break;
+
+                case 3:
+                    value = iFormat.format(iOrder.getDate());
+                    break;
+
+                case 4:
+                    value = iOrder.getCurrency() == null
+                            ? null
+                            : iOrder.getCurrency().getName();
+                    break;
+
+                case 5:
+                    iPrinter.setOrder(iOrder);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
+
+                case 6:
+                    BigDecimal iSum = new BigDecimal(0);
+
+                    iSum = iSum.add(iOrder.getSum().multiply(iOrder.getCurrencyRate()));
+                    value = iSum;
+                    break;
                 }
 
                 return value;
@@ -131,7 +140,6 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
         iModel.addColumn("order.rows");
         iModel.addColumn("order.sum");
 
-
         Collections.sort(iOrders, new Comparator<SSPurchaseOrder>() {
             public int compare(SSPurchaseOrder o1, SSPurchaseOrder o2) {
                 return o1.getNumber() - o2.getNumber();
@@ -140,13 +148,8 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
 
         iModel.setObjects(iOrders);
 
-
         return iModel;
     }
-
-
-
-
 
     private class SSOrderRowPrinter extends SSPrinter {
 
@@ -155,14 +158,13 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSOrderRowPrinter( ){
-            setMargins(0,0,0,0);
+        public SSOrderRowPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("purchaseorderlist.row.jrxml");
+            setDetail("purchaseorderlist.row.jrxml");
             setSummary("purchaseorderlist.row.jrxml");
 
-
-            iModel = new SSDefaultTableModel<SSPurchaseOrderRow>(  ) {
+            iModel = new SSDefaultTableModel<SSPurchaseOrderRow>() {
 
                 @Override
                 public Class getType() {
@@ -175,27 +177,33 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
                     SSPurchaseOrderRow iRow = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iRow.getProductNr();
-                            break;
-                        case 1:
-                            value = iRow.getDescription();
-                            break;
-                        case 2:
-                            value = iRow.getQuantity();
-                            break;
-                        case 3:
-                            value = iRow.getUnit() == null ? null : iRow.getUnit().getName();
-                            break;
-                        case 4:
-                            value = iRow.getUnitPrice();
-                            break;
-                        case 5:
-                            value = iRow.getSupplierArticleNr();
-                            break;
-                        case 6:
-                            value = iRow.getSum();
-                            break;
+                    case 0:
+                        value = iRow.getProductNr();
+                        break;
+
+                    case 1:
+                        value = iRow.getDescription();
+                        break;
+
+                    case 2:
+                        value = iRow.getQuantity();
+                        break;
+
+                    case 3:
+                        value = iRow.getUnit() == null ? null : iRow.getUnit().getName();
+                        break;
+
+                    case 4:
+                        value = iRow.getUnitPrice();
+                        break;
+
+                    case 5:
+                        value = iRow.getSupplierArticleNr();
+                        break;
+
+                    case 6:
+                        value = iRow.getSum();
+                        break;
                     }
 
                     return value;
@@ -236,23 +244,25 @@ public class SSPurchaseOrderListPrinter extends SSPrinter {
          * @param iOrder
          */
         public void setOrder(SSPurchaseOrder iOrder) {
-            iModel.setObjects( iOrder.getRows() );
+            iModel.setObjects(iOrder.getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSPurchaseOrderListPrinter.SSOrderRowPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSPurchaseOrderListPrinter.SSOrderRowPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSPurchaseOrderListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iOrders=").append(iOrders);

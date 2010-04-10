@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import javax.swing.*;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
@@ -8,6 +9,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+
 
 /**
  * Date: 2006-feb-03
@@ -24,32 +26,36 @@ public class SSBigDecimalTextField extends JFormattedTextField {
      */
     public SSBigDecimalTextField() {
         // The action for transferring the focus to the search table.
-        Action iSetValue =  new AbstractAction() {
+        Action iSetValue = new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                FocusEvent iEvent = new FocusEvent(SSBigDecimalTextField.this, FocusEvent.FOCUS_LOST, false, SSBigDecimalTextField.this);
+                FocusEvent iEvent = new FocusEvent(SSBigDecimalTextField.this,
+                        FocusEvent.FOCUS_LOST, false, SSBigDecimalTextField.this);
 
                 processFocusEvent(iEvent);
                 requestFocusInWindow();
             }
         };
         // The action for transferring the focus to the search table.
-        Action iSetNull =  new AbstractAction() {
+        Action iSetNull = new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 setValue(null);
             }
         };
 
-        getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "SETVALUE");
-        getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0), "SETNULL");
+        getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                "SETVALUE");
+        getInputMap(WHEN_FOCUSED).put(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0),
+                "SETNULL");
 
         getActionMap().put("SETVALUE", iSetValue);
-        getActionMap().put("SETNULL" , iSetNull);
+        getActionMap().put("SETNULL", iSetNull);
 
         iFormat = NumberFormat.getNumberInstance();
         iFormat.setMinimumFractionDigits(2);
         iFormat.setMaximumFractionDigits(2);
 
         NumberFormatter iFormatter = new NumberFormatter(iFormat);
+
         iFormatter.setFormat(iFormat);
 
         setFormatterFactory(new DefaultFormatterFactory(iFormatter));
@@ -66,7 +72,7 @@ public class SSBigDecimalTextField extends JFormattedTextField {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public String getAppendText() {
@@ -85,7 +91,7 @@ public class SSBigDecimalTextField extends JFormattedTextField {
      *
      * @param iFractionDigits
      */
-    public void setFractionDigits(int iFractionDigits){
+    public void setFractionDigits(int iFractionDigits) {
         iFormat.setMinimumFractionDigits(iFractionDigits);
         iFormat.setMaximumFractionDigits(iFractionDigits);
     }
@@ -97,7 +103,6 @@ public class SSBigDecimalTextField extends JFormattedTextField {
     public int getFractionDigits() {
         return iFormat.getMaximumFractionDigits();
     }
-
 
     /**
      * Returns the last isValid value. Based on the editing policy of
@@ -111,22 +116,21 @@ public class SSBigDecimalTextField extends JFormattedTextField {
     public BigDecimal getValue() {
         Object iValue = super.getValue();
 
-        if( iValue instanceof BigDecimal) {
-            return(BigDecimal)iValue;
+        if (iValue instanceof BigDecimal) {
+            return(BigDecimal) iValue;
         }
 
-        if( iValue instanceof Number) {
-            return new BigDecimal( ((Number)iValue).doubleValue() );
+        if (iValue instanceof Number) {
+            return new BigDecimal(((Number) iValue).doubleValue());
         }
 
         return null;
-
 
     }
 
     @Override
     public void setText(String t) {
-        if(iAppendText != null){
+        if (iAppendText != null) {
             super.setText(t + ' ' + iAppendText);
         } else {
             super.setText(t);
@@ -137,6 +141,7 @@ public class SSBigDecimalTextField extends JFormattedTextField {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.components.SSBigDecimalTextField");
         sb.append("{iAppendText='").append(iAppendText).append('\'');
         sb.append(", iFormat=").append(iFormat);

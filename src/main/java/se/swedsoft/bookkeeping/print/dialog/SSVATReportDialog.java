@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
@@ -19,12 +20,13 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-jun-02
  * Time: 15:48:53
  */
-public class SSVATReportDialog extends SSDialog  {
+public class SSVATReportDialog extends SSDialog {
 
     private JPanel iPanel;
 
@@ -33,8 +35,6 @@ public class SSVATReportDialog extends SSDialog  {
     private SSDateChooser iTo;
 
     private SSDateChooser iFrom;
-
-
 
     private SSTableComboBox<SSAccount> iAccountA;
     private SSTableComboBox<SSAccount> iAccountR1;
@@ -49,42 +49,50 @@ public class SSVATReportDialog extends SSDialog  {
      * @param iMainFrame
      */
     public SSVATReportDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("vatreport2007.dialog.title") );
+        super(iMainFrame, SSBundle.getBundle().getString("vatreport2007.dialog.title"));
 
         setPanel(iPanel);
 
-        iAccountA .setModel( SSAccountTableModel.getDropDownModel() );
+        iAccountA.setModel(SSAccountTableModel.getDropDownModel());
         iAccountA.setSearchColumns(0);
         iAccountA.setAllowCustomValues(false);
 
-        iAccountR1.setModel( SSAccountTableModel.getDropDownModel() );
+        iAccountR1.setModel(SSAccountTableModel.getDropDownModel());
         iAccountR1.setSearchColumns(0);
         iAccountR1.setAllowCustomValues(false);
 
-        iAccountR2.setModel( SSAccountTableModel.getDropDownModel() );
+        iAccountR2.setModel(SSAccountTableModel.getDropDownModel());
         iAccountR2.setSearchColumns(0);
         iAccountR2.setAllowCustomValues(false);
 
         iAccountR1.addSelectionListener(new SSSelectionListener<SSAccount>() {
             public void selected(SSAccount selected) {
-                txtAccountR1.setText(selected == null ? "" : selected.getDescription() );
+                txtAccountR1.setText(selected == null ? "" : selected.getDescription());
             }
         });
         iAccountR2.addSelectionListener(new SSSelectionListener<SSAccount>() {
             public void selected(SSAccount selected) {
-                txtAccountR2.setText(selected == null ? "" : selected.getDescription() );
+                txtAccountR2.setText(selected == null ? "" : selected.getDescription());
             }
         });
-        iAccountA .addSelectionListener(new SSSelectionListener<SSAccount>() {
+        iAccountA.addSelectionListener(new SSSelectionListener<SSAccount>() {
             public void selected(SSAccount selected) {
-                txtAccountA.setText(selected == null ? "" : selected.getDescription() );
+                txtAccountA.setText(selected == null ? "" : selected.getDescription());
             }
         });
 
-        iAccountR1.setSelected( SSAccountMath.getAccountWithVATCode(SSDB.getInstance().getAccounts(), "R1", new SSAccount(1650) ) , true);
-        iAccountR2.setSelected( SSAccountMath.getAccountWithVATCode(SSDB.getInstance().getAccounts(), "R2", new SSAccount(2650) ) , true);
-        iAccountA .setSelected( SSAccountMath.getAccountWithVATCode(SSDB.getInstance().getAccounts(), "A" , new SSAccount(3740) ) , true);
-
+        iAccountR1.setSelected(
+                SSAccountMath.getAccountWithVATCode(SSDB.getInstance().getAccounts(), "R1",
+                new SSAccount(1650)),
+                true);
+        iAccountR2.setSelected(
+                SSAccountMath.getAccountWithVATCode(SSDB.getInstance().getAccounts(), "R2",
+                new SSAccount(2650)),
+                true);
+        iAccountA.setSelected(
+                SSAccountMath.getAccountWithVATCode(SSDB.getInstance().getAccounts(), "A",
+                new SSAccount(3740)),
+                true);
 
         iButtonPanel.addCancelActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -100,19 +108,21 @@ public class SSVATReportDialog extends SSDialog  {
         SSNewCompany iCurrentCompany = SSDB.getInstance().getCurrentCompany();
 
         Calendar iCalendar = Calendar.getInstance();
-        if(iCurrentCompany.getVatPeriod() != null && iCurrentCompany.getVatPeriod() != 0){
-            iCalendar.add(Calendar.MONTH, iCurrentCompany.getVatPeriod()*-1);
-        }
-        else{
+
+        if (iCurrentCompany.getVatPeriod() != null && iCurrentCompany.getVatPeriod() != 0) {
+            iCalendar.add(Calendar.MONTH, iCurrentCompany.getVatPeriod() * -1);
+        } else {
             iCalendar.add(Calendar.MONTH, -1);
         }
-        iCalendar.set(Calendar.DAY_OF_MONTH, iCalendar.getActualMinimum(Calendar.DAY_OF_MONTH));
-        iFrom.setDate( iCalendar.getTime() );
+        iCalendar.set(Calendar.DAY_OF_MONTH,
+                iCalendar.getActualMinimum(Calendar.DAY_OF_MONTH));
+        iFrom.setDate(iCalendar.getTime());
 
         iCalendar = Calendar.getInstance();
         iCalendar.add(Calendar.MONTH, -1);
-        iCalendar.set(Calendar.DAY_OF_MONTH, iCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
-        iTo.setDate( iCalendar.getTime() );
+        iCalendar.set(Calendar.DAY_OF_MONTH,
+                iCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+        iTo.setDate(iCalendar.getTime());
 
     }
 
@@ -172,10 +182,10 @@ public class SSVATReportDialog extends SSDialog  {
         return iAccountA.getSelected();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSVATReportDialog");
         sb.append("{iAccountA=").append(iAccountA);
         sb.append(", iAccountR1=").append(iAccountR1);

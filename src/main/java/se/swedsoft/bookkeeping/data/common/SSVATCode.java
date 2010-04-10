@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -25,24 +26,24 @@ public class SSVATCode implements SSTableSearchable {
 
     private String iDescription;
 
-
     /**
      *
      */
-    private SSVATCode(){
-        iName       = null;
+    private SSVATCode() {
+        iName = null;
         iDescription = null;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return the name
      */
-    public String getName(){
+    public String getName() {
         return iName;
     }
+
     /**
      *
      * @param iName
@@ -51,13 +52,13 @@ public class SSVATCode implements SSTableSearchable {
         this.iName = iName;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return the description
      */
-    public String getDescription(){
+    public String getDescription() {
         return iDescription;
     }
 
@@ -69,18 +70,17 @@ public class SSVATCode implements SSTableSearchable {
         this.iDescription = iDescription;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @param iBundle
      */
     public void setBundle(String iBundle) {
-        iDescription =  SSBundle.getBundle().getString(iBundle);
+        iDescription = SSBundle.getBundle().getString(iBundle);
     }
 
-    ////////////////////////////////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////////////////////////////////
 
     /**
      * Returns the render string to be shown in the tables
@@ -91,19 +91,17 @@ public class SSVATCode implements SSTableSearchable {
         return iName;
     }
 
-    
     public String toString() {
         return iName;
     }
 
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSVATCode){
+        if (obj instanceof SSVATCode) {
             SSVATCode iVATCode = (SSVATCode) obj;
 
             return iName != null && iName.equalsIgnoreCase(iVATCode.iName);
         }
-        if(obj instanceof String){
+        if (obj instanceof String) {
             String iVATCode = (String) obj;
 
             return iName != null && iName.equalsIgnoreCase(iVATCode);
@@ -120,24 +118,28 @@ public class SSVATCode implements SSTableSearchable {
      *
      * @return the vat codes
      */
-    public static List<SSVATCode> getValues(){
+    public static List<SSVATCode> getValues() {
         if (iValues == null) {
             iValues = new LinkedList<SSVATCode>();
 
             DOMParser iParser = new DOMParser();
+
             try {
-                //  parser.set(false)
+                // parser.set(false)
                 InputStream istream = SSVATCode.class.getResourceAsStream("/vatcodes.xml");
+
                 iParser.parse(new InputSource(istream));
-                NodeList iNodes = iParser.getDocument().getDocumentElement().getElementsByTagName("vatcode");
-                for(int i = 0; i < iNodes.getLength(); i++){
+                NodeList iNodes = iParser.getDocument().getDocumentElement().getElementsByTagName(
+                        "vatcode");
+
+                for (int i = 0; i < iNodes.getLength(); i++) {
                     Node iNode = iNodes.item(i);
 
-
-                    String iName        = iNode.getAttributes().getNamedItem("name"       ).getNodeValue();
+                    String iName = iNode.getAttributes().getNamedItem("name").getNodeValue();
                     String iDescription = iNode.getAttributes().getNamedItem("description").getNodeValue();
 
                     SSVATCode iVatCode = new SSVATCode();
+
                     iVatCode.iName = iName;
                     iVatCode.iDescription = iDescription;
 
@@ -156,20 +158,16 @@ public class SSVATCode implements SSTableSearchable {
      * @param iVATCode
      * @return the vatcode
      */
-    public static SSVATCode decode(String iVATCode){
+    public static SSVATCode decode(String iVATCode) {
 
-        for(SSVATCode iVatCode: getValues() ){
+        for (SSVATCode iVatCode: getValues()) {
 
-            if(iVatCode.equals(iVATCode)){
+            if (iVatCode.equals(iVATCode)) {
                 return iVatCode;
             }
         }
         return null;
     }
 
-
 }
-
-
-
 

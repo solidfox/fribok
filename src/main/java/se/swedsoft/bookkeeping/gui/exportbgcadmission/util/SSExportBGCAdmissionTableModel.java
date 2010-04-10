@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.exportbgcadmission.util;
 
+
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
@@ -8,14 +9,13 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-28
  * Time: 15:00:30
  */
 public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
-
-
 
     /**
      * Constructor.
@@ -39,20 +39,21 @@ public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
     /**
      * customernumber
      */
-    public static SSTableColumn<SSCustomer> COLUMN_NUMBER = new SSTableColumn<SSCustomer>(SSBundle.getBundle().getString("exportbgcadmission.column.1")) {
+    public static SSTableColumn<SSCustomer> COLUMN_NUMBER = new SSTableColumn<SSCustomer>(
+            SSBundle.getBundle().getString("exportbgcadmission.column.1")) {
         @Override
         public Object getValue(SSCustomer iCustomer) {
             return iCustomer.getNumber();
         }
 
         @Override
-        public void setValue(SSCustomer iCustomer, Object iValue) {
-        }
+        public void setValue(SSCustomer iCustomer, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 75;
@@ -62,20 +63,21 @@ public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
     /**
      * Supplier nr
      */
-    public static SSTableColumn<SSCustomer> COLUMN_NAME = new SSTableColumn<SSCustomer>(SSBundle.getBundle().getString("exportbgcadmission.column.2")) {
+    public static SSTableColumn<SSCustomer> COLUMN_NAME = new SSTableColumn<SSCustomer>(
+            SSBundle.getBundle().getString("exportbgcadmission.column.2")) {
         @Override
         public Object getValue(SSCustomer iCustomer) {
             return iCustomer.getName();
         }
 
         @Override
-        public void setValue(SSCustomer iCustomer, Object iValue) {
-        }
+        public void setValue(SSCustomer iCustomer, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 200;
@@ -85,20 +87,21 @@ public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
     /**
      * Bankgiro
      */
-    public static SSTableColumn<SSCustomer> COLUMN_BANKGIRO = new SSTableColumn<SSCustomer>(SSBundle.getBundle().getString("exportbgcadmission.column.3")) {
+    public static SSTableColumn<SSCustomer> COLUMN_BANKGIRO = new SSTableColumn<SSCustomer>(
+            SSBundle.getBundle().getString("exportbgcadmission.column.3")) {
         @Override
         public Object getValue(SSCustomer iCustomer) {
             return iCustomer.getBankgiro();
         }
 
         @Override
-        public void setValue(SSCustomer iCustomer, Object iValue) {
-        }
+        public void setValue(SSCustomer iCustomer, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 100;
@@ -108,20 +111,21 @@ public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
     /**
      * Clearingnummer
      */
-    public static SSTableColumn<SSCustomer> COLUMN_CLEARINGNUMBER = new SSTableColumn<SSCustomer>(SSBundle.getBundle().getString("exportbgcadmission.column.4")) {
+    public static SSTableColumn<SSCustomer> COLUMN_CLEARINGNUMBER = new SSTableColumn<SSCustomer>(
+            SSBundle.getBundle().getString("exportbgcadmission.column.4")) {
         @Override
         public Object getValue(SSCustomer iCustomer) {
             return iCustomer.getClearingNumber();
         }
 
         @Override
-        public void setValue(SSCustomer iCustomer, Object iValue) {
-        }
+        public void setValue(SSCustomer iCustomer, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 75;
@@ -131,20 +135,21 @@ public class SSExportBGCAdmissionTableModel extends SSTableModel<SSCustomer> {
     /**
      * Kontonummer
      */
-    public static SSTableColumn<SSCustomer> COLUMN_ACCOUNTNR = new SSTableColumn<SSCustomer>(SSBundle.getBundle().getString("exportbgcadmission.column.5")) {
+    public static SSTableColumn<SSCustomer> COLUMN_ACCOUNTNR = new SSTableColumn<SSCustomer>(
+            SSBundle.getBundle().getString("exportbgcadmission.column.5")) {
         @Override
         public Object getValue(SSCustomer iCustomer) {
             return iCustomer.getBankgiro();
         }
 
         @Override
-        public void setValue(SSCustomer iCustomer, Object iValue) {
-        }
+        public void setValue(SSCustomer iCustomer, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
             return String.class;
         }
+
         @Override
         public int getDefaultWidth() {
             return 120;

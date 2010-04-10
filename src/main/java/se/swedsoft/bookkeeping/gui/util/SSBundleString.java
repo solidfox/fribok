@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util;
 
+
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-15
@@ -10,14 +12,13 @@ public class SSBundleString {
 
     private static ResourceBundle cBundle = SSBundle.getBundle();
 
-
     private String iString;
 
     /**
      *
      * @param pBundleName
      */
-    public SSBundleString(String pBundleName){
+    public SSBundleString(String pBundleName) {
         this(cBundle, pBundleName);
     }
 
@@ -26,7 +27,7 @@ public class SSBundleString {
      * @param pBundleName
      * @param pFormat
      */
-    public SSBundleString(String pBundleName, Object ... pFormat){
+    public SSBundleString(String pBundleName, Object... pFormat) {
         this(cBundle, pBundleName, pFormat);
     }
 
@@ -35,8 +36,8 @@ public class SSBundleString {
      * @param pBundle
      * @param pBundleName
      */
-    public SSBundleString(ResourceBundle pBundle, String pBundleName){
-        iString     = pBundle.getString(pBundleName);
+    public SSBundleString(ResourceBundle pBundle, String pBundleName) {
+        iString = pBundle.getString(pBundleName);
     }
 
     /**
@@ -45,19 +46,18 @@ public class SSBundleString {
      * @param pBundleName
      * @param pFormat
      */
-    public SSBundleString(ResourceBundle pBundle, String pBundleName, Object ... pFormat){
-        iString  = String.format(pBundle.getString(pBundleName), pFormat);
+    public SSBundleString(ResourceBundle pBundle, String pBundleName, Object... pFormat) {
+        iString = String.format(pBundle.getString(pBundleName), pFormat);
     }
 
     /**
      *
      * @return
      */
-    public String getString(){
+    public String getString() {
         return iString;
     }
 
-    
     public String toString() {
         return iString;
     }
@@ -67,7 +67,7 @@ public class SSBundleString {
      * @param pBundleName
      * @return
      */
-    public static SSBundleString getString(String pBundleName){
+    public static SSBundleString getString(String pBundleName) {
         return new SSBundleString(pBundleName);
     }
 
@@ -77,7 +77,7 @@ public class SSBundleString {
      * @param pFromat
      * @return
      */
-    public static SSBundleString getString(String pBundleName, Object ... pFromat){
+    public static SSBundleString getString(String pBundleName, Object... pFromat) {
         return new SSBundleString(pBundleName, pFromat);
     }
 

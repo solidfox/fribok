@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.project.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.gui.util.datechooser.SSDateChooser;
 
@@ -11,10 +12,11 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.Date;
 
+
 /**
  * @author
  */
-public class SSProjectPanel{
+public class SSProjectPanel {
 
     private SSNewProject iProject;
 
@@ -24,13 +26,11 @@ public class SSProjectPanel{
 
     private JButton iCancelButton;
 
-
     protected JTextArea iDescription;
 
     protected JTextField iName;
 
     protected JFormattedTextField iNumber;
-
 
     protected JCheckBox iConcluded;
 
@@ -44,26 +44,27 @@ public class SSProjectPanel{
         iNumber.setEnabled(!iEdit);
         iNumber.setValue("");
 
-        iConcluded.addItemListener(new ItemListener(){
+        iConcluded.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                iConcludedDate.setEnabled( iConcluded.isSelected() );
+                iConcludedDate.setEnabled(iConcluded.isSelected());
             }
         });
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                if(iNumber.isEnabled())
+                if (iNumber.isEnabled()) {
                     iNumber.requestFocusInWindow();
-                else
+                } else {
                     iName.requestFocusInWindow();
+                }
 
             }
         });
 
-        iNumber.addKeyListener(new KeyAdapter(){
+        iNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iName.requestFocusInWindow();
@@ -73,10 +74,10 @@ public class SSProjectPanel{
             }
         });
 
-        iName.addKeyListener(new KeyAdapter(){
+        iName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iDescription.requestFocusInWindow();
@@ -86,10 +87,10 @@ public class SSProjectPanel{
             }
         });
 
-        iDescription.addKeyListener(new KeyAdapter(){
+        iDescription.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iConcluded.requestFocusInWindow();
@@ -99,26 +100,28 @@ public class SSProjectPanel{
             }
         });
 
-        iConcluded.addKeyListener(new KeyAdapter(){
+        iConcluded.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
-                            if(iConcluded.isSelected())
+                            if (iConcluded.isSelected()) {
                                 iConcludedDate.getEditor().getComponent(0).requestFocusInWindow();
-                            else
+                            } else {
                                 iOkButton.requestFocusInWindow();
+                            }
                         }
                     });
                 }
             }
         });
 
-        iConcludedDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iConcludedDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOkButton.requestFocusInWindow();
@@ -128,20 +131,19 @@ public class SSProjectPanel{
             }
         });
 
-        iOkButton.addKeyListener(new KeyAdapter(){
+        iOkButton.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCancelButton.requestFocusInWindow();
                         }
                     });
-                }
-                else if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
-                            for(ActionListener al : iOkButton.getActionListeners()){
+                            for (ActionListener al : iOkButton.getActionListeners()) {
                                 al.actionPerformed(null);
                             }
                         }
@@ -150,20 +152,19 @@ public class SSProjectPanel{
             }
         });
 
-        iCancelButton.addKeyListener(new KeyAdapter(){
+        iCancelButton.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOkButton.requestFocusInWindow();
                         }
                     });
-                }
-                else if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                } else if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
-                            for(ActionListener al : iCancelButton.getActionListeners()){
+                            for (ActionListener al : iCancelButton.getActionListeners()) {
                                 al.actionPerformed(null);
                             }
                         }
@@ -172,7 +173,6 @@ public class SSProjectPanel{
             }
         });
     }
-
 
     /**
      *
@@ -181,7 +181,6 @@ public class SSProjectPanel{
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      *
@@ -207,11 +206,14 @@ public class SSProjectPanel{
     public void setProject(SSNewProject iProject) {
         this.iProject = iProject;
 
-        iNumber       .setValue   (iProject.getNumber());
-        iName         .setText    (iProject.getName());
-        iDescription  .setText    (iProject.getDescription());
-        iConcluded    .setSelected(iProject.getConcluded() );
-        iConcludedDate.setDate    (iProject.getConcludedDate() != null ? iProject.getConcludedDate() : new Date() );
+        iNumber.setValue(iProject.getNumber());
+        iName.setText(iProject.getName());
+        iDescription.setText(iProject.getDescription());
+        iConcluded.setSelected(iProject.getConcluded());
+        iConcludedDate.setDate(
+                iProject.getConcludedDate() != null
+                        ? iProject.getConcludedDate()
+                        : new Date());
     }
 
     /**
@@ -219,10 +221,10 @@ public class SSProjectPanel{
      * @return
      */
     public SSNewProject getProject() {
-        iProject.setNumber       (iNumber.getText());
-        iProject.setName         (iName.getText());
-        iProject.setDescription  (iDescription.getText());
-        iProject.setConcluded    (iConcluded.isSelected() );
+        iProject.setNumber(iNumber.getText());
+        iProject.setName(iName.getText());
+        iProject.setDescription(iDescription.getText());
+        iProject.setConcluded(iConcluded.isSelected());
         iProject.setConcludedDate(iConcludedDate.getDate());
 
         return iProject;
@@ -231,6 +233,7 @@ public class SSProjectPanel{
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.project.panel.SSProjectPanel");
         sb.append("{iCancelButton=").append(iCancelButton);
         sb.append(", iConcluded=").append(iConcluded);

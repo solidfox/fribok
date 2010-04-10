@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.dialog;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
@@ -10,6 +11,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
 
 /**
  * User: Andreas Lago
@@ -23,7 +25,6 @@ public class SSCustomerclaimDialog extends SSDialog {
     private SSDateChooser iDate;
 
     private SSButtonPanel iButtonPanel;
-
 
     /**
      * @param iFrame
@@ -53,10 +54,10 @@ public class SSCustomerclaimDialog extends SSDialog {
         return iDate.getDate();
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSCustomerclaimDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

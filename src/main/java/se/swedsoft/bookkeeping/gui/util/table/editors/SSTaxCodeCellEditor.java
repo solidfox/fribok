@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.common.SSTaxCode;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel;
@@ -7,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.util.model.SSTaxCodeTableModel;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * User: Andreas Lago
@@ -21,27 +23,26 @@ public class SSTaxCodeCellEditor extends SSTableComboBox.CellEditor<SSTaxCode> {
      *
      */
     public SSTaxCodeCellEditor() {
-        setModel( SSTaxCodeTableModel.getDropDownModel() );
+        setModel(SSTaxCodeTableModel.getDropDownModel());
 
         iValues = new HashMap<SSTaxCode, BigDecimal>();
     }
-
 
     /**
      *
      * @param iTaxCode
      * @param iValue
      */
-    public void setValue(SSTaxCode iTaxCode, BigDecimal iValue){
-        iValues.put(iTaxCode, iValue );
+    public void setValue(SSTaxCode iTaxCode, BigDecimal iValue) {
+        iValues.put(iTaxCode, iValue);
 
-        setModel( SSTaxCodeTableModel.getDropDownModel(iValues) );
+        setModel(SSTaxCodeTableModel.getDropDownModel(iValues));
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSTaxCodeCellEditor");
         sb.append("{iValues=").append(iValues);
         sb.append('}');

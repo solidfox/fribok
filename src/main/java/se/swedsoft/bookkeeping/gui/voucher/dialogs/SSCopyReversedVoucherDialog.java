@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.voucher.dialogs;
 
+
 import se.swedsoft.bookkeeping.data.SSVoucher;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -11,6 +12,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-07
@@ -18,16 +20,14 @@ import java.awt.event.ActionListener;
  */
 public class SSCopyReversedVoucherDialog extends SSDialog {
 
-
     private JPanel iPanel;
     private JCheckBox iCopyReverse;
 
     private JTextField iVerificationName;
     private SSButtonPanel iButtonPanel;
 
-
-    public SSCopyReversedVoucherDialog(SSMainFrame iDialog){
-        super(iDialog, SSBundle.getBundle().getString("voucherframe.copy.title") );
+    public SSCopyReversedVoucherDialog(SSMainFrame iDialog) {
+        super(iDialog, SSBundle.getBundle().getString("voucherframe.copy.title"));
 
         add(iPanel, BorderLayout.CENTER);
         pack();
@@ -69,11 +69,11 @@ public class SSCopyReversedVoucherDialog extends SSDialog {
     public static Boolean showDialog(final SSMainFrame iMainFrame, SSVoucher iVoucher) {
         SSCopyReversedVoucherDialog iDialog = new SSCopyReversedVoucherDialog(iMainFrame);
 
-        iDialog.iVerificationName.setText( iVoucher.getDescription() );
+        iDialog.iVerificationName.setText(iVoucher.getDescription());
 
         iDialog.setLocationRelativeTo(iMainFrame);
 
-        if( iDialog.showDialog() == JOptionPane.OK_OPTION ) {
+        if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
             return iDialog.getCopyInverse();
         }
         return null;
@@ -82,7 +82,9 @@ public class SSCopyReversedVoucherDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.voucher.dialogs.SSCopyReversedVoucherDialog");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.voucher.dialogs.SSCopyReversedVoucherDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCopyReverse=").append(iCopyReverse);
         sb.append(", iPanel=").append(iPanel);
@@ -91,5 +93,4 @@ public class SSCopyReversedVoucherDialog extends SSDialog {
         return sb.toString();
     }
 }
-
 

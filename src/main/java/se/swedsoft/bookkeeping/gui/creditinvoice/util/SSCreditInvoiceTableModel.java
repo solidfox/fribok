@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.creditinvoice.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSCreditInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSCreditInvoice;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
@@ -14,13 +15,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:34:35
  */
-public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
-
+public class SSCreditInvoiceTableModel extends SSTableModel<SSCreditInvoice> {
 
     /**
      * Default constructor.
@@ -51,30 +52,30 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
      *
      * @return
      */
-    public static SSCreditInvoiceTableModel getDropDownModel(){
+    public static SSCreditInvoiceTableModel getDropDownModel() {
         SSCreditInvoiceTableModel iModel = new SSCreditInvoiceTableModel();
 
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_CUSTOMER_NR   );
-        iModel.addColumn( COLUMN_CUSTOMER_NAME   );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_CUSTOMER_NR);
+        iModel.addColumn(COLUMN_CUSTOMER_NAME);
 
         return iModel;
     }
 
-
-
     /**
      *  Utskriven
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_PRINTED = new SSTableColumn<SSCreditInvoice>("") {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_PRINTED = new SSTableColumn<SSCreditInvoice>(
+            "") {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
-            return iCreditInvoice.isPrinted() ? SSIcon.getIcon("ICON_PROPERTIES16", SSIcon.IconState.NORMAL ) : null;
+            return iCreditInvoice.isPrinted()
+                    ? SSIcon.getIcon("ICON_PROPERTIES16", SSIcon.IconState.NORMAL)
+                    : null;
         }
 
         @Override
-        public void setValue(SSCreditInvoice iInvoice, Object iValue) {
-        }
+        public void setValue(SSCreditInvoice iInvoice, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -90,7 +91,8 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
     /**
      *  Fakturanr
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_NUMBER = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.1")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_NUMBER = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.1")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return iCreditInvoice.getNumber();
@@ -98,7 +100,7 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
 
         @Override
         public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-            iCreditInvoice.setNumber((Integer)iValue);
+            iCreditInvoice.setNumber((Integer) iValue);
 
         }
 
@@ -113,11 +115,11 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
         }
     };
 
-
     /**
      *  Kund nummer
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_CUSTOMER_NR = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.2")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_CUSTOMER_NR = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.2")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return iCreditInvoice.getCustomerNr();
@@ -125,7 +127,7 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
 
         @Override
         public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-            iCreditInvoice.setCustomerNr((String)iValue);
+            iCreditInvoice.setCustomerNr((String) iValue);
         }
 
         @Override
@@ -138,10 +140,12 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
             return 100;
         }
     };
+
     /**
      *  Kund namn
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_CUSTOMER_NAME = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.3")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_CUSTOMER_NAME = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.3")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return iCreditInvoice.getCustomerName();
@@ -149,7 +153,7 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
 
         @Override
         public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-            iCreditInvoice.setCustomerName((String)iValue);
+            iCreditInvoice.setCustomerName((String) iValue);
         }
 
         @Override
@@ -163,12 +167,11 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
         }
     };
 
-
-
     /**
      * Datum
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_DATE = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.4")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_DATE = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.4")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return iCreditInvoice.getDate();
@@ -176,7 +179,7 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
 
         @Override
         public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-            iCreditInvoice.setDate((Date)iValue);
+            iCreditInvoice.setDate((Date) iValue);
         }
 
         @Override
@@ -190,20 +193,18 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
         }
     };
 
-
     /**
      * krediterar faktura
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_CREDITING = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.5")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_CREDITING = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.5")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return iCreditInvoice.getCreditingNr();
         }
 
         @Override
-        public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-
-        }
+        public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -216,19 +217,18 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
         }
     };
 
-
     /**
      * Nettosuumma
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_NET_SUM = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.6")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_NET_SUM = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.6")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return SSCreditInvoiceMath.getNetSum(iCreditInvoice);
         }
 
         @Override
-        public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-        }
+        public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -244,7 +244,8 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
     /**
      * Valuta
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_CURRENCY = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.7")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_CURRENCY = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.7")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return iCreditInvoice.getCurrency();
@@ -252,7 +253,7 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
 
         @Override
         public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-            iCreditInvoice.setCurrency((SSCurrency)iValue);
+            iCreditInvoice.setCurrency((SSCurrency) iValue);
         }
 
         @Override
@@ -266,19 +267,18 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
         }
     };
 
-
     /**
      * Total summa
      */
-    public static SSTableColumn<SSCreditInvoice> COLUMN_TOTAL_SUM = new SSTableColumn<SSCreditInvoice>(SSBundle.getBundle().getString("creditinvoicetable.column.8")) {
+    public static SSTableColumn<SSCreditInvoice> COLUMN_TOTAL_SUM = new SSTableColumn<SSCreditInvoice>(
+            SSBundle.getBundle().getString("creditinvoicetable.column.8")) {
         @Override
         public Object getValue(SSCreditInvoice iCreditInvoice) {
             return SSCreditInvoiceMath.getTotalSum(iCreditInvoice);
         }
 
         @Override
-        public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {
-        }
+        public void setValue(SSCreditInvoice iCreditInvoice, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -290,7 +290,5 @@ public class SSCreditInvoiceTableModel  extends SSTableModel<SSCreditInvoice> {
             return 90;
         }
     };
-
-
 
 }

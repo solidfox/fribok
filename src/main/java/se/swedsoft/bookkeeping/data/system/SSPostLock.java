@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 
 /**
  * User: Johan Gunnarsson
@@ -12,9 +14,7 @@ import java.io.PrintWriter;
  * inte kan ändras samtidigt av olika instanser av programmet.
  */
 public class SSPostLock {
-    private SSPostLock() {
-    }
-
+    private SSPostLock() {}
 
     /**
      * Låser objekt O så att flera instanser av programmet inte kan editera det samtidigt.
@@ -22,25 +22,26 @@ public class SSPostLock {
      * @return
      */
     public static boolean applyLock(Object O) {
-        /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
-        ObjectOutputStream oos = null;
-        try {
-            oos = appendableObjectOutputStream(iFile);
-            oos.writeObject(O);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        finally{
-            try {
-                if(oos!=null)
-                    oos.close();
-            } catch (IOException e) {
-                //Ingen felhantering då strömmarna ska stängas
-            }
-        }*/
+        /* File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
+         ObjectOutputStream oos = null;
+         try {
+         oos = appendableObjectOutputStream(iFile);
+         oos.writeObject(O);
+
+         } catch (FileNotFoundException e) {
+         e.printStackTrace();
+         } catch (IOException e) {
+         e.printStackTrace();
+         }
+         finally{
+         try {
+         if(oos!=null)
+         oos.close();
+         } catch (IOException e) {
+         //Ingen felhantering då strömmarna ska stängas
+         }
+         }*/
         if (O == null) {
             return false;
         }
@@ -56,6 +57,7 @@ public class SSPostLock {
             iOut.println(O);
             iOut.flush();
             String iReply = iIn.readLine();
+
             return iReply.equals("true");
         } catch (IOException e) {
             e.printStackTrace();
@@ -68,56 +70,57 @@ public class SSPostLock {
      * @param O - Det objekt som ska låsas upp
      */
     public static void removeLock(Object O) {
-        /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
 
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        Vector<Object> iObjects = new Vector<Object>();
-        if (!iFile.exists()) {
-            return;
-        }
-        try {
-            fis = new FileInputStream(iFile);
-            ois = new ObjectInputStream(fis);
+        /* File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
 
-            while (true) {
-                Object iObject = ois.readObject();
-                if (!iObject.equals(O)) {
-                    iObjects.addElement(iObject);
-                }
-            }
+         FileInputStream fis = null;
+         ObjectInputStream ois = null;
+         Vector<Object> iObjects = new Vector<Object>();
+         if (!iFile.exists()) {
+         return;
+         }
+         try {
+         fis = new FileInputStream(iFile);
+         ois = new ObjectInputStream(fis);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        finally{
-            try {
-                if(iObjects.size()>0)
-                {
-                    if(ois!=null)
-                        ois.close();
-                    if(fis!=null)
-                        fis.close();
-                    if(iFile.exists())
-                        iFile.delete();
-                    writeBack(iObjects);
-                }
-                else{
-                    if(ois!=null)
-                        ois.close();
-                    if(fis!=null)
-                        fis.close();
-                    if(iFile.exists())
-                        iFile.delete();
-                }
-            } catch (FileNotFoundException e){
-            } catch (IOException e) {
-                //Ingen felhantering då strömmarna ska stängas
-            }
-        }*/
-        if(O == null){
+         while (true) {
+         Object iObject = ois.readObject();
+         if (!iObject.equals(O)) {
+         iObjects.addElement(iObject);
+         }
+         }
+
+         } catch (IOException e) {
+         e.printStackTrace();
+         } catch (ClassNotFoundException e) {
+         e.printStackTrace();
+         }
+         finally{
+         try {
+         if(iObjects.size()>0)
+         {
+         if(ois!=null)
+         ois.close();
+         if(fis!=null)
+         fis.close();
+         if(iFile.exists())
+         iFile.delete();
+         writeBack(iObjects);
+         }
+         else{
+         if(ois!=null)
+         ois.close();
+         if(fis!=null)
+         fis.close();
+         if(iFile.exists())
+         iFile.delete();
+         }
+         } catch (FileNotFoundException e){
+         } catch (IOException e) {
+         //Ingen felhantering då strömmarna ska stängas
+         }
+         }*/
+        if (O == null) {
             return;
         }
         if (!SSDB.getInstance().getLocking()) {
@@ -138,45 +141,45 @@ public class SSPostLock {
      * @return Objektet låst eller inte
      */
     public static boolean isLocked(Object O) {
-        /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
-        if(iFile.exists())
-            iFile = iFile.getAbsoluteFile();
-        FileInputStream fis = null;
-        ObjectInputStream ois = null;
-        try {
-            if (!iFile.exists()) {
-                return false;
-            }
-            fis = new FileInputStream(iFile);
-            ois = new ObjectInputStream(fis);
-            while(true){
-                Object iObject = ois.readObject();
-                if (iObject.equals(O)) {
-                    return true;
-                }
-            }
 
+        /* File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
+         if(iFile.exists())
+         iFile = iFile.getAbsoluteFile();
+         FileInputStream fis = null;
+         ObjectInputStream ois = null;
+         try {
+         if (!iFile.exists()) {
+         return false;
+         }
+         fis = new FileInputStream(iFile);
+         ois = new ObjectInputStream(fis);
+         while(true){
+         Object iObject = ois.readObject();
+         if (iObject.equals(O)) {
+         return true;
+         }
+         }
 
-        } catch (FileNotFoundException e){
-            SSFrameManager.getInstance().close();
-            new SSErrorDialog( SSMainFrame.getInstance(), "connectionlost");
-        } catch (IOException e) {
-            return false;
-        } catch (ClassNotFoundException e){
-            return false;
-        }
-        finally{
-            try {
-                if(ois!=null)
-                    ois.close();
-                if(fis!=null)
-                    fis.close();
-            } catch (IOException e) {
-                //Ingen felhantering då strömmarna ska stängas
-            }
-        }
-        return false;*/
-        if(O == null){
+         } catch (FileNotFoundException e){
+         SSFrameManager.getInstance().close();
+         new SSErrorDialog( SSMainFrame.getInstance(), "connectionlost");
+         } catch (IOException e) {
+         return false;
+         } catch (ClassNotFoundException e){
+         return false;
+         }
+         finally{
+         try {
+         if(ois!=null)
+         ois.close();
+         if(fis!=null)
+         fis.close();
+         } catch (IOException e) {
+         //Ingen felhantering då strömmarna ska stängas
+         }
+         }
+         return false;*/
+        if (O == null) {
             return false;
         }
         if (!SSDB.getInstance().getLocking()) {
@@ -191,6 +194,7 @@ public class SSPostLock {
             iOut.println(O);
             iOut.flush();
             String iReply = iIn.readLine();
+
             return iReply.equals("true");
         } catch (IOException e) {
             e.printStackTrace();
@@ -199,11 +203,13 @@ public class SSPostLock {
     }
 
     public static void clearLocks() {
-        /*File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
-        if (iFile.exists()) {
-            iFile.delete();
-        }*/
+
+        /* File iFile = new File(SSDBConfig.getDatabaseFile().getParent(), SSDBConfig.getDatabaseFile().getName() + ".postlock");
+         if (iFile.exists()) {
+         iFile.delete();
+         }*/
         PrintWriter iOut = SSDB.getInstance().getWriter();
+
         iOut.println("clearpostlocks");
         iOut.flush();
     }

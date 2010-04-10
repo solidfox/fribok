@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.tender;
 
+
 import se.swedsoft.bookkeeping.data.SSTender;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSMail;
@@ -30,6 +31,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -45,8 +47,8 @@ public class SSTenderFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSTenderFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
@@ -58,12 +60,9 @@ public class SSTenderFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSTenderFrame getInstance(){
+    public static SSTenderFrame getInstance() {
         return cInstance;
     }
-
-
-
 
     private SSTable iTable;
 
@@ -81,9 +80,9 @@ public class SSTenderFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSTenderFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("tenderframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("tenderframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -97,29 +96,31 @@ public class SSTenderFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "tenderframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "tenderframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTenderDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         iToolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "tenderframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "tenderframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTender iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getTender(iSelected);
                 }
                 if (iSelected != null) {
                     SSTenderDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "tenderframe.tendergone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "tenderframe.tendergone", iNumber);
                 }
             }
         });
@@ -129,18 +130,20 @@ public class SSTenderFrame extends SSDefaultTableFrame {
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "tenderframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "tenderframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTender iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getTender(iSelected);
                 }
                 if (iSelected != null) {
                     SSTenderDialog.copyDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "tenderframe.tendergone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "tenderframe.tendergone", iNumber);
                 }
             }
         });
@@ -150,10 +153,12 @@ public class SSTenderFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "tenderframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "tenderframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSTender> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedTender(toDelete);
             }
         });
@@ -161,14 +166,15 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         iToolBar.add(iButton);
         iToolBar.addSeparator();
 
-
         // Create order
         // ***************************
-        iButton = new SSButton("ICON_INVOICE24", "tenderframe.createorderbutton", new ActionListener(){
+        iButton = new SSButton("ICON_INVOICE24", "tenderframe.createorderbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTender iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getTender(iSelected);
                 }
@@ -179,12 +185,14 @@ public class SSTenderFrame extends SSDefaultTableFrame {
 
                 // if the selected tender already has an order assosiated we can't create a new one
                 if (iSelected.getOrder() != null) {
-                    SSInformationDialog.showDialog(getMainFrame(), "tenderframe.tenderhasorder", iSelected.getNumber());
+                    SSInformationDialog.showDialog(getMainFrame(),
+                            "tenderframe.tenderhasorder", iSelected.getNumber());
                     return;
                 }
 
                 if (SSOrderFrame.getInstance() != null) {
-                    SSOrderDialog.newDialog(getMainFrame(), iSelected, SSOrderFrame.getInstance().getModel());
+                    SSOrderDialog.newDialog(getMainFrame(), iSelected,
+                            SSOrderFrame.getInstance().getModel());
                 } else {
                     SSOrderDialog.newDialog(getMainFrame(), iSelected, null);
                 }
@@ -193,29 +201,33 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         iTable.addSelectionDependentComponent(iButton);
         iToolBar.add(iButton);
 
-
         iToolBar.addSeparator();
-
-
 
         // Print
         // ***************************
         SSMenuButton iButton2 = new SSMenuButton("ICON_PRINT", "tenderframe.printbutton");
-        JMenuItem iMenuItem = iButton2.add("tenderframe.print.tenderreport", new ActionListener() {
+        JMenuItem iMenuItem = iButton2.add("tenderframe.print.tenderreport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SSTender> iSelected = iModel.getSelectedRows(iTable);
+
                 iSelected = getTenders(iSelected);
                 if (!iSelected.isEmpty()) {
                     SSReportFactory.TenderReport(getMainFrame(), iSelected);
                 }
             }
         });
+
         iTable.addSelectionDependentComponent(iMenuItem);
-        iMenuItem = iButton2.add("tenderframe.print.emailtenderreport", new ActionListener(){
+        iMenuItem = iButton2.add("tenderframe.print.emailtenderreport",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTender iSelected = iModel.getSelectedRow(iTable);
+
                 iSelected = getTender(iSelected);
-                if(iSelected == null) return;
+                if (iSelected == null) {
+                    return;
+                }
 
                 if (!SSMail.isOk(iSelected.getCustomer())) {
                     return;
@@ -225,19 +237,15 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         });
         iTable.addSelectionDependentComponent(iMenuItem);
         iButton2.addSeparator();
-        iButton2.add("tenderframe.print.tenderlistreport", new ActionListener(){
+        iButton2.add("tenderframe.print.tenderlistreport", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSReportFactory.TenderListReport( getMainFrame() );
+                SSReportFactory.TenderListReport(getMainFrame());
             }
         });
         iToolBar.add(iButton2);
 
-
-
         return iToolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -250,22 +258,22 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         iTable = new SSTable();
 
         iModel = new SSTenderTableModel();
-        iModel.addColumn( SSTenderTableModel.COLUMN_PRINTED);
-        iModel.addColumn( SSTenderTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSTenderTableModel.COLUMN_CUSTOMER_NR );
-        iModel.addColumn( SSTenderTableModel.COLUMN_CUSTOMER_NAME );
-        iModel.addColumn( SSTenderTableModel.COLUMN_DATE );
-        iModel.addColumn( SSTenderTableModel.COLUMN_NET_SUM );
-        iModel.addColumn( SSTenderTableModel.COLUMN_CURRENCY );
-        iModel.addColumn( SSTenderTableModel.COLUMN_ORDER );
+        iModel.addColumn(SSTenderTableModel.COLUMN_PRINTED);
+        iModel.addColumn(SSTenderTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSTenderTableModel.COLUMN_CUSTOMER_NR);
+        iModel.addColumn(SSTenderTableModel.COLUMN_CUSTOMER_NAME);
+        iModel.addColumn(SSTenderTableModel.COLUMN_DATE);
+        iModel.addColumn(SSTenderTableModel.COLUMN_NET_SUM);
+        iModel.addColumn(SSTenderTableModel.COLUMN_CURRENCY);
+        iModel.addColumn(SSTenderTableModel.COLUMN_ORDER);
 
         iModel.setupTable(iTable);
 
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSTender iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber;
+
                 if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getTender(iSelected);
@@ -275,64 +283,65 @@ public class SSTenderFrame extends SSDefaultTableFrame {
                 if (iSelected != null) {
                     SSTenderDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "tenderframe.tendergone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "tenderframe.tendergone", iNumber);
                 }
             }
         });
         iTabbedPane = new JTabbedPane();
 
-        iTabbedPane.add(SSBundle.getBundle().getString("tenderframe.filter.1"), new SSTabbedPanePanel() );
-        iTabbedPane.add(SSBundle.getBundle().getString("tenderframe.filter.2"), new SSTabbedPanePanel() );
+        iTabbedPane.add(SSBundle.getBundle().getString("tenderframe.filter.1"),
+                new SSTabbedPanePanel());
+        iTabbedPane.add(SSBundle.getBundle().getString("tenderframe.filter.2"),
+                new SSTabbedPanePanel());
 
         iTabbedPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                //setFilterIndex( iTabbedPane.getSelectedIndex() );
+                // setFilterIndex( iTabbedPane.getSelectedIndex() );
                 updateFrame();
             }
         });
-        //setFilterIndex(0);
+        // setFilterIndex(0);
 
         iSearchPanel = new SSTenderSearchPanel(iModel);
         JPanel iPanel = new JPanel();
-        //iSearchPanel.ApplyFilter(SSDB.getInstance().getTenders());
+
+        // iSearchPanel.ApplyFilter(SSDB.getInstance().getTenders());
         iPanel.setLayout(new BorderLayout());
-        iPanel.add(iSearchPanel,BorderLayout.NORTH);
+        iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(iTabbedPane, BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,4,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 4, 2));
 
         return iPanel;
     }
-
-
 
     /**
      *
      * @param index
      * @param iList
      */
-    public void setFilterIndex(int index,List<SSTender> iList){
-        JPanel iPanel = (JPanel)iTabbedPane.getComponentAt( index );
+    public void setFilterIndex(int index, List<SSTender> iList) {
+        JPanel iPanel = (JPanel) iTabbedPane.getComponentAt(index);
 
         iPanel.removeAll();
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
 
         List<SSTender> iFiltered = Collections.emptyList();
 
+        switch (index) {
+        // Alla
+        case 0:
+            iFiltered = iList;
+            break;
 
-        switch(index){
-            // Alla
-            case 0:
-                iFiltered =  iList;
-                break;
-                // Ordrar utan faktura
-            case 1:
-                iFiltered = new LinkedList<SSTender>();
-                for(SSTender iTender : iList){
-                    if(! iTender.isExpired()){
-                        iFiltered.add(iTender);
-                    }
+        // Ordrar utan faktura
+        case 1:
+            iFiltered = new LinkedList<SSTender>();
+            for (SSTender iTender : iList) {
+                if (!iTender.isExpired()) {
+                    iFiltered.add(iTender);
                 }
-                break;
+            }
+            break;
         }
 
         iModel.setObjects(iFiltered);
@@ -383,10 +392,14 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "tenderframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSTender iTender : delete) {
-                if (SSPostLock.isLocked("tender" + iTender.getNumber() + SSDB.getInstance().getCurrentCompany().getId())){
-                    new SSErrorDialog(getMainFrame(), "tenderframe.tenderopen",iTender.getNumber());
+                if (SSPostLock.isLocked(
+                        "tender" + iTender.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "tenderframe.tenderopen",
+                            iTender.getNumber());
                 } else {
                     SSDB.getInstance().deleteTender(iTender);
                 }
@@ -406,18 +419,17 @@ public class SSTenderFrame extends SSDefaultTableFrame {
         iSearchPanel.ApplyFilter(SSDB.getInstance().getTenders());
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        iTabbedPane=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        iTabbedPane = null;
+        cInstance = null;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.tender.SSTenderFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

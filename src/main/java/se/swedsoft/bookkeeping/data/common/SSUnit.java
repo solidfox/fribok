@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
@@ -7,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -25,8 +27,7 @@ public class SSUnit implements Serializable, SSTableSearchable {
     /**
      * Constructor.
      */
-    public SSUnit() {
-    }
+    public SSUnit() {}
 
     /**
      * Constructor.
@@ -35,11 +36,11 @@ public class SSUnit implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public SSUnit(String pName, String pDescription) {
-        iName        = pName;
+        iName = pName;
         iDescription = pDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -57,8 +58,7 @@ public class SSUnit implements Serializable, SSTableSearchable {
         this.iName = iName;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -75,7 +75,8 @@ public class SSUnit implements Serializable, SSTableSearchable {
     public void setDescription(String iDescription) {
         this.iDescription = iDescription;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      * Returns the render string to be shown in the tables
@@ -86,22 +87,18 @@ public class SSUnit implements Serializable, SSTableSearchable {
         return iName;
     }
 
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSUnit){
-            SSUnit iUnit = (SSUnit)obj;
+        if (obj instanceof SSUnit) {
+            SSUnit iUnit = (SSUnit) obj;
 
             return iName.equals(iUnit.iName);
         }
         return false;
     }
 
-    
     public String toString() {
         return iName;
     }
-
-
 
     /**
      * Returns the default units
@@ -110,25 +107,26 @@ public class SSUnit implements Serializable, SSTableSearchable {
      */
     public static List<SSUnit> getDefaultUnits() {
         List<SSUnit> iUnits = new LinkedList<SSUnit>();
-        iUnits.add( new SSUnit("st"  , SSBundle.getBundle().getString("ssunit.unit.pcs")));
-        iUnits.add( new SSUnit("m"   , SSBundle.getBundle().getString("ssunit.unit.meter")));
-        iUnits.add(new SSUnit("H"   , SSBundle.getBundle().getString("ssunit.unit.hours")));
-        iUnits.add(new SSUnit("pkt" , SSBundle.getBundle().getString("ssunit.unit.frp")));
+
+        iUnits.add(new SSUnit("st", SSBundle.getBundle().getString("ssunit.unit.pcs")));
+        iUnits.add(new SSUnit("m", SSBundle.getBundle().getString("ssunit.unit.meter")));
+        iUnits.add(new SSUnit("H", SSBundle.getBundle().getString("ssunit.unit.hours")));
+        iUnits.add(new SSUnit("pkt", SSBundle.getBundle().getString("ssunit.unit.frp")));
 
         return iUnits;
 
     }
 
     /**
-     * 
+     *
      * @param iValue
      * @return
      */
-    public static SSUnit decode(String iValue){
+    public static SSUnit decode(String iValue) {
         List<SSUnit> iUnits = SSDB.getInstance().getUnits();
 
         for (SSUnit iUnit : iUnits) {
-            if( iValue.equals(iUnit.iName) || iValue.equals(iUnit.iDescription) ){
+            if (iValue.equals(iUnit.iName) || iValue.equals(iUnit.iDescription)) {
                 return iUnit;
             }
         }
@@ -136,5 +134,4 @@ public class SSUnit implements Serializable, SSTableSearchable {
     }
 
 }
-
 

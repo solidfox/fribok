@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.util;
 
+
 import se.swedsoft.bookkeeping.data.SSMonth;
 
 import java.math.BigDecimal;
@@ -11,13 +12,14 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * Date: 2006-feb-22
  * Time: 11:53:59
  */
 public class SIEWriter {
 
-    private static DateFormat iFormat = new SimpleDateFormat("yyyyMMdd"); 
+    private static DateFormat iFormat = new SimpleDateFormat("yyyyMMdd");
 
     private StringBuilder iStringBuilder;
 
@@ -28,14 +30,14 @@ public class SIEWriter {
      */
     public SIEWriter() {
         iStringBuilder = new StringBuilder();
-        iLines         = new LinkedList<String>();
+        iLines = new LinkedList<String>();
     }
 
     /**
      * Adds the contents of the stringbuilder to the writer and reset the stringbuilder.
      */
-    public void newLine(){
-        iLines.add( iStringBuilder.toString() );
+    public void newLine() {
+        iLines.add(iStringBuilder.toString());
 
         iStringBuilder = new StringBuilder();
     }
@@ -44,8 +46,8 @@ public class SIEWriter {
      * Adds a new line to the writer and reset the stringbuilder
      * @param iLine
      */
-    public void newLine(String iLine){
-        iLines.add( iLine );
+    public void newLine(String iLine) {
+        iLines.add(iLine);
 
         iStringBuilder = new StringBuilder();
     }
@@ -54,8 +56,8 @@ public class SIEWriter {
      *
      * @param pValue
      */
-    public void append(String pValue){
-        if(pValue != null && pValue.contains(" ")){
+    public void append(String pValue) {
+        if (pValue != null && pValue.contains(" ")) {
             iStringBuilder.append('\"');
             iStringBuilder.append(pValue);
             iStringBuilder.append("\" ");
@@ -74,15 +76,16 @@ public class SIEWriter {
         iStringBuilder.append(' ');
     }
 
-
     /**
      *
      * @param pValues
      */
-    public void append(Object ... pValues) {
+    public void append(Object... pValues) {
         iStringBuilder.append('{');
-        for(Object iObject: pValues){
-            if(iObject != null) append(iObject);
+        for (Object iObject: pValues) {
+            if (iObject != null) {
+                append(iObject);
+            }
         }
         iStringBuilder.append("} ");
     }
@@ -93,8 +96,10 @@ public class SIEWriter {
      */
     public void append(List<Object> pValues) {
         iStringBuilder.append('{');
-        for(Object iObject: pValues){
-            if(iObject != null) append(iObject);
+        for (Object iObject: pValues) {
+            if (iObject != null) {
+                append(iObject);
+            }
         }
         iStringBuilder.append("} ");
     }
@@ -107,10 +112,11 @@ public class SIEWriter {
         DateFormat iFormat = new SimpleDateFormat("yyyyMM");
 
         String iValue;
-        if(pValue != null ){
+
+        if (pValue != null) {
             iValue = iFormat.format(pValue.getDate());
         } else {
-            iValue= "000000";
+            iValue = "000000";
         }
         iStringBuilder.append(iValue);
         iStringBuilder.append(' ');
@@ -131,7 +137,8 @@ public class SIEWriter {
      */
     public void append(Date pValue) {
         String iValue;
-        if(pValue != null ){
+
+        if (pValue != null) {
             iValue = iFormat.format(pValue).replace("-", "");
         } else {
             iValue = "00000000";
@@ -139,6 +146,7 @@ public class SIEWriter {
         iStringBuilder.append(iValue);
         iStringBuilder.append(' ');
     }
+
     /**
      *
      * @param pValue
@@ -153,7 +161,7 @@ public class SIEWriter {
      * @param pValue
      */
     public void append(Float pValue) {
-        if(pValue != null ){
+        if (pValue != null) {
             append(pValue.doubleValue());
         } else {
             append(0);
@@ -166,15 +174,16 @@ public class SIEWriter {
      */
     public void append(Double pValue) {
         NumberFormat iFormat = NumberFormat.getNumberInstance();
+
         iFormat.setMinimumFractionDigits(2);
         iFormat.setMaximumFractionDigits(2);
         iFormat.setGroupingUsed(false);
 
-        String iValue = iFormat.format( pValue );
+        String iValue = iFormat.format(pValue);
 
         iValue = iValue.replace(",", ".");
 
-        iStringBuilder.append( iValue );
+        iStringBuilder.append(iValue);
         iStringBuilder.append(' ');
     }
 
@@ -201,7 +210,7 @@ public class SIEWriter {
      * @param pValue
      */
     public void append(BigDecimal pValue) {
-        append( pValue.doubleValue() );
+        append(pValue.doubleValue());
     }
 
     /**
@@ -224,10 +233,8 @@ public class SIEWriter {
         return iLines;
     }
 
-    
     public String toString() {
         return iStringBuilder.toString().trim();
     }
-
 
 }

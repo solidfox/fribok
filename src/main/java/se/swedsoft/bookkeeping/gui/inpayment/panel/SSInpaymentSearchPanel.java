@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inpayment.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSInpayment;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.inpayment.util.SSInpaymentTableModel;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-nov-15
@@ -21,9 +23,7 @@ public class SSInpaymentSearchPanel extends JPanel {
 
     private JTextField iTextField;
 
-
     private SSInpaymentTableModel iModel;
-
 
     public SSInpaymentSearchPanel(SSInpaymentTableModel iModel) {
         this.iModel = iModel;
@@ -31,7 +31,6 @@ public class SSInpaymentSearchPanel extends JPanel {
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,22 +40,26 @@ public class SSInpaymentSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSInpayment> iInpayments = SSDB.getInstance().getInpayments();
         List<SSInpayment> iFiltered = new LinkedList<SSInpayment>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSInpayment iInpayment : iInpayments) {
-            String iNumber      = iInpayment.getNumber().toString();
+            String iNumber = iInpayment.getNumber().toString();
             String iDescription = iInpayment.getText();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iInpayment);
             }
         }
@@ -66,6 +69,7 @@ public class SSInpaymentSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.inpayment.panel.SSInpaymentSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

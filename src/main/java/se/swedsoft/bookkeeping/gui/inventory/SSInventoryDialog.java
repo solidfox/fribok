@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inventory;
 
+
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.SSInventoryRow;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -21,14 +22,14 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-26
  * Time: 11:50:08
  */
 public class SSInventoryDialog {
-    private SSInventoryDialog() {
-    }
+    private SSInventoryDialog() {}
 
     /**
      *
@@ -36,29 +37,38 @@ public class SSInventoryDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
-        final SSDialog         iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("inventortyframe.new.title"));
-
+        final SSDialog         iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("inventortyframe.new.title"));
 
         SSInventory iInventory = new SSInventory();
+
         iInventory.setNumber(null);
-        int iResponce = SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "inventortyframe.dialog.addproducts");
-        final SSInventoryPanel iPanel  = new SSInventoryPanel(iDialog);
-        if( iResponce == JOptionPane.OK_OPTION){
+        int iResponce = SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                "inventortyframe.dialog.addproducts");
+        final SSInventoryPanel iPanel = new SSInventoryPanel(iDialog);
+
+        if (iResponce == JOptionPane.OK_OPTION) {
             List<SSProduct> iProducts = SSDB.getInstance().getProducts();
+
             for (SSProduct iProduct : iProducts) {
-                if( iProduct.isStockProduct() && !iProduct.isParcel() ) iInventory.getRows().add( new SSInventoryRow(iProduct, 0));
+                if (iProduct.isStockProduct() && !iProduct.isParcel()) {
+                    iInventory.getRows().add(new SSInventoryRow(iProduct, 0));
+                }
             }
 
         }
-        iPanel.setInventory(  iInventory );
+        iPanel.setInventory(iInventory);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         iPanel.addOkActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSInventory iInventory = iPanel.getInventory();
+
                 SSDB.getInstance().addInventory(iInventory);
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
@@ -70,21 +80,27 @@ public class SSInventoryDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter(){
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "inventoryframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "inventoryframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
                 SSInventory iInventory = iPanel.getInventory();
+
                 SSDB.getInstance().addInventory(iInventory);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
@@ -96,16 +112,20 @@ public class SSInventoryDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSInventory iInventory, final AbstractTableModel pModel) {
-        final String lockString = "inventory" + iInventory.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "inventory" + iInventory.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog(iMainFrame, "inventoryframe.inventoryopen", iInventory.getNumber());
+            new SSErrorDialog(iMainFrame, "inventoryframe.inventoryopen",
+                    iInventory.getNumber());
             return;
         }
 
-        final SSDialog         iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("inventortyframe.edit.title"));
-        final SSInventoryPanel iPanel  = new SSInventoryPanel(iDialog);
+        final SSDialog         iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("inventortyframe.edit.title"));
+        final SSInventoryPanel iPanel = new SSInventoryPanel(iDialog);
 
-        iPanel.setInventory(  new SSInventory(iInventory) );
+        iPanel.setInventory(new SSInventory(iInventory));
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -115,7 +135,9 @@ public class SSInventoryDialog {
 
                 SSDB.getInstance().updateInventory(iInventory);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
                 iDialog.closeDialog();
             }
@@ -128,10 +150,13 @@ public class SSInventoryDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter(){
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "inventoryframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "inventoryframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -139,16 +164,17 @@ public class SSInventoryDialog {
 
                 SSDB.getInstance().updateInventory(iInventory);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
                 iDialog.closeDialog();
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }
-
 
     /**
      *
@@ -157,10 +183,11 @@ public class SSInventoryDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSInventory iInventory, final AbstractTableModel pModel) {
-        final SSDialog         iDialog = new SSDialog(iMainFrame,  SSBundle.getBundle().getString("inventortyframe.copy.title"));
-        final SSInventoryPanel iPanel  = new SSInventoryPanel(iDialog);
+        final SSDialog         iDialog = new SSDialog(iMainFrame,
+                SSBundle.getBundle().getString("inventortyframe.copy.title"));
+        final SSInventoryPanel iPanel = new SSInventoryPanel(iDialog);
 
-        iPanel.setInventory(  iInventory );
+        iPanel.setInventory(iInventory);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -170,7 +197,9 @@ public class SSInventoryDialog {
 
                 SSDB.getInstance().addInventory(iInventory);
 
-                if(pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iDialog.closeDialog();
             }
@@ -182,7 +211,7 @@ public class SSInventoryDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.showDialog();
     }

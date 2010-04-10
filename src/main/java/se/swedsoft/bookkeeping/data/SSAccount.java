@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ import java.io.Serializable;
  */
 public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
 
-    /// Constant for serialization versioning.
+    // / Constant for serialization versioning.
     static final long serialVersionUID = 1L;
 
     private int iNumber;
@@ -33,7 +34,6 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
 
     private boolean iResultUnitRequired;
 
-
     /**
      * Default constructor.
      */
@@ -43,7 +43,6 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         iProjectRequired = false;
         iResultUnitRequired = false;
     }
-
 
     /**
      * @param iNumber
@@ -64,26 +63,24 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         copyFrom(pAccount);
     }
 
-    ////////////////////////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @param pAccount
      */
     public void copyFrom(SSAccount pAccount) {
-        iNumber             = pAccount.iNumber;
-        iDescription        = pAccount.iDescription;
-        iSRUCode            = pAccount.iSRUCode;
-        iVATCode            = pAccount.iVATCode;
-        iReportCode         = pAccount.iReportCode;
-        iActive             = pAccount.iActive;
-        iProjectRequired    = pAccount.iProjectRequired;
+        iNumber = pAccount.iNumber;
+        iDescription = pAccount.iDescription;
+        iSRUCode = pAccount.iSRUCode;
+        iVATCode = pAccount.iVATCode;
+        iReportCode = pAccount.iReportCode;
+        iActive = pAccount.iActive;
+        iProjectRequired = pAccount.iProjectRequired;
         iResultUnitRequired = pAccount.iResultUnitRequired;
     }
 
-
-    ////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -98,10 +95,10 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      * @param iNumber
      */
     public void setNumber(Integer iNumber) {
-        this.iNumber =  iNumber == null ? -1 : iNumber;
+        this.iNumber = iNumber == null ? -1 : iNumber;
     }
 
-    ////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -119,7 +116,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         iDescription = pDescription;
     }
 
-    ////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -137,8 +134,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         iSRUCode = pSRUCode;
     }
 
-    ////////////////////////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -156,8 +152,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         iVATCode = pVATCode;
     }
 
-    ////////////////////////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -175,7 +170,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         iReportCode = pReportCode;
     }
 
-    ////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -193,7 +188,7 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         iActive = pActive;
     }
 
-    ////////////////////////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////////////////////////
 
     public boolean isProjectRequired() {
         return iProjectRequired;
@@ -211,8 +206,6 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         this.iResultUnitRequired = iResultUnitRequired;
     }
 
-
-    
     public String toString() {
         return iNumber + " - " + iDescription;
     }
@@ -226,11 +219,8 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
         return String.valueOf(iNumber);
     }
 
-
-
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSAccount ){
+        if (obj instanceof SSAccount) {
             SSAccount iAccount = (SSAccount) obj;
 
             return iNumber == iAccount.iNumber;
@@ -248,14 +238,12 @@ public class SSAccount implements Serializable, Cloneable, SSTableSearchable {
      * @return the hashcode
      */
     public int hashCode() {
-        //if(iNumber != null){
-            return iNumber;
-       // } else {
-        //    return super.hashCode();
-       // }
+        // if(iNumber != null){
+        return iNumber;
+        // } else {
+        // return super.hashCode();
+        // }
 
     }
-
-
 
 }

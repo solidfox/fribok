@@ -1,6 +1,6 @@
 /*
  * Copyright © 2009 Stefan Kangas <stefankangas@gmail.com>
- * 
+ *
  * This file is part of JFS Accounting.
  *
  * JFS Accounting is free software: you can redistribute it and/or modify it
@@ -15,8 +15,9 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * JFS Accounting.  If not, see <http://www.gnu.org/licenses/>.
- */ 
+ */
 package se.swedsoft.bookkeeping.calc;
+
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +26,7 @@ import se.swedsoft.bookkeeping.calc.SSOCRNumber;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import static org.junit.Assert.*;
 
+
 /**
  * Tests for SSOCRNumber
  *
@@ -32,56 +34,62 @@ import static org.junit.Assert.*;
  * @version $Rev$, $Date$
  */
 public class SSOCRNumberTest {
-   private SSInvoice invoice;
+    private SSInvoice invoice;
 
-   @Before
-   public void setUp() {
-      invoice = new SSInvoice();
-   }
+    @Before
+    public void setUp() {
+        invoice = new SSInvoice();
+    }
 
-   @After
-   public void tearDown() { }
+    @After
+    public void tearDown() {}
 
-   /* Generate and return ocr for default test object
-    */
-   private String ocr() {
-      return SSOCRNumber.getOCRNumber(invoice);
-   }
+    /* Generate and return ocr for default test object
+     */
+    private String ocr() {
+        return SSOCRNumber.getOCRNumber(invoice);
+    }
 
-   @Test
-   public void OCRNumberIsTheSameForOneNumber() {
-      invoice.setNumber(512);
-      String one = ocr();
-      String two = ocr();
-      assertEquals(one, two); 
-   }
+    @Test
+    public void OCRNumberIsTheSameForOneNumber() {
+        invoice.setNumber(512);
+        String one = ocr();
+        String two = ocr();
 
-   @Test
-   public void OCRChangesWhenInvoiceNumberChanges() {
-      invoice.setNumber(256);
-      String one = ocr();
-      invoice.setNumber(512);
-      String two = ocr();
-      assertTrue( ! one.equals(two) );
-   }
+        assertEquals(one, two);
+    }
 
-   @Test
-   public void OCRContainsInvoiceNumber() {
-      int num = 65536;
-      invoice.setNumber(num);
-      Pattern pattern = Pattern.compile(Integer.toString(num));
-      Matcher matcher = pattern.matcher(ocr());
-      assertTrue( matcher.find() );
-   }
+    @Test
+    public void OCRChangesWhenInvoiceNumberChanges() {
+        invoice.setNumber(256);
+        String one = ocr();
 
-   /* This is here to ensure we don't accidentally change the behavior of the
-    * OCR generation.  Every time it changes, these values should be updated as
-    * well.
-    */
-   @Test
-   public void DontChangeBehaviorWithoutChangingMe() {
-      int num = 65536;
-      invoice.setNumber(num);
-      assertEquals( "6553671", ocr() );
-   }
+        invoice.setNumber(512);
+        String two = ocr();
+
+        assertTrue(!one.equals(two));
+    }
+
+    @Test
+    public void OCRContainsInvoiceNumber() {
+        int num = 65536;
+
+        invoice.setNumber(num);
+        Pattern pattern = Pattern.compile(Integer.toString(num));
+        Matcher matcher = pattern.matcher(ocr());
+
+        assertTrue(matcher.find());
+    }
+
+    /* This is here to ensure we don't accidentally change the behavior of the
+     * OCR generation.  Every time it changes, these values should be updated as
+     * well.
+     */
+    @Test
+    public void DontChangeBehaviorWithoutChangingMe() {
+        int num = 65536;
+
+        invoice.setNumber(num);
+        assertEquals("6553671", ocr());
+    }
 }

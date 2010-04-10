@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.data.system;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 
 /**
  * User: Johan Gunnarsson
@@ -14,9 +16,7 @@ import java.io.PrintWriter;
  * inte kan tas bort av en annan användare.
  */
 public class SSYearLock {
-    private SSYearLock() {
-    }
-
+    private SSYearLock() {}
 
     /**
      * Låser systemår iYear så att flera instanser av programmet inte kan editera det samtidigt.
@@ -39,6 +39,7 @@ public class SSYearLock {
             iOut.println(iYear.getId().toString());
             iOut.flush();
             String iReply = iIn.readLine();
+
             return iReply.equals("goahead");
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,7 +52,7 @@ public class SSYearLock {
      * @param iYear - Det objekt som ska låsas upp
      */
     public static void removeLock(SSNewAccountingYear iYear) {
-        if(iYear == null){
+        if (iYear == null) {
             return;
         }
         if (!SSDB.getInstance().getLocking()) {
@@ -72,7 +73,7 @@ public class SSYearLock {
      */
     public static boolean isLocked(SSNewAccountingYear iYear) {
 
-        if(iYear == null){
+        if (iYear == null) {
             return false;
         }
         if (!SSDB.getInstance().getLocking()) {
@@ -87,6 +88,7 @@ public class SSYearLock {
             iOut.println(iYear.getId().toString());
             iOut.flush();
             String iReply = iIn.readLine();
+
             return iReply.equals("true");
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,5 +96,4 @@ public class SSYearLock {
         }
     }
 }
-
 

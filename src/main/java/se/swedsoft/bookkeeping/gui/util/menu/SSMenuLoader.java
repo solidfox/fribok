@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.menu;
 
+
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+
 
 /**
  * Date: 2006-feb-27
@@ -35,12 +37,12 @@ public class SSMenuLoader {
      * Default constructor.
      */
     public SSMenuLoader() {
-        iMenuBars      = new HashMap<String, JMenuBar>();
-        iMenus         = new HashMap<String, JMenu>();
-        iMenuItems     = new HashMap<String, JMenuItem>();
+        iMenuBars = new HashMap<String, JMenuBar>();
+        iMenus = new HashMap<String, JMenu>();
+        iMenuItems = new HashMap<String, JMenuItem>();
 
-        iActions       = new HashMap<String, List<ActionListener>>();
-        iDependancies  = new HashMap<String, List<JComponent>>();
+        iActions = new HashMap<String, List<ActionListener>>();
+        iDependancies = new HashMap<String, List<JComponent>>();
     }
 
     /**
@@ -48,11 +50,12 @@ public class SSMenuLoader {
      * @param iFile
      */
     public void loadMenus(InputStream stream) {
-        iMenuBars   .clear();
-        iMenus      .clear();
-        iMenuItems  .clear();
+        iMenuBars.clear();
+        iMenus.clear();
+        iMenuItems.clear();
 
         XMLReader iReader;
+
         try {
             iReader = XMLReaderFactory.createXMLReader(cParserClass);
         } catch (SAXException e) {
@@ -77,7 +80,7 @@ public class SSMenuLoader {
      * @param pName
      * @return
      */
-    public JMenuBar getMenuBar(String pName){
+    public JMenuBar getMenuBar(String pName) {
         return iMenuBars.get(pName);
     }
 
@@ -87,22 +90,19 @@ public class SSMenuLoader {
      * @param pName
      * @return
      */
-    public JMenu getMenu(String pName){
+    public JMenu getMenu(String pName) {
         return iMenus.get(pName);
     }
-
-
-
 
     /**
      *
      * @param pName
      * @param pAction
      */
-    public void addActionListener(String pName, ActionListener pAction){
+    public void addActionListener(String pName, ActionListener pAction) {
         List<ActionListener> iListeners = iActions.get(pName);
 
-        if(iListeners == null){
+        if (iListeners == null) {
             iListeners = new LinkedList<ActionListener>();
 
             iActions.put(pName, iListeners);
@@ -116,9 +116,10 @@ public class SSMenuLoader {
      * @param pGroup
      * @param iComponent
      */
-    public void addDependancy(String pGroup, JComponent iComponent){
+    public void addDependancy(String pGroup, JComponent iComponent) {
         List<JComponent> iComponents = iDependancies.get(pGroup);
-        if(iComponents == null){
+
+        if (iComponents == null) {
             iComponents = new LinkedList<JComponent>();
 
             iDependancies.put(pGroup, iComponents);
@@ -131,26 +132,26 @@ public class SSMenuLoader {
      * @param pGroup
      * @param pEnabled
      */
-    public void setEnabled(String pGroup, boolean pEnabled){
+    public void setEnabled(String pGroup, boolean pEnabled) {
         List<JComponent> iComponents = iDependancies.get(pGroup);
-        if(iComponents != null){
-            for(JComponent iComponent: iComponents){
-                iComponent.setEnabled( pEnabled );
+
+        if (iComponents != null) {
+            for (JComponent iComponent: iComponents) {
+                iComponent.setEnabled(pEnabled);
             }
         }
     }
-
-
 
     /**
      *
      * @param pName
      * @param pAction
      */
-    private void notifyActionListeners(String pName, ActionEvent pAction){
+    private void notifyActionListeners(String pName, ActionEvent pAction) {
         List<ActionListener> iListeners = iActions.get(pName);
-        if(iListeners != null){
-            for(ActionListener iListener: iListeners){
+
+        if (iListeners != null) {
+            for (ActionListener iListener: iListeners) {
                 iListener.actionPerformed(pAction);
             }
         } else {
@@ -164,14 +165,13 @@ public class SSMenuLoader {
      * @param pName
      * @return
      */
-    private ActionListener createActionListener(final String pName){
+    private ActionListener createActionListener(final String pName) {
         return new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 notifyActionListeners(pName, e);
             }
         };
     }
-
 
     /**
      *
@@ -185,44 +185,44 @@ public class SSMenuLoader {
         /**
          *
          */
-        public MenuBuilder(){
-            iMenuBar   = null;
+        public MenuBuilder() {
+            iMenuBar = null;
             iMenuStack = new Stack<JMenu>();
         }
 
         /**
          * @param iAttributes
          */
-        private void createMenuBar(Attributes iAttributes){
-            String iName    = iAttributes.getValue("Name");
+        private void createMenuBar(Attributes iAttributes) {
+            String iName = iAttributes.getValue("Name");
 
             iMenuBar = new JMenuBar();
-            iMenuBar.setName( iName );
+            iMenuBar.setName(iName);
 
-            iMenuBars.put(iName, iMenuBar );
+            iMenuBars.put(iName, iMenuBar);
         }
 
         /**
          * @param iAttributes
          * @return
          */
-        private JMenu createMenu(Attributes iAttributes){
-            String iName      = iAttributes.getValue("Name");
-            String iText      = iAttributes.getValue("Text");
-            String iBundle    = iAttributes.getValue("Bundle");
+        private JMenu createMenu(Attributes iAttributes) {
+            String iName = iAttributes.getValue("Name");
+            String iText = iAttributes.getValue("Text");
+            String iBundle = iAttributes.getValue("Bundle");
             String iDependent = iAttributes.getValue("Dependent");
 
             JMenu iMenu = new JMenu();
 
             iMenu.setName(iName);
 
-            if(iBundle == null){
-                iMenu.setText( iText  );
+            if (iBundle == null) {
+                iMenu.setText(iText);
             } else {
                 SSMenuUtils.setupMenu(iMenu, iBundle);
             }
 
-            if( iDependent != null ){
+            if (iDependent != null) {
                 addDependancy(iDependent, iMenu);
             }
 
@@ -236,25 +236,25 @@ public class SSMenuLoader {
         /**
          * @param iAttributes
          */
-        private void createMenuItem(Attributes iAttributes){
-            String iName      = iAttributes.getValue("Name");
-            String iText      = iAttributes.getValue("Text");
-            String iAction    = iAttributes.getValue("Action");
-            String iBundle    = iAttributes.getValue("Bundle");
+        private void createMenuItem(Attributes iAttributes) {
+            String iName = iAttributes.getValue("Name");
+            String iText = iAttributes.getValue("Text");
+            String iAction = iAttributes.getValue("Action");
+            String iBundle = iAttributes.getValue("Bundle");
             String iDependent = iAttributes.getValue("Dependent");
 
             JMenuItem iMenuItem = new JMenuItem();
 
             iMenuItem.setName(iName);
-            iMenuItem.addActionListener( createActionListener(iAction)  );
+            iMenuItem.addActionListener(createActionListener(iAction));
 
-            if(iBundle == null){
-                iMenuItem.setText( iText  );
+            if (iBundle == null) {
+                iMenuItem.setText(iText);
             } else {
                 SSMenuUtils.setupMenuItem(iMenuItem, iBundle);
             }
 
-            if( iDependent != null ){
+            if (iDependent != null) {
                 addDependancy(iDependent, iMenuItem);
             }
 
@@ -267,9 +267,10 @@ public class SSMenuLoader {
          *
          * @param iAttributes
          */
-        private void createSeparator(Attributes iAttributes){
-            if(!iMenuStack.isEmpty()){
+        private void createSeparator(Attributes iAttributes) {
+            if (!iMenuStack.isEmpty()) {
                 JMenu iParent = iMenuStack.peek();
+
                 iParent.addSeparator();
             }
         }
@@ -278,13 +279,13 @@ public class SSMenuLoader {
          *
          * @param iComponent
          */
-        private void add(JComponent iComponent){
-            if(!iMenuStack.isEmpty()){
+        private void add(JComponent iComponent) {
+            if (!iMenuStack.isEmpty()) {
                 JMenu iParent = iMenuStack.peek();
 
                 iParent.add(iComponent);
-            } else{
-                if( iMenuBar != null){
+            } else {
+                if (iMenuBar != null) {
                     iMenuBar.add(iComponent);
                 }
             }
@@ -301,21 +302,21 @@ public class SSMenuLoader {
         @Override
         public void startElement(String uri, String localName, String qName, Attributes iAttributes) throws SAXException {
 
-            if( localName.equalsIgnoreCase("MenuBar") ){
+            if (localName.equalsIgnoreCase("MenuBar")) {
                 createMenuBar(iAttributes);
             }
 
-            if( localName.equalsIgnoreCase("Menu") ){
+            if (localName.equalsIgnoreCase("Menu")) {
                 JMenu iMenu = createMenu(iAttributes);
 
                 iMenuStack.push(iMenu);
             }
 
-            if( localName.equalsIgnoreCase("MenuItem") ){
+            if (localName.equalsIgnoreCase("MenuItem")) {
                 createMenuItem(iAttributes);
             }
 
-            if( localName.equalsIgnoreCase("Separator") ){
+            if (localName.equalsIgnoreCase("Separator")) {
                 createSeparator(iAttributes);
 
             }
@@ -331,20 +332,20 @@ public class SSMenuLoader {
          */
         @Override
         public void endElement(String uri, String localName, String qName) throws SAXException {
-            if( localName.equalsIgnoreCase("MenuBar") ){
+            if (localName.equalsIgnoreCase("MenuBar")) {
                 iMenuBar = null;
             }
 
-            if( localName.equalsIgnoreCase("Menu") ){
+            if (localName.equalsIgnoreCase("Menu")) {
                 iMenuStack.pop();
             }
-
 
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.util.menu.SSMenuLoader.MenuBuilder");
             sb.append("{iMenuBar=").append(iMenuBar);
             sb.append(", iMenuStack=").append(iMenuStack);
@@ -353,10 +354,10 @@ public class SSMenuLoader {
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.menu.SSMenuLoader");
         sb.append("{iActions=").append(iActions);
         sb.append(", iDependancies=").append(iDependancies);

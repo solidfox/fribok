@@ -4,10 +4,12 @@
  */
 package se.swedsoft.bookkeeping.gui.util.frame;
 
+
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 
 import javax.swing.*;
 import java.awt.*;
+
 
 /**
  * This class should be the default class for internal frames in this application.
@@ -38,6 +40,7 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
 
         // Get the toolbar
         JToolBar iToolBar = getToolBar();
+
         if (iToolBar != null) {
             iToolBar.setFloatable(false);
 
@@ -46,6 +49,7 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
 
         // Get the status bar
         JComponent iStatusBar = getStatusBar();
+
         if (iStatusBar != null) {
             add(iStatusBar, BorderLayout.SOUTH);
         }
@@ -56,11 +60,6 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
 
     }
 
-
-
-
-
-
     /**
      * This method should return a toolbar if the sub-class wants one.
      * Otherwise, it may return null.
@@ -69,7 +68,6 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
      */
     public abstract JToolBar getToolBar();
 
-
     /**
      * This method should return the main content for the frame.
      * Such as an object table.
@@ -77,7 +75,6 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
      * @return The main content for this frame.
      */
     public abstract JComponent getMainContent();
-
 
     /**
      * This method should return the status bar content, if any.

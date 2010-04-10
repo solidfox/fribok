@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProjectMath;
 import se.swedsoft.bookkeeping.calc.math.SSResultUnitMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
@@ -27,6 +28,7 @@ import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataTyp
  * Time: 09:04:20
  */
 public class SIEEntryTransaktion implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -55,27 +57,26 @@ public class SIEEntryTransaktion implements SIEEntry {
         throw new RuntimeException("Must be called within a voucher.");
     }
 
-
     /**
      *
      * @param iVoucherRow
      * @return
      */
-    private  List<Object> getObjects(SSVoucherRow iVoucherRow){
+    private List<Object> getObjects(SSVoucherRow iVoucherRow) {
         List<Object> iObjects = new LinkedList<Object>();
 
         SSNewResultUnit iResultUnit = iVoucherRow.getResultUnit();
-        SSNewProject    iProject    = iVoucherRow.getProject();
+        SSNewProject    iProject = iVoucherRow.getProject();
 
         // Resultatenhet, #DIM 1
-        if(iResultUnit != null){
-            iObjects.add( 1 );
-            iObjects.add( iResultUnit.getNumber() );
+        if (iResultUnit != null) {
+            iObjects.add(1);
+            iObjects.add(iResultUnit.getNumber());
         }
         // Projekt, #DIM 6
-        if(iProject != null){
-            iObjects.add( 6 );
-            iObjects.add( iProject.getNumber() );
+        if (iProject != null) {
+            iObjects.add(6);
+            iObjects.add(iProject.getNumber());
         }
         return iObjects;
     }
@@ -89,67 +90,74 @@ public class SIEEntryTransaktion implements SIEEntry {
      * @return
      * @throws SSImportException
      */
-    public boolean importEntry(SSVoucher iVoucher, SSSIEImporter iImporter, SIEReader iReader,SSNewAccountingYear iCurrentYearData) throws SSImportException {
-        //SSNewAccountingYear iCurrentYearData  = SSDB.getInstance().getCurrentYear();
-                                              
+    public boolean importEntry(SSVoucher iVoucher, SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
+        // SSNewAccountingYear iCurrentYearData  = SSDB.getInstance().getCurrentYear();
+
         // #TRANS kontonr {objectlista} belopp [transdat] [transtext] [kvantitet]
-        if(!iReader.hasFields(STRING, INT, ARRAY, FLOAT )) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT, ARRAY, FLOAT)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         int          iAccountNumber = iReader.nextInteger();
-        List<String> iObjects       = iReader.nextArray();
-        BigDecimal   iAmmount       = iReader.nextBigDecimal();
+        List<String> iObjects = iReader.nextArray();
+        BigDecimal   iAmmount = iReader.nextBigDecimal();
 
-        SSAccount    iAccount    = iCurrentYearData.getAccountPlan().getAccount(iAccountNumber);
+        SSAccount    iAccount = iCurrentYearData.getAccountPlan().getAccount(
+                iAccountNumber);
 
-        if(iAccount == null){
-            throw new SSImportException(SSBundleString.getString("sieimport.missingaccount", Integer.toString(iAccountNumber) ) );
+        if (iAccount == null) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.missingaccount",
+                    Integer.toString(iAccountNumber)));
         }
 
-        if(iObjects.size() % 2 != 0){
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (iObjects.size() % 2 != 0) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
         SIEIterator iObjectIterator = new SIEIterator(iObjects);
 
         SSNewResultUnit iResultUnit = null;
         SSNewProject iProject = null;
-        while( iObjectIterator.hasNext() ){
+
+        while (iObjectIterator.hasNext()) {
             int iDimension = iObjectIterator.nextInteger();
             String iNum = iObjectIterator.next();
+
             if (iNum == null) {
                 continue;
             }
 
             // Resultatenhet, #DIM 1
-            if( iDimension == 1 ){
-                iResultUnit =  SSResultUnitMath.getResultUnit(iNum);
+            if (iDimension == 1) {
+                iResultUnit = SSResultUnitMath.getResultUnit(iNum);
 
-                //if(iResultUnit == null)
-                //    throw new RuntimeException("Resultunit not defined: " + iNum);
+                // if(iResultUnit == null)
+                // throw new RuntimeException("Resultunit not defined: " + iNum);
             }
             // Projekt, #DIM 6
-            if( iDimension == 6 ){
-                iProject =  SSProjectMath.getProject(SSDB.getInstance().getProjects(), iNum);
+            if (iDimension == 6) {
+                iProject = SSProjectMath.getProject(SSDB.getInstance().getProjects(), iNum);
 
-                //if(iProject == null)
-                //    throw new RuntimeException("Project not defined: " + iNum);
+                // if(iProject == null)
+                // throw new RuntimeException("Project not defined: " + iNum);
             }
 
         }
         SSVoucherRow iVoucherRow = new SSVoucherRow();
-        iVoucherRow.setAccount   (iAccount);
-        iVoucherRow.setProject   (iProject);
+
+        iVoucherRow.setAccount(iAccount);
+        iVoucherRow.setProject(iProject);
         iVoucherRow.setResultUnit(iResultUnit);
 
-        SSVoucherMath.setDebetMinusCredit(iVoucherRow, iAmmount );
+        SSVoucherMath.setDebetMinusCredit(iVoucherRow, iAmmount);
 
         iVoucher.addVoucherRow(iVoucherRow);
 
         return true;
     }
-
 
     /**
      *
@@ -162,20 +170,22 @@ public class SIEEntryTransaktion implements SIEEntry {
     public boolean exportEntry(SSVoucher iVoucher, SSSIEExporter iExporter, SIEWriter iWriter) throws SSExportException {
 
         boolean iHasData = false;
+
         // #TRANS kontonr {objectlista} belopp [transdat] [transtext] [kvantitet]
-        for(SSVoucherRow iVoucherRow: iVoucher.getRows() ){
-            SSAccount    iAccount    = iVoucherRow.getAccount();
+        for (SSVoucherRow iVoucherRow: iVoucher.getRows()) {
+            SSAccount    iAccount = iVoucherRow.getAccount();
 
-            if( !iVoucherRow.isValid() || iVoucherRow.isCrossed()) continue;
+            if (!iVoucherRow.isValid() || iVoucherRow.isCrossed()) {
+                continue;
+            }
 
-            iWriter.append( SIELabel.SIE_TRANS);
-            iWriter.append( iAccount.getNumber());
-            iWriter.append( getObjects(iVoucherRow) );
-            iWriter.append( SSVoucherMath.getDebetMinusCredit(iVoucherRow) );
+            iWriter.append(SIELabel.SIE_TRANS);
+            iWriter.append(iAccount.getNumber());
+            iWriter.append(getObjects(iVoucherRow));
+            iWriter.append(SSVoucherMath.getDebetMinusCredit(iVoucherRow));
             iWriter.newLine();
             iHasData = true;
         }
-
 
         return iHasData;
     }

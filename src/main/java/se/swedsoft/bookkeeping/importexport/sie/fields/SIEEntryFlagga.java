@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;
@@ -9,12 +10,12 @@ import se.swedsoft.bookkeeping.importexport.sie.util.SIEWriter;
 import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
+
 /**
  * Date: 2006-feb-20
  * Time: 12:40:17
  */
 public class SIEEntryFlagga implements SIEEntry {
-
 
     /**
      * Imports the field
@@ -23,12 +24,13 @@ public class SIEEntryFlagga implements SIEEntry {
      */
     @Override
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
-         if(! iReader.hasNextInteger()){
+        if (!iReader.hasNextInteger()) {
             throw new SSImportException(SIELabel.SIE_FLAGGA + " Missing parameter");
         }
 
-        if(iReader.nextInteger() == 1){
-            System.out.println("(SIEEntryFlagga) The file has already been imported, ignored.");
+        if (iReader.nextInteger() == 1) {
+            System.out.println(
+                    "(SIEEntryFlagga) The file has already been imported, ignored.");
         }
         return true;
     }

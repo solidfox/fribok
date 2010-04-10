@@ -15,13 +15,13 @@ import javax.swing.table.TableCellRenderer;
 import java.math.BigDecimal;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 12:13:59
  */
 public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
-
 
     /**
      * Default constructor.
@@ -48,16 +48,16 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
         return SSCurrency.class;
     }
 
-
     @Override
     public SSCurrencyTableModel getDropdownmodel() {
         return getDropDownModel(SSDB.getInstance().getCurrencies());
     }
+
     /**
      *
      * @return
      */
-    public static SSCurrencyTableModel getDropDownModel(){
+    public static SSCurrencyTableModel getDropDownModel() {
         return getDropDownModel(SSDB.getInstance().getCurrencies());
     }
 
@@ -66,21 +66,21 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
      * @param iCurrencies
      * @return
      */
-    public static SSCurrencyTableModel getDropDownModel(List<SSCurrency> iCurrencies){
+    public static SSCurrencyTableModel getDropDownModel(List<SSCurrency> iCurrencies) {
         SSCurrencyTableModel iModel = new SSCurrencyTableModel(iCurrencies);
 
-        iModel.addColumn( COLUMN_NAME );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
-        iModel.addColumn( COLUMN_EXCHANGERATE   );
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
+        iModel.addColumn(COLUMN_EXCHANGERATE);
 
         return iModel;
     }
 
-
     /**
      *  Name
      */
-    public static SSTableColumn<SSCurrency> COLUMN_NAME = new SSTableColumn<SSCurrency>(SSBundle.getBundle().getString("currencytable.column.1")) {
+    public static SSTableColumn<SSCurrency> COLUMN_NAME = new SSTableColumn<SSCurrency>(
+            SSBundle.getBundle().getString("currencytable.column.1")) {
         @Override
         public Object getValue(SSCurrency iCurrency) {
             return iCurrency.getName();
@@ -88,7 +88,7 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
 
         @Override
         public void setValue(SSCurrency iCurrency, Object iValue) {
-            iCurrency.setName((String)iValue);
+            iCurrency.setName((String) iValue);
         }
 
         @Override
@@ -102,11 +102,11 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
         }
     };
 
-
     /**
      *  Description
      */
-    public static SSTableColumn<SSCurrency> COLUMN_DESCRIPTION = new SSTableColumn<SSCurrency>(SSBundle.getBundle().getString("currencytable.column.2")) {
+    public static SSTableColumn<SSCurrency> COLUMN_DESCRIPTION = new SSTableColumn<SSCurrency>(
+            SSBundle.getBundle().getString("currencytable.column.2")) {
         @Override
         public Object getValue(SSCurrency iCurrency) {
             return iCurrency.getDescription();
@@ -114,7 +114,7 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
 
         @Override
         public void setValue(SSCurrency iCurrency, Object iValue) {
-            iCurrency.setDescription((String)iValue);
+            iCurrency.setDescription((String) iValue);
         }
 
         @Override
@@ -128,12 +128,11 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
         }
     };
 
-
-
     /**
      *  Description
      */
-    public static SSTableColumn<SSCurrency> COLUMN_EXCHANGERATE = new SSTableColumn<SSCurrency>(SSBundle.getBundle().getString("currencytable.column.3")) {
+    public static SSTableColumn<SSCurrency> COLUMN_EXCHANGERATE = new SSTableColumn<SSCurrency>(
+            SSBundle.getBundle().getString("currencytable.column.3")) {
         @Override
         public Object getValue(SSCurrency iCurrency) {
             return iCurrency.getExchangeRate();
@@ -141,7 +140,7 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
 
         @Override
         public void setValue(SSCurrency iCurrency, Object iValue) {
-            iCurrency.setExchangeRate((BigDecimal)iValue);
+            iCurrency.setExchangeRate((BigDecimal) iValue);
         }
 
         @Override
@@ -163,25 +162,25 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
         }
     };
 
-
     /**
      *
      * @param iOwner
      * @return
      */
-    public static SSEditableTableComboBox.EditingFactory<SSCurrency> getEditingFactory(final JDialog iOwner){
+    public static SSEditableTableComboBox.EditingFactory<SSCurrency> getEditingFactory(final JDialog iOwner) {
 
         return new SSEditableTableComboBox.EditingFactory<SSCurrency>() {
             public SSCurrency newAction() {
                 SSCurrencyDialog iDialog = new SSCurrencyDialog(iOwner);
-                    if(iDialog.showDialog() == JOptionPane.OK_OPTION){
-                        SSCurrency iCurrency = new SSCurrency();
 
-                        iCurrency.setName(iDialog.getName());
-                        iCurrency.setDescription(iDialog.getDescription());
-                        iCurrency.setExchangeRate(iDialog.getExchangeRate());
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
+                    SSCurrency iCurrency = new SSCurrency();
 
-                        SSDB.getInstance().addCurrency(iCurrency);
+                    iCurrency.setName(iDialog.getName());
+                    iCurrency.setDescription(iDialog.getDescription());
+                    iCurrency.setExchangeRate(iDialog.getExchangeRate());
+
+                    SSDB.getInstance().addCurrency(iCurrency);
 
                     return iCurrency;
                 }
@@ -190,11 +189,12 @@ public class SSCurrencyTableModel extends SSTableModel<SSCurrency> {
 
             public void editAction(SSCurrency iSelected) {
                 SSCurrencyDialog iDialog = new SSCurrencyDialog(iOwner);
-                iDialog.setName        ( iSelected.getName()       );
-                iDialog.setDescription ( iSelected.getDescription());
-                iDialog.setExchangeRate( iSelected.getExchangeRate());
 
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
+                iDialog.setName(iSelected.getName());
+                iDialog.setDescription(iSelected.getDescription());
+                iDialog.setExchangeRate(iSelected.getExchangeRate());
+
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
                     iSelected.setName(iDialog.getName());
                     iSelected.setDescription(iDialog.getDescription());
                     iSelected.setExchangeRate(iDialog.getExchangeRate());

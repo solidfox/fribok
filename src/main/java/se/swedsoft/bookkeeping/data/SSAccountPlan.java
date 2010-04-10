@@ -4,10 +4,12 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.util.*;
+
 
 /**
  * @author Roger Björnstedt
@@ -32,27 +34,24 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     private SSAccountPlanType iType;
 
     // The AccuntPlan this is based on
-    //private SSAccountPlan iBasePlan;
-
+    // private SSAccountPlan iBasePlan;
 
     // The acoounts
     private List<SSAccount> iAccounts;
-
-
 
     // Internal list to keep track of witch accounts is active
     private transient List<SSAccount         > iActiveAccounts;
 
     private transient Map<Integer, SSAccount> iAccountMap;
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      * Default constructor.
      */
     public SSAccountPlan() {
         iAccounts = new LinkedList<SSAccount>();
-        iType     = SSAccountPlanType.get("BAS95");
+        iType = SSAccountPlanType.get("BAS95");
     }
 
     /**
@@ -72,9 +71,10 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      */
     public SSAccountPlan(SSAccountPlan iAccountPlan, boolean iBasedOn) {
         copyFrom(iAccountPlan);
-        if(iBasedOn) iBaseName = iAccountPlan.iName;
+        if (iBasedOn) {
+            iBaseName = iAccountPlan.iName;
+        }
     }
-
 
     /**
      *
@@ -85,8 +85,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         iName = pName;
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -95,22 +94,22 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      * @param pAccountPlan
      */
     public void copyFrom(SSAccountPlan pAccountPlan) {
-        
-        iName            = pAccountPlan.iName;
-        iType            = pAccountPlan.iType;
-        iBaseName        = pAccountPlan.iBaseName;
+
+        iName = pAccountPlan.iName;
+        iType = pAccountPlan.iType;
+        iBaseName = pAccountPlan.iBaseName;
         iAssessementYear = pAccountPlan.iAssessementYear;
-        iAccounts        = new LinkedList<SSAccount>();
+        iAccounts = new LinkedList<SSAccount>();
 
         for (SSAccount iAccount : pAccountPlan.getAccounts()) {
-            iAccounts.add( new SSAccount(iAccount) );
+            iAccounts.add(new SSAccount(iAccount));
         }
 
-        iActiveAccounts  = null;
-        iAccountMap      = null;
+        iActiveAccounts = null;
+        iAccountMap = null;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     public Integer getId() {
         return iId;
     }
@@ -118,7 +117,8 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     public void setId(Integer iId) {
         this.iId = iId;
     }
-    ///////////////////////////////////////////////////////////////////////////
+
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -136,7 +136,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         this.iName = iName;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
     /**
      *
      * @return
@@ -157,19 +157,20 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      *
      * @param iAccountPlan
      */
-    public void setBasePlan(SSAccountPlan iAccountPlan){
+    public void setBasePlan(SSAccountPlan iAccountPlan) {
         iBaseName = iAccountPlan == null ? null : iAccountPlan.iName;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return The type of account plan
      */
     public SSAccountPlanType getType() {
-        if( iType == null) iType = SSAccountPlanType.get("BAS95");
+        if (iType == null) {
+            iType = SSAccountPlanType.get("BAS95");
+        }
         return iType;
     }
 
@@ -189,7 +190,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         this.iType = SSAccountPlanType.get(iType);
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -207,15 +208,16 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         this.iAssessementYear = iAssessementYear;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @return The acoounts
      */
     public List<SSAccount> getAccounts() {
-        if(iAccounts == null) iAccounts = new LinkedList<SSAccount>();
+        if (iAccounts == null) {
+            iAccounts = new LinkedList<SSAccount>();
+        }
 
         return iAccounts;
     }
@@ -234,12 +236,10 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         });
 
         iActiveAccounts = null;
-        iAccountMap     = null;
+        iAccountMap = null;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
-
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -248,7 +248,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
     public void addAccount(SSAccount pAccount) {
         iAccounts.add(pAccount);
 
-        if(pAccount.isActive() && iActiveAccounts != null){
+        if (pAccount.isActive() && iActiveAccounts != null) {
             iActiveAccounts.add(pAccount);
         }
         iAccountMap = null;
@@ -261,13 +261,12 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      * @return
      */
     public boolean removeAccount(SSAccount pAccount) {
-        if(pAccount.isActive() && iActiveAccounts != null){
+        if (pAccount.isActive() && iActiveAccounts != null) {
             iActiveAccounts.remove(pAccount);
         }
 
         return iAccounts.remove(pAccount);
     }
-
 
     /**
      *
@@ -279,33 +278,31 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         return getAccountMap().get(pNumber);
     }
 
-
-
     /**
      *
      */
     public void clear() {
-        iAccounts        = new LinkedList<SSAccount>();
-        iActiveAccounts  = null;
-        iAccountMap      = null;
+        iAccounts = new LinkedList<SSAccount>();
+        iActiveAccounts = null;
+        iAccountMap = null;
     }
-
-
 
     /**
      * Copies the sru codes from another account plan
      *
      * @param pAccountPlan
      */
-    public void importSRUCodesFrom(SSAccountPlan pAccountPlan){
+    public void importSRUCodesFrom(SSAccountPlan pAccountPlan) {
         Map<Integer, SSAccount> iMap = getAccountMap();
 
         iAssessementYear = pAccountPlan.iAssessementYear;
 
         for (SSAccount iFromAccount : pAccountPlan.getAccounts()) {
-            SSAccount iAccount = iMap.get( iFromAccount.getNumber() );
+            SSAccount iAccount = iMap.get(iFromAccount.getNumber());
 
-            if( iAccount != null) iAccount.setSRUCode(  iFromAccount.getSRUCode() );
+            if (iAccount != null) {
+                iAccount.setSRUCode(iFromAccount.getSRUCode());
+            }
         }
     }
 
@@ -314,39 +311,38 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
      *
      * @param pAccountPlan
      */
-    public void importVATCodesFrom(SSAccountPlan pAccountPlan){
+    public void importVATCodesFrom(SSAccountPlan pAccountPlan) {
         Map<Integer, SSAccount> iMap = getAccountMap();
 
         iAssessementYear = pAccountPlan.iAssessementYear;
 
         for (SSAccount iFromAccount : pAccountPlan.getAccounts()) {
-            SSAccount iAccount = iMap.get( iFromAccount.getNumber() );
+            SSAccount iAccount = iMap.get(iFromAccount.getNumber());
 
-            if( iAccount != null) iAccount.setVATCode(  iFromAccount.getVATCode() );
+            if (iAccount != null) {
+                iAccount.setVATCode(iFromAccount.getVATCode());
+            }
         }
     }
-
-
 
     /**
      * Copies the report codes from another account plan
      *
      * @param pAccountPlan
      */
-    public void importReportCodesFrom(SSAccountPlan pAccountPlan){
+    public void importReportCodesFrom(SSAccountPlan pAccountPlan) {
         Map<Integer, SSAccount> iMap = getAccountMap();
 
         iAssessementYear = pAccountPlan.iAssessementYear;
 
         for (SSAccount iFromAccount : pAccountPlan.getAccounts()) {
-            SSAccount iAccount = iMap.get( iFromAccount.getNumber() );
+            SSAccount iAccount = iMap.get(iFromAccount.getNumber());
 
-            if( iAccount != null) iAccount.setReportCode(  iFromAccount.getReportCode() );
+            if (iAccount != null) {
+                iAccount.setReportCode(iFromAccount.getReportCode());
+            }
         }
     }
-
-
-
 
     /**
      * Returns only actove accounts.
@@ -358,8 +354,8 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         if (iActiveAccounts == null) {
             iActiveAccounts = new ArrayList<SSAccount>(iAccounts.size());
 
-            for(SSAccount iCurrent: iAccounts){
-                if( iCurrent.isActive() ){
+            for (SSAccount iCurrent: iAccounts) {
+                if (iCurrent.isActive()) {
                     iActiveAccounts.add(iCurrent);
                 }
             }
@@ -377,15 +373,12 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         if (iAccountMap == null) {
             iAccountMap = new HashMap<Integer, SSAccount>();
 
-            for(SSAccount iCurrent: iAccounts){
-                iAccountMap.put( iCurrent.getNumber(), iCurrent );
+            for (SSAccount iCurrent: iAccounts) {
+                iAccountMap.put(iCurrent.getNumber(), iCurrent);
             }
         }
         return iAccountMap;
     }
-
-
-
 
     /**
      * @return
@@ -394,7 +387,6 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
         return iName;
     }
 
-    
     public String toString() {
         StringBuffer b = new StringBuffer();
 
@@ -406,6 +398,5 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
 
         return b.toString();
     }
-
 
 }

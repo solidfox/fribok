@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.periodicinvoice.util.SSPeriodicInvoiceTableModel;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-nov-15
@@ -21,9 +23,7 @@ public class SSPeriodicInvoiceSearchPanel extends JPanel {
 
     private JTextField iTextField;
 
-
     private SSPeriodicInvoiceTableModel iModel;
-
 
     public SSPeriodicInvoiceSearchPanel(SSPeriodicInvoiceTableModel iModel) {
         this.iModel = iModel;
@@ -31,7 +31,6 @@ public class SSPeriodicInvoiceSearchPanel extends JPanel {
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,23 +40,29 @@ public class SSPeriodicInvoiceSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSPeriodicInvoice> iPeriodicInvoices = SSDB.getInstance().getPeriodicInvoices();
         List<SSPeriodicInvoice> iFiltered = new LinkedList<SSPeriodicInvoice>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSPeriodicInvoice iPeriodicInvoice : iPeriodicInvoices) {
-            String iNumber      = iPeriodicInvoice.getNumber().toString();
+            String iNumber = iPeriodicInvoice.getNumber().toString();
             String iDescription = iPeriodicInvoice.getInvoices().get(0).getCustomerName();
             String iCustomerNumber = iPeriodicInvoice.getInvoices().get(0).getCustomerNr();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) || (iCustomerNumber != null && iCustomerNumber.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))
+                            || (iCustomerNumber != null
+                                    && iCustomerNumber.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iPeriodicInvoice);
             }
         }
@@ -67,7 +72,9 @@ public class SSPeriodicInvoiceSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.panel.SSPeriodicInvoiceSearchPanel");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.periodicinvoice.panel.SSPeriodicInvoiceSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);
         sb.append(", iTextField=").append(iTextField);

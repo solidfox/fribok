@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.calc.util;
 
+
 import java.io.Serializable;
 import java.util.HashMap;
+
 
 /**
  * User: Andreas Lago
@@ -21,15 +23,14 @@ public class SSAutoIncrement implements Serializable {
         iNumbers = new HashMap<String, Integer>();
     }
 
-
     /**
      *
      * @param iKey
      */
-    public void doAutoIncrement(String iKey){
+    public void doAutoIncrement(String iKey) {
         Integer iNumber = iNumbers.get(iKey);
 
-        if(iNumber == null){
+        if (iNumber == null) {
             iNumbers.put(iKey, 1);
         } else {
             iNumbers.put(iKey, iNumber + 1);
@@ -57,16 +58,13 @@ public class SSAutoIncrement implements Serializable {
         iNumbers.put(iKey, iNumber);
     }
 
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (String iName : iNumbers.keySet() ) {
+        for (String iName : iNumbers.keySet()) {
             sb.append(iName).append(' ').append(iNumbers.get(iName)).append('\n');
         }
         return sb.toString();
     }
-
 
 }

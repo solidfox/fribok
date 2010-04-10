@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.product.util.SSProductTableModel;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-nov-15
@@ -21,9 +23,7 @@ public class SSProductSearchPanel extends JPanel {
 
     private JTextField iTextField;
 
-
     private SSProductTableModel iModel;
-
 
     public SSProductSearchPanel(SSProductTableModel iModel) {
         this.iModel = iModel;
@@ -31,7 +31,6 @@ public class SSProductSearchPanel extends JPanel {
         setLayout(new BorderLayout());
         setVisible(true);
         add(iPanel, BorderLayout.CENTER);
-
 
         iTextField.addKeyListener(new KeyAdapter() {
             @Override
@@ -41,22 +40,26 @@ public class SSProductSearchPanel extends JPanel {
         });
     }
 
-
     public void ApplyFilter() {
         List<SSProduct> iProducts = SSDB.getInstance().getProducts();
         List<SSProduct> iFiltered = new LinkedList<SSProduct>();
 
         String iText = iTextField.getText();
 
-        if(iText == null) iText = "";
+        if (iText == null) {
+            iText = "";
+        }
 
         iText = iText.toLowerCase();
 
         for (SSProduct iProduct : iProducts) {
-            String iNumber      = iProduct.getNumber();
+            String iNumber = iProduct.getNumber();
             String iDescription = iProduct.getDescription();
 
-            if( (iText.length() == 0) || (iNumber != null && iNumber.toLowerCase().startsWith(iText)) || (iDescription != null && iDescription.toLowerCase().startsWith(iText) ) ){
+            if ((iText.length() == 0)
+                    || (iNumber != null && iNumber.toLowerCase().startsWith(iText))
+                    || (iDescription != null
+                            && iDescription.toLowerCase().startsWith(iText))) {
                 iFiltered.add(iProduct);
             }
         }
@@ -66,6 +69,7 @@ public class SSProductSearchPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.product.panel.SSProductSearchPanel");
         sb.append("{iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

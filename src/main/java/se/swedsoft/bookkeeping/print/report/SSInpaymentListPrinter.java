@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSInpayment;
@@ -15,6 +16,7 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -32,23 +34,22 @@ public class SSInpaymentListPrinter extends SSPrinter {
      *
      */
     public SSInpaymentListPrinter() {
-        this(SSDB.getInstance().getInpayments() );
+        this(SSDB.getInstance().getInpayments());
     }
 
     /**
      *
      * @param iInpayments
      */
-    public SSInpaymentListPrinter( List<SSInpayment> iInpayments){
+    public SSInpaymentListPrinter(List<SSInpayment> iInpayments) {
         // Get all orders
         this.iInpayments = iInpayments;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("inpaymentlist.jrxml");
-        setDetail      ("inpaymentlist.jrxml");
-        setSummary     ("inpaymentlist.jrxml");
+        setDetail("inpaymentlist.jrxml");
+        setSummary("inpaymentlist.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -69,8 +70,8 @@ public class SSInpaymentListPrinter extends SSPrinter {
         iPrinter = new SSInpaymentRowPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -89,25 +90,29 @@ public class SSInpaymentListPrinter extends SSPrinter {
                 SSInpayment iInpayment = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iInpayment.getNumber();
-                        break;
-                    case 1:
-                        value = iFormat.format(iInpayment.getDate());
-                        break;
-                    case 2:
-                        value = iInpayment.getText();
-                        break;
-                    case 3:
-                        value = SSInpaymentMath.getSum(iInpayment);
-                        break;
-                    case 4:
-                        iPrinter.setInpayment(iInpayment);
+                case 0:
+                    value = iInpayment.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iFormat.format(iInpayment.getDate());
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 2:
+                    value = iInpayment.getText();
+                    break;
+
+                case 3:
+                    value = SSInpaymentMath.getSum(iInpayment);
+                    break;
+
+                case 4:
+                    iPrinter.setInpayment(iInpayment);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -120,8 +125,6 @@ public class SSInpaymentListPrinter extends SSPrinter {
         iModel.addColumn("inpayment.sum");
         iModel.addColumn("inpayment.rows");
 
-
-
         Collections.sort(iInpayments, new Comparator<SSInpayment>() {
             public int compare(SSInpayment o1, SSInpayment o2) {
                 return o1.getNumber() - o2.getNumber();
@@ -130,10 +133,8 @@ public class SSInpaymentListPrinter extends SSPrinter {
 
         iModel.setObjects(iInpayments);
 
-
         return iModel;
     }
-
 
     private class SSInpaymentRowPrinter extends SSPrinter {
 
@@ -142,15 +143,13 @@ public class SSInpaymentListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSInpaymentRowPrinter( ){
-            setMargins(0,0,0,0);
+        public SSInpaymentRowPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("inpaymentlist.row.jrxml");
+            setDetail("inpaymentlist.row.jrxml");
             setSummary("inpaymentlist.row.jrxml");
 
-
-
-            iModel = new SSDefaultTableModel<SSInpaymentRow>(  ) {
+            iModel = new SSDefaultTableModel<SSInpaymentRow>() {
 
                 @Override
                 public Class getType() {
@@ -163,24 +162,31 @@ public class SSInpaymentListPrinter extends SSPrinter {
                     SSInpaymentRow iRow = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iRow.getInvoiceNr();
-                            break;
-                        case 1:
-                            value = iRow.getInvoiceCurrencyRate();
-                            break;
-                        case 2:
-                            value = iRow.getInvoiceCurrency() == null ? null :  iRow.getInvoiceCurrency().getName();
-                            break;
-                        case 3:
-                            value = iRow.getValue();
-                            break;
-                        case 4:
-                            value = iRow.getCurrencyRate();
-                            break;
-                        case 5:
-                            value = iRow.getLocalValue();
-                            break;
+                    case 0:
+                        value = iRow.getInvoiceNr();
+                        break;
+
+                    case 1:
+                        value = iRow.getInvoiceCurrencyRate();
+                        break;
+
+                    case 2:
+                        value = iRow.getInvoiceCurrency() == null
+                                ? null
+                                : iRow.getInvoiceCurrency().getName();
+                        break;
+
+                    case 3:
+                        value = iRow.getValue();
+                        break;
+
+                    case 4:
+                        value = iRow.getCurrencyRate();
+                        break;
+
+                    case 5:
+                        value = iRow.getLocalValue();
+                        break;
                     }
 
                     return value;
@@ -194,7 +200,6 @@ public class SSInpaymentListPrinter extends SSPrinter {
             iModel.addColumn("inpaymentrow.currencyrate");
             iModel.addColumn("inpaymentrow.payed");
         }
-
 
         /**
          * Gets the data model for this report
@@ -221,23 +226,25 @@ public class SSInpaymentListPrinter extends SSPrinter {
          * @param iInpayment
          */
         public void setInpayment(SSInpayment iInpayment) {
-            iModel.setObjects( iInpayment.getRows() );
+            iModel.setObjects(iInpayment.getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSInpaymentListPrinter.SSInpaymentRowPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSInpaymentListPrinter.SSInpaymentRowPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSInpaymentListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iInpayments=").append(iInpayments);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
@@ -11,15 +12,14 @@ import se.swedsoft.bookkeeping.data.SSVoucherRow;
 import java.math.BigDecimal;
 import java.util.*;
 
+
 /**
  * Date: 2006-feb-15
  * Time: 17:05:08
  */
 public class SSBalanceCalculator {
 
-
     private SSNewAccountingYear iYearData;
-
 
     private Map<SSAccount, BigDecimal> iInBalance;
 
@@ -31,16 +31,14 @@ public class SSBalanceCalculator {
 
     private Map<SSAccount, BigDecimal> iOutSaldo;
 
+    public SSBalanceCalculator(SSNewAccountingYear pYearData) {
+        iYearData = pYearData;
 
-
-    public SSBalanceCalculator(SSNewAccountingYear pYearData){
-        iYearData  = pYearData;
-
-        iInBalance    = new HashMap<SSAccount, BigDecimal>();
-        iInSaldo      = new HashMap<SSAccount, BigDecimal>();
-        iChange       = new HashMap<SSAccount, BigDecimal>();
+        iInBalance = new HashMap<SSAccount, BigDecimal>();
+        iInSaldo = new HashMap<SSAccount, BigDecimal>();
+        iChange = new HashMap<SSAccount, BigDecimal>();
         iChangePeriod = new HashMap<SSAccount, BigDecimal>();
-        iOutSaldo     = new HashMap<SSAccount, BigDecimal>();
+        iOutSaldo = new HashMap<SSAccount, BigDecimal>();
     }
 
     /**
@@ -58,61 +56,63 @@ public class SSBalanceCalculator {
      * @throws SSCalculatorException
      */
     public void calculate(Date pFrom, Date pTo) throws SSCalculatorException {
-        List<SSVoucher> iVouchers  = iYearData.getVouchers();
+        List<SSVoucher> iVouchers = iYearData.getVouchers();
 
         iInBalance = iYearData.getInBalance();
 
-
         // Add the inbalance to the insaldo
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry2 : iInBalance.entrySet()) {
-            iInSaldo.put(ssAccountBigDecimalEntry2.getKey(), ssAccountBigDecimalEntry2.getValue());
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry2 : iInBalance.entrySet()) {
+            iInSaldo.put(ssAccountBigDecimalEntry2.getKey(),
+                    ssAccountBigDecimalEntry2.getValue());
         }
 
         // Loop through all vouchers
-        for(SSVoucher iVoucher: iVouchers ){
+        for (SSVoucher iVoucher: iVouchers) {
 
             // If the date of the voucer is before the start date, add to InSaldo
-            boolean inSaldo  = pFrom.compareTo(iVoucher.getDate()) > 0;
+            boolean inSaldo = pFrom.compareTo(iVoucher.getDate()) > 0;
 
             // If the date of the oucher is in between the start and end date, add to PeriodChange
-            boolean inPeriod =  SSVoucherMath.inPeriod(iVoucher, pFrom, pTo);
+            boolean inPeriod = SSVoucherMath.inPeriod(iVoucher, pFrom, pTo);
 
             // Loop through all the voucher rows
-            for(SSVoucherRow iRow: iVoucher.getRows()){
+            for (SSVoucherRow iRow: iVoucher.getRows()) {
                 SSAccount iRowAccount = iRow.getAccount();
 
                 // Skip the row is crossed or invalid
-                if( !iRow.isValid() || iRow.isCrossed()  ) continue;
+                if (!iRow.isValid() || iRow.isCrossed()) {
+                    continue;
+                }
 
                 BigDecimal iRowSum = SSVoucherMath.getDebetMinusCredit(iRow);
 
-
                 // Add the row sum to the periodChange, if in range
-                if (inPeriod){
+                if (inPeriod) {
                     // Add the row sum to the total sum
                     addValueToMap(iChange, iRowAccount, iRowSum);
 
                     addValueToMap(iChangePeriod, iRowAccount, iRowSum);
                 }
                 // Add the row sum to the inSaldo, if in range
-                if (inSaldo ){
-                    addValueToMap(iInSaldo     , iRowAccount, iRowSum);
+                if (inSaldo) {
+                    addValueToMap(iInSaldo, iRowAccount, iRowSum);
                 }
             }
 
         }
         // Add the period change to the sum
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry1 : iChangePeriod.entrySet()) {
-            addValueToMap(iOutSaldo, ssAccountBigDecimalEntry1.getKey(), ssAccountBigDecimalEntry1.getValue());
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry1 : iChangePeriod.entrySet()) {
+            addValueToMap(iOutSaldo, ssAccountBigDecimalEntry1.getKey(),
+                    ssAccountBigDecimalEntry1.getValue());
         }
 
         // Add the insaldo to the sum
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInSaldo.entrySet()) {
-            addValueToMap(iOutSaldo, ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInSaldo.entrySet()) {
+            addValueToMap(iOutSaldo, ssAccountBigDecimalEntry.getKey(),
+                    ssAccountBigDecimalEntry.getValue());
         }
 
     }
-
 
     /**
      *
@@ -120,7 +120,8 @@ public class SSBalanceCalculator {
      */
     public List<SSAccount> getAccounts() {
         List<SSAccount> iList = new LinkedList<SSAccount>();
-        for(SSAccount iAccount : iOutSaldo.keySet()){
+
+        for (SSAccount iAccount : iOutSaldo.keySet()) {
             iList.add(iAccount);
         }
 
@@ -174,31 +175,29 @@ public class SSBalanceCalculator {
         return iOutSaldo;
     }
 
-
     /**
      *
      * @param iMap
      * @param iAccount
      * @param iValue
      */
-    private static void addValueToMap(Map<SSAccount, BigDecimal> iMap, SSAccount iAccount, BigDecimal iValue){
+    private static void addValueToMap(Map<SSAccount, BigDecimal> iMap, SSAccount iAccount, BigDecimal iValue) {
         // Add the row sum to the total sum
         BigDecimal s = iMap.get(iAccount);
-        if(s == null) {
-            iMap.put(iAccount, iValue );
-        }   else {
-            iMap.put(iAccount, s.add(iValue) );
+
+        if (s == null) {
+            iMap.put(iAccount, iValue);
+        } else {
+            iMap.put(iAccount, s.add(iValue));
         }
     }
-
-
 
     /**
      *
      * @param pYearData
      * @return The inbalance for the year
      */
-    public static Map<SSAccount, BigDecimal> getInBalance(SSNewAccountingYear pYearData){
+    public static Map<SSAccount, BigDecimal> getInBalance(SSNewAccountingYear pYearData) {
         return pYearData.getInBalance();
     }
 
@@ -207,31 +206,35 @@ public class SSBalanceCalculator {
      * @param pYearData
      * @return The outbalance for the year
      */
-    public static Map<SSAccount, BigDecimal> getOutBalance(SSNewAccountingYear pYearData){
-        List<SSVoucher> iVouchers  = pYearData.getVouchers();
+    public static Map<SSAccount, BigDecimal> getOutBalance(SSNewAccountingYear pYearData) {
+        List<SSVoucher> iVouchers = pYearData.getVouchers();
 
         Map<SSAccount, BigDecimal> iOutBalance = new HashMap<SSAccount, BigDecimal>();
-        Map<SSAccount, BigDecimal> iInBalance  = pYearData.getInBalance();
+        Map<SSAccount, BigDecimal> iInBalance = pYearData.getInBalance();
 
         // Add the inbalance to the out balance
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()) {
-            if( SSAccountMath.isBalanceAccount(ssAccountBigDecimalEntry.getKey(), pYearData) ){
-                iOutBalance.put(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()) {
+            if (SSAccountMath.isBalanceAccount(ssAccountBigDecimalEntry.getKey(),
+                    pYearData)) {
+                iOutBalance.put(ssAccountBigDecimalEntry.getKey(),
+                        ssAccountBigDecimalEntry.getValue());
             }
         }
 
         // Loop through all vouchers
-        for(SSVoucher iVoucher: iVouchers ){
+        for (SSVoucher iVoucher: iVouchers) {
 
             // Loop through all the voucher rows
-            for(SSVoucherRow iRow: iVoucher.getRows()){
+            for (SSVoucherRow iRow: iVoucher.getRows()) {
                 SSAccount iRowAccount = iRow.getAccount();
 
                 // Skip the row is crossed or invalid
-                if( !iRow.isValid() || iRow.isCrossed()  ) continue;
+                if (!iRow.isValid() || iRow.isCrossed()) {
+                    continue;
+                }
 
                 // Only calculate balance accoubts
-                if( SSAccountMath.isBalanceAccount(iRowAccount, pYearData) ){
+                if (SSAccountMath.isBalanceAccount(iRowAccount, pYearData)) {
                     BigDecimal iRowSum = SSVoucherMath.getDebetMinusCredit(iRow);
 
                     addValueToMap(iOutBalance, iRowAccount, iRowSum);
@@ -245,6 +248,7 @@ public class SSBalanceCalculator {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.calc.SSBalanceCalculator");
         sb.append("{iChange=").append(iChange);
         sb.append(", iChangePeriod=").append(iChangePeriod);

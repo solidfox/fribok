@@ -19,19 +19,20 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * This should be the deafult table for most applications in this application.
  */
 public class SSTable extends JTable {
+
     /**
      *
      */
-    public interface SSCustomPainter{
+    public interface SSCustomPainter {
         void update(JTable iTable, Component c, int row, int col, boolean selected, boolean editable);
     }
 
     private List<ActionListener> iDblClickListeners;
-
 
     private List<JComponent> iSelectionDependentComponents;
 
@@ -41,30 +42,31 @@ public class SSTable extends JTable {
 
     private boolean iColorReadOnly;
 
-
     /**
      * Default constructor.
      */
     public SSTable() {
-        iDblClickListeners            = new LinkedList<ActionListener>();
+        iDblClickListeners = new LinkedList<ActionListener>();
         iSelectionDependentComponents = new LinkedList<JComponent>();
 
         // Show the lines.
         setShowHorizontalLines(true);
-        setShowVerticalLines  (true);
+        setShowVerticalLines(true);
         setRowHeight(18);
-        setGridColor( new Color(192, 192, 192));
+        setGridColor(new Color(192, 192, 192));
 
         // Disallow the reordering of the table headers.
         getTableHeader().setReorderingAllowed(false);
 
         iColumnSortingEnabled = true;
-        iColorReadOnly        = false;
+        iColorReadOnly = false;
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2)  notifyDblClickListeners();
+                if (e.getClickCount() == 2) {
+                    notifyDblClickListeners();
+                }
             }
         });
         addSelectionListener(new ListSelectionListener() {
@@ -73,7 +75,6 @@ public class SSTable extends JTable {
             }
 
         });
-
 
     }
 
@@ -95,8 +96,9 @@ public class SSTable extends JTable {
 
     @Override
     public void setModel(TableModel dataModel) {
-        if(iColumnSortingEnabled){
+        if (iColumnSortingEnabled) {
             SSTableSorter sorter = new SSTableSorter(dataModel);
+
             super.setModel(sorter);
             sorter.setTableHeader(getTableHeader());
         } else {
@@ -106,12 +108,12 @@ public class SSTable extends JTable {
 
     @Override
     public int getSelectedRow() {
-        if(iColumnSortingEnabled){
+        if (iColumnSortingEnabled) {
             int selectedRow = super.getSelectedRow();
 
-            return selectedRow >= 0 ?
-                    ((SSTableSorter)getModel()).modelIndex(selectedRow) :
-                    selectedRow;
+            return selectedRow >= 0
+                    ? ((SSTableSorter) getModel()).modelIndex(selectedRow)
+                    : selectedRow;
         } else {
             return super.getSelectedRow();
         }
@@ -119,10 +121,10 @@ public class SSTable extends JTable {
 
     @Override
     public int[] getSelectedRows() {
-        if(iColumnSortingEnabled){
+        if (iColumnSortingEnabled) {
             int[] viewSelected = super.getSelectedRows();
             int[] modelSelected = new int[viewSelected.length];
-            SSTableSorter sorter = (SSTableSorter)getModel();
+            SSTableSorter sorter = (SSTableSorter) getModel();
 
             for (int i = 0; i < viewSelected.length; i++) {
                 modelSelected[i] = sorter.modelIndex(viewSelected[i]);
@@ -157,10 +159,10 @@ public class SSTable extends JTable {
         return false;
     }
 
-    final Color GRID_COLOR             = new Color(80, 80, 80);
-    //final Color CELL_READONLY          = new Color(241, 240, 227);
-    final Color CELL_READONLY          = new Color(245, 245, 245);
-    final Color CELL_EDITABLE          = new Color(255, 255, 255);
+    final Color GRID_COLOR = new Color(80, 80, 80);
+    // final Color CELL_READONLY          = new Color(241, 240, 227);
+    final Color CELL_READONLY = new Color(245, 245, 245);
+    final Color CELL_EDITABLE = new Color(255, 255, 255);
     final Color CELL_READONLY_SELECTED = new Color(249, 224, 137);
     final Color CELL_EDITABLE_SELECTED = new Color(251, 232, 175);
 
@@ -168,32 +170,33 @@ public class SSTable extends JTable {
     public Component prepareRenderer(TableCellRenderer renderer, int row, int col) {
         Component c = super.prepareRenderer(renderer, row, col);
 
-        boolean isCellEditable    = isCellEditable(row, col);
-        boolean isCellSelected    = isCellSelected(row, col);
+        boolean isCellEditable = isCellEditable(row, col);
+        boolean isCellSelected = isCellSelected(row, col);
 
+        if (iColorReadOnly) {
+            // setGridColor(GRID_COLOR);
 
-        if(iColorReadOnly){
-         //   setGridColor(GRID_COLOR);
+            if (isCellEditable) {
 
-            if(isCellEditable){
-
-                if(isCellSelected){
-                    c.setBackground( CELL_EDITABLE_SELECTED );
+                if (isCellSelected) {
+                    c.setBackground(CELL_EDITABLE_SELECTED);
                 } else {
-                    c.setBackground( CELL_EDITABLE);
+                    c.setBackground(CELL_EDITABLE);
                 }
 
             } else {
-                if(isCellSelected){
-                    c.setBackground( CELL_READONLY_SELECTED );
+                if (isCellSelected) {
+                    c.setBackground(CELL_READONLY_SELECTED);
                 } else {
-                    c.setBackground( CELL_READONLY);
+                    c.setBackground(CELL_READONLY);
                 }
             }
 
         }
 
-        if(iCustomPainter != null) iCustomPainter.update(this, c, row, col, isCellSelected, isCellEditable);
+        if (iCustomPainter != null) {
+            iCustomPainter.update(this, c, row, col, isCellSelected, isCellEditable);
+        }
 
         return c;
     }
@@ -201,15 +204,15 @@ public class SSTable extends JTable {
     /**
      * @param pListener
      */
-    public void addDblClickListener(ActionListener pListener){
+    public void addDblClickListener(ActionListener pListener) {
         iDblClickListeners.add(pListener);
     }
 
     /**
      *
      */
-    private void notifyDblClickListeners(){
-        for(ActionListener iListener : iDblClickListeners){
+    private void notifyDblClickListeners() {
+        for (ActionListener iListener : iDblClickListeners) {
             iListener.actionPerformed(null);
         }
     }
@@ -218,7 +221,7 @@ public class SSTable extends JTable {
      *
      * @param pListener
      */
-    public void addSelectionListener(ListSelectionListener pListener){
+    public void addSelectionListener(ListSelectionListener pListener) {
         getSelectionModel().addListSelectionListener(pListener);
     }
 
@@ -237,10 +240,10 @@ public class SSTable extends JTable {
     public void setColumnSortingEnabled(boolean iColumnSortingEnabled) {
         this.iColumnSortingEnabled = iColumnSortingEnabled;
 
-        if( getModel() instanceof SSTableSorter){
-            SSTableSorter iModel = (SSTableSorter)getModel();
+        if (getModel() instanceof SSTableSorter) {
+            SSTableSorter iModel = (SSTableSorter) getModel();
 
-            super.setModel( iModel.getTableModel() );
+            super.setModel(iModel.getTableModel());
         }
     }
 
@@ -260,7 +263,6 @@ public class SSTable extends JTable {
         this.iColorReadOnly = iColorReadOnly;
     }
 
-
     /**
      *
      * @return
@@ -277,7 +279,6 @@ public class SSTable extends JTable {
         this.iCustomPainter = iCustomPainter;
     }
 
-
     /**
      *
      * @param iComponent
@@ -293,6 +294,7 @@ public class SSTable extends JTable {
      */
     private void updateSelectionDependentComponents() {
         boolean iEnabled = getSelectedRowCount() > 0;
+
         for (JComponent iComponent : iSelectionDependentComponents) {
             iComponent.setEnabled(iEnabled);
         }
@@ -304,29 +306,33 @@ public class SSTable extends JTable {
      */
     public void dispose() {
         MouseListener[] iMouseListeners = getMouseListeners();
+
         for (MouseListener iMouseListener : iMouseListeners) {
             removeMouseListener(iMouseListener);
         }
-        DefaultListSelectionModel iSelectionModel=(DefaultListSelectionModel) getSelectionModel();
+        DefaultListSelectionModel iSelectionModel = (DefaultListSelectionModel) getSelectionModel();
         ListSelectionListener[] iSelectionListeners = iSelectionModel.getListSelectionListeners();
+
         for (ListSelectionListener iSelectionListener : iSelectionListeners) {
             getSelectionModel().removeListSelectionListener(iSelectionListener);
         }
-        if(iDblClickListeners!=null)
+        if (iDblClickListeners != null) {
             iDblClickListeners.removeAll(iDblClickListeners);
+        }
 
-        iDblClickListeners=null;
-        if(iSelectionDependentComponents!=null)
+        iDblClickListeners = null;
+        if (iSelectionDependentComponents != null) {
             iSelectionDependentComponents.removeAll(iSelectionDependentComponents);
+        }
 
-        iSelectionDependentComponents=null;
-        iCustomPainter=null;
+        iSelectionDependentComponents = null;
+        iCustomPainter = null;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTable");
         sb.append("{CELL_EDITABLE=").append(CELL_EDITABLE);
         sb.append(", CELL_EDITABLE_SELECTED=").append(CELL_EDITABLE_SELECTED);

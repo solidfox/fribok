@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.util.table.actions;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTable;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
 
 /**
  * User: Andreas Lago
@@ -25,7 +27,8 @@ public abstract class SSTraversalAction {
 
         Action iTraversal = new TraversalAction();
 
-        iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER , 0), "ENTER_TRAVERSAL");
+        iTable.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                "ENTER_TRAVERSAL");
         iTable.getActionMap().put("ENTER_TRAVERSAL", iTraversal);
     }
 
@@ -39,7 +42,8 @@ public abstract class SSTraversalAction {
     /**
      *
      */
-    private class  TraversalAction extends AbstractAction {
+    private class TraversalAction extends AbstractAction {
+
         /**
          *
          * @param e
@@ -48,24 +52,26 @@ public abstract class SSTraversalAction {
             int col = iTable.getSelectedColumn();
             int row = iTable.getSelectedRow();
 
-            if ( iTable.isEditing() ) {
+            if (iTable.isEditing()) {
                 col = iTable.getEditingColumn();
                 row = iTable.getEditingRow();
 
-                if( !iTable.getCellEditor(row, col).stopCellEditing() ){
+                if (!iTable.getCellEditor(row, col).stopCellEditing()) {
                     return;
                 }
             }
-            Point iTraversalPoint = doTraversal( new Point(col, row) );
+            Point iTraversalPoint = doTraversal(new Point(col, row));
 
-            if(iTraversalPoint != null) iTable.changeSelection(iTraversalPoint.y, iTraversalPoint.x, false, false);
+            if (iTraversalPoint != null) {
+                iTable.changeSelection(iTraversalPoint.y, iTraversalPoint.x, false, false);
+            }
         }
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.actions.SSTraversalAction");
         sb.append("{iTable=").append(iTable);
         sb.append('}');

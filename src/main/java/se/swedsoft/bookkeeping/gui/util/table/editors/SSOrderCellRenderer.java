@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import se.swedsoft.bookkeeping.data.SSOrder;
 
 import javax.swing.table.DefaultTableCellRenderer;
+
 
 /**
  * User: Andreas Lago
@@ -11,18 +13,16 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class SSOrderCellRenderer extends DefaultTableCellRenderer {
 
-
     @Override
     public void setValue(Object value) {
-        if(value instanceof SSOrder){
+        if (value instanceof SSOrder) {
             SSOrder iOrder = (SSOrder) value;
 
             setText(String.valueOf(iOrder.getNumber()));
-        }  else {
-            setText( "" );
+        } else {
+            setText("");
         }
     }
-
 
 }
 

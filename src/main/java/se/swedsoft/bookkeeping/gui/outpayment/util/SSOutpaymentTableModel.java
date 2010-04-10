@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.outpayment.util;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOutpaymentMath;
 import se.swedsoft.bookkeeping.data.SSOutpayment;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -10,6 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -17,14 +19,12 @@ import java.util.Date;
  */
 public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
 
-
     /**
      * Default constructor.
      */
     public SSOutpaymentTableModel() {
         super(SSDB.getInstance().getOutpayments());
     }
-
 
     /**
      * Returns the type of data in this model.
@@ -36,11 +36,11 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
         return SSOutpayment.class;
     }
 
-
     /**
      * Number column
      */
-    public static SSTableColumn<SSOutpayment> COLUMN_NUMBER = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.1")) {
+    public static SSTableColumn<SSOutpayment> COLUMN_NUMBER = new SSTableColumn<SSOutpayment>(
+            SSBundle.getBundle().getString("outpaymenttable.column.1")) {
         @Override
         public Object getValue(SSOutpayment iObject) {
             return iObject.getNumber();
@@ -48,7 +48,7 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
 
         @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
-            iObject.setNumber((Integer)iValue);
+            iObject.setNumber((Integer) iValue);
 
         }
 
@@ -66,7 +66,8 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
     /**
      * Date column
      */
-    public static SSTableColumn<SSOutpayment> COLUMN_DATE = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.2")) {
+    public static SSTableColumn<SSOutpayment> COLUMN_DATE = new SSTableColumn<SSOutpayment>(
+            SSBundle.getBundle().getString("outpaymenttable.column.2")) {
         @Override
         public Object getValue(SSOutpayment iObject) {
             return iObject.getDate();
@@ -74,7 +75,7 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
 
         @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
-            iObject.setDate((Date)iValue);
+            iObject.setDate((Date) iValue);
 
         }
 
@@ -92,7 +93,8 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
     /**
      * Date column
      */
-    public static SSTableColumn<SSOutpayment> COLUMN_TEXT = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.3")) {
+    public static SSTableColumn<SSOutpayment> COLUMN_TEXT = new SSTableColumn<SSOutpayment>(
+            SSBundle.getBundle().getString("outpaymenttable.column.3")) {
         @Override
         public Object getValue(SSOutpayment iObject) {
             return iObject.getText();
@@ -100,7 +102,7 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
 
         @Override
         public void setValue(SSOutpayment iObject, Object iValue) {
-            iObject.setText((String)iValue);
+            iObject.setText((String) iValue);
 
         }
 
@@ -118,15 +120,15 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
     /**
      * Sum column
      */
-    public static SSTableColumn<SSOutpayment> COLUMN_SUM = new SSTableColumn<SSOutpayment>(SSBundle.getBundle().getString("outpaymenttable.column.4")) {
+    public static SSTableColumn<SSOutpayment> COLUMN_SUM = new SSTableColumn<SSOutpayment>(
+            SSBundle.getBundle().getString("outpaymenttable.column.4")) {
         @Override
         public Object getValue(SSOutpayment iObject) {
             return SSOutpaymentMath.getSum(iObject);
         }
 
         @Override
-        public void setValue(SSOutpayment iObject, Object iValue) {
-        }
+        public void setValue(SSOutpayment iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -138,6 +140,5 @@ public class SSOutpaymentTableModel extends SSTableModel<SSOutpayment> {
             return 120;
         }
     };
-
 
 }

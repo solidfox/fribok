@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product.util;
 
+
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSStock;
 import se.swedsoft.bookkeeping.data.common.SSUnit;
@@ -16,13 +17,13 @@ import javax.swing.table.TableCellRenderer;
 import java.math.BigDecimal;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:34:35
  */
 public class SSProductTableModel extends SSTableModel<SSProduct> {
-
 
     /**
      * Default constructor.
@@ -49,7 +50,6 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         return SSProduct.class;
     }
 
-
     @Override
     public void setupTable(SSTable iTable) {
         iTable.setModel(this);
@@ -57,9 +57,10 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         iTable.tableChanged(null);
 
         int iIndex = 0;
+
         for (SSTableColumn<SSProduct> iColumn : getColumns()) {
-            int iWidth                  = iColumn.getDefaultWidth();
-            TableCellEditor   iEditor   = iColumn.getCellEditor();
+            int iWidth = iColumn.getDefaultWidth();
+            TableCellEditor   iEditor = iColumn.getCellEditor();
             TableCellRenderer iRenderer = iColumn.getCellRenderer();
 
             iTable.getColumnModel().getColumn(iIndex).setPreferredWidth(iWidth);
@@ -75,27 +76,24 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
      *
      * @return
      */
-    public static SSProductTableModel getDropDownModel(){
+    public static SSProductTableModel getDropDownModel() {
         return getDropDownModel(SSDB.getInstance().getProducts());
     }
-
 
     /**
      *
      * @param iProducts
      * @return
      */
-    public static SSProductTableModel getDropDownModel(List<SSProduct> iProducts){
+    public static SSProductTableModel getDropDownModel(List<SSProduct> iProducts) {
         SSProductTableModel iModel = new SSProductTableModel(iProducts);
 
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
 
     }
-
-
 
     /**
      *  Utskriven
@@ -103,12 +101,13 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
     public static SSTableColumn<SSProduct> COLUMN_PARCEL = new SSTableColumn<SSProduct>("") {
         @Override
         public Object getValue(SSProduct iProduct) {
-            return iProduct.isParcel() ? SSIcon.getIcon("ICON_PARCEL16", SSIcon.IconState.NORMAL ) : null;
+            return iProduct.isParcel()
+                    ? SSIcon.getIcon("ICON_PARCEL16", SSIcon.IconState.NORMAL)
+                    : null;
         }
 
         @Override
-        public void setValue(SSProduct iProduct, Object iValue) {
-        }
+        public void setValue(SSProduct iProduct, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -124,7 +123,8 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
     /**
      *  Produkt nr
      */
-    public static SSTableColumn<SSProduct> COLUMN_NUMBER = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.1")) {
+    public static SSTableColumn<SSProduct> COLUMN_NUMBER = new SSTableColumn<SSProduct>(
+            SSBundle.getBundle().getString("producttable.column.1")) {
         @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getNumber();
@@ -132,7 +132,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
         @Override
         public void setValue(SSProduct iProduct, Object iValue) {
-            iProduct.setNumber((String)iValue);
+            iProduct.setNumber((String) iValue);
 
         }
 
@@ -147,11 +147,11 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         }
     };
 
-
     /**
      *  Produkt nr
      */
-    public static SSTableColumn<SSProduct> COLUMN_DESCRIPTION = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.2")) {
+    public static SSTableColumn<SSProduct> COLUMN_DESCRIPTION = new SSTableColumn<SSProduct>(
+            SSBundle.getBundle().getString("producttable.column.2")) {
         @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getDescription();
@@ -159,7 +159,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
         @Override
         public void setValue(SSProduct iProduct, Object iValue) {
-            iProduct.setDescription((String)iValue);
+            iProduct.setDescription((String) iValue);
 
         }
 
@@ -174,12 +174,11 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         }
     };
 
-
-
     /**
      *  Enhetspris
      */
-    public static SSTableColumn<SSProduct> COLUMN_PRICE = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.3")) {
+    public static SSTableColumn<SSProduct> COLUMN_PRICE = new SSTableColumn<SSProduct>(
+            SSBundle.getBundle().getString("producttable.column.3")) {
         @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getSellingPrice();
@@ -187,7 +186,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
         @Override
         public void setValue(SSProduct iProduct, Object iValue) {
-            iProduct.setSellingPrice((BigDecimal)iValue);
+            iProduct.setSellingPrice((BigDecimal) iValue);
 
         }
 
@@ -202,11 +201,11 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         }
     };
 
-
     /**
      *  Enhet
      */
-    public static SSTableColumn<SSProduct> COLUMN_UNIT = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.4")) {
+    public static SSTableColumn<SSProduct> COLUMN_UNIT = new SSTableColumn<SSProduct>(
+            SSBundle.getBundle().getString("producttable.column.4")) {
         @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getUnit();
@@ -214,7 +213,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
         @Override
         public void setValue(SSProduct iProduct, Object iValue) {
-            iProduct.setUnit((SSUnit)iValue);
+            iProduct.setUnit((SSUnit) iValue);
 
         }
 
@@ -229,11 +228,11 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         }
     };
 
-
     /**
      *  Enhet
      */
-    public static SSTableColumn<SSProduct> COLUMN_WAREHOUSE_LOCATION = new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.5")) {
+    public static SSTableColumn<SSProduct> COLUMN_WAREHOUSE_LOCATION = new SSTableColumn<SSProduct>(
+            SSBundle.getBundle().getString("producttable.column.5")) {
         @Override
         public Object getValue(SSProduct iProduct) {
             return iProduct.getWarehouseLocation();
@@ -241,7 +240,7 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
 
         @Override
         public void setValue(SSProduct iProduct, Object iValue) {
-            iProduct.setWarehouseLocation((String)iValue);
+            iProduct.setWarehouseLocation((String) iValue);
 
         }
 
@@ -256,25 +255,26 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
         }
     };
 
-
     /**
      *
      * @param iStock
      * @return
      */
     public static SSTableColumn<SSProduct> getStockQuantityColumn(final SSStock iStock) {
-        return new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.6")) {
+        return new SSTableColumn<SSProduct>(
+                SSBundle.getBundle().getString("producttable.column.6")) {
             @Override
             public Object getValue(SSProduct iProduct) {
 
-                if(iProduct.isParcel()) return null;
+                if (iProduct.isParcel()) {
+                    return null;
+                }
 
                 return iStock.getQuantity(iProduct);
             }
 
             @Override
-            public void setValue(SSProduct iObject, Object iValue) {
-            }
+            public void setValue(SSProduct iObject, Object iValue) {}
 
             @Override
             public Class<?> getColumnClass() {
@@ -289,17 +289,19 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
     }
 
     public static SSTableColumn<SSProduct> getStockAvaiableColumn(final SSStock iStock) {
-        return new SSTableColumn<SSProduct>(SSBundle.getBundle().getString("producttable.column.7")) {
+        return new SSTableColumn<SSProduct>(
+                SSBundle.getBundle().getString("producttable.column.7")) {
             @Override
             public Object getValue(SSProduct iProduct) {
-                if(iProduct.isParcel()) return null;
+                if (iProduct.isParcel()) {
+                    return null;
+                }
 
                 return iStock.getAvaiable(iProduct);
             }
 
             @Override
-            public void setValue(SSProduct iObject, Object iValue) {
-            }
+            public void setValue(SSProduct iObject, Object iValue) {}
 
             @Override
             public Class<?> getColumnClass() {
@@ -312,7 +314,5 @@ public class SSProductTableModel extends SSTableModel<SSProduct> {
             }
         };
     }
-
-
 
 }

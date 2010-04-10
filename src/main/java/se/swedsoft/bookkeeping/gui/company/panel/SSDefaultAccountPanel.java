@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSAccountPlan;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
@@ -12,6 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * User: Andreas Lago
@@ -26,10 +28,7 @@ public class SSDefaultAccountPanel extends JPanel {
 
     private Map<SSDefaultAccount, JTextField                > iTextFields;
 
-
     private JPanel iPanel;
-
-
 
     // Kundfodran
     private SSTableComboBox<SSAccount> iCustomerClaim;
@@ -57,11 +56,10 @@ public class SSDefaultAccountPanel extends JPanel {
     private SSTableComboBox<SSAccount> iCurrencyLoss;
     // Öresavrundning
     private SSTableComboBox<SSAccount> iRounding;
-    //Ränteintäkt
+    // Ränteintäkt
     private SSTableComboBox<SSAccount> iInterestProfit;
     // ingående moms
     private SSTableComboBox<SSAccount> iIncommingTax;
-
 
     // Kundfodran
     private JTextField iCustomerClaimText;
@@ -89,16 +87,13 @@ public class SSDefaultAccountPanel extends JPanel {
     private JTextField iCurrencyLossText;
     // Öresavrundning
     private JTextField iRoundingText;
-    //Ränteintäkt
+    // Ränteintäkt
     private JTextField iInterestProfitText;
     // ingående moms
     private JTextField iIncommingTaxText;
 
-
-
-
     public SSDefaultAccountPanel() {
-        setLayout(new BorderLayout() );
+        setLayout(new BorderLayout());
 
         add(iPanel, BorderLayout.CENTER);
 
@@ -132,12 +127,10 @@ public class SSDefaultAccountPanel extends JPanel {
         iComboBoxes.put(SSDefaultAccount.CurrencyLoss, iCurrencyLoss);
         // Öresavrundning
         iComboBoxes.put(SSDefaultAccount.Rounding, iRounding);
-        //Ränteintäkt
+        // Ränteintäkt
         iComboBoxes.put(SSDefaultAccount.InterestProfit, iInterestProfit);
-        //Ingående moms
+        // Ingående moms
         iComboBoxes.put(SSDefaultAccount.IncommingTax, iIncommingTax);
-
-
 
         iTextFields = new HashMap<SSDefaultAccount, JTextField>();
 
@@ -167,11 +160,10 @@ public class SSDefaultAccountPanel extends JPanel {
         iTextFields.put(SSDefaultAccount.CurrencyLoss, iCurrencyLossText);
         // Öresavrundning
         iTextFields.put(SSDefaultAccount.Rounding, iRoundingText);
-        //Ränteintäkt
+        // Ränteintäkt
         iTextFields.put(SSDefaultAccount.InterestProfit, iInterestProfitText);
-        //Ingående moms
+        // Ingående moms
         iTextFields.put(SSDefaultAccount.IncommingTax, iIncommingTaxText);
-
 
         for (int i = 0; i < SSDefaultAccount.values().length; i++) {
             SSDefaultAccount iDefaultAccount = SSDefaultAccount.values()[i];
@@ -185,8 +177,6 @@ public class SSDefaultAccountPanel extends JPanel {
 
     }
 
-
-
     /**
      *
      * @return
@@ -194,7 +184,6 @@ public class SSDefaultAccountPanel extends JPanel {
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      *
@@ -205,22 +194,23 @@ public class SSDefaultAccountPanel extends JPanel {
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
 
-        for(SSDefaultAccount iCurrent : SSDefaultAccount.values()){
+        for (SSDefaultAccount iCurrent : SSDefaultAccount.values()) {
             SSTableComboBox<SSAccount> iComboBox = iComboBoxes.get(iCurrent);
 
             Integer iAccountNumber = iDefaultAccounts.get(iCurrent);
 
-            if(iAccountNumber == null) iAccountNumber = iCurrent.getDefaultAccountNumber();
+            if (iAccountNumber == null) {
+                iAccountNumber = iCurrent.getDefaultAccountNumber();
+            }
 
-            if(iAccountPlan != null){
-                iComboBox.setSelected( iAccountPlan.getAccount( iAccountNumber ), true );
+            if (iAccountPlan != null) {
+                iComboBox.setSelected(iAccountPlan.getAccount(iAccountNumber), true);
             } else {
-                iComboBox.setText    ( iAccountNumber.toString() );
+                iComboBox.setText(iAccountNumber.toString());
             }
         }
 
     }
-
 
     /**
      *
@@ -228,16 +218,17 @@ public class SSDefaultAccountPanel extends JPanel {
      */
     public Map<SSDefaultAccount, Integer> getDefaultAccounts() {
 
-        for(SSDefaultAccount iCurrent : SSDefaultAccount.values()){
+        for (SSDefaultAccount iCurrent : SSDefaultAccount.values()) {
             SSTableComboBox<SSAccount> iComboBox = iComboBoxes.get(iCurrent);
 
             Integer iAccountNumber;
-            if(iComboBox.getSelected() != null){
+
+            if (iComboBox.getSelected() != null) {
                 iAccountNumber = iComboBox.getSelected().getNumber();
-            }  else {
+            } else {
 
                 try {
-                    iAccountNumber =  Integer.decode( iComboBox.getText() );
+                    iAccountNumber = Integer.decode(iComboBox.getText());
                 } catch (NumberFormatException e) {
                     iAccountNumber = iCurrent.getDefaultAccountNumber();
                 }
@@ -253,83 +244,82 @@ public class SSDefaultAccountPanel extends JPanel {
      */
     public void dispose() {
 
-        //iDefaultAccounts.clear();
-        //iDefaultAccounts=null;
+        // iDefaultAccounts.clear();
+        // iDefaultAccounts=null;
 
         iComboBoxes.clear();
-        iComboBoxes=null;
+        iComboBoxes = null;
 
         iTextFields.clear();
-        iTextFields=null;
+        iTextFields = null;
 
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
 
         iCustomerClaim.dispose();
-        iCustomerClaim=null;
+        iCustomerClaim = null;
 
         iInPayment.dispose();
-        iInPayment =null;
+        iInPayment = null;
         iOutPayment.dispose();
-        iOutPayment =null;
+        iOutPayment = null;
         iCash.dispose();
-        iCash=null;
+        iCash = null;
         iSupplierDebt.dispose();
-        iSupplierDebt=null;
+        iSupplierDebt = null;
         iTax1.dispose();
-        iTax1=null;
+        iTax1 = null;
         iTax2.dispose();
-        iTax2=null;
+        iTax2 = null;
         iTax3.dispose();
-        iTax3=null;
+        iTax3 = null;
         iSales.dispose();
-        iSales=null;
+        iSales = null;
         iPurchases.dispose();
-        iPurchases=null;
+        iPurchases = null;
         iCurrencyProfit.dispose();
-        iCurrencyProfit=null;
+        iCurrencyProfit = null;
         iCurrencyLoss.dispose();
-        iCurrencyLoss=null;
+        iCurrencyLoss = null;
         iRounding.dispose();
-        iRounding=null;
+        iRounding = null;
         iInterestProfit.dispose();
-        iInterestProfit=null;
+        iInterestProfit = null;
         iIncommingTax.dispose();
-        iIncommingTax=null;
+        iIncommingTax = null;
         iCustomerClaimText.removeAll();
-        iCustomerClaimText=null;
+        iCustomerClaimText = null;
         iInPaymentText.removeAll();
-        iInPaymentText=null;
+        iInPaymentText = null;
         iOutPaymentText.removeAll();
-        iOutPaymentText=null;
+        iOutPaymentText = null;
         iCashText.removeAll();
-        iCashText=null;
+        iCashText = null;
         iSupplierDebtText.removeAll();
-        iSupplierDebtText=null;
+        iSupplierDebtText = null;
         iTax1Text.removeAll();
-        iTax1Text=null;
+        iTax1Text = null;
         iTax2Text.removeAll();
-        iTax2Text=null;
+        iTax2Text = null;
         iTax3Text.removeAll();
-        iTax3Text=null;
+        iTax3Text = null;
         iSalesText.removeAll();
-        iSalesText=null;
+        iSalesText = null;
         iPurchasesText.removeAll();
-        iPurchasesText=null;
+        iPurchasesText = null;
         iCurrencyProfitText.removeAll();
-        iCurrencyProfitText=null;
+        iCurrencyProfitText = null;
         iCurrencyLossText.removeAll();
-        iCurrencyLossText=null;
+        iCurrencyLossText = null;
         iRoundingText.removeAll();
-        iRoundingText=null;
+        iRoundingText = null;
         iInterestProfitText.removeAll();
-        iInterestProfitText=null;
+        iInterestProfitText = null;
         iIncommingTaxText.removeAll();
-        iIncommingTaxText=null;
+        iIncommingTaxText = null;
     }
 
-
-    private class SelectionListener implements SSSelectionListener<SSAccount>{
+    private class SelectionListener implements SSSelectionListener<SSAccount> {
         private SSDefaultAccount iDefaultAccount;
 
         public SelectionListener(SSDefaultAccount iDefaultAccount) {
@@ -339,14 +329,16 @@ public class SSDefaultAccountPanel extends JPanel {
         public void selected(SSAccount selected) {
             JTextField iTextField = iTextFields.get(iDefaultAccount);
 
-            if(selected != null) iDefaultAccounts.put(iDefaultAccount, selected.getNumber());
+            if (selected != null) {
+                iDefaultAccounts.put(iDefaultAccount, selected.getNumber());
+            }
 
-            if(iTextField != null){
+            if (iTextField != null) {
 
-                if(selected != null){
-                   iTextField.setText( selected.getDescription() );
+                if (selected != null) {
+                    iTextField.setText(selected.getDescription());
                 } else {
-                    iTextField.setText( "" );
+                    iTextField.setText("");
                 }
 
             }
@@ -356,7 +348,9 @@ public class SSDefaultAccountPanel extends JPanel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel.SelectionListener");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel.SelectionListener");
             sb.append("{iDefaultAccount=").append(iDefaultAccount);
             sb.append('}');
             return sb.toString();
@@ -366,6 +360,7 @@ public class SSDefaultAccountPanel extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSDefaultAccountPanel");
         sb.append("{iCash=").append(iCash);
         sb.append(", iCashText=").append(iCashText);

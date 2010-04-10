@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
+
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
@@ -21,6 +22,7 @@ import java.util.*;
 
 import static se.swedsoft.bookkeeping.data.SSVoucherTemplate.SSVoucherTemplateRow;
 
+
 /**
  * Date: 2006-feb-13
  * Time: 16:43:09
@@ -40,7 +42,6 @@ public class SSVoucherTemplateImporter {
         iColumns = new HashMap<String, Integer>();
     }
 
-
     /**
      *
      * @throws SSImportException
@@ -49,19 +50,20 @@ public class SSVoucherTemplateImporter {
     public void Import()  throws IOException, SSImportException {
         WorkbookSettings iSettings = new WorkbookSettings();
 
-        iSettings.setLocale               (new Locale("sv", "SE"));
-        iSettings.setEncoding             ("windows-1252");
-        iSettings.setExcelDisplayLanguage ("SE");
+        iSettings.setLocale(new Locale("sv", "SE"));
+        iSettings.setEncoding("windows-1252");
+        iSettings.setExcelDisplayLanguage("SE");
         iSettings.setExcelRegionalSettings("SE");
 
         List<SSVoucherTemplate> iVoucherTemplates = null;
 
-        try{
+        try {
             Workbook iWorkbook = Workbook.getWorkbook(iFile, iSettings);
 
             // Empty workbook, ie nothing to import
-            if(iWorkbook.getNumberOfSheets() == 0){
-                throw new SSImportException(SSBundle.getBundle(), "vouchertemplateframe.import.nosheets");
+            if (iWorkbook.getNumberOfSheets() == 0) {
+                throw new SSImportException(SSBundle.getBundle(),
+                        "vouchertemplateframe.import.nosheets");
             }
 
             Sheet iSheet = iWorkbook.getSheet(0);
@@ -70,13 +72,14 @@ public class SSVoucherTemplateImporter {
 
             iWorkbook.close();
 
-        }catch( BiffException e){
-            throw new SSImportException( e.getLocalizedMessage() );
+        } catch (BiffException e) {
+            throw new SSImportException(e.getLocalizedMessage());
         }
         boolean iResult = showImportReport(iVoucherTemplates);
-        if( iVoucherTemplates != null && iResult ){
+
+        if (iVoucherTemplates != null && iResult) {
             for (SSVoucherTemplate iVoucherTemplate : iVoucherTemplates) {
-                if(!SSDB.getInstance().getVoucherTemplates().contains(iVoucherTemplate)){
+                if (!SSDB.getInstance().getVoucherTemplates().contains(iVoucherTemplate)) {
                     SSDB.getInstance().addVoucherTemplate(iVoucherTemplate);
                 }
 
@@ -84,8 +87,6 @@ public class SSVoucherTemplateImporter {
         }
 
     }
-
-
 
     /**
      *
@@ -95,15 +96,23 @@ public class SSVoucherTemplateImporter {
 
         this.iColumns.clear();
         int iIndex = 0;
+
         for (SSExcelCell iColumn : iColumns.getCells()) {
             String iName = iColumn.getString();
 
-            if(iName != null && iName.length() > 0) {
-                if( iName.equalsIgnoreCase( SSVoucherTemplateExporter.BESKRIVNING    ) ) this.iColumns.put(SSVoucherTemplateExporter.BESKRIVNING     , iIndex); else
-                if( iName.equalsIgnoreCase( SSVoucherTemplateExporter.KONTO          ) ) this.iColumns.put(SSVoucherTemplateExporter.KONTO           , iIndex); else
-                if( iName.equalsIgnoreCase( SSVoucherTemplateExporter.DEBET          ) ) this.iColumns.put(SSVoucherTemplateExporter.DEBET           , iIndex); else
-                if( iName.equalsIgnoreCase( SSVoucherTemplateExporter.KREDIT         ) ) this.iColumns.put(SSVoucherTemplateExporter.KREDIT          , iIndex); else
-                 throw new SSImportException( "Ogiltigt kolumnnamn i importfilen: %s", iName);
+            if (iName != null && iName.length() > 0) {
+                if (iName.equalsIgnoreCase(SSVoucherTemplateExporter.BESKRIVNING)) {
+                    this.iColumns.put(SSVoucherTemplateExporter.BESKRIVNING, iIndex);
+                } else if (iName.equalsIgnoreCase(SSVoucherTemplateExporter.KONTO)) {
+                    this.iColumns.put(SSVoucherTemplateExporter.KONTO, iIndex);
+                } else if (iName.equalsIgnoreCase(SSVoucherTemplateExporter.DEBET)) {
+                    this.iColumns.put(SSVoucherTemplateExporter.DEBET, iIndex);
+                } else if (iName.equalsIgnoreCase(SSVoucherTemplateExporter.KREDIT)) {
+                    this.iColumns.put(SSVoucherTemplateExporter.KREDIT, iIndex);
+                } else {
+                    throw new SSImportException("Ogiltigt kolumnnamn i importfilen: %s",
+                            iName);
+                }
 
             }
             iIndex++;
@@ -115,71 +124,91 @@ public class SSVoucherTemplateImporter {
      * @param pSheet
      * @return
      */
-    private List<SSVoucherTemplate> importVouchers(SSExcelSheet pSheet ){
+    private List<SSVoucherTemplate> importVouchers(SSExcelSheet pSheet) {
 
-        List<SSExcelRow> iRows = pSheet.getRows( );
+        List<SSExcelRow> iRows = pSheet.getRows();
 
-        if( iRows.size() < 2 ) throw new SSImportException(SSBundle.getBundle(), "vouchertemplateframe.import.norows");
+        if (iRows.size() < 2) {
+            throw new SSImportException(SSBundle.getBundle(),
+                    "vouchertemplateframe.import.norows");
+        }
 
         getColumnIndexes(iRows.get(0));
 
         List<SSVoucherTemplate> iVoucherTemplates = new LinkedList<SSVoucherTemplate>();
 
-        SSVoucherTemplate    iVoucherTemplate    = null;
+        SSVoucherTemplate    iVoucherTemplate = null;
         SSVoucherTemplateRow iVoucherTemplateRow = null;
 
-        for(int row = 1; row < iRows.size(); row++){
+        for (int row = 1; row < iRows.size(); row++) {
             SSExcelRow iRow = iRows.get(row);
+
             // Skip empty rows
-            if( iRow.empty() ) continue;
+            if (iRow.empty()) {
+                continue;
+            }
 
             List<SSExcelCell> iCells = iRow.getCells();
 
-
             // Get the cell
-            for(int col = 0; col < iCells.size(); col++){
+            for (int col = 0; col < iCells.size(); col++) {
                 SSExcelCell iCell = iCells.get(col);
 
                 String iValue = iCell.getString();
 
-                if(iValue == null || iValue.trim().length() == 0) continue;
+                if (iValue == null || iValue.trim().length() == 0) {
+                    continue;
+                }
 
-                if( iColumns.containsKey(SSVoucherTemplateExporter.BESKRIVNING  ) && iColumns.get(SSVoucherTemplateExporter.BESKRIVNING       ) == col ) {
+                if (iColumns.containsKey(SSVoucherTemplateExporter.BESKRIVNING)
+                        && iColumns.get(SSVoucherTemplateExporter.BESKRIVNING) == col) {
                     iVoucherTemplate = new SSVoucherTemplate();
-                    iVoucherTemplate.setDescription(  iCell.getString() );
+                    iVoucherTemplate.setDescription(iCell.getString());
 
                     iVoucherTemplates.add(iVoucherTemplate);
                 }
 
-                if(iVoucherTemplate == null) continue;
+                if (iVoucherTemplate == null) {
+                    continue;
+                }
 
-                if( iColumns.containsKey(SSVoucherTemplateExporter.KONTO        ) && iColumns.get(SSVoucherTemplateExporter.KONTO        ) == col ) {
+                if (iColumns.containsKey(SSVoucherTemplateExporter.KONTO)
+                        && iColumns.get(SSVoucherTemplateExporter.KONTO) == col) {
                     iVoucherTemplateRow = new SSVoucherTemplateRow();
-                    iVoucherTemplateRow.setAccountNr ( iCell.getInteger() );
+                    iVoucherTemplateRow.setAccountNr(iCell.getInteger());
 
                     iVoucherTemplate.getRows().add(iVoucherTemplateRow);
                 }
 
-                if( iVoucherTemplateRow == null) continue;
+                if (iVoucherTemplateRow == null) {
+                    continue;
+                }
 
-                if( iColumns.containsKey(SSVoucherTemplateExporter.DEBET        ) && iColumns.get(SSVoucherTemplateExporter.DEBET        ) == col ) iVoucherTemplateRow.setDebet ( iCell.getBigDecimal() );
-                if( iColumns.containsKey(SSVoucherTemplateExporter.KREDIT       ) && iColumns.get(SSVoucherTemplateExporter.KREDIT       ) == col ) iVoucherTemplateRow.setCredit( iCell.getBigDecimal() );
+                if (iColumns.containsKey(SSVoucherTemplateExporter.DEBET)
+                        && iColumns.get(SSVoucherTemplateExporter.DEBET) == col) {
+                    iVoucherTemplateRow.setDebet(iCell.getBigDecimal());
+                }
+                if (iColumns.containsKey(SSVoucherTemplateExporter.KREDIT)
+                        && iColumns.get(SSVoucherTemplateExporter.KREDIT) == col) {
+                    iVoucherTemplateRow.setCredit(iCell.getBigDecimal());
+                }
             }
 
         }
         return iVoucherTemplates;
     }
 
-
     /**
      *
      * @param iVoucherTemplates
      * @return
      */
-    private boolean showImportReport(List<SSVoucherTemplate> iVoucherTemplates){
-        SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(), SSBundle.getBundle().getString("vouchertemplateframe.import.report"));
+    private boolean showImportReport(List<SSVoucherTemplate> iVoucherTemplates) {
+        SSImportReportDialog iDialog = new SSImportReportDialog(SSMainFrame.getInstance(),
+                SSBundle.getBundle().getString("vouchertemplateframe.import.report"));
         // Generate the import dialog
         StringBuilder sb = new StringBuilder();
+
         sb.append("<html>");
 
         sb.append("Följande konteringsmallar kommer att importeras:<br>");
@@ -195,18 +224,17 @@ public class SSVoucherTemplateImporter {
         sb.append("Fortsätt med importeringen ?");
         sb.append("</html>");
 
-
-        iDialog.setText( sb.toString() );
-        iDialog.setSize( 640, 480);
+        iDialog.setText(sb.toString());
+        iDialog.setSize(640, 480);
         iDialog.setLocationRelativeTo(SSMainFrame.getInstance());
 
         return iDialog.showDialog() == JOptionPane.OK_OPTION;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.excel.SSVoucherTemplateImporter");
         sb.append("{iColumns=").append(iColumns);
         sb.append(", iFile=").append(iFile);

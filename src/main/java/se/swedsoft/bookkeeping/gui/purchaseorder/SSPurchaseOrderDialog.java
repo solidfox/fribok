@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.purchaseorder;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
 import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
@@ -28,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -35,12 +37,9 @@ import java.util.ResourceBundle;
  */
 public class SSPurchaseOrderDialog {
 
-
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSPurchaseOrderDialog() {
-    }
-
+    private SSPurchaseOrderDialog() {}
 
     /**
      *
@@ -48,24 +47,29 @@ public class SSPurchaseOrderDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final AbstractTableModel pModel) {
-        final SSDialog              iDialog = new SSDialog(iMainFrame, SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.new.title"));
-        final SSPurchaseOrderPanel  iPanel  = new SSPurchaseOrderPanel(iDialog);
+        final SSDialog              iDialog = new SSDialog(iMainFrame,
+                SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.new.title"));
+        final SSPurchaseOrderPanel  iPanel = new SSPurchaseOrderPanel(iDialog);
 
-        iPanel.setOrder( new SSPurchaseOrder() );
+        iPanel.setOrder(new SSPurchaseOrder());
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPurchaseOrder iOrder = iPanel.getOrder();
+
                 SSDB.getInstance().addPurchaseOrder(iOrder);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -75,14 +79,17 @@ public class SSPurchaseOrderDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "purchaseorderframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "purchaseorderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -90,7 +97,7 @@ public class SSPurchaseOrderDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
@@ -104,27 +111,30 @@ public class SSPurchaseOrderDialog {
      */
     public static void newDialog(final SSMainFrame iMainFrame, SSPurchaseOrder iPurchaseOrder, final List<SSOrder> iSelected, final AbstractTableModel pModel) {
 
-        final String lockString = "ordertopurchaseorder"+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog( iMainFrame, "purchaseorderframe.ordertopurchaseorder");
+        final String lockString = "ordertopurchaseorder"
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "purchaseorderframe.ordertopurchaseorder");
             return;
         }
 
-        final SSDialog              iDialog = new SSDialog(iMainFrame, SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.new.title"));
-        final SSPurchaseOrderPanel  iPanel  = new SSPurchaseOrderPanel(iDialog);
+        final SSDialog              iDialog = new SSDialog(iMainFrame,
+                SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.new.title"));
+        final SSPurchaseOrderPanel  iPanel = new SSPurchaseOrderPanel(iDialog);
 
-
-        iPanel.setOrder( iPurchaseOrder );
+        iPanel.setOrder(iPurchaseOrder);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPurchaseOrder iPurchaseOrder = iPanel.getOrder();
+
                 SSDB.getInstance().addPurchaseOrder(iPurchaseOrder);
 
                 for (SSOrder iOrder : iSelected) {
-                    if(SSDB.getInstance().getOrders().contains(iOrder)){
+                    if (SSDB.getInstance().getOrders().contains(iOrder)) {
                         iOrder.setPurchaseOrder(iPurchaseOrder);
                         SSDB.getInstance().updateOrder(iOrder);
                     }
@@ -135,6 +145,7 @@ public class SSPurchaseOrderDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -144,15 +155,18 @@ public class SSPurchaseOrderDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ){
+                if (!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "purchaseorderframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "purchaseorderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -160,11 +174,10 @@ public class SSPurchaseOrderDialog {
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
-
 
     /**
      *
@@ -173,15 +186,19 @@ public class SSPurchaseOrderDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSPurchaseOrder iPurchaseOrder, final AbstractTableModel pModel) {
-        final String lockString = "purchaseorder" + iPurchaseOrder.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(!SSPostLock.applyLock(lockString)){
-            new SSErrorDialog(iMainFrame, "purchaseorderframe.purchaseorderopen", iPurchaseOrder.getNumber());
+        final String lockString = "purchaseorder" + iPurchaseOrder.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (!SSPostLock.applyLock(lockString)) {
+            new SSErrorDialog(iMainFrame, "purchaseorderframe.purchaseorderopen",
+                    iPurchaseOrder.getNumber());
             return;
         }
-        final SSDialog              iDialog = new SSDialog(iMainFrame, SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.edit.title"));
-        final SSPurchaseOrderPanel  iPanel  = new SSPurchaseOrderPanel(iDialog);
+        final SSDialog              iDialog = new SSDialog(iMainFrame,
+                SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.edit.title"));
+        final SSPurchaseOrderPanel  iPanel = new SSPurchaseOrderPanel(iDialog);
 
-        iPanel.setOrder( iPurchaseOrder );
+        iPanel.setOrder(iPurchaseOrder);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -191,13 +208,16 @@ public class SSPurchaseOrderDialog {
 
                 SSDB.getInstance().updatePurchaseOrder(iOrder);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 SSPostLock.removeLock(lockString);
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -208,15 +228,18 @@ public class SSPurchaseOrderDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ){
+                if (!iPanel.isValid()) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "purchaseorderframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "purchaseorderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -224,7 +247,7 @@ public class SSPurchaseOrderDialog {
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
@@ -236,22 +259,27 @@ public class SSPurchaseOrderDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSPurchaseOrder iPurchaseOrder, final AbstractTableModel pModel) {
-        final String lockString = "purchaseorder" + iPurchaseOrder.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(SSPostLock.isLocked(lockString)){
-            new SSErrorDialog(iMainFrame, "purchaseorderframe.purchaseorderopen", iPurchaseOrder.getNumber());
+        final String lockString = "purchaseorder" + iPurchaseOrder.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (SSPostLock.isLocked(lockString)) {
+            new SSErrorDialog(iMainFrame, "purchaseorderframe.purchaseorderopen",
+                    iPurchaseOrder.getNumber());
             return;
         }
-        final SSDialog              iDialog = new SSDialog(iMainFrame, SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.copy.title"));
-        final SSPurchaseOrderPanel  iPanel  = new SSPurchaseOrderPanel(iDialog);
+        final SSDialog              iDialog = new SSDialog(iMainFrame,
+                SSPurchaseOrderDialog.bundle.getString("purchaseorderframe.copy.title"));
+        final SSPurchaseOrderPanel  iPanel = new SSPurchaseOrderPanel(iDialog);
 
         SSPurchaseOrder iNew = new SSPurchaseOrder(iPurchaseOrder);
+
         iNew.setNumber(null);
-        iNew.setDate(new Date() );
+        iNew.setDate(new Date());
         iNew.setInvoice(null);
         iNew.setPrinted(false);
-        iNew.setEstimatedDelivery( new Date() );
+        iNew.setEstimatedDelivery(new Date());
 
-        iPanel.setOrder( iNew );
+        iPanel.setOrder(iNew);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -261,12 +289,15 @@ public class SSPurchaseOrderDialog {
 
                 SSDB.getInstance().addPurchaseOrder(iOrder);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -275,14 +306,17 @@ public class SSPurchaseOrderDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "purchaseorderframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "purchaseorderframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -290,7 +324,7 @@ public class SSPurchaseOrderDialog {
             }
         });
 
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
@@ -303,100 +337,102 @@ public class SSPurchaseOrderDialog {
      */
     public static void createInvoiceDialog(final SSMainFrame iMainFrame, List<SSPurchaseOrder> iPurchaseOrders, final AbstractTableModel iModel) {
         // Empty, exit
-        if(iPurchaseOrders.isEmpty()) return;
+        if (iPurchaseOrders.isEmpty()) {
+            return;
+        }
 
         // Get the supplier from the first selected purchase order
         SSSupplier iSupplier = iPurchaseOrders.get(0).getSupplier();
 
         // We have selected more then one purchase order, do we want to create one supplierinvoice ?
-        if(iPurchaseOrders.size() > 1) {
-            if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "purchaseorderframe.createcollectioninvoice", iSupplier.getNumber()) != JOptionPane.OK_OPTION)
+        if (iPurchaseOrders.size() > 1) {
+            if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                    "purchaseorderframe.createcollectioninvoice", iSupplier.getNumber())
+                    != JOptionPane.OK_OPTION) {
                 return;
+            }
 
-            iPurchaseOrders = SSPurchaseOrderMath.getOrdersBySupplierNr(iPurchaseOrders, iSupplier.getNumber());
+            iPurchaseOrders = SSPurchaseOrderMath.getOrdersBySupplierNr(iPurchaseOrders,
+                    iSupplier.getNumber());
         }
         // Create the new supplier invoice
         SSSupplierInvoice iSupplierInvoice = new SSSupplierInvoice(iPurchaseOrders.get(0));
 
         iSupplierInvoice.setNumber(null);
         iSupplierInvoice.setStockInfluencing(true);
-        //iSupplierInvoice.setDate(new Date());
-
+        // iSupplierInvoice.setDate(new Date());
 
         for (SSPurchaseOrder iCurrent : iPurchaseOrders) {
 
             // if the selected order already has a sales assosiated we can't create a new one
-            if(iCurrent.getInvoice() != null){
-                SSInformationDialog.showDialog(iMainFrame, "purchaseorderframe.orderhasinvoice", iCurrent.getNumber());
+            if (iCurrent.getInvoice() != null) {
+                SSInformationDialog.showDialog(iMainFrame,
+                        "purchaseorderframe.orderhasinvoice", iCurrent.getNumber());
                 return;
             }
             // Append the rows from the purchase order to the supplier invoice
             iSupplierInvoice.append(iCurrent);
         }
 
-        if(SSSupplierInvoiceFrame.getInstance() != null){
-            SSSupplierInvoiceDialog.newDialog(iMainFrame, iSupplierInvoice, iPurchaseOrders, SSSupplierInvoiceFrame.getInstance().getModel());
+        if (SSSupplierInvoiceFrame.getInstance() != null) {
+            SSSupplierInvoiceDialog.newDialog(iMainFrame, iSupplierInvoice,
+                    iPurchaseOrders, SSSupplierInvoiceFrame.getInstance().getModel());
         } else {
-            SSSupplierInvoiceDialog.newDialog(iMainFrame, iSupplierInvoice, iPurchaseOrders, null);
+            SSSupplierInvoiceDialog.newDialog(iMainFrame, iSupplierInvoice,
+                    iPurchaseOrders, null);
         }
-        if(iModel != null) iModel.fireTableDataChanged();
+        if (iModel != null) {
+            iModel.fireTableDataChanged();
+        }
 
+        /*
 
+         SSPurchaseOrder iOrder = iOrders.get(0);
 
+         // if the selected order already has a sales assosiated we can't create a new one
+         if(iOrder.getInvoice(SSDB.getInstance().getSupplierInvoices()) != null){
+         SSInformationDialog.showDialog(iMainFrame, "orderframe.orderhasinvoice", iOrder.getNumber());
+         return;
+         }
 
-/*
+         SSSupplierInvoice iInvoice = new SSSupplierInvoice(iOrder);
 
+         iInvoice.doAutoIncrecement();
 
+         // Set the sales for the selected order to the new one
+         iOrder.setInvoice( iInvoice );
 
-SSPurchaseOrder iOrder = iOrders.get(0);
+         if(iOrders.size() > 1 && SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "purchaseorderframe.createcollectioninvoice", iOrder.getSupplierNr()) == JOptionPane.OK_OPTION) {
 
-// if the selected order already has a sales assosiated we can't create a new one
-if(iOrder.getInvoice(SSDB.getInstance().getSupplierInvoices()) != null){
-SSInformationDialog.showDialog(iMainFrame, "orderframe.orderhasinvoice", iOrder.getNumber());
-return;
-}
+         // Get all the orders with the same customer nr as the first selected
+         List<SSPurchaseOrder> iFiltered = SSPurchaseOrderMath.getOrdersBySupplierNr(iOrders, iOrder.getSupplierNr());
 
-SSSupplierInvoice iInvoice = new SSSupplierInvoice(iOrder);
+         // Remove the first selected order so we don't add it to the sales twice
+         iFiltered.remove(iOrder);
 
-iInvoice.doAutoIncrecement();
+         for (SSPurchaseOrder iCurrent : iFiltered) {
 
-// Set the sales for the selected order to the new one
-iOrder.setInvoice( iInvoice );
+         // if the selected order already has a sales assosiated we can't create a new one
+         if(iCurrent.getInvoice(SSDB.getInstance().getSupplierInvoices()) != null){
+         SSInformationDialog.showDialog(iMainFrame, "purchaseorderframe.orderhasinvoice", iCurrent.getNumber());
+         return;
+         }
+         // Append the rows from the order to the sales
+         iInvoice.append(iCurrent);
+         }
 
+         }
 
-if(iOrders.size() > 1 && SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "purchaseorderframe.createcollectioninvoice", iOrder.getSupplierNr()) == JOptionPane.OK_OPTION) {
+         if(SSSupplierInvoiceFrame.getInstance() != null){
+         SSSupplierInvoiceDialog.newDialog(iMainFrame, iInvoice, iFiltered, SSSupplierInvoiceFrame.getInstance().getModel());
+         } else {
+         SSSupplierInvoiceDialog.newDialog(iMainFrame, iInvoice, iFiltered, null);
+         }
 
-// Get all the orders with the same customer nr as the first selected
-List<SSPurchaseOrder> iFiltered = SSPurchaseOrderMath.getOrdersBySupplierNr(iOrders, iOrder.getSupplierNr());
-
-// Remove the first selected order so we don't add it to the sales twice
-iFiltered.remove(iOrder);
-
-for (SSPurchaseOrder iCurrent : iFiltered) {
-
-// if the selected order already has a sales assosiated we can't create a new one
-if(iCurrent.getInvoice(SSDB.getInstance().getSupplierInvoices()) != null){
-  SSInformationDialog.showDialog(iMainFrame, "purchaseorderframe.orderhasinvoice", iCurrent.getNumber());
-  return;
-}
-// Append the rows from the order to the sales
-iInvoice.append(iCurrent);
-}
-
-}
-
-
-if(SSSupplierInvoiceFrame.getInstance() != null){
-SSSupplierInvoiceDialog.newDialog(iMainFrame, iInvoice, iFiltered, SSSupplierInvoiceFrame.getInstance().getModel());
-} else {
-SSSupplierInvoiceDialog.newDialog(iMainFrame, iInvoice, iFiltered, null);
-}
-
-*/
-        //iModel.fireTableDataChanged();
+         */
+        // iModel.fireTableDataChanged();
 
         // SSDB.getInstance().notifyYearUpdated();
     }
-
 
 }

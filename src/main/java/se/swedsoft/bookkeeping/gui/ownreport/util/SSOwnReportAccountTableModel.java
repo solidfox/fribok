@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -11,12 +12,14 @@ import javax.swing.table.TableCellEditor;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:34:35
  */
 public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnReportAccountRow> {
+
     /**
      *
      * @return
@@ -36,19 +39,23 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
         return SSOwnReportAccountRow.class;
     }
 
-
     /**
      * Account column
      */
-    public static SSTableColumn<SSOwnReportAccountRow> COLUMN_ACCOUNT = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.1")) {
+    public static SSTableColumn<SSOwnReportAccountRow> COLUMN_ACCOUNT = new SSTableColumn<SSOwnReportAccountRow>(
+            SSBundle.getBundle().getString("ownreport.accounttable.column.1")) {
         @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
-            return iObject.getAccount() == null ? "" : iObject.getAccount().getNumber() == null ? "" : iObject.getAccount().getNumber().toString();
+            return iObject.getAccount() == null
+                    ? ""
+                    : iObject.getAccount().getNumber() == null
+                            ? ""
+                            : iObject.getAccount().getNumber().toString();
         }
 
         @Override
         public void setValue(SSOwnReportAccountRow iObject, Object iValue) {
-            iObject.setAccount((SSAccount)iValue);
+            iObject.setAccount((SSAccount) iValue);
         }
 
         @Override
@@ -70,15 +77,17 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
     /**
      * Description column
      */
-    public static SSTableColumn<SSOwnReportAccountRow> COLUMN_DESCRIPTION = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.2")) {
+    public static SSTableColumn<SSOwnReportAccountRow> COLUMN_DESCRIPTION = new SSTableColumn<SSOwnReportAccountRow>(
+            SSBundle.getBundle().getString("ownreport.accounttable.column.2")) {
         @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
-            return iObject.getAccount() == null ? null : iObject.getAccount().getDescription();
+            return iObject.getAccount() == null
+                    ? null
+                    : iObject.getAccount().getDescription();
         }
 
         @Override
-        public void setValue(SSOwnReportAccountRow iObject, Object iValue) {
-        }
+        public void setValue(SSOwnReportAccountRow iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -91,18 +100,21 @@ public class SSOwnReportAccountTableModel extends SSEditableTableModel<SSOwnRepo
         }
     };
 
-
     /**
      * Unit price
      */
-    public static SSTableColumn<SSOwnReportAccountRow> COLUMN_BUDGET = new SSTableColumn<SSOwnReportAccountRow>(SSBundle.getBundle().getString("ownreport.accounttable.column.3")) {
+    public static SSTableColumn<SSOwnReportAccountRow> COLUMN_BUDGET = new SSTableColumn<SSOwnReportAccountRow>(
+            SSBundle.getBundle().getString("ownreport.accounttable.column.3")) {
         @Override
         public Object getValue(SSOwnReportAccountRow iObject) {
             BigDecimal iSum = new BigDecimal(0);
 
-            for(SSMonth iMonth : iObject.getBudget().keySet()){
+            for (SSMonth iMonth : iObject.getBudget().keySet()) {
                 BigDecimal iMonthly = iObject.getBudget().get(iMonth);
-                if(iMonthly != null) iSum = iSum.add(iMonthly);
+
+                if (iMonthly != null) {
+                    iSum = iSum.add(iMonthly);
+                }
             }
             return iSum.setScale(2, RoundingMode.HALF_UP);
 

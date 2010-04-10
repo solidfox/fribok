@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.project.util;
 
+
 import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -16,8 +17,8 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import java.util.List;
 
-public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
+public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
     /**
      * Default constructor.
@@ -55,9 +56,10 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
         iTable.tableChanged(null);
 
         int iIndex = 0;
+
         for (SSTableColumn<SSNewProject> iColumn : getColumns()) {
-            int iWidth                  = iColumn.getDefaultWidth();
-            TableCellEditor   iEditor   = iColumn.getCellEditor();
+            int iWidth = iColumn.getDefaultWidth();
+            TableCellEditor   iEditor = iColumn.getCellEditor();
             TableCellRenderer iRenderer = iColumn.getCellRenderer();
 
             iTable.getColumnModel().getColumn(iIndex).setPreferredWidth(iWidth);
@@ -73,12 +75,11 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      *
      * @return
      */
-    public static SSProjectTableModel getDropDownModel(){
+    public static SSProjectTableModel getDropDownModel() {
         SSProjectTableModel iModel = new SSProjectTableModel();
 
-
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_NAME   );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_NAME);
 
         return iModel;
     }
@@ -88,21 +89,20 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
      * @param iProjects
      * @return
      */
-    public static SSProjectTableModel getDropDownModel(List<SSNewProject> iProjects){
+    public static SSProjectTableModel getDropDownModel(List<SSNewProject> iProjects) {
         SSProjectTableModel iModel = new SSProjectTableModel(iProjects);
 
-        iModel.addColumn( COLUMN_NUMBER );
-        iModel.addColumn( COLUMN_NAME   );
+        iModel.addColumn(COLUMN_NUMBER);
+        iModel.addColumn(COLUMN_NAME);
 
         return iModel;
     }
 
-
-
     /**
      *  Nummer
      */
-    public static SSTableColumn<SSNewProject> COLUMN_NUMBER = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.1")) {
+    public static SSTableColumn<SSNewProject> COLUMN_NUMBER = new SSTableColumn<SSNewProject>(
+            SSBundle.getBundle().getString("projecttable.column.1")) {
         @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getNumber();
@@ -110,7 +110,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
         @Override
         public void setValue(SSNewProject iProject, Object iValue) {
-            iProject.setNumber((String)iValue);
+            iProject.setNumber((String) iValue);
 
         }
 
@@ -128,7 +128,8 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
     /**
      *  Nummer
      */
-    public static SSTableColumn<SSNewProject> COLUMN_NAME = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.2")) {
+    public static SSTableColumn<SSNewProject> COLUMN_NAME = new SSTableColumn<SSNewProject>(
+            SSBundle.getBundle().getString("projecttable.column.2")) {
         @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getName();
@@ -136,7 +137,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
         @Override
         public void setValue(SSNewProject iProject, Object iValue) {
-            iProject.setName((String)iValue);
+            iProject.setName((String) iValue);
 
         }
 
@@ -154,7 +155,8 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
     /**
      *  Beskrivning
      */
-    public static SSTableColumn<SSNewProject> COLUMN_DESCRIPTION = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.3")) {
+    public static SSTableColumn<SSNewProject> COLUMN_DESCRIPTION = new SSTableColumn<SSNewProject>(
+            SSBundle.getBundle().getString("projecttable.column.3")) {
         @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getDescription();
@@ -162,7 +164,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
         @Override
         public void setValue(SSNewProject iProject, Object iValue) {
-            iProject.setDescription((String)iValue);
+            iProject.setDescription((String) iValue);
 
         }
 
@@ -177,11 +179,11 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
         }
     };
 
-
     /**
      *  Beskrivning
      */
-    public static SSTableColumn<SSNewProject> COLUMN_CONCLUDED = new SSTableColumn<SSNewProject>(SSBundle.getBundle().getString("projecttable.column.4")) {
+    public static SSTableColumn<SSNewProject> COLUMN_CONCLUDED = new SSTableColumn<SSNewProject>(
+            SSBundle.getBundle().getString("projecttable.column.4")) {
         @Override
         public Object getValue(SSNewProject iProject) {
             return iProject.getConcluded();
@@ -189,7 +191,7 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
 
         @Override
         public void setValue(SSNewProject iProject, Object iValue) {
-            iProject.setConcluded((Boolean)iValue);
+            iProject.setConcluded((Boolean) iValue);
 
         }
 
@@ -203,7 +205,5 @@ public class SSProjectTableModel extends SSTableModel<SSNewProject> {
             return 80;
         }
     };
-
-
 
 }

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSCreditInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
@@ -17,16 +18,14 @@ import se.swedsoft.bookkeeping.print.util.SSDefaultJasperDataSource;
 import java.math.BigDecimal;
 import java.util.*;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
  */
 public class SSProductRevenuePrinter extends SSPrinter {
 
-
-
     private SSMonthlyDistributionPrinter iPrinter;
-
 
     private SSDefaultJasperDataSource iDataSource;
 
@@ -44,16 +43,15 @@ public class SSProductRevenuePrinter extends SSPrinter {
      * @param pFrom
      * @param pTo
      */
-    public SSProductRevenuePrinter(List<SSProduct> pProducts, Date pFrom, Date pTo ){
+    public SSProductRevenuePrinter(List<SSProduct> pProducts, Date pFrom, Date pTo) {
         iProducts = pProducts;
-        iDateFrom       = SSDateMath.floor(pFrom);
-        iDateTo         = SSDateMath.ceil(pTo);
+        iDateFrom = SSDateMath.floor(pFrom);
+        iDateTo = SSDateMath.ceil(pTo);
         calculate();
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("productrevenue.jrxml");
-        setDetail      ("productrevenue.jrxml");
+        setDetail("productrevenue.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -70,14 +68,14 @@ public class SSProductRevenuePrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        addParameter("dateFrom", iDateFrom );
-        addParameter("dateTo"  , iDateTo    );
+        addParameter("dateFrom", iDateFrom);
+        addParameter("dateTo", iDateTo);
 
         iPrinter = new SSMonthlyDistributionPrinter(iDateFrom, iDateTo);
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -93,17 +91,20 @@ public class SSProductRevenuePrinter extends SSPrinter {
                 SSProduct iProduct = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iProduct.getNumber();
-                        break;
-                    case 1:
-                        value = iProduct.getDescription();
-                        break;
-                    case 2:
-                        iPrinter.setProduct(iProduct, iProductRevenue.get(iProduct.getNumber()));
-                        iDataSource.reset();
-                        value = iDataSource;
-                        break;
+                case 0:
+                    value = iProduct.getNumber();
+                    break;
+
+                case 1:
+                    value = iProduct.getDescription();
+                    break;
+
+                case 2:
+                    iPrinter.setProduct(iProduct,
+                            iProductRevenue.get(iProduct.getNumber()));
+                    iDataSource.reset();
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -116,37 +117,41 @@ public class SSProductRevenuePrinter extends SSPrinter {
 
         iModel.setObjects(iProducts);
 
-
         return iModel;
     }
 
-    private void calculate(){
-        iProductRevenue = new HashMap<String, Map<SSMonth,BigDecimal>>();
+    private void calculate() {
+        iProductRevenue = new HashMap<String, Map<SSMonth, BigDecimal>>();
         List<SSInvoice> iInvoices = SSDB.getInstance().getInvoices();
-        for(SSInvoice iInvoice : iInvoices){
-            if(iInvoice.getDate().after(iDateFrom) && iInvoice.getDate().before(iDateTo)){
+
+        for (SSInvoice iInvoice : iInvoices) {
+            if (iInvoice.getDate().after(iDateFrom) && iInvoice.getDate().before(iDateTo)) {
                 Calendar iCal = Calendar.getInstance();
+
                 iCal.setTime(iInvoice.getDate());
                 iCal.set(Calendar.DAY_OF_MONTH, 1);
                 Date iFrom = iCal.getTime();
-                iCal.set(Calendar.DAY_OF_MONTH, iCal.getActualMaximum(Calendar.DAY_OF_MONTH) );
+
+                iCal.set(Calendar.DAY_OF_MONTH,
+                        iCal.getActualMaximum(Calendar.DAY_OF_MONTH));
                 Date iTo = iCal.getTime();
                 SSMonth iMonth = new SSMonth(iFrom, iTo);
 
-                for(SSSaleRow iRow : iInvoice.getRows()){
-                    if(iRow.getProductNr() != null && iRow.getSum() != null){
-                        BigDecimal iSum = SSInvoiceMath.convertToLocal(iInvoice, iRow.getSum());
+                for (SSSaleRow iRow : iInvoice.getRows()) {
+                    if (iRow.getProductNr() != null && iRow.getSum() != null) {
+                        BigDecimal iSum = SSInvoiceMath.convertToLocal(iInvoice,
+                                iRow.getSum());
                         Map<SSMonth, BigDecimal> iRevenueInMonth;
-                        if(iProductRevenue.containsKey(iRow.getProductNr())){
+
+                        if (iProductRevenue.containsKey(iRow.getProductNr())) {
                             iRevenueInMonth = iProductRevenue.get(iRow.getProductNr());
-                            if(iRevenueInMonth.containsKey(iMonth)){
-                                iRevenueInMonth.put(iMonth,iRevenueInMonth.get(iMonth).add(iSum));
-                            }
-                            else{
+                            if (iRevenueInMonth.containsKey(iMonth)) {
+                                iRevenueInMonth.put(iMonth,
+                                        iRevenueInMonth.get(iMonth).add(iSum));
+                            } else {
                                 iRevenueInMonth.put(iMonth, iSum);
                             }
-                        }
-                        else{
+                        } else {
                             iRevenueInMonth = new HashMap<SSMonth, BigDecimal>();
                             iRevenueInMonth.put(iMonth, iSum);
                         }
@@ -157,30 +162,36 @@ public class SSProductRevenuePrinter extends SSPrinter {
         }
 
         List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
-        for(SSCreditInvoice iCreditInvoice : iCreditInvoices){
-            if(iCreditInvoice.getDate().after(iDateFrom) && iCreditInvoice.getDate().before(iDateTo)){
+
+        for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
+            if (iCreditInvoice.getDate().after(iDateFrom)
+                    && iCreditInvoice.getDate().before(iDateTo)) {
                 Calendar iCal = Calendar.getInstance();
+
                 iCal.setTime(iCreditInvoice.getDate());
                 iCal.set(Calendar.DAY_OF_MONTH, 1);
                 Date iFrom = iCal.getTime();
-                iCal.set(Calendar.DAY_OF_MONTH, iCal.getActualMaximum(Calendar.DAY_OF_MONTH) );
+
+                iCal.set(Calendar.DAY_OF_MONTH,
+                        iCal.getActualMaximum(Calendar.DAY_OF_MONTH));
                 Date iTo = iCal.getTime();
                 SSMonth iMonth = new SSMonth(iFrom, iTo);
 
-                for(SSSaleRow iRow : iCreditInvoice.getRows()){
-                    if(iRow.getProductNr() != null && iRow.getSum() != null){
-                        BigDecimal iSum = SSCreditInvoiceMath.convertToLocal(iCreditInvoice, iRow.getSum());
+                for (SSSaleRow iRow : iCreditInvoice.getRows()) {
+                    if (iRow.getProductNr() != null && iRow.getSum() != null) {
+                        BigDecimal iSum = SSCreditInvoiceMath.convertToLocal(
+                                iCreditInvoice, iRow.getSum());
                         Map<SSMonth, BigDecimal> iRevenueInMonth;
-                        if(iProductRevenue.containsKey(iRow.getProductNr())){
+
+                        if (iProductRevenue.containsKey(iRow.getProductNr())) {
                             iRevenueInMonth = iProductRevenue.get(iRow.getProductNr());
-                            if(iRevenueInMonth.containsKey(iMonth)){
-                                iRevenueInMonth.put(iMonth,iRevenueInMonth.get(iMonth).subtract(iSum));
-                            }
-                            else{
+                            if (iRevenueInMonth.containsKey(iMonth)) {
+                                iRevenueInMonth.put(iMonth,
+                                        iRevenueInMonth.get(iMonth).subtract(iSum));
+                            } else {
                                 iRevenueInMonth.put(iMonth, iSum.negate());
                             }
-                        }
-                        else{
+                        } else {
                             iRevenueInMonth = new HashMap<SSMonth, BigDecimal>();
                             iRevenueInMonth.put(iMonth, iSum.negate());
                         }
@@ -200,20 +211,22 @@ public class SSProductRevenuePrinter extends SSPrinter {
         private Date  iTo;
 
         Map<SSMonth, BigDecimal> iMonthRevenue;
+
         /**
          *
          * @param pFrom
          * @param pTo
          */
-        public SSMonthlyDistributionPrinter(Date pFrom, Date pTo ){
+        public SSMonthlyDistributionPrinter(Date pFrom, Date pTo) {
             iFrom = pFrom;
-            iTo   = pTo;
-            setMargins(0,0,0,0);
+            iTo = pTo;
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("productrevenue.monthly.jrxml");
+            setDetail("productrevenue.monthly.jrxml");
             setSummary("productrevenue.monthly.jrxml");
 
-            iModel = new SSDefaultTableModel<SSMonth>( SSMonth.splitYearIntoMonths(iFrom,iTo) ) {
+            iModel = new SSDefaultTableModel<SSMonth>(
+                    SSMonth.splitYearIntoMonths(iFrom, iTo)) {
                 @Override
                 public Class getType() {
                     return SSMonth.class;
@@ -225,23 +238,25 @@ public class SSProductRevenuePrinter extends SSPrinter {
                     SSMonth iMonth = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iMonth.toString();
-                            break;
-                        case 1  :
-                            value = iMonth.getName();
-                            break;
-                        case 2:
-                            if(iProduct != null && iMonthRevenue.containsKey(iMonth)){
-                                value = iMonthRevenue.get(iMonth);
-                            }
-                            else{
-                                value = new BigDecimal(0);
-                            }
-                            break;
-                        case 3  :
-                            value = iMonth.isBetween(iFrom, iTo);
-                            break;
+                    case 0:
+                        value = iMonth.toString();
+                        break;
+
+                    case 1:
+                        value = iMonth.getName();
+                        break;
+
+                    case 2:
+                        if (iProduct != null && iMonthRevenue.containsKey(iMonth)) {
+                            value = iMonthRevenue.get(iMonth);
+                        } else {
+                            value = new BigDecimal(0);
+                        }
+                        break;
+
+                    case 3:
+                        value = iMonth.isBetween(iFrom, iTo);
+                        break;
                     }
 
                     return value;
@@ -282,14 +297,17 @@ public class SSProductRevenuePrinter extends SSPrinter {
         public void setProduct(SSProduct pProduct, Map<SSMonth, BigDecimal> iMap) {
             iProduct = pProduct;
             iMonthRevenue = iMap;
-            if(iMonthRevenue == null)
+            if (iMonthRevenue == null) {
                 iMonthRevenue = new HashMap<SSMonth, BigDecimal>();
+            }
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSProductRevenuePrinter.SSMonthlyDistributionPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSProductRevenuePrinter.SSMonthlyDistributionPrinter");
             sb.append("{iFrom=").append(iFrom);
             sb.append(", iModel=").append(iModel);
             sb.append(", iMonthRevenue=").append(iMonthRevenue);
@@ -303,6 +321,7 @@ public class SSProductRevenuePrinter extends SSPrinter {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSProductRevenuePrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iDateFrom=").append(iDateFrom);

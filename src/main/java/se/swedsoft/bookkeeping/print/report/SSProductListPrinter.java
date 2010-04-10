@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSProductRow;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -33,29 +35,28 @@ public class SSProductListPrinter extends SSPrinter {
      *
      */
     public SSProductListPrinter() {
-        this( SSDB.getInstance().getProducts() );
+        this(SSDB.getInstance().getProducts());
     }
 
     /**
      *
      * @param iProducts
      */
-    public SSProductListPrinter( List<SSProduct> iProducts){
+    public SSProductListPrinter(List<SSProduct> iProducts) {
         // Get all orders
         this.iProducts = iProducts;
 
         iStock = new SSStock(true);
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         // if (!SSVersion.app_title.contains("JFS Fakturering")) {
         setColumnHeader("productlist.jrxml");
         setDetail("productlist.jrxml");
         // } else {
-        //     setColumnHeader("productlist_fakt.jrxml");
-        //     setDetail("productlist_fakt.jrxml");
+        // setColumnHeader("productlist_fakt.jrxml");
+        // setDetail("productlist_fakt.jrxml");
         // }
     }
-
 
     /**
      * Gets the title file for this repport
@@ -76,8 +77,8 @@ public class SSProductListPrinter extends SSPrinter {
         iPrinter = new SSParcelPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -96,41 +97,51 @@ public class SSProductListPrinter extends SSPrinter {
                 SSProduct iProduct = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iProduct.isParcel();
-                        break;
-                    case 1:
-                        value = iProduct.getNumber();
-                        break;
-                    case 2:
-                        value = iProduct.getDescription();
-                        break;
-                    case 3:
-                        value = iProduct.getUnit() == null ? null : iProduct.getUnit().getName();
-                        break;
-                    case 4:
-                        value = iProduct.getSellingPrice();
-                        break;
-                    case 5:
-                        value = iProduct.getWarehouseLocation() == null ? "" : iProduct.getWarehouseLocation();
-                        break;
-                    case 6:
-                        // if (!SSVersion.app_title.contains("JFS Fakturering")) {
-                            value = iStock.getQuantity(iProduct);
-                        // } else {
-                        //     iPrinter.setProduct(iProduct);
-                        //     iDataSource.reset();
-                        //     value = iDataSource;
-                        // }
-                        break;
+                case 0:
+                    value = iProduct.isParcel();
+                    break;
 
-                    case 7:
-                        iPrinter.setProduct(iProduct);
+                case 1:
+                    value = iProduct.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 2:
+                    value = iProduct.getDescription();
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 3:
+                    value = iProduct.getUnit() == null
+                            ? null
+                            : iProduct.getUnit().getName();
+                    break;
+
+                case 4:
+                    value = iProduct.getSellingPrice();
+                    break;
+
+                case 5:
+                    value = iProduct.getWarehouseLocation() == null
+                            ? ""
+                            : iProduct.getWarehouseLocation();
+                    break;
+
+                case 6:
+                    // if (!SSVersion.app_title.contains("JFS Fakturering")) {
+                    value = iStock.getQuantity(iProduct);
+                    // } else {
+                    // iPrinter.setProduct(iProduct);
+                    // iDataSource.reset();
+                    // value = iDataSource;
+                    // }
+                    break;
+
+                case 7:
+                    iPrinter.setProduct(iProduct);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -149,19 +160,16 @@ public class SSProductListPrinter extends SSPrinter {
         // }
         iModel.addColumn("product.rows");
 
-
         Collections.sort(iProducts, new Comparator<SSProduct>() {
             public int compare(SSProduct o1, SSProduct o2) {
-                return o1.getNumber().compareTo( o2.getNumber() );
+                return o1.getNumber().compareTo(o2.getNumber());
             }
         });
 
         iModel.setObjects(iProducts);
 
-
         return iModel;
     }
-
 
     private class SSParcelPrinter extends SSPrinter {
 
@@ -170,14 +178,13 @@ public class SSProductListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSParcelPrinter( ){
-            setMargins(0,0,0,0);
+        public SSParcelPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("productlist.parcel.jrxml");
-       //     setSummary("productlist.parcel.jrxml");
+            setDetail("productlist.parcel.jrxml");
+            // setSummary("productlist.parcel.jrxml");
 
-
-            iModel = new SSDefaultTableModel<SSProductRow>(  ) {
+            iModel = new SSDefaultTableModel<SSProductRow>() {
 
                 @Override
                 public Class getType() {
@@ -189,21 +196,27 @@ public class SSProductListPrinter extends SSPrinter {
 
                     SSProductRow iProductRow = getObject(rowIndex);
 
-                    SSProduct iProduct =   iProductRow.getProduct( SSDB.getInstance().getProducts() );
+                    SSProduct iProduct = iProductRow.getProduct(
+                            SSDB.getInstance().getProducts());
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iProductRow.getProductNr();
-                            break;
-                        case 1:
-                            value = iProductRow.getDescription();
-                            break;
-                        case 2:
-                            value = iProductRow.getQuantity();
-                            break;
-                        case 3:
-                            value = iProduct == null || iProduct.getUnit() == null ? null : iProduct.getUnit().getName();
-                            break;
+                    case 0:
+                        value = iProductRow.getProductNr();
+                        break;
+
+                    case 1:
+                        value = iProductRow.getDescription();
+                        break;
+
+                    case 2:
+                        value = iProductRow.getQuantity();
+                        break;
+
+                    case 3:
+                        value = iProduct == null || iProduct.getUnit() == null
+                                ? null
+                                : iProduct.getUnit().getName();
+                        break;
 
                     }
 
@@ -242,23 +255,25 @@ public class SSProductListPrinter extends SSPrinter {
          * @param iProduct
          */
         public void setProduct(SSProduct iProduct) {
-            iModel.setObjects( iProduct.getParcelRows() );
+            iModel.setObjects(iProduct.getParcelRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSProductListPrinter.SSParcelPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSProductListPrinter.SSParcelPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSProductListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iPrinter=").append(iPrinter);

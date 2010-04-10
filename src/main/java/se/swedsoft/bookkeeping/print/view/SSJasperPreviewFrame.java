@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.view;
 
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -28,6 +29,7 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.ResourceBundle;
 
+
 /**
  * Date: 2006-jan-20
  * Time: 13:46:09
@@ -46,12 +48,10 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
     private SSReport iReport;
 
-
     SSButton iFirst;
     SSButton iBack;
     SSButton iForward;
     SSButton iLast;
-
 
     /**
      * Default constructor.
@@ -60,7 +60,8 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
      * @param height
      */
     public SSJasperPreviewFrame(SSMainFrame frame, int width, int height) {
-        super(frame, SSBundle.getBundle().getString("printpreviewframe.title"), width, height);
+        super(frame, SSBundle.getBundle().getString("printpreviewframe.title"), width,
+                height);
 
         iViewer.addPropertyChangeListener("page_zoom", new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent evt) {
@@ -76,10 +77,6 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
     }
 
-
-
-
-
     /**
      * This method should return a toolbar if the sub-class wants one.
      * Otherwise, it may return null.
@@ -90,42 +87,47 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
     public JToolBar getToolBar() {
         JToolBar toolbar = new JToolBar();
 
-        iZoomLevels = new JComboBox( SSZoomLevel.values() );
+        iZoomLevels = new JComboBox(SSZoomLevel.values());
         iZoomLevels.setEditable(true);
-        iZoomLevels.setMaximumSize( new Dimension(75, 20));
-        iZoomLevels.setSelectedItem( SSZoomLevel.ZOOM_100 );
-
+        iZoomLevels.setMaximumSize(new Dimension(75, 20));
+        iZoomLevels.setSelectedItem(SSZoomLevel.ZOOM_100);
 
         // Save
         // ***************************
-        SSButton iButton = new SSButton("ICON_SAVEITEM", "printpreviewframe.savebutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_SAVEITEM", "printpreviewframe.savebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSJasperFileChooser iFileChooser = SSJasperFileChooser.getInstance();
 
                 if (iReport != null) {
                     String iTitle = (String) iReport.getParameter("title");
+
                     iFileChooser.setSelectedFile(new File(iTitle + ".pdf"));
                 } else {
                     iFileChooser.setSelectedFile(new File("Rapport.pdf"));
 
                 }
 
-                if (iFileChooser.showSaveDialog(SSJasperPreviewFrame.this) == JFileChooser.APPROVE_OPTION) {
-                    saveDocument(iFileChooser.getFileFilter(), iFileChooser.getSelectedFile());
+                if (iFileChooser.showSaveDialog(SSJasperPreviewFrame.this)
+                        == JFileChooser.APPROVE_OPTION) {
+                    saveDocument(iFileChooser.getFileFilter(),
+                            iFileChooser.getSelectedFile());
                 }
 
             }
         });
+
         iButton.setDefaultSize();
         toolbar.add(iButton);
 
         // Print
         // ***************************
-        iButton = new SSButton("ICON_PRINT", "printpreviewframe.printbutton", new ActionListener(){
+        iButton = new SSButton("ICON_PRINT", "printpreviewframe.printbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try{
+                try {
                     JasperPrintManager.printReport(iPrinter, true);
-                } catch(JRException ex){
+                } catch (JRException ex) {
                     ex.printStackTrace();
                 }
             }
@@ -136,7 +138,8 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
         // First
         // ***************************
-        iFirst = new SSButton("ICON_FIRST", "printpreviewframe.firstbutton", new ActionListener(){
+        iFirst = new SSButton("ICON_FIRST", "printpreviewframe.firstbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iViewer.firstPage();
             }
@@ -146,7 +149,8 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
         // Back
         // ***************************
-        iBack = new SSButton("ICON_BACK", "printpreviewframe.prevbutton", new ActionListener(){
+        iBack = new SSButton("ICON_BACK", "printpreviewframe.prevbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iViewer.prevPage();
             }
@@ -156,7 +160,8 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
         // Forward
         // ***************************
-        iForward = new SSButton("ICON_FORWARD", "printpreviewframe.nextbutton", new ActionListener(){
+        iForward = new SSButton("ICON_FORWARD", "printpreviewframe.nextbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iViewer.nextPage();
             }
@@ -166,7 +171,8 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
         // Last
         // ***************************
-        iLast = new SSButton("ICON_LAST", "printpreviewframe.lastbutton", new ActionListener(){
+        iLast = new SSButton("ICON_LAST", "printpreviewframe.lastbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iViewer.lastPage();
             }
@@ -175,18 +181,16 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         toolbar.add(iLast);
         toolbar.addSeparator();
 
-
         // Zoom in
         // ***************************
-        iButton = new SSButton("ICON_ZOOMIN", "printpreviewframe.zoominbutton", new ActionListener(){
+        iButton = new SSButton("ICON_ZOOMIN", "printpreviewframe.zoominbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int index = iZoomLevels.getSelectedIndex()-1;
+                int index = iZoomLevels.getSelectedIndex() - 1;
 
-                if(index >= 0){
-                    iZoomLevels.setSelectedItem( SSZoomLevel.values()[index] );
+                if (index >= 0) {
+                    iZoomLevels.setSelectedItem(SSZoomLevel.values()[index]);
                 }
-
-
 
             }
         });
@@ -195,12 +199,13 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
         // Zoom out
         // ***************************
-        iButton = new SSButton("ICON_ZOOMOUT", "printpreviewframe.zoomoutbutton", new ActionListener(){
+        iButton = new SSButton("ICON_ZOOMOUT", "printpreviewframe.zoomoutbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int index = iZoomLevels.getSelectedIndex()+2;
+                int index = iZoomLevels.getSelectedIndex() + 2;
 
-                if(index < SSZoomLevel.values().length ){
-                    iZoomLevels.setSelectedItem( SSZoomLevel.values()[index-1] );
+                if (index < SSZoomLevel.values().length) {
+                    iZoomLevels.setSelectedItem(SSZoomLevel.values()[index - 1]);
                 }
 
             }
@@ -209,37 +214,32 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         toolbar.add(iButton);
         toolbar.addSeparator();
 
-
-
-
-
-        iZoomLevels.addActionListener( new ActionListener() {
+        iZoomLevels.addActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
                 int iZoom;
 
-                try{
-                    if( iZoomLevels.getSelectedIndex() >= 0){
-                        SSZoomLevel iSelected = (SSZoomLevel)iZoomLevels.getSelectedItem();
+                try {
+                    if (iZoomLevels.getSelectedIndex() >= 0) {
+                        SSZoomLevel iSelected = (SSZoomLevel) iZoomLevels.getSelectedItem();
 
                         iZoom = iSelected.getZoom();
-                    }  else {
-                        iZoom = Integer.parseInt(  (String)iZoomLevels.getSelectedItem() );
+                    } else {
+                        iZoom = Integer.parseInt((String) iZoomLevels.getSelectedItem());
                     }
 
                 } catch (NumberFormatException e1) {
                     return;
                 }
-                iViewer.setZoom( iZoom );
+                iViewer.setZoom(iZoom);
 
             }
         });
 
         toolbar.add(iZoomLevels);
 
-
         iViewer.addPropertyChangeListener("page_change", this);
-
 
         return toolbar;
     }
@@ -252,15 +252,14 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
      */
 
     public void propertyChange(PropertyChangeEvent evt) {
-        int iCount   = iViewer.getPageCount();
+        int iCount = iViewer.getPageCount();
         int iCurrent = iViewer.getCurrentPage();
 
-        iFirst  .setEnabled(iCurrent > 0);
-        iBack   .setEnabled(iCurrent > 0);
-        iForward.setEnabled(iCurrent < (iCount-1));
-        iLast   .setEnabled(iCurrent < (iCount-1));
+        iFirst.setEnabled(iCurrent > 0);
+        iBack.setEnabled(iCurrent > 0);
+        iForward.setEnabled(iCurrent < (iCount - 1));
+        iLast.setEnabled(iCurrent < (iCount - 1));
     }
-
 
     /**
      * This method should return the main content for the frame.
@@ -273,12 +272,13 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         iViewer = new SSViewer();
 
         JScrollPane iScrollPane = new JScrollPane(iViewer);
-        iScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        iScrollPane.setVerticalScrollBarPolicy  (ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        iScrollPane.setHorizontalScrollBarPolicy(
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        iScrollPane.setVerticalScrollBarPolicy(
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         return iScrollPane;
     }
-
-
 
     /**
      * This method should return the status bar content, if any.
@@ -292,11 +292,10 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         SSStatusBar iStatusBar = new SSStatusBar();
 
         iStatusBar.addSpacer();
-        iStatusBar.addPanel( iPageLabel );
+        iStatusBar.addPanel(iPageLabel);
 
         return iStatusBar;
     }
-
 
     /**
      * Indicates whether this frame is a company data related frame.
@@ -322,10 +321,10 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
      *
      * @param iPrinter
      */
-    public void setPrinter(JasperPrint iPrinter){
+    public void setPrinter(JasperPrint iPrinter) {
         this.iPrinter = iPrinter;
 
-        iViewer.setPrinter( iPrinter );
+        iViewer.setPrinter(iPrinter);
     }
 
     /**
@@ -336,16 +335,17 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         this.iReport = iReport;
     }
 
-
     /**
      *
      */
-    private void updateStatusBar(){
-        int iCurrent = iViewer.getCurrentPage()+1;
-        int iTotal   = iViewer.getPageCount();
+    private void updateStatusBar() {
+        int iCurrent = iViewer.getCurrentPage() + 1;
+        int iTotal = iViewer.getPageCount();
 
-        //  iStatusBar.setText( String.format(bundle.getString("printpreviewframe.pages"), iCurrent,iTotal )   );
-        iPageLabel.setText( String.format(bundle.getString("printpreviewframe.pages"), iCurrent,iTotal )   );
+        // iStatusBar.setText( String.format(bundle.getString("printpreviewframe.pages"), iCurrent,iTotal )   );
+        iPageLabel.setText(
+                String.format(bundle.getString("printpreviewframe.pages"), iCurrent,
+                iTotal));
     }
 
     /**
@@ -354,89 +354,95 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
      * @param pSelectedFile
      */
     private void saveDocument(FileFilter pFileFilter, File pSelectedFile) {
-        String iFileName =  pSelectedFile.getAbsolutePath();
-        String iFileExt  =  getExtension(pSelectedFile);
+        String iFileName = pSelectedFile.getAbsolutePath();
+        String iFileExt = getExtension(pSelectedFile);
 
         // Pdf
-        if( iFileExt.equals("pdf") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterPDF) ){
-            try{
-                if(iFileExt.length() == 0) iFileName = iFileName + ".pdf";
+        if (iFileExt.equals("pdf")
+                || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterPDF)) {
+            try {
+                if (iFileExt.length() == 0) {
+                    iFileName = iFileName + ".pdf";
+                }
 
                 JasperExportManager.exportReportToPdfFile(iPrinter, iFileName);
-            }catch(JRException ex){
+            } catch (JRException ex) {
                 ex.printStackTrace();
             }
         }
         // html
-        if( iFileExt.equals("htm") || iFileExt.equals("html") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterHTM)){
-            try{
-                if(iFileExt.length() == 0) iFileName = iFileName + ".htm";
+        if (iFileExt.equals("htm") || iFileExt.equals("html")
+                || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterHTM)) {
+            try {
+                if (iFileExt.length() == 0) {
+                    iFileName = iFileName + ".htm";
+                }
 
                 JasperExportManager.exportReportToHtmlFile(iPrinter, iFileName);
-            }catch(JRException ex){
+            } catch (JRException ex) {
                 ex.printStackTrace();
             }
         }
 
         // RTF
-        if( iFileExt.equals(".rtf") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterRTF)){
-            try{
+        if (iFileExt.equals(".rtf")
+                || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterRTF)) {
+            try {
                 JRRtfSaveContributor iSaver = new JRRtfSaveContributor();
 
                 iSaver.save(iPrinter, pSelectedFile);
-            }catch(JRException ex){
+            } catch (JRException ex) {
                 ex.printStackTrace();
             }
         }
 
         // Excel
-        if( iFileExt.equals(".xls") || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterXLS)){
+        if (iFileExt.equals(".xls")
+                || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterXLS)) {
 
-            try{
+            try {
                 JRMultipleSheetsXlsSaveContributor iSaver = new JRMultipleSheetsXlsSaveContributor();
 
                 iSaver.save(iPrinter, pSelectedFile);
-            }catch(JRException ex){
+            } catch (JRException ex) {
                 ex.printStackTrace();
             }
         }
 
-
     }
 
-
     /*
-    * Get the lowercase extension of a file.
-    */
+     * Get the lowercase extension of a file.
+     */
     private String getExtension(File pFile) {
         String ext = null;
-        String s   = pFile.getName();
+        String s = pFile.getName();
 
         int i = s.lastIndexOf('.');
 
-        if (i > 0 &&  i < s.length() - 1) {
-            ext = s.substring(i+1).toLowerCase();
+        if (i > 0 && i < s.length() - 1) {
+            ext = s.substring(i + 1).toLowerCase();
         }
 
         return ext == null ? "" : ext.toLowerCase();
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iPrinter=null;
-        iViewer=null;
-        iPageLabel=null;
-        iZoomLevels=null;
-        iReport=null;
-        iFirst=null;
-        iBack=null;
-        iForward=null;
-        iLast=null;
+    public void actionPerformed(ActionEvent e) {
+        iPrinter = null;
+        iViewer = null;
+        iPageLabel = null;
+        iZoomLevels = null;
+        iReport = null;
+        iFirst = null;
+        iBack = null;
+        iForward = null;
+        iLast = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.view.SSJasperPreviewFrame");
         sb.append("{iBack=").append(iBack);
         sb.append(", iFirst=").append(iFirst);

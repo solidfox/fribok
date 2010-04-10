@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.calc.SSBalanceCalculator;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
@@ -15,12 +16,14 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 import java.math.BigDecimal;
 import java.util.Map;
 
+
 /**
  * User: Fredrik Stigsson
  * Date: 2006-feb-23
  * Time: 14:26:58
  */
 public class SIEEntryOutBalance implements SIEEntry {
+
     /**
      * Imports the entry
      *
@@ -49,24 +52,27 @@ public class SIEEntryOutBalance implements SIEEntry {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 
         boolean iHasData = false;
-        if( iPreviousYearData != null ){
-            Map<SSAccount, BigDecimal> iOutBalance = SSBalanceCalculator.getOutBalance(iPreviousYearData);
 
-            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iOutBalance.entrySet()){
-                iWriter.append( SIELabel.SIE_UB);
-                iWriter.append( -1);
+        if (iPreviousYearData != null) {
+            Map<SSAccount, BigDecimal> iOutBalance = SSBalanceCalculator.getOutBalance(
+                    iPreviousYearData);
+
+            for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iOutBalance.entrySet()) {
+                iWriter.append(SIELabel.SIE_UB);
+                iWriter.append(-1);
                 iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
                 iWriter.append(ssAccountBigDecimalEntry.getValue());
                 iWriter.newLine();
                 iHasData = true;
             }
         }
-        if( iCurrentYearData != null ){
-            Map<SSAccount, BigDecimal> iOutBalance = SSBalanceCalculator.getOutBalance(iCurrentYearData);
+        if (iCurrentYearData != null) {
+            Map<SSAccount, BigDecimal> iOutBalance = SSBalanceCalculator.getOutBalance(
+                    iCurrentYearData);
 
-            for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iOutBalance.entrySet()){
-                iWriter.append( SIELabel.SIE_UB);
-                iWriter.append( 0);
+            for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iOutBalance.entrySet()) {
+                iWriter.append(SIELabel.SIE_UB);
+                iWriter.append(0);
                 iWriter.append(ssAccountBigDecimalEntry.getKey().getNumber());
                 iWriter.append(ssAccountBigDecimalEntry.getValue());
                 iWriter.newLine();
@@ -76,7 +82,5 @@ public class SIEEntryOutBalance implements SIEEntry {
 
         return iHasData;
     }
-
-
 
 }

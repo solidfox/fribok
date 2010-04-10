@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.suppliercreditinvoice.dialog;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-21
@@ -27,16 +29,16 @@ public class SSSelectSupplierInvoiceDialog extends SSDialog {
 
     private SSButtonPanel iButtonPanel;
 
-
-
     /**
      *
      * @param iMainFrame
      */
     public SSSelectSupplierInvoiceDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("suppliercreditinvoiceframe.selectinvoice.title"));
+        super(iMainFrame,
+                SSBundle.getBundle().getString(
+                "suppliercreditinvoiceframe.selectinvoice.title"));
 
-        setLayout(new BorderLayout() );
+        setLayout(new BorderLayout());
         add(iPanel, BorderLayout.CENTER);
 
         pack();
@@ -55,10 +57,8 @@ public class SSSelectSupplierInvoiceDialog extends SSDialog {
             }
         });
 
-        iInvoices.setModel( SSSupplierInvoiceTableModel.getDropDownModel() );
+        iInvoices.setModel(SSSupplierInvoiceTableModel.getDropDownModel());
     }
-
-
 
     /**
      *
@@ -84,33 +84,36 @@ public class SSSelectSupplierInvoiceDialog extends SSDialog {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     /**
      *
      * @param iMainFrame
      * @return
      */
-    public static SSSupplierInvoice showDialog(SSMainFrame iMainFrame){
-        SSSelectSupplierInvoiceDialog iDialog = new SSSelectSupplierInvoiceDialog(iMainFrame);
+    public static SSSupplierInvoice showDialog(SSMainFrame iMainFrame) {
+        SSSelectSupplierInvoiceDialog iDialog = new SSSelectSupplierInvoiceDialog(
+                iMainFrame);
 
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible(true);
 
-
-        if(iDialog.getModalResult() != JOptionPane.OK_OPTION ){
+        if (iDialog.getModalResult() != JOptionPane.OK_OPTION) {
             SSSupplierInvoice iTemp = new SSSupplierInvoice();
+
             iTemp.setNumber(-1);
             return iTemp;
         }
 
         SSSupplierInvoice selected = iDialog.iInvoices.getSelected();
+
         return SSDB.getInstance().getSupplierInvoice(selected);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.suppliercreditinvoice.dialog.SSSelectSupplierInvoiceDialog");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.suppliercreditinvoice.dialog.SSSelectSupplierInvoiceDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iInvoices=").append(iInvoices);
         sb.append(", iPanel=").append(iPanel);

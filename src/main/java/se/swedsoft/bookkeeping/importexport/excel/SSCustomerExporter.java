@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.excel;
 
+
 import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.format.Colour;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Locale;
+
 
 /**
  * User: Andreas Lago
@@ -60,13 +62,12 @@ public class SSCustomerExporter {
     private File iFile;
     private List<SSCustomer> iCustomers;
 
-
     /**
      *
      * @param iFile
      */
-    public SSCustomerExporter(File iFile){
-      this.iFile = iFile;
+    public SSCustomerExporter(File iFile) {
+        this.iFile = iFile;
         iCustomers = SSDB.getInstance().getCustomers();
     }
 
@@ -80,7 +81,6 @@ public class SSCustomerExporter {
         this.iCustomers = iCustomers;
     }
 
-
     /**
      *
      * @throws IOException
@@ -90,23 +90,23 @@ public class SSCustomerExporter {
     public void export()  throws IOException, SSExportException {
         WorkbookSettings iSettings = new WorkbookSettings();
 
-        iSettings.setLocale               (new Locale("sv", "SE"));
-        iSettings.setEncoding             ("windows-1252");
-        iSettings.setExcelDisplayLanguage ("SE");
+        iSettings.setLocale(new Locale("sv", "SE"));
+        iSettings.setEncoding("windows-1252");
+        iSettings.setExcelDisplayLanguage("SE");
         iSettings.setExcelRegionalSettings("SE");
 
-        try{
+        try {
             WritableWorkbook iWorkbook = Workbook.createWorkbook(iFile, iSettings);
 
             WritableSheet iSheet = iWorkbook.createSheet("Kunder", 0);
 
-            writeCustomers(new SSWritableExcelSheet(iSheet)  );
+            writeCustomers(new SSWritableExcelSheet(iSheet));
 
             iWorkbook.write();
             iWorkbook.close();
 
-        }catch( WriteException e){
-            throw new SSExportException( e.getLocalizedMessage() );
+        } catch (WriteException e) {
+            throw new SSExportException(e.getLocalizedMessage());
         }
 
     }
@@ -116,272 +116,345 @@ public class SSCustomerExporter {
      * @param pSheet
      * @throws WriteException
      */
-    private void writeCustomers(SSWritableExcelSheet pSheet ) throws WriteException {
+    private void writeCustomers(SSWritableExcelSheet pSheet) throws WriteException {
 
-        List<SSWritableExcelRow> iRows = pSheet.getRows( iCustomers.size() + 1  );
+        List<SSWritableExcelRow> iRows = pSheet.getRows(iCustomers.size() + 1);
 
         // Write the column names
         SSWritableExcelRow iColumns = iRows.get(0);
 
         WritableCellFormat iCellFormat = new WritableCellFormat();
 
-        iCellFormat.setBackground( Colour.GRAY_25 );
+        iCellFormat.setBackground(Colour.GRAY_25);
 
-        iColumns.setString(0, KUNDNUMMER                , iCellFormat);
-        iColumns.setString(1, NAMN                      , iCellFormat);
-        iColumns.setString(2, TELEFON1                  , iCellFormat);
-        iColumns.setString(3, TELEFON2                  , iCellFormat);
-        iColumns.setString(4, FAX                       , iCellFormat);
-        iColumns.setString(5, EPOST                     , iCellFormat);
-        iColumns.setString(6, KONTAKTPERSON             , iCellFormat);
-        iColumns.setString(7, ORGANISATIONSNUMMER       , iCellFormat);
-        iColumns.setString(8, BANKGIRO                  , iCellFormat);
-        iColumns.setString(9, PLUSGIRO                  , iCellFormat);
+        iColumns.setString(0, KUNDNUMMER, iCellFormat);
+        iColumns.setString(1, NAMN, iCellFormat);
+        iColumns.setString(2, TELEFON1, iCellFormat);
+        iColumns.setString(3, TELEFON2, iCellFormat);
+        iColumns.setString(4, FAX, iCellFormat);
+        iColumns.setString(5, EPOST, iCellFormat);
+        iColumns.setString(6, KONTAKTPERSON, iCellFormat);
+        iColumns.setString(7, ORGANISATIONSNUMMER, iCellFormat);
+        iColumns.setString(8, BANKGIRO, iCellFormat);
+        iColumns.setString(9, PLUSGIRO, iCellFormat);
 
-        iColumns.setString(10, FAKTURAADRESS_NAMN        , iCellFormat);
-        iColumns.setString(11, FAKTURAADRESS_ADRESS1     , iCellFormat);
-        iColumns.setString(12, FAKTURAADRESS_ADRESS2    , iCellFormat);
-        iColumns.setString(13, FAKTURAADRESS_POSTNUMMER , iCellFormat);
-        iColumns.setString(14, FAKTURAADRESS_POSTORT    , iCellFormat);
-        iColumns.setString(15, FAKTURAADRESS_LAND       , iCellFormat);
+        iColumns.setString(10, FAKTURAADRESS_NAMN, iCellFormat);
+        iColumns.setString(11, FAKTURAADRESS_ADRESS1, iCellFormat);
+        iColumns.setString(12, FAKTURAADRESS_ADRESS2, iCellFormat);
+        iColumns.setString(13, FAKTURAADRESS_POSTNUMMER, iCellFormat);
+        iColumns.setString(14, FAKTURAADRESS_POSTORT, iCellFormat);
+        iColumns.setString(15, FAKTURAADRESS_LAND, iCellFormat);
 
-        iColumns.setString(16, LEVERANSADRESS_NAMN      , iCellFormat);
-        iColumns.setString(17, LEVERANSADRESS_ADRESS1   , iCellFormat);
-        iColumns.setString(18, LEVERANSADRESS_ADRESS2   , iCellFormat);
+        iColumns.setString(16, LEVERANSADRESS_NAMN, iCellFormat);
+        iColumns.setString(17, LEVERANSADRESS_ADRESS1, iCellFormat);
+        iColumns.setString(18, LEVERANSADRESS_ADRESS2, iCellFormat);
         iColumns.setString(19, LEVERANSADRESS_POSTNUMMER, iCellFormat);
-        iColumns.setString(20, LEVERANSADRESS_POSTORT   , iCellFormat);
-        iColumns.setString(21, LEVERANSADRESS_LAND      , iCellFormat);
-
+        iColumns.setString(20, LEVERANSADRESS_POSTORT, iCellFormat);
+        iColumns.setString(21, LEVERANSADRESS_LAND, iCellFormat);
 
         int iRowIndex = 1;
+
         for (SSCustomer iCustomer : iCustomers) {
-            SSWritableExcelRow iRow =  iRows.get(iRowIndex);
-            iRow.setString(0,  iCustomer.getNumber() );
-            iRow.setString(1,  iCustomer.getName() );
-            iRow.setString(2,  iCustomer.getPhone1() );
-            iRow.setString(3,  iCustomer.getPhone2() );
-            iRow.setString(4,  iCustomer.getTelefax() );
-            iRow.setString(5,  iCustomer.getEMail() );
-            iRow.setString(6,  iCustomer.getYourContactPerson() );
-            iRow.setString(7,  iCustomer.getRegistrationNumber() );
-            iRow.setString(8,  iCustomer.getBankgiro() );
-            iRow.setString(9,  iCustomer.getPlusgiro() );
+            SSWritableExcelRow iRow = iRows.get(iRowIndex);
 
-            iRow.setString(1,  iCustomer.getInvoiceAddress().getName() );
-            iRow.setString(11,  iCustomer.getInvoiceAddress().getAddress1() );
-            iRow.setString(12,  iCustomer.getInvoiceAddress().getAddress2() );
-            iRow.setString(13,  iCustomer.getInvoiceAddress().getZipCode() );
-            iRow.setString(14,  iCustomer.getInvoiceAddress().getCity() );
-            iRow.setString(15,  iCustomer.getInvoiceAddress().getCountry() );
+            iRow.setString(0, iCustomer.getNumber());
+            iRow.setString(1, iCustomer.getName());
+            iRow.setString(2, iCustomer.getPhone1());
+            iRow.setString(3, iCustomer.getPhone2());
+            iRow.setString(4, iCustomer.getTelefax());
+            iRow.setString(5, iCustomer.getEMail());
+            iRow.setString(6, iCustomer.getYourContactPerson());
+            iRow.setString(7, iCustomer.getRegistrationNumber());
+            iRow.setString(8, iCustomer.getBankgiro());
+            iRow.setString(9, iCustomer.getPlusgiro());
 
-            iRow.setString(16,  iCustomer.getDeliveryAddress().getName() );
-            iRow.setString(17,  iCustomer.getDeliveryAddress().getAddress1() );
-            iRow.setString(18,  iCustomer.getDeliveryAddress().getAddress2() );
-            iRow.setString(19,  iCustomer.getDeliveryAddress().getZipCode() );
-            iRow.setString(20,  iCustomer.getDeliveryAddress().getCity() );
-            iRow.setString(21,  iCustomer.getDeliveryAddress().getCountry() );
+            iRow.setString(1, iCustomer.getInvoiceAddress().getName());
+            iRow.setString(11, iCustomer.getInvoiceAddress().getAddress1());
+            iRow.setString(12, iCustomer.getInvoiceAddress().getAddress2());
+            iRow.setString(13, iCustomer.getInvoiceAddress().getZipCode());
+            iRow.setString(14, iCustomer.getInvoiceAddress().getCity());
+            iRow.setString(15, iCustomer.getInvoiceAddress().getCountry());
+
+            iRow.setString(16, iCustomer.getDeliveryAddress().getName());
+            iRow.setString(17, iCustomer.getDeliveryAddress().getAddress1());
+            iRow.setString(18, iCustomer.getDeliveryAddress().getAddress2());
+            iRow.setString(19, iCustomer.getDeliveryAddress().getZipCode());
+            iRow.setString(20, iCustomer.getDeliveryAddress().getCity());
+            iRow.setString(21, iCustomer.getDeliveryAddress().getCountry());
             iRowIndex++;
         }
-
 
     }
 
     public void doXMLExport() {
 
-        Document iXmlDoc= new DocumentImpl();
+        Document iXmlDoc = new DocumentImpl();
         Element iRoot = iXmlDoc.createElement("Customers");
 
         for (SSCustomer iCustomer : iCustomers) {
             Element iElement = iXmlDoc.createElementNS(null, "Customer");
 
             Element iSubElement = iXmlDoc.createElementNS(null, "CustomerNo");
+
             iElement.appendChild(iSubElement);
-            Node iNode = iXmlDoc.createTextNode(iCustomer.getNumber() == null ? "" : iCustomer.getNumber());
+            Node iNode = iXmlDoc.createTextNode(
+                    iCustomer.getNumber() == null ? "" : iCustomer.getNumber());
+
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"CustomerName");
+            iSubElement = iXmlDoc.createElementNS(null, "CustomerName");
             iElement.appendChild(iSubElement);
             iNode = iXmlDoc.createTextNode(iCustomer.getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"OurContactPerson");
+            iSubElement = iXmlDoc.createElementNS(null, "OurContactPerson");
             iElement.appendChild(iSubElement);
             iNode = iXmlDoc.createTextNode(iCustomer.getOurContactPerson());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"YourContactPerson");
+            iSubElement = iXmlDoc.createElementNS(null, "YourContactPerson");
             iElement.appendChild(iSubElement);
             iNode = iXmlDoc.createTextNode(iCustomer.getYourContactPerson());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"CurrencyCode");
+            iSubElement = iXmlDoc.createElementNS(null, "CurrencyCode");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceCurrency() == null ? "" : iCustomer.getInvoiceCurrency().getName());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceCurrency() == null
+                            ? ""
+                            : iCustomer.getInvoiceCurrency().getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"PaymentTerms");
+            iSubElement = iXmlDoc.createElementNS(null, "PaymentTerms");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getPaymentTerm() == null ? "" : iCustomer.getPaymentTerm().getName());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getPaymentTerm() == null
+                            ? ""
+                            : iCustomer.getPaymentTerm().getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryTerms");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryTerms");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryTerm() == null ? "" : iCustomer.getDeliveryTerm().getName());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryTerm() == null
+                            ? ""
+                            : iCustomer.getDeliveryTerm().getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryMethod");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryMethod");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryWay() == null ? "" : iCustomer.getDeliveryWay().getName());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryWay() == null
+                            ? ""
+                            : iCustomer.getDeliveryWay().getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"TaxFree");
+            iSubElement = iXmlDoc.createElementNS(null, "TaxFree");
             iElement.appendChild(iSubElement);
             iNode = iXmlDoc.createTextNode(Boolean.toString(iCustomer.getTaxFree()));
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"EuSaleCommodity");
+            iSubElement = iXmlDoc.createElementNS(null, "EuSaleCommodity");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(Boolean.toString(iCustomer.getEuSaleCommodity()));
+            iNode = iXmlDoc.createTextNode(
+                    Boolean.toString(iCustomer.getEuSaleCommodity()));
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"EuSaleThirdPartCommodity");
+            iSubElement = iXmlDoc.createElementNS(null, "EuSaleThirdPartCommodity");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(Boolean.toString(iCustomer.getEuSaleYhirdPartCommodity()));
+            iNode = iXmlDoc.createTextNode(
+                    Boolean.toString(iCustomer.getEuSaleYhirdPartCommodity()));
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"HideUnitPrice");
+            iSubElement = iXmlDoc.createElementNS(null, "HideUnitPrice");
             iElement.appendChild(iSubElement);
             iNode = iXmlDoc.createTextNode(Boolean.toString(iCustomer.getHideUnitprice()));
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"VATRegNo");
+            iSubElement = iXmlDoc.createElementNS(null, "VATRegNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getVATNumber() == null ? "" : iCustomer.getVATNumber());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getVATNumber() == null ? "" : iCustomer.getVATNumber());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"Email");
+            iSubElement = iXmlDoc.createElementNS(null, "Email");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getEMail() == null ? "" : iCustomer.getEMail());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getEMail() == null ? "" : iCustomer.getEMail());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"CompanyNo");
+            iSubElement = iXmlDoc.createElementNS(null, "CompanyNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getRegistrationNumber() == null ? "" : iCustomer.getRegistrationNumber());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getRegistrationNumber() == null
+                            ? ""
+                            : iCustomer.getRegistrationNumber());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"Telefax");
+            iSubElement = iXmlDoc.createElementNS(null, "Telefax");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getTelefax() == null ? "" : iCustomer.getTelefax());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getTelefax() == null ? "" : iCustomer.getTelefax());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"Telephone");
+            iSubElement = iXmlDoc.createElementNS(null, "Telephone");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getPhone1() == null ? "" : iCustomer.getPhone1());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getPhone1() == null ? "" : iCustomer.getPhone1());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"Telephone2");
+            iSubElement = iXmlDoc.createElementNS(null, "Telephone2");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getPhone2() == null ? "" : iCustomer.getPhone2());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getPhone2() == null ? "" : iCustomer.getPhone2());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"CreditLimit");
+            iSubElement = iXmlDoc.createElementNS(null, "CreditLimit");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getCreditLimit() == null ? "" : iCustomer.getCreditLimit().toString());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getCreditLimit() == null
+                            ? ""
+                            : iCustomer.getCreditLimit().toString());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"Discount");
+            iSubElement = iXmlDoc.createElementNS(null, "Discount");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDiscount() == null ? "" : iCustomer.getDiscount().toString());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDiscount() == null
+                            ? ""
+                            : iCustomer.getDiscount().toString());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"BgNo");
+            iSubElement = iXmlDoc.createElementNS(null, "BgNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getBankgiro() == null ? "" : iCustomer.getBankgiro());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getBankgiro() == null ? "" : iCustomer.getBankgiro());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"PgNo");
+            iSubElement = iXmlDoc.createElementNS(null, "PgNo");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getPlusgiro() == null ? "" : iCustomer.getPlusgiro());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getPlusgiro() == null ? "" : iCustomer.getPlusgiro());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"CreditLimit");
+            iSubElement = iXmlDoc.createElementNS(null, "CreditLimit");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getCreditLimit() == null ? "" : iCustomer.getCreditLimit().toString());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getCreditLimit() == null
+                            ? ""
+                            : iCustomer.getCreditLimit().toString());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"InvoiceName");
+            iSubElement = iXmlDoc.createElementNS(null, "InvoiceName");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceAddress() == null ? "" : iCustomer.getInvoiceAddress().getName());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceAddress() == null
+                            ? ""
+                            : iCustomer.getInvoiceAddress().getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"InvoiceAddress1");
+            iSubElement = iXmlDoc.createElementNS(null, "InvoiceAddress1");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceAddress() == null ? "" : iCustomer.getInvoiceAddress().getAddress1());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceAddress() == null
+                            ? ""
+                            : iCustomer.getInvoiceAddress().getAddress1());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"InvoiceAddress2");
+            iSubElement = iXmlDoc.createElementNS(null, "InvoiceAddress2");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceAddress() == null ? "" : iCustomer.getInvoiceAddress().getAddress2());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceAddress() == null
+                            ? ""
+                            : iCustomer.getInvoiceAddress().getAddress2());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"InvoicePostCode");
+            iSubElement = iXmlDoc.createElementNS(null, "InvoicePostCode");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceAddress() == null ? "" : iCustomer.getInvoiceAddress().getZipCode());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceAddress() == null
+                            ? ""
+                            : iCustomer.getInvoiceAddress().getZipCode());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"InvoicePostOffice");
+            iSubElement = iXmlDoc.createElementNS(null, "InvoicePostOffice");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceAddress() == null ? "" : iCustomer.getInvoiceAddress().getCity());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceAddress() == null
+                            ? ""
+                            : iCustomer.getInvoiceAddress().getCity());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"InvoiceCountry");
+            iSubElement = iXmlDoc.createElementNS(null, "InvoiceCountry");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getInvoiceAddress() == null ? "" : iCustomer.getInvoiceAddress().getCountry());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getInvoiceAddress() == null
+                            ? ""
+                            : iCustomer.getInvoiceAddress().getCountry());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryName");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryName");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryAddress() == null ? "" : iCustomer.getDeliveryAddress().getName());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryAddress() == null
+                            ? ""
+                            : iCustomer.getDeliveryAddress().getName());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryAddress1");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryAddress1");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryAddress() == null ? "" : iCustomer.getDeliveryAddress().getAddress1());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryAddress() == null
+                            ? ""
+                            : iCustomer.getDeliveryAddress().getAddress1());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryAddress2");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryAddress2");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryAddress() == null ? "" : iCustomer.getDeliveryAddress().getAddress2());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryAddress() == null
+                            ? ""
+                            : iCustomer.getDeliveryAddress().getAddress2());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryPostCode");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryPostCode");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryAddress() == null ? "" : iCustomer.getDeliveryAddress().getZipCode());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryAddress() == null
+                            ? ""
+                            : iCustomer.getDeliveryAddress().getZipCode());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryPostOffice");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryPostOffice");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryAddress() == null ? "" : iCustomer.getDeliveryAddress().getCity());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryAddress() == null
+                            ? ""
+                            : iCustomer.getDeliveryAddress().getCity());
             iSubElement.appendChild(iNode);
 
-            iSubElement = iXmlDoc.createElementNS(null,"DeliveryCountry");
+            iSubElement = iXmlDoc.createElementNS(null, "DeliveryCountry");
             iElement.appendChild(iSubElement);
-            iNode = iXmlDoc.createTextNode(iCustomer.getDeliveryAddress() == null ? "" : iCustomer.getDeliveryAddress().getCountry());
+            iNode = iXmlDoc.createTextNode(
+                    iCustomer.getDeliveryAddress() == null
+                            ? ""
+                            : iCustomer.getDeliveryAddress().getCountry());
             iSubElement.appendChild(iNode);
-
 
             iRoot.appendChild(iElement);
         }
         iXmlDoc.appendChild(iRoot);
         try {
             FileOutputStream fos = new FileOutputStream(iFile.getAbsolutePath());
-            OutputStreamWriter osw = new OutputStreamWriter(fos,"windows-1252");
-            OutputFormat of = new OutputFormat("XML","windows-1252",true);
+            OutputStreamWriter osw = new OutputStreamWriter(fos, "windows-1252");
+            OutputFormat of = new OutputFormat("XML", "windows-1252", true);
+
             of.setIndent(1);
             of.setIndenting(true);
-            XMLSerializer serializer = new XMLSerializer(osw,of);
+            XMLSerializer serializer = new XMLSerializer(osw, of);
+
             serializer.asDOMSerializer();
-            serializer.serialize( iXmlDoc.getDocumentElement() );
+            serializer.serialize(iXmlDoc.getDocumentElement());
 
             fos.close();
             osw.close();
@@ -390,10 +463,10 @@ public class SSCustomerExporter {
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.excel.SSCustomerExporter");
         sb.append("{iCustomers=").append(iCustomers);
         sb.append(", iFile=").append(iFile);

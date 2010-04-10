@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.util.model;
 
+
 import se.swedsoft.bookkeeping.data.common.SSVATCode;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -14,12 +16,11 @@ import java.util.List;
  */
 public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
 
-
     /**
      * Default constructor.
      */
     public SSVATCodeTableModel() {
-        this( SSVATCode.getValues() );
+        this(SSVATCode.getValues());
     }
 
     /**
@@ -45,8 +46,8 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      *
      * @return
      */
-    public static SSVATCodeTableModel getDropDownModel(){
-        return getDropDownModel( SSVATCode.getValues() );
+    public static SSVATCodeTableModel getDropDownModel() {
+        return getDropDownModel(SSVATCode.getValues());
     }
 
     /**
@@ -54,21 +55,20 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
      * @param iVATCodes
      * @return
      */
-    public static SSVATCodeTableModel getDropDownModel(List<SSVATCode> iVATCodes){
+    public static SSVATCodeTableModel getDropDownModel(List<SSVATCode> iVATCodes) {
         SSVATCodeTableModel iModel = new SSVATCodeTableModel(iVATCodes);
 
-        iModel.addColumn( COLUMN_NAME );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
     }
 
-
-
     /**
      *  Name
      */
-    public static SSTableColumn<SSVATCode> COLUMN_NAME = new SSTableColumn<SSVATCode>(SSBundle.getBundle().getString("vatcodetable.column.1")) {
+    public static SSTableColumn<SSVATCode> COLUMN_NAME = new SSTableColumn<SSVATCode>(
+            SSBundle.getBundle().getString("vatcodetable.column.1")) {
         @Override
         public Object getValue(SSVATCode iVATCode) {
             return iVATCode.getName();
@@ -76,7 +76,7 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
 
         @Override
         public void setValue(SSVATCode iVATCode, Object iValue) {
-            iVATCode.setName((String)iValue);
+            iVATCode.setName((String) iValue);
         }
 
         @Override
@@ -90,11 +90,11 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
         }
     };
 
-
     /**
      *  Description
      */
-    public static SSTableColumn<SSVATCode> COLUMN_DESCRIPTION = new SSTableColumn<SSVATCode>(SSBundle.getBundle().getString("vatcodetable.column.1")) {
+    public static SSTableColumn<SSVATCode> COLUMN_DESCRIPTION = new SSTableColumn<SSVATCode>(
+            SSBundle.getBundle().getString("vatcodetable.column.1")) {
         @Override
         public Object getValue(SSVATCode iVATCode) {
             return iVATCode.getDescription();
@@ -102,7 +102,7 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
 
         @Override
         public void setValue(SSVATCode iVATCode, Object iValue) {
-            iVATCode.setDescription((String)iValue);
+            iVATCode.setDescription((String) iValue);
         }
 
         @Override
@@ -115,7 +115,5 @@ public class SSVATCodeTableModel extends SSTableModel<SSVATCode> {
             return 350;
         }
     };
-
-
 
 }

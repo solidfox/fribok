@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
@@ -31,17 +32,17 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
     // Automatfördelningsrader
     private List<SSAutoDistRow> iRows;
 
-    //Transient referens till kontot
+    // Transient referens till kontot
     private transient SSAccount iAccount;
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
     public SSAutoDist() {
-        iRows           = new LinkedList<SSAutoDistRow>();
-        iAmount         = new BigDecimal(0);
+        iRows = new LinkedList<SSAutoDistRow>();
+        iAmount = new BigDecimal(0);
     }
 
     /**
@@ -49,12 +50,11 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      * @param iAccount
      */
     public SSAutoDist(SSAccount iAccount) {
-        iRows           = new LinkedList<SSAutoDistRow>();
-        iAmount         = new BigDecimal(0);
-        this.iAccount   = iAccount;
-        iAccountNumber  = iAccount.getNumber();
+        iRows = new LinkedList<SSAutoDistRow>();
+        iAmount = new BigDecimal(0);
+        this.iAccount = iAccount;
+        iAccountNumber = iAccount.getNumber();
     }
-
 
     /**
      * Copy constructor
@@ -64,7 +64,6 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
     public SSAutoDist(SSAutoDist iAutoDist) {
         copyFrom(iAutoDist);
     }
-
 
     /**
      * Clone constructor
@@ -77,7 +76,8 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
 
         this.iAccountNumber = iAccountNumber;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -85,20 +85,18 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
      */
     public void copyFrom(SSAutoDist iAutoDist) {
         iAccountNumber = iAutoDist.iAccountNumber;
-        iAccount       = iAutoDist.iAccount;
-        iDescription   = iAutoDist.iDescription;
-        iAmount        = iAutoDist.iAmount;
-        iRows          = new LinkedList<SSAutoDistRow>();
+        iAccount = iAutoDist.iAccount;
+        iDescription = iAutoDist.iDescription;
+        iAmount = iAutoDist.iAmount;
+        iRows = new LinkedList<SSAutoDistRow>();
 
         // Copy all rows
-        for(SSAutoDistRow iRow : iAutoDist.iRows){
-            iRows.add( new SSAutoDistRow(iRow) );
+        for (SSAutoDistRow iRow : iAutoDist.iRows) {
+            iRows.add(new SSAutoDistRow(iRow));
         }
     }
 
-
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      *
      * @return
@@ -115,7 +113,7 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
         iAccountNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -133,15 +131,16 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
         iDescription = iText;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public List<SSAutoDistRow> getRows() {
-        if(iRows == null) iRows = new LinkedList<SSAutoDistRow>();
+        if (iRows == null) {
+            iRows = new LinkedList<SSAutoDistRow>();
+        }
         return iRows;
     }
 
@@ -153,28 +152,26 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
         this.iRows = iRows;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public BigDecimal getAmount() {
         return iAmount;
     }
 
-
-
     public void setAmount(BigDecimal iAmount) {
         this.iAmount = iAmount;
     }
 
-    ///////////////////////////////////////////////////
+    // /////////////////////////////////////////////////
 
     public SSAccount getAccount() {
         return getAccount(SSDB.getInstance().getAccounts());
     }
 
-    public SSAccount getAccount(List<SSAccount> iAccounts ) {
-        if(iAccount == null && iAccountNumber != null){
+    public SSAccount getAccount(List<SSAccount> iAccounts) {
+        if (iAccount == null && iAccountNumber != null) {
             for (SSAccount iCurrent : iAccounts) {
-                if(iAccountNumber.equals(iCurrent.getNumber() )){
+                if (iAccountNumber.equals(iCurrent.getNumber())) {
                     iAccount = iCurrent;
                     break;
                 }
@@ -184,14 +181,16 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
     }
 
     public void setAccount(SSAccount iAccount) {
-        if(iAccount == null) return;
+        if (iAccount == null) {
+            return;
+        }
         this.iAccount = iAccount;
         iAccountNumber = iAccount.getNumber();
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append(iAccountNumber);
         sb.append(", ");
         sb.append(iDescription);
@@ -207,7 +206,6 @@ public class SSAutoDist implements SSTableSearchable, Serializable {
         return iAccountNumber == null ? null : iAccountNumber.toString();
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSAutoDist)) {
             return false;

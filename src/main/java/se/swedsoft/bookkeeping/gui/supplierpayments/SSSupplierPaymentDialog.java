@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplierpayments;
 
+
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -26,6 +27,7 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-28
@@ -38,7 +40,6 @@ public class SSSupplierPaymentDialog extends SSDialog {
     private SSTable iTable;
 
     private SSSupplierPaymentTableModel iModel;
-
 
     private SSButtonPanel iButtonPanel;
 
@@ -53,110 +54,131 @@ public class SSSupplierPaymentDialog extends SSDialog {
      */
     public SSSupplierPaymentDialog(final SSMainFrame iMainFrame, List<SSSupplierInvoice> iSupplierInvoices) {
         super(iMainFrame, SSBundle.getBundle().getString("supplierpaymentframe.title"));
-        setPanel(iPanel );
+        setPanel(iPanel);
         iTable.setColumnSortingEnabled(false);
         iTable.setColorReadOnly(true);
 
         iModel = new SSSupplierPaymentTableModel(iSupplierInvoices);
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_SUPPLIER_NUMBER  );
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_SUPPLIER_NAME    );
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_DATE           , true);
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_VALUE          , true);
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_CURRENCY );
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_PAYMENT_METHOD, true );
-        iModel.addColumn( SSSupplierPaymentTableModel.COLUMN_ACCOUNT       , true);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_SUPPLIER_NUMBER);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_SUPPLIER_NAME);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_DATE, true);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_VALUE, true);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_CURRENCY);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_PAYMENT_METHOD, true);
+        iModel.addColumn(SSSupplierPaymentTableModel.COLUMN_ACCOUNT, true);
 
         iModel.setupTable(iTable);
 
-        iOurBankGiroNumber.setText( SSDB.getInstance().getCurrentCompany().getBankGiroNumber() );
+        iOurBankGiroNumber.setText(
+                SSDB.getInstance().getCurrentCompany().getBankGiroNumber());
 
-        iButtonPanel.addOkActionListener(new ActionListener() {
+        iButtonPanel.addOkActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<SupplierPayment> iSupplierPayments = iModel.getObjects();
 
-                for(SupplierPayment iPayment : iSupplierPayments) {
+                for (SupplierPayment iPayment : iSupplierPayments) {
                     SSSupplierInvoice pSupplierInvoice = iPayment.getSupplierInvoice();
-                    if(SSDB.getInstance().getSupplierInvoice(pSupplierInvoice) == null){
+
+                    if (SSDB.getInstance().getSupplierInvoice(pSupplierInvoice) == null) {
                         iSupplierPayments.remove(iPayment);
-                        new SSErrorDialog( iMainFrame, "supplierinvoiceframe.supplierinvoicegone",pSupplierInvoice.getNumber());
+                        new SSErrorDialog(iMainFrame,
+                                "supplierinvoiceframe.supplierinvoicegone",
+                                pSupplierInvoice.getNumber());
                     }
 
                 }
                 iModel.setObjects(iSupplierPayments);
-                if(iSupplierPayments.isEmpty()){
-                    new SSErrorDialog( iMainFrame, "supplierinvoiceframe.nosupplierpayments");
+                if (iSupplierPayments.isEmpty()) {
+                    new SSErrorDialog(iMainFrame,
+                            "supplierinvoiceframe.nosupplierpayments");
                     return;
                 }
 
-                SSFileChooser iFileChooser = new SSFileChooser( new SSFilterTXT() );
+                SSFileChooser iFileChooser = new SSFileChooser(new SSFilterTXT());
 
-                iFileChooser.setSelectedFile( new File("Leverantörsbetalning.txt"));
+                iFileChooser.setSelectedFile(new File("Leverantörsbetalning.txt"));
                 int iResponce = iFileChooser.showSaveDialog(iMainFrame);
-                if( iResponce != SSFileChooser.APPROVE_OPTION){
+
+                if (iResponce != SSFileChooser.APPROVE_OPTION) {
                     return;
                 }
 
-                for(SupplierPayment iPayment : iSupplierPayments) {
+                for (SupplierPayment iPayment : iSupplierPayments) {
                     SSSupplierInvoice pSupplierInvoice = iPayment.getSupplierInvoice();
-                    if(SSDB.getInstance().getSupplierInvoice(pSupplierInvoice) == null){
+
+                    if (SSDB.getInstance().getSupplierInvoice(pSupplierInvoice) == null) {
                         iSupplierPayments.remove(iPayment);
-                        new SSErrorDialog( iMainFrame, "supplierinvoiceframe.supplierinvoicegone",pSupplierInvoice.getNumber());
+                        new SSErrorDialog(iMainFrame,
+                                "supplierinvoiceframe.supplierinvoicegone",
+                                pSupplierInvoice.getNumber());
                     }
 
                 }
                 iModel.setObjects(iSupplierPayments);
-                if(iSupplierPayments.isEmpty()){
-                    new SSErrorDialog( iMainFrame, "supplierinvoiceframe.nosupplierpayments");
+                if (iSupplierPayments.isEmpty()) {
+                    new SSErrorDialog(iMainFrame,
+                            "supplierinvoiceframe.nosupplierpayments");
                     return;
                 }
                 Date iDate = new Date();
-                for(SupplierPayment iSupplierPayment : iSupplierPayments){
+
+                for (SupplierPayment iSupplierPayment : iSupplierPayments) {
                     if (iSupplierPayment.getDate().after(iDate)) {
                         iDate = iSupplierPayment.getDate();
                     }
                     iSupplierPayment.getSupplierInvoice().setBGCEntered();
-                    SSDB.getInstance().updateSupplierInvoice(iSupplierPayment.getSupplierInvoice());
+                    SSDB.getInstance().updateSupplierInvoice(
+                            iSupplierPayment.getSupplierInvoice());
                 }
-                SupplierPaymentConfig.setOurBankGiroAccount( iOurBankGiroNumber.getText() );
-                SupplierPaymentConfig.setMessage           ( iMessage.getText()           );
-                SupplierPaymentConfig.setMessageDate       ( iDate );
+                SupplierPaymentConfig.setOurBankGiroAccount(iOurBankGiroNumber.getText());
+                SupplierPaymentConfig.setMessage(iMessage.getText());
+                SupplierPaymentConfig.setMessageDate(iDate);
 
                 try {
-                    SSSupplierPaymentExporter.Export(iFileChooser.getSelectedFile(), iSupplierPayments);
+                    SSSupplierPaymentExporter.Export(iFileChooser.getSelectedFile(),
+                            iSupplierPayments);
                 } catch (SSExportException e1) {
-                    SSErrorDialog.showDialog(iMainFrame, SSBundle.getBundle().getString("supplierpaymentframe.error"), e1.getMessage() );
+                    SSErrorDialog.showDialog(iMainFrame,
+                            SSBundle.getBundle().getString("supplierpaymentframe.error"),
+                            e1.getMessage());
 
                     e1.printStackTrace();
 
                     return;
                 }
 
-                SSPostLock.removeLock("supplierpayment"+SSDB.getInstance().getCurrentCompany().getId());
+                SSPostLock.removeLock(
+                        "supplierpayment" + SSDB.getInstance().getCurrentCompany().getId());
                 closeDialog(JOptionPane.OK_OPTION);
             }
         });
 
-        iButtonPanel.addCancelActionListener(new ActionListener() {
+        iButtonPanel.addCancelActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSPostLock.removeLock("supplierpayment"+SSDB.getInstance().getCurrentCompany().getId());
+                SSPostLock.removeLock(
+                        "supplierpayment" + SSDB.getInstance().getCurrentCompany().getId());
                 closeDialog();
             }
         });
 
-        addWindowListener(new WindowAdapter(){
+        addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                SSPostLock.removeLock("supplierpayment"+SSDB.getInstance().getCurrentCompany().getId());
+                SSPostLock.removeLock(
+                        "supplierpayment" + SSDB.getInstance().getCurrentCompany().getId());
             }
         });
 
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.supplierpayments.SSSupplierPaymentDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iMessage=").append(iMessage);

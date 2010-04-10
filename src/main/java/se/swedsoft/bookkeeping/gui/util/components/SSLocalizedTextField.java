@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -14,13 +16,11 @@ import java.util.List;
  */
 public class SSLocalizedTextField extends JPanel {
 
-
     private List<Locale> iLocales;
 
     private Map<Locale, String> iDescriptions;
 
     private Map<Locale, String> iValues;
-
 
     private Map<Locale, JTextField> iTextFields;
 
@@ -29,9 +29,9 @@ public class SSLocalizedTextField extends JPanel {
      * and a flow layout.
      */
     public SSLocalizedTextField() {
-        iLocales      = new LinkedList<Locale>();
+        iLocales = new LinkedList<Locale>();
         iDescriptions = new HashMap<Locale, String>();
-        iValues       = new HashMap<Locale, String>();
+        iValues = new HashMap<Locale, String>();
 
         iTextFields = new HashMap<Locale, JTextField>();
     }
@@ -40,35 +40,39 @@ public class SSLocalizedTextField extends JPanel {
      *
      */
     private void createLayout() {
-        GridBagLayout      iLayout      = new GridBagLayout();
+        GridBagLayout      iLayout = new GridBagLayout();
         GridBagConstraints iConstraints = new GridBagConstraints();
 
         removeAll();
 
         setLayout(iLayout);
 
-        iConstraints.insets   = new Insets(1,2,1,2);
+        iConstraints.insets = new Insets(1, 2, 1, 2);
         for (Locale iLocale : iLocales) {
             String iDescription = iDescriptions.get(iLocale);
-            String iValue       = iValues      .get(iLocale);
+            String iValue = iValues.get(iLocale);
 
-            JLabel     iLabel     = new JLabel    ( iDescription );
-            JTextField iTextField = new JTextField( iValue );
+            JLabel     iLabel = new JLabel(iDescription);
+            JTextField iTextField = new JTextField(iValue);
 
-            iTextField.setPreferredSize( new Dimension(380, iTextField.getPreferredSize().height) );
-            iTextField.getDocument().addDocumentListener(new MyDocumentListener(iTextField, iLocale));
+            iTextField.setPreferredSize(
+                    new Dimension(380, iTextField.getPreferredSize().height));
+            iTextField.getDocument().addDocumentListener(
+                    new MyDocumentListener(iTextField, iLocale));
 
-            iConstraints.fill      = GridBagConstraints.NONE;
-            iConstraints.weightx   = 0.0;
+            iConstraints.fill = GridBagConstraints.NONE;
+            iConstraints.weightx = 0.0;
             iConstraints.gridwidth = GridBagConstraints.RELATIVE;
 
-            iLayout.setConstraints(iLabel, iConstraints); add(iLabel);
+            iLayout.setConstraints(iLabel, iConstraints);
+            add(iLabel);
 
-            iConstraints.fill      = GridBagConstraints.HORIZONTAL;
-            iConstraints.weightx   = 1.0;
+            iConstraints.fill = GridBagConstraints.HORIZONTAL;
+            iConstraints.weightx = 1.0;
             iConstraints.gridwidth = GridBagConstraints.REMAINDER;
 
-            iLayout.setConstraints(iTextField, iConstraints); add(iTextField);
+            iLayout.setConstraints(iTextField, iConstraints);
+            add(iTextField);
 
             iTextFields.put(iLocale, iTextField);
         }
@@ -79,8 +83,8 @@ public class SSLocalizedTextField extends JPanel {
      * @param iLocale
      * @param iDescription
      */
-    public void addLocale(Locale iLocale, String iDescription){
-        addLocale(iLocale,  iDescription,  null);
+    public void addLocale(Locale iLocale, String iDescription) {
+        addLocale(iLocale, iDescription, null);
     }
 
     /**
@@ -89,14 +93,13 @@ public class SSLocalizedTextField extends JPanel {
      * @param iDescription
      * @param iValue
      */
-    public void addLocale(Locale iLocale, String iDescription, String iValue){
+    public void addLocale(Locale iLocale, String iDescription, String iValue) {
         iLocales.add(iLocale);
         iDescriptions.put(iLocale, iDescription);
-        iValues      .put(iLocale, iValue);
+        iValues.put(iLocale, iValue);
 
         createLayout();
     }
-
 
     /**
      *
@@ -104,8 +107,8 @@ public class SSLocalizedTextField extends JPanel {
      */
     public Map<Locale, String> getValues() {
 
-         for (Locale iLocale : iLocales) {
-             iValues.put(iLocale,  iTextFields.get(iLocale).getText() );
+        for (Locale iLocale : iLocales) {
+            iValues.put(iLocale, iTextFields.get(iLocale).getText());
         }
 
         return iValues;
@@ -120,7 +123,7 @@ public class SSLocalizedTextField extends JPanel {
         this.iValues.putAll(iValues);
 
         for (Locale iLocale : iLocales) {
-            iTextFields.get(iLocale).setText( iValues.get(iLocale) );
+            iTextFields.get(iLocale).setText(iValues.get(iLocale));
         }
     }
 
@@ -134,7 +137,7 @@ public class SSLocalizedTextField extends JPanel {
     }
 
     /**
-     * 
+     *
      * @param iLocale
      * @param value
      * @param iLocale
@@ -144,7 +147,6 @@ public class SSLocalizedTextField extends JPanel {
 
         setValues(iValues);
     }
-
 
     /**
      *
@@ -161,7 +163,7 @@ public class SSLocalizedTextField extends JPanel {
          * @param iLocale
          */
         public MyDocumentListener(JTextField iTextField, Locale iLocale) {
-            this.iLocale    = iLocale;
+            this.iLocale = iLocale;
             this.iTextField = iTextField;
         }
 
@@ -169,15 +171,13 @@ public class SSLocalizedTextField extends JPanel {
          *
          * @param e
          */
-        public void insertUpdate(DocumentEvent e) {
-        }
+        public void insertUpdate(DocumentEvent e) {}
 
         /**
          *
          * @param e
          */
-        public void removeUpdate(DocumentEvent e) {
-        }
+        public void removeUpdate(DocumentEvent e) {}
 
         /**
          *
@@ -193,7 +193,9 @@ public class SSLocalizedTextField extends JPanel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.util.components.SSLocalizedTextField.MyDocumentListener");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.util.components.SSLocalizedTextField.MyDocumentListener");
             sb.append("{iLocale=").append(iLocale);
             sb.append(", iTextField=").append(iTextField);
             sb.append('}');
@@ -204,6 +206,7 @@ public class SSLocalizedTextField extends JPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.components.SSLocalizedTextField");
         sb.append("{iDescriptions=").append(iDescriptions);
         sb.append(", iLocales=").append(iLocales);
@@ -213,6 +216,4 @@ public class SSLocalizedTextField extends JPanel {
         return sb.toString();
     }
 }
-
-
 

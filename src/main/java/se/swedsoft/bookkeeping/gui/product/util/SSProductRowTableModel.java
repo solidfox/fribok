@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product.util;
 
+
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSProductRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -15,6 +16,7 @@ import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -22,14 +24,13 @@ import java.util.List;
  */
 public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
-
     private SSProductRow iEditingRow;
 
     /**
      * Default constructor.
      */
     public SSProductRowTableModel() {
-        this(new LinkedList<SSProductRow>() );
+        this(new LinkedList<SSProductRow>());
     }
 
     /**
@@ -68,23 +69,27 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @return the value Object at the specified cell
      */
     public Object getValueAt(int rowIndex, int columnIndex) {
-        SSProductRow iRow     = getObject(rowIndex);
-        SSProduct    iProduct = iRow.getProduct( SSDB.getInstance().getProducts() );
+        SSProductRow iRow = getObject(rowIndex);
+        SSProduct    iProduct = iRow.getProduct(SSDB.getInstance().getProducts());
 
         Object value = null;
-        switch(columnIndex){
-            case 0:
-                value = iProduct;
-                break;
-            case 1:
-                value = iRow.getDescription();
-                break;
-            case 2:
-                value = iRow.getQuantity();
-                break;
-            case 3:
-                value = iProduct == null ? null : iProduct.getUnit();
-                break;
+
+        switch (columnIndex) {
+        case 0:
+            value = iProduct;
+            break;
+
+        case 1:
+            value = iRow.getDescription();
+            break;
+
+        case 2:
+            value = iRow.getQuantity();
+            break;
+
+        case 3:
+            value = iProduct == null ? null : iProduct.getUnit();
+            break;
         }
 
         return value;
@@ -92,23 +97,26 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        SSProductRow iRow  = getObject(rowIndex);
+        SSProductRow iRow = getObject(rowIndex);
 
-        switch(columnIndex){
-            case 0:
-                iRow.setProduct    ((SSProduct)aValue);
-                break;
-            case 1:
-                iRow.setDescription((String)aValue);
-                break;
-            case 2:
-                iRow.setQuantity((Integer)aValue);
-                break;
-            case 3:
-                break;
+        switch (columnIndex) {
+        case 0:
+            iRow.setProduct((SSProduct) aValue);
+            break;
+
+        case 1:
+            iRow.setDescription((String) aValue);
+            break;
+
+        case 2:
+            iRow.setQuantity((Integer) aValue);
+            break;
+
+        case 3:
+            break;
         }
 
-        if(iRow == iEditingRow && aValue != null  && !"".equals(aValue)){
+        if (iRow == iEditingRow && aValue != null && !"".equals(aValue)) {
             add(iEditingRow);
             iEditingRow = new SSProductRow();
         }
@@ -117,37 +125,40 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
     @Override
     public int getRowCount() {
-        return super.getRowCount()+1;
+        return super.getRowCount() + 1;
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        switch(columnIndex){
-            case 0:
-                return SSProduct.class;
-            case 1:
-                return String.class;
-            case 2:
-                return Integer.class;
-            case 3:
-                return String.class;
+        switch (columnIndex) {
+        case 0:
+            return SSProduct.class;
+
+        case 1:
+            return String.class;
+
+        case 2:
+            return Integer.class;
+
+        case 3:
+            return String.class;
         }
         return super.getColumnClass(columnIndex);
     }
 
-
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        SSProduct iProduct = getObject(rowIndex).getProduct( SSDB.getInstance().getProducts() );
+        SSProduct iProduct = getObject(rowIndex).getProduct(
+                SSDB.getInstance().getProducts());
 
         return (columnIndex == 0) || (iProduct != null && (columnIndex != 3));
     }
 
     @Override
     public SSProductRow getObject(int row) {
-        if( row == super.getRowCount()){
+        if (row == super.getRowCount()) {
             return iEditingRow;
-        }   else {
+        } else {
             return super.getObject(row);
         }
     }
@@ -157,7 +168,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      */
     @Override
     public void deleteRow(SSProductRow iObject) {
-        if(iObject == iEditingRow){
+        if (iObject == iEditingRow) {
             iEditingRow = new SSProductRow();
 
             fireTableDataChanged();
@@ -171,10 +182,10 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
      * @param iTable
      * @param iProduct
      */
-    public static void setupTable(final SSTable iTable, SSProduct iProduct){
+    public static void setupTable(final SSTable iTable, SSProduct iProduct) {
         iTable.setColumnSortingEnabled(false);
 
-        //iTable.setSingleSelect();
+        // iTable.setSingleSelect();
         iTable.getColumnModel().getColumn(0).setPreferredWidth(70);
         iTable.getColumnModel().getColumn(1).setPreferredWidth(250);
         iTable.getColumnModel().getColumn(2).setPreferredWidth(70);
@@ -182,10 +193,10 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
         iTable.setDefaultRenderer(BigDecimal.class, new SSBigDecimalCellRenderer(2));
 
-        iTable.setDefaultEditor  (SSProduct.class, new SSProductEditor  ( SSDB.getInstance().getProducts(), iProduct));
-        iTable.setDefaultRenderer(SSProduct.class, new SSProductRenderer(                                        ));
+        iTable.setDefaultEditor(SSProduct.class,
+                new SSProductEditor(SSDB.getInstance().getProducts(), iProduct));
+        iTable.setDefaultRenderer(SSProduct.class, new SSProductRenderer());
     }
-
 
     private static class SSProductRenderer extends SSDefaultTableCellRenderer<SSProduct> {
 
@@ -199,7 +210,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
          */
         @Override
         protected void setValue(SSProduct value) {
-            if(value != null){
+            if (value != null) {
                 super.setValue(value.getNumber());
             } else {
                 super.setValue("");
@@ -216,17 +227,19 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
          * @param iProducts
          * @param iExcluded
          */
-        public SSProductEditor(List<SSProduct> iProducts, SSProduct iExcluded){
+        public SSProductEditor(List<SSProduct> iProducts, SSProduct iExcluded) {
             List<SSProduct> iFiltered = new LinkedList<SSProduct>();
-            for(SSProduct iProduct : iProducts){
 
-                if(iExcluded != iProduct){
+            for (SSProduct iProduct : iProducts) {
+
+                if (iExcluded != iProduct) {
                     iFiltered.add(iProduct);
                 }
 
             }
 
-            SSDefaultTableModel< SSProduct> model = new SSDefaultTableModel<SSProduct>( iFiltered ) {
+            SSDefaultTableModel< SSProduct> model = new SSDefaultTableModel<SSProduct>(
+                    iFiltered) {
 
                 @Override
                 public Class getType() {
@@ -237,31 +250,35 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
                     SSProduct iProduct = getObject(rowIndex);
 
                     Object value = null;
+
                     switch (columnIndex) {
-                        case 0:
-                            value = iProduct.getNumber();
-                            break;
-                        case 1:
-                            value = iProduct.getDescription();
-                            break;
+                    case 0:
+                        value = iProduct.getNumber();
+                        break;
+
+                    case 1:
+                        value = iProduct.getDescription();
+                        break;
                     }
 
                     return value;
                 }
             };
+
             model.addColumn(SSBundle.getBundle().getString("producttable.column.1"));
             model.addColumn(SSBundle.getBundle().getString("producttable.column.2"));
 
             setModel(model);
             setSearchColumns(0, 1);
-            setPopupSize   (360,200);
-            setColumnWidths(60,300);
+            setPopupSize(360, 200);
+            setColumnWidths(60, 300);
         }
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.product.util.SSProductRowTableModel");
         sb.append("{iEditingRow=").append(iEditingRow);
         sb.append('}');

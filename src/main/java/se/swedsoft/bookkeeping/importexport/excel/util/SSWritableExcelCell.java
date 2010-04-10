@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
+
 import jxl.write.Label;
 import jxl.write.Number;
 import jxl.write.WritableSheet;
 import jxl.write.WriteException;
 import jxl.write.biff.RowsExceededException;
+
 
 /**
  * Date: 2006-feb-14
@@ -12,11 +14,11 @@ import jxl.write.biff.RowsExceededException;
  */
 public class SSWritableExcelCell {
 
-    private int iRow ;
+    private int iRow;
 
-    private int iColumn ;
+    private int iColumn;
 
-    private WritableSheet iSheet ;
+    private WritableSheet iSheet;
 
     /**
      *
@@ -24,9 +26,9 @@ public class SSWritableExcelCell {
      * @param pRow
      * @param pColumn
      */
-    public SSWritableExcelCell(WritableSheet pSheet, int pRow, int pColumn ){
-        iSheet  = pSheet;
-        iRow    = pRow;
+    public SSWritableExcelCell(WritableSheet pSheet, int pRow, int pColumn) {
+        iSheet = pSheet;
+        iRow = pRow;
         iColumn = pColumn;
 
     }
@@ -37,9 +39,9 @@ public class SSWritableExcelCell {
      * @throws WriteException
      */
     public void setString(String pValue) throws WriteException {
-        try{
-            iSheet.addCell(  new Label(iColumn, iRow, pValue) );
-        } catch( RowsExceededException e){
+        try {
+            iSheet.addCell(new Label(iColumn, iRow, pValue));
+        } catch (RowsExceededException e) {
             e.printStackTrace();
         }
     }
@@ -50,9 +52,9 @@ public class SSWritableExcelCell {
      * @throws WriteException
      */
     public void setInteger(Integer pValue) throws WriteException {
-        try{
-            iSheet.addCell(  new Number(iColumn, iRow, pValue) );
-        } catch( RowsExceededException e){
+        try {
+            iSheet.addCell(new Number(iColumn, iRow, pValue));
+        } catch (RowsExceededException e) {
             e.printStackTrace();
         }
     }
@@ -63,14 +65,12 @@ public class SSWritableExcelCell {
      * @throws WriteException
      */
     public void setDouble(Double pValue) throws WriteException {
-        try{
-            iSheet.addCell(  new Number(iColumn, iRow, pValue) );
-        } catch( RowsExceededException e){
+        try {
+            iSheet.addCell(new Number(iColumn, iRow, pValue));
+        } catch (RowsExceededException e) {
             e.printStackTrace();
-        }   
+        }
     }
-
-
 
     /**
      *
@@ -91,6 +91,7 @@ public class SSWritableExcelCell {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.excel.util.SSWritableExcelCell");
         sb.append("{iColumn=").append(iColumn);
         sb.append(", iRow=").append(iRow);

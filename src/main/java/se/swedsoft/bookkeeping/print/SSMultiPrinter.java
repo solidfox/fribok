@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print;
 
+
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JasperReport;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
@@ -10,13 +11,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+
 /**
  * Date: 2006-mar-02
  * Time: 14:27:30
  */
 public class SSMultiPrinter extends SSPrinter {
 
-    private class SSSubReport{
+    private class SSSubReport {
 
         private String iName;
 
@@ -31,6 +33,7 @@ public class SSMultiPrinter extends SSPrinter {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.print.SSMultiPrinter.SSSubReport");
             sb.append("{iBundle=").append(iBundle);
             sb.append(", iDataSource=").append(iDataSource);
@@ -44,18 +47,15 @@ public class SSMultiPrinter extends SSPrinter {
 
     private List<SSSubReport> iSubReports;
 
-
-
     /**
      *
      */
-    public SSMultiPrinter(  ){
-        iSubReports  = new LinkedList<SSSubReport>();
+    public SSMultiPrinter() {
+        iSubReports = new LinkedList<SSSubReport>();
 
-        setMargins(0,0,0,0);
-        setDetail ("multireport.jrxml");
+        setMargins(0, 0, 0, 0);
+        setDetail("multireport.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -64,11 +64,11 @@ public class SSMultiPrinter extends SSPrinter {
      */
     @Override
     public String getTitle() {
-       if(!iSubReports.isEmpty()){
-           SSSubReport iSubReport  = iSubReports.get(0);
+        if (!iSubReports.isEmpty()) {
+            SSSubReport iSubReport = iSubReports.get(0);
 
-           return iSubReport.iName;
-       }
+            return iSubReport.iName;
+        }
 
         return "";
     }
@@ -92,26 +92,31 @@ public class SSMultiPrinter extends SSPrinter {
                 Object value = null;
 
                 switch (columnIndex) {
-                    case 0: // raport.name
-                        value = iSubReport.iName;
-                        break;
-                    case 1: // raport.report
-                        value = iSubReport.iReport;
-                        break;
-                    case 2: // raport.datasource
-                        value = iSubReport.iDataSource;
-                        break;
-                    case 3: // raport.parameters
-                        value = iSubReport.iParameters;
-                        break;
-                    case 4: // raport.bundle
-                        value = iSubReport.iBundle;
-                        break;
+                case 0: // raport.name
+                    value = iSubReport.iName;
+                    break;
+
+                case 1: // raport.report
+                    value = iSubReport.iReport;
+                    break;
+
+                case 2: // raport.datasource
+                    value = iSubReport.iDataSource;
+                    break;
+
+                case 3: // raport.parameters
+                    value = iSubReport.iParameters;
+                    break;
+
+                case 4: // raport.bundle
+                    value = iSubReport.iBundle;
+                    break;
 
                 }
                 return value;
             }
         };
+
         iModel.addColumn("report.name");
 
         iModel.addColumn("report.report");
@@ -121,7 +126,6 @@ public class SSMultiPrinter extends SSPrinter {
 
         iModel.setObjects(iSubReports);
 
-
         return iModel;
     }
 
@@ -129,16 +133,16 @@ public class SSMultiPrinter extends SSPrinter {
      *
      * @param pReport
      */
-    public void addReport(SSPrinter pReport ){
+    public void addReport(SSPrinter pReport) {
         SSSubReport iSubReport = new SSSubReport();
 
         pReport.generateReport();
 
-        iSubReport.iName       = pReport.getTitle();
-        iSubReport.iReport     = pReport.getReport();
+        iSubReport.iName = pReport.getTitle();
+        iSubReport.iReport = pReport.getReport();
         iSubReport.iDataSource = new SSDefaultJasperDataSource(pReport.getModel());
         iSubReport.iParameters = pReport.getParameters();
-        iSubReport.iBundle     = pReport.getBundle();
+        iSubReport.iBundle = pReport.getBundle();
 
         iSubReports.add(iSubReport);
     }
@@ -146,6 +150,7 @@ public class SSMultiPrinter extends SSPrinter {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.SSMultiPrinter");
         sb.append("{iSubReports=").append(iSubReports);
         sb.append('}');

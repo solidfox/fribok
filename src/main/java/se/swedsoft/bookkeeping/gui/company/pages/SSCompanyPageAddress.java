@@ -1,17 +1,19 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.gui.company.panel.SSAdressPanel;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 
 import javax.swing.*;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-25
  * Time: 10:14:40
  */
-public class SSCompanyPageAddress extends SSCompanyPage{
+public class SSCompanyPageAddress extends SSCompanyPage {
 
     private SSNewCompany iCompany;
     private JCheckBox iUseAdressForDelivery;
@@ -27,7 +29,6 @@ public class SSCompanyPageAddress extends SSCompanyPage{
         iAdress.addKeyListeners();
         iDelivery.addKeyListeners();
     }
-
 
     /**
      *
@@ -56,10 +57,11 @@ public class SSCompanyPageAddress extends SSCompanyPage{
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
 
-        iAdress           .setAdress( iCompany.getAddress()         );
-        iDelivery         .setAdress( iCompany.getDeliveryAddress() );
+        iAdress.setAdress(iCompany.getAddress());
+        iDelivery.setAdress(iCompany.getDeliveryAddress());
 
-        iUseAdressForDelivery.setSelected(  iCompany.getDeliveryAddress().equals(  iCompany.getAddress() ) );
+        iUseAdressForDelivery.setSelected(
+                iCompany.getDeliveryAddress().equals(iCompany.getAddress()));
 
     }
 
@@ -70,14 +72,20 @@ public class SSCompanyPageAddress extends SSCompanyPage{
      */
     @Override
     public SSNewCompany getCompany() {
-         if( iUseAdressForDelivery.isSelected() ) {
-            iCompany.setDeliveryAddress(  iAdress.getAddressCloned() );
+        if (iUseAdressForDelivery.isSelected()) {
+            iCompany.setDeliveryAddress(iAdress.getAddressCloned());
         } else {
-            iCompany.setDeliveryAddress(  iDelivery.getAddressCloned() );
+            iCompany.setDeliveryAddress(iDelivery.getAddressCloned());
         }
 
-        if(iCompany.getDeliveryAddress().getName() == null || iCompany.getDeliveryAddress().getName().length() == 0) iCompany.getDeliveryAddress().setName( iCompany.getName() );
-        if(iCompany.getAddress        ().getName() == null || iCompany.getAddress        ().getName().length() == 0) iCompany.getAddress ()       .setName( iCompany.getName() );
+        if (iCompany.getDeliveryAddress().getName() == null
+                || iCompany.getDeliveryAddress().getName().length() == 0) {
+            iCompany.getDeliveryAddress().setName(iCompany.getName());
+        }
+        if (iCompany.getAddress().getName() == null
+                || iCompany.getAddress().getName().length() == 0) {
+            iCompany.getAddress().setName(iCompany.getName());
+        }
 
         return iCompany;
     }
@@ -85,6 +93,7 @@ public class SSCompanyPageAddress extends SSCompanyPage{
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageAddress");
         sb.append("{iAdress=").append(iAdress);
         sb.append(", iCompany=").append(iCompany);

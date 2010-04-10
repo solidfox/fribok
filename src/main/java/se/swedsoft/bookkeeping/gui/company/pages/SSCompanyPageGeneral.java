@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.common.*;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -14,12 +15,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-25
  * Time: 10:14:40
  */
-public class SSCompanyPageGeneral extends SSCompanyPage{
+public class SSCompanyPageGeneral extends SSCompanyPage {
 
     private SSNewCompany iCompany;
 
@@ -52,33 +54,38 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
     public SSCompanyPageGeneral(JDialog iDialog) {
         super(iDialog);
 
-        iCurrency.getComboBox().setModel( SSCurrencyTableModel.getDropDownModel() );
+        iCurrency.getComboBox().setModel(SSCurrencyTableModel.getDropDownModel());
         iCurrency.getComboBox().setSearchColumns(0);
-        iCurrency.setEditingFactory( SSCurrencyTableModel.getEditingFactory(iDialog)  );
+        iCurrency.setEditingFactory(SSCurrencyTableModel.getEditingFactory(iDialog));
 
-        iPaymentTerm.getComboBox().setModel( SSPaymentTermTableModel.getDropDownModel() );
+        iPaymentTerm.getComboBox().setModel(SSPaymentTermTableModel.getDropDownModel());
         iPaymentTerm.getComboBox().setSearchColumns(0);
-        iPaymentTerm.setEditingFactory( SSPaymentTermTableModel.getEditingFactory(iDialog)  );
+        iPaymentTerm.setEditingFactory(SSPaymentTermTableModel.getEditingFactory(iDialog));
 
-        iDeliveryTerm.getComboBox().setModel( SSDeliveryTermTableModel.getDropDownModel() );
+        iDeliveryTerm.getComboBox().setModel(SSDeliveryTermTableModel.getDropDownModel());
         iDeliveryTerm.getComboBox().setSearchColumns(0);
-        iDeliveryTerm.setEditingFactory( SSDeliveryTermTableModel.getEditingFactory(iDialog)  );
+        iDeliveryTerm.setEditingFactory(
+                SSDeliveryTermTableModel.getEditingFactory(iDialog));
 
-        iDeliveryWay.getComboBox().setModel( SSDeliveryWayTableModel.getDropDownModel() );
+        iDeliveryWay.getComboBox().setModel(SSDeliveryWayTableModel.getDropDownModel());
         iDeliveryWay.getComboBox().setSearchColumns(0);
-        iDeliveryWay.setEditingFactory( SSDeliveryWayTableModel.getEditingFactory(iDialog)  );
+        iDeliveryWay.setEditingFactory(SSDeliveryWayTableModel.getEditingFactory(iDialog));
 
-        iStandardUnit.getComboBox().setModel( SSUnitTableModel.getDropDownModel());
+        iStandardUnit.getComboBox().setModel(SSUnitTableModel.getDropDownModel());
         iStandardUnit.getComboBox().setSearchColumns(0);
-        iStandardUnit.setEditingFactory( SSUnitTableModel.getEditingFactory(iDialog));
+        iStandardUnit.setEditingFactory(SSUnitTableModel.getEditingFactory(iDialog));
 
-        iBrowseForLogoButton.addActionListener(new ActionListener() {
+        iBrowseForLogoButton.addActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSImageFileChooser iFileChooser = SSImageFileChooser.getInstance();
 
-                if( iFileChooser.showDialog(iBrowseForLogoButton) != JFileChooser.APPROVE_OPTION) return;
+                if (iFileChooser.showDialog(iBrowseForLogoButton)
+                        != JFileChooser.APPROVE_OPTION) {
+                    return;
+                }
 
-                iLogotype.setText( iFileChooser.getSelectedFile().getAbsolutePath()  );
+                iLogotype.setText(iFileChooser.getSelectedFile().getAbsolutePath());
             }
         });
 
@@ -111,22 +118,22 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
     @Override
     public void setCompany(SSNewCompany iCompany) {
         this.iCompany = iCompany;
-        iName             .setText    ( iCompany.getName());
-        iResidence        .setText    ( iCompany.getResidence());
-        iTaxRegistered    .setSelected( iCompany.getTaxRegistered());
-        iCorporateID      .setText    ( iCompany.getCorporateID());
-        iLogotype         .setText    ( iCompany.getLogotype());
-        iVATNumber        .setText    ( iCompany.getVATNumber());
-        iDelayintrest     .setValue   ( iCompany.getDelayInterest()   );
-        iReminderfee      .setValue   ( iCompany.getReminderfee()   );
-        iCurrency         .setSelected( iCompany.getCurrency()   );
-        iEstimatedDelivery.setText    ( iCompany.getEstimatedDelivery());
-        iVolumeUnit       .setText    ( iCompany.getVolumeUnit()  );
-        iWeightUnit       .setText    ( iCompany.getWeightUnit() );
-        iStandardUnit     .setSelected( iCompany.getStandardUnit());
-        iPaymentTerm      .setSelected( iCompany.getPaymentTerm() );
-        iDeliveryTerm     .setSelected( iCompany.getDeliveryTerm());
-        iDeliveryWay      .setSelected( iCompany.getDeliveryWay());
+        iName.setText(iCompany.getName());
+        iResidence.setText(iCompany.getResidence());
+        iTaxRegistered.setSelected(iCompany.getTaxRegistered());
+        iCorporateID.setText(iCompany.getCorporateID());
+        iLogotype.setText(iCompany.getLogotype());
+        iVATNumber.setText(iCompany.getVATNumber());
+        iDelayintrest.setValue(iCompany.getDelayInterest());
+        iReminderfee.setValue(iCompany.getReminderfee());
+        iCurrency.setSelected(iCompany.getCurrency());
+        iEstimatedDelivery.setText(iCompany.getEstimatedDelivery());
+        iVolumeUnit.setText(iCompany.getVolumeUnit());
+        iWeightUnit.setText(iCompany.getWeightUnit());
+        iStandardUnit.setSelected(iCompany.getStandardUnit());
+        iPaymentTerm.setSelected(iCompany.getPaymentTerm());
+        iDeliveryTerm.setSelected(iCompany.getDeliveryTerm());
+        iDeliveryWay.setSelected(iCompany.getDeliveryWay());
     }
 
     /**
@@ -136,28 +143,27 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
      */
     @Override
     public SSNewCompany getCompany() {
-        iCompany.setName             ( iName                  .getText());
-        iCompany.setResidence        ( iResidence             .getText());
-        iCompany.setTaxRegistered    ( iTaxRegistered         .isSelected());
-        iCompany.setCorporateID      ( iCorporateID           .getText());
-        iCompany.setLogotype         ( iLogotype              .getText());
-        iCompany.setVATNumber        ( iVATNumber             .getText());
-        iCompany.setDelayInterest    ( iDelayintrest          .getValue() ) ;
-        iCompany.setReminderfee      ( iReminderfee           .getValue());
-        iCompany.setCurrency         ( iCurrency              .getSelected());
-        iCompany.setEstimatedDelivery( iEstimatedDelivery     .getText());
-        iCompany.setVolumeUnit       ( iVolumeUnit.getText( ) );
-        iCompany.setWeightUnit       ( iWeightUnit.getText( ) );
-        iCompany.setStandardUnit     ( iStandardUnit           .getSelected() );
-        iCompany.setPaymentTerm      ( iPaymentTerm            .getSelected());
-        iCompany.setDeliveryTerm     ( iDeliveryTerm           .getSelected());
-        iCompany.setDeliveryWay      ( iDeliveryWay            .getSelected());
-
+        iCompany.setName(iName.getText());
+        iCompany.setResidence(iResidence.getText());
+        iCompany.setTaxRegistered(iTaxRegistered.isSelected());
+        iCompany.setCorporateID(iCorporateID.getText());
+        iCompany.setLogotype(iLogotype.getText());
+        iCompany.setVATNumber(iVATNumber.getText());
+        iCompany.setDelayInterest(iDelayintrest.getValue());
+        iCompany.setReminderfee(iReminderfee.getValue());
+        iCompany.setCurrency(iCurrency.getSelected());
+        iCompany.setEstimatedDelivery(iEstimatedDelivery.getText());
+        iCompany.setVolumeUnit(iVolumeUnit.getText());
+        iCompany.setWeightUnit(iWeightUnit.getText());
+        iCompany.setStandardUnit(iStandardUnit.getSelected());
+        iCompany.setPaymentTerm(iPaymentTerm.getSelected());
+        iCompany.setDeliveryTerm(iDeliveryTerm.getSelected());
+        iCompany.setDeliveryWay(iDeliveryWay.getSelected());
 
         return iCompany;
     }
 
-    public void addKeyListeners(){
+    public void addKeyListeners() {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -165,11 +171,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iName.addKeyListener(new KeyAdapter(){
+        iName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iResidence.requestFocusInWindow();
                         }
@@ -178,11 +184,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iResidence.addKeyListener(new KeyAdapter(){
+        iResidence.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCorporateID.requestFocusInWindow();
                         }
@@ -191,11 +197,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iCorporateID.addKeyListener(new KeyAdapter(){
+        iCorporateID.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iVATNumber.requestFocusInWindow();
                         }
@@ -204,11 +210,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iVATNumber.addKeyListener(new KeyAdapter(){
+        iVATNumber.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iDelayintrest.requestFocusInWindow();
                         }
@@ -217,11 +223,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iDelayintrest.addKeyListener(new KeyAdapter(){
+        iDelayintrest.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iReminderfee.requestFocusInWindow();
                         }
@@ -230,11 +236,12 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iReminderfee.addKeyListener(new KeyAdapter(){
+        iReminderfee.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iPaymentTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -243,11 +250,12 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -256,11 +264,12 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryWay.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -269,11 +278,12 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iCurrency.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -282,11 +292,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iEstimatedDelivery.requestFocusInWindow();
                         }
@@ -295,11 +305,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iEstimatedDelivery.addKeyListener(new KeyAdapter(){
+        iEstimatedDelivery.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iVolumeUnit.requestFocusInWindow();
                         }
@@ -308,11 +318,11 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iVolumeUnit.addKeyListener(new KeyAdapter(){
+        iVolumeUnit.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iWeightUnit.requestFocusInWindow();
                         }
@@ -321,11 +331,12 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iWeightUnit.addKeyListener(new KeyAdapter(){
+        iWeightUnit.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iStandardUnit.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -334,23 +345,24 @@ public class SSCompanyPageGeneral extends SSCompanyPage{
             }
         });
 
-        iStandardUnit.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iStandardUnit.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTaxRegistered.requestFocusInWindow();
                         }
                     });
                 }
             }
-        });  
+        });
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageGeneral");
         sb.append("{iBrowseForLogoButton=").append(iBrowseForLogoButton);
         sb.append(", iCompany=").append(iCompany);

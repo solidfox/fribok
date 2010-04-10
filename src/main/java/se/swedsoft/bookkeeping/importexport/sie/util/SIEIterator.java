@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.util;
 
+
 import se.swedsoft.bookkeeping.data.SSMonth;
 
 import java.math.BigDecimal;
@@ -10,6 +11,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 /**
  * Date: 2006-feb-23
  * Time: 09:13:04
@@ -18,12 +20,10 @@ public class SIEIterator implements Iterator<String> {
 
     private static DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
-
-
     private static Pattern IntegerPattern = Pattern.compile("([-+]?[0-9]*)+");
-    private static Pattern FloatPattern   = Pattern.compile("([-+]?[0-9]*.?[0-9]*)+");
+    private static Pattern FloatPattern = Pattern.compile("([-+]?[0-9]*.?[0-9]*)+");
     private static Pattern BooleanPattern = Pattern.compile("true|false");
-    private static Pattern ArrayPattern   = Pattern.compile("[{](.*)[}]");
+    private static Pattern ArrayPattern = Pattern.compile("[{](.*)[}]");
 
     private List<String> iValues;
 
@@ -33,17 +33,17 @@ public class SIEIterator implements Iterator<String> {
      *
      * @param pLine
      */
-    public SIEIterator(String pLine){
-        iIndex  = 0;
-        iValues = parseLine( pLine );
+    public SIEIterator(String pLine) {
+        iIndex = 0;
+        iValues = parseLine(pLine);
     }
 
     /**
      *
      * @param pValues
      */
-    public SIEIterator(String ... pValues){
-        iIndex  = 0;
+    public SIEIterator(String... pValues) {
+        iIndex = 0;
         iValues = new LinkedList<String>();
         iValues.addAll(Arrays.asList(pValues));
     }
@@ -52,8 +52,8 @@ public class SIEIterator implements Iterator<String> {
      *
      * @param pValues
      */
-    public SIEIterator(List<String> pValues){
-        iIndex  = 0;
+    public SIEIterator(List<String> pValues) {
+        iIndex = 0;
         iValues = pValues;
     }
 
@@ -65,7 +65,7 @@ public class SIEIterator implements Iterator<String> {
     @Override
     public String next() {
 
-        if(iIndex >= iValues.size()){
+        if (iIndex >= iValues.size()) {
             throw new NoSuchElementException();
         }
 
@@ -80,7 +80,7 @@ public class SIEIterator implements Iterator<String> {
      * @return the next element in the iteration.
      */
     public String peek() {
-        if(iIndex >= iValues.size()){
+        if (iIndex >= iValues.size()) {
             return null;
         }
         return iValues.get(iIndex);
@@ -96,16 +96,17 @@ public class SIEIterator implements Iterator<String> {
      * @param pPattern
      * @return
      */
-    private boolean hasNext(Pattern pPattern){
+    private boolean hasNext(Pattern pPattern) {
         String iNext = peek();
 
-        if( iNext == null || iNext.length() == 0) return false;
+        if (iNext == null || iNext.length() == 0) {
+            return false;
+        }
 
         Matcher m = pPattern.matcher(iNext);
 
         return m.matches();
     }
-
 
     /**
      *
@@ -163,7 +164,6 @@ public class SIEIterator implements Iterator<String> {
         return hasNext(FloatPattern);
     }
 
-
     /**
      *
      * @return
@@ -184,27 +184,32 @@ public class SIEIterator implements Iterator<String> {
      *
      * @return
      */
-    public  List<String> nextArray() {
+    public List<String> nextArray() {
         String pLine = next();
 
         List<String> iObjects = new LinkedList<String>();
-        for(int iIndex = 0; iIndex < pLine.length(); iIndex++){
+
+        for (int iIndex = 0; iIndex < pLine.length(); iIndex++) {
             char c = pLine.charAt(iIndex);
 
-            if( isOpenArray(c) || isCloseArray(c) || isWhitespace(c)) continue;
+            if (isOpenArray(c) || isCloseArray(c) || isWhitespace(c)) {
+                continue;
+            }
 
             int iStart = iIndex;
 
-            for(iIndex = iStart; iIndex < pLine.length(); iIndex++){
+            for (iIndex = iStart; iIndex < pLine.length(); iIndex++) {
                 c = pLine.charAt(iIndex);
 
-                if(isWhitespace(c) || isCloseArray(c) ){
+                if (isWhitespace(c) || isCloseArray(c)) {
                     break;
                 }
             }
             String iString = pLine.substring(iStart, iIndex);
 
-            if(iString.length() > 0) iObjects.add(iString);
+            if (iString.length() > 0) {
+                iObjects.add(iString);
+            }
 
         }
 
@@ -217,13 +222,15 @@ public class SIEIterator implements Iterator<String> {
      */
     public Integer nextInteger() {
         String s = next();
-        try{
+
+        try {
             Integer iNumber = null;
+
             if (s.length() > 0) {
                 iNumber = new Integer(s);
             }
             return iNumber;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return null;
         }
     }
@@ -237,7 +244,6 @@ public class SIEIterator implements Iterator<String> {
 
         return new Float(iValue);
     }
-
 
     /**
      *
@@ -268,6 +274,7 @@ public class SIEIterator implements Iterator<String> {
 
         return new BigDecimal(iValue);
     }
+
     /**
      *
      * @return
@@ -277,6 +284,7 @@ public class SIEIterator implements Iterator<String> {
 
         return Double.parseDouble(iValue);
     }
+
     /**
      *
      * @return
@@ -284,13 +292,14 @@ public class SIEIterator implements Iterator<String> {
     public Date nextDate() {
         String iValue = next();
 
-        if(iValue != null && iValue.length() == 8) {
+        if (iValue != null && iValue.length() == 8) {
 
-            iValue = iValue.substring(0,4) + '-' + iValue.substring(4,6) + '-' + iValue.substring(6,8);
+            iValue = iValue.substring(0, 4) + '-' + iValue.substring(4, 6) + '-'
+                    + iValue.substring(6, 8);
 
-            try{
+            try {
                 return iFormat.parse(iValue);
-            }catch(ParseException ex){
+            } catch (ParseException ex) {
                 ex.printStackTrace();
             }
         }
@@ -304,27 +313,25 @@ public class SIEIterator implements Iterator<String> {
     public SSMonth nextMonth() {
         String iValue = next();
 
-        if(iValue != null && iValue.length() == 6) {
+        if (iValue != null && iValue.length() == 6) {
 
-            iValue = iValue.substring(0,4) + '-' + iValue.substring(4,6) + "-01";
+            iValue = iValue.substring(0, 4) + '-' + iValue.substring(4, 6) + "-01";
 
-            try{
+            try {
                 return new SSMonth(iFormat.parse(iValue));
-            }catch(ParseException ex){
+            } catch (ParseException ex) {
                 ex.printStackTrace();
             }
         }
-        return new SSMonth( new Date() );
+        return new SSMonth(new Date());
     }
-
-
 
     /**
      *
      * @param c
      * @return
      */
-    private boolean isWhitespace(char c){
+    private boolean isWhitespace(char c) {
         return c == ' ' || c == '\t';
     }
 
@@ -333,7 +340,7 @@ public class SIEIterator implements Iterator<String> {
      * @param c
      * @return
      */
-    private boolean isString(char c){
+    private boolean isString(char c) {
         return c == '\"';
     }
 
@@ -342,7 +349,7 @@ public class SIEIterator implements Iterator<String> {
      * @param c
      * @return
      */
-    private boolean isOpenArray(char c){
+    private boolean isOpenArray(char c) {
         return c == '{';
     }
 
@@ -351,7 +358,7 @@ public class SIEIterator implements Iterator<String> {
      * @param c
      * @return
      */
-    private boolean isCloseArray(char c){
+    private boolean isCloseArray(char c) {
         return c == '}';
     }
 
@@ -363,56 +370,56 @@ public class SIEIterator implements Iterator<String> {
     private List<String> parseLine(String pLine) {
         List<String> iValues = new LinkedList<String>();
 
-        for(int iIndex = 0; iIndex < pLine.length(); iIndex++){
+        for (int iIndex = 0; iIndex < pLine.length(); iIndex++) {
             char c = pLine.charAt(iIndex);
 
-            if( isWhitespace(c) ) continue;
+            if (isWhitespace(c)) {
+                continue;
+            }
 
             // Start of string, "
-            if(isString(c)){
-                int iStart = iIndex+1;
+            if (isString(c)) {
+                int iStart = iIndex + 1;
 
-                for(iIndex = iStart ; iIndex < pLine.length(); iIndex++){
+                for (iIndex = iStart; iIndex < pLine.length(); iIndex++) {
                     c = pLine.charAt(iIndex);
 
-                    if(isString(c)){
+                    if (isString(c)) {
                         break;
                     }
                 }
                 String iString = pLine.substring(iStart, iIndex);
 
                 iValues.add(iString.trim());
-            }
-            // Array value, {...}
-            else if( isOpenArray(c) ){
-                int iStart = iIndex+1;
+            } // Array value, {...}
+            else if (isOpenArray(c)) {
+                int iStart = iIndex + 1;
                 int iLevel = 1;
 
-                for(iIndex = iStart ; iIndex < pLine.length(); iIndex++){
+                for (iIndex = iStart; iIndex < pLine.length(); iIndex++) {
                     c = pLine.charAt(iIndex);
 
-                    if(isOpenArray(c)){
+                    if (isOpenArray(c)) {
                         iLevel++;
                     }
-                    if(isCloseArray(c)){
+                    if (isCloseArray(c)) {
                         iLevel--;
                     }
-                    if( iLevel == 0){
+                    if (iLevel == 0) {
                         break;
                     }
                 }
                 String iString = pLine.substring(iStart, iIndex);
 
                 iValues.add('{' + iString.trim() + '}');
-            }
-            // Start of token, any char exept "
-            else{
+            } // Start of token, any char exept "
+            else {
                 int iStart = iIndex;
 
-                for(iIndex = iStart ; iIndex < pLine.length(); iIndex++){
+                for (iIndex = iStart; iIndex < pLine.length(); iIndex++) {
                     c = pLine.charAt(iIndex);
 
-                    if( isWhitespace(c) ){
+                    if (isWhitespace(c)) {
                         break;
                     }
                 }
@@ -425,12 +432,11 @@ public class SIEIterator implements Iterator<String> {
         return iValues;
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
         sb.append("SIEIterator {\n");
-        for(String iValue: iValues){
+        for (String iValue: iValues) {
             sb.append("  ");
             sb.append(iValue);
             sb.append('\n');
@@ -439,6 +445,5 @@ public class SIEIterator implements Iterator<String> {
 
         return sb.toString();
     }
-
 
 }

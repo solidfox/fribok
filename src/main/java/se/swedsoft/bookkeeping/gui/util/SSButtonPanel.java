@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.gui.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.components.SSButton;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+
 
 /**
  * User: Andreas Lago
@@ -62,23 +64,23 @@ public class SSButtonPanel extends JPanel {
         return iOkButton;
     }
 
-
     /**
      * Used to clean up references making sure the garbage collector
      * is able to clean up the object.
      */
     public void dispose() {
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
         iCancelButton.dispose();
-        iCancelButton=null;
+        iCancelButton = null;
         iOkButton.dispose();
-        iOkButton=null;
+        iOkButton = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.SSButtonPanel");
         sb.append("{iCancelButton=").append(iCancelButton);
         sb.append(", iOkButton=").append(iOkButton);

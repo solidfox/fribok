@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.importexport.excel.util;
 
+
 import jxl.Cell;
 import jxl.Sheet;
 
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * Date: 2006-feb-14
@@ -14,35 +16,39 @@ public class SSExcelRow {
 
     private int iRow;
 
-    private Sheet iSheet ;
+    private Sheet iSheet;
 
-    public SSExcelRow(Sheet pSheet, int pRow){
+    public SSExcelRow(Sheet pSheet, int pRow) {
         iSheet = pSheet;
-        iRow   = pRow;
+        iRow = pRow;
     }
 
-    public List<SSExcelCell> getCells(){
-         List<SSExcelCell> iList = new LinkedList<SSExcelCell>();
+    public List<SSExcelCell> getCells() {
+        List<SSExcelCell> iList = new LinkedList<SSExcelCell>();
 
         int iColumn = 0;
-        for(Cell iCell: iSheet.getRow(iRow)){
-            iList.add( new SSExcelCell(iCell, iRow, iColumn) );
+
+        for (Cell iCell: iSheet.getRow(iRow)) {
+            iList.add(new SSExcelCell(iCell, iRow, iColumn));
             iColumn++;
         }
         return iList;
     }
 
-
-    public boolean empty(){
+    public boolean empty() {
         Cell[] iRows = iSheet.getRow(iRow);
-        if( iRows.length == 0) return true;
 
-        for(Cell iCell : iRows){
-            if( iCell.getContents() != null && iCell.getContents().length() > 0) return false;
+        if (iRows.length == 0) {
+            return true;
+        }
+
+        for (Cell iCell : iRows) {
+            if (iCell.getContents() != null && iCell.getContents().length() > 0) {
+                return false;
+            }
         }
         return true;
     }
-
 
     /**
      *
@@ -52,13 +58,12 @@ public class SSExcelRow {
         return iRow;
     }
 
-
     /**
      *
      * @param pColumn
      * @return
      */
-    public String getString(int pColumn){
+    public String getString(int pColumn) {
         return iSheet.getCell(pColumn, iRow).getContents();
     }
 
@@ -67,22 +72,23 @@ public class SSExcelRow {
      * @param pColumn
      * @return
      */
-    public Integer getInteger(int pColumn){
-        try{
-            return Integer.parseInt( getString(pColumn) );
-        } catch(NumberFormatException e){
+    public Integer getInteger(int pColumn) {
+        try {
+            return Integer.parseInt(getString(pColumn));
+        } catch (NumberFormatException e) {
             return 0;
         }
     }
+
     /**
      *
      * @param pColumn
      * @return
      */
-    public Double getDouble(int pColumn){
-        try{
-            return Double.parseDouble( getString(pColumn)  );
-        } catch(NumberFormatException e){
+    public Double getDouble(int pColumn) {
+        try {
+            return Double.parseDouble(getString(pColumn));
+        } catch (NumberFormatException e) {
             return 0.0;
         }
     }
@@ -90,6 +96,7 @@ public class SSExcelRow {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.excel.util.SSExcelRow");
         sb.append("{iRow=").append(iRow);
         sb.append(", iSheet=").append(iSheet);

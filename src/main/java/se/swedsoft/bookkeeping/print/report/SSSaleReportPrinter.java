@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
@@ -16,18 +17,15 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.*;
 
+
 /**
  * Date: 2007-mar-21
  * Time: 15:32:42
  */
 public class SSSaleReportPrinter extends SSPrinter {
 
-    public enum SortingMode{
-        Product             (SSBundle.getBundle().getString("salereport.dialog.sort.product")),
-        Period              (SSBundle.getBundle().getString("salereport.dialog.sort.period")),
-        ContributionRate    (SSBundle.getBundle().getString("salereport.dialog.sort.contributionrate")),
-        AverageSellingPrice (SSBundle.getBundle().getString("salereport.dialog.sort.averagesellingprice"));
-
+    public enum SortingMode {
+        Product             (SSBundle.getBundle().getString("salereport.dialog.sort.product")), Period              (SSBundle.getBundle().getString("salereport.dialog.sort.period")), ContributionRate    (SSBundle.getBundle().getString("salereport.dialog.sort.contributionrate")), AverageSellingPrice (SSBundle.getBundle().getString("salereport.dialog.sort.averagesellingprice"));
 
         private String iDescription;
 
@@ -40,7 +38,6 @@ public class SSSaleReportPrinter extends SSPrinter {
         }
     }
 
-
     private Date        iFrom;
     private Date        iTo;
     private SortingMode iSortingMode;
@@ -52,7 +49,6 @@ public class SSSaleReportPrinter extends SSPrinter {
     private Integer iDays;
     // The number of sold products in the period
     private Map<String, Integer> iCount;
-
 
     private Map<String, BigDecimal> iContribution;
     private Map<String, BigDecimal> iContributionRate;
@@ -67,15 +63,15 @@ public class SSSaleReportPrinter extends SSPrinter {
      * @param iAscending
      */
     public SSSaleReportPrinter(Date iFrom, Date iTo, SortingMode iSortingMode, boolean iAscending) {
-        this.iFrom        = iFrom;
-        this.iTo          = iTo;
+        this.iFrom = iFrom;
+        this.iTo = iTo;
         this.iSortingMode = iSortingMode;
-        this.iAscending   = iAscending;
+        this.iAscending = iAscending;
         iProducts = SSDB.getInstance().getProducts();
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("salereport.jrxml");
-        setDetail      ("salereport.jrxml");
+        setDetail("salereport.jrxml");
     }
 
     /**
@@ -93,10 +89,8 @@ public class SSSaleReportPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        addParameter("dateFrom", iFrom );
-        addParameter("dateTo"  , iTo);
-
-
+        addParameter("dateFrom", iFrom);
+        addParameter("dateTo", iTo);
 
         calculate();
 
@@ -112,56 +106,74 @@ public class SSSaleReportPrinter extends SSPrinter {
 
                 SSProduct iProduct = getObject(rowIndex);
 
-                Integer    iProductCount            = iCount.get(iProduct.getNumber());
-                BigDecimal iProductContribution     = iContribution.get(iProduct.getNumber());
-                BigDecimal iProductContributionRate = iContributionRate.get(iProduct.getNumber());
+                Integer    iProductCount = iCount.get(iProduct.getNumber());
+                BigDecimal iProductContribution = iContribution.get(iProduct.getNumber());
+                BigDecimal iProductContributionRate = iContributionRate.get(
+                        iProduct.getNumber());
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iProduct.getNumber();
-                        break;
-                    case 1:
-                        value = iProduct.getDescription();
-                        break;
-                    case 2:
-                        value = iProductCount;
-                        break;
-                    case 3:
-                        if(iDays == null || iDays == 0) return null;
+                case 0:
+                    value = iProduct.getNumber();
+                    break;
 
-                        value = new BigDecimal( iProductCount * 30.436875 / iDays);
-                        break;
-                    case 4:
-                        if(iDays == null || iDays == 0) return null;
+                case 1:
+                    value = iProduct.getDescription();
+                    break;
 
-                        value = new BigDecimal( iProductCount * 7.00 / iDays);
-                        break;
-                    case 5:
-                        value = iProduct.getSellingPrice();
-                        break;
-                    case 6:
-                        value = iInprices.get(iProduct.getNumber());// SSProductMath.getInprice(iProduct, iTo);
-                        break;
-                    case 7:
-                        value = iProductContribution;
-                        break;
-                    case 8:
-                        value = iProductContributionRate;
-                        break;
-                    case 9:
-                        if( iProductContribution == null || iProductCount == null ) return null;
+                case 2:
+                    value = iProductCount;
+                    break;
 
-                        value = iProductContribution.multiply( new BigDecimal(iProductCount) );
-                        break;
-                    case 10:
-                        value = iAverageSellingPrice.get(iProduct.getNumber());
-                        break;
+                case 3:
+                    if (iDays == null || iDays == 0) {
+                        return null;
+                    }
+
+                    value = new BigDecimal(iProductCount * 30.436875 / iDays);
+                    break;
+
+                case 4:
+                    if (iDays == null || iDays == 0) {
+                        return null;
+                    }
+
+                    value = new BigDecimal(iProductCount * 7.00 / iDays);
+                    break;
+
+                case 5:
+                    value = iProduct.getSellingPrice();
+                    break;
+
+                case 6:
+                    value = iInprices.get(iProduct.getNumber()); // SSProductMath.getInprice(iProduct, iTo);
+                    break;
+
+                case 7:
+                    value = iProductContribution;
+                    break;
+
+                case 8:
+                    value = iProductContributionRate;
+                    break;
+
+                case 9:
+                    if (iProductContribution == null || iProductCount == null) {
+                        return null;
+                    }
+
+                    value = iProductContribution.multiply(new BigDecimal(iProductCount));
+                    break;
+
+                case 10:
+                    value = iAverageSellingPrice.get(iProduct.getNumber());
+                    break;
 
                 }
 
                 return value;
             }
         };
+
         iModel.addColumn("product.number");
         iModel.addColumn("product.description");
         iModel.addColumn("product.count");
@@ -175,15 +187,17 @@ public class SSSaleReportPrinter extends SSPrinter {
         iModel.addColumn("product.grossprofit");
         iModel.addColumn("product.averagesellingprice");
 
-        if(iSortingMode == SortingMode.Product){
+        if (iSortingMode == SortingMode.Product) {
             Collections.sort(iProducts, new Comparator<SSProduct>() {
                 public int compare(SSProduct iProduct1, SSProduct iProduct2) {
                     String iNumber1 = iProduct1.getNumber();
                     String iNumber2 = iProduct2.getNumber();
 
-                    if(iNumber1 == null || iNumber2 == null) return 0;
+                    if (iNumber1 == null || iNumber2 == null) {
+                        return 0;
+                    }
 
-                    if( iAscending ) {
+                    if (iAscending) {
                         return iNumber1.compareTo(iNumber2);
                     } else {
                         return iNumber2.compareTo(iNumber1);
@@ -192,16 +206,20 @@ public class SSSaleReportPrinter extends SSPrinter {
             });
         }
 
-        if(iSortingMode == SortingMode.Period){
+        if (iSortingMode == SortingMode.Period) {
             Collections.sort(iProducts, new Comparator<SSProduct>() {
                 public int compare(SSProduct iProduct1, SSProduct iProduct2) {
                     Integer iCount1 = iCount.get(iProduct1.getNumber());
                     Integer iCount2 = iCount.get(iProduct2.getNumber());
 
-                    if(iCount1 == null ) iCount1 = 0;
-                    if(iCount2 == null ) iCount2 = 0;
+                    if (iCount1 == null) {
+                        iCount1 = 0;
+                    }
+                    if (iCount2 == null) {
+                        iCount2 = 0;
+                    }
 
-                    if( iAscending ) {
+                    if (iAscending) {
                         return iCount1 - iCount2;
                     } else {
                         return iCount2 - iCount1;
@@ -210,16 +228,23 @@ public class SSSaleReportPrinter extends SSPrinter {
             });
         }
 
-        if(iSortingMode == SortingMode.ContributionRate){
-            Collections.sort(iProducts, new Comparator<SSProduct>() {
+        if (iSortingMode == SortingMode.ContributionRate) {
+            Collections.sort(iProducts,
+                    new Comparator<SSProduct>() {
                 public int compare(SSProduct iProduct1, SSProduct iProduct2) {
-                    BigDecimal iContributionRate1 = iContributionRate.get(iProduct1.getNumber());
-                    BigDecimal iContributionRate2 = iContributionRate.get(iProduct2.getNumber());
+                    BigDecimal iContributionRate1 = iContributionRate.get(
+                            iProduct1.getNumber());
+                    BigDecimal iContributionRate2 = iContributionRate.get(
+                            iProduct2.getNumber());
 
-                    if(iContributionRate1 == null ) iContributionRate1 = new BigDecimal(0);
-                    if(iContributionRate2 == null ) iContributionRate2 = new BigDecimal(0);
+                    if (iContributionRate1 == null) {
+                        iContributionRate1 = new BigDecimal(0);
+                    }
+                    if (iContributionRate2 == null) {
+                        iContributionRate2 = new BigDecimal(0);
+                    }
 
-                    if( iAscending ) {
+                    if (iAscending) {
                         return iContributionRate1.compareTo(iContributionRate2);
                     } else {
                         return iContributionRate2.compareTo(iContributionRate1);
@@ -229,17 +254,24 @@ public class SSSaleReportPrinter extends SSPrinter {
             });
         }
 
-        //Lite udda. Sorterar på Totalt Täckningsbidrag. Är felbenämt.
-        if(iSortingMode == SortingMode.AverageSellingPrice){
-            Collections.sort(iProducts, new Comparator<SSProduct>() {
+        // Lite udda. Sorterar på Totalt Täckningsbidrag. Är felbenämt.
+        if (iSortingMode == SortingMode.AverageSellingPrice) {
+            Collections.sort(iProducts,
+                    new Comparator<SSProduct>() {
                 public int compare(SSProduct iProduct1, SSProduct iProduct2) {
-                    BigDecimal iAverageSellingPrice1 = iContribution.get(iProduct1.getNumber());
-                    BigDecimal iAverageSellingPrice2 = iContribution.get(iProduct2.getNumber());
+                    BigDecimal iAverageSellingPrice1 = iContribution.get(
+                            iProduct1.getNumber());
+                    BigDecimal iAverageSellingPrice2 = iContribution.get(
+                            iProduct2.getNumber());
 
-                    if(iAverageSellingPrice1 == null ) iAverageSellingPrice1 = new BigDecimal(0);
-                    if(iAverageSellingPrice2 == null ) iAverageSellingPrice2 = new BigDecimal(0);
+                    if (iAverageSellingPrice1 == null) {
+                        iAverageSellingPrice1 = new BigDecimal(0);
+                    }
+                    if (iAverageSellingPrice2 == null) {
+                        iAverageSellingPrice2 = new BigDecimal(0);
+                    }
 
-                    if( iAscending ) {
+                    if (iAscending) {
                         return iAverageSellingPrice1.compareTo(iAverageSellingPrice2);
                     } else {
                         return iAverageSellingPrice2.compareTo(iAverageSellingPrice1);
@@ -256,14 +288,15 @@ public class SSSaleReportPrinter extends SSPrinter {
      *
      */
     private void calculate() {
-        iDays                 = SSDateMath.getDaysBetween(iFrom, iTo);
-        iCount                = new HashMap<String, Integer>();
-        iContribution         = new HashMap<String, BigDecimal>();
-        iContributionRate     = new HashMap<String, BigDecimal>();
-        iAverageSellingPrice  = new HashMap<String, BigDecimal>();
-        iInprices             = new HashMap<String, BigDecimal>();
+        iDays = SSDateMath.getDaysBetween(iFrom, iTo);
+        iCount = new HashMap<String, Integer>();
+        iContribution = new HashMap<String, BigDecimal>();
+        iContributionRate = new HashMap<String, BigDecimal>();
+        iAverageSellingPrice = new HashMap<String, BigDecimal>();
+        iInprices = new HashMap<String, BigDecimal>();
 
-        List<SSSupplierInvoice> iSupplierInvoices = new LinkedList<SSSupplierInvoice>(SSDB.getInstance().getSupplierInvoices());
+        List<SSSupplierInvoice> iSupplierInvoices = new LinkedList<SSSupplierInvoice>(
+                SSDB.getInstance().getSupplierInvoices());
 
         Collections.sort(iSupplierInvoices, new Comparator<SSSupplierInvoice>() {
             public int compare(SSSupplierInvoice o1, SSSupplierInvoice o2) {
@@ -271,20 +304,29 @@ public class SSSaleReportPrinter extends SSPrinter {
             }
         });
 
-        for(SSSupplierInvoice iSupplierInvoice : iSupplierInvoices){
-            if(SSSupplierInvoiceMath.inPeriod(iSupplierInvoice, iTo)){
-                for(SSSupplierInvoiceRow iRow : iSupplierInvoice.getRows()){
-                    if(iRow.getProductNr() != null){
+        for (SSSupplierInvoice iSupplierInvoice : iSupplierInvoices) {
+            if (SSSupplierInvoiceMath.inPeriod(iSupplierInvoice, iTo)) {
+                for (SSSupplierInvoiceRow iRow : iSupplierInvoice.getRows()) {
+                    if (iRow.getProductNr() != null) {
                         SSProduct iProduct = new SSProduct();
+
                         iProduct.setNumber(iRow.getProductNr());
                         iProduct = SSDB.getInstance().getProduct(iProduct);
 
-                        if(iProduct == null || iProduct.isParcel()) continue;
+                        if (iProduct == null || iProduct.isParcel()) {
+                            continue;
+                        }
 
-                        if(!iInprices.containsKey(iProduct.getNumber())){
-                            BigDecimal iUnitPrice = iRow.getUnitprice() == null ? new BigDecimal(0) : iRow.getUnitprice();
-                            BigDecimal iUnitFreight = iRow.getUnitFreight() == null ? new BigDecimal(0) : iRow.getUnitFreight();
-                            BigDecimal iInprice = SSSupplierInvoiceMath.convertToLocal(iSupplierInvoice, iUnitPrice.add(iUnitFreight));
+                        if (!iInprices.containsKey(iProduct.getNumber())) {
+                            BigDecimal iUnitPrice = iRow.getUnitprice() == null
+                                    ? new BigDecimal(0)
+                                    : iRow.getUnitprice();
+                            BigDecimal iUnitFreight = iRow.getUnitFreight() == null
+                                    ? new BigDecimal(0)
+                                    : iRow.getUnitFreight();
+                            BigDecimal iInprice = SSSupplierInvoiceMath.convertToLocal(
+                                    iSupplierInvoice, iUnitPrice.add(iUnitFreight));
+
                             iInprices.put(iProduct.getNumber(), iInprice);
                         }
                     }
@@ -292,28 +334,35 @@ public class SSSaleReportPrinter extends SSPrinter {
             }
         }
 
+        List<SSInvoice> iInvoices = SSDB.getInstance().getInvoices();
 
-        List<SSInvoice> iInvoices  = SSDB.getInstance().getInvoices();
-        for(SSInvoice iInvoice : iInvoices){
-            if(SSInvoiceMath.inPeriod(iInvoice, iFrom, iTo)){
-                for(SSSaleRow iRow : iInvoice.getRows()){
-                    if(iRow.getProductNr() != null){
-                        SSProduct iProduct = SSDB.getInstance().getProduct(iRow.getProductNr());
+        for (SSInvoice iInvoice : iInvoices) {
+            if (SSInvoiceMath.inPeriod(iInvoice, iFrom, iTo)) {
+                for (SSSaleRow iRow : iInvoice.getRows()) {
+                    if (iRow.getProductNr() != null) {
+                        SSProduct iProduct = SSDB.getInstance().getProduct(
+                                iRow.getProductNr());
 
-                        if(iProduct == null || iRow.getQuantity() == null) continue;
-                        if(iRow.getSum() != null){
-                            if(iAverageSellingPrice.containsKey(iProduct.getNumber())){
-                                iAverageSellingPrice.put(iProduct.getNumber(), iAverageSellingPrice.get(iProduct.getNumber()).add(SSInvoiceMath.convertToLocal(iInvoice,iRow.getSum())));
-                            }
-                            else{
-                                iAverageSellingPrice.put(iProduct.getNumber(), SSInvoiceMath.convertToLocal(iInvoice,iRow.getSum()));
+                        if (iProduct == null || iRow.getQuantity() == null) {
+                            continue;
+                        }
+                        if (iRow.getSum() != null) {
+                            if (iAverageSellingPrice.containsKey(iProduct.getNumber())) {
+                                iAverageSellingPrice.put(iProduct.getNumber(),
+                                        iAverageSellingPrice.get(iProduct.getNumber()).add(
+                                        SSInvoiceMath.convertToLocal(iInvoice,
+                                        iRow.getSum())));
+                            } else {
+                                iAverageSellingPrice.put(iProduct.getNumber(),
+                                        SSInvoiceMath.convertToLocal(iInvoice,
+                                        iRow.getSum()));
                             }
                         }
 
-                        if(iCount.containsKey(iProduct.getNumber())){
-                            iCount.put(iProduct.getNumber(), iCount.get(iProduct.getNumber()) + iRow.getQuantity());
-                        }
-                        else{
+                        if (iCount.containsKey(iProduct.getNumber())) {
+                            iCount.put(iProduct.getNumber(),
+                                    iCount.get(iProduct.getNumber()) + iRow.getQuantity());
+                        } else {
                             iCount.put(iProduct.getNumber(), iRow.getQuantity());
                         }
                     }
@@ -321,28 +370,35 @@ public class SSSaleReportPrinter extends SSPrinter {
             }
         }
 
-        List<SSCreditInvoice> iCreditInvoices  = SSDB.getInstance().getCreditInvoices();
-        for(SSCreditInvoice iCreditInvoice : iCreditInvoices){
-            if(SSInvoiceMath.inPeriod(iCreditInvoice, iFrom, iTo)){
-                for(SSSaleRow iRow : iCreditInvoice.getRows()){
-                    if(iRow.getProductNr() != null){
-                        SSProduct iProduct = SSDB.getInstance().getProduct(iRow.getProductNr());
+        List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
 
-                        if(iProduct == null || iRow.getQuantity() == null) continue;
+        for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
+            if (SSInvoiceMath.inPeriod(iCreditInvoice, iFrom, iTo)) {
+                for (SSSaleRow iRow : iCreditInvoice.getRows()) {
+                    if (iRow.getProductNr() != null) {
+                        SSProduct iProduct = SSDB.getInstance().getProduct(
+                                iRow.getProductNr());
 
-                        if(iRow.getSum() != null){
-                            if(iAverageSellingPrice.containsKey(iProduct.getNumber())){
-                                iAverageSellingPrice.put(iProduct.getNumber(), iAverageSellingPrice.get(iProduct.getNumber()).subtract(iRow.getSum()));
-                            }
-                            else{
-                                iAverageSellingPrice.put(iProduct.getNumber(),iRow.getSum().negate());
+                        if (iProduct == null || iRow.getQuantity() == null) {
+                            continue;
+                        }
+
+                        if (iRow.getSum() != null) {
+                            if (iAverageSellingPrice.containsKey(iProduct.getNumber())) {
+                                iAverageSellingPrice.put(iProduct.getNumber(),
+                                        iAverageSellingPrice.get(iProduct.getNumber()).subtract(
+                                        iRow.getSum()));
+                            } else {
+                                iAverageSellingPrice.put(iProduct.getNumber(),
+                                        iRow.getSum().negate());
                             }
                         }
 
-                        if(iCount.containsKey(iProduct.getNumber())){
-                            iCount.put(iProduct.getNumber(), iCount.get(iProduct.getNumber()) + (iRow.getQuantity() * -1));
-                        }
-                        else{
+                        if (iCount.containsKey(iProduct.getNumber())) {
+                            iCount.put(iProduct.getNumber(),
+                                    iCount.get(iProduct.getNumber())
+                                    + (iRow.getQuantity() * -1));
+                        } else {
                             iCount.put(iProduct.getNumber(), iRow.getQuantity() * -1);
                         }
                     }
@@ -352,62 +408,83 @@ public class SSSaleReportPrinter extends SSPrinter {
 
         for (SSProduct iProduct : iProducts) {
 
-            if(iProduct.isParcel()){
+            if (iProduct.isParcel()) {
                 BigDecimal iInpriceSum = new BigDecimal(0);
-                for(SSProductRow iRow : iProduct.getParcelRows()){
-                    SSProduct iRowProduct = SSDB.getInstance().getProduct(iRow.getProductNr());
+
+                for (SSProductRow iRow : iProduct.getParcelRows()) {
+                    SSProduct iRowProduct = SSDB.getInstance().getProduct(
+                            iRow.getProductNr());
+
                     // Undvik inf loop
-                    if(iRowProduct == null || iProduct.equals( iRowProduct) ) continue;
+                    if (iRowProduct == null || iProduct.equals(iRowProduct)) {
+                        continue;
+                    }
 
                     Integer iQuantity = iRow.getQuantity();
 
-                    if(iRowProduct == null || iQuantity == null) continue;
+                    if (iRowProduct == null || iQuantity == null) {
+                        continue;
+                    }
 
                     BigDecimal iInprice = iInprices.get(iRowProduct.getNumber());
 
                     // Om endast en rad saknar inpris så kan vi inte räkna ut något inpris
-                    if(iInprice == null) break;
-                    iInpriceSum = iInpriceSum.add( iInprice.multiply( new BigDecimal(iQuantity) ) );
+                    if (iInprice == null) {
+                        break;
+                    }
+                    iInpriceSum = iInpriceSum.add(
+                            iInprice.multiply(new BigDecimal(iQuantity)));
                 }
-                if(!iInprices.containsKey(iProduct.getNumber())){
+                if (!iInprices.containsKey(iProduct.getNumber())) {
                     iInprices.put(iProduct.getNumber(), iInpriceSum);
                 }
             }
 
-            if(!iInprices.containsKey(iProduct.getNumber())){
+            if (!iInprices.containsKey(iProduct.getNumber())) {
                 iInprices.put(iProduct.getNumber(), iProduct.getStockPrice());
             }
-            if(!iCount.containsKey(iProduct.getNumber()))
+            if (!iCount.containsKey(iProduct.getNumber())) {
                 iCount.put(iProduct.getNumber(), 0);
+            }
 
-            if(iAverageSellingPrice.containsKey(iProduct.getNumber()) && iCount.containsKey(iProduct.getNumber())){
+            if (iAverageSellingPrice.containsKey(iProduct.getNumber())
+                    && iCount.containsKey(iProduct.getNumber())) {
                 Integer iSoldCount = iCount.get(iProduct.getNumber());
-                BigDecimal iTotalSellingPrice = iAverageSellingPrice.get(iProduct.getNumber());
-                if(iSoldCount == null || iSoldCount == 0){
-                    iAverageSellingPrice.put(iProduct.getNumber(), iProduct.getSellingPrice());
-                }
-                else {
+                BigDecimal iTotalSellingPrice = iAverageSellingPrice.get(
+                        iProduct.getNumber());
+
+                if (iSoldCount == null || iSoldCount == 0) {
+                    iAverageSellingPrice.put(iProduct.getNumber(),
+                            iProduct.getSellingPrice());
+                } else {
                     BigDecimal bSoldCount = new BigDecimal(iSoldCount);
-                    BigDecimal iAverage = iTotalSellingPrice.divide(bSoldCount, new MathContext(10)).setScale(2,RoundingMode.HALF_UP);
+                    BigDecimal iAverage = iTotalSellingPrice.divide(bSoldCount, new MathContext(10)).setScale(
+                            2, RoundingMode.HALF_UP);
+
                     iAverageSellingPrice.put(iProduct.getNumber(), iAverage);
                 }
+            } else {
+                iAverageSellingPrice.put(iProduct.getNumber(), iProduct.getSellingPrice());
             }
-            else{
-                iAverageSellingPrice.put(iProduct.getNumber(),iProduct.getSellingPrice());
-            }
-            if(iProduct.getSellingPrice() == null || iInprices.get(iProduct.getNumber()) == null)
+            if (iProduct.getSellingPrice() == null
+                    || iInprices.get(iProduct.getNumber()) == null) {
                 iContribution.put(iProduct.getNumber(), null);
-            else
-                iContribution.put(iProduct.getNumber(), iProduct.getSellingPrice().subtract(iInprices.get(iProduct.getNumber())));
+            } else {
+                iContribution.put(iProduct.getNumber(),
+                        iProduct.getSellingPrice().subtract(
+                        iInprices.get(iProduct.getNumber())));
+            }
 
-            iContributionRate   .put(iProduct.getNumber(), SSProductMath.getContributionRate   (iProduct, iTo, iContribution.get(iProduct.getNumber())) );
+            iContributionRate.put(iProduct.getNumber(),
+                    SSProductMath.getContributionRate(iProduct, iTo,
+                    iContribution.get(iProduct.getNumber())));
         }
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSSaleReportPrinter");
         sb.append("{iAscending=").append(iAscending);
         sb.append(", iAverageSellingPrice=").append(iAverageSellingPrice);

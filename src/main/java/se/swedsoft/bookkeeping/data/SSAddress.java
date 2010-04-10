@@ -4,17 +4,17 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import java.io.Serializable;
+
 
 /**
  * @author Roger Björnstedt
  */
 public class SSAddress implements Serializable {
 
-    //Constant for serialization versioning.
+    // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
-
 
     private String iName;
 
@@ -32,22 +32,21 @@ public class SSAddress implements Serializable {
      * Default constructor.
      */
     public SSAddress() {
-        iName    = "";
+        iName = "";
         iAddress = "";
-        iStreet  = "";
+        iStreet = "";
         iZipCode = "";
-        iCity    = "";
+        iCity = "";
         iCountry = "";
     }
 
-    public void dispose()
-    {
-        iName=null;
-        iAddress=null;
-        iStreet=null;
-        iZipCode=null;
-        iCity=null;
-        iCountry=null;
+    public void dispose() {
+        iName = null;
+        iAddress = null;
+        iStreet = null;
+        iZipCode = null;
+        iCity = null;
+        iCountry = null;
     }
 
     /**
@@ -55,12 +54,12 @@ public class SSAddress implements Serializable {
      * @param iAddress
      */
     public SSAddress(SSAddress iAddress) {
-        iName         = iAddress.iName;
+        iName = iAddress.iName;
         this.iAddress = iAddress.iAddress;
-        iStreet       = iAddress.iStreet;
-        iZipCode      = iAddress.iZipCode;
-        iCity         = iAddress.iCity;
-        iCountry      = iAddress.iCountry;
+        iStreet = iAddress.iStreet;
+        iZipCode = iAddress.iZipCode;
+        iCity = iAddress.iCity;
+        iCountry = iAddress.iCountry;
     }
 
     /**
@@ -74,14 +73,15 @@ public class SSAddress implements Serializable {
      * @param pCountry
      */
     public SSAddress(String pName, String pAddress, String pStreet, String pZipCode, String pCity, String pCountry) {
-        iName    = pName;
+        iName = pName;
         iAddress = pAddress;
-        iStreet  = pStreet;
+        iStreet = pStreet;
         iZipCode = pZipCode;
-        iCity    = pCity;
+        iCity = pCity;
         iCountry = pCountry;
     }
-    //////////////////////////////////////////////////////
+
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -99,7 +99,7 @@ public class SSAddress implements Serializable {
         iName = pName;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -117,7 +117,7 @@ public class SSAddress implements Serializable {
         iAddress = address;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -135,7 +135,7 @@ public class SSAddress implements Serializable {
         iStreet = street;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -153,7 +153,7 @@ public class SSAddress implements Serializable {
         iZipCode = zipCode;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -171,7 +171,7 @@ public class SSAddress implements Serializable {
         iCity = city;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -189,8 +189,7 @@ public class SSAddress implements Serializable {
         iCountry = country;
     }
 
-
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
     /**
      *
      * @return
@@ -199,7 +198,7 @@ public class SSAddress implements Serializable {
         return iZipCode + ' ' + iCity;
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      * Creates and returns a copy of this object.  The precise meaning
@@ -212,7 +211,7 @@ public class SSAddress implements Serializable {
         return new SSAddress(this);
     }
 
-    //////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////
 
     /**
      *
@@ -220,15 +219,12 @@ public class SSAddress implements Serializable {
      * @return
      */
     public boolean equals(Object obj) {
-        if(obj instanceof SSAddress){
-            SSAddress iOther =  (SSAddress)obj;
+        if (obj instanceof SSAddress) {
+            SSAddress iOther = (SSAddress) obj;
 
-            return iName   .equals( iOther.iName    ) &&
-                    iAddress.equals( iOther.iAddress ) &&
-                    iStreet .equals( iOther.iStreet  ) &&
-                    iZipCode.equals( iOther.iZipCode ) &&
-                    iCity   .equals( iOther.iCity    ) &&
-                    iCountry.equals( iOther.iCountry ) ;
+            return iName.equals(iOther.iName) && iAddress.equals(iOther.iAddress)
+                    && iStreet.equals(iOther.iStreet) && iZipCode.equals(iOther.iZipCode)
+                    && iCity.equals(iOther.iCity) && iCountry.equals(iOther.iCountry);
 
         }
 

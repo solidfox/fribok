@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table.editors;
 
+
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
 import javax.swing.table.TableCellEditor;
@@ -27,6 +28,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
      */
     public SSBigDecimalCellEditor(int maxFractionDigits) {
         NumberFormat iFormat = NumberFormat.getNumberInstance();
+
         iFormat.setMinimumFractionDigits(maxFractionDigits);
         iFormat.setMaximumFractionDigits(maxFractionDigits);
 
@@ -35,7 +37,8 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
         iTextField.setHorizontalAlignment(JTextField.TRAILING);
         iTextField.setFocusLostBehavior(JFormattedTextField.PERSIST);
 
-        iTextField.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "commintchanges");
+        iTextField.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                "commintchanges");
 
         iTextField.getActionMap().put("commintchanges", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +49,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
             // implements java.awt.event.MouseListener
             @Override
             public void mouseClicked(MouseEvent e) {
-                  iTextField.selectAll();
+                iTextField.selectAll();
             }
         });
 
@@ -61,13 +64,13 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
         }
         Object iValue = iTextField.getValue();
 
-        if( iValue instanceof BigDecimal){
+        if (iValue instanceof BigDecimal) {
             return iValue;
         }
-        if( iValue instanceof Number){
+        if (iValue instanceof Number) {
             Number iNumber = (Number) iValue;
 
-             return new BigDecimal( iNumber.doubleValue() );
+            return new BigDecimal(iNumber.doubleValue());
         }
         return null;
     }
@@ -75,7 +78,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 
-        if( value instanceof Number){
+        if (value instanceof Number) {
             Number iValue = (Number) value;
 
             iTextField.setValue(iValue);
@@ -89,10 +92,10 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
 
     @Override
     public boolean isCellEditable(EventObject e) {
-         if (e instanceof MouseEvent) {
-             MouseEvent iMouseEvent = (MouseEvent) e;
+        if (e instanceof MouseEvent) {
+            MouseEvent iMouseEvent = (MouseEvent) e;
 
-             return iMouseEvent.getClickCount() >= 2;
+            return iMouseEvent.getClickCount() >= 2;
         }
         return super.isCellEditable(e);
     }
@@ -100,6 +103,7 @@ public class SSBigDecimalCellEditor extends AbstractCellEditor implements TableC
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.editors.SSBigDecimalCellEditor");
         sb.append("{iTextField=").append(iTextField);
         sb.append('}');

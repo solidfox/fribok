@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.base.SSSaleRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
@@ -31,13 +32,10 @@ public class SSNewProject implements Serializable, SSTableSearchable {
 
     private Date iConcludedDate;
 
-
     /**
      * Default constructor.
      */
-    public SSNewProject() {
-
-    }
+    public SSNewProject() {}
 
     /**
      *
@@ -46,10 +44,10 @@ public class SSNewProject implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public SSNewProject(String pNumber, String pName, String pDescription) {
-        iNumber        = pNumber;
-        iName          = pName;
-        iDescription   = pDescription;
-        iConcluded     = false;
+        iNumber = pNumber;
+        iName = pName;
+        iDescription = pDescription;
+        iConcluded = false;
         iConcludedDate = null;
     }
 
@@ -61,11 +59,9 @@ public class SSNewProject implements Serializable, SSTableSearchable {
         iConcludedDate = iOld.getConcludedDate();
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
-
-
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -83,7 +79,7 @@ public class SSNewProject implements Serializable, SSTableSearchable {
         iNumber = number;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -101,7 +97,7 @@ public class SSNewProject implements Serializable, SSTableSearchable {
         iName = name;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -119,7 +115,7 @@ public class SSNewProject implements Serializable, SSTableSearchable {
         iDescription = description;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -137,7 +133,7 @@ public class SSNewProject implements Serializable, SSTableSearchable {
         iConcluded = pConcluded;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -155,35 +151,34 @@ public class SSNewProject implements Serializable, SSTableSearchable {
         iConcludedDate = pConcluded;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
      * @param iDate
      * @return
      */
-    public boolean isConcluded(Date iDate){
-        return iConcluded && (iConcludedDate != null) &&   iConcludedDate.getTime() <= iDate.getTime();
+    public boolean isConcluded(Date iDate) {
+        return iConcluded && (iConcludedDate != null)
+                && iConcludedDate.getTime() <= iDate.getTime();
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
-
-    
     public String toString() {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append( iNumber );
-        sb.append( " - " );
-        sb.append( iName);
-        sb.append( ", " );
-        sb.append( iDescription );
-        if(iConcluded){
-            sb.append( "(Concluded " );
-            sb.append( iFormat.format( iConcludedDate ) );
-            sb.append( ") " );
+        sb.append(iNumber);
+        sb.append(" - ");
+        sb.append(iName);
+        sb.append(", ");
+        sb.append(iDescription);
+        if (iConcluded) {
+            sb.append("(Concluded ");
+            sb.append(iFormat.format(iConcludedDate));
+            sb.append(") ");
         }
         return sb.toString();
     }
@@ -194,8 +189,9 @@ public class SSNewProject implements Serializable, SSTableSearchable {
      * @return
      */
     public boolean equals(Object obj) {
-        if(obj instanceof SSNewProject)
-            return ((SSNewProject)obj).iNumber.equals(iNumber);
+        if (obj instanceof SSNewProject) {
+            return ((SSNewProject) obj).iNumber.equals(iNumber);
+        }
 
         return false;
     }
@@ -210,12 +206,14 @@ public class SSNewProject implements Serializable, SSTableSearchable {
     public BigDecimal getProjectRevenueForMonth(SSMonth iMonth) {
         Double iInvoiceSum = 0.0;
         List<SSInvoice> iInvoices = SSDB.getInstance().getInvoices();
+
         for (SSInvoice iInvoice : iInvoices) {
-            if(iMonth.isDateInMonth(iInvoice.getDate())){
+            if (iMonth.isDateInMonth(iInvoice.getDate())) {
                 for (SSSaleRow iRow : iInvoice.getRows()) {
-                    if(iRow.getProjectNr() != null){
-                        if (iRow.getProjectNr().equals(iNumber) && iRow.getSum()!=null) {
-                            iInvoiceSum += iRow.getSum().doubleValue()*iInvoice.getCurrencyRate().doubleValue();
+                    if (iRow.getProjectNr() != null) {
+                        if (iRow.getProjectNr().equals(iNumber) && iRow.getSum() != null) {
+                            iInvoiceSum += iRow.getSum().doubleValue()
+                                    * iInvoice.getCurrencyRate().doubleValue();
                         }
                     }
                 }
@@ -224,19 +222,20 @@ public class SSNewProject implements Serializable, SSTableSearchable {
 
         List<SSCreditInvoice> iCreditInvoices = SSDB.getInstance().getCreditInvoices();
         Double iCreditInvoiceSum = 0.0;
+
         for (SSCreditInvoice iCreditInvoice : iCreditInvoices) {
-            if(iMonth.isDateInMonth(iCreditInvoice.getDate())){
+            if (iMonth.isDateInMonth(iCreditInvoice.getDate())) {
                 for (SSSaleRow iRow : iCreditInvoice.getRows()) {
-                    if(iRow.getProjectNr() != null) {
-                        if (iRow.getProjectNr().equals(iNumber) && iRow.getSum()!=null) {
-                            iCreditInvoiceSum += iRow.getSum().doubleValue()*iCreditInvoice.getCurrencyRate().doubleValue();
+                    if (iRow.getProjectNr() != null) {
+                        if (iRow.getProjectNr().equals(iNumber) && iRow.getSum() != null) {
+                            iCreditInvoiceSum += iRow.getSum().doubleValue()
+                                    * iCreditInvoice.getCurrencyRate().doubleValue();
                         }
                     }
                 }
             }
         }
-        return new BigDecimal(iInvoiceSum-iCreditInvoiceSum);
+        return new BigDecimal(iInvoiceSum - iCreditInvoiceSum);
     }
-
 
 }

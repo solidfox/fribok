@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.invoice.dialog;
 
+
 import se.swedsoft.bookkeeping.data.common.SSInvoiceType;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 
 /**
  * User: Andreas Lago
@@ -31,20 +33,20 @@ public class SSInvoiceTypeDialog extends SSDialog {
      * @param iMainFrame
      */
     public SSInvoiceTypeDialog(SSMainFrame iMainFrame) {
-        super(iMainFrame, SSBundle.getBundle().getString("invoiceframe.type.title") );
+        super(iMainFrame, SSBundle.getBundle().getString("invoiceframe.type.title"));
 
         add(iPanel, BorderLayout.CENTER);
         pack();
 
         iInvoiceType = null;
 
-        iType1Button .addActionListener(new ActionListener() {
+        iType1Button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iInvoiceType = SSInvoiceType.NORMAL;
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
-        iType2Button .addActionListener(new ActionListener() {
+        iType2Button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iInvoiceType = SSInvoiceType.CASH;
                 setModalResult(JOptionPane.OK_OPTION, true);
@@ -56,7 +58,6 @@ public class SSInvoiceTypeDialog extends SSDialog {
             }
         });
     }
-
 
     /**
      *
@@ -74,7 +75,6 @@ public class SSInvoiceTypeDialog extends SSDialog {
         return iInvoiceType;
     }
 
-
     /**
      *
      * @param iMainFrame
@@ -85,7 +85,7 @@ public class SSInvoiceTypeDialog extends SSDialog {
 
         iDialog.setLocationRelativeTo(iMainFrame);
 
-        if( iDialog.showDialog() == JOptionPane.OK_OPTION ) {
+        if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
             return iDialog.iInvoiceType;
         }
         return null;
@@ -94,6 +94,7 @@ public class SSInvoiceTypeDialog extends SSDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.invoice.dialog.SSInvoiceTypeDialog");
         sb.append("{iCancelButton=").append(iCancelButton);
         sb.append(", iInvoiceType=").append(iInvoiceType);

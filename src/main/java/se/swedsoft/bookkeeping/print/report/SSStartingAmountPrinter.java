@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -9,6 +10,7 @@ import se.swedsoft.bookkeeping.print.SSPrinter;
 
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * Date: 2006-feb-16
@@ -23,16 +25,17 @@ public class SSStartingAmountPrinter extends SSPrinter {
     /**
      *
      */
-    public SSStartingAmountPrinter(  ){
-      this( SSDB.getInstance().getCurrentYear() );
+    public SSStartingAmountPrinter() {
+        this(SSDB.getInstance().getCurrentYear());
     }
 
     /**
      *
      * @param iAccountingYear
      */
-    public SSStartingAmountPrinter(SSNewAccountingYear iAccountingYear ){
-      this( iAccountingYear.getInBalance(), iAccountingYear.getFrom(), iAccountingYear.getTo() );
+    public SSStartingAmountPrinter(SSNewAccountingYear iAccountingYear) {
+        this(iAccountingYear.getInBalance(), iAccountingYear.getFrom(),
+                iAccountingYear.getTo());
     }
 
     /**
@@ -45,14 +48,12 @@ public class SSStartingAmountPrinter extends SSPrinter {
         this.iInBalance = iInBalance;
         this.iFrom = iFrom;
         this.iTo = iTo;
-                
-        setPageHeader  ("header.jrxml");
+
+        setPageHeader("header.jrxml");
         setColumnHeader("startingammount.jrxml");
-        setDetail      ("startingammount.jrxml");
-        setSummary     ("startingammount.jrxml");
-     }
-
-
+        setDetail("startingammount.jrxml");
+        setSummary("startingammount.jrxml");
+    }
 
     /**
      * Gets the title file for this repport
@@ -64,53 +65,56 @@ public class SSStartingAmountPrinter extends SSPrinter {
         return SSBundle.getBundle().getString("inbalancereport.title");
     }
 
-
     /**
      * @return SSDefaultTableModel
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        addParameter("dateFrom", iFrom );
-        addParameter("dateTo"  , iTo);
+        addParameter("dateFrom", iFrom);
+        addParameter("dateTo", iTo);
 
         List<SSAccount> iAccounts = new LinkedList<SSAccount>();
 
         // Extract all accounts
-        for(SSAccount iAccount: iInBalance.keySet()){
+        for (SSAccount iAccount: iInBalance.keySet()) {
             iAccounts.add(iAccount);
         }
 
-        SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>(){
+        SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>() {
 
             @Override
             public Class getType() {
                 return SSAccount.class;
 
             }
+
             public Object getValueAt(int rowIndex, int columnIndex) {
                 SSAccount iAccount = getObject(rowIndex);
 
                 Object value = null;
 
-                switch(columnIndex){
-                    case 0:
-                        value = iAccount.getNumber();
-                        break;
-                    case 1:
-                        value = iAccount.getDescription();
-                        break;
-                    case 2:
-                        value = iInBalance.get(iAccount);
-                        break;
+                switch (columnIndex) {
+                case 0:
+                    value = iAccount.getNumber();
+                    break;
+
+                case 1:
+                    value = iAccount.getDescription();
+                    break;
+
+                case 2:
+                    value = iInBalance.get(iAccount);
+                    break;
                 }
 
                 return value;
             }
 
         };
-        iModel.addColumn( "account" );
-        iModel.addColumn( "description" );
-        iModel.addColumn( "inbalance" );
+
+        iModel.addColumn("account");
+        iModel.addColumn("description");
+        iModel.addColumn("inbalance");
 
         Collections.sort(iAccounts, new Comparator<SSAccount>() {
             public int compare(SSAccount o1, SSAccount o2) {
@@ -118,16 +122,15 @@ public class SSStartingAmountPrinter extends SSPrinter {
             }
         });
 
-        iModel.setObjects( iAccounts );
-
+        iModel.setObjects(iAccounts);
 
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSStartingAmountPrinter");
         sb.append("{iFrom=").append(iFrom);
         sb.append(", iInBalance=").append(iInBalance);

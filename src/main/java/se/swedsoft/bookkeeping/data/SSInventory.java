@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -22,7 +24,6 @@ public class SSInventory implements Serializable {
 
     public String iText;
 
-
     public List<SSInventoryRow> iRows;
 
     /**
@@ -30,56 +31,56 @@ public class SSInventory implements Serializable {
      */
     public SSInventory() {
         iNumber = 0;
-        iDate   = new Date();
-        iText   = "";
-        iRows   = new LinkedList<SSInventoryRow>();
+        iDate = new Date();
+        iText = "";
+        iRows = new LinkedList<SSInventoryRow>();
 
         doAutoIncrement();
     }
 
     /**
      * Copy constructor
-     * 
+     *
      * @param iInventory
      */
     public SSInventory(SSInventory iInventory) {
         copyFrom(iInventory);
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      */
-    public void doAutoIncrement(){
+    public void doAutoIncrement() {
         iNumber = 1;
 
         List<SSInventory> iInventories = SSDB.getInstance().getInventories();
+
         for (SSInventory iInventory : iInventories) {
-            if(iInventory.iNumber >= iNumber){
+            if (iInventory.iNumber >= iNumber) {
                 iNumber = iInventory.iNumber + 1;
             }
         }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * 
+     *
      * @param iInventory
      */
-    public void copyFrom(SSInventory iInventory){
+    public void copyFrom(SSInventory iInventory) {
         iNumber = iInventory.iNumber;
-        iDate   = iInventory.iDate;
-        iText   = iInventory.iText;
-        iRows   = new LinkedList<SSInventoryRow>();
+        iDate = iInventory.iDate;
+        iText = iInventory.iText;
+        iRows = new LinkedList<SSInventoryRow>();
 
         for (SSInventoryRow iRow : iInventory.iRows) {
-            iRows.add( new SSInventoryRow(iRow) );
+            iRows.add(new SSInventoryRow(iRow));
         }
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
     /**
      *
      * @return
@@ -96,7 +97,7 @@ public class SSInventory implements Serializable {
         this.iNumber = iNumber;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -114,7 +115,7 @@ public class SSInventory implements Serializable {
         this.iDate = iDate;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -132,7 +133,7 @@ public class SSInventory implements Serializable {
         this.iText = iText;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -150,8 +151,7 @@ public class SSInventory implements Serializable {
         this.iRows = iRows;
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * Return the correction for the supplied product.
@@ -159,21 +159,22 @@ public class SSInventory implements Serializable {
      * @param iProduct
      * @return the correction
      */
-    public Integer getChange(SSProduct iProduct){
+    public Integer getChange(SSProduct iProduct) {
         Integer iSum = 0;
 
         for (SSInventoryRow iRow : iRows) {
-            if( iRow.hasProduct( iProduct) ){
+            if (iRow.hasProduct(iProduct)) {
                 Integer iChange = iRow.getChange();
 
-                if(iChange != null) iSum = iSum + iChange;
+                if (iChange != null) {
+                    iSum = iSum + iChange;
+                }
             }
         }
         return iSum;
 
     }
 
-    
     public boolean equals(Object obj) {
         if (!(obj instanceof SSInventory)) {
             return false;
@@ -181,10 +182,10 @@ public class SSInventory implements Serializable {
         return iNumber.equals(((SSInventory) obj).iNumber);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSInventory");
         sb.append("{iDate=").append(iDate);
         sb.append(", iNumber=").append(iNumber);

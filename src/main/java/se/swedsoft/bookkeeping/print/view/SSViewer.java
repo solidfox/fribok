@@ -17,22 +17,17 @@ import java.util.List;
 import java.util.Map;
 
 
-public class SSViewer extends JPanel{
-
+public class SSViewer extends JPanel {
 
     public static final int REPORT_RESOLUTION = 72;
 
     public static final int SCREEN_RESOLUTION = Toolkit.getDefaultToolkit().getScreenResolution();
 
-
-
     private Map<String, List<PropertyChangeListener>> iListenerMap;
-
 
     private JPanel iPagePanel = new JPanel();
 
     private SSDocumentPanel iDocumentPanel = new SSDocumentPanel();
-
 
     private JasperPrint iJasperPrint;
 
@@ -42,31 +37,26 @@ public class SSViewer extends JPanel{
 
     private float iScale = 1.0f;
 
-
-
-
-
     /**
      *
      */
-    public SSViewer(){
+    public SSViewer() {
         iListenerMap = new HashMap<String, List<PropertyChangeListener>>();
 
-        iPagePanel.setBorder( BorderFactory.createEmptyBorder(4,4,4,4));
+        iPagePanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
         iPagePanel.add(iDocumentPanel.getPanel());
 
-        setLayout( new BorderLayout() );
+        setLayout(new BorderLayout());
         add(iPagePanel, BorderLayout.CENTER);
 
         createMouseEvents();
     }
 
-
     /**
      *
      * @param pJasperPrint
      */
-    public void setPrinter(JasperPrint pJasperPrint){
+    public void setPrinter(JasperPrint pJasperPrint) {
         iJasperPrint = pJasperPrint;
 
         notifyPropertyChangeListeners("page_change");
@@ -77,27 +67,27 @@ public class SSViewer extends JPanel{
         refreshPage();
     }
 
-
     /**
      * Navigate to the first page
      */
-    public void firstPage(){
+    public void firstPage() {
         setCurrentPage(0);
     }
 
     /**
      * Navigate to the previous page
      */
-    public void prevPage(){
-        int index = iPageIndex-1;
+    public void prevPage() {
+        int index = iPageIndex - 1;
+
         setCurrentPage(index);
     }
 
     /**
      * Navigate to the next page
      */
-    public void nextPage(){
-        int index = iPageIndex+1;
+    public void nextPage() {
+        int index = iPageIndex + 1;
 
         setCurrentPage(index);
     }
@@ -105,16 +95,16 @@ public class SSViewer extends JPanel{
     /**
      *  Navigate to the last page
      */
-    public void lastPage(){
-        setCurrentPage(getPageCount()-1);
+    public void lastPage() {
+        setCurrentPage(getPageCount() - 1);
     }
 
     /**
      *
      * @return
      */
-    public int getPageCount(){
-        if( iJasperPrint != null && iJasperPrint.getPages() != null){
+    public int getPageCount() {
+        if (iJasperPrint != null && iJasperPrint.getPages() != null) {
             return iJasperPrint.getPages().size();
         } else {
             return 0;
@@ -137,7 +127,7 @@ public class SSViewer extends JPanel{
      * @param pZoom
      */
     public void setZoom(int pZoom) {
-        if(iZoom != pZoom ){
+        if (iZoom != pZoom) {
             iZoom = pZoom;
 
             iScale = (iZoom / 100.0f) * REPORT_RESOLUTION / SCREEN_RESOLUTION;
@@ -148,15 +138,14 @@ public class SSViewer extends JPanel{
         }
     }
 
-
     /**
      * Set the current page
      *
      * @param pPageIndex
      */
-    public void setCurrentPage(int pPageIndex){
+    public void setCurrentPage(int pPageIndex) {
         // Check so we stay in range
-        if( pPageIndex >= 0 && pPageIndex < getPageCount() && ( iPageIndex != pPageIndex) ){
+        if (pPageIndex >= 0 && pPageIndex < getPageCount() && (iPageIndex != pPageIndex)) {
             iPageIndex = pPageIndex;
 
             notifyPropertyChangeListeners("page_change");
@@ -170,7 +159,7 @@ public class SSViewer extends JPanel{
      *
      * @return
      */
-    public int getCurrentPage(){
+    public int getCurrentPage() {
         return iPageIndex;
     }
 
@@ -183,6 +172,7 @@ public class SSViewer extends JPanel{
     public void addPropertyChangeListener(String pProperty, PropertyChangeListener pPropertyChangeListener) {
 
         List<PropertyChangeListener> iPropertyChangeListeners = iListenerMap.get(pProperty);
+
         if (iPropertyChangeListeners == null) {
             iPropertyChangeListeners = new LinkedList<PropertyChangeListener>();
             iListenerMap.put(pProperty, iPropertyChangeListeners);
@@ -194,52 +184,53 @@ public class SSViewer extends JPanel{
      *
      * @param pProperty
      */
-    private void notifyPropertyChangeListeners(String pProperty){
+    private void notifyPropertyChangeListeners(String pProperty) {
         PropertyChangeEvent iEvent = new PropertyChangeEvent(this, pProperty, null, null);
 
         List<PropertyChangeListener> iPropertyChangeListeners = iListenerMap.get(pProperty);
+
         if (iPropertyChangeListeners != null) {
-            for(PropertyChangeListener iPropertyChangeListener: iPropertyChangeListeners){
+            for (PropertyChangeListener iPropertyChangeListener: iPropertyChangeListeners) {
                 iPropertyChangeListener.propertyChange(iEvent);
             }
         }
     }
 
-
-
-
-
     /**
      *
      */
-    private void refreshPage(){
-        if(iJasperPrint == null) return;
+    private void refreshPage() {
+        if (iJasperPrint == null) {
+            return;
+        }
 
-        try{
-            Image image = JasperPrintManager.printPageToImage(iJasperPrint, iPageIndex, iScale);
+        try {
+            Image image = JasperPrintManager.printPageToImage(iJasperPrint, iPageIndex,
+                    iScale);
 
             int width = image.getWidth(this);
             int height = image.getHeight(this);
 
-            Dimension iSize     = new Dimension(width, height );
-            Dimension iPageSize = new Dimension(width+28, height +28);
+            Dimension iSize = new Dimension(width, height);
+            Dimension iPageSize = new Dimension(width + 28, height + 28);
 
-            iDocumentPanel.setDocument( image, iSize);
+            iDocumentPanel.setDocument(image, iSize);
 
-            iPagePanel.setLocation(0,0);
-            iPagePanel.setSize    (iPageSize);
+            iPagePanel.setLocation(0, 0);
+            iPagePanel.setSize(iPageSize);
 
-            setMaximumSize( iPageSize );
-            setMinimumSize( iPageSize );
-            setPreferredSize( iPageSize );
-        }
-        catch(Exception e){
+            setMaximumSize(iPageSize);
+            setMinimumSize(iPageSize);
+            setPreferredSize(iPageSize);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-
         Container container = getParent();
-        if (container instanceof JViewport) ((JViewport)container).setViewPosition(new Point(0, 0));
+
+        if (container instanceof JViewport) {
+            ((JViewport) container).setViewPosition(new Point(0, 0));
+        }
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -249,18 +240,14 @@ public class SSViewer extends JPanel{
 
     }
 
-
-
-
     /**
      *
      */
-    private void createMouseEvents(){
+    private void createMouseEvents() {
         final Point iMousePoint = new Point();
 
         addMouseListener(new MouseListener() {
-            public void mouseClicked(MouseEvent e) {
-            }
+            public void mouseClicked(MouseEvent e) {}
 
             public void mousePressed(MouseEvent e) {
                 setCursor(new Cursor(Cursor.MOVE_CURSOR));
@@ -272,28 +259,26 @@ public class SSViewer extends JPanel{
                 setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
 
-            public void mouseEntered(MouseEvent e) {
-            }
+            public void mouseEntered(MouseEvent e) {}
 
-            public void mouseExited(MouseEvent e) {
-            }
+            public void mouseExited(MouseEvent e) {}
         });
 
-        addMouseMotionListener(new MouseMotionListener() {
+        addMouseMotionListener(
+                new MouseMotionListener() {
             public void mouseDragged(MouseEvent e) {
 
-                Point iDelta = new Point(
-                        e.getX() - iMousePoint.x,
-                        e.getY() - iMousePoint.y
-                );
+                Point iDelta = new Point(e.getX() - iMousePoint.x,
+                        e.getY() - iMousePoint.y);
 
                 Container container = getParent();
-                if (container instanceof JViewport){
-                    JViewport viewport = (JViewport)container;
 
-                    Point     iViewPosition  = viewport.getViewPosition();
+                if (container instanceof JViewport) {
+                    JViewport viewport = (JViewport) container;
 
-                    int maxX = iPagePanel.getWidth () - viewport.getWidth();
+                    Point     iViewPosition = viewport.getViewPosition();
+
+                    int maxX = iPagePanel.getWidth() - viewport.getWidth();
                     int maxY = iPagePanel.getHeight() - viewport.getHeight();
 
                     int newX = Math.max(0, Math.min(maxX, iViewPosition.x - iDelta.x));
@@ -303,15 +288,14 @@ public class SSViewer extends JPanel{
                 }
             }
 
-            public void mouseMoved(MouseEvent e) {
-            }
+            public void mouseMoved(MouseEvent e) {}
         });
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.view.SSViewer");
         sb.append("{iDocumentPanel=").append(iDocumentPanel);
         sb.append(", iJasperPrint=").append(iJasperPrint);

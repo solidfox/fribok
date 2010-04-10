@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.datechooser.panel;
 
+
 import javax.swing.*;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
@@ -13,6 +14,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-04
@@ -20,22 +22,18 @@ import java.util.List;
  */
 public class SSYearChooser extends JPanel implements ChangeListener, CaretListener, ActionListener {
 
-
     private JPanel iPanel;
 
     private JSpinner iSpinner;
 
     private JTextField iTextField;
 
-    private SpinnerNumberModel iModel ;
+    private SpinnerNumberModel iModel;
 
     // The selected date
     private Date iDate;
     // the change listeners
     private List<ActionListener> iChangeListeners;
-
-
-
 
     public SSYearChooser() {
         setLayout(new BorderLayout());
@@ -57,11 +55,11 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
         iModel.setMaximum(iCalendar.getMaximum(Calendar.YEAR));
         iModel.addChangeListener(this);
 
-        iSpinner.setEditor( iTextField);
-        iSpinner.setModel ( iModel );
-        //  iSpinner.setBorder(new EmptyBorder(0, 0, 0, 0));
+        iSpinner.setEditor(iTextField);
+        iSpinner.setModel(iModel);
+        // iSpinner.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-        setDate(new Date() );
+        setDate(new Date());
     }
 
     /**
@@ -91,10 +89,8 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
 
         iCalendar.setTime(iDate);
 
-        iSpinner.setValue( iCalendar.get(Calendar.YEAR) );
+        iSpinner.setValue(iCalendar.get(Calendar.YEAR));
     }
-
-
 
     /**
      * Invoked when the date changes
@@ -127,7 +123,7 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
 
         Number iNumber = iModel.getNumber();
 
-        iTextField.setText( iNumber.toString() );
+        iTextField.setText(iNumber.toString());
 
         iCalendar.setTime(iDate);
         iCalendar.set(Calendar.YEAR, iNumber.intValue());
@@ -149,7 +145,7 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
         int iValue;
 
         try {
-            iValue = Integer.decode( iTextField.getText() );
+            iValue = Integer.decode(iTextField.getText());
         } catch (NumberFormatException e1) {
             iTextField.setForeground(Color.RED);
 
@@ -159,7 +155,7 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
         int iMin = iCalendar.getMinimum(Calendar.YEAR);
         int iMax = iCalendar.getMaximum(Calendar.YEAR);
 
-        if(iValue < iMin || iValue > iMax){
+        if (iValue < iMin || iValue > iMax) {
             iTextField.setForeground(Color.RED);
         } else {
             iTextField.setForeground(Color.BLACK);
@@ -167,8 +163,6 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
 
         iTextField.repaint();
     }
-
-
 
     /**
      * After any user input, the value of the textfield is proofed. Depending on
@@ -180,7 +174,7 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
      */
     public void actionPerformed(ActionEvent e) {
         try {
-            int iValue = Integer.decode( iTextField.getText() );
+            int iValue = Integer.decode(iTextField.getText());
 
             iModel.setValue(iValue);
 
@@ -196,9 +190,9 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
     public void dispose() {
 
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
         iSpinner.removeAll();
-        iSpinner=null;
+        iSpinner = null;
 
         ActionListener[] iActionListeners = iTextField.getActionListeners();
         CaretListener[] iCaretListeners = iTextField.getCaretListeners();
@@ -212,23 +206,25 @@ public class SSYearChooser extends JPanel implements ChangeListener, CaretListen
         }
 
         iTextField.removeAll();
-        iTextField=null;
+        iTextField = null;
 
         ChangeListener[] iChangeListenerss = iModel.getChangeListeners();
-        for(ChangeListener iChangeListener : iChangeListenerss){
+
+        for (ChangeListener iChangeListener : iChangeListenerss) {
             iModel.removeChangeListener(iChangeListener);
         }
-        iModel=null;
+        iModel = null;
 
-        iDate=null;
+        iDate = null;
 
         iChangeListeners.removeAll(iChangeListeners);
-        iChangeListeners=null;
+        iChangeListeners = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSYearChooser");
         sb.append("{iChangeListeners=").append(iChangeListeners);
         sb.append(", iDate=").append(iDate);

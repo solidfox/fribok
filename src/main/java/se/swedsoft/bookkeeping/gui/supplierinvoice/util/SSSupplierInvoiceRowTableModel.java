@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.supplierinvoice.util;
 
+
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
  * Time: 10:34:35
  */
 public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSupplierInvoiceRow> {
+
     /**
      *
      * @return
@@ -24,7 +26,6 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     public SSSupplierInvoiceRow newObject() {
         return new SSSupplierInvoiceRow();
     }
-
 
     /**
      * Returns the type of data in this model.
@@ -36,11 +37,11 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
         return SSSupplierInvoiceRow.class;
     }
 
-
     /**
      * Product column
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_PRODUCT = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.1")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_PRODUCT = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.1")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             SSProduct iProduct = iObject.getProduct(SSDB.getInstance().getProducts());
@@ -50,27 +51,41 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            if(iValue instanceof SSProduct){
-                iObject.setProduct((SSProduct)iValue);
-                if (iObject.getProduct() != null && iObject.getProduct().getResultUnitNr() != null) {
-                    iObject.setResultUnit(iObject.getProduct().getResultUnit(iObject.getProduct().getResultUnitNr()));
+            if (iValue instanceof SSProduct) {
+                iObject.setProduct((SSProduct) iValue);
+                if (iObject.getProduct() != null
+                        && iObject.getProduct().getResultUnitNr() != null) {
+                    iObject.setResultUnit(
+                            iObject.getProduct().getResultUnit(
+                                    iObject.getProduct().getResultUnitNr()));
                 }
-                if (iObject.getProduct() != null && iObject.getProduct().getProjectNr() != null) {
-                    iObject.setProject(iObject.getProduct().getProject(iObject.getProduct().getProjectNr()));
+                if (iObject.getProduct() != null
+                        && iObject.getProduct().getProjectNr() != null) {
+                    iObject.setProject(
+                            iObject.getProduct().getProject(
+                                    iObject.getProduct().getProjectNr()));
                 }
 
             } else {
-                iObject.setProductNr((String)iValue);
+                iObject.setProductNr((String) iValue);
 
                 SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-                if(iObject.getUnit()    == null) iObject.setUnit   ( iCompany.getStandardUnit() );
-
-                if (iObject.getProduct() != null && iObject.getProduct().getResultUnitNr() != null) {
-                    iObject.setResultUnit(iObject.getProduct().getResultUnit(iObject.getProduct().getResultUnitNr()));
+                if (iObject.getUnit() == null) {
+                    iObject.setUnit(iCompany.getStandardUnit());
                 }
-                if (iObject.getProduct() != null && iObject.getProduct().getProjectNr() != null) {
-                    iObject.setProject(iObject.getProduct().getProject(iObject.getProduct().getProjectNr()));
+
+                if (iObject.getProduct() != null
+                        && iObject.getProduct().getResultUnitNr() != null) {
+                    iObject.setResultUnit(
+                            iObject.getProduct().getResultUnit(
+                                    iObject.getProduct().getResultUnitNr()));
+                }
+                if (iObject.getProduct() != null
+                        && iObject.getProduct().getProjectNr() != null) {
+                    iObject.setProject(
+                            iObject.getProduct().getProject(
+                                    iObject.getProduct().getProjectNr()));
                 }
 
             }
@@ -90,7 +105,8 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Description column
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_DESCRIPTION = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.2")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_DESCRIPTION = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.2")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             return iObject.getDescription();
@@ -98,11 +114,13 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setDescription((String)iValue);
+            iObject.setDescription((String) iValue);
 
             SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
-            if(iObject.getUnit()    == null) iObject.setUnit   ( iCompany.getStandardUnit() );
+            if (iObject.getUnit() == null) {
+                iObject.setUnit(iCompany.getStandardUnit());
+            }
         }
 
         @Override
@@ -116,11 +134,11 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
         }
     };
 
-
     /**
      * Unit price
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_UNITPRICE = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.3")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_UNITPRICE = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.3")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             return iObject.getUnitprice();
@@ -128,7 +146,7 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setUnitprice((BigDecimal)iValue);
+            iObject.setUnitprice((BigDecimal) iValue);
         }
 
         @Override
@@ -142,11 +160,11 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
         }
     };
 
-
     /**
      * Unit freight
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_UNITFREIGHT = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.4")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_UNITFREIGHT = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.4")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             return iObject.getUnitFreight();
@@ -154,7 +172,7 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setUnitFreight((BigDecimal)iValue);
+            iObject.setUnitFreight((BigDecimal) iValue);
         }
 
         @Override
@@ -171,7 +189,8 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Quantity
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_QUANTITY = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.5")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_QUANTITY = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.5")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             return iObject.getQuantity();
@@ -179,7 +198,7 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setQuantity((Integer)iValue);
+            iObject.setQuantity((Integer) iValue);
         }
 
         @Override
@@ -196,7 +215,8 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Quantity
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_UNIT = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.6")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_UNIT = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.6")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             return iObject.getUnit();
@@ -204,7 +224,7 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setUnit((SSUnit)iValue);
+            iObject.setUnit((SSUnit) iValue);
         }
 
         @Override
@@ -221,16 +241,15 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Sum
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_SUM = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.7")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_SUM = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.7")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
             return iObject.getSum();
         }
 
         @Override
-        public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-
-        }
+        public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -246,15 +265,16 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Account
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_ACCOUNT = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.8")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_ACCOUNT = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.8")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
-            return iObject.getAccount( SSDB.getInstance().getAccounts() );
+            return iObject.getAccount(SSDB.getInstance().getAccounts());
         }
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setAccount((SSAccount)iValue);
+            iObject.setAccount((SSAccount) iValue);
         }
 
         @Override
@@ -271,15 +291,16 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Account
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_RESULTUNIT = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.9")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_RESULTUNIT = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.9")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
-            return iObject.getResultUnit( SSDB.getInstance().getResultUnits() );
+            return iObject.getResultUnit(SSDB.getInstance().getResultUnits());
         }
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setResultUnit((SSNewResultUnit)iValue);
+            iObject.setResultUnit((SSNewResultUnit) iValue);
         }
 
         @Override
@@ -296,15 +317,16 @@ public class SSSupplierInvoiceRowTableModel extends SSEditableTableModel<SSSuppl
     /**
      * Project
      */
-    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_PROJECT = new SSTableColumn<SSSupplierInvoiceRow>(SSBundle.getBundle().getString("supplierinvoicerowtable.column.10")) {
+    public static SSTableColumn<SSSupplierInvoiceRow> COLUMN_PROJECT = new SSTableColumn<SSSupplierInvoiceRow>(
+            SSBundle.getBundle().getString("supplierinvoicerowtable.column.10")) {
         @Override
         public Object getValue(SSSupplierInvoiceRow iObject) {
-            return iObject.getProject( SSDB.getInstance().getProjects() );
+            return iObject.getProject(SSDB.getInstance().getProjects());
         }
 
         @Override
         public void setValue(SSSupplierInvoiceRow iObject, Object iValue) {
-            iObject.setProject((SSNewProject)iValue);
+            iObject.setProject((SSNewProject) iValue);
         }
 
         @Override

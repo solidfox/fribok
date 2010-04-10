@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -16,12 +17,12 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
  */
 public class SSInventoryBasisPrinter extends SSPrinter {
-
 
     private List<SSProduct> iProducts;
 
@@ -32,35 +33,35 @@ public class SSInventoryBasisPrinter extends SSPrinter {
      */
     public SSInventoryBasisPrinter() {
         // Get all stock products
-        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iProducts = SSProductMath.getStockProducts(SSDB.getInstance().getProducts());
         iStock = new SSStock();
 
         iStock.update();
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("inventorybasis.jrxml");
-        setDetail      ("inventorybasis.jrxml");
+        setDetail("inventorybasis.jrxml");
     }
 
     /**
      *
      * @param iDate
      */
-    public SSInventoryBasisPrinter( Date iDate){
+    public SSInventoryBasisPrinter(Date iDate) {
         // Get all stock products
-        iProducts = SSProductMath.getStockProducts( SSDB.getInstance().getProducts() );
+        iProducts = SSProductMath.getStockProducts(SSDB.getInstance().getProducts());
         iStock = new SSStock();
 
         iStock.update(iDate);
 
-        addParameter("periodTitle", SSBundle.getBundle().getString("inventorybasisreport.periodtitle"));
+        addParameter("periodTitle",
+                SSBundle.getBundle().getString("inventorybasisreport.periodtitle"));
         addParameter("periodText", iDate);
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("inventorybasis.jrxml");
-        setDetail      ("inventorybasis.jrxml");
+        setDetail("inventorybasis.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -94,30 +95,40 @@ public class SSInventoryBasisPrinter extends SSPrinter {
                 SSProduct iProduct = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0:
-                        value = iProduct.getNumber();
-                        break;
-                    case 1:
-                        value = iProduct.getDescription();
-                        break;
-                    case 2:
-                        value = iProduct.isExpired();
-                        break;
-                    case 3:
-                        value = iProduct.getUnit()  == null ? null : iProduct.getUnit().getName() ;
-                        break;
-                    case 4:
-                        value = iStock.getQuantity(iProduct);
-                        break;
-                    case 5:
-                        value = iProduct.getWarehouseLocation() == null ? "" : iProduct.getWarehouseLocation();
-                        break;
+                case 0:
+                    value = iProduct.getNumber();
+                    break;
+
+                case 1:
+                    value = iProduct.getDescription();
+                    break;
+
+                case 2:
+                    value = iProduct.isExpired();
+                    break;
+
+                case 3:
+                    value = iProduct.getUnit() == null
+                            ? null
+                            : iProduct.getUnit().getName();
+                    break;
+
+                case 4:
+                    value = iStock.getQuantity(iProduct);
+                    break;
+
+                case 5:
+                    value = iProduct.getWarehouseLocation() == null
+                            ? ""
+                            : iProduct.getWarehouseLocation();
+                    break;
 
                 }
 
                 return value;
             }
         };
+
         iModel.addColumn("product.number");
         iModel.addColumn("product.description");
         iModel.addColumn("product.expired");
@@ -125,18 +136,28 @@ public class SSInventoryBasisPrinter extends SSPrinter {
         iModel.addColumn("product.stockquantity");
         iModel.addColumn("product.warehouselocation");
 
-        /*Collections.sort(iProducts, new Comparator<SSProduct>() {
-            public int compare(SSProduct o1, SSProduct o2) {
-                return o1.getNumber().compareTo( o2.getNumber() );
-            }
-        });*/
+        /* Collections.sort(iProducts, new Comparator<SSProduct>() {
+         public int compare(SSProduct o1, SSProduct o2) {
+         return o1.getNumber().compareTo( o2.getNumber() );
+         }
+         });*/
 
-        Collections.sort(iProducts, new Comparator<SSProduct>(){
-            public int compare(SSProduct iProduct1, SSProduct iProduct2){
-                if(iProduct1.getWarehouseLocation() == null && iProduct2.getWarehouseLocation() == null) return 0;
-                else if(iProduct1.getWarehouseLocation() != null && iProduct2.getWarehouseLocation() == null) return 1;
-                else if(iProduct1.getWarehouseLocation() == null && iProduct2.getWarehouseLocation() != null) return -1;
-                else return iProduct1.getWarehouseLocation().compareTo(iProduct2.getWarehouseLocation());
+        Collections.sort(iProducts,
+                new Comparator<SSProduct>() {
+            public int compare(SSProduct iProduct1, SSProduct iProduct2) {
+                if (iProduct1.getWarehouseLocation() == null
+                        && iProduct2.getWarehouseLocation() == null) {
+                    return 0;
+                } else if (iProduct1.getWarehouseLocation() != null
+                        && iProduct2.getWarehouseLocation() == null) {
+                    return 1;
+                } else if (iProduct1.getWarehouseLocation() == null
+                        && iProduct2.getWarehouseLocation() != null) {
+                    return -1;
+                } else {
+                    return iProduct1.getWarehouseLocation().compareTo(
+                            iProduct2.getWarehouseLocation());
+                }
             }
         });
 
@@ -145,10 +166,10 @@ public class SSInventoryBasisPrinter extends SSPrinter {
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSInventoryBasisPrinter");
         sb.append("{iProducts=").append(iProducts);
         sb.append(", iStock=").append(iStock);

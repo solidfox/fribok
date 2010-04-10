@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inventory.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.SSInventoryRow;
@@ -23,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-26
@@ -30,8 +32,7 @@ import java.awt.event.KeyEvent;
  */
 public class SSInventoryPanel {
 
-    private  SSInventory iInventory;
-
+    private SSInventory iInventory;
 
     private SSStock iStock;
 
@@ -41,14 +42,11 @@ public class SSInventoryPanel {
 
     private SSTable iTable;
 
-
-
     private JTextField iText;
 
     private SSDateChooser iDate;
 
     private JFormattedTextField iNumber;
-
 
     private SSInventoryRowTableModel iModel;
 
@@ -61,7 +59,7 @@ public class SSInventoryPanel {
         iStock.update();
 
         iTable.setColorReadOnly(true);
-        //iTable.setColumnSortingEnabled(false);
+        // iTable.setColumnSortingEnabled(false);
         iTable.setSingleSelect();
 
         iModel = new SSInventoryRowTableModel(iStock);
@@ -73,36 +71,43 @@ public class SSInventoryPanel {
         iModel.addColumn(SSInventoryRowTableModel.COLUMN_WAREHOUSELOCATION, false);
         iModel.setupTable(iTable);
 
-        iTable.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
+        iTable.setDefaultEditor(SSProduct.class,
+                new SSProductCellEditor(SSProductMath.getNormalProducts(), false));
 
         iTable.setColorReadOnly(true);
 
         iDate.addChangeListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                iStock.update( iDate.getDate() );
+                iStock.update(iDate.getDate());
 
                 for (SSInventoryRow iRow : iInventory.getRows()) {
                     SSProduct iProduct = iRow.getProduct();
 
-                    if(iProduct != null) iRow.setStockQuantity( iStock.getQuantity(iProduct));
+                    if (iProduct != null) {
+                        iRow.setStockQuantity(iStock.getQuantity(iProduct));
+                    }
 
                 }
                 iModel.fireTableDataChanged();
             }
         });
 
-        new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSInventoryRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
@@ -114,11 +119,11 @@ public class SSInventoryPanel {
             }
         });
 
-        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iText.requestFocusInWindow();
                         }
@@ -127,24 +132,24 @@ public class SSInventoryPanel {
             }
         });
 
-        iText.addKeyListener(new KeyAdapter(){
+        iText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -154,10 +159,10 @@ public class SSInventoryPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -183,9 +188,9 @@ public class SSInventoryPanel {
      */
     public SSInventory getInventory() {
         // Text
-        iInventory.setText( iText.getText() );
+        iInventory.setText(iText.getText());
         // Datum
-        iInventory.setDate( iDate.getDate() );
+        iInventory.setDate(iDate.getDate());
 
         return iInventory;
     }
@@ -200,11 +205,11 @@ public class SSInventoryPanel {
         iModel.setObjects(iInventory.getRows());
 
         // Number
-        iNumber.setValue( iInventory.getNumber() );
+        iNumber.setValue(iInventory.getNumber());
         // Text
-        iText.setText( iInventory.getText() );
+        iText.setText(iInventory.getText());
         // Datum
-        iDate.setDate( iInventory.getDate());
+        iDate.setDate(iInventory.getDate());
     }
 
     /**
@@ -223,10 +228,10 @@ public class SSInventoryPanel {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.inventory.panel.SSInventoryPanel");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

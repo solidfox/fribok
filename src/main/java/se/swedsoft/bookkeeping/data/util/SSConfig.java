@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.data.util;
 
+
 import se.swedsoft.bookkeeping.app.Path;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+
 
 /**
  * Date: 2006-mar-13
@@ -13,7 +15,7 @@ import java.util.Map;
  */
 public class SSConfig implements Serializable {
 
-    /// Constant for serialization versioning.
+    // / Constant for serialization versioning.
     static final long serialVersionUID = 1L;
 
     // The config instance
@@ -23,11 +25,11 @@ public class SSConfig implements Serializable {
      * Get the current instance
      * @return
      */
-    public static SSConfig getInstance(){
+    public static SSConfig getInstance() {
         if (cInstance == null) {
             if (CONFIG_FILE.exists()) {
                 loadConfig();
-            }  else {
+            } else {
                 newConfig();
             }
         }
@@ -35,18 +37,19 @@ public class SSConfig implements Serializable {
     }
 
     // The settings file
-    private static File CONFIG_FILE = new File(Path.get(Path.USER_CONF), "bookkeeping.config");
+    private static File CONFIG_FILE = new File(Path.get(Path.USER_CONF),
+            "bookkeeping.config");
 
     private Map<String, Object> iSettings;
 
     /**
      * Constructor
      */
-    private SSConfig(){
-        iSettings                 = new HashMap<String, Object>();
+    private SSConfig() {
+        iSettings = new HashMap<String, Object>();
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -57,10 +60,9 @@ public class SSConfig implements Serializable {
         return iSettings.get(pProperty);
     }
 
-
     /**
      *
-      * @param pProperty
+     * @param pProperty
      * @param pDefault
      * @return
      */
@@ -69,6 +71,7 @@ public class SSConfig implements Serializable {
 
         return iValue != null ? iValue : pDefault;
     }
+
     /**
      *
      * @param pProperty
@@ -79,12 +82,12 @@ public class SSConfig implements Serializable {
         storeConfig();
     }
 
-    //////////////////////////////////////////////////////////////////////////////
+    // ////////////////////////////////////////////////////////////////////////////
 
     /**
      * Creates a new database
      */
-    private static synchronized void newConfig()  {
+    private static synchronized void newConfig() {
         cInstance = new SSConfig();
     }
 
@@ -92,22 +95,25 @@ public class SSConfig implements Serializable {
      * Loads the database
      *
      */
-    private static synchronized void loadConfig()  {
+    private static synchronized void loadConfig() {
         ObjectInputStream iObjectInputStream = null;
+
         try {
-            iObjectInputStream = new ObjectInputStream(new BufferedInputStream(new FileInputStream(CONFIG_FILE)));
-            cInstance = (SSConfig)iObjectInputStream.readObject();
+            iObjectInputStream = new ObjectInputStream(
+                    new BufferedInputStream(new FileInputStream(CONFIG_FILE)));
+            cInstance = (SSConfig) iObjectInputStream.readObject();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
-            if (iObjectInputStream != null)
+            if (iObjectInputStream != null) {
                 try {
                     iObjectInputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
         }
     }
 
@@ -115,9 +121,10 @@ public class SSConfig implements Serializable {
      * Store the database
      *
      */
-    private static synchronized void storeConfig()  {
+    private static synchronized void storeConfig() {
         try {
-            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(CONFIG_FILE)));
+            ObjectOutputStream iObjectOutputStream = new ObjectOutputStream(
+                    new BufferedOutputStream(new FileOutputStream(CONFIG_FILE)));
 
             iObjectOutputStream.writeObject(cInstance);
             iObjectOutputStream.flush();
@@ -130,6 +137,7 @@ public class SSConfig implements Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.util.SSConfig");
         sb.append("{iSettings=").append(iSettings);
         sb.append('}');

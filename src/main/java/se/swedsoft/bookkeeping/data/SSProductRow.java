@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.io.Serializable;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -15,23 +17,18 @@ public class SSProductRow implements Serializable {
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
 
-
     private String iProductNr;
 
     private String iDescription;
 
     private Integer iCount;
 
-
-
     private transient SSProduct iProduct;
 
     /**
      * Default constructor
      */
-    public SSProductRow() {
-
-    }
+    public SSProductRow() {}
 
     /**
      * Copy constructor
@@ -39,13 +36,13 @@ public class SSProductRow implements Serializable {
      * @param iProductRow
      */
     public SSProductRow(SSProductRow iProductRow) {
-        iProductNr  = iProductRow.iProductNr;
-        iCount      = iProductRow.iCount;
-        iDescription= iProductRow.iDescription;
-        iProduct    = iProductRow.iProduct;
+        iProductNr = iProductRow.iProductNr;
+        iCount = iProductRow.iCount;
+        iDescription = iProductRow.iDescription;
+        iProduct = iProductRow.iProduct;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -61,18 +58,17 @@ public class SSProductRow implements Serializable {
      */
     public void setProduct(String iProductNr) {
         this.iProductNr = iProductNr;
-        iProduct        = null;
+        iProduct = null;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public String getDescription() {
-        if(iDescription == null && iProduct != null){
+        if (iDescription == null && iProduct != null) {
             return iProduct.getDescription();
         } else {
             return iDescription;
@@ -87,7 +83,7 @@ public class SSProductRow implements Serializable {
         this.iDescription = iDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -105,15 +101,15 @@ public class SSProductRow implements Serializable {
         this.iCount = iCount;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
-     public SSProduct getProduct() {
-         return getProduct(SSDB.getInstance().getProducts());
-     }
+    public SSProduct getProduct() {
+        return getProduct(SSDB.getInstance().getProducts());
+    }
 
     /**
      *
@@ -121,9 +117,9 @@ public class SSProductRow implements Serializable {
      * @return
      */
     public SSProduct getProduct(List<SSProduct> iProducts) {
-        if(iProduct == null){
+        if (iProduct == null) {
             for (SSProduct iCurrent : iProducts) {
-                if(iCurrent.getNumber().equals(iProductNr)){
+                if (iCurrent.getNumber().equals(iProductNr)) {
                     iProduct = iCurrent;
                 }
             }
@@ -137,27 +133,26 @@ public class SSProductRow implements Serializable {
      */
     public void setProduct(SSProduct iProduct) {
         this.iProduct = iProduct;
-        iProductNr    = iProduct == null ? null : iProduct.getNumber();
+        iProductNr = iProduct == null ? null : iProduct.getNumber();
 
-        if(iProduct != null){
-            iCount       = 1;
+        if (iProduct != null) {
+            iCount = 1;
             iDescription = iProduct.getDescription();
 
         }
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
-     /**
+    /**
      * Returns {@code true} if the product is contained in the row
      *
      * @param iProduct
      * @return if the row contains the product
      */
-    public boolean hasProduct(SSProduct iProduct){
-        return iProductNr != null && iProductNr.equals( iProduct.getNumber() );
+    public boolean hasProduct(SSProduct iProduct) {
+        return iProductNr != null && iProductNr.equals(iProduct.getNumber());
     }
-
 
     /**
      * A row is isValid of the product and count is set
@@ -167,10 +162,6 @@ public class SSProductRow implements Serializable {
         return iProductNr != null && iCount != null;
     }
 
-
-
-
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -184,5 +175,4 @@ public class SSProductRow implements Serializable {
     }
 
 }
-
 

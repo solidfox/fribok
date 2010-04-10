@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
+
 import se.swedsoft.bookkeeping.data.SSOwnReport;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -7,6 +8,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableColumn;
 import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -19,7 +21,7 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
      * Default constructor.
      */
     public SSOwnReportTableModel() {
-        this( SSDB.getInstance().getOwnReports() );
+        this(SSDB.getInstance().getOwnReports());
 
     }
 
@@ -42,7 +44,8 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
         return SSOwnReport.class;
     }
 
-    public static SSTableColumn<SSOwnReport> COLUMN_NAME = new SSTableColumn<SSOwnReport>(SSBundle.getBundle().getString("ownreporttable.column.1")) {
+    public static SSTableColumn<SSOwnReport> COLUMN_NAME = new SSTableColumn<SSOwnReport>(
+            SSBundle.getBundle().getString("ownreporttable.column.1")) {
         @Override
         public Object getValue(SSOwnReport iOwnReport) {
             return iOwnReport.getName();
@@ -50,7 +53,7 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
 
         @Override
         public void setValue(SSOwnReport iOwnReport, Object iValue) {
-            iOwnReport.setName((String)iValue);
+            iOwnReport.setName((String) iValue);
         }
 
         @Override
@@ -64,7 +67,8 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
         }
     };
 
-    public static SSTableColumn<SSOwnReport> COLUMN_PROJECT = new SSTableColumn<SSOwnReport>(SSBundle.getBundle().getString("ownreporttable.column.2")) {
+    public static SSTableColumn<SSOwnReport> COLUMN_PROJECT = new SSTableColumn<SSOwnReport>(
+            SSBundle.getBundle().getString("ownreporttable.column.2")) {
         @Override
         public Object getValue(SSOwnReport iOwnReport) {
             return iOwnReport.getProjectNr();
@@ -72,7 +76,7 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
 
         @Override
         public void setValue(SSOwnReport iOwnReport, Object iValue) {
-            iOwnReport.setProjectNr((String)iValue);
+            iOwnReport.setProjectNr((String) iValue);
         }
 
         @Override
@@ -86,7 +90,8 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
         }
     };
 
-    public static SSTableColumn<SSOwnReport> COLUMN_RESULTUNIT = new SSTableColumn<SSOwnReport>(SSBundle.getBundle().getString("ownreporttable.column.3")) {
+    public static SSTableColumn<SSOwnReport> COLUMN_RESULTUNIT = new SSTableColumn<SSOwnReport>(
+            SSBundle.getBundle().getString("ownreporttable.column.3")) {
         @Override
         public Object getValue(SSOwnReport iOwnReport) {
             return iOwnReport.getResultUnitNr();
@@ -94,7 +99,7 @@ public class SSOwnReportTableModel extends SSTableModel<SSOwnReport> {
 
         @Override
         public void setValue(SSOwnReport iOwnReport, Object iValue) {
-            iOwnReport.setResultUnitNr((String)iValue);
+            iOwnReport.setResultUnitNr((String) iValue);
         }
 
         @Override

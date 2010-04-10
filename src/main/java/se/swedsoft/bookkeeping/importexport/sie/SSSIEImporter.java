@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewProject;
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
@@ -37,7 +38,6 @@ public class SSSIEImporter {
 
     private File iFile;
 
-
     /**
      *
      * @param iFile
@@ -45,9 +45,9 @@ public class SSSIEImporter {
     public SSSIEImporter(File iFile) {
         this.iFile = iFile;
 
-        iLines      = new LinkedList<String>();
+        iLines = new LinkedList<String>();
         iDimensions = SIEDimension.getDefaultDimensions();
-        iFactory    = SIEFactory.getImportInstance();
+        iFactory = SIEFactory.getImportInstance();
     }
 
     /**
@@ -61,34 +61,41 @@ public class SSSIEImporter {
         // Read the contents of the file
         readFile(iFile);
 
-        if(iLines.isEmpty()) return;
+        if (iLines.isEmpty()) {
+            return;
+        }
 
         // Clear all active data
 
-        iAccountingYear.getInBalance  ().clear();
-        iAccountingYear.getBudget     ().clear();
+        iAccountingYear.getInBalance().clear();
+        iAccountingYear.getBudget().clear();
         iAccountingYear.getAccountPlan().clear();
-        //SSDB.getInstance().updateAccountingYear(iAccountingYear);
+        // SSDB.getInstance().updateAccountingYear(iAccountingYear);
 
         for (SSVoucher iVoucher : SSDB.getInstance().getVouchers()) {
             SSDB.getInstance().deleteVoucher(iVoucher);
         }
         SSDB.getInstance().getVouchers().clear();
 
-        List<SSNewProject> projectsToDelete = new LinkedList<SSNewProject>(SSDB.getInstance().getProjects());
+        List<SSNewProject> projectsToDelete = new LinkedList<SSNewProject>(
+                SSDB.getInstance().getProjects());
+
         for (SSNewProject iProject : projectsToDelete) {
             SSDB.getInstance().deleteProject(iProject);
         }
         projectsToDelete = null;
-        List<SSNewResultUnit> resultUnitsToDelete = new LinkedList<SSNewResultUnit>(SSDB.getInstance().getResultUnits());
+        List<SSNewResultUnit> resultUnitsToDelete = new LinkedList<SSNewResultUnit>(
+                SSDB.getInstance().getResultUnits());
+
         for (SSNewResultUnit iResultUnit : resultUnitsToDelete) {
             SSDB.getInstance().deleteResultUnit(iResultUnit);
         }
         resultUnitsToDelete = null;
-        //System.out.println( iFactory.toString() );
+        // System.out.println( iFactory.toString() );
 
         List<List<String>> iParsedLines = getParsedLines(iLines);
-        //iAccountingYear = SSDB.getInstance().getCurrentYear();
+
+        // iAccountingYear = SSDB.getInstance().getCurrentYear();
         for (List<String> iEntryLines : iParsedLines) {
             SIEReader iReader = new SIEReader(iEntryLines);
 
@@ -96,14 +103,15 @@ public class SSSIEImporter {
 
             SIEEntry iEntry = iFactory.get(iLabel);
 
-            if(iEntry != null) {
-                iEntry.importEntry(this, iReader,iAccountingYear);
+            if (iEntry != null) {
+                iEntry.importEntry(this, iReader, iAccountingYear);
             } else {
                 System.out.println("(SSSIEImporter)Missing reader for: " + iLabel);
             }
         }
         SSDB.getInstance().updateAccountingYear(iAccountingYear);
-        SSDB.getInstance().notifyListeners("YEAR", SSDB.getInstance().getCurrentYear(), null);
+        SSDB.getInstance().notifyListeners("YEAR", SSDB.getInstance().getCurrentYear(),
+                null);
         setReaded(iFile);
 
         SSFrameManager.getInstance().close();
@@ -118,10 +126,13 @@ public class SSSIEImporter {
      */
     public void doImportVouchers() throws SSImportException {
         // Read the contents of the file
-        final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();
+        final String lockString = "voucher"
+                + SSDB.getInstance().getCurrentCompany().getId()
+                + SSDB.getInstance().getCurrentYear().getId();
+
         readFile(iFile);
 
-        if(iLines.isEmpty()){
+        if (iLines.isEmpty()) {
             SSPostLock.removeLock(lockString);
             return;
         }
@@ -135,10 +146,10 @@ public class SSSIEImporter {
             String iLabel = iReader.next();
 
             // Only import verifications
-            if(iLabel.equals("#VER") ){
+            if (iLabel.equals("#VER")) {
                 SIEEntry iEntry = iFactory.get("#VER");
 
-                iEntry.importEntry(this, iReader,iYear);
+                iEntry.importEntry(this, iReader, iYear);
             }
         }
         setReaded(iFile);
@@ -148,7 +159,7 @@ public class SSSIEImporter {
      *
      * @param pFile
      */
-    private void setReaded(File pFile){
+    private void setReaded(File pFile) {
         // Set the flag to 1
         iLines.set(0, SIELabel.SIE_FLAGGA + " 1");
 
@@ -160,27 +171,29 @@ public class SSSIEImporter {
      * @param iLines
      * @return
      */
-    private static List<List<String>> getParsedLines(List<String> iLines){
+    private static List<List<String>> getParsedLines(List<String> iLines) {
         List<List<String>> iParsedLines = new LinkedList<List<String>>();
 
-        for(int iIndex = 0; iIndex < iLines.size(); iIndex++){
+        for (int iIndex = 0; iIndex < iLines.size(); iIndex++) {
             String iLine = iLines.get(iIndex);
-            String iNext = (iIndex+1 < iLines.size()) ? iLines.get(iIndex+1) : "";
+            String iNext = (iIndex + 1 < iLines.size()) ? iLines.get(iIndex + 1) : "";
 
             // Skip any blank lines
-            if(iLine == null || iLine.trim().length() == 0) continue;
+            if (iLine == null || iLine.trim().length() == 0) {
+                continue;
+            }
 
             List<String> iEntryLines = new LinkedList<String>();
 
             iEntryLines.add(iLine);
 
-            if(iNext.equals("{")){
+            if (iNext.equals("{")) {
                 int iStart = iIndex + 2;
 
-                for(iIndex = iStart; iIndex < iLines.size(); iIndex++){
+                for (iIndex = iStart; iIndex < iLines.size(); iIndex++) {
                     iLine = iLines.get(iIndex);
 
-                    if(iLine.equals("}")){
+                    if (iLine.equals("}")) {
                         break;
                     }
 
@@ -192,27 +205,22 @@ public class SSSIEImporter {
         return iParsedLines;
     }
 
-
-
     /**
      *
      * @param pFile
      * @throws SSImportException
      */
-    protected void readFile(File pFile) throws SSImportException{
-        try{
+    protected void readFile(File pFile) throws SSImportException {
+        try {
             iLines = SIEFile.readFile(pFile);
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             throw new SSImportException(ex.getMessage());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
             throw new SSImportException(ex.getMessage());
         }
     }
-
 
     /**
      *
@@ -220,20 +228,17 @@ public class SSSIEImporter {
      * @throws SSImportException
      * @throws SSExportException
      */
-    private void writeFile(File pFile) throws SSExportException{
-        try{
+    private void writeFile(File pFile) throws SSExportException {
+        try {
             SIEFile.writeFile(pFile, iLines);
-        }
-        catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
             throw new SSExportException(ex.getMessage());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
             throw new SSExportException(ex.getMessage());
         }
     }
-
 
     /**
      *
@@ -259,6 +264,7 @@ public class SSSIEImporter {
     public List<SIEDimension> getDimensions() {
         return iDimensions;
     }
+
     /**
      *
      * @param pNumber
@@ -300,10 +306,10 @@ public class SSSIEImporter {
         return iLines;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter");
         sb.append("{iDimensions=").append(iDimensions);
         sb.append(", iFactory=").append(iFactory);

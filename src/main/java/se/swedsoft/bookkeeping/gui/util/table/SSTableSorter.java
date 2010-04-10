@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.util.table;
 
+
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -14,6 +15,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 import java.util.List;
+
 
 // Trade Extensions specific imports
 
@@ -29,7 +31,7 @@ import java.util.List;
  * have been translated via the internal mapping array. This way,
  * the TableSorter appears to hold another copy of the table
  * with the rows in a different order.
- * 
+ *
  * TableSorter registers itself as a listener to the underlying model,
  * just as the JTable itself would. Events recieved from the model
  * are examined, sometimes manipulated (typically widened), and then
@@ -37,7 +39,7 @@ import java.util.List;
  * If a change to the model has invalidated the order of TableSorter's
  * rows, a note of this is made and the sorter will resort the
  * rows the next time a value is requested.
- * 
+ *
  * When the tableHeader property is set, either by using the
  * setTableHeader() method or the two argument constructor, the
  * table converted may be used as a complete UI for TableSorter.
@@ -145,8 +147,10 @@ public class SSTableSorter extends AbstractTableModel {
         if (this.tableHeader != null) {
             this.tableHeader.removeMouseListener(mouseListener);
             TableCellRenderer defaultRenderer = this.tableHeader.getDefaultRenderer();
+
             if (defaultRenderer instanceof SortableHeaderRenderer) {
-                this.tableHeader.setDefaultRenderer(((SortableHeaderRenderer) defaultRenderer).tableCellRenderer);
+                this.tableHeader.setDefaultRenderer(
+                        ((SortableHeaderRenderer) defaultRenderer).tableCellRenderer);
             }
         }
         this.tableHeader = tableHeader;
@@ -164,6 +168,7 @@ public class SSTableSorter extends AbstractTableModel {
     private Directive getDirective(int column) {
         for (Object sortingColumn : sortingColumns) {
             Directive directive = (Directive) sortingColumn;
+
             if (directive.column == column) {
                 return directive;
             }
@@ -185,6 +190,7 @@ public class SSTableSorter extends AbstractTableModel {
 
     public void setSortingStatus(int column, int status) {
         Directive directive = getDirective(column);
+
         if (directive != EMPTY_DIRECTIVE) {
             sortingColumns.remove(directive);
         }
@@ -196,10 +202,12 @@ public class SSTableSorter extends AbstractTableModel {
 
     protected Icon getHeaderRendererIcon(int column, int size) {
         Directive directive = getDirective(column);
+
         if (directive == EMPTY_DIRECTIVE) {
             return null;
         }
-        return new Arrow(directive.direction == DESCENDING, size, sortingColumns.indexOf(directive));
+        return new Arrow(directive.direction == DESCENDING, size,
+                sortingColumns.indexOf(directive));
     }
 
     private void cancelSorting() {
@@ -218,6 +226,7 @@ public class SSTableSorter extends AbstractTableModel {
     protected Comparator getComparator(int column) {
         Class columnType = tableModel.getColumnClass(column);
         Comparator comparator = (Comparator) columnComparators.get(columnType);
+
         if (comparator != null) {
             return comparator;
         }
@@ -230,6 +239,7 @@ public class SSTableSorter extends AbstractTableModel {
     private Row[] getViewToModel() {
         if (viewToModel == null) {
             int tableModelRowCount = tableModel.getRowCount();
+
             viewToModel = new Row[tableModelRowCount];
             for (int row = 0; row < tableModelRowCount; row++) {
                 viewToModel[row] = new Row(row);
@@ -244,15 +254,17 @@ public class SSTableSorter extends AbstractTableModel {
 
     public int modelIndex(int viewIndex) {
         Row[] model = getViewToModel();
+
         if (viewIndex >= 0 && viewIndex < model.length) {
             return model[viewIndex].modelIndex;
         }
-        return 0;//getViewToModel()[viewIndex].modelIndex;
+        return 0; // getViewToModel()[viewIndex].modelIndex;
     }
 
     private int[] getModelToView() {
         if (modelToView == null) {
             int n = getViewToModel().length;
+
             modelToView = new int[n];
             for (int i = 0; i < n; i++) {
                 modelToView[modelIndex(i)] = i;
@@ -315,6 +327,7 @@ public class SSTableSorter extends AbstractTableModel {
                 Object o2 = tableModel.getValueAt(row2, column);
 
                 int comparison = 0;
+
                 // Define null less than everything, except null.
                 if (o1 == null && o2 == null) {
                     comparison = 0;
@@ -335,12 +348,14 @@ public class SSTableSorter extends AbstractTableModel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.Row");
             sb.append("{modelIndex=").append(modelIndex);
             sb.append('}');
             return sb.toString();
         }
     }
+
 
     private class TableModelHandler implements TableModelListener {
         public void tableChanged(TableModelEvent e) {
@@ -379,14 +394,14 @@ public class SSTableSorter extends AbstractTableModel {
             // which can be a performance problem for large tables. The last
             // clause avoids this problem.
             int column = e.getColumn();
-            if (e.getFirstRow() == e.getLastRow()
-                    && column != TableModelEvent.ALL_COLUMNS
-                    && getSortingStatus(column) == NOT_SORTED
-                    && modelToView != null) {
+
+            if (e.getFirstRow() == e.getLastRow() && column != TableModelEvent.ALL_COLUMNS
+                    && getSortingStatus(column) == NOT_SORTED && modelToView != null) {
                 int viewIndex = getModelToView()[e.getFirstRow()];
-                fireTableChanged(new TableModelEvent(SSTableSorter.this,
-                                                     viewIndex, viewIndex,
-                                                     column, e.getType()));
+
+                fireTableChanged(
+                        new TableModelEvent(SSTableSorter.this, viewIndex, viewIndex,
+                        column, e.getType()));
                 return;
             }
 
@@ -396,6 +411,7 @@ public class SSTableSorter extends AbstractTableModel {
         }
     }
 
+
     private class SSMouseHandler extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -403,8 +419,10 @@ public class SSTableSorter extends AbstractTableModel {
             TableColumnModel columnModel = h.getColumnModel();
             int viewColumn = columnModel.getColumnIndexAtX(e.getX());
             int column = columnModel.getColumn(viewColumn).getModelIndex();
+
             if (column != -1) {
                 int status = getSortingStatus(column);
+
                 if (!e.isControlDown()) {
                     cancelSorting();
                 }
@@ -416,6 +434,7 @@ public class SSTableSorter extends AbstractTableModel {
             }
         }
     }
+
 
     private static class Arrow implements Icon {
         private boolean descending;
@@ -432,11 +451,13 @@ public class SSTableSorter extends AbstractTableModel {
             Color color = c == null ? Color.GRAY : c.getBackground();
             // In a compound sort, make each succesive triangle 20%
             // smaller than the previous one.
-            int dx = (int)(size/2*Math.pow(0.8, priority));
+            int dx = (int) (size / 2 * Math.pow(0.8, priority));
             int dy = descending ? dx : -dx;
+
             // Align icon (roughly) with font baseline.
-            y = y + 5*size/6 + (descending ? -dy : 0);
+            y = y + 5 * size / 6 + (descending ? -dy : 0);
             int shift = descending ? 1 : -1;
+
             g.translate(x, y);
 
             // Right diagonal.
@@ -472,6 +493,7 @@ public class SSTableSorter extends AbstractTableModel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.Arrow");
             sb.append("{descending=").append(descending);
             sb.append(", priority=").append(priority);
@@ -481,6 +503,7 @@ public class SSTableSorter extends AbstractTableModel {
         }
     }
 
+
     private class SortableHeaderRenderer implements TableCellRenderer {
         private TableCellRenderer tableCellRenderer;
 
@@ -489,17 +512,20 @@ public class SSTableSorter extends AbstractTableModel {
         }
 
         public Component getTableCellRendererComponent(JTable table,
-                                                       Object value,
-                                                       boolean isSelected,
-                                                       boolean hasFocus,
-                                                       int row,
-                                                       int column) {
-            Component c = tableCellRenderer.getTableCellRendererComponent(table,
-                    value, isSelected, hasFocus, row, column);
+                Object value,
+                boolean isSelected,
+                boolean hasFocus,
+                int row,
+                int column) {
+            Component c = tableCellRenderer.getTableCellRendererComponent(table, value,
+                    isSelected, hasFocus, row, column);
+
             if (c instanceof JLabel) {
                 JLabel l = (JLabel) c;
+
                 l.setHorizontalTextPosition(JLabel.LEFT);
                 int modelColumn = table.convertColumnIndexToModel(column);
+
                 l.setIcon(getHeaderRendererIcon(modelColumn, l.getFont().getSize()));
             }
             return c;
@@ -508,12 +534,15 @@ public class SSTableSorter extends AbstractTableModel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.SortableHeaderRenderer");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.SortableHeaderRenderer");
             sb.append("{tableCellRenderer=").append(tableCellRenderer);
             sb.append('}');
             return sb.toString();
         }
     }
+
 
     private static class Directive {
         private int column;
@@ -527,6 +556,7 @@ public class SSTableSorter extends AbstractTableModel {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter.Directive");
             sb.append("{column=").append(column);
             sb.append(", direction=").append(direction);
@@ -538,17 +568,20 @@ public class SSTableSorter extends AbstractTableModel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.table.SSTableSorter");
         sb.append("{columnComparators=").append(columnComparators);
         sb.append(", modelToView=").append(modelToView == null ? "null" : "");
-        for (int i = 0; modelToView != null && i < modelToView.length; ++i)
+        for (int i = 0; modelToView != null && i < modelToView.length; ++i) {
             sb.append(i == 0 ? "" : ", ").append(modelToView[i]);
+        }
         sb.append(", mouseListener=").append(mouseListener);
         sb.append(", sortingColumns=").append(sortingColumns);
         sb.append(", tableHeader=").append(tableHeader);
         sb.append(", tableModel=").append(tableModel);
         sb.append(", tableModelListener=").append(tableModelListener);
-        sb.append(", viewToModel=").append(viewToModel == null ? "null" : Arrays.asList(viewToModel).toString());
+        sb.append(", viewToModel=").append(
+                viewToModel == null ? "null" : Arrays.asList(viewToModel).toString());
         sb.append('}');
         return sb.toString();
     }

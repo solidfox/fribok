@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.budget;
 
+
 import se.swedsoft.bookkeeping.data.SSBudget;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -35,8 +36,8 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSBudgetFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
@@ -47,13 +48,11 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewAccountingYearFrame
      */
-    public static SSBudgetFrame getInstance(){
+    public static SSBudgetFrame getInstance() {
         return cInstance;
     }
 
-
     private SSNewAccountingYear  iAccountingYear;
-
 
     private SSBudgetMainPanel iBudgetMainPanel;
 
@@ -64,21 +63,29 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     private SSBudgetFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
-        super(pMainFrame, SSBundle.getBundle().getString("budgetframe.title"), pWidth, pHeight);
-        iAccountingYear   = SSDB.getInstance().getCurrentYear();
-        //iBudgetMainPanel.setBudget(iAccountingYear.getBudget());
-        addCloseListener(new ActionListener() {
+        super(pMainFrame, SSBundle.getBundle().getString("budgetframe.title"), pWidth,
+                pHeight);
+        iAccountingYear = SSDB.getInstance().getCurrentYear();
+        // iBudgetMainPanel.setBudget(iAccountingYear.getBudget());
+        addCloseListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(cInstance != null ){
-                    SSQueryDialog iDialog = new SSQueryDialog( getMainFrame(), SSBundle.getBundle(),  "budgetframe.saveonclose" );
+                if (cInstance != null) {
+                    SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(),
+                            SSBundle.getBundle(), "budgetframe.saveonclose");
                     int iResponce = iDialog.getResponce();
-                    if(iResponce != JOptionPane.YES_OPTION){
-                        SSPostLock.removeLock("budget"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+
+                    if (iResponce != JOptionPane.YES_OPTION) {
+                        SSPostLock.removeLock(
+                                "budget" + SSDB.getInstance().getCurrentCompany().getId()
+                                + SSDB.getInstance().getCurrentYear().getId());
                         return;
                     }
-                    iAccountingYear.setBudget( iBudgetMainPanel.getBudget() );
+                    iAccountingYear.setBudget(iBudgetMainPanel.getBudget());
                     SSDB.getInstance().updateAccountingYear(iAccountingYear);
-                    SSPostLock.removeLock("budget"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+                    SSPostLock.removeLock(
+                            "budget" + SSDB.getInstance().getCurrentCompany().getId()
+                            + SSDB.getInstance().getCurrentYear().getId());
                 }
             }
         });
@@ -96,23 +103,30 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
 
         // Save
         // ***************************
-        SSButton iButton = new SSButton("ICON_SAVEITEM", "budgetframe.savebutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_SAVEITEM", "budgetframe.savebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 iAccountingYear.setBudget(iBudgetMainPanel.getBudget());
                 SSDB.getInstance().updateAccountingYear(iAccountingYear);
-                SSPostLock.removeLock("budget" + SSDB.getInstance().getCurrentCompany().getId() + SSDB.getInstance().getCurrentYear().getId());
+                SSPostLock.removeLock(
+                        "budget" + SSDB.getInstance().getCurrentCompany().getId()
+                        + SSDB.getInstance().getCurrentYear().getId());
 
                 cInstance = null;
                 setVisible(false);
             }
         });
+
         toolBar.add(iButton);
 
         // Cancel
         // ***************************
-        iButton = new SSButton("ICON_CANCELITEM", "budgetframe.cancelbutton", new ActionListener(){
+        iButton = new SSButton("ICON_CANCELITEM", "budgetframe.cancelbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SSPostLock.removeLock("budget"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId());
+                SSPostLock.removeLock(
+                        "budget" + SSDB.getInstance().getCurrentCompany().getId()
+                        + SSDB.getInstance().getCurrentYear().getId());
                 cInstance = null;
                 setVisible(false);
             }
@@ -120,27 +134,26 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-
         // Print
         // ******************
-        iButton = new SSButton("ICON_PRINT", "budgetframe.printbutton", new ActionListener() {
+        iButton = new SSButton("ICON_PRINT", "budgetframe.printbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 final SSMainFrame iMainFrame = getMainFrame();
 
                 final Date iFrom = SSDB.getInstance().getCurrentYear().getFrom();
                 final Date iTo = SSDB.getInstance().getCurrentYear().getTo();
 
-                SSProgressDialog.runProgress(iMainFrame, new Runnable(){
+                SSProgressDialog.runProgress(iMainFrame, new Runnable() {
                     public void run() {
                         SSBudgetPrinter iPrinter = new SSBudgetPrinter(iFrom, iTo);
+
                         iPrinter.preview(iMainFrame);
                     }
                 });
             }
         });
         toolBar.add(iButton);
-
-
 
         return toolBar;
 
@@ -154,13 +167,12 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
      */
     @Override
     public JComponent getMainContent() {
-        SSBudget iBudget = new SSBudget( SSDB.getInstance().getCurrentYear().getBudget() );
-        iBudgetMainPanel =  new SSBudgetMainPanel(iBudget);
+        SSBudget iBudget = new SSBudget(SSDB.getInstance().getCurrentYear().getBudget());
 
-        return iBudgetMainPanel.getPanel() ;
+        iBudgetMainPanel = new SSBudgetMainPanel(iBudget);
+
+        return iBudgetMainPanel.getPanel();
     }
-
-
 
     /**
      * This method should return the status bar content, if any.
@@ -171,7 +183,6 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
     public JComponent getStatusBar() {
         return null;
     }
-
 
     /**
      *
@@ -191,16 +202,16 @@ public class SSBudgetFrame extends SSDefaultTableFrame {
         return true;
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        iAccountingYear=null;
-        iBudgetMainPanel=null;
-        cInstance=null;
+    public void actionPerformed(ActionEvent e) {
+        iAccountingYear = null;
+        iBudgetMainPanel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.budget.SSBudgetFrame");
         sb.append("{iAccountingYear=").append(iAccountingYear);
         sb.append(", iBudgetMainPanel=").append(iBudgetMainPanel);

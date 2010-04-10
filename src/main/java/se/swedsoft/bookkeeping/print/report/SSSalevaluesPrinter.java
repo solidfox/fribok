@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSMonth;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.print.SSPrinter;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Date: 2006-mar-03
  * Time: 15:32:42
@@ -20,9 +22,7 @@ public class SSSalevaluesPrinter extends SSPrinter {
     private Date        iFrom;
     private Date        iTo;
 
-
     private List<SSMonth> iMonths;
-
 
     /**
      *
@@ -32,14 +32,14 @@ public class SSSalevaluesPrinter extends SSPrinter {
      */
     public SSSalevaluesPrinter(Date iFrom, Date iTo) {
         this.iFrom = iFrom;
-        this.iTo   = iTo;
+        this.iTo = iTo;
 
-        iMonths = SSMonth.splitYearIntoMonths(iFrom,iTo);
+        iMonths = SSMonth.splitYearIntoMonths(iFrom, iTo);
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("salevalues.jrxml");
-        setDetail      ("salevalues.jrxml");
-        setSummary     ("salevalues.jrxml");
+        setDetail("salevalues.jrxml");
+        setSummary("salevalues.jrxml");
     }
 
     /**
@@ -57,8 +57,8 @@ public class SSSalevaluesPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        addParameter("dateFrom", iFrom );
-        addParameter("dateTo"  , iTo);
+        addParameter("dateFrom", iFrom);
+        addParameter("dateTo", iTo);
 
         SSDefaultTableModel<SSMonth> iModel = new SSDefaultTableModel<SSMonth>() {
 
@@ -74,23 +74,27 @@ public class SSSalevaluesPrinter extends SSPrinter {
                 SSNewCompany iCurrentCompany = SSDB.getInstance().getCurrentCompany();
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iMonth.toString();
-                        break;
-                    case 1:
-                        value = iCurrentCompany.getTenderValueForMonth(iMonth);
-                        break;
-                    case 2:
-                        value = iCurrentCompany.getOrderValueForMonth(iMonth);
-                        break;
-                    case 3:
-                        value = iCurrentCompany.getInvoiceValueForMonth(iMonth);
-                        break;
+                case 0:
+                    value = iMonth.toString();
+                    break;
+
+                case 1:
+                    value = iCurrentCompany.getTenderValueForMonth(iMonth);
+                    break;
+
+                case 2:
+                    value = iCurrentCompany.getOrderValueForMonth(iMonth);
+                    break;
+
+                case 3:
+                    value = iCurrentCompany.getInvoiceValueForMonth(iMonth);
+                    break;
                 }
 
                 return value;
             }
         };
+
         iModel.addColumn("month.name");
         iModel.addColumn("month.tender");
         iModel.addColumn("month.order");
@@ -101,10 +105,10 @@ public class SSSalevaluesPrinter extends SSPrinter {
         return iModel;
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSSalevaluesPrinter");
         sb.append("{iFrom=").append(iFrom);
         sb.append(", iMonths=").append(iMonths);

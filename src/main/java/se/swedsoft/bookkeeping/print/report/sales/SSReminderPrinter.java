@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report.sales;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSInvoice;
@@ -12,6 +13,7 @@ import se.swedsoft.bookkeeping.print.SSPrinter;
 
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * Date: 2006-mar-03
@@ -33,22 +35,23 @@ public class SSReminderPrinter extends SSPrinter {
      * @param iCustomer
      * @param iLocale
      */
-    public SSReminderPrinter(List<SSInvoice> iInvoices, SSCustomer iCustomer, Locale iLocale){
+    public SSReminderPrinter(List<SSInvoice> iInvoices, SSCustomer iCustomer, Locale iLocale) {
         this.iInvoices = iInvoices;
         this.iCustomer = iCustomer;
-        this.iLocale   = iLocale;
+        this.iLocale = iLocale;
 
-        ResourceBundle iBundle = ResourceBundle.getBundle("reports.reminderreport", iLocale);
+        ResourceBundle iBundle = ResourceBundle.getBundle("reports.reminderreport",
+                iLocale);
 
-        setBundle( iBundle );
-        setLocale( iLocale );
+        setBundle(iBundle);
+        setLocale(iLocale);
 
-        setMargins(0,0,0,0);
+        setMargins(0, 0, 0, 0);
 
-        setPageHeader  ("sales/sale.header.jrxml");
-        setPageFooter  ("sales/sale.footer.jrxml");
+        setPageHeader("sales/sale.header.jrxml");
+        setPageFooter("sales/sale.footer.jrxml");
 
-        setDetail      ("sales/reminder.jrxml");
+        setDetail("sales/reminder.jrxml");
         setColumnHeader("sales/reminder.jrxml");
 
         addParameters();
@@ -62,59 +65,63 @@ public class SSReminderPrinter extends SSPrinter {
      */
     @Override
     public String getTitle() {
-        addParameter("title.number"   , iBundle.getString("reminderreport.title.date") );
+        addParameter("title.number", iBundle.getString("reminderreport.title.date"));
 
         return iBundle.getString("reminderreport.title");
     }
 
-
-
     /**
      *
      */
-    private void addParameters(){
+    private void addParameters() {
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
 
         SSSalePrinterUtils.addParametersForCompany(iCompany, this);
 
         // Sale parameters
-        addParameter("date"     , new Date() );
-        addParameter("text"     , iCompany.getStandardText(SSStandardText.Reminder) );
+        addParameter("date", new Date());
+        addParameter("text", iCompany.getStandardText(SSStandardText.Reminder));
 
-        if(iCustomer != null){
+        if (iCustomer != null) {
 
-            addParameter("customer.invoiceadress.name"    , iCustomer.getInvoiceAddress().getName() );
-            addParameter("customer.invoiceadress.address1", iCustomer.getInvoiceAddress().getAddress1() );
-            addParameter("customer.invoiceadress.address2", iCustomer.getInvoiceAddress().getAddress2() );
-            addParameter("customer.invoiceadress.zipcode" , iCustomer.getInvoiceAddress().getZipCode() );
-            addParameter("customer.invoiceadress.city"    , iCustomer.getInvoiceAddress().getCity() );
-            addParameter("customer.invoiceadress.country" , iCustomer.getInvoiceAddress().getCountry() );
+            addParameter("customer.invoiceadress.name",
+                    iCustomer.getInvoiceAddress().getName());
+            addParameter("customer.invoiceadress.address1",
+                    iCustomer.getInvoiceAddress().getAddress1());
+            addParameter("customer.invoiceadress.address2",
+                    iCustomer.getInvoiceAddress().getAddress2());
+            addParameter("customer.invoiceadress.zipcode",
+                    iCustomer.getInvoiceAddress().getZipCode());
+            addParameter("customer.invoiceadress.city",
+                    iCustomer.getInvoiceAddress().getCity());
+            addParameter("customer.invoiceadress.country",
+                    iCustomer.getInvoiceAddress().getCountry());
 
-            addParameter("customer.customernr"  , iCustomer.getNumber() );
-            addParameter("customer.currency"    , iCustomer.getInvoiceCurrency() , true);
-            addParameter("customer.ourcontact"  , iCustomer.getOurContactPerson() );
-            addParameter("customer.yourcontact" , iCustomer.getYourContactPerson() );
+            addParameter("customer.customernr", iCustomer.getNumber());
+            addParameter("customer.currency", iCustomer.getInvoiceCurrency(), true);
+            addParameter("customer.ourcontact", iCustomer.getOurContactPerson());
+            addParameter("customer.yourcontact", iCustomer.getYourContactPerson());
         }
         iMaxReminders = 0;
         for (SSInvoice iInvoice : iInvoices) {
             Integer iNumReminders = iInvoice.getNumReminders();
 
-            if(iNumReminders > iMaxReminders) iMaxReminders = iNumReminders;
+            if (iNumReminders > iMaxReminders) {
+                iMaxReminders = iNumReminders;
+            }
         }
         iMaxReminders = iMaxReminders + 1;
 
         BigDecimal iReminderfee = iCompany.getReminderfee();
 
-        if(iReminderfee != null) {
-            addParameter("reminder.reminderfee", iReminderfee.multiply( new BigDecimal(iMaxReminders)) );
+        if (iReminderfee != null) {
+            addParameter("reminder.reminderfee",
+                    iReminderfee.multiply(new BigDecimal(iMaxReminders)));
         } else {
-            addParameter("reminder.reminderfee", new BigDecimal(0) );
+            addParameter("reminder.reminderfee", new BigDecimal(0));
         }
 
-
-
     }
-
 
     /**
      *
@@ -122,17 +129,17 @@ public class SSReminderPrinter extends SSPrinter {
      */
     @Override
     protected SSDefaultTableModel getModel() {
-        final SSPrinter iPrinter = new SSRowReport(  );
+        final SSPrinter iPrinter = new SSRowReport();
 
         iPrinter.setBundle(iBundle);
         iPrinter.setLocale(iLocale);
         iPrinter.generateReport();
 
-        addParameter("subreport.report"      , iPrinter.getReport());
-        addParameter("subreport.parameters"  , iPrinter.getParameters() );
-        addParameter("subreport.datasource"  , iPrinter.getDataSource() );
+        addParameter("subreport.report", iPrinter.getReport());
+        addParameter("subreport.parameters", iPrinter.getParameters());
+        addParameter("subreport.datasource", iPrinter.getDataSource());
 
-        SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>(  ) {
+        SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>() {
 
             @Override
             public Class getType() {
@@ -153,9 +160,6 @@ public class SSReminderPrinter extends SSPrinter {
         return iModel;
     }
 
-
-
-
     /**
      *
      */
@@ -164,11 +168,11 @@ public class SSReminderPrinter extends SSPrinter {
         /**
          *
          */
-        public SSRowReport( ){
-            setMargins(0,0,0,0);
+        public SSRowReport() {
+            setMargins(0, 0, 0, 0);
 
             setColumnHeader("sales/reminder.rows.jrxml");
-            setDetail      ("sales/reminder.rows.jrxml");
+            setDetail("sales/reminder.rows.jrxml");
         }
 
         /**
@@ -178,7 +182,7 @@ public class SSReminderPrinter extends SSPrinter {
          */
         @Override
         protected SSDefaultTableModel getModel() {
-            SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>(  ) {
+            SSDefaultTableModel<SSInvoice> iModel = new SSDefaultTableModel<SSInvoice>() {
 
                 @Override
                 public Class getType() {
@@ -191,40 +195,48 @@ public class SSReminderPrinter extends SSPrinter {
                     SSInvoice iInvoice = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            if(iInvoice.getOCRNumber() != null){
-                                value =  iInvoice.getOCRNumber();
-                            } else {
-                                value = iInvoice.getNumber().toString();
-                            }
-                            break;
-                        case 1:
-                            value = iInvoice.getDate();
-                            break;
-                        case 2:
-                            value = iInvoice.getDueDate();
-                            break;
-                        case 3:
-                            value = getNumDelayedDays(iInvoice);
-                            break;
-                        case 4:
-                            value = iInvoice.getNumReminders() + 1;
-                            break;
-                        case 5:
-                            value = SSInvoiceMath.getSaldo(iInvoice.getNumber());
-                            break;
-                        case 6:
-                            value = iInvoice.getDelayInterest() ;
-                            break;
-                        case 7:
-                            value = SSInvoiceMath.getInterestSum(iInvoice, SSInvoiceMath.getSaldo(iInvoice.getNumber()), getNumDelayedDays(iInvoice));
-                            break;
+                    case 0:
+                        if (iInvoice.getOCRNumber() != null) {
+                            value = iInvoice.getOCRNumber();
+                        } else {
+                            value = iInvoice.getNumber().toString();
+                        }
+                        break;
+
+                    case 1:
+                        value = iInvoice.getDate();
+                        break;
+
+                    case 2:
+                        value = iInvoice.getDueDate();
+                        break;
+
+                    case 3:
+                        value = getNumDelayedDays(iInvoice);
+                        break;
+
+                    case 4:
+                        value = iInvoice.getNumReminders() + 1;
+                        break;
+
+                    case 5:
+                        value = SSInvoiceMath.getSaldo(iInvoice.getNumber());
+                        break;
+
+                    case 6:
+                        value = iInvoice.getDelayInterest();
+                        break;
+
+                    case 7:
+                        value = SSInvoiceMath.getInterestSum(iInvoice,
+                                SSInvoiceMath.getSaldo(iInvoice.getNumber()),
+                                getNumDelayedDays(iInvoice));
+                        break;
                     }
 
                     return value;
                 }
             };
-
 
             iModel.addColumn("invoice.number");
             iModel.addColumn("invoice.date");
@@ -234,7 +246,6 @@ public class SSReminderPrinter extends SSPrinter {
             iModel.addColumn("invoice.saldo");
             iModel.addColumn("invoice.delayinterest");
             iModel.addColumn("invoice.delayfee");
-
 
             iModel.setObjects(iInvoices);
 
@@ -251,28 +262,27 @@ public class SSReminderPrinter extends SSPrinter {
             return null;
         }
 
-
     }
-
-
 
     /**
      *
      * @param iInvoice
      * @return
      */
-    private static int getNumDelayedDays(SSInvoice iInvoice){
+    private static int getNumDelayedDays(SSInvoice iInvoice) {
         Date iDueDate = iInvoice.getDueDate();
-        Date iNowDate  = new Date();
+        Date iNowDate = new Date();
 
-        if(iDueDate == null ) return 0;
+        if (iDueDate == null) {
+            return 0;
+        }
 
         Calendar iCalendar = Calendar.getInstance();
 
-        iCalendar.setTimeInMillis(  iNowDate.getTime() - iDueDate.getTime() );
+        iCalendar.setTimeInMillis(iNowDate.getTime() - iDueDate.getTime());
 
-        int iYear = iCalendar.get(Calendar.YEAR       ) - 1970 ;
-        int iDay  = iCalendar.get(Calendar.DAY_OF_YEAR) ;
+        int iYear = iCalendar.get(Calendar.YEAR) - 1970;
+        int iDay = iCalendar.get(Calendar.DAY_OF_YEAR);
 
         return iYear * iCalendar.getActualMaximum(Calendar.DAY_OF_YEAR) + iDay;
     }
@@ -280,6 +290,7 @@ public class SSReminderPrinter extends SSPrinter {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.sales.SSReminderPrinter");
         sb.append("{iCustomer=").append(iCustomer);
         sb.append(", iInvoices=").append(iInvoices);

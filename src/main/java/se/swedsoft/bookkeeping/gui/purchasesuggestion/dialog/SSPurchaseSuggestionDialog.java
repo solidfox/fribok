@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.purchasesuggestion.dialog;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSPurchaseOrderMath;
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSPurchaseOrder;
@@ -23,6 +24,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-aug-14
@@ -44,7 +46,7 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
      *
      * @param iMainFrame
      */
-    public SSPurchaseSuggestionDialog(SSMainFrame iMainFrame){
+    public SSPurchaseSuggestionDialog(SSMainFrame iMainFrame) {
         super(iMainFrame, SSBundle.getBundle().getString("purchasesuggestiondialog.title"));
 
         iProducts = getProductsForPurchaseSuggestion();
@@ -71,10 +73,12 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
             }
         });
 
-        iButtonPanel.addOkActionListener(new ActionListener() {
+        iButtonPanel.addOkActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(iModel.getSelected() == null){
-                    new SSErrorDialog( SSMainFrame.getInstance(), "purchasesuggestiondialog.nosupplier");
+                if (iModel.getSelected() == null) {
+                    new SSErrorDialog(SSMainFrame.getInstance(),
+                            "purchasesuggestiondialog.nosupplier");
                     return;
                 }
                 setModalResult(JOptionPane.OK_OPTION);
@@ -96,16 +100,26 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
     private List<SSProduct> getProductsForPurchaseSuggestion() {
         List<SSProduct> iProducts = new LinkedList<SSProduct>();
         SSStock iStock = new SSStock(true);
+
         for (SSProduct iProduct : SSDB.getInstance().getProducts()) {
-            if (!iProduct.isParcel() && iProduct.isStockProduct() ) {
-                Integer iStockQuantity = iStock.getQuantity(iProduct) == null ? 0 : iStock.getQuantity(iProduct);
-                Integer iOrderPoint = iProduct.getOrderpoint() == null ? 0 : iProduct.getOrderpoint();
-                Integer iIncomming = SSPurchaseOrderMath.getNumberOfIncommingProducts(iProduct);
-                if(iStockQuantity+iIncomming < iOrderPoint) iProducts.add(iProduct);
+            if (!iProduct.isParcel() && iProduct.isStockProduct()) {
+                Integer iStockQuantity = iStock.getQuantity(iProduct) == null
+                        ? 0
+                        : iStock.getQuantity(iProduct);
+                Integer iOrderPoint = iProduct.getOrderpoint() == null
+                        ? 0
+                        : iProduct.getOrderpoint();
+                Integer iIncomming = SSPurchaseOrderMath.getNumberOfIncommingProducts(
+                        iProduct);
+
+                if (iStockQuantity + iIncomming < iOrderPoint) {
+                    iProducts.add(iProduct);
+                }
             }
         }
         return iProducts;
     }
+
     /**
      *
      * @return
@@ -130,41 +144,51 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
         iButtonPanel.addCancelActionListener(l);
     }
 
-
     /**
      *
      * @param iMainFrame
      */
-    public static void showDialog(SSMainFrame iMainFrame){
-        String lockString = "purchasesuggestion"+SSDB.getInstance().getCurrentCompany().getId();
+    public static void showDialog(SSMainFrame iMainFrame) {
+        String lockString = "purchasesuggestion"
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
             new SSErrorDialog(iMainFrame, "purchasesuggestion.iscreated");
             return;
         }
         SSPurchaseSuggestionDialog iDialog = new SSPurchaseSuggestionDialog(iMainFrame);
+
         iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible(true);
 
-        if(iDialog.getModalResult() != JOptionPane.OK_OPTION ) {
+        if (iDialog.getModalResult() != JOptionPane.OK_OPTION) {
             SSPostLock.removeLock(lockString);
             return;
         }
         List<SSProduct> iProducts = iDialog.iModel.getSelected();
         List<SSProduct> iUseForPurchaseOrder = new LinkedList<SSProduct>();
-        String iAddedOrders ="";
+        String iAddedOrders = "";
+
         for (SSSupplier iSupplier : SSDB.getInstance().getSuppliers()) {
             iUseForPurchaseOrder.clear();
             for (SSProduct iProduct : iProducts) {
-                if(iProduct.getOrdercount() == null) continue;
+                if (iProduct.getOrdercount() == null) {
+                    continue;
+                }
 
-                if (iSupplier.getNumber().equals(iProduct.getSupplierNr()) && iProduct.getOrdercount() > 0) {
+                if (iSupplier.getNumber().equals(iProduct.getSupplierNr())
+                        && iProduct.getOrdercount() > 0) {
                     iUseForPurchaseOrder.add(iProduct);
                 }
             }
-            if(!iUseForPurchaseOrder.isEmpty()){
-                if(iAddedOrders.length() != 0) iAddedOrders += ", ";
-                SSPurchaseOrder iPurchaseOrder = new SSPurchaseOrder(iUseForPurchaseOrder, iSupplier);
+            if (!iUseForPurchaseOrder.isEmpty()) {
+                if (iAddedOrders.length() != 0) {
+                    iAddedOrders += ", ";
+                }
+                SSPurchaseOrder iPurchaseOrder = new SSPurchaseOrder(iUseForPurchaseOrder,
+                        iSupplier);
+
                 SSDB.getInstance().addPurchaseOrder(iPurchaseOrder);
                 iAddedOrders += iPurchaseOrder.getNumber();
             }
@@ -172,18 +196,21 @@ public class SSPurchaseSuggestionDialog extends SSDialog {
 
         SSPostLock.removeLock(lockString);
         if (iAddedOrders.length() > 0) {
-            SSInformationDialog.showDialog(SSMainFrame.getInstance(), "purchasesuggestiondialog.success",iAddedOrders);
+            SSInformationDialog.showDialog(SSMainFrame.getInstance(),
+                    "purchasesuggestiondialog.success", iAddedOrders);
         } else {
-            SSInformationDialog.showDialog(SSMainFrame.getInstance(), "purchasesuggestiondialog.noordersadded");
+            SSInformationDialog.showDialog(SSMainFrame.getInstance(),
+                    "purchasesuggestiondialog.noordersadded");
         }
 
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.gui.purchasesuggestion.dialog.SSPurchaseSuggestionDialog");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.gui.purchasesuggestion.dialog.SSPurchaseSuggestionDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iModel=").append(iModel);
         sb.append(", iPanel=").append(iPanel);

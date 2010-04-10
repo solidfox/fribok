@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.inpayment.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInpaymentMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.*;
@@ -27,6 +28,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
+
 
 /**
  * User: Andreas Lago
@@ -61,7 +63,6 @@ public class SSInpaymentPanel {
 
     private SSTable iDifferenceTable;
 
-
     private SSInpaymentRowTableModel iModel;
 
     private SSVoucherRowTableModelOld iVoucherTableModel;
@@ -84,13 +85,13 @@ public class SSInpaymentPanel {
         iModel.addColumn(SSInpaymentRowTableModel.COLUMN_CURRENCYRATEDIFFERENCE);
         iModel.setupTable(iTable);
 
-        iTable.setDefaultEditor(SSInvoice.class, new SSInvoiceCellEditor( SSInvoiceMath.getNonPayedOrCreditedInvoices() )  );
-
+        iTable.setDefaultEditor(SSInvoice.class,
+                new SSInvoiceCellEditor(SSInvoiceMath.getNonPayedOrCreditedInvoices()));
 
         iTable.setColorReadOnly(true);
         iTable.setSingleSelect();
 
-        iVoucherTableModel = new SSVoucherRowTableModelOld(false, true){
+        iVoucherTableModel = new SSVoucherRowTableModelOld(false, true) {
             @Override
             public int getColumnCount() {
                 // Hide the project and result unit columns
@@ -102,7 +103,7 @@ public class SSInpaymentPanel {
 
         SSVoucherRowTableModelOld.setupTable(iVoucherTable, iVoucherTableModel);
 
-        iDifferenceTableModel = new SSVoucherRowTableModelOld(false, false){
+        iDifferenceTableModel = new SSVoucherRowTableModelOld(false, false) {
             @Override
             public int getColumnCount() {
                 // Hide the project and result unit columns
@@ -113,13 +114,12 @@ public class SSInpaymentPanel {
 
         SSVoucherRowTableModelOld.setupTable(iDifferenceTable, iDifferenceTableModel);
 
-        new SSTraversalAction(iTable){
+        new SSTraversalAction(iTable) {
             @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 2) {
                     iPosition.x = 3;
-                } else
-                if (iPosition.x <= 4) {
+                } else if (iPosition.x <= 4) {
                     iPosition.x = iPosition.x + 1;
                 }
                 if (iPosition.x == 5) {
@@ -127,7 +127,7 @@ public class SSInpaymentPanel {
                     iPosition.y = iPosition.y + 1;
                     iPosition.x = 0;
 
-                    if(iPosition.y == iModel.getRowCount()) {
+                    if (iPosition.y == iModel.getRowCount()) {
                         iButtonPanel.getOkButton().requestFocus();
                         return null;
                     }
@@ -137,47 +137,50 @@ public class SSInpaymentPanel {
             }
         };
 
-        new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSInpaymentRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "inpaymentframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "inpaymentframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
         };
 
-         new SSDeleteAction(iDifferenceTable){
+        new SSDeleteAction(iDifferenceTable) {
             @Override
             protected Point doDelete(Point iPosition) {
-                SSVoucherRow iSelected = iDifferenceTableModel.getSelectedRow(iDifferenceTable);
+                SSVoucherRow iSelected = iDifferenceTableModel.getSelectedRow(
+                        iDifferenceTable);
 
-                if(iSelected != null) {
-                    iDifferenceTableModel.deleteRow(iSelected );
+                if (iSelected != null) {
+                    iDifferenceTableModel.deleteRow(iSelected);
                 }
                 iDifferenceTableModel.fireTableDataChanged();
                 return iPosition;
             }
         };
 
-        new SSTraversalAction(iDifferenceTable){
+        new SSTraversalAction(iDifferenceTable) {
             @Override
             protected Point doTraversal(Point iPosition) {
 
                 if (iPosition.x == 0) {
                     iPosition.x = iPosition.x + 2;
-                } else
-                if (iPosition.x < 3) {
+                } else if (iPosition.x < 3) {
                     iPosition.x = iPosition.x + 1;
-                } else
-                if (iPosition.x == 3) {
+                } else if (iPosition.x == 3) {
                     SSVoucherRow iVoucherRow = iDifferenceTableModel.getObject(iPosition.y);
 
                     iPosition.y = iPosition.y + 1;
@@ -185,7 +188,7 @@ public class SSInpaymentPanel {
 
                     setDifferenceToZero(iVoucherRow);
 
-                }  else {
+                } else {
                     iPosition.y = iPosition.y + 1;
                     iPosition.x = 0;
                 }
@@ -202,7 +205,7 @@ public class SSInpaymentPanel {
             }
         });
 
-        iModel.addTableModelListener( new TableModelListener() {
+        iModel.addTableModelListener(new TableModelListener() {
             public void tableChanged(TableModelEvent e) {
                 updateSumFields();
             }
@@ -214,11 +217,11 @@ public class SSInpaymentPanel {
             }
         });
 
-        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                     SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iText.requestFocusInWindow();
                         }
@@ -227,24 +230,24 @@ public class SSInpaymentPanel {
             }
         });
 
-        iText.addKeyListener(new KeyAdapter(){
+        iText.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -254,10 +257,10 @@ public class SSInpaymentPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -267,23 +270,24 @@ public class SSInpaymentPanel {
             }
         });
 
-        /*iTabbedPane.addFocusListener(new FocusListener(){
-            public void focusGained(FocusEvent e){
-                SSErrorDialog.showDialog(new JFrame(), "Fokus", "Fick fokus!!!!");
-            }
+        /* iTabbedPane.addFocusListener(new FocusListener(){
+         public void focusGained(FocusEvent e){
+         SSErrorDialog.showDialog(new JFrame(), "Fokus", "Fick fokus!!!!");
+         }
 
-            public void focusLost(FocusEvent e){
-                SSErrorDialog.showDialog(new JFrame(), "Fokus", "Blev av med fokus!!!!");
-            }
+         public void focusLost(FocusEvent e){
+         SSErrorDialog.showDialog(new JFrame(), "Fokus", "Blev av med fokus!!!!");
+         }
 
-        }); */
+         }); */
 
     }
 
-    private void setDifferenceToZero(SSVoucherRow iVoucherRow){
+    private void setDifferenceToZero(SSVoucherRow iVoucherRow) {
         BigDecimal iDebet = iVoucherRow.getDebet();
         BigDecimal iCredit = iVoucherRow.getCredit();
-        if(iDebet == null && iCredit == null){
+
+        if (iDebet == null && iCredit == null) {
             BigDecimal iDifference = getDifference();
 
             if (iDifference.signum() < 0) {
@@ -302,6 +306,7 @@ public class SSInpaymentPanel {
     private BigDecimal getDifference() {
         BigDecimal iCreditSum = new BigDecimal(0);
         BigDecimal iDebetSum = new BigDecimal(0);
+
         for (SSVoucherRow iRow : iDifferenceTableModel.getObjects()) {
             if (iRow.getDebet() != null) {
                 iDebetSum = iDebetSum.add(iRow.getDebet());
@@ -320,7 +325,6 @@ public class SSInpaymentPanel {
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      *
@@ -343,14 +347,14 @@ public class SSInpaymentPanel {
      *
      * @return
      */
-    public SSInpayment getInpayment(){
+    public SSInpayment getInpayment() {
 
         // Inbetalningsdatum
         iInpayment.setDate(iDate.getDate());
         // Text
-        iInpayment.setText( iText.getText() );
+        iInpayment.setText(iText.getText());
         // Standardkonton
-        iInpayment.setDefaultAccounts( iDefaultAccounts.getDefaultAccounts());
+        iInpayment.setDefaultAccounts(iDefaultAccounts.getDefaultAccounts());
         // Bokförd
         iInpayment.setEntered(iEntered.isSelected());
 
@@ -369,19 +373,19 @@ public class SSInpaymentPanel {
         iInpayment = pInpayment;
 
         // Inbetalningsnummer
-        iNumber.setValue( iInpayment.getNumber() );
+        iNumber.setValue(iInpayment.getNumber());
         // Inbetalningsdatum
-        iDate.setDate( iInpayment.getDate() );
+        iDate.setDate(iInpayment.getDate());
         // Text
-        iText.setText( iInpayment.getText());
+        iText.setText(iInpayment.getText());
         // Bokförd
         iEntered.setSelected(iInpayment.isEntered());
         // Standardkonton
-        iDefaultAccounts.setDefaultAccounts(iInpayment.getDefaultAccounts() );
+        iDefaultAccounts.setDefaultAccounts(iInpayment.getDefaultAccounts());
         // Kontering
-        iVoucherTableModel.setVoucher( iInpayment.getVoucher() );
+        iVoucherTableModel.setVoucher(iInpayment.getVoucher());
         // Differens verifikation
-        iDifferenceTableModel.setVoucher( iInpayment.getDifference());
+        iDifferenceTableModel.setVoucher(iInpayment.getDifference());
 
         iModel.setObjects(iInpayment.getRows());
 
@@ -393,11 +397,10 @@ public class SSInpaymentPanel {
      *
      */
     private void updateSumFields() {
-       BigDecimal iSum = SSInpaymentMath.getSum(iInpayment);
+        BigDecimal iSum = SSInpaymentMath.getSum(iInpayment);
 
         this.iSum.setValue(iSum);
     }
-
 
     /**
      * Used to clean up references making sure the garbage collector
@@ -406,43 +409,45 @@ public class SSInpaymentPanel {
     public void dispose() {
 
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
         iButtonPanel.dispose();
-        iButtonPanel=null;
+        iButtonPanel = null;
         iTable.dispose();
-        iTable=null;
+        iTable = null;
         iNumber.removeAll();
-        iNumber=null;
+        iNumber = null;
         iDate.dispose();
-        iDate=null;
+        iDate = null;
         iText.removeAll();
-        iText=null;
+        iText = null;
         iEntered.removeAll();
-        iEntered=null;
+        iEntered = null;
 
         iVoucherTable.dispose();
-        iVoucherTable=null;
+        iVoucherTable = null;
         ActionListener[] iActionListeners = iRefreshVoucher.getActionListeners();
+
         for (ActionListener iActionListener : iActionListeners) {
             iRefreshVoucher.removeActionListener(iActionListener);
         }
         iRefreshVoucher.removeAll();
-        iRefreshVoucher=null;
-        iSum=null;
+        iRefreshVoucher = null;
+        iSum = null;
         iDifferenceTable.dispose();
-        iDifferenceTable=null;
+        iDifferenceTable = null;
 
-        //iModel.dispose();
-        iModel=null;
-        iVoucherTableModel=null;
-        iDifferenceTableModel=null;
+        // iModel.dispose();
+        iModel = null;
+        iVoucherTableModel = null;
+        iDifferenceTableModel = null;
         iDefaultAccounts.dispose();
-        iDefaultAccounts=null;
+        iDefaultAccounts = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.inpayment.panel.SSInpaymentPanel");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iDate=").append(iDate);

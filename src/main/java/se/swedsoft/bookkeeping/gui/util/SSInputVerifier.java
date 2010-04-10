@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBox;
 import se.swedsoft.bookkeeping.gui.util.components.SSTableComboBoxOld;
 
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-apr-03
@@ -18,7 +20,7 @@ import java.util.List;
  */
 public class SSInputVerifier implements DocumentListener, ActionListener {
 
-    //public enum
+    // public enum
 
     private List<JComponent> iComponents;
 
@@ -30,19 +32,18 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
     /**
      *
      */
-    public SSInputVerifier(){
+    public SSInputVerifier() {
         iComponents = new LinkedList<JComponent>();
-        iListeners  = new LinkedList<SSVerifierListener>();
+        iListeners = new LinkedList<SSVerifierListener>();
 
     }
-
 
     /**
      *
      *
      * @param iTextField
      */
-    public void add(JTextField iTextField){
+    public void add(JTextField iTextField) {
         iTextField.getDocument().addDocumentListener(this);
 
         iComponents.add(iTextField);
@@ -52,7 +53,7 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
      *
      * @param iFormattedTextField
      */
-    public void add(JFormattedTextField iFormattedTextField){
+    public void add(JFormattedTextField iFormattedTextField) {
         iFormattedTextField.getDocument().addDocumentListener(this);
 
         iComponents.add(iFormattedTextField);
@@ -69,8 +70,6 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
         iComponents.add(iTableComboBox);
     }
 
-
-
     /**
      *
      * @param iTableComboBox
@@ -83,54 +82,62 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
     }
 
     /**
-     * 
+     *
      */
-    public void update(){
+    public void update() {
         notifyListeners();
     }
-
-
 
     /**
      *
      * @return
      */
-    public boolean isValid(){
-        for(JComponent iComponent: iComponents){
+    public boolean isValid() {
+        for (JComponent iComponent: iComponents) {
             iCurrentComponent = iComponent;
 
             // Textfields
-            if(iComponent instanceof JTextField){
-                JTextField iTextField = (JTextField)iComponent;
+            if (iComponent instanceof JTextField) {
+                JTextField iTextField = (JTextField) iComponent;
 
-                if( isNullOrEmpty(iTextField.getText() ) ) return false;
+                if (isNullOrEmpty(iTextField.getText())) {
+                    return false;
+                }
             }
 
             // JFormattedTextField
-            if(iComponent instanceof JFormattedTextField){
+            if (iComponent instanceof JFormattedTextField) {
                 JFormattedTextField iFormattedTextField = (JFormattedTextField) iComponent;
 
-                if( iFormattedTextField.getValue() == null) return false;
+                if (iFormattedTextField.getValue() == null) {
+                    return false;
+                }
             }
 
             // SSTablecombobox
-            if(iComponent instanceof SSTableComboBoxOld){
-                SSTableComboBoxOld iTableComboBox = (SSTableComboBoxOld)iComponent;
+            if (iComponent instanceof SSTableComboBoxOld) {
+                SSTableComboBoxOld iTableComboBox = (SSTableComboBoxOld) iComponent;
 
-                if(iTableComboBox.doAllowCustomValues()){
-                    if( isNullOrEmpty(iTableComboBox.getText()) ) return false;
-                } else{
-                    if(iTableComboBox.getSelected() == null) return false;
+                if (iTableComboBox.doAllowCustomValues()) {
+                    if (isNullOrEmpty(iTableComboBox.getText())) {
+                        return false;
+                    }
+                } else {
+                    if (iTableComboBox.getSelected() == null) {
+                        return false;
+                    }
                 }
 
             }
 
             // SSTablecombobox
-            if(iComponent instanceof SSTableComboBox){
-                SSTableComboBox iTableComboBox = (SSTableComboBox)iComponent;
+            if (iComponent instanceof SSTableComboBox) {
+                SSTableComboBox iTableComboBox = (SSTableComboBox) iComponent;
 
-                if(iTableComboBox.getValue() == null) return false;
-           
+                if (iTableComboBox.getValue() == null) {
+                    return false;
+                }
+
             }
 
         }
@@ -152,7 +159,7 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
      *
      * @param iListener
      */
-    public void addListener(SSVerifierListener iListener){
+    public void addListener(SSVerifierListener iListener) {
         iListeners.add(iListener);
         // Call the action to initialize the state
         iListener.updated(this, isValid());
@@ -161,16 +168,13 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
     /**
      *
      */
-    protected void notifyListeners(){
+    protected void notifyListeners() {
         boolean iValid = isValid();
 
-        for(SSVerifierListener iListener: iListeners){
+        for (SSVerifierListener iListener: iListeners) {
             iListener.updated(this, iValid);
         }
     }
-
-
-
 
     /**
      * Gives notification that there was an insert into the document.  The
@@ -198,8 +202,7 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
      *
      * @param e the document event
      */
-    public void changedUpdate(DocumentEvent e) {
-    }
+    public void changedUpdate(DocumentEvent e) {}
 
     /**
      * Invoked when an action occurs.
@@ -208,25 +211,22 @@ public class SSInputVerifier implements DocumentListener, ActionListener {
         notifyListeners();
     }
 
-
-
-    private static boolean isNullOrEmpty(String iText){
+    private static boolean isNullOrEmpty(String iText) {
         return iText == null || iText.length() == 0;
     }
-
 
     /**
      * Interface for the listeners
      */
-    public interface SSVerifierListener{
+    public interface SSVerifierListener {
         void updated(SSInputVerifier iVerifier, boolean iValid);
-
 
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.SSInputVerifier");
         sb.append("{iComponents=").append(iComponents);
         sb.append(", iCurrentComponent=").append(iCurrentComponent);

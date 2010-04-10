@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.order.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSOrderMath;
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.SSCustomer;
@@ -48,6 +49,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Map;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-24
@@ -60,7 +62,6 @@ public class SSOrderPanel {
     private JPanel iPanel;
 
     private SSButtonPanel iButtonPanel;
-
 
     private JFormattedTextField iNumber;
 
@@ -138,7 +139,8 @@ public class SSOrderPanel {
      * @param iOwner
      */
     public SSOrderPanel(final SSDialog iOwner) {
-        iNumber.setFormatterFactory( new DefaultFormatterFactory(new NumberFormatter( new DecimalFormat("0") ) ) );
+        iNumber.setFormatterFactory(
+                new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("0"))));
         iNumber.setHorizontalAlignment(JTextField.RIGHT);
 
         iTable.setColorReadOnly(true);
@@ -146,15 +148,15 @@ public class SSOrderPanel {
         iTable.setSingleSelect();
 
         iModel = new SSInvoiceRowTableModel();
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_PRODUCT      , true);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_DESCRIPTION  , true);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_UNITPRICE    , true);
-        iModel.addColumn(new ContributionRateColumn()               , false);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_QUANTITY     , true);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_UNIT         , true);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_DISCOUNT     , true);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_SUM          , false);
-        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_TAX          , true);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_PRODUCT, true);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_DESCRIPTION, true);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_UNITPRICE, true);
+        iModel.addColumn(new ContributionRateColumn(), false);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_QUANTITY, true);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_UNIT, true);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_DISCOUNT, true);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_SUM, false);
+        iModel.addColumn(SSInvoiceRowTableModel.COLUMN_TAX, true);
         iModel.setupTable(iTable);
 
         iModel.addTableModelListener(new TableModelListener() {
@@ -165,22 +167,30 @@ public class SSOrderPanel {
 
         iUseInvoiceForDelivery.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                iDeliveryAddress.setEnabled( !iUseInvoiceForDelivery.isSelected());
+                iDeliveryAddress.setEnabled(!iUseInvoiceForDelivery.isSelected());
             }
         });
 
         iCustomer.setModel(SSCustomerTableModel.getDropDownModel());
-        iCustomer.setSearchColumns(0,1);
+        iCustomer.setSearchColumns(0, 1);
         iCustomer.setAllowCustomValues(true);
-        iCustomer.addSelectionListener(new SSSelectionListener<SSCustomer>() {
+        iCustomer.addSelectionListener(
+                new SSSelectionListener<SSCustomer>() {
             public void selected(SSCustomer selected) {
-                if(selected != null){
+                if (selected != null) {
                     iModel.setCustomer(iCustomer.getSelected());
                     iOrder.setCustomer(selected);
-                    iOrder.setCurrencyRate(iOrder.getCustomer().getInvoiceCurrency() == null ? new BigDecimal(1) : iOrder.getCustomer().getInvoiceCurrency().getExchangeRate());
-                    if(selected.getDiscount() != null){
+                    iOrder.setCurrencyRate(
+                            iOrder.getCustomer().getInvoiceCurrency() == null
+                                    ? new BigDecimal(1)
+                                    : iOrder.getCustomer().getInvoiceCurrency().getExchangeRate());
+                    if (selected.getDiscount() != null) {
                         for (SSSaleRow iRow : iModel.getObjects()) {
-                            iRow.setDiscount(selected.getDiscount().doubleValue() == new BigDecimal(0).doubleValue() ? null : selected.getDiscount());
+                            iRow.setDiscount(
+                                    selected.getDiscount().doubleValue()
+                                            == new BigDecimal(0).doubleValue()
+                                                    ? null
+                                                    : selected.getDiscount());
                         }
                     }
                     setOrder(iOrder);
@@ -188,7 +198,7 @@ public class SSOrderPanel {
             }
         });
 
-        new SSTraversalAction(iTable){
+        new SSTraversalAction(iTable) {
             @Override
             protected Point doTraversal(Point iPosition) {
                 if (iPosition.x <= 4) {
@@ -199,7 +209,7 @@ public class SSOrderPanel {
                     iPosition.y = iPosition.y + 1;
                     iPosition.x = 0;
 
-                    if(iPosition.y == iModel.getRowCount()) {
+                    if (iPosition.y == iModel.getRowCount()) {
                         iButtonPanel.getOkButton().requestFocus();
                         return null;
                     }
@@ -209,45 +219,52 @@ public class SSOrderPanel {
             }
         };
 
-        new SSDeleteAction(iTable){
+        new SSDeleteAction(iTable) {
             @Override
             protected Point doDelete(Point iPosition) {
                 SSSaleRow iSelected = iModel.getSelectedRow(iTable);
 
-                if(iSelected != null) {
+                if (iSelected != null) {
 
-                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(), SSBundle.getBundle(), "tenderframe.deleterow", iSelected.toString() );
+                    SSQueryDialog dialog = new SSQueryDialog(SSMainFrame.getInstance(),
+                            SSBundle.getBundle(), "tenderframe.deleterow",
+                            iSelected.toString());
 
-                    if( dialog.getResponce() != JOptionPane.YES_OPTION ) return null;
+                    if (dialog.getResponce() != JOptionPane.YES_OPTION) {
+                        return null;
+                    }
 
-                    iModel.deleteRow(iSelected );
+                    iModel.deleteRow(iSelected);
                 }
                 return iPosition;
             }
         };
 
-        iCurrency.getComboBox().setModel( SSCurrencyTableModel.getDropDownModel() );
+        iCurrency.getComboBox().setModel(SSCurrencyTableModel.getDropDownModel());
         iCurrency.getComboBox().setSearchColumns(0);
-        iCurrency.setEditingFactory( SSCurrencyTableModel.getEditingFactory(iOwner) );
+        iCurrency.setEditingFactory(SSCurrencyTableModel.getEditingFactory(iOwner));
 
-        iCurrency.getComboBox().addSelectionListener(new SSSelectionListener<SSCurrency>() {
+        iCurrency.getComboBox().addSelectionListener(
+                new SSSelectionListener<SSCurrency>() {
             public void selected(SSCurrency selected) {
-                if(selected != null) iCurrencyRate.setValue(selected.getExchangeRate());
+                if (selected != null) {
+                    iCurrencyRate.setValue(selected.getExchangeRate());
+                }
                 iModel.fireTableDataChanged();
             }
         });
 
-        iDeliveryWay.getComboBox().setModel( SSDeliveryWayTableModel.getDropDownModel() );
+        iDeliveryWay.getComboBox().setModel(SSDeliveryWayTableModel.getDropDownModel());
         iDeliveryWay.getComboBox().setSearchColumns(0);
-        iDeliveryWay.setEditingFactory( SSDeliveryWayTableModel.getEditingFactory(iOwner) );
+        iDeliveryWay.setEditingFactory(SSDeliveryWayTableModel.getEditingFactory(iOwner));
 
-        iDeliveryTerm.getComboBox().setModel( SSDeliveryTermTableModel.getDropDownModel() );
+        iDeliveryTerm.getComboBox().setModel(SSDeliveryTermTableModel.getDropDownModel());
         iDeliveryTerm.getComboBox().setSearchColumns(0);
-        iDeliveryTerm.setEditingFactory( SSDeliveryTermTableModel.getEditingFactory(iOwner) );
+        iDeliveryTerm.setEditingFactory(SSDeliveryTermTableModel.getEditingFactory(iOwner));
 
-        iPaymentTerm.getComboBox().setModel( SSPaymentTermTableModel.getDropDownModel() );
+        iPaymentTerm.getComboBox().setModel(SSPaymentTermTableModel.getDropDownModel());
         iPaymentTerm.getComboBox().setSearchColumns(0);
-        iPaymentTerm.setEditingFactory( SSPaymentTermTableModel.getEditingFactory(iOwner) );
+        iPaymentTerm.setEditingFactory(SSPaymentTermTableModel.getEditingFactory(iOwner));
 
         iTaxRate1.addPropertyChangeListener("value", new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent evt) {
@@ -287,29 +304,31 @@ public class SSOrderPanel {
 
         iCustomer.addSelectionListener(new SSSelectionListener<SSCustomer>() {
             public void selected(SSCustomer selected) {
-                if(selected != null){
+                if (selected != null) {
                     iHideUnitprice.setSelected(selected.getHideUnitprice());
                 }
             }
         });
 
-
-        iCurrencyCalculatorButton.addActionListener(new ActionListener() {
+        iCurrencyCalculatorButton.addActionListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSCurrency iCompanyCurrency = SSDB.getInstance().getCurrentCompany().getCurrency();
                 SSCurrency iCurrentCurrency = iCurrency.getSelected();
 
-                if( iCompanyCurrency == null || iCurrentCurrency == null) {
+                if (iCompanyCurrency == null || iCurrentCurrency == null) {
                     new SSInformationDialog(iOwner, "orderframe.selectcurrency");
                     return;
                 }
-                SSExchangeRateDialog.showDialog(iOwner, iOrder, iCompanyCurrency, iCurrentCurrency , iModel);
+                SSExchangeRateDialog.showDialog(iOwner, iOrder, iCompanyCurrency,
+                        iCurrentCurrency, iModel);
             }
         });
 
         SSButtonGroup iGroup = new SSButtonGroup(true);
-        iGroup.add( iEuSaleCommodity );
-        iGroup.add( iEuSaleYhirdPartCommodity );
+
+        iGroup.add(iEuSaleCommodity);
+        iGroup.add(iEuSaleYhirdPartCommodity);
 
         iInputVerifier = new SSInputVerifier();
 
@@ -319,7 +338,9 @@ public class SSOrderPanel {
             public void updated(SSInputVerifier iVerifier, boolean iValid) {
                 JComponent iCurrent = iVerifier.getCurrentComponent();
 
-                if(iCurrent == iCustomer);
+                if (iCurrent == iCustomer) {
+                    ;
+                }
 
                 iButtonPanel.getOkButton().setEnabled(iValid);
             }
@@ -331,7 +352,7 @@ public class SSOrderPanel {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public boolean isValid() {
@@ -345,7 +366,6 @@ public class SSOrderPanel {
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      *
@@ -364,7 +384,6 @@ public class SSOrderPanel {
         iButtonPanel.addCancelActionListener(pActionListener);
     }
 
-
     /**
      * @param pOrder
      */
@@ -380,7 +399,7 @@ public class SSOrderPanel {
         // Leveransdatum
         iEstimatedDelivery.setText(iOrder.getEstimatedDelivery());
         // Ert ordernummer
-        iYourOrderNumber.setText( iOrder.getYourOrderNumber());
+        iYourOrderNumber.setText(iOrder.getYourOrderNumber());
 
         // Kund nummer
         iCustomer.setText(iOrder.getCustomerNr());
@@ -403,7 +422,7 @@ public class SSOrderPanel {
         // Valuta
         iCurrency.setSelected(iOrder.getCurrency());
         // Valutakurs
-        iCurrencyRate.setValue( iOrder.getCurrencyRate() );
+        iCurrencyRate.setValue(iOrder.getCurrencyRate());
         // Betalningsvilkor
         iPaymentTerm.setSelected(iOrder.getPaymentTerm());
         // Leveransvilkor
@@ -411,15 +430,14 @@ public class SSOrderPanel {
         // Leveranssätt
         iDeliveryWay.setSelected(iOrder.getDeliveryWay());
 
-
         // Momsfritt
         iTaxFree.setSelected(iOrder.getTaxFree());
         // Momssats 1
-        iTaxRate1.setValue( iOrder.getTaxRate1() );
+        iTaxRate1.setValue(iOrder.getTaxRate1());
         // Momssats 2
-        iTaxRate2.setValue( iOrder.getTaxRate2() );
+        iTaxRate2.setValue(iOrder.getTaxRate2());
         // Momssats 3
-        iTaxRate3.setValue( iOrder.getTaxRate3() );
+        iTaxRate3.setValue(iOrder.getTaxRate3());
         // EU-försäljning varor
         iEuSaleCommodity.setSelected(iOrder.getEuSaleCommodity());
         // EU-försäljning trepart varor
@@ -435,11 +453,12 @@ public class SSOrderPanel {
         // Leveransadress
         iDeliveryAddress.setAdress(iOrder.getDeliveryAddress());
         // Standard konton
-        iDefaultAccounts.setDefaultAccounts( iOrder.getDefaultAccounts());
+        iDefaultAccounts.setDefaultAccounts(iOrder.getDefaultAccounts());
 
-        iUseInvoiceForDelivery.setSelected(  iOrder.getDeliveryAddress().equals(  iOrder.getInvoiceAddress() ) );
+        iUseInvoiceForDelivery.setSelected(
+                iOrder.getDeliveryAddress().equals(iOrder.getInvoiceAddress()));
 
-        iDeliveryAddress.setEnabled( !iUseInvoiceForDelivery.isSelected());
+        iDeliveryAddress.setEnabled(!iUseInvoiceForDelivery.isSelected());
 
         updateSumFields();
         updateTaxTexts();
@@ -471,7 +490,7 @@ public class SSOrderPanel {
         // Valuta
         iOrder.setCurrency(iCurrency.getSelected());
         // Valutakurs
-        iOrder.setCurrencyRate( iCurrencyRate.getValue() );
+        iOrder.setCurrencyRate(iCurrencyRate.getValue());
         // Betalningsvilkor
         iOrder.setPaymentTerm(iPaymentTerm.getSelected());
         // Leveransvilkor
@@ -484,7 +503,7 @@ public class SSOrderPanel {
         iOrder.setEuSaleCommodity(iEuSaleCommodity.isSelected());
         // EU-försäljning trepart varor
         iOrder.setEuSaleYhirdPartCommodity(iEuSaleYhirdPartCommodity.isSelected());
-        //Dölj enhetspris på följesedel
+        // Dölj enhetspris på följesedel
         iOrder.setHideUnitprice(iHideUnitprice.isSelected());
         // Momssats 1
         iOrder.setTaxRate1(iTaxRate1.getValue());
@@ -521,54 +540,61 @@ public class SSOrderPanel {
         return iSavecustomerandproducts.isSelected();
     }
 
-
     /**
      *
      */
-    private void updateSumFields(){
-        BigDecimal                 iNetSum   = SSOrderMath.getNetSum    (iOrder);
-        Map<SSTaxCode, BigDecimal> iTaxSum   = SSOrderMath.getTaxSum    (iOrder);
-        BigDecimal                 iTotalSum = SSOrderMath.getTotalSum  (iOrder);
-        BigDecimal                 iRounding = SSOrderMath.getRounding  (iOrder);
+    private void updateSumFields() {
+        BigDecimal                 iNetSum = SSOrderMath.getNetSum(iOrder);
+        Map<SSTaxCode, BigDecimal> iTaxSum = SSOrderMath.getTaxSum(iOrder);
+        BigDecimal                 iTotalSum = SSOrderMath.getTotalSum(iOrder);
+        BigDecimal                 iRounding = SSOrderMath.getRounding(iOrder);
 
-        this.iNetSum     .setValue(iNetSum );
+        this.iNetSum.setValue(iNetSum);
         iTaxSum1.setValue(iTaxSum.get(SSTaxCode.TAXRATE_1));
         iTaxSum2.setValue(iTaxSum.get(SSTaxCode.TAXRATE_2));
         iTaxSum3.setValue(iTaxSum.get(SSTaxCode.TAXRATE_3));
-        if(!SSDB.getInstance().getCurrentCompany().isRoundingOff()) iRoundingSum.setValue(iRounding);
-        this.iTotalSum   .setValue(iTotalSum);
+        if (!SSDB.getInstance().getCurrentCompany().isRoundingOff()) {
+            iRoundingSum.setValue(iRounding);
+        }
+        this.iTotalSum.setValue(iTotalSum);
     }
 
     /**
      *
      */
-    private void updateTaxTexts(){
-        SSTaxCodeCellEditor   iEditor   = new SSTaxCodeCellEditor();
+    private void updateTaxTexts() {
+        SSTaxCodeCellEditor   iEditor = new SSTaxCodeCellEditor();
         SSTaxCodeCellRenderer iRenderer = new SSTaxCodeCellRenderer();
 
         String iTaxText = SSBundle.getBundle().getString("tenderframe.tax");
 
-        BigDecimal iTaxRate1 = this.iTaxRate1.getValue() == null ? new BigDecimal(25) : this.iTaxRate1.getValue();
-        BigDecimal iTaxRate2 = this.iTaxRate2.getValue() == null ? new BigDecimal(12) : this.iTaxRate2.getValue();
-        BigDecimal iTaxRate3 = this.iTaxRate3.getValue() == null ? new BigDecimal( 6) : this.iTaxRate3.getValue();
+        BigDecimal iTaxRate1 = this.iTaxRate1.getValue() == null
+                ? new BigDecimal(25)
+                : this.iTaxRate1.getValue();
+        BigDecimal iTaxRate2 = this.iTaxRate2.getValue() == null
+                ? new BigDecimal(12)
+                : this.iTaxRate2.getValue();
+        BigDecimal iTaxRate3 = this.iTaxRate3.getValue() == null
+                ? new BigDecimal(6)
+                : this.iTaxRate3.getValue();
 
-        iEditor.setValue(SSTaxCode.TAXRATE_0,  new BigDecimal(0));
+        iEditor.setValue(SSTaxCode.TAXRATE_0, new BigDecimal(0));
         iEditor.setValue(SSTaxCode.TAXRATE_1, iTaxRate1);
         iEditor.setValue(SSTaxCode.TAXRATE_2, iTaxRate2);
         iEditor.setValue(SSTaxCode.TAXRATE_3, iTaxRate3);
 
-        iRenderer.setValue(SSTaxCode.TAXRATE_0,  new BigDecimal(0));
+        iRenderer.setValue(SSTaxCode.TAXRATE_0, new BigDecimal(0));
         iRenderer.setValue(SSTaxCode.TAXRATE_1, iTaxRate1);
         iRenderer.setValue(SSTaxCode.TAXRATE_2, iTaxRate2);
         iRenderer.setValue(SSTaxCode.TAXRATE_3, iTaxRate3);
 
         NumberFormat iFormat = NumberFormat.getNumberInstance();
 
-        iTaxLabel1.setText( iTaxText + ' ' + iFormat.format(iTaxRate1) + '%');
-        iTaxLabel2.setText( iTaxText + ' ' + iFormat.format(iTaxRate2) + '%');
-        iTaxLabel3.setText( iTaxText + ' ' + iFormat.format(iTaxRate3) + '%');
+        iTaxLabel1.setText(iTaxText + ' ' + iFormat.format(iTaxRate1) + '%');
+        iTaxLabel2.setText(iTaxText + ' ' + iFormat.format(iTaxRate2) + '%');
+        iTaxLabel3.setText(iTaxText + ' ' + iFormat.format(iTaxRate3) + '%');
 
-        iTable.setDefaultEditor  (SSTaxCode.class, iEditor);
+        iTable.setDefaultEditor(SSTaxCode.class, iEditor);
         iTable.setDefaultRenderer(SSTaxCode.class, iRenderer);
         iModel.fireTableDataChanged();
     }
@@ -577,7 +603,7 @@ public class SSOrderPanel {
      *
      * @param iSelected
      */
-    public void setSavecustomerandproductsSelected(boolean iSelected){
+    public void setSavecustomerandproductsSelected(boolean iSelected) {
         iSavecustomerandproducts.setSelected(iSelected);
 
     }
@@ -585,97 +611,97 @@ public class SSOrderPanel {
     public void dispose() {
         iModel.setCustomer(null);
         iPanel.removeAll();
-        iPanel=null;
+        iPanel = null;
         iButtonPanel.dispose();
-        iButtonPanel=null;
+        iButtonPanel = null;
         iTable.dispose();
-        iTable=null;
+        iTable = null;
         iNumber.removeAll();
-        iNumber=null;
+        iNumber = null;
         iDate.dispose();
-        iDate=null;
+        iDate = null;
         iCustomer.dispose();
-        iCustomer=null;
-        iCustomerName=null;
-        iYourOrderNumber=null;
-        iTaxFree=null;
-        iDelayInterest=null;
-        iDeliveryAddress=null;
-        iInvoiceAddress=null;
+        iCustomer = null;
+        iCustomerName = null;
+        iYourOrderNumber = null;
+        iTaxFree = null;
+        iDelayInterest = null;
+        iDeliveryAddress = null;
+        iInvoiceAddress = null;
         iText.removeAll();
-        iText=null;
+        iText = null;
         iYourContactPerson.removeAll();
-        iYourContactPerson=null;
+        iYourContactPerson = null;
         iOurContactPerson.removeAll();
-        iOurContactPerson=null;
-        PropertyChangeListener[] iPropertyChangeListeners=iTaxRate1.getPropertyChangeListeners();
+        iOurContactPerson = null;
+        PropertyChangeListener[] iPropertyChangeListeners = iTaxRate1.getPropertyChangeListeners();
+
         for (PropertyChangeListener iPropertyChangeListener : iPropertyChangeListeners) {
             iTaxRate1.removePropertyChangeListener(iPropertyChangeListener);
         }
         iTaxRate1.removeAll();
-        iTaxRate1=null;
-        iPropertyChangeListeners=iTaxRate2.getPropertyChangeListeners();
+        iTaxRate1 = null;
+        iPropertyChangeListeners = iTaxRate2.getPropertyChangeListeners();
         for (PropertyChangeListener iPropertyChangeListener : iPropertyChangeListeners) {
             iTaxRate2.removePropertyChangeListener(iPropertyChangeListener);
         }
         iTaxRate2.removeAll();
-        iTaxRate2=null;
-        iPropertyChangeListeners=iTaxRate3.getPropertyChangeListeners();
+        iTaxRate2 = null;
+        iPropertyChangeListeners = iTaxRate3.getPropertyChangeListeners();
         for (PropertyChangeListener iPropertyChangeListener : iPropertyChangeListeners) {
             iTaxRate3.removePropertyChangeListener(iPropertyChangeListener);
         }
         iTaxRate3.removeAll();
-        iTaxRate3=null;
-        iEstimatedDelivery=null;
+        iTaxRate3 = null;
+        iEstimatedDelivery = null;
         iEuSaleCommodity.removeAll();
-        iEuSaleCommodity=null;
+        iEuSaleCommodity = null;
         iEuSaleYhirdPartCommodity.removeAll();
-        iEuSaleYhirdPartCommodity=null;
+        iEuSaleYhirdPartCommodity = null;
         iDeliveryWay.dispose();
-        iDeliveryWay=null;
+        iDeliveryWay = null;
         iDeliveryTerm.dispose();
-        iDeliveryTerm=null;
+        iDeliveryTerm = null;
         iPaymentTerm.dispose();
-        iPaymentTerm=null;
+        iPaymentTerm = null;
         iCurrency.dispose();
-        iCurrency=null;
+        iCurrency = null;
 
         iDefaultAccounts.dispose();
-        iDefaultAccounts=null;
+        iDefaultAccounts = null;
 
         iCurrencyCalculatorButton.dispose();
-        iCurrencyCalculatorButton=null;
+        iCurrencyCalculatorButton = null;
 
         iNetSum.removeAll();
-        iNetSum=null;
+        iNetSum = null;
         iTaxSum1.removeAll();
-        iTaxSum1=null;
+        iTaxSum1 = null;
         iTaxSum2.removeAll();
-        iTaxSum2=null;
+        iTaxSum2 = null;
         iTaxSum3.removeAll();
-        iTaxSum3=null;
+        iTaxSum3 = null;
         iRoundingSum.removeAll();
-        iRoundingSum=null;
+        iRoundingSum = null;
         iTotalSum.removeAll();
-        iTotalSum=null;
+        iTotalSum = null;
 
-        iTaxLabel1=null;
-        iTaxLabel2=null;
-        iTaxLabel3=null;
+        iTaxLabel1 = null;
+        iTaxLabel2 = null;
+        iTaxLabel3 = null;
 
-        iSavecustomerandproducts=null;
+        iSavecustomerandproducts = null;
 
-        iModel=null;
+        iModel = null;
 
-        iInputVerifier=null;
-        iUseInvoiceForDelivery=null;
-        iHideUnitprice=null;
+        iInputVerifier = null;
+        iUseInvoiceForDelivery = null;
+        iHideUnitprice = null;
         iCurrencyRate.removeAll();
-        iCurrencyRate=null;
+        iCurrencyRate = null;
     }
 
-
-    public void addKeyListeners(){
+    public void addKeyListeners() {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -683,10 +709,10 @@ public class SSOrderPanel {
             }
         });
 
-        iCustomer.getComponent(0).addKeyListener(new KeyAdapter(){
+        iCustomer.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCustomerName.requestFocusInWindow();
@@ -696,10 +722,10 @@ public class SSOrderPanel {
             }
         });
 
-        iCustomerName.addKeyListener(new KeyAdapter(){
+        iCustomerName.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOurContactPerson.requestFocusInWindow();
@@ -709,10 +735,10 @@ public class SSOrderPanel {
             }
         });
 
-        iOurContactPerson.addKeyListener(new KeyAdapter(){
+        iOurContactPerson.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iYourContactPerson.requestFocusInWindow();
@@ -722,10 +748,10 @@ public class SSOrderPanel {
             }
         });
 
-        iYourContactPerson.addKeyListener(new KeyAdapter(){
+        iYourContactPerson.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iDate.getEditor().getComponent(0).requestFocusInWindow();
@@ -735,10 +761,10 @@ public class SSOrderPanel {
             }
         });
 
-        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDate.getEditor().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iEstimatedDelivery.requestFocusInWindow();
@@ -748,11 +774,12 @@ public class SSOrderPanel {
             }
         });
 
-        iEstimatedDelivery.addKeyListener(new KeyAdapter(){
+        iEstimatedDelivery.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -761,11 +788,12 @@ public class SSOrderPanel {
             }
         });
 
-        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iPaymentTerm.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -774,11 +802,12 @@ public class SSOrderPanel {
             }
         });
 
-        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iPaymentTerm.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iDeliveryWay.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -787,11 +816,12 @@ public class SSOrderPanel {
             }
         });
 
-        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iDeliveryWay.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
-                    SwingUtilities.invokeLater(new Runnable() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    SwingUtilities.invokeLater(
+                            new Runnable() {
                         public void run() {
                             iCurrency.getComboBox().getComponent(0).requestFocusInWindow();
                         }
@@ -800,10 +830,10 @@ public class SSOrderPanel {
             }
         });
 
-        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iCurrency.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iCurrencyRate.requestFocusInWindow();
@@ -813,24 +843,24 @@ public class SSOrderPanel {
             }
         });
 
-        iCurrencyRate.addKeyListener(new KeyAdapter(){
+        iCurrencyRate.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTable.requestFocusInWindow();
-                            iTable.changeSelection(0,0,false,false);
+                            iTable.changeSelection(0, 0, false, false);
                         }
                     });
                 }
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -840,10 +870,10 @@ public class SSOrderPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -853,9 +883,9 @@ public class SSOrderPanel {
             }
         });
 
-        iNumber.addFocusListener(new FocusAdapter(){
+        iNumber.addFocusListener(new FocusAdapter() {
             @Override
-            public void focusGained(FocusEvent e){
+            public void focusGained(FocusEvent e) {
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         iCustomer.getComponent(0).requestFocusInWindow();
@@ -869,10 +899,11 @@ public class SSOrderPanel {
 
         iUseInvoiceForDelivery.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(!iUseInvoiceForDelivery.isSelected())
+                if (!iUseInvoiceForDelivery.isSelected()) {
                     iDeliveryAddress.setFocus();
-                else
+                } else {
                     iInvoiceAddress.setFocus();
+                }
             }
         });
     }
@@ -886,19 +917,19 @@ public class SSOrderPanel {
          *
          */
         public ContributionRateColumn() {
-            super(SSBundle.getBundle().getString("salerowtable.column.12") );
+            super(SSBundle.getBundle().getString("salerowtable.column.12"));
         }
 
-        private BigDecimal getExchangeRate(){
+        private BigDecimal getExchangeRate() {
             BigDecimal iValue = iCurrencyRate.getValue();
 
-            if(iValue != null){
+            if (iValue != null) {
                 return iValue;
             }
 
             SSCurrency iSelected = iCurrency.getSelected();
 
-            if(iSelected != null){
+            if (iSelected != null) {
                 return iSelected.getExchangeRate();
             }
             return null;
@@ -911,17 +942,21 @@ public class SSOrderPanel {
          */
         @Override
         public Object getValue(SSSaleRow iRow) {
-            SSProduct iProduct   = iRow.getProduct();
+            SSProduct iProduct = iRow.getProduct();
 
-            if(iProduct == null) return null;
+            if (iProduct == null) {
+                return null;
+            }
 
-            BigDecimal iInprice       = SSProductMath.getInprice(iProduct, iDate.getDate());
-            BigDecimal iUnitprice     = iRow.getUnitprice();
-            BigDecimal iExchangeRate  = getExchangeRate();
+            BigDecimal iInprice = SSProductMath.getInprice(iProduct, iDate.getDate());
+            BigDecimal iUnitprice = iRow.getUnitprice();
+            BigDecimal iExchangeRate = getExchangeRate();
 
-            if(iInprice == null || iUnitprice == null ) return null;
+            if (iInprice == null || iUnitprice == null) {
+                return null;
+            }
 
-            if(iExchangeRate != null) {
+            if (iExchangeRate != null) {
                 return iUnitprice.multiply(iExchangeRate).subtract(iInprice);
             } else {
                 return iUnitprice.subtract(iInprice);
@@ -929,9 +964,7 @@ public class SSOrderPanel {
         }
 
         @Override
-        public void setValue(SSSaleRow iObject, Object iValue) {
-
-        }
+        public void setValue(SSSaleRow iObject, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -944,10 +977,10 @@ public class SSOrderPanel {
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.order.panel.SSOrderPanel");
         sb.append("{checkBox1=").append(checkBox1);
         sb.append(", iButtonPanel=").append(iButtonPanel);

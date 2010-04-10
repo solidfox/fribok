@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.backup;
 
+
 import se.swedsoft.bookkeeping.data.backup.SSBackup;
 import se.swedsoft.bookkeeping.data.backup.SSBackupDatabase;
 import se.swedsoft.bookkeeping.data.backup.util.SSBackupFactory;
@@ -43,8 +44,8 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSBackupFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
@@ -54,8 +55,8 @@ public class SSBackupFrame extends SSDefaultTableFrame {
     /**
      *
      */
-    public static void hideFrame(){
-        if( cInstance != null  ){
+    public static void hideFrame() {
+        if (cInstance != null) {
             cInstance.setVisible(true);
         }
     }
@@ -64,17 +65,15 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewAccountingYearFrame
      */
-    public static SSBackupFrame getInstance(){
+    public static SSBackupFrame getInstance() {
         return cInstance;
     }
-
 
     private SSBackupDatabase iDatabase;
 
     private SSTable iTable;
 
     private SSTableModel<SSBackup> iModel;
-
 
     /**
      * Default constructor.
@@ -83,9 +82,9 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      * @param pHeight
      */
     private SSBackupFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
-        super(pMainFrame, SSBundle.getBundle().getString("backupframe.title"), pWidth, pHeight);
+        super(pMainFrame, SSBundle.getBundle().getString("backupframe.title"), pWidth,
+                pHeight);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -99,7 +98,8 @@ public class SSBackupFrame extends SSDefaultTableFrame {
 
         // Restore from selected backup
         // ***************************
-        SSButton iButton = new SSButton("ICON_IMPORT", "backupframe.restorebutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_IMPORT", "backupframe.restorebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSBackup iBackup = getSelected();
 
@@ -127,36 +127,41 @@ public class SSBackupFrame extends SSDefaultTableFrame {
 
                     SSCompanyFrame.showFrame(getMainFrame(), 500, 300);
                 } catch (SSException ex) {
-                    new SSErrorDialog(getMainFrame(), "exceptiondialog", ex.getLocalizedMessage());
+                    new SSErrorDialog(getMainFrame(), "exceptiondialog",
+                            ex.getLocalizedMessage());
                 }
             }
         });
+
         toolBar.add(iButton);
         toolBar.addSeparator();
         iTable.addSelectionDependentComponent(iButton);
 
-
         // Restore from external backup
         // ***************************
-        iButton = new SSButton("ICON_OPENITEM", "backupframe.openbutton", new ActionListener(){
+        iButton = new SSButton("ICON_OPENITEM", "backupframe.openbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSBackupFileChooser iFileChooser = SSBackupFileChooser.getInstance();
 
-                if(iFileChooser.showOpenDialog( getMainFrame() ) != JOptionPane.OK_OPTION ) return;
+                if (iFileChooser.showOpenDialog(getMainFrame()) != JOptionPane.OK_OPTION) {
+                    return;
+                }
 
                 String iFileName = iFileChooser.getSelectedFile().getAbsolutePath();
 
                 try {
-                    SSBackupFactory.restoreBackup(iFileName );
+                    SSBackupFactory.restoreBackup(iFileName);
 
                     SSDB.getInstance().setCurrentCompany(null);
                     SSDB.getInstance().setCurrentYear(null);
 
                     iModel.fireTableDataChanged();
-                    
-                    SSCompanyFrame.showFrame(getMainFrame(),500,300);
+
+                    SSCompanyFrame.showFrame(getMainFrame(), 500, 300);
                 } catch (SSException ex) {
-                    new SSErrorDialog(getMainFrame(), "exceptiondialog", ex.getLocalizedMessage());
+                    new SSErrorDialog(getMainFrame(), "exceptiondialog",
+                            ex.getLocalizedMessage());
                 }
             }
         });
@@ -164,7 +169,8 @@ public class SSBackupFrame extends SSDefaultTableFrame {
 
         // Ta bort backup
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "backupframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "backupframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 deleteSelectedBackup();
 
@@ -172,8 +178,6 @@ public class SSBackupFrame extends SSDefaultTableFrame {
         });
         toolBar.add(iButton);
         iTable.addSelectionDependentComponent(iButton);
-
-
 
         return toolBar;
 
@@ -200,19 +204,18 @@ public class SSBackupFrame extends SSDefaultTableFrame {
         iTable = new SSTable();
 
         iModel = new SSBackupTableModel(iBackups);
-        iModel.addColumn( SSBackupTableModel.COLUMN_DATE );
-        iModel.addColumn( SSBackupTableModel.COLUMN_FILENAME );
-        iModel.addColumn( SSBackupTableModel.COLUMN_TYPE );
+        iModel.addColumn(SSBackupTableModel.COLUMN_DATE);
+        iModel.addColumn(SSBackupTableModel.COLUMN_FILENAME);
+        iModel.addColumn(SSBackupTableModel.COLUMN_TYPE);
         iModel.setupTable(iTable);
 
         JPanel iPanel = new JPanel();
-        iPanel.setLayout( new BorderLayout() );
-        iPanel.add( new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,2,2));
+
+        iPanel.setLayout(new BorderLayout());
+        iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         return iPanel;
     }
-
-
 
     /**
      * This method should return the status bar content, if any.
@@ -228,32 +231,31 @@ public class SSBackupFrame extends SSDefaultTableFrame {
      *
      * @return The selected backup, if any
      */
-    private SSBackup getSelected(){
+    private SSBackup getSelected() {
         int selected = iTable.getSelectedRow();
 
-        if (selected >= 0){
+        if (selected >= 0) {
             return iModel.getObject(selected);
         }
         return null;
     }
 
-
-
     /**
      *
      */
-    private void deleteSelectedBackup(){
+    private void deleteSelectedBackup() {
         final SSBackup iBackup = getSelected();
 
         // If nothing selected, return
-        if(iBackup == null){
-            new SSErrorDialog( getMainFrame(), "backupframe.selectone" );
+        if (iBackup == null) {
+            new SSErrorDialog(getMainFrame(), "backupframe.selectone");
             return;
         }
 
-        SSQueryDialog iDialog = new SSQueryDialog( getMainFrame(), SSBundle.getBundle(),  "backupframe.delete", iBackup.getFilename());
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), SSBundle.getBundle(),
+                "backupframe.delete", iBackup.getFilename());
 
-        if( iDialog.getResponce() != JOptionPane.YES_OPTION ){
+        if (iDialog.getResponce() != JOptionPane.YES_OPTION) {
             return;
         }
         try {
@@ -265,7 +267,6 @@ public class SSBackupFrame extends SSDefaultTableFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
 
     }
 
@@ -286,17 +287,17 @@ public class SSBackupFrame extends SSDefaultTableFrame {
     public boolean isYearDataFrame() {
         return false;
     }
-    
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.backup.SSBackupFrame");
         sb.append("{iDatabase=").append(iDatabase);
         sb.append(", iModel=").append(iModel);

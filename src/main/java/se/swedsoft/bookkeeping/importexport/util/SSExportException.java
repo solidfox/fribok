@@ -1,15 +1,16 @@
 package se.swedsoft.bookkeeping.importexport.util;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
 
 import java.util.ResourceBundle;
+
 
 /**
  * Date: 2006-feb-14
  * Time: 10:50:49
  */
-public class SSExportException extends RuntimeException{
-
+public class SSExportException extends RuntimeException {
 
     /**
      *
@@ -29,7 +30,6 @@ public class SSExportException extends RuntimeException{
         super(pBundleString.getString());
     }
 
-
     /**
      *
      * @param pBundle The bundle
@@ -46,10 +46,8 @@ public class SSExportException extends RuntimeException{
      * @param pKey Name of the bundle key
      * @param pFormat Format args for String.format
      */
-    public SSExportException(ResourceBundle pBundle, String pKey, Object ... pFormat) {
-        super(String.format( pBundle.getString(pKey), pFormat));
+    public SSExportException(ResourceBundle pBundle, String pKey, Object... pFormat) {
+        super(String.format(pBundle.getString(pKey), pFormat));
     }
-
-
 
 }

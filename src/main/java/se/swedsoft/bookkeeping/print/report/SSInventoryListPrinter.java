@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.data.SSInventory;
 import se.swedsoft.bookkeeping.data.SSInventoryRow;
 import se.swedsoft.bookkeeping.data.SSProduct;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -31,22 +33,21 @@ public class SSInventoryListPrinter extends SSPrinter {
      *
      */
     public SSInventoryListPrinter() {
-        this(SSDB.getInstance().getInventories() );
+        this(SSDB.getInstance().getInventories());
     }
 
     /**
      *
      * @param iInventories
      */
-    public SSInventoryListPrinter( List<SSInventory> iInventories){
+    public SSInventoryListPrinter(List<SSInventory> iInventories) {
         // Get all orders
         this.iInventories = iInventories;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("inventorylist.jrxml");
-        setDetail      ("inventorylist.jrxml");
+        setDetail("inventorylist.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -67,8 +68,8 @@ public class SSInventoryListPrinter extends SSPrinter {
         iPrinter = new SSInventoryRowPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -87,22 +88,25 @@ public class SSInventoryListPrinter extends SSPrinter {
                 SSInventory iInventory = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iInventory.getNumber();
-                        break;
-                    case 1:
-                        value = iFormat.format(iInventory.getDate());
-                        break;
-                    case 2:
-                        value = iInventory.getText();
-                        break;
-                    case 3:
-                        iPrinter.setInventory(iInventory);
+                case 0:
+                    value = iInventory.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iFormat.format(iInventory.getDate());
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 2:
+                    value = iInventory.getText();
+                    break;
+
+                case 3:
+                    iPrinter.setInventory(iInventory);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
 
                 return value;
@@ -114,8 +118,6 @@ public class SSInventoryListPrinter extends SSPrinter {
         iModel.addColumn("inventory.text");
         iModel.addColumn("inventory.rows");
 
-
-
         Collections.sort(iInventories, new Comparator<SSInventory>() {
             public int compare(SSInventory o1, SSInventory o2) {
                 return o1.getNumber() - o2.getNumber();
@@ -124,10 +126,8 @@ public class SSInventoryListPrinter extends SSPrinter {
 
         iModel.setObjects(iInventories);
 
-
         return iModel;
     }
-
 
     private class SSInventoryRowPrinter extends SSPrinter {
 
@@ -136,15 +136,13 @@ public class SSInventoryListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSInventoryRowPrinter( ){
-            setMargins(0,0,0,0);
+        public SSInventoryRowPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("inventorylist.row.jrxml");
+            setDetail("inventorylist.row.jrxml");
             setSummary("inventorylist.row.jrxml");
 
-
-
-            iModel = new SSDefaultTableModel<SSInventoryRow>(  ) {
+            iModel = new SSDefaultTableModel<SSInventoryRow>() {
 
                 @Override
                 public Class getType() {
@@ -159,21 +157,25 @@ public class SSInventoryListPrinter extends SSPrinter {
                     SSProduct iProduct = iRow.getProduct();
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iRow.getProductNr();
-                            break;
-                        case 1:
-                            value = iProduct == null ? null : iProduct.getDescription();
-                            break;
-                        case 2:
-                            value = iRow.getStockQuantity();
-                            break;
-                        case 3:
-                            value = iRow.getInventoryQuantity();
-                            break;
-                        case 4:
-                            value = iRow.getChange();
-                            break;
+                    case 0:
+                        value = iRow.getProductNr();
+                        break;
+
+                    case 1:
+                        value = iProduct == null ? null : iProduct.getDescription();
+                        break;
+
+                    case 2:
+                        value = iRow.getStockQuantity();
+                        break;
+
+                    case 3:
+                        value = iRow.getInventoryQuantity();
+                        break;
+
+                    case 4:
+                        value = iRow.getChange();
+                        break;
 
                     }
 
@@ -187,7 +189,6 @@ public class SSInventoryListPrinter extends SSPrinter {
             iModel.addColumn("inventoryrow.inventoryquantity");
             iModel.addColumn("inventoryrow.change");
         }
-
 
         /**
          * Gets the data model for this report
@@ -214,23 +215,25 @@ public class SSInventoryListPrinter extends SSPrinter {
          * @param iInventory
          */
         public void setInventory(SSInventory iInventory) {
-            iModel.setObjects( iInventory.getRows() );
+            iModel.setObjects(iInventory.getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSInventoryListPrinter.SSInventoryRowPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSInventoryListPrinter.SSInventoryRowPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSInventoryListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iInventories=").append(iInventories);

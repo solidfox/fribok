@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.product.panel;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSProductMath;
 import se.swedsoft.bookkeeping.data.*;
 import se.swedsoft.bookkeeping.data.common.SSDefaultAccount;
@@ -34,6 +35,7 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -44,7 +46,6 @@ public class SSProductPanel {
     private JPanel iPanel;
 
     private SSButtonPanel iButtonPanel;
-
 
     private SSProduct iProduct;
 
@@ -80,17 +81,13 @@ public class SSProductPanel {
 
     private SSIntegerTextField iOrdercount;
 
-
     private JTextField iWarehouseLocation;
 
     private SSTableComboBox<SSSupplier> iSupplier;
 
     private JTextField iSupplierProductNr;
 
-
-
     private SSCurrencyTextField iFreight;
-
 
     private JButton iCalculateButton;
 
@@ -104,11 +101,9 @@ public class SSProductPanel {
 
     private SSLocalizedTextField iDescriptions;
 
-
     private SSTable iParcel;
 
     private SSDefaultTableModel<SSProductRow> iParcelModel;
-
 
     private JLabel iVolumeUnit;
 
@@ -127,7 +122,6 @@ public class SSProductPanel {
     private SSInputVerifier iInputVerifier;
     private SSBigDecimalTextField iStockPrice;
 
-
     /**
      *
      * @param iOwner
@@ -142,58 +136,67 @@ public class SSProductPanel {
         iParcel.setModel(iParcelModel);
         iParcel.setColorReadOnly(true);
 
-        iParcel.setDefaultEditor(SSProduct.class, new SSProductCellEditor( SSProductMath.getNormalProducts(), false) );
+        iParcel.setDefaultEditor(SSProduct.class,
+                new SSProductCellEditor(SSProductMath.getNormalProducts(), false));
 
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
+
         if (iCompany != null) {
             iVolumeUnit.setText(iCompany.getVolumeUnit());
             iWeightUnit.setText(iCompany.getWeightUnit());
         }
 
-        iSupplier.setModel(SSSupplierTableModel.getDropDownModel() );
+        iSupplier.setModel(SSSupplierTableModel.getDropDownModel());
         iSupplier.setSearchColumns(0);
-
 
         iOrderpoint.setValue(0);
         iOrdercount.setValue(0);
 
         iSellingAccount.setModel(SSAccountTableModel.getDropDownModel());
         iSellingAccount.setSearchColumns(0);
-        iSellingAccount.addSelectionListener(new SSSelectionListener() {
+        iSellingAccount.addSelectionListener(
+                new SSSelectionListener() {
             public void selected(SSTableSearchable selected) {
                 SSAccount iSelected = iSellingAccount.getSelected();
 
-                iSellingAccountDescription.setText(iSelected == null ? "" : iSelected.getDescription());
+                iSellingAccountDescription.setText(
+                        iSelected == null ? "" : iSelected.getDescription());
             }
         });
-        iSellingAccount.setSelected(SSDB.getInstance().getCurrentAccountPlan().getAccount(3041), true);
+        iSellingAccount.setSelected(
+                SSDB.getInstance().getCurrentAccountPlan().getAccount(3041), true);
 
         iPurchaseAccount.setModel(SSAccountTableModel.getDropDownModel());
         iPurchaseAccount.setSearchColumns(0);
-        iPurchaseAccount.addSelectionListener(new SSSelectionListener() {
+        iPurchaseAccount.addSelectionListener(
+                new SSSelectionListener() {
             public void selected(SSTableSearchable selected) {
                 SSAccount iSelected = iPurchaseAccount.getSelected();
 
-                iPurchaseAccountDescription.setText(iSelected == null ? "" : iSelected.getDescription());
+                iPurchaseAccountDescription.setText(
+                        iSelected == null ? "" : iSelected.getDescription());
             }
         });
-        iPurchaseAccount.setSelected(SSDB.getInstance().getCurrentAccountPlan().getAccount(4010), true);
-
+        iPurchaseAccount.setSelected(
+                SSDB.getInstance().getCurrentAccountPlan().getAccount(4010), true);
 
         iProject.setModel(SSProjectTableModel.getDropDownModel());
         iProject.setSearchColumns(0);
-        iProject.addSelectionListener(new SSSelectionListener() {
+        iProject.addSelectionListener(
+                new SSSelectionListener() {
             public void selected(SSTableSearchable selected) {
                 SSNewProject iSelected = iProject.getSelected();
+
                 if (iProject.getText() != null && iProject.getText().length() != 0) {
-                    iProjectDescription.setText(iSelected == null ? "" : iSelected.getName());
+                    iProjectDescription.setText(
+                            iSelected == null ? "" : iSelected.getName());
                 } else {
                     iProjectDescription.setText(null);
                 }
             }
         });
 
-        iProject.getComponent(0).addKeyListener(new KeyAdapter(){
+        iProject.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_DELETE) {
@@ -206,17 +209,20 @@ public class SSProductPanel {
         });
         iResultUnit.setModel(SSResultUnitTableModel.getDropDownModel());
         iResultUnit.setSearchColumns(0);
-        iResultUnit.addSelectionListener(new SSSelectionListener() {
+        iResultUnit.addSelectionListener(
+                new SSSelectionListener() {
             public void selected(SSTableSearchable selected) {
                 SSNewResultUnit iSelected = iResultUnit.getSelected();
+
                 if (iResultUnit.getText() != null && iResultUnit.getText().length() != 0) {
-                    iResultUnitDescription.setText(iSelected == null ? "" : iSelected.getName());
+                    iResultUnitDescription.setText(
+                            iSelected == null ? "" : iSelected.getName());
                 } else {
                     iResultUnitDescription.setText(null);
                 }
             }
         });
-        iResultUnit.getComponent(0).addKeyListener(new KeyAdapter(){
+        iResultUnit.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_DELETE) {
@@ -227,13 +233,12 @@ public class SSProductPanel {
             }
         });
 
-        iTax.setModel( SSTaxCodeTableModel.getDropDownModel() );
+        iTax.setModel(SSTaxCodeTableModel.getDropDownModel());
         iTax.setSearchColumns(0);
 
-        iUnit.getComboBox().setModel( SSUnitTableModel.getDropDownModel() );
+        iUnit.getComboBox().setModel(SSUnitTableModel.getDropDownModel());
         iUnit.getComboBox().setSearchColumns(0);
         iUnit.setEditingFactory(SSUnitTableModel.getEditingFactory(iOwner));
-
 
         iCalculateButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -268,23 +273,23 @@ public class SSProductPanel {
             }
         });
 
-
-        iDescriptions.addLocale( new Locale("se"), "Svenska:" );
-        iDescriptions.addLocale( new Locale("en"), "Engelska:" );
-
+        iDescriptions.addLocale(new Locale("se"), "Svenska:");
+        iDescriptions.addLocale(new Locale("en"), "Engelska:");
 
         NumberFormat iFormat = NumberFormat.getNumberInstance();
+
         iFormat.setMinimumFractionDigits(2);
         iFormat.setMaximumFractionDigits(2);
         iFormat.setGroupingUsed(false);
 
         NumberFormatter iFormatter = new NumberFormatter(iFormat);
+
         iFormatter.setFormat(iFormat);
 
         iContributionRate.setFormatterFactory(new DefaultFormatterFactory(iFormatter));
 
         // if (SSVersion.app_title.contains("JFS Fakturering")) {
-        //     iSupplier.setEnabled(false);
+        // iSupplier.setEnabled(false);
         // }
 
         addKeyListeners();
@@ -292,7 +297,7 @@ public class SSProductPanel {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public boolean isValid() {
@@ -303,22 +308,20 @@ public class SSProductPanel {
      *
      */
     private void updateContribution() {
-        BigDecimal iInprice          = SSProductMath.getInprice(iProduct);
-        BigDecimal iContribution     = SSProductMath.getContribution(iProduct);
+        BigDecimal iInprice = SSProductMath.getInprice(iProduct);
+        BigDecimal iContribution = SSProductMath.getContribution(iProduct);
         BigDecimal iContributionRate = SSProductMath.getContributionRate(iProduct);
 
-
-        if(iInprice != null) {
-            this.iInprice         .setValue(iInprice);
-            this.iContribution    .setValue(iContribution);
+        if (iInprice != null) {
+            this.iInprice.setValue(iInprice);
+            this.iContribution.setValue(iContribution);
             this.iContributionRate.setValue(iContributionRate);
         } else {
-            this.iInprice         .setValue( new BigDecimal(0) );
-            this.iContribution.    setValue( iProduct.getSellingPrice() );
-            this.iContributionRate.setValue( new BigDecimal(100));
+            this.iInprice.setValue(new BigDecimal(0));
+            this.iContribution.setValue(iProduct.getSellingPrice());
+            this.iContributionRate.setValue(new BigDecimal(100));
         }
     }
-
 
     /**
      * @param pProduct
@@ -326,40 +329,47 @@ public class SSProductPanel {
     public void setProduct(SSProduct pProduct) {
         iProduct = pProduct;
 
-        iProductNr        .setText(iProduct.getNumber());
-        iDescription      .setText(iProduct.getDescription());
-        iUnitprice        .setValue(iProduct.getSellingPrice());
-        iTax              .setSelected(iProduct.getTaxCode());
-        iPurchasePrice    .setValue(iProduct.getPurchasePrice());
-        iStockPrice       .setValue(iProduct.getStockPrice());
-        iFreight          .setValue(iProduct.getUnitFreight());
-        iWeight           .setValue(iProduct.getWeight());
-        iVolume           .setValue(iProduct.getVolume());
-        iUnit             .setSelected(iProduct.getUnit());
-        iExpired          .setSelected(iProduct.isExpired());
-        iStockGoods       .setSelected(iProduct.isStockProduct());
-        iOrderpoint       .setValue(iProduct.getOrderpoint());
-        iOrdercount       .setValue(iProduct.getOrdercount());
+        iProductNr.setText(iProduct.getNumber());
+        iDescription.setText(iProduct.getDescription());
+        iUnitprice.setValue(iProduct.getSellingPrice());
+        iTax.setSelected(iProduct.getTaxCode());
+        iPurchasePrice.setValue(iProduct.getPurchasePrice());
+        iStockPrice.setValue(iProduct.getStockPrice());
+        iFreight.setValue(iProduct.getUnitFreight());
+        iWeight.setValue(iProduct.getWeight());
+        iVolume.setValue(iProduct.getVolume());
+        iUnit.setSelected(iProduct.getUnit());
+        iExpired.setSelected(iProduct.isExpired());
+        iStockGoods.setSelected(iProduct.isStockProduct());
+        iOrderpoint.setValue(iProduct.getOrderpoint());
+        iOrdercount.setValue(iProduct.getOrdercount());
         iWarehouseLocation.setText(iProduct.getWarehouseLocation());
         iSupplierProductNr.setText(iProduct.getSupplierProductNr());
-        iSupplier         .setSelected(iProduct.getSupplier(SSDB.getInstance().getSuppliers()));
+        iSupplier.setSelected(iProduct.getSupplier(SSDB.getInstance().getSuppliers()));
 
         // Beskrivningar på alternativa språk
-        iDescriptions.setValues( iProduct.getDescriptions() );
+        iDescriptions.setValues(iProduct.getDescriptions());
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
+
         // SSNewCompany     iCompany     = SSDB.getInstance().getCurrentCompany();
 
-        //Integer iSalesAccountNumber     = iProduct.getDefaultAccount(SSDefaultAccount.Sales    );//, iCompany.getDefaultAccount(SSDefaultAccount.Sales    ));
-        //Integer iPurchasesAccountNumber = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);// iCompany.getDefaultAccount(SSDefaultAccount.Purchases));
+        // Integer iSalesAccountNumber     = iProduct.getDefaultAccount(SSDefaultAccount.Sales    );//, iCompany.getDefaultAccount(SSDefaultAccount.Sales    ));
+        // Integer iPurchasesAccountNumber = iProduct.getDefaultAccount(SSDefaultAccount.Purchases);// iCompany.getDefaultAccount(SSDefaultAccount.Purchases));
 
-        if(iAccountPlan != null){
-            iSellingAccount .setSelected(iAccountPlan.getAccount(iProduct.getDefaultAccount(SSDefaultAccount.Sales    )), true);
-            iPurchaseAccount.setSelected(iAccountPlan.getAccount(iProduct.getDefaultAccount(SSDefaultAccount.Purchases)), true);
+        if (iAccountPlan != null) {
+            iSellingAccount.setSelected(
+                    iAccountPlan.getAccount(
+                            iProduct.getDefaultAccount(SSDefaultAccount.Sales)),
+                            true);
+            iPurchaseAccount.setSelected(
+                    iAccountPlan.getAccount(
+                            iProduct.getDefaultAccount(SSDefaultAccount.Purchases)),
+                            true);
         }
         if (iProduct.getProjectNr() != null) {
-            for(SSNewProject pProject : SSDB.getInstance().getProjects()){
-                if(pProject.getNumber().equals(iProduct.getProjectNr())){
+            for (SSNewProject pProject : SSDB.getInstance().getProjects()) {
+                if (pProject.getNumber().equals(iProduct.getProjectNr())) {
                     iProject.setSelected(pProject);
                     iProjectDescription.setText(pProject.getName());
                 }
@@ -369,8 +379,8 @@ public class SSProductPanel {
             iProject.setText(null);
         }
         if (iProduct.getResultUnitNr() != null) {
-            for(SSNewResultUnit pResultUnit : SSDB.getInstance().getResultUnits()){
-                if(pResultUnit.getNumber().equals(iProduct.getResultUnitNr())){
+            for (SSNewResultUnit pResultUnit : SSDB.getInstance().getResultUnits()) {
+                if (pResultUnit.getNumber().equals(iProduct.getResultUnitNr())) {
                     iResultUnit.setSelected(pResultUnit);
                     iResultUnitDescription.setText(pResultUnit.getName());
                 }
@@ -387,36 +397,36 @@ public class SSProductPanel {
         updateContribution();
     }
 
-
     /**
      * @return
      */
     public SSProduct getProduct() {
-        iProduct.setNumber(iProductNr        .getText());
-        iProduct.setDescription(iDescription      .getText());
-        iProduct.setSellingPrice(iUnitprice        .getValue());
-        iProduct.setTaxCode(iTax              .getSelected());
-        iProduct.setPurchasePrice(iPurchasePrice    .getValue());
+        iProduct.setNumber(iProductNr.getText());
+        iProduct.setDescription(iDescription.getText());
+        iProduct.setSellingPrice(iUnitprice.getValue());
+        iProduct.setTaxCode(iTax.getSelected());
+        iProduct.setPurchasePrice(iPurchasePrice.getValue());
         iProduct.setStockPrice(iStockPrice.getValue());
-        iProduct.setUnitFreight(iFreight          .getValue());
-        iProduct.setWeight(iWeight           .getValue());
-        iProduct.setVolume(iVolume           .getValue());
-        iProduct.setUnit(iUnit             .getSelected());
-        iProduct.setExpired(iExpired          .isSelected());
-        iProduct.setStockProduct(iStockGoods       .isSelected());
+        iProduct.setUnitFreight(iFreight.getValue());
+        iProduct.setWeight(iWeight.getValue());
+        iProduct.setVolume(iVolume.getValue());
+        iProduct.setUnit(iUnit.getSelected());
+        iProduct.setExpired(iExpired.isSelected());
+        iProduct.setStockProduct(iStockGoods.isSelected());
         // beställningsantal
         iProduct.setOrdercount(iOrdercount.getValue());
         // Beställningspunkt
-        iProduct.setOrderpoint(iOrderpoint.getValue() );
-        iProduct.setWarehouseLocation(iWarehouseLocation .getText());
+        iProduct.setOrderpoint(iOrderpoint.getValue());
+        iProduct.setWarehouseLocation(iWarehouseLocation.getText());
         iProduct.setSupplierProductNr(iSupplierProductNr.getText());
         iProduct.setSupplier(iSupplier.getSelected());
 
         // Beskrivningar på alternativa språk
-        iProduct.setDescriptions( iDescriptions.getValues() );
+        iProduct.setDescriptions(iDescriptions.getValues());
 
-        iProduct.setDefaultAccount(SSDefaultAccount.Purchases, iPurchaseAccount.getSelected());
-        iProduct.setDefaultAccount(SSDefaultAccount.Sales    , iSellingAccount .getSelected());
+        iProduct.setDefaultAccount(SSDefaultAccount.Purchases,
+                iPurchaseAccount.getSelected());
+        iProduct.setDefaultAccount(SSDefaultAccount.Sales, iSellingAccount.getSelected());
 
         if (iProject.getText() != null && iProject.getText().length() != 0) {
             iProduct.setProject(iProject.getSelected());
@@ -433,14 +443,12 @@ public class SSProductPanel {
         return iProduct;
     }
 
-
     /**
      * @return
      */
     public JPanel getPanel() {
         return iPanel;
     }
-
 
     /**
      * @param pActionListener
@@ -457,43 +465,55 @@ public class SSProductPanel {
         iButtonPanel.addCancelActionListener(pActionListener);
     }
 
-
     /**
      *
      */
     private void calculateFields() {
-        BigDecimal iUnitpriceSum     = new BigDecimal(0);
-        BigDecimal iVolumeSum        = new BigDecimal(0);
-        BigDecimal iWeightSum        = new BigDecimal(0);
+        BigDecimal iUnitpriceSum = new BigDecimal(0);
+        BigDecimal iVolumeSum = new BigDecimal(0);
+        BigDecimal iWeightSum = new BigDecimal(0);
         BigDecimal iPurchasePriceSum = new BigDecimal(0);
-        BigDecimal iFreightSum       = new BigDecimal(0);
+        BigDecimal iFreightSum = new BigDecimal(0);
 
         for (SSProductRow iRow : iProduct.getParcelRows()) {
-            SSProduct iProduct  = iRow.getProduct();
-            Integer   iCount    = iRow.getQuantity();
+            SSProduct iProduct = iRow.getProduct();
+            Integer   iCount = iRow.getQuantity();
 
-            if(iCount == null || iProduct == null ) continue;
+            if (iCount == null || iProduct == null) {
+                continue;
+            }
 
-            BigDecimal iUnitprice     = iProduct.getSellingPrice();
-            BigDecimal iVolume        = iProduct.getVolume();
-            BigDecimal iWeight        = iProduct.getWeight();
+            BigDecimal iUnitprice = iProduct.getSellingPrice();
+            BigDecimal iVolume = iProduct.getVolume();
+            BigDecimal iWeight = iProduct.getWeight();
             BigDecimal iPurchasePrice = iProduct.getPurchasePrice();
-            BigDecimal iFreightPrice  = iProduct.getUnitFreight();
+            BigDecimal iFreightPrice = iProduct.getUnitFreight();
 
             BigDecimal dCount = new BigDecimal(iCount);
-            if (iUnitprice     != null) iUnitpriceSum     = iUnitpriceSum    .add(iUnitprice    .multiply(dCount));
-            if (iVolume        != null) iVolumeSum        = iVolumeSum       .add(iVolume       .multiply(dCount));
-            if (iWeight        != null) iWeightSum        = iWeightSum       .add(iWeight       .multiply(dCount));
-            if (iPurchasePrice != null) iPurchasePriceSum = iPurchasePriceSum.add(iPurchasePrice.multiply(dCount));
-            if (iFreightPrice  != null) iFreightSum       = iFreightSum      .add(iFreightPrice .multiply(dCount));
+
+            if (iUnitprice != null) {
+                iUnitpriceSum = iUnitpriceSum.add(iUnitprice.multiply(dCount));
+            }
+            if (iVolume != null) {
+                iVolumeSum = iVolumeSum.add(iVolume.multiply(dCount));
+            }
+            if (iWeight != null) {
+                iWeightSum = iWeightSum.add(iWeight.multiply(dCount));
+            }
+            if (iPurchasePrice != null) {
+                iPurchasePriceSum = iPurchasePriceSum.add(iPurchasePrice.multiply(dCount));
+            }
+            if (iFreightPrice != null) {
+                iFreightSum = iFreightSum.add(iFreightPrice.multiply(dCount));
+            }
 
         }
 
-        iUnitprice    .setValue(iUnitpriceSum);
-        iVolume       .setValue(iVolumeSum);
-        iWeight       .setValue(iWeightSum);
+        iUnitprice.setValue(iUnitpriceSum);
+        iVolume.setValue(iVolumeSum);
+        iWeight.setValue(iWeightSum);
         iPurchasePrice.setValue(iPurchasePriceSum);
-        iFreight      .setValue(iFreightSum);
+        iFreight.setValue(iFreightSum);
 
     }
 
@@ -501,21 +521,22 @@ public class SSProductPanel {
         iProductNr.setEditable(false);
     }
 
-    public void addKeyListeners(){
+    public void addKeyListeners() {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                if(iProductNr.isEnabled())
+                if (iProductNr.isEnabled()) {
                     iProductNr.requestFocusInWindow();
-                else
+                } else {
                     iDescription.requestFocusInWindow();
+                }
             }
         });
 
-        iProductNr.addKeyListener(new KeyAdapter(){
+        iProductNr.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iDescription.requestFocusInWindow();
@@ -525,10 +546,10 @@ public class SSProductPanel {
             }
         });
 
-        iDescription.addKeyListener(new KeyAdapter(){
+        iDescription.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iUnitprice.requestFocusInWindow();
@@ -538,10 +559,10 @@ public class SSProductPanel {
             }
         });
 
-        iUnitprice.addKeyListener(new KeyAdapter(){
+        iUnitprice.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iTax.getComponent(0).requestFocusInWindow();
@@ -551,10 +572,10 @@ public class SSProductPanel {
             }
         });
 
-        iTax.getComponent(0).addKeyListener(new KeyAdapter(){
+        iTax.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPurchasePrice.requestFocusInWindow();
@@ -564,10 +585,10 @@ public class SSProductPanel {
             }
         });
 
-        iPurchasePrice.addKeyListener(new KeyAdapter(){
+        iPurchasePrice.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iFreight.requestFocusInWindow();
@@ -577,10 +598,10 @@ public class SSProductPanel {
             }
         });
 
-        iFreight.addKeyListener(new KeyAdapter(){
+        iFreight.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iUnit.getComboBox().getComponent(0).requestFocusInWindow();
@@ -590,10 +611,10 @@ public class SSProductPanel {
             }
         });
 
-        iUnit.getComboBox().getComponent(0).addKeyListener(new KeyAdapter(){
+        iUnit.getComboBox().getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iWeight.requestFocusInWindow();
@@ -603,10 +624,10 @@ public class SSProductPanel {
             }
         });
 
-        iWeight.addKeyListener(new KeyAdapter(){
+        iWeight.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iVolume.requestFocusInWindow();
@@ -616,10 +637,10 @@ public class SSProductPanel {
             }
         });
 
-        iVolume.addKeyListener(new KeyAdapter(){
+        iVolume.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iSellingAccount.getComponent(0).requestFocusInWindow();
@@ -629,10 +650,10 @@ public class SSProductPanel {
             }
         });
 
-        iSellingAccount.getComponent(0).addKeyListener(new KeyAdapter(){
+        iSellingAccount.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iPurchaseAccount.getComponent(0).requestFocusInWindow();
@@ -642,10 +663,10 @@ public class SSProductPanel {
             }
         });
 
-        iPurchaseAccount.getComponent(0).addKeyListener(new KeyAdapter(){
+        iPurchaseAccount.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iProject.getComponent(0).requestFocusInWindow();
@@ -655,10 +676,10 @@ public class SSProductPanel {
             }
         });
 
-        iProject.getComponent(0).addKeyListener(new KeyAdapter(){
+        iProject.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iResultUnit.getComponent(0).requestFocusInWindow();
@@ -668,10 +689,10 @@ public class SSProductPanel {
             }
         });
 
-        iResultUnit.getComponent(0).addKeyListener(new KeyAdapter(){
+        iResultUnit.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iExpired.requestFocusInWindow();
@@ -681,10 +702,10 @@ public class SSProductPanel {
             }
         });
 
-        iExpired.addKeyListener(new KeyAdapter(){
+        iExpired.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iStockGoods.requestFocusInWindow();
@@ -694,10 +715,10 @@ public class SSProductPanel {
             }
         });
 
-        iStockGoods.addKeyListener(new KeyAdapter(){
+        iStockGoods.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -707,10 +728,10 @@ public class SSProductPanel {
             }
         });
 
-        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getOkButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getCancelButton().requestFocusInWindow();
@@ -720,10 +741,10 @@ public class SSProductPanel {
             }
         });
 
-        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter(){
+        iButtonPanel.getCancelButton().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iButtonPanel.getOkButton().requestFocusInWindow();
@@ -733,10 +754,10 @@ public class SSProductPanel {
             }
         });
 
-        iWarehouseLocation.addKeyListener(new KeyAdapter(){
+        iWarehouseLocation.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOrderpoint.requestFocusInWindow();
@@ -746,10 +767,10 @@ public class SSProductPanel {
             }
         });
 
-        iOrderpoint.addKeyListener(new KeyAdapter(){
+        iOrderpoint.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iOrdercount.requestFocusInWindow();
@@ -759,10 +780,10 @@ public class SSProductPanel {
             }
         });
 
-        iOrdercount.addKeyListener(new KeyAdapter(){
+        iOrdercount.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iSupplier.getComponent(0).requestFocusInWindow();
@@ -772,10 +793,10 @@ public class SSProductPanel {
             }
         });
 
-        iSupplier.getComponent(0).addKeyListener(new KeyAdapter(){
+        iSupplier.getComponent(0).addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e){
-                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     SwingUtilities.invokeLater(new Runnable() {
                         public void run() {
                             iSupplierProductNr.requestFocusInWindow();
@@ -789,6 +810,7 @@ public class SSProductPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.product.panel.SSProductPanel");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iCalculateButton=").append(iCalculateButton);
@@ -834,7 +856,4 @@ public class SSProductPanel {
         return sb.toString();
     }
 }
-
-
-
 

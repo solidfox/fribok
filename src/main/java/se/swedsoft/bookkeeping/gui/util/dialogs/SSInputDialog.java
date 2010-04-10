@@ -1,9 +1,11 @@
 package se.swedsoft.bookkeeping.gui.util.dialogs;
 
+
 import se.swedsoft.bookkeeping.gui.util.components.SSImagePanel;
 
 import javax.swing.*;
 import java.awt.event.*;
+
 
 public class SSInputDialog extends JDialog {
     private JPanel contentPane;
@@ -13,9 +15,8 @@ public class SSInputDialog extends JDialog {
     private SSImagePanel iImage;
     private static String iAddress;
 
-
     public SSInputDialog() {
-        setLocation(400,300);
+        setLocation(400, 300);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -44,7 +45,8 @@ public class SSInputDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0),
+                JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
@@ -59,6 +61,7 @@ public class SSInputDialog extends JDialog {
 
     public static String showDialog() {
         SSInputDialog dialog = new SSInputDialog();
+
         dialog.pack();
         dialog.setVisible(true);
         return iAddress;
@@ -67,6 +70,7 @@ public class SSInputDialog extends JDialog {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.util.dialogs.SSInputDialog");
         sb.append("{buttonCancel=").append(buttonCancel);
         sb.append(", buttonOK=").append(buttonOK);

@@ -94,7 +94,6 @@ public class SSMainMenu {
 
     private SSMenuLoader iMenuLoader;
 
-
     /**
      * Default constructor.
      * @param pMainFrame
@@ -102,7 +101,7 @@ public class SSMainMenu {
     public SSMainMenu(SSMainFrame pMainFrame) {
         iMainFrame  = pMainFrame;
         iMenuLoader = new SSMenuLoader();
- 
+
         InputStream stream = getClass().getResourceAsStream(MENU_RES);
         iMenuLoader.loadMenus(stream);
 
@@ -162,7 +161,6 @@ public class SSMainMenu {
 
         loadWindowActions();
     }
-
 
     /**
      * Add actions to the File menu
@@ -269,7 +267,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Voucher export
         // *****************************
         iMenuLoader.addActionListener("filemenu.export.vouchers", new ActionListener() {
@@ -373,7 +370,6 @@ public class SSMainMenu {
      */
     private void loadRegisterActions() {
 
-
         // Select accountingyear
         // *****************************
         iMenuLoader.addActionListener("registermenu.accountingyear", new ActionListener() {
@@ -399,7 +395,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Projects
         // *****************************
         iMenuLoader.addActionListener("registermenu.project", new ActionListener() {
@@ -415,7 +410,6 @@ public class SSMainMenu {
                 SSResultUnitFrame.showFrame(iMainFrame, 400, 300);
             }
         });
-
 
         // Producter
         // *****************************
@@ -439,8 +433,6 @@ public class SSMainMenu {
                 SSSupplierFrame.showFrame(iMainFrame, 800, 600);
             }
         });
-
-
 
         iMenuLoader.addActionListener("registermenu.vouchertemplates", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -481,8 +473,6 @@ public class SSMainMenu {
             }
         });
 
-
-
         // Kreditfakturor
         // *****************************
         iMenuLoader.addActionListener("salemenu.creditinvoice", new ActionListener() {
@@ -491,7 +481,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Periodfaktura
         // *****************************
         iMenuLoader.addActionListener("salemenu.periodicinvoice", new ActionListener() {
@@ -499,8 +488,6 @@ public class SSMainMenu {
                 SSPeriodicInvoiceFrame.showFrame(iMainFrame, 800, 600);
             }
         });
-
-
 
         // Offerter
         // *****************************
@@ -547,8 +534,6 @@ public class SSMainMenu {
                 SSSupplierCreditInvoiceFrame.showFrame(iMainFrame, 880, 600);
             }
         });
-
-
 
     }
 
@@ -637,7 +622,6 @@ public class SSMainMenu {
 
     }
 
-
     /**
      *
      */
@@ -675,7 +659,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Inventeringsunderlag
         // *****************************
         iMenuLoader.addActionListener("stockmenu.inventorybasisreport", new ActionListener() {
@@ -700,7 +683,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Lagerredovisning
         // *****************************
         iMenuLoader.addActionListener("stockmenu.stockaccountreport", new ActionListener() {
@@ -717,12 +699,7 @@ public class SSMainMenu {
             }
         });
 
-
-
-
     }
-
-
 
     /**
      *
@@ -828,7 +805,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Mainbook
         // *****************************
         iMenuLoader.addActionListener("reportmenu.mainbook", new ActionListener() {
@@ -843,7 +819,6 @@ public class SSMainMenu {
                 SSReportFactory.MainbookReport(iMainFrame, yearData);
             }
         });
-
 
         // Result report
         // *****************************
@@ -892,8 +867,6 @@ public class SSMainMenu {
                 SSReportFactory.ResultUnitResultReport(iMainFrame, bundle, iAccountingYear);
             }
         });
-
-
 
         // Budget report
         // *****************************
@@ -972,7 +945,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Räkenskapsschema
         // *****************************
         iMenuLoader.addActionListener("reportmenu.accountdiagram", new ActionListener() {
@@ -988,7 +960,6 @@ public class SSMainMenu {
                 SSReportFactory.buildAccountDiagramReport(iMainFrame, bundle, yearData);
             }
         });
-
 
         // Förenklat årsbokslut
         // *****************************
@@ -1020,7 +991,6 @@ public class SSMainMenu {
 
         /////////////////////////////////////////////////////////////////////////////////////////////
 
-
         // Orderlista
         // *****************************
         iMenuLoader.addActionListener("reportmenu.orderlist", new ActionListener() {
@@ -1029,7 +999,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Kundreskontra
         // *****************************
         iMenuLoader.addActionListener("reportmenu.accountsrecievable", new ActionListener() {
@@ -1037,7 +1006,6 @@ public class SSMainMenu {
                 SSReportFactory.AccountsRecievableReport(iMainFrame);
             }
         });
-
 
         // Kundfodran
         // *****************************
@@ -1063,7 +1031,6 @@ public class SSMainMenu {
             }
         });
 
-
         // Kreditfaktura journal
         // *****************************
         iMenuLoader.addActionListener("journalmenu.creditinvoicejornal", new ActionListener() {
@@ -1079,7 +1046,6 @@ public class SSMainMenu {
                 SSReportFactory.InpaymentJournal(iMainFrame);
             }
         });
-
 
         // leverantörsfaktura journal
         // *****************************
@@ -1105,8 +1071,6 @@ public class SSMainMenu {
             }
         });
 
-
-
         // Leverantörsreskontra
         // *****************************
         iMenuLoader.addActionListener("reportmenu.accountspayable", new ActionListener() {
@@ -1114,7 +1078,6 @@ public class SSMainMenu {
                 SSReportFactory.AccountsPayableReport(iMainFrame);
             }
         });
-
 
         // Leverantörsskuld
         // *****************************
@@ -1150,7 +1113,6 @@ public class SSMainMenu {
                 SSReportFactory.Purchasevalues(iMainFrame, bundle, yearData);
             }
         });
-
 
     }
 
@@ -1200,7 +1162,6 @@ public class SSMainMenu {
             public void actionPerformed(ActionEvent e) {
                 SSConfirmDialog iDialog = new SSConfirmDialog("helpmenu.compress.warning");
                 if(iDialog.openDialog(iMainFrame)==JOptionPane.OK_OPTION){
-
 
                     SSDB.getInstance().shutdownCompact();
                     System.exit(0);
@@ -1374,7 +1335,7 @@ public class SSMainMenu {
                                 SSDB.getInstance().deleteInventory(iInventory);
                             }
                         }
-                        
+
                         SSDB.getInstance().clearLists();
                         SSDB.getInstance().init(false);
 
@@ -1399,7 +1360,6 @@ public class SSMainMenu {
             }
         });
 
-
         // About
         // *****************************
         iMenuLoader.addActionListener("helpmenu.about", new ActionListener() {
@@ -1407,7 +1367,6 @@ public class SSMainMenu {
                 SSAboutDialog.showDialog(iMainFrame);
             }
         });
-
 
     }
     private List<JMenuItem> iWindowItems;
@@ -1430,7 +1389,6 @@ public class SSMainMenu {
                 }
                 iWindowItems.clear();
 
-
                 int iCounter = 0;
                 for(final SSInternalFrame iFrame : SSFrameManager.getInstance().getFrames()){
                     JMenuItem iMenuItem = new JMenuItem();
@@ -1452,7 +1410,6 @@ public class SSMainMenu {
 
             }
         });
-
 
         // Cascade...
         // *****************************

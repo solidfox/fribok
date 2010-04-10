@@ -1,12 +1,12 @@
 package se.swedsoft.bookkeeping.data.util;
 
+
 /**
  * Contains the data needed to send a mail. Immutable.
- * 
+ *
  * @author jensli
  */
-public class SSMailMessage
-{
+public class SSMailMessage {
     private final String to;
     private final String subject;
     private final String fileName;
@@ -21,7 +21,7 @@ public class SSMailMessage
      * @param fileName path to the attachment file, can be null
      */
     public SSMailMessage(String from, String to, String subject, String bodyText, String fileName) {
-        
+
         this.from = from;
         this.to = to;
         this.subject = subject;
@@ -52,6 +52,7 @@ public class SSMailMessage
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.util.SSMailMessage");
         sb.append("{bodyText='").append(bodyText).append('\'');
         sb.append(", fileName='").append(fileName).append('\'');

@@ -1,18 +1,20 @@
 package se.swedsoft.bookkeeping.importexport.bgmax.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.util.LinkedList;
 import java.util.List;
 
+
 /**
- * Class for storing the contents of a bgmax file read from disk, and responsible 
+ * Class for storing the contents of a bgmax file read from disk, and responsible
  * for parsing the text from a read file.
- * 
- * Has fields for data about the whole bgmax file, and stors data about the 
+ *
+ * Has fields for data about the whole bgmax file, and stors data about the
  * transactions in the file in the iAvsnitts collection.
- * 
+ *
  * User: Andreas Lago
  * Date: 2006-aug-23
  * Time: 09:09:20
@@ -24,7 +26,7 @@ public class BgMaxFile {
     public String iTidsstampel;
     public String iTestmarkering;
 
-    public String iAntalBetalningsPoster ;
+    public String iAntalBetalningsPoster;
     public String iAntalExtraReferensPoster;
     public String iAntalAvdragsPoster;
     public String iAntalInsattningsPoster;
@@ -39,39 +41,41 @@ public class BgMaxFile {
     }
 
     /**
-     * The entry point method for the b 
+     * The entry point method for the b
      * Parses the lines of the BgMax-file, filling in the data in its own fields and
      * creating BgMaxAvsnitt object in the iAvsnitts collection with parsed data.
-     *  
+     *
      * @param iLines The raw lines of a BgMax-file read from disk
      * @throws SSImportException
      */
-    public void parse(List<String> iLines) throws SSImportException{
+    public void parse(List<String> iLines) throws SSImportException {
         iAvsnitts = new LinkedList<BgMaxAvsnitt>();
-        
-        if( iLines.size() < 1 || ! isValid(iLines.get(0)) ) {
-            throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.invalidfile");
+
+        if (iLines.size() < 1 || !isValid(iLines.get(0))) {
+            throw new SSImportException(SSBundle.getBundle(),
+                    "bgmaximport.error.invalidfile");
         }
 
         boolean foundEmptyLine = false;
+
         for (String line : iLines) {
             // If an empty line is found, all the rest of the lines have to be
             // empty too.
             if (line.length() == 0) {
                 foundEmptyLine = true;
-            }
-            else if (foundEmptyLine) {
+            } else if (foundEmptyLine) {
                 System.err.println("Empty line in the middle of the file");
-                throw new SSImportException(SSBundle.getBundle(), "bgmaximport.error.parseerror");
-            }
-            // Line is non-empty and not preceeded by any empty lines:
+                throw new SSImportException(SSBundle.getBundle(),
+                        "bgmaximport.error.parseerror");
+            } // Line is non-empty and not preceeded by any empty lines:
             else {
                 BgMaxLine iBgMaxLine = new BgMaxLine(line);
+
                 parseLine(iBgMaxLine);
             }
         }
     }
-    
+
     /**
      * Returns true if this is a valid bgmax file
      * @param iFirstLine
@@ -87,36 +91,38 @@ public class BgMaxFile {
      *
      * @param iLine
      */
-    private void parseLine( BgMaxLine iLine ) {
+    private void parseLine(BgMaxLine iLine) {
         String iTransaktionsKod = iLine.getTransaktionsKod();
 
         BgMaxAvsnitt   iAvsnitt;
 
-        if( iTransaktionsKod.equals("05") ) {
+        if (iTransaktionsKod.equals("05")) {
             iAvsnitt = new BgMaxAvsnitt();
 
             iAvsnitts.add(iAvsnitt);
         } else {
 
-            if(!iAvsnitts.isEmpty()){
-                iAvsnitt = iAvsnitts.get( iAvsnitts.size()-1 );
+            if (!iAvsnitts.isEmpty()) {
+                iAvsnitt = iAvsnitts.get(iAvsnitts.size() - 1);
             } else {
                 iAvsnitt = null;
             }
         }
 
         BgMaxBetalning iBetalning;
-        if(iAvsnitt != null){
 
-            if( iTransaktionsKod.equals("20") || iTransaktionsKod.equals("21") ) {
+        if (iAvsnitt != null) {
+
+            if (iTransaktionsKod.equals("20") || iTransaktionsKod.equals("21")) {
                 iBetalning = new BgMaxBetalning();
                 iBetalning.iAvsnitt = iAvsnitt;
 
                 iAvsnitt.iBetalningar.add(iBetalning);
             } else {
 
-                if(!iAvsnitt.iBetalningar.isEmpty()){
-                    iBetalning = iAvsnitt.iBetalningar.get(  iAvsnitt.iBetalningar.size()-1 );
+                if (!iAvsnitt.iBetalningar.isEmpty()) {
+                    iBetalning = iAvsnitt.iBetalningar.get(
+                            iAvsnitt.iBetalningar.size() - 1);
                 } else {
                     iBetalning = null;
                 }
@@ -127,39 +133,58 @@ public class BgMaxFile {
         }
 
         // B
-        if( iTransaktionsKod.equals("01") ) readStartPost       (iLine, this);
-        else if( iTransaktionsKod.equals("70") ) readSlutPost        (iLine, this);
-        else if( iTransaktionsKod.equals("05") ) readOppningsPost    (iLine, iAvsnitt);
-        else if( iTransaktionsKod.equals("15") ) readInsattningsPost (iLine, iAvsnitt);
-        else if( iTransaktionsKod.equals("20") ) readBetalningsPost   (iLine, iBetalning);
-        else if( iTransaktionsKod.equals("21") ) readAvdragsPost      (iLine, iBetalning);
-        else if( iTransaktionsKod.equals("22") ) readExtraReferensPost(iLine, iBetalning, false);
-        else if( iTransaktionsKod.equals("23") ) readExtraReferensPost(iLine, iBetalning, true );
-        else if( iTransaktionsKod.equals("25") ) readInformationsPost (iLine, iBetalning);
-        else if( iTransaktionsKod.equals("26") ) readNamnPost         (iLine, iBetalning);
-        else if( iTransaktionsKod.equals("27") ) readAddressPost1     (iLine, iBetalning);
-        else if( iTransaktionsKod.equals("28") ) readAddressPost2     (iLine, iBetalning);
-        else if( iTransaktionsKod.equals("29") ) readOrgnummerPost    (iLine, iBetalning);
-        else System.out.println("No reader for: " + iTransaktionsKod);
+        if (iTransaktionsKod.equals("01")) {
+            readStartPost(iLine, this);
+        } else if (iTransaktionsKod.equals("70")) {
+            readSlutPost(iLine, this);
+        } else if (iTransaktionsKod.equals("05")) {
+            readOppningsPost(iLine, iAvsnitt);
+        } else if (iTransaktionsKod.equals("15")) {
+            readInsattningsPost(iLine, iAvsnitt);
+        } else if (iTransaktionsKod.equals("20")) {
+            readBetalningsPost(iLine, iBetalning);
+        } else if (iTransaktionsKod.equals("21")) {
+            readAvdragsPost(iLine, iBetalning);
+        } else if (iTransaktionsKod.equals("22")) {
+            readExtraReferensPost(iLine, iBetalning, false);
+        } else if (iTransaktionsKod.equals("23")) {
+            readExtraReferensPost(iLine, iBetalning, true);
+        } else if (iTransaktionsKod.equals("25")) {
+            readInformationsPost(iLine, iBetalning);
+        } else if (iTransaktionsKod.equals("26")) {
+            readNamnPost(iLine, iBetalning);
+        } else if (iTransaktionsKod.equals("27")) {
+            readAddressPost1(iLine, iBetalning);
+        } else if (iTransaktionsKod.equals("28")) {
+            readAddressPost2(iLine, iBetalning);
+        } else if (iTransaktionsKod.equals("29")) {
+            readOrgnummerPost(iLine, iBetalning);
+        } else {
+            System.out.println("No reader for: " + iTransaktionsKod);
+        }
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
+
         sb.append("BgMaxFil: {\n");
-        sb.append("  Layoutnamn    : ").append(iLayoutnamn   ).append('\n');
-        sb.append("  Version       : ").append(iVersion      ).append('\n');
-        sb.append("  Tidsstämpel   : ").append(iTidsstampel  ).append('\n');
+        sb.append("  Layoutnamn    : ").append(iLayoutnamn).append('\n');
+        sb.append("  Version       : ").append(iVersion).append('\n');
+        sb.append("  Tidsstämpel   : ").append(iTidsstampel).append('\n');
         sb.append("  Testmarkering : ").append(iTestmarkering).append('\n');
 
         for (BgMaxAvsnitt iCurrent : iAvsnitts) {
             sb.append(iCurrent);
         }
 
-        sb.append("  iAntalBetalningsPoster    : ").append(iAntalBetalningsPoster   ).append('\n');
-        sb.append("  iAntalAvdragsPoster       : ").append(iAntalAvdragsPoster      ).append('\n');
-        sb.append("  iAntalExtraReferensPoster : ").append(iAntalExtraReferensPoster).append('\n');
-        sb.append("  iAntalInsattningsPoster   : ").append(iAntalInsattningsPoster  ).append('\n');
+        sb.append("  iAntalBetalningsPoster    : ").append(iAntalBetalningsPoster).append(
+                '\n');
+        sb.append("  iAntalAvdragsPoster       : ").append(iAntalAvdragsPoster).append(
+                '\n');
+        sb.append("  iAntalExtraReferensPoster : ").append(iAntalExtraReferensPoster).append(
+                '\n');
+        sb.append("  iAntalInsattningsPoster   : ").append(iAntalInsattningsPoster).append(
+                '\n');
         sb.append("}\n");
 
         return sb.toString();
@@ -172,11 +197,11 @@ public class BgMaxFile {
      * @param iLine
      * @param iFile
      */
-    public static void readStartPost(BgMaxLine iLine, BgMaxFile iFile){
-        iFile.iLayoutnamn     = iLine.getField( 3, 22);
-        iFile.iVersion        = iLine.getField(23, 24);
-        iFile.iTidsstampel   =  iLine.getField(25, 44);
-        iFile.iTestmarkering =  iLine.getField(45);
+    public static void readStartPost(BgMaxLine iLine, BgMaxFile iFile) {
+        iFile.iLayoutnamn = iLine.getField(3, 22);
+        iFile.iVersion = iLine.getField(23, 24);
+        iFile.iTidsstampel = iLine.getField(25, 44);
+        iFile.iTestmarkering = iLine.getField(45);
     }
 
     /**
@@ -186,12 +211,11 @@ public class BgMaxFile {
      * @param iFile
      */
     private static void readSlutPost(BgMaxLine iLine, BgMaxFile iFile) {
-        iFile.iAntalBetalningsPoster    = iLine.getField(3, 10);
+        iFile.iAntalBetalningsPoster = iLine.getField(3, 10);
         iFile.iAntalExtraReferensPoster = iLine.getField(19, 26);
-        iFile.iAntalAvdragsPoster       = iLine.getField(11, 18);
-        iFile.iAntalInsattningsPoster   = iLine.getField(27, 34);
+        iFile.iAntalAvdragsPoster = iLine.getField(11, 18);
+        iFile.iAntalInsattningsPoster = iLine.getField(27, 34);
     }
-
 
     /**
      * 1.4 Öppningsport (05)
@@ -199,10 +223,10 @@ public class BgMaxFile {
      * @param iLine
      * @param iAvsnitt
      */
-    public static void readOppningsPost(BgMaxLine iLine, BgMaxAvsnitt  iAvsnitt){
+    public static void readOppningsPost(BgMaxLine iLine, BgMaxAvsnitt  iAvsnitt) {
         iAvsnitt.iPlusgiroNummer = iLine.getField(13, 22);
-        iAvsnitt.iBankgiroNummer = iLine.getField( 3, 12);
-        iAvsnitt.iValuta         = iLine.getField(23, 25);
+        iAvsnitt.iBankgiroNummer = iLine.getField(3, 12);
+        iAvsnitt.iValuta = iLine.getField(23, 25);
     }
 
     /**
@@ -211,14 +235,14 @@ public class BgMaxFile {
      * @param iLine
      * @param iAvsnitt
      */
-    private static  void readInsattningsPost(BgMaxLine iLine, BgMaxAvsnitt iAvsnitt) {
+    private static void readInsattningsPost(BgMaxLine iLine, BgMaxAvsnitt iAvsnitt) {
         iAvsnitt.iBankKontoNummer = iLine.getField(3, 37);
-        iAvsnitt.iBetalningsdag   = iLine.getField(38, 45);
-        iAvsnitt.iLopnummer       = iLine.getField(46, 50);
-        iAvsnitt.iBelopp          = iLine.getField(51, 65);
-        iAvsnitt.iValuta          = iLine.getField(69, 71);
-        iAvsnitt.iAntal           = iLine.getField(72, 79);
-        iAvsnitt.iTyp             = iLine.getField(80);
+        iAvsnitt.iBetalningsdag = iLine.getField(38, 45);
+        iAvsnitt.iLopnummer = iLine.getField(46, 50);
+        iAvsnitt.iBelopp = iLine.getField(51, 65);
+        iAvsnitt.iValuta = iLine.getField(69, 71);
+        iAvsnitt.iAntal = iLine.getField(72, 79);
+        iAvsnitt.iTyp = iLine.getField(80);
     }
 
     /**
@@ -227,14 +251,14 @@ public class BgMaxFile {
      * @param iLine
      * @param iBetalning
      */
-    public static void readBetalningsPost(BgMaxLine iLine, BgMaxBetalning iBetalning){
-        iBetalning.iBankgiroNummer     = iLine.getField( 3, 12);
-        iBetalning.iReferens           = iLine.getField(13, 37);
-        iBetalning.iBelopp             = iLine.getField(38, 55);
-        iBetalning.iReferensKod        = iLine.getField(56);
+    public static void readBetalningsPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
+        iBetalning.iBankgiroNummer = iLine.getField(3, 12);
+        iBetalning.iReferens = iLine.getField(13, 37);
+        iBetalning.iBelopp = iLine.getField(38, 55);
+        iBetalning.iReferensKod = iLine.getField(56);
         iBetalning.iBetalningsKanalKod = iLine.getField(57);
-        iBetalning.iBGCLopnummer       = iLine.getField(58, 69);
-        iBetalning.iAvibildmarkering   = iLine.getField(70);
+        iBetalning.iBGCLopnummer = iLine.getField(58, 69);
+        iBetalning.iAvibildmarkering = iLine.getField(70);
     }
 
     /**
@@ -243,14 +267,14 @@ public class BgMaxFile {
      * @param iLine
      * @param iBetalning
      */
-    public static void readAvdragsPost(BgMaxLine iLine, BgMaxBetalning iBetalning){
-        iBetalning.iBankgiroNummer     = iLine.getField( 3, 12);
-        iBetalning.iReferens           = iLine.getField(13, 37);
-        iBetalning.iBelopp             = '-' + iLine.getField(38, 55);
-        iBetalning.iReferensKod        = iLine.getField(56);
+    public static void readAvdragsPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
+        iBetalning.iBankgiroNummer = iLine.getField(3, 12);
+        iBetalning.iReferens = iLine.getField(13, 37);
+        iBetalning.iBelopp = '-' + iLine.getField(38, 55);
+        iBetalning.iReferensKod = iLine.getField(56);
         iBetalning.iBetalningsKanalKod = iLine.getField(57);
-        iBetalning.iBGCLopnummer       = iLine.getField(58, 69);
-        iBetalning.iAvibildmarkering   = iLine.getField(70);
+        iBetalning.iBGCLopnummer = iLine.getField(58, 69);
+        iBetalning.iAvibildmarkering = iLine.getField(70);
     }
 
     /**
@@ -261,22 +285,23 @@ public class BgMaxFile {
      * @param iNegative
      */
     private static void readExtraReferensPost(BgMaxLine iLine, BgMaxBetalning iBetalning, boolean iNegative) {
-        String iBankgiroNummer     = iLine.getField( 3, 12);
-        String iReferens           = iLine.getField(13, 37);
-        String iBelopp             = iLine.getField(38, 55);
-        String iReferensKod        = iLine.getField(56);
+        String iBankgiroNummer = iLine.getField(3, 12);
+        String iReferens = iLine.getField(13, 37);
+        String iBelopp = iLine.getField(38, 55);
+        String iReferensKod = iLine.getField(56);
         String iBetalningsKanalKod = iLine.getField(57);
-        String iBGCLopnummer       = iLine.getField(58, 69);
-        String iAvibildmarkering   = iLine.getField(70);
+        String iBGCLopnummer = iLine.getField(58, 69);
+        String iAvibildmarkering = iLine.getField(70);
 
         BgMaxReferens iBgMaxReferens = new BgMaxReferens();
-        iBgMaxReferens.iBankgiroNummer     = iBankgiroNummer;
-        iBgMaxReferens.iReferens           = iReferens;
-        iBgMaxReferens.iBelopp             = iBelopp;
-        iBgMaxReferens.iReferensKod        = iReferensKod;
+
+        iBgMaxReferens.iBankgiroNummer = iBankgiroNummer;
+        iBgMaxReferens.iReferens = iReferens;
+        iBgMaxReferens.iBelopp = iBelopp;
+        iBgMaxReferens.iReferensKod = iReferensKod;
         iBgMaxReferens.iBetalningsKanalKod = iBetalningsKanalKod;
-        iBgMaxReferens.iBGCLopnummer       = iBGCLopnummer;
-        iBgMaxReferens.iAvibildmarkering   = iAvibildmarkering;
+        iBgMaxReferens.iBGCLopnummer = iBGCLopnummer;
+        iBgMaxReferens.iAvibildmarkering = iAvibildmarkering;
 
         iBetalning.iReferenser.add(iBgMaxReferens);
 
@@ -291,7 +316,9 @@ public class BgMaxFile {
     private static void readInformationsPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
         String iInformationsText = iLine.getField(3, 52);
 
-        iBetalning.iInformationsText = iBetalning.iInformationsText == null ? iInformationsText : iBetalning.iInformationsText + iInformationsText;
+        iBetalning.iInformationsText = iBetalning.iInformationsText == null
+                ? iInformationsText
+                : iBetalning.iInformationsText + iInformationsText;
     }
 
     /**
@@ -301,8 +328,8 @@ public class BgMaxFile {
      * @param iBetalning
      */
     private static void readNamnPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
-        iBetalning.iBetalarensNamn = iLine.getField( 3, 27);
-        iBetalning. iExtraNamnfalt  = iLine.getField(38, 72);
+        iBetalning.iBetalarensNamn = iLine.getField(3, 27);
+        iBetalning.iExtraNamnfalt = iLine.getField(38, 72);
     }
 
     /**
@@ -311,8 +338,8 @@ public class BgMaxFile {
      * @param iLine
      * @param iBetalning
      */
-    private static void readAddressPost1(BgMaxLine iLine, BgMaxBetalning iBetalning){
-        iBetalning.iBetalarensAdress     = iLine.getField(3, 37);
+    private static void readAddressPost1(BgMaxLine iLine, BgMaxBetalning iBetalning) {
+        iBetalning.iBetalarensAdress = iLine.getField(3, 37);
         iBetalning.iBetalarensPostnummer = iLine.getField(38, 46);
     }
 
@@ -322,10 +349,10 @@ public class BgMaxFile {
      * @param iLine
      * @param iBetalning
      */
-    private static void readAddressPost2(BgMaxLine iLine, BgMaxBetalning iBetalning){
-        iBetalning. iBetalarensOrt = iLine.getField(3, 37);
-        iBetalning. iBetalarensLand       = iLine.getField(38, 72);
-        iBetalning. iLandKod    = iLine.getField(73, 74);
+    private static void readAddressPost2(BgMaxLine iLine, BgMaxBetalning iBetalning) {
+        iBetalning.iBetalarensOrt = iLine.getField(3, 37);
+        iBetalning.iBetalarensLand = iLine.getField(38, 72);
+        iBetalning.iLandKod = iLine.getField(73, 74);
     }
 
     /**
@@ -335,6 +362,6 @@ public class BgMaxFile {
      * @param iBetalning
      */
     private static void readOrgnummerPost(BgMaxLine iLine, BgMaxBetalning iBetalning) {
-        iBetalning. iBetalarensOrganisationsnr  = iLine.getField(3, 14);
+        iBetalning.iBetalarensOrganisationsnr = iLine.getField(3, 14);
     }
 }

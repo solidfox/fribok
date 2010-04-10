@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.ownreport.util;
 
+
 import se.swedsoft.bookkeeping.data.SSOwnReportRow;
 import se.swedsoft.bookkeeping.data.common.SSHeadingType;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -11,6 +12,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+
 
 /**
  * User: Johan Gunnarsson
@@ -28,11 +30,13 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
         return  new SSOwnReportRow();
     }
 
-    public static SSTableModel<SSOwnReportRow> getDropDownModel(){
+    public static SSTableModel<SSOwnReportRow> getDropDownModel() {
         SSOwnReportRowTableModel iModel = new SSOwnReportRowTableModel();
-        iModel.addColumn( COLUMN_HEADING, false   );
+
+        iModel.addColumn(COLUMN_HEADING, false);
         return iModel;
     }
+
     /**
      * Returns the type of data in this model.
      *
@@ -43,7 +47,8 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
         return SSOwnReportRow.class;
     }
 
-    public static SSTableColumn<SSOwnReportRow> COLUMN_TYPE = new SSTableColumn<SSOwnReportRow>(SSBundle.getBundle().getString("ownreport.headingtable.column.1")) {
+    public static SSTableColumn<SSOwnReportRow> COLUMN_TYPE = new SSTableColumn<SSOwnReportRow>(
+            SSBundle.getBundle().getString("ownreport.headingtable.column.1")) {
         @Override
         public Object getValue(SSOwnReportRow iObject) {
             return iObject.getType();
@@ -51,8 +56,8 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
 
         @Override
         public void setValue(SSOwnReportRow iObject, Object iValue) {
-            if(iValue instanceof SSHeadingType){
-                iObject.setType((SSHeadingType)iValue);
+            if (iValue instanceof SSHeadingType) {
+                iObject.setType((SSHeadingType) iValue);
             }
         }
 
@@ -80,7 +85,8 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
         }
     };
 
-    public static SSTableColumn<SSOwnReportRow> COLUMN_HEADING = new SSTableColumn<SSOwnReportRow>(SSBundle.getBundle().getString("ownreport.headingtable.column.2")) {
+    public static SSTableColumn<SSOwnReportRow> COLUMN_HEADING = new SSTableColumn<SSOwnReportRow>(
+            SSBundle.getBundle().getString("ownreport.headingtable.column.2")) {
         @Override
         public Object getValue(SSOwnReportRow iObject) {
             return iObject.getHeading();
@@ -88,7 +94,7 @@ public class SSOwnReportRowTableModel extends SSEditableTableModel<SSOwnReportRo
 
         @Override
         public void setValue(SSOwnReportRow iObject, Object iValue) {
-            iObject.setHeading((String)iValue);
+            iObject.setHeading((String) iValue);
         }
 
         @Override

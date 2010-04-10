@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
@@ -8,19 +9,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Date: 2006-feb-15
  * @version $Id$
  */
-public class SSAccountPlanType implements SSTableSearchable, Serializable  {
+public class SSAccountPlanType implements SSTableSearchable, Serializable {
 
     static final long serialVersionUID = 1L;
     private static final Map<String, SSAccountPlanType> iAccountPlanTypes = new HashMap<String, SSAccountPlanType>();
 
     // TODO: Load this from file
     static {
-        iAccountPlanTypes.put("BAS95"  , new SSAccountPlanType("BAS95"  , "BAS95.xml"  ));
-        iAccountPlanTypes.put("BAS96"  , new SSAccountPlanType("BAS96"  , "BAS96.xml"  ));
+        iAccountPlanTypes.put("BAS95", new SSAccountPlanType("BAS95", "BAS95.xml"));
+        iAccountPlanTypes.put("BAS96", new SSAccountPlanType("BAS96", "BAS96.xml"));
         iAccountPlanTypes.put("EUBAS97", new SSAccountPlanType("EUBAS97", "EUBAS97.xml"));
     }
 
@@ -29,8 +31,8 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
      *
      * @return List of types
      */
-    public static List<SSAccountPlanType> getAccountPlanTypes(){
-        return new LinkedList<SSAccountPlanType>( iAccountPlanTypes.values() );
+    public static List<SSAccountPlanType> getAccountPlanTypes() {
+        return new LinkedList<SSAccountPlanType>(iAccountPlanTypes.values());
     }
 
     /**
@@ -39,22 +41,22 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
      * @param name
      * @return The accountplantype
      */
-    public static SSAccountPlanType get(String name){
+    public static SSAccountPlanType get(String name) {
         return iAccountPlanTypes.get(name);
     }
-    
+
     // non-static below
 
     private String name;
     private String schema;
 
     /**
-     * 
+     *
      * @param name
      * @param schema
      */
     private SSAccountPlanType(String name, String schema) {
-        this.name   = name;
+        this.name = name;
         this.schema = schema;
     }
 
@@ -75,12 +77,13 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public String getSchema() {
-        if (schema == null)
+        if (schema == null) {
             schema = "BAS95.xml";
+        }
         return schema;
     }
 
@@ -100,11 +103,11 @@ public class SSAccountPlanType implements SSTableSearchable, Serializable  {
     public String toRenderString() {
         return name;
     }
-    
+
     public int hashCode() {
         return name.hashCode();
     }
-    
+
     public String toString() {
         return name;
     }

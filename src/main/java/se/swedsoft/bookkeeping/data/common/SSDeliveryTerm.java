@@ -1,10 +1,12 @@
 package se.swedsoft.bookkeeping.data.common;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+
 
 /**
  * User: Andreas Lago
@@ -23,8 +25,7 @@ public class SSDeliveryTerm implements Serializable, SSTableSearchable {
     /**
      * Constructor.
      */
-    public SSDeliveryTerm() {
-    }
+    public SSDeliveryTerm() {}
 
     /**
      * Constructor.
@@ -33,11 +34,11 @@ public class SSDeliveryTerm implements Serializable, SSTableSearchable {
      * @param pDescription
      */
     public SSDeliveryTerm(String pName, String pDescription) {
-        iName        = pName;
+        iName = pName;
         iDescription = pDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -55,8 +56,7 @@ public class SSDeliveryTerm implements Serializable, SSTableSearchable {
         this.iName = iName;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -73,7 +73,8 @@ public class SSDeliveryTerm implements Serializable, SSTableSearchable {
     public void setDescription(String iDescription) {
         this.iDescription = iDescription;
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      * Returns the render string to be shown in the tables
@@ -84,31 +85,28 @@ public class SSDeliveryTerm implements Serializable, SSTableSearchable {
         return iName;
     }
 
-    
     public boolean equals(Object obj) {
-        if(obj instanceof SSDeliveryTerm){
-            SSDeliveryTerm iUnit = (SSDeliveryTerm)obj;
+        if (obj instanceof SSDeliveryTerm) {
+            SSDeliveryTerm iUnit = (SSDeliveryTerm) obj;
 
             return iName.equals(iUnit.iName);
         }
         return false;
     }
 
-    
     public String toString() {
         return iDescription;
     }
 
-
     /**
-     * 
+     *
      * @return
      */
     public static List<SSDeliveryTerm> getDefaultDeliveryTerms() {
         List<SSDeliveryTerm> iDeliveryTerms = new LinkedList<SSDeliveryTerm>();
 
-        iDeliveryTerms.add( new SSDeliveryTerm("FK" , "Fritt kund") );
-        iDeliveryTerms.add( new SSDeliveryTerm("FVL", "Fritt vårt lager") );
+        iDeliveryTerms.add(new SSDeliveryTerm("FK", "Fritt kund"));
+        iDeliveryTerms.add(new SSDeliveryTerm("FVL", "Fritt vårt lager"));
 
         return iDeliveryTerms;
     }

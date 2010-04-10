@@ -4,6 +4,7 @@
  */
 package se.swedsoft.bookkeeping.gui.resultunit;
 
+
 import se.swedsoft.bookkeeping.data.SSNewResultUnit;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSPostLock;
@@ -29,6 +30,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  *
  */
@@ -42,8 +44,8 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || cInstance.isClosed()) {
             cInstance = new SSResultUnitFrame(pMainFrame, pWidth, pHeight);
         }
         cInstance.setVisible(true);
@@ -55,16 +57,13 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewProjectFrame
      */
-    public static SSResultUnitFrame getInstance(){
+    public static SSResultUnitFrame getInstance() {
         return cInstance;
     }
-
-
 
     private SSResultUnitTableModel iModel;
 
     private SSTable iTable;
-
 
     /**
      * Default constructor.
@@ -73,9 +72,9 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
      * @param height
      */
     private SSResultUnitFrame(SSMainFrame frame, int width, int height) {
-        super(frame, SSBundle.getBundle().getString("resultunitframe.title"), width, height);
+        super(frame, SSBundle.getBundle().getString("resultunitframe.title"), width,
+                height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -89,27 +88,32 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
 
         // Ny resultatenhet
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "resultunitframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "resultunitframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSResultUnitDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         iToolBar.add(iButton);
 
         // Ändra resultatenhet
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "resultunitframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "resultunitframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSNewResultUnit iSelected = getSelected();
                 String iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getResultUnit(iSelected);
                 }
                 if (iSelected != null) {
                     SSResultUnitDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "resultunitframe.resultunitgone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "resultunitframe.resultunitgone",
+                            iNumber);
                 }
             }
         });
@@ -119,10 +123,12 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
 
         // Ta bort resultatenhet
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "resultunitframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "resultunitframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSNewResultUnit> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedResultUnits(toDelete);
             }
         });
@@ -132,19 +138,20 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
 
         // Skriv ut resultatenhet
         // ***************************
-        SSMenuButton iButton2 = new SSMenuButton("ICON_PRINT", "resultunitframe.printbutton");
-        iButton2.add("resultunitframe.print.resultunitrevenue", new ActionListener(){
+        SSMenuButton iButton2 = new SSMenuButton("ICON_PRINT",
+                "resultunitframe.printbutton");
+
+        iButton2.add("resultunitframe.print.resultunitrevenue", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ResultUnitRevenueReport();
             }
         });
-        iButton2.add("resultunitframe.print.resultunitlist", new ActionListener(){
+        iButton2.add("resultunitframe.print.resultunitlist", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 printResultUnits();
             }
         });
         iToolBar.add(iButton2);
-
 
         return iToolBar;
     }
@@ -163,31 +170,34 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         iModel.addColumn(SSResultUnitTableModel.COLUMN_NUMBER);
         iModel.addColumn(SSResultUnitTableModel.COLUMN_NAME);
 
-
         iModel.setupTable(iTable);
 
-        iTable.addDblClickListener(new ActionListener() {
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSNewResultUnit iSelected = getSelected();
-                if(iSelected == null)
+
+                if (iSelected == null) {
                     return;
+                }
 
                 String iNumber = iSelected.getNumber();
+
                 iSelected = getResultUnit(iSelected);
                 if (iSelected != null) {
                     SSResultUnitDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog(getMainFrame(), "resultunitframe.resultunitgone", iNumber);
+                    new SSErrorDialog(getMainFrame(), "resultunitframe.resultunitgone",
+                            iNumber);
                 }
             }
         });
-
 
         JPanel iPanel = new JPanel();
 
         iPanel.setLayout(new BorderLayout());
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,2,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
         return iPanel;
     }
@@ -196,7 +206,7 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
      *
      * @return
      */
-    private SSNewResultUnit getSelected(){
+    private SSNewResultUnit getSelected() {
         int selected = iTable.getSelectedRow();
 
         if (selected >= 0) {
@@ -204,6 +214,7 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         }
         return null;
     }
+
     /**
      * This method should return the status bar content, if any.
      *
@@ -244,10 +255,14 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         }
         SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "resultunitframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSNewResultUnit iResultUnit : delete) {
-                if (SSPostLock.isLocked("resultunit" + iResultUnit.getNumber() + SSDB.getInstance().getCurrentCompany().getId())) {
-                    new SSErrorDialog(getMainFrame(), "resultunitframe.resultunitopen", iResultUnit.getNumber());
+                if (SSPostLock.isLocked(
+                        "resultunit" + iResultUnit.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(), "resultunitframe.resultunitopen",
+                            iResultUnit.getNumber());
                 } else {
                     SSDB.getInstance().deleteResultUnit(iResultUnit);
                 }
@@ -257,45 +272,55 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
 
     private void ResultUnitRevenueReport() {
         List<SSNewResultUnit> iResultUnits;
+
         if (iTable.getSelectedRowCount() > 0) {
 
-            int iOption = SSQueryDialog.showDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "resultunitframe.printallorselected");
+            int iOption = SSQueryDialog.showDialog(getMainFrame(),
+                    JOptionPane.YES_NO_CANCEL_OPTION, "resultunitframe.printallorselected");
 
-            switch(iOption ){
-                case JOptionPane.YES_OPTION:
-                    iResultUnits = iModel.getObjects(iTable.getSelectedRows());
-                    iResultUnits = getResultUnits(iResultUnits);
-                    break;
-                case JOptionPane.NO_OPTION :
-                    iResultUnits = SSDB.getInstance().getResultUnits();
-                    break;
-                default:
-                    return;
+            switch (iOption) {
+            case JOptionPane.YES_OPTION:
+                iResultUnits = iModel.getObjects(iTable.getSelectedRows());
+                iResultUnits = getResultUnits(iResultUnits);
+                break;
+
+            case JOptionPane.NO_OPTION:
+                iResultUnits = SSDB.getInstance().getResultUnits();
+                break;
+
+            default:
+                return;
             }
         } else {
             iResultUnits = SSDB.getInstance().getResultUnits();
         }
 
-        SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(getMainFrame(), SSBundle.getBundle().getString("resultunitrevenue.perioddialog.title"));
+        SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(getMainFrame(),
+                SSBundle.getBundle().getString("resultunitrevenue.perioddialog.title"));
+
         if (SSDB.getInstance().getCurrentYear() != null) {
             iDialog.setFrom(SSDB.getInstance().getCurrentYear().getFrom());
             iDialog.setTo(SSDB.getInstance().getCurrentYear().getTo());
         } else {
             Calendar iCal = Calendar.getInstance();
+
             iDialog.setFrom(iCal.getTime());
-            iCal.add(Calendar.MONTH,1);
+            iCal.add(Calendar.MONTH, 1);
             iDialog.setTo(iCal.getTime());
         }
         iDialog.setLocationRelativeTo(getMainFrame());
 
-        if( iDialog.showDialog() != JOptionPane.OK_OPTION) return;
+        if (iDialog.showDialog() != JOptionPane.OK_OPTION) {
+            return;
+        }
 
         final Date iFrom = iDialog.getFrom();
-        final Date iTo   = iDialog.getTo();
+        final Date iTo = iDialog.getTo();
 
-        final SSResultUnitRevenuePrinter iPrinter = new SSResultUnitRevenuePrinter(iResultUnits, iFrom, iTo);
+        final SSResultUnitRevenuePrinter iPrinter = new SSResultUnitRevenuePrinter(
+                iResultUnits, iFrom, iTo);
 
-        SSProgressDialog.runProgress(getMainFrame(), new Runnable(){
+        SSProgressDialog.runProgress(getMainFrame(), new Runnable() {
             public void run() {
                 iPrinter.preview(getMainFrame());
             }
@@ -308,22 +333,26 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
     private void printResultUnits() {
         final SSResultUnitPrinter iPrinter;
         List<SSNewResultUnit> iResultUnits;
+
         if (iTable.getSelectedRowCount() > 0) {
 
-            SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), JOptionPane.YES_NO_CANCEL_OPTION, "resultunitframe.print");
+            SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(),
+                    JOptionPane.YES_NO_CANCEL_OPTION, "resultunitframe.print");
             int iResponce = iDialog.getResponce();
 
             switch (iResponce) {
-                case JOptionPane.YES_OPTION:
-                    iResultUnits = getResultUnits(iModel.getObjects(iTable.getSelectedRows()));
-                    iPrinter = new SSResultUnitPrinter(iResultUnits);
-                    break;
-                case JOptionPane.NO_OPTION :
-                    iResultUnits = getResultUnits(iModel.getObjects());
-                    iPrinter = new SSResultUnitPrinter(iResultUnits);
-                    break;
-                default:
-                    return;
+            case JOptionPane.YES_OPTION:
+                iResultUnits = getResultUnits(iModel.getObjects(iTable.getSelectedRows()));
+                iPrinter = new SSResultUnitPrinter(iResultUnits);
+                break;
+
+            case JOptionPane.NO_OPTION:
+                iResultUnits = getResultUnits(iModel.getObjects());
+                iPrinter = new SSResultUnitPrinter(iResultUnits);
+                break;
+
+            default:
+                return;
             }
         } else {
             iResultUnits = getResultUnits(iModel.getObjects(iTable.getSelectedRows()));
@@ -331,10 +360,9 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
         }
         SSProgressDialog.runProgress(getMainFrame(), new Runnable() {
             public void run() {
-                iPrinter.preview( getMainFrame() );
+                iPrinter.preview(getMainFrame());
             }
         });
-
 
     }
 
@@ -349,16 +377,17 @@ public class SSResultUnitFrame extends SSDefaultTableFrame {
     public void updateFrame() {
         iModel.setObjects(SSDB.getInstance().getResultUnits());
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.resultunit.SSResultUnitFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iTable=").append(iTable);

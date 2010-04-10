@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report.journals;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
@@ -14,6 +15,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -35,19 +37,19 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
      * @param iNumber
      * @param iDate
      */
-    public SSSupplierInvoicejournalPrinter( List<SSSupplierInvoice> iInvoices, Integer iNumber, Date iDate){
+    public SSSupplierInvoicejournalPrinter(List<SSSupplierInvoice> iInvoices, Integer iNumber, Date iDate) {
         this.iInvoices = iInvoices;
-        this.iNumber   = iNumber;
+        this.iNumber = iNumber;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("journals/supplierinvoicejournal.jrxml");
-        setDetail      ("journals/supplierinvoicejournal.jrxml");
-        setSummary     ("journals/supplierinvoicejournal.jrxml");
+        setDetail("journals/supplierinvoicejournal.jrxml");
+        setSummary("journals/supplierinvoicejournal.jrxml");
 
-        addParameter("periodTitle", iBundle.getString("supplierinvoicejournal.periodtitle") );
-        addParameter("periodText" , iDate );
+        addParameter("periodTitle",
+                iBundle.getString("supplierinvoicejournal.periodtitle"));
+        addParameter("periodText", iDate);
     }
-
 
     /**
      * Gets the title file for this repport
@@ -68,11 +70,10 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
         iPrinter = new SSVoucherPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
-
 
         // Sort the invoices
         Collections.sort(iInvoices, new Comparator<SSSupplierInvoice>() {
@@ -80,7 +81,6 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
                 return o1.getNumber() - o2.getNumber();
             }
         });
-
 
         SSDefaultTableModel<SSSupplierInvoice> iModel = new SSDefaultTableModel<SSSupplierInvoice>() {
 
@@ -97,44 +97,56 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
                 SSSupplierInvoice iInvoice = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iInvoice.getNumber();
-                        break;
-                    case 1:
-                        value = iInvoice.getSupplierNr();
-                        break;
-                    case 2:
-                        value = iInvoice.getSupplierName();
-                        break;
-                    case 3:
-                        value = iInvoice.getDate()     == null ? null : iFormat.format( iInvoice.getDate() );
-                        break;
-                    case 4:
-                        value = iInvoice.getCurrency() == null ? null : iInvoice.getCurrency().getName();
-                        break;
-                    case 5:
-                        value = iInvoice.getCurrencyRate();
-                        break;
-                    case 6:
-                        value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
-                        break;
-                    case 7:
-                        value = iInvoice.getTaxSum();
-                        break;
-                    case 8:
-                        BigDecimal iTotalSum = SSSupplierInvoiceMath.getTotalSum(iInvoice);
+                case 0:
+                    value = iInvoice.getNumber();
+                    break;
 
-                        value = SSSupplierInvoiceMath.convertToLocal(iInvoice,  iTotalSum);
-                        break;
-                    case 9:
-                        iPrinter.setInvoice(iInvoice);
+                case 1:
+                    value = iInvoice.getSupplierNr();
+                    break;
 
-                        iDataSource.reset();
+                case 2:
+                    value = iInvoice.getSupplierName();
+                    break;
 
-                        value = iDataSource;
-                        break;
+                case 3:
+                    value = iInvoice.getDate() == null
+                            ? null
+                            : iFormat.format(iInvoice.getDate());
+                    break;
+
+                case 4:
+                    value = iInvoice.getCurrency() == null
+                            ? null
+                            : iInvoice.getCurrency().getName();
+                    break;
+
+                case 5:
+                    value = iInvoice.getCurrencyRate();
+                    break;
+
+                case 6:
+                    value = SSSupplierInvoiceMath.getTotalSum(iInvoice);
+                    break;
+
+                case 7:
+                    value = iInvoice.getTaxSum();
+                    break;
+
+                case 8:
+                    BigDecimal iTotalSum = SSSupplierInvoiceMath.getTotalSum(iInvoice);
+
+                    value = SSSupplierInvoiceMath.convertToLocal(iInvoice, iTotalSum);
+                    break;
+
+                case 9:
+                    iPrinter.setInvoice(iInvoice);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
                 }
-
 
                 return value;
             }
@@ -157,9 +169,6 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
         return iModel;
     }
 
-
-
-
     private class SSVoucherPrinter extends SSPrinter {
 
         private SSDefaultTableModel<SSVoucherRow> iModel;
@@ -167,14 +176,13 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
         /**
          *
          */
-        public SSVoucherPrinter( ){
-            setMargins(0,0,0,0);
+        public SSVoucherPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("journals/invoicejournal.rows.jrxml");
-           // setSummary("journals/invoicejournal.rows.jrxml");
+            setDetail("journals/invoicejournal.rows.jrxml");
+            // setSummary("journals/invoicejournal.rows.jrxml");
 
-
-            iModel = new SSDefaultTableModel<SSVoucherRow>(  ) {
+            iModel = new SSDefaultTableModel<SSVoucherRow>() {
 
                 DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
@@ -189,31 +197,43 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
                     SSVoucherRow iRow = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0:
-                            value = iRow.getAccount() == null ? null : iRow.getAccount().getNumber();
-                            break;
-                        case 1:
-                            value = iRow.getAccount() == null ? null : iRow.getAccount().getDescription();
-                            break;
-                        case 2:
-                            value = iRow.getDebet();
-                            break;
-                        case 3:
-                            value = iRow.getCredit();
-                            break;
-                        case 4:
-                            value = iRow.getProject() == null ? null : iRow.getProject().getNumber();
-                            break;
-                        case 5:
-                            value = iRow.getResultUnit() == null ? null : iRow.getResultUnit().getNumber();
-                            break;
+                    case 0:
+                        value = iRow.getAccount() == null
+                                ? null
+                                : iRow.getAccount().getNumber();
+                        break;
+
+                    case 1:
+                        value = iRow.getAccount() == null
+                                ? null
+                                : iRow.getAccount().getDescription();
+                        break;
+
+                    case 2:
+                        value = iRow.getDebet();
+                        break;
+
+                    case 3:
+                        value = iRow.getCredit();
+                        break;
+
+                    case 4:
+                        value = iRow.getProject() == null
+                                ? null
+                                : iRow.getProject().getNumber();
+                        break;
+
+                    case 5:
+                        value = iRow.getResultUnit() == null
+                                ? null
+                                : iRow.getResultUnit().getNumber();
+                        break;
 
                     }
 
                     return value;
                 }
             };
-
 
             iModel.addColumn("row.account");
             iModel.addColumn("row.description");
@@ -249,24 +269,27 @@ public class SSSupplierInvoicejournalPrinter extends SSPrinter {
          */
         public void setInvoice(SSSupplierInvoice iInvoice) {
 
-            iModel.setObjects( iInvoice.getVoucher().getRows() );
+            iModel.setObjects(iInvoice.getVoucher().getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.journals.SSSupplierInvoicejournalPrinter.SSVoucherPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.journals.SSSupplierInvoicejournalPrinter.SSVoucherPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
-        sb.append("se.swedsoft.bookkeeping.print.report.journals.SSSupplierInvoicejournalPrinter");
+
+        sb.append(
+                "se.swedsoft.bookkeeping.print.report.journals.SSSupplierInvoicejournalPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iInvoices=").append(iInvoices);
         sb.append(", iNumber=").append(iNumber);

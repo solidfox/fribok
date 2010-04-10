@@ -4,9 +4,11 @@
  */
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
+
 
 // Trade Extensions specific imports
 
@@ -17,12 +19,10 @@ import java.io.Serializable;
  */
 public class SSResultUnit implements Serializable, SSTableSearchable {
 
-
     /**
      * Constant for serialization versioning.
      */
     static final long serialVersionUID = 1L;
-
 
     /** */
     private int iNumber;
@@ -37,8 +37,8 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
      * Default constructor.
      */
     public SSResultUnit() {
-        iNumber      = 0;
-        iName        = "";
+        iNumber = 0;
+        iName = "";
         iDescription = "";
     }
 
@@ -48,16 +48,14 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
      * @param name
      */
     public SSResultUnit(int number, String name) {
-        iNumber      = number;
-        iName        = name;
+        iNumber = number;
+        iName = name;
         iDescription = "";
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
-
-
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -67,7 +65,7 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
         return iNumber;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -93,8 +91,7 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
         iName = pName;
     }
 
-
-    ///////////////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -104,7 +101,6 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
         return iDescription;
     }
 
-
     /**
      *
      * @param pDescription
@@ -113,8 +109,7 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
         iDescription = pDescription;
     }
 
-    ///////////////////////////////////////////////////////////////////////////
-
+    // /////////////////////////////////////////////////////////////////////////
 
     /**
      *
@@ -122,8 +117,9 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
      * @return
      */
     public boolean equals(Object obj) {
-        if(obj instanceof SSResultUnit)
-            return ((SSResultUnit)obj).iNumber == iNumber;
+        if (obj instanceof SSResultUnit) {
+            return ((SSResultUnit) obj).iNumber == iNumber;
+        }
 
         return super.equals(obj);
     }
@@ -135,22 +131,15 @@ public class SSResultUnit implements Serializable, SSTableSearchable {
         return Integer.toString(iNumber);
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append( iNumber );
-        sb.append( " - " );
-        sb.append( iName);
-        sb.append( ", " );
-        sb.append( iDescription );
+        sb.append(iNumber);
+        sb.append(" - ");
+        sb.append(iName);
+        sb.append(", ");
+        sb.append(iDescription);
         return sb.toString();
     }
-
-
-
-
-
-
 
 } // End of class SSNewResultUnit

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.print.report;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSAccount;
 import se.swedsoft.bookkeeping.data.SSInvoice;
@@ -15,6 +16,7 @@ import java.text.DateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 /**
  * Date: 2006-mar-03
@@ -32,23 +34,22 @@ public class SSInvoiceListPrinter extends SSPrinter {
      *
      */
     public SSInvoiceListPrinter() {
-        this(SSDB.getInstance().getInvoices() );
+        this(SSDB.getInstance().getInvoices());
     }
 
     /**
      *
      * @param iInvoices
      */
-    public SSInvoiceListPrinter( List<SSInvoice> iInvoices){
+    public SSInvoiceListPrinter(List<SSInvoice> iInvoices) {
         // Get all orders
         this.iInvoices = iInvoices;
 
-        setPageHeader  ("header_period.jrxml");
+        setPageHeader("header_period.jrxml");
         setColumnHeader("invoicelist.jrxml");
-        setDetail      ("invoicelist.jrxml");
-        setSummary     ("invoicelist.jrxml");
+        setDetail("invoicelist.jrxml");
+        setSummary("invoicelist.jrxml");
     }
-
 
     /**
      * Gets the title file for this repport
@@ -69,8 +70,8 @@ public class SSInvoiceListPrinter extends SSPrinter {
         iPrinter = new SSInvoiceRowPrinter();
         iPrinter.generateReport();
 
-        addParameter("Report"      , iPrinter.getReport());
-        addParameter("Parameters"  , iPrinter.getParameters() );
+        addParameter("Report", iPrinter.getReport());
+        addParameter("Parameters", iPrinter.getParameters());
 
         iDataSource = new SSDefaultJasperDataSource(iPrinter.getModel());
 
@@ -89,44 +90,61 @@ public class SSInvoiceListPrinter extends SSPrinter {
                 SSInvoice iInvoice = getObject(rowIndex);
 
                 switch (columnIndex) {
-                    case 0  :
-                        value = iInvoice.getNumber();
-                        break;
-                    case 1:
-                        value = iInvoice.getCustomerNr();
-                        break;
-                    case 2:
-                        value = iInvoice.getCustomerName();
-                        break;
-                    case 3:
-                        value = iFormat.format(iInvoice.getDate());
-                        break;
-                    case 4:
-                        iPrinter.setInvoice(iInvoice);
+                case 0:
+                    value = iInvoice.getNumber();
+                    break;
 
-                        iDataSource.reset();
+                case 1:
+                    value = iInvoice.getCustomerNr();
+                    break;
 
-                        value = iDataSource;
-                        break;
-                    case 5:
-                        value = iInvoice.getCurrency() == null ? null : iInvoice.getCurrency().getName();
-                        break;
-                    case 6:
-                        value = SSInvoiceMath.getTotalSum(iInvoice);
-                        break;
-                    case 7:
-                        value = SSInvoiceMath.getTotalTaxSum(iInvoice);
-                        break;
-                    case 8:
-                        BigDecimal iSum = new BigDecimal(0);
-                        iSum = iSum.add(SSInvoiceMath.getTotalSum(iInvoice).multiply(iInvoice.getCurrencyRate()));
-                        value = iSum;
-                        break;
-                    case 9:
-                        BigDecimal iTaxSum = new BigDecimal(0);
-                        iTaxSum = iTaxSum.add(SSInvoiceMath.getTotalTaxSum(iInvoice).multiply(iInvoice.getCurrencyRate()));
-                        value = iTaxSum;
-                        break;
+                case 2:
+                    value = iInvoice.getCustomerName();
+                    break;
+
+                case 3:
+                    value = iFormat.format(iInvoice.getDate());
+                    break;
+
+                case 4:
+                    iPrinter.setInvoice(iInvoice);
+
+                    iDataSource.reset();
+
+                    value = iDataSource;
+                    break;
+
+                case 5:
+                    value = iInvoice.getCurrency() == null
+                            ? null
+                            : iInvoice.getCurrency().getName();
+                    break;
+
+                case 6:
+                    value = SSInvoiceMath.getTotalSum(iInvoice);
+                    break;
+
+                case 7:
+                    value = SSInvoiceMath.getTotalTaxSum(iInvoice);
+                    break;
+
+                case 8:
+                    BigDecimal iSum = new BigDecimal(0);
+
+                    iSum = iSum.add(
+                            SSInvoiceMath.getTotalSum(iInvoice).multiply(
+                                    iInvoice.getCurrencyRate()));
+                    value = iSum;
+                    break;
+
+                case 9:
+                    BigDecimal iTaxSum = new BigDecimal(0);
+
+                    iTaxSum = iTaxSum.add(
+                            SSInvoiceMath.getTotalTaxSum(iInvoice).multiply(
+                                    iInvoice.getCurrencyRate()));
+                    value = iTaxSum;
+                    break;
                 }
 
                 return value;
@@ -144,8 +162,6 @@ public class SSInvoiceListPrinter extends SSPrinter {
         iModel.addColumn("invoice.totalsum");
         iModel.addColumn("invoice.totaltax");
 
-
-
         Collections.sort(iInvoices, new Comparator<SSInvoice>() {
             public int compare(SSInvoice o1, SSInvoice o2) {
                 return o1.getNumber() - o2.getNumber();
@@ -154,10 +170,8 @@ public class SSInvoiceListPrinter extends SSPrinter {
 
         iModel.setObjects(iInvoices);
 
-
         return iModel;
     }
-
 
     private class SSInvoiceRowPrinter extends SSPrinter {
 
@@ -166,15 +180,13 @@ public class SSInvoiceListPrinter extends SSPrinter {
         /**
          *
          */
-        public SSInvoiceRowPrinter( ){
-            setMargins(0,0,0,0);
+        public SSInvoiceRowPrinter() {
+            setMargins(0, 0, 0, 0);
 
-            setDetail ("invoicelist.row.jrxml");
+            setDetail("invoicelist.row.jrxml");
             setSummary("invoicelist.row.jrxml");
 
-
-
-            iModel = new SSDefaultTableModel<SSSaleRow>(  ) {
+            iModel = new SSDefaultTableModel<SSSaleRow>() {
 
                 @Override
                 public Class getType() {
@@ -187,27 +199,33 @@ public class SSInvoiceListPrinter extends SSPrinter {
                     SSSaleRow iRow = getObject(rowIndex);
 
                     switch (columnIndex) {
-                        case 0  :
-                            value = iRow.getProductNr();
-                            break;
-                        case 1:
-                            value = iRow.getDescription();
-                            break;
-                        case 2:
-                            value = iRow.getQuantity();
-                            break;
-                        case 3:
-                            value = iRow.getUnit() == null ? null : iRow.getUnit().getName();
-                            break;
-                        case 4:
-                            value = iRow.getUnitprice();
-                            break;
-                        case 5:
-                            value = iRow.getDiscount();
-                            break;
-                        case 6:
-                            value = iRow.getSum();
-                            break;
+                    case 0:
+                        value = iRow.getProductNr();
+                        break;
+
+                    case 1:
+                        value = iRow.getDescription();
+                        break;
+
+                    case 2:
+                        value = iRow.getQuantity();
+                        break;
+
+                    case 3:
+                        value = iRow.getUnit() == null ? null : iRow.getUnit().getName();
+                        break;
+
+                    case 4:
+                        value = iRow.getUnitprice();
+                        break;
+
+                    case 5:
+                        value = iRow.getDiscount();
+                        break;
+
+                    case 6:
+                        value = iRow.getSum();
+                        break;
                     }
 
                     return value;
@@ -248,23 +266,25 @@ public class SSInvoiceListPrinter extends SSPrinter {
          * @param iInvoice
          */
         public void setInvoice(SSInvoice iInvoice) {
-            iModel.setObjects( iInvoice.getRows() );
+            iModel.setObjects(iInvoice.getRows());
         }
 
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
-            sb.append("se.swedsoft.bookkeeping.print.report.SSInvoiceListPrinter.SSInvoiceRowPrinter");
+
+            sb.append(
+                    "se.swedsoft.bookkeeping.print.report.SSInvoiceListPrinter.SSInvoiceRowPrinter");
             sb.append("{iModel=").append(iModel);
             sb.append('}');
             return sb.toString();
         }
     }
 
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.print.report.SSInvoiceListPrinter");
         sb.append("{iDataSource=").append(iDataSource);
         sb.append(", iInvoices=").append(iInvoices);

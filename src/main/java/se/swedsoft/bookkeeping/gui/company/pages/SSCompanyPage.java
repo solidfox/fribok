@@ -1,8 +1,10 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 
 import javax.swing.*;
+
 
 /**
  * User: Andreas Lago
@@ -51,16 +53,16 @@ public abstract class SSCompanyPage {
      *
      * @param iDialog
      */
-    public void setDialog(JDialog iDialog){
+    public void setDialog(JDialog iDialog) {
         this.iDialog = iDialog;
     }
 
-
-    //public static SSNewCompanyPage getInstance();
+    // public static SSNewCompanyPage getInstance();
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPage");
         sb.append("{iDialog=").append(iDialog);
         sb.append('}');

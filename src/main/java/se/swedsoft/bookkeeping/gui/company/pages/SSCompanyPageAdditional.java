@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.company.pages;
 
+
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.util.SSMailServer;
 import se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog;
@@ -58,7 +59,6 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         addKeyListeners();
     }
 
-
     /**
      * @return the name and title
      */
@@ -95,7 +95,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         iPlusGiroNumber.setText(iCompany.getPlusGiroNumber());
         iSwiftCode.setText(iCompany.getBIC());
         iIBAN.setText(iCompany.getIBAN());
-//        iSMTPAddress.setText(iCompany.getSMTP());
+        // iSMTPAddress.setText(iCompany.getSMTP());
         iRoundingOff.setSelected(iCompany.isRoundingOff());
         iVatPeriod.setValue(iCompany.getVatPeriod());
 
@@ -129,7 +129,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
         iCompany.setPlusGiroNumber(iPlusGiroNumber.getText());
         iCompany.setBIC(iSwiftCode.getText());
         iCompany.setIBAN(iIBAN.getText());
-//        iCompany.setSMTP(iSMTPAddress.getText());
+        // iCompany.setSMTP(iSMTPAddress.getText());
         iCompany.setRoundingOff(iRoundingOff.isSelected());
         iCompany.setVatPeriod(iVatPeriod.getValue());
 
@@ -143,7 +143,6 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
      */
     public void addKeyListeners() {
 
-
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 iContactPerson.requestFocusInWindow();
@@ -155,7 +154,6 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
                 setMailServer(new SSMailServerDialog(null).showServerQuery(iMailServer));
             }
         });
-
 
         iContactPerson.addKeyListener(new KeyAdapter() {
             @Override
@@ -222,7 +220,6 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
             }
         });
 
-
         iWebAddress.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -236,32 +233,31 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
             }
         });
 
+        // iSMTPAddress removed and replaced by the editMailServer button.
+        // iWebAddress.addKeyListener(new KeyAdapter() {
+        // public void keyPressed(KeyEvent e) {
+        // if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        // SwingUtilities.invokeLater(new Runnable() {
+        // public void run() {
+        // iSMTPAddress.requestFocusInWindow();
+        // }
+        // });
+        // }
+        // }
+        // });
 
         // iSMTPAddress removed and replaced by the editMailServer button.
-//        iWebAddress.addKeyListener(new KeyAdapter() {
-//            public void keyPressed(KeyEvent e) {
-//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//                    SwingUtilities.invokeLater(new Runnable() {
-//                        public void run() {
-//                            iSMTPAddress.requestFocusInWindow();
-//                        }
-//                    });
-//                }
-//            }
-//        });
-
-        // iSMTPAddress removed and replaced by the editMailServer button.
-//        iSMTPAddress.addKeyListener(new KeyAdapter() {
-//            public void keyPressed(KeyEvent e) {
-//                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-//                    SwingUtilities.invokeLater(new Runnable() {
-//                        public void run() {
-//                            iBank.requestFocusInWindow();
-//                        }
-//                    });
-//                }
-//            }
-//        });
+        // iSMTPAddress.addKeyListener(new KeyAdapter() {
+        // public void keyPressed(KeyEvent e) {
+        // if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        // SwingUtilities.invokeLater(new Runnable() {
+        // public void run() {
+        // iBank.requestFocusInWindow();
+        // }
+        // });
+        // }
+        // }
+        // });
 
         iBank.addKeyListener(new KeyAdapter() {
             @Override
@@ -320,6 +316,7 @@ public class SSCompanyPageAdditional extends SSCompanyPage {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.company.pages.SSCompanyPageAdditional");
         sb.append("{iBank=").append(iBank);
         sb.append(", iBankGiroNumber=").append(iBankGiroNumber);

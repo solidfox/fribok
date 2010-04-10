@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
+
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundleString;
@@ -16,12 +17,12 @@ import java.util.Date;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.INT;
 import static se.swedsoft.bookkeeping.importexport.sie.util.SIEReader.SIEDataType.STRING;
 
+
 /**
  * Date: 2006-feb-22
  * Time: 15:10:21
  */
 public class SIEEntryRAR implements SIEEntry {
-
 
     /**
      * Imports the entry
@@ -36,18 +37,19 @@ public class SIEEntryRAR implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iCurrentYearData) throws SSImportException {
 
         // #RAR årsnr från till
-        if(!iReader.hasFields(STRING, INT, INT, INT)) {
-            throw new SSImportException(SSBundleString.getString("sieimport.fielderror", iReader.peekLine()) );
+        if (!iReader.hasFields(STRING, INT, INT, INT)) {
+            throw new SSImportException(
+                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
         }
 
-        int        iYear          = iReader.nextInteger();
-        Date       iFrom          = iReader.nextDate();
-        Date       iTo            = iReader.nextDate();
+        int        iYear = iReader.nextInteger();
+        Date       iFrom = iReader.nextDate();
+        Date       iTo = iReader.nextDate();
 
-        if( iYear == 0 && iCurrentYearData != null){
+        if (iYear == 0 && iCurrentYearData != null) {
             iCurrentYearData.setFrom(iFrom);
-            iCurrentYearData.setTo  (iTo);
-            //SSDB.getInstance().updateAccountingYear(iCurrentYearData);
+            iCurrentYearData.setTo(iTo);
+            // SSDB.getInstance().updateAccountingYear(iCurrentYearData);
         }
 
         return true;
@@ -66,25 +68,23 @@ public class SIEEntryRAR implements SIEEntry {
     public boolean exportEntry(SSSIEExporter iExporter, SIEWriter iWriter, SSNewAccountingYear iCurrentYearData) throws SSExportException {
         SSNewAccountingYear iPreviousYearData = SSDB.getInstance().getPreviousYear();
 
-        
-        if( iPreviousYearData != null){
+        if (iPreviousYearData != null) {
             iWriter.append(SIELabel.SIE_RAR);
             iWriter.append("-1");
-            iWriter.append( iPreviousYearData.getFrom() );
-            iWriter.append( iPreviousYearData.getTo() );
+            iWriter.append(iPreviousYearData.getFrom());
+            iWriter.append(iPreviousYearData.getTo());
             iWriter.newLine();
         }
 
-        if( iCurrentYearData != null){
+        if (iCurrentYearData != null) {
             iWriter.append(SIELabel.SIE_RAR);
             iWriter.append("0");
-            iWriter.append( iCurrentYearData.getFrom() );
-            iWriter.append( iCurrentYearData.getTo() );
+            iWriter.append(iCurrentYearData.getFrom());
+            iWriter.append(iCurrentYearData.getTo());
             iWriter.newLine();
         }
 
         return iPreviousYearData != null || iCurrentYearData != null;
     }
-
 
 }

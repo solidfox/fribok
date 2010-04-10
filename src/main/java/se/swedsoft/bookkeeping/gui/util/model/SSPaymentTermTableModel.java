@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.util.model;
 
+
 import se.swedsoft.bookkeeping.data.common.SSPaymentTerm;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
@@ -11,13 +12,13 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 import javax.swing.*;
 import java.util.List;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 12:13:59
  */
 public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
-
 
     /**
      * Default constructor.
@@ -44,39 +45,37 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
         return SSPaymentTerm.class;
     }
 
-
     @Override
     public SSPaymentTermTableModel getDropdownmodel() {
         return getDropDownModel();
     }
+
     /**
      *
      * @return
      */
-    public static SSPaymentTermTableModel getDropDownModel(){
+    public static SSPaymentTermTableModel getDropDownModel() {
         SSPaymentTermTableModel iModel = new SSPaymentTermTableModel();
 
-        iModel.addColumn( COLUMN_NAME );
-        iModel.addColumn( COLUMN_DESCRIPTION   );
+        iModel.addColumn(COLUMN_NAME);
+        iModel.addColumn(COLUMN_DESCRIPTION);
 
         return iModel;
 
     }
 
-
-
     /**
      *  Name
      */
-    public static SSTableColumn<SSPaymentTerm> COLUMN_NAME = new SSTableColumn<SSPaymentTerm>(SSBundle.getBundle().getString("currencytable.column.1")) {
+    public static SSTableColumn<SSPaymentTerm> COLUMN_NAME = new SSTableColumn<SSPaymentTerm>(
+            SSBundle.getBundle().getString("currencytable.column.1")) {
         @Override
         public Object getValue(SSPaymentTerm iCurrency) {
             return iCurrency.getName();
         }
 
         @Override
-        public void setValue(SSPaymentTerm iCurrency, Object iValue) {
-        }
+        public void setValue(SSPaymentTerm iCurrency, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -89,19 +88,18 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
         }
     };
 
-
     /**
      *  Description
      */
-    public static SSTableColumn<SSPaymentTerm> COLUMN_DESCRIPTION = new SSTableColumn<SSPaymentTerm>(SSBundle.getBundle().getString("currencytable.column.2")) {
+    public static SSTableColumn<SSPaymentTerm> COLUMN_DESCRIPTION = new SSTableColumn<SSPaymentTerm>(
+            SSBundle.getBundle().getString("currencytable.column.2")) {
         @Override
         public Object getValue(SSPaymentTerm iCurrency) {
             return iCurrency.getDescription();
         }
 
         @Override
-        public void setValue(SSPaymentTerm iCurrency, Object iValue) {
-        }
+        public void setValue(SSPaymentTerm iCurrency, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -114,19 +112,18 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
         }
     };
 
-
-
     /**
      *
      * @param iOwner
      * @return
      */
-    public static SSEditableTableComboBox.EditingFactory<SSPaymentTerm> getEditingFactory(final JDialog iOwner){
+    public static SSEditableTableComboBox.EditingFactory<SSPaymentTerm> getEditingFactory(final JDialog iOwner) {
         return new SSEditableTableComboBox.EditingFactory<SSPaymentTerm>() {
             public SSPaymentTerm newAction() {
-                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner, SSBundle.getBundle().getString("paymenttermtable.title"));
+                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner,
+                        SSBundle.getBundle().getString("paymenttermtable.title"));
 
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
                     SSPaymentTerm iPaymentTerm = new SSPaymentTerm();
 
                     iPaymentTerm.setName(iDialog.getName());
@@ -139,11 +136,13 @@ public class SSPaymentTermTableModel extends SSTableModel<SSPaymentTerm> {
             }
 
             public void editAction(SSPaymentTerm iSelected) {
-                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner, SSBundle.getBundle().getString("paymenttermtable.title"));
-                iDialog.setName       ( iSelected.getName()       );
-                iDialog.setDescription( iSelected.getDescription());
+                SSNameDescriptionDialog iDialog = new SSNameDescriptionDialog(iOwner,
+                        SSBundle.getBundle().getString("paymenttermtable.title"));
 
-                if(iDialog.showDialog() == JOptionPane.OK_OPTION){
+                iDialog.setName(iSelected.getName());
+                iDialog.setDescription(iSelected.getDescription());
+
+                if (iDialog.showDialog() == JOptionPane.OK_OPTION) {
                     iSelected.setName(iDialog.getName());
                     iSelected.setDescription(iDialog.getDescription());
                     SSDB.getInstance().updatePaymentTerm(iSelected);

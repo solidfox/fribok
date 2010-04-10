@@ -1,11 +1,13 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.gui.util.table.SSTableSearchable;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+
 
 /**
  * User: Johan Gunnarsson
@@ -20,10 +22,10 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
     // Kontonummer
     private Integer iAccountNr;
 
-    //Kontobeskrivning
+    // Kontobeskrivning
     private String iDescription;
 
-    //Procent
+    // Procent
     private BigDecimal iPercentage;
 
     // Debet
@@ -47,16 +49,12 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
     // Transient referens till kontot
     private transient SSNewResultUnit iResultUnit;
 
-
-
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Default constructor
      */
-    public SSAutoDistRow() {
-    }
+    public SSAutoDistRow() {}
 
     /**
      * Default constructor
@@ -64,12 +62,12 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
      */
     public SSAutoDistRow(SSAccount iAccount) {
         this.iAccount = iAccount;
-        iAccountNr    = iAccount.getNumber();
-        iPercentage   = new BigDecimal(0);
-        iDebet        = new BigDecimal(0);
-        iCredit       = new BigDecimal(0);
-        iProject      = null;
-        iResultUnit   = null;
+        iAccountNr = iAccount.getNumber();
+        iPercentage = new BigDecimal(0);
+        iDebet = new BigDecimal(0);
+        iCredit = new BigDecimal(0);
+        iProject = null;
+        iResultUnit = null;
     }
 
     /**
@@ -81,28 +79,27 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         copyFrom(iRow);
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iAutoDistRow
      */
     public void copyFrom(SSAutoDistRow iAutoDistRow) {
-        iAccountNr    = iAutoDistRow.iAccountNr;
-        iDescription  = iAutoDistRow.iDescription;
-        iPercentage   = iAutoDistRow.iPercentage;
-        iDebet        = iAutoDistRow.iDebet;
-        iCredit       = iAutoDistRow.iCredit;
-        iProjectNr    = iAutoDistRow.iProjectNr;
+        iAccountNr = iAutoDistRow.iAccountNr;
+        iDescription = iAutoDistRow.iDescription;
+        iPercentage = iAutoDistRow.iPercentage;
+        iDebet = iAutoDistRow.iDebet;
+        iCredit = iAutoDistRow.iCredit;
+        iProjectNr = iAutoDistRow.iProjectNr;
         iResultUnitNr = iAutoDistRow.iResultUnitNr;
 
-        iAccount      = iAutoDistRow.iAccount;
-        iProject      = iAutoDistRow.iProject;
-        iResultUnit   = iAutoDistRow.iResultUnit;
+        iAccount = iAutoDistRow.iAccount;
+        iProject = iAutoDistRow.iProject;
+        iResultUnit = iAutoDistRow.iResultUnit;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public Integer getAccountNr() {
         return iAccountNr;
@@ -112,7 +109,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iAccountNr = iAccountNr;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public String getDescription() {
         return iDescription;
@@ -122,7 +119,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iDescription = iDescription;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public BigDecimal getPercentage() {
         return iPercentage;
@@ -132,7 +129,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iPercentage = iPercentage;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public BigDecimal getDebet() {
         return iDebet;
@@ -142,7 +139,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iDebet = iDebet;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public BigDecimal getCredit() {
         return iCredit;
@@ -152,7 +149,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iCredit = iCredit;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public String getProjectNr() {
         return iProjectNr;
@@ -162,7 +159,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iProjectNr = iProjectNr;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public String getResultUnitNr() {
         return iResultUnitNr;
@@ -172,7 +169,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         this.iResultUnitNr = iResultUnitNr;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public SSAccount getAccount() {
         return getAccount(SSDB.getInstance().getAccounts());
@@ -180,7 +177,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
 
     public void setAccount(SSAccount iAccount) {
         this.iAccount = iAccount;
-        iAccountNr    = iAccount.getNumber();
+        iAccountNr = iAccount.getNumber();
     }
 
     /**
@@ -188,10 +185,10 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
      * @param iAccounts
      * @return
      */
-    public SSAccount getAccount(List<SSAccount> iAccounts ) {
-        if(iAccount == null && iAccountNr != null){
+    public SSAccount getAccount(List<SSAccount> iAccounts) {
+        if (iAccount == null && iAccountNr != null) {
             for (SSAccount iCurrent : iAccounts) {
-                if(iAccountNr.equals(iCurrent.getNumber() )){
+                if (iAccountNr.equals(iCurrent.getNumber())) {
                     iAccount = iCurrent;
                     break;
                 }
@@ -200,16 +197,16 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
         return iAccount;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public SSNewProject getProject() {
-        return getProject( SSDB.getInstance().getProjects() );
+        return getProject(SSDB.getInstance().getProjects());
     }
 
     public SSNewProject getProject(List<SSNewProject> iProjects) {
-        if(iProject == null && iProjectNr != null){
+        if (iProject == null && iProjectNr != null) {
             for (SSNewProject iCurrent : iProjects) {
-                if(iProjectNr.equals(iCurrent.getNumber() )){
+                if (iProjectNr.equals(iCurrent.getNumber())) {
                     iProject = iCurrent;
                     break;
                 }
@@ -220,24 +217,25 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
 
     public void setProject(SSNewProject iProject) {
         this.iProject = iProject;
-        iProjectNr    = iProject == null ? null : iProject.getNumber();
+        iProjectNr = iProject == null ? null : iProject.getNumber();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     public SSNewResultUnit getResultUnit() {
         return getResultUnit(SSDB.getInstance().getResultUnits());
 
     }
+
     /**
      *
      * @param iResultUnits
      * @return
      */
     public SSNewResultUnit getResultUnit(List<SSNewResultUnit> iResultUnits) {
-        if(iResultUnit == null && iResultUnitNr != null){
+        if (iResultUnit == null && iResultUnitNr != null) {
             for (SSNewResultUnit iCurrent : iResultUnits) {
-                if(iResultUnitNr.equals(iCurrent.getNumber() )){
+                if (iResultUnitNr.equals(iCurrent.getNumber())) {
                     iResultUnit = iCurrent;
                     break;
                 }
@@ -248,10 +246,10 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
 
     public void setResultUnit(SSNewResultUnit iResultUnit) {
         this.iResultUnit = iResultUnit;
-        iResultUnitNr    = iResultUnit == null ? null : iResultUnit.getNumber();
+        iResultUnitNr = iResultUnit == null ? null : iResultUnit.getNumber();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
     /**
      * Returns the render string to be shown in the tables
      *
@@ -264,6 +262,7 @@ public class SSAutoDistRow implements SSTableSearchable, Serializable {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.data.SSAutoDistRow");
         sb.append("{iAccount=").append(iAccount);
         sb.append(", iAccountNr=").append(iAccountNr);

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.data;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.common.SSCurrency;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-jun-09
@@ -20,10 +22,9 @@ import java.util.*;
  *
  * Leverantörsfaktura
  */
-public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
+public class SSSupplierInvoice implements SSTableSearchable, Serializable {
     // Constant for serialization versioning.
     static final long serialVersionUID = 1L;
-
 
     // Nummer
     protected Integer iNumber;
@@ -31,7 +32,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     protected Date iDate;
     // Förfallodatum
     protected Date iDueDate;
-    //Betalningsvillkor
+    // Betalningsvillkor
     protected SSPaymentTerm iPaymentTerm;
     // Leverantörsnummer
     private String iSupplierNr;
@@ -45,12 +46,12 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     protected BigDecimal iCurrencyRate;
     // Total Moms
     protected BigDecimal iTaxSum;
-    //Öresavrunding
+    // Öresavrunding
     protected BigDecimal iRoundingSum;
     // Kontering
     protected SSVoucher iVoucher;
     // manuell kontering
-    protected SSVoucher iCorrection ;
+    protected SSVoucher iCorrection;
     // Bokförd
     protected boolean iEntered;
     // Lagerför
@@ -66,7 +67,6 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     // The supplier
     protected transient SSSupplier iSupplier;
 
-
     /**
      *
      */
@@ -74,21 +74,22 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         iRows = new LinkedList<SSSupplierInvoiceRow>();
         iDate = getLastDate();
         iDueDate = getLastDate();
-        iCurrencyRate       = new BigDecimal(1);
-        iVoucher            = new SSVoucher();
-        iCorrection         = new SSVoucher();
-        iTaxSum             = new BigDecimal(0);
-        iRoundingSum        = new BigDecimal(0);
-        iEntered            = false;
-        iStockInfluencing   = true;
+        iCurrencyRate = new BigDecimal(1);
+        iVoucher = new SSVoucher();
+        iCorrection = new SSVoucher();
+        iTaxSum = new BigDecimal(0);
+        iRoundingSum = new BigDecimal(0);
+        iEntered = false;
+        iStockInfluencing = true;
         iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
-        iDefaultAccounts.putAll(SSDB.getInstance().getCurrentCompany().getDefaultAccounts());
+        iDefaultAccounts.putAll(
+                SSDB.getInstance().getCurrentCompany().getDefaultAccounts());
         SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
-        if(iCompany != null){
+
+        if (iCompany != null) {
             iCurrency = iCompany.getCurrency();
         }
     }
-
 
     /**
      *
@@ -98,76 +99,76 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         copyFrom(iSupplierInvoice);
     }
 
-
-
     /**
      * Create a supplierinvoice based on a purchase order
      *
      * @param iPurchaseOrder
      */
     public SSSupplierInvoice(SSPurchaseOrder iPurchaseOrder) {
-        iDate            = getLastDate();
-        iSupplier        = iPurchaseOrder.iSupplier;
-        iNumber          = iPurchaseOrder.iNumber;
-        iSupplier        = iPurchaseOrder.iSupplier;
-        iSupplierNr      = iPurchaseOrder.iSupplierNr;
-        iSupplierName    = iPurchaseOrder.iSupplierName;
-        iCurrency        = iPurchaseOrder.iCurrency;
-        iCurrencyRate    = iPurchaseOrder.getCurrencyRate();
-        iVoucher         = new SSVoucher();
-        iCorrection      = new SSVoucher();
+        iDate = getLastDate();
+        iSupplier = iPurchaseOrder.iSupplier;
+        iNumber = iPurchaseOrder.iNumber;
+        iSupplier = iPurchaseOrder.iSupplier;
+        iSupplierNr = iPurchaseOrder.iSupplierNr;
+        iSupplierName = iPurchaseOrder.iSupplierName;
+        iCurrency = iPurchaseOrder.iCurrency;
+        iCurrencyRate = iPurchaseOrder.getCurrencyRate();
+        iVoucher = new SSVoucher();
+        iCorrection = new SSVoucher();
         iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
-        iRows            = new LinkedList<SSSupplierInvoiceRow>();
-        iRoundingSum     = new BigDecimal(0);
+        iRows = new LinkedList<SSSupplierInvoiceRow>();
+        iRoundingSum = new BigDecimal(0);
 
         // Copy all default accounts
         for (SSDefaultAccount iDefaultAccount : iPurchaseOrder.getDefaultAccounts().keySet()) {
-            iDefaultAccounts.put(iDefaultAccount, iPurchaseOrder.getDefaultAccounts().get(iDefaultAccount));
+            iDefaultAccounts.put(iDefaultAccount,
+                    iPurchaseOrder.getDefaultAccounts().get(iDefaultAccount));
         }
-
 
         generateVoucher();
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @param iSupplierInvoice
      */
     public void copyFrom(SSSupplierInvoice iSupplierInvoice) {
-        iNumber           = iSupplierInvoice.iNumber;
-        iDate             = iSupplierInvoice.iDate;
-        iPaymentTerm      = iSupplierInvoice.iPaymentTerm;
-        iDueDate          = iSupplierInvoice.iDueDate;
-        iSupplierNr       = iSupplierInvoice.iSupplierNr;
-        iSupplierName     = iSupplierInvoice.iSupplierName;
-        iReferencenumber  = iSupplierInvoice.iReferencenumber;
-        iCurrency         = iSupplierInvoice.iCurrency;
-        iCurrencyRate     = iSupplierInvoice.iCurrencyRate;
-        iTaxSum           = iSupplierInvoice.iTaxSum;
-        iRoundingSum      = iSupplierInvoice.iRoundingSum;
+        iNumber = iSupplierInvoice.iNumber;
+        iDate = iSupplierInvoice.iDate;
+        iPaymentTerm = iSupplierInvoice.iPaymentTerm;
+        iDueDate = iSupplierInvoice.iDueDate;
+        iSupplierNr = iSupplierInvoice.iSupplierNr;
+        iSupplierName = iSupplierInvoice.iSupplierName;
+        iReferencenumber = iSupplierInvoice.iReferencenumber;
+        iCurrency = iSupplierInvoice.iCurrency;
+        iCurrencyRate = iSupplierInvoice.iCurrencyRate;
+        iTaxSum = iSupplierInvoice.iTaxSum;
+        iRoundingSum = iSupplierInvoice.iRoundingSum;
         iStockInfluencing = iSupplierInvoice.iStockInfluencing;
-        iEntered          = iSupplierInvoice.iEntered;
-        iBGCEntered       = iSupplierInvoice.iBGCEntered;
+        iEntered = iSupplierInvoice.iEntered;
+        iBGCEntered = iSupplierInvoice.iBGCEntered;
 
-        iVoucher          = new SSVoucher(iSupplierInvoice.iVoucher);
-        iCorrection       = new SSVoucher(iSupplierInvoice.iCorrection);
+        iVoucher = new SSVoucher(iSupplierInvoice.iVoucher);
+        iCorrection = new SSVoucher(iSupplierInvoice.iCorrection);
 
-        iSupplier         = iSupplierInvoice.iSupplier;
-        iDefaultAccounts  = new HashMap<SSDefaultAccount, Integer>();
+        iSupplier = iSupplierInvoice.iSupplier;
+        iDefaultAccounts = new HashMap<SSDefaultAccount, Integer>();
 
         // Copy all default accounts
         for (SSDefaultAccount iDefaultAccount : iSupplierInvoice.getDefaultAccounts().keySet()) {
-            iDefaultAccounts.put(iDefaultAccount, iSupplierInvoice.getDefaultAccounts().get(iDefaultAccount));
+            iDefaultAccounts.put(iDefaultAccount,
+                    iSupplierInvoice.getDefaultAccounts().get(iDefaultAccount));
         }
 
         iRows = new LinkedList<SSSupplierInvoiceRow>();
         for (SSSupplierInvoiceRow iRow : iSupplierInvoice.iRows) {
-            iRows.add( new SSSupplierInvoiceRow(iRow) );
+            iRows.add(new SSSupplierInvoiceRow(iRow));
         }
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -176,8 +177,9 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         List<SSSupplierInvoice> iInvoices = SSDB.getInstance().getSupplierInvoices();
 
         int iMax = SSDB.getInstance().getAutoIncrement().getNumber("supplierinvoice");
+
         for (SSSupplierInvoice iSupplierInvoice : iInvoices) {
-            if(iSupplierInvoice.iNumber > iMax){
+            if (iSupplierInvoice.iNumber > iMax) {
                 iMax = iSupplierInvoice.iNumber;
             }
         }
@@ -185,14 +187,14 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         iNumber = iMax + 1;
     }
 
-
-    public Date getLastDate(){
+    public Date getLastDate() {
         List<SSSupplierInvoice> iSupplierInvoices = SSDB.getInstance().getSupplierInvoices();
         Date iMax = null;
-        if(!iSupplierInvoices.isEmpty()){
+
+        if (!iSupplierInvoices.isEmpty()) {
             iMax = iSupplierInvoices.get(0).iDate;
-            for(SSSupplierInvoice iInvoice : iSupplierInvoices){
-                if(iInvoice.iDate.after(iMax)){
+            for (SSSupplierInvoice iInvoice : iSupplierInvoices) {
+                if (iInvoice.iDate.after(iMax)) {
                     iMax = iInvoice.iDate;
                 }
             }
@@ -200,7 +202,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         return iMax;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -218,7 +220,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iNumber = iNumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -236,7 +238,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iDate = iDate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -257,26 +259,24 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     public void setDueDate() {
         Calendar iCalendar = Calendar.getInstance();
 
-        if(iPaymentTerm != null){
-            if(iDate==null){
-                 iDate=new Date();
+        if (iPaymentTerm != null) {
+            if (iDate == null) {
+                iDate = new Date();
             }
-            iCalendar.setTime( iDate );
+            iCalendar.setTime(iDate);
             iCalendar.add(Calendar.DAY_OF_MONTH, iPaymentTerm.decodeValue());
 
-            iDueDate = iCalendar.getTime() ;
+            iDueDate = iCalendar.getTime();
         } else {
             iDueDate = iDate;
         }
     }
 
-    public void setPaymentTerm(SSPaymentTerm iPaymentTerm)
-    {
-        this.iPaymentTerm=iPaymentTerm;
+    public void setPaymentTerm(SSPaymentTerm iPaymentTerm) {
+        this.iPaymentTerm = iPaymentTerm;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -294,7 +294,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iSupplierNr = iSupplierNr;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -312,8 +312,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iSupplierName = iSupplierName;
     }
 
-    ////////////////////////////////////////////////////
-
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -331,7 +330,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iReferencenumber = iReferencenumber;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -349,7 +348,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iCurrency = iCurrency;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -367,14 +366,16 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iCurrencyRate = iCurrencyRate;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public BigDecimal getTaxSum() {
-        if(iTaxSum == null) iTaxSum = new BigDecimal(0);
+        if (iTaxSum == null) {
+            iTaxSum = new BigDecimal(0);
+        }
 
         return iTaxSum;
     }
@@ -387,9 +388,10 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iTaxSum = iTaxSum;
     }
 
-
     public BigDecimal getRoundingSum() {
-        if(iRoundingSum == null) iRoundingSum = new BigDecimal(0);
+        if (iRoundingSum == null) {
+            iRoundingSum = new BigDecimal(0);
+        }
 
         return iRoundingSum;
     }
@@ -402,10 +404,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iRoundingSum = iRoundingSum;
     }
 
-
-
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -413,9 +412,9 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @return
      */
     public SSSupplier getSupplier(List<SSSupplier> iSuppliers) {
-        if(iSupplier == null){
+        if (iSupplier == null) {
             for (SSSupplier iCurrent : iSuppliers) {
-                if(iCurrent.getNumber().equals(iSupplierNr)){
+                if (iCurrent.getNumber().equals(iSupplierNr)) {
                     iSupplier = iCurrent;
                 }
             }
@@ -423,8 +422,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         return iSupplier;
     }
 
-    public SSSupplier getSupplier()
-    {
+    public SSSupplier getSupplier() {
         return iSupplier;
     }
 
@@ -433,15 +431,16 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @param iSupplier
      */
     public void setSupplier(SSSupplier iSupplier) {
-        this.iSupplier   = iSupplier;
+        this.iSupplier = iSupplier;
         iSupplierNr = iSupplier == null ? null : iSupplier.getNumber();
 
-        if(iSupplier != null){
-            iSupplierName     = iSupplier.getName();
-            iCurrency         = iSupplier.getCurrency();
+        if (iSupplier != null) {
+            iSupplierName = iSupplier.getName();
+            iCurrency = iSupplier.getCurrency();
         }
     }
-    ////////////////////////////////////////////////////
+
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -459,7 +458,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iRows = iRows;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      * Adds the rows from an supplierinvoice to this supplierinvoice
@@ -468,7 +467,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      */
     public void append(SSSupplierInvoice iSupplierInvoice) {
         for (SSSupplierInvoiceRow iRow : iSupplierInvoice.iRows) {
-            iRows.add( new SSSupplierInvoiceRow(iRow) );
+            iRows.add(new SSSupplierInvoiceRow(iRow));
         }
     }
 
@@ -480,37 +479,36 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
     public void append(SSPurchaseOrder iPurchaseOrder) {
         for (SSPurchaseOrderRow iRow : iPurchaseOrder.getRows()) {
 
-            SSSupplierInvoiceRow iMatchingRow = SSSupplierInvoiceMath.getMatchingRow(this, iRow);
+            SSSupplierInvoiceRow iMatchingRow = SSSupplierInvoiceMath.getMatchingRow(this,
+                    iRow);
 
-            if( iMatchingRow != null){
+            if (iMatchingRow != null) {
                 Integer iQuantity = iMatchingRow.getQuantity();
 
-                if(iQuantity != null){
-                    iMatchingRow.setQuantity( iQuantity + iRow.getQuantity() );
+                if (iQuantity != null) {
+                    iMatchingRow.setQuantity(iQuantity + iRow.getQuantity());
                 } else {
-                    iMatchingRow.setQuantity(  iRow.getQuantity() );
+                    iMatchingRow.setQuantity(iRow.getQuantity());
                 }
             } else {
-                iRows.add( new SSSupplierInvoiceRow(iRow) );
+                iRows.add(new SSSupplierInvoiceRow(iRow));
             }
         }
     }
 
-
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
      * @return
      */
     public Map<SSDefaultAccount, Integer> getDefaultAccounts() {
-        if(iDefaultAccounts == null)
-        {
+        if (iDefaultAccounts == null) {
             SSNewCompany iCompany = SSDB.getInstance().getCurrentCompany();
-            if(iCompany!=null)
-            {
+
+            if (iCompany != null) {
                 iDefaultAccounts = iCompany.getDefaultAccounts();
-                iCompany=null;
+                iCompany = null;
             }
         }
         return iDefaultAccounts;
@@ -522,10 +520,12 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @param iDefaultAccount
      * @return
      */
-    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount){
+    public SSAccount getDefaultAccount(SSAccountPlan iAccountPlan, SSDefaultAccount iDefaultAccount) {
         Integer iAccountNumber = iDefaultAccounts.get(iDefaultAccount);
 
-        if(iAccountNumber == null) return null;
+        if (iAccountNumber == null) {
+            return null;
+        }
 
         return iAccountPlan.getAccount(iAccountNumber);
     }
@@ -535,7 +535,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      * @param iDefaultAccount
      * @return
      */
-    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount){
+    public Integer getDefaultAccount(SSDefaultAccount iDefaultAccount) {
         return iDefaultAccounts.get(iDefaultAccount);
     }
 
@@ -547,7 +547,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iDefaultAccounts = iDefaultAccounts;
     }
 
-////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -565,7 +565,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iVoucher = iVoucher;
     }
 
-////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -583,7 +583,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         this.iCorrection = iCorrection;
     }
 
-////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -608,7 +608,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         iEntered = true;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -633,7 +633,7 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         iBGCEntered = true;
     }
 
-    ////////////////////////////////////////////////////
+    // //////////////////////////////////////////////////
 
     /**
      *
@@ -647,14 +647,12 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      *
      * @param iStockInfluencing
      */
-    public void setStockInfluencing(boolean iStockInfluencing){
+    public void setStockInfluencing(boolean iStockInfluencing) {
         this.iStockInfluencing = iStockInfluencing;
     }
 
+    // //////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////
-
-    
     public boolean equals(Object obj) {
 
         if (iNumber == null) {
@@ -669,7 +667,6 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         return false;
     }
 
-    
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
@@ -680,7 +677,6 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         return sb.toString();
     }
 
-    
     public int hashCode() {
         return iNumber;
     }
@@ -703,7 +699,6 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
         return (iSupplierNr != null) && iSupplierNr.equals(iSupplier.getNumber());
     }
 
-
     /**
      *
      * @param iProduct
@@ -711,7 +706,9 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      */
     public boolean hasProduct(SSProduct iProduct) {
         for (SSSupplierInvoiceRow iRow : iRows) {
-            if(iRow.hasProduct(iProduct)) return true;
+            if (iRow.hasProduct(iProduct)) {
+                return true;
+            }
         }
         return false;
     }
@@ -722,74 +719,78 @@ public class SSSupplierInvoice implements SSTableSearchable, Serializable  {
      */
     public SSVoucher generateVoucher() {
         iVoucher = new SSVoucher();
-        String iDescription = SSBundle.getBundle().getString("supplierinvoiceframe.voucherdescription");
+        String iDescription = SSBundle.getBundle().getString(
+                "supplierinvoiceframe.voucherdescription");
 
-        SSNewCompany     iCompany     = SSDB.getInstance().getCurrentCompany();
+        SSNewCompany     iCompany = SSDB.getInstance().getCurrentCompany();
 
         SSAccountPlan iAccountPlan = SSDB.getInstance().getCurrentAccountPlan();
 
-
         iVoucher = new SSVoucher();
-        iVoucher.setDate       ( new Date() );
-        iVoucher.setNumber     ( 0  );
-        iVoucher.setDescription( String.format(iDescription, iNumber) );
+        iVoucher.setDate(new Date());
+        iVoucher.setNumber(0);
+        iVoucher.setDescription(String.format(iDescription, iNumber));
 
         // Get the total sum for the sales
-        BigDecimal iTotalSum         = SSSupplierInvoiceMath.getTotalSum(this);
-        BigDecimal iCorrectionSum    = SSVoucherMath.getCreditMinusDebetSum(iCorrection);
+        BigDecimal iTotalSum = SSSupplierInvoiceMath.getTotalSum(this);
+        BigDecimal iCorrectionSum = SSVoucherMath.getCreditMinusDebetSum(iCorrection);
 
-        iTotalSum = iTotalSum.subtract( iCorrectionSum    );
+        iTotalSum = iTotalSum.subtract(iCorrectionSum);
 
         // Add the total sum to the voucher
-        iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.SupplierDebt), null , iTotalSum);
+        iVoucher.addVoucherRow(
+                getDefaultAccount(iAccountPlan, SSDefaultAccount.SupplierDebt), null,
+                iTotalSum);
 
         // Add roundingsum
-        iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.Rounding), iRoundingSum);
+        iVoucher.addVoucherRow(getDefaultAccount(iAccountPlan, SSDefaultAccount.Rounding),
+                iRoundingSum);
 
         // Add the tax 1
-        iVoucher.addVoucherRow( getDefaultAccount(iAccountPlan, SSDefaultAccount.IncommingTax), iTaxSum, null   );
+        iVoucher.addVoucherRow(
+                getDefaultAccount(iAccountPlan, SSDefaultAccount.IncommingTax), iTaxSum,
+                null);
 
         // Add all rows from the correction voucher
-        for(SSVoucherRow iVoucherRow : iCorrection.getRows() ){
+        for (SSVoucherRow iVoucherRow : iCorrection.getRows()) {
             iVoucher.addVoucherRow(new SSVoucherRow(iVoucherRow));
         }
 
-
         // Add all products
-        for(SSSupplierInvoiceRow iRow : iRows){
+        for (SSSupplierInvoiceRow iRow : iRows) {
             SSVoucherRow iVoucherRow = new SSVoucherRow();
 
-            iVoucherRow.setDebet     ( iRow.getSum() );
-            iVoucherRow.setAccount   ( iRow.getAccount   ( iAccountPlan.getAccounts() ) );
-            iVoucherRow.setProject   ( iRow.getProject   ( SSDB.getInstance().getProjects()));
-            iVoucherRow.setResultUnit( iRow.getResultUnit( SSDB.getInstance().getResultUnits()));
+            iVoucherRow.setDebet(iRow.getSum());
+            iVoucherRow.setAccount(iRow.getAccount(iAccountPlan.getAccounts()));
+            iVoucherRow.setProject(iRow.getProject(SSDB.getInstance().getProjects()));
+            iVoucherRow.setResultUnit(
+                    iRow.getResultUnit(SSDB.getInstance().getResultUnits()));
 
-            if(iVoucherRow.getAccountNr()!=null)
-            {
+            if (iVoucherRow.getAccountNr() != null) {
                 iVoucher.addVoucherRow(iVoucherRow);
             }
         }
-        for(SSVoucherRow iRow : iVoucher.getRows()){
-            if(iRow.isDebet()){
-                if(iRow.getDebet().compareTo(new BigDecimal(0)) == -1){
+        for (SSVoucherRow iRow : iVoucher.getRows()) {
+            if (iRow.isDebet()) {
+                if (iRow.getDebet().compareTo(new BigDecimal(0)) == -1) {
                     iRow.setCredit(iRow.getDebet().negate());
                     iRow.setDebet(null);
                 }
-            }
-            else {
-                if(iRow.getCredit().compareTo(new BigDecimal(0)) == -1){
+            } else {
+                if (iRow.getCredit().compareTo(new BigDecimal(0)) == -1) {
                     iRow.setDebet(iRow.getCredit().negate());
                     iRow.setCredit(null);
                 }
             }
         }
         // Convert all rows to the local currency
-        if(iCurrencyRate != null)  SSVoucherMath.multiplyRowsBy(iVoucher, iCurrencyRate);
+        if (iCurrencyRate != null) {
+            SSVoucherMath.multiplyRowsBy(iVoucher, iCurrencyRate);
+        }
 
         iVoucher = SSVoucherMath.compress(iVoucher);
 
         return iVoucher;
     }
-
 
 }

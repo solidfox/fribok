@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.suppliercreditinvoice;
 
+
 import se.swedsoft.bookkeeping.data.SSProduct;
 import se.swedsoft.bookkeeping.data.SSSupplierCreditInvoice;
 import se.swedsoft.bookkeeping.data.SSSupplierInvoice;
@@ -24,6 +25,7 @@ import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-mar-21
@@ -31,12 +33,9 @@ import java.util.ResourceBundle;
  */
 public class SSSupplierCreditInvoiceDialog {
 
-
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSSupplierCreditInvoiceDialog() {
-    }
-
+    private SSSupplierCreditInvoiceDialog() {}
 
     /**
      *
@@ -44,85 +43,28 @@ public class SSSupplierCreditInvoiceDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final SSTableModel<SSSupplierCreditInvoice> pModel) {
-        final SSDialog                    iDialog = new SSDialog(iMainFrame, SSSupplierCreditInvoiceDialog.bundle.getString("suppliercreditinvoiceframe.new.title"));
+        final SSDialog                    iDialog = new SSDialog(iMainFrame,
+                SSSupplierCreditInvoiceDialog.bundle.getString(
+                "suppliercreditinvoiceframe.new.title"));
 
+        SSSupplierInvoice iSupplierInvoice = SSSelectSupplierInvoiceDialog.showDialog(
+                iMainFrame);
+        final SSSupplierCreditInvoicePanel iPanel = new SSSupplierCreditInvoicePanel(
+                iDialog);
 
-        SSSupplierInvoice iSupplierInvoice = SSSelectSupplierInvoiceDialog.showDialog(iMainFrame);
-        final SSSupplierCreditInvoicePanel iPanel  = new SSSupplierCreditInvoicePanel(iDialog);
-        if( iSupplierInvoice == null) {
-            new SSErrorDialog(iMainFrame, "suppliercreditinvoiceframe.suppliercreditinvoicenoinvoice");
+        if (iSupplierInvoice == null) {
+            new SSErrorDialog(iMainFrame,
+                    "suppliercreditinvoiceframe.suppliercreditinvoicenoinvoice");
             return;
         } else if (iSupplierInvoice.getNumber() == -1) {
             return;
         }
 
-        SSSupplierCreditInvoice iSupplierCreditInvoice = new SSSupplierCreditInvoice(iSupplierInvoice);
+        SSSupplierCreditInvoice iSupplierCreditInvoice = new SSSupplierCreditInvoice(
+                iSupplierInvoice);
+
         iSupplierCreditInvoice.setEntered(false);
         iSupplierCreditInvoice.setNumber(null);
-        iPanel.setCreditSupplierInvoice( iSupplierCreditInvoice);
-
-        iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
-
-        final ActionListener iSaveAction = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                SSSupplierCreditInvoice iSupplierCreditInvoice = iPanel.getSupplierCreditInvoice();
-                SSDB.getInstance().addSupplierCreditInvoice(iSupplierCreditInvoice);
-
-                if (pModel != null) pModel.fireTableDataChanged();
-
-                iPanel.dispose();
-                iDialog.closeDialog();
-            }
-        };
-        iPanel.addOkAction(iSaveAction);
-
-        iPanel.addCancelAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                iPanel.dispose();
-                iDialog.closeDialog();
-            }
-        });
-        iDialog.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ) {
-                    return;
-                }
-
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "suppliercreditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION) {
-                    return;
-                }
-
-                iSaveAction.actionPerformed(null);
-            }
-        });
-        iDialog.setSize    (800, 600);
-        iDialog.setLocationRelativeTo(iMainFrame);
-        iDialog.setVisible();
-    }
-
-
-    /**
-     *
-     * @param iMainFrame
-     * @param iSupplierInvoice
-     * @param pModel
-     */
-    public static void newDialog(final SSMainFrame iMainFrame, SSSupplierInvoice iSupplierInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {
-        final SSDialog iDialog = new SSDialog(iMainFrame, SSSupplierCreditInvoiceDialog.bundle.getString("suppliercreditinvoiceframe.new.title"));
-        final SSSupplierCreditInvoicePanel iPanel = new SSSupplierCreditInvoicePanel(iDialog);
-
-        SSSupplierCreditInvoice iSupplierCreditInvoice = new SSSupplierCreditInvoice(iSupplierInvoice);
-        iSupplierCreditInvoice.setEntered(false);
-        iSupplierCreditInvoice.setNumber(null);
-        for (SSSupplierInvoiceRow iRow : iSupplierInvoice.getRows()) {
-            if (iRow.getProductNr() != null) {
-                SSProduct iProduct = iRow.getProduct(SSDB.getInstance().getProducts());
-
-                iRow.setProject(iProduct == null ? null : iProduct.getProject(iProduct.getProjectNr()));
-                iRow.setResultUnit(iProduct == null ? null : iProduct.getResultUnit(iProduct.getResultUnitNr()));
-            }
-        }
         iPanel.setCreditSupplierInvoice(iSupplierCreditInvoice);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
@@ -130,14 +72,18 @@ public class SSSupplierCreditInvoiceDialog {
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplierCreditInvoice iSupplierCreditInvoice = iPanel.getSupplierCreditInvoice();
+
                 SSDB.getInstance().addSupplierCreditInvoice(iSupplierCreditInvoice);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -146,14 +92,17 @@ public class SSSupplierCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if (! iPanel.isValid()) {
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "suppliercreditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "suppliercreditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -165,7 +114,86 @@ public class SSSupplierCreditInvoiceDialog {
         iDialog.setVisible();
     }
 
+    /**
+     *
+     * @param iMainFrame
+     * @param iSupplierInvoice
+     * @param pModel
+     */
+    public static void newDialog(final SSMainFrame iMainFrame, SSSupplierInvoice iSupplierInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {
+        final SSDialog iDialog = new SSDialog(iMainFrame,
+                SSSupplierCreditInvoiceDialog.bundle.getString(
+                "suppliercreditinvoiceframe.new.title"));
+        final SSSupplierCreditInvoicePanel iPanel = new SSSupplierCreditInvoicePanel(
+                iDialog);
 
+        SSSupplierCreditInvoice iSupplierCreditInvoice = new SSSupplierCreditInvoice(
+                iSupplierInvoice);
+
+        iSupplierCreditInvoice.setEntered(false);
+        iSupplierCreditInvoice.setNumber(null);
+        for (SSSupplierInvoiceRow iRow : iSupplierInvoice.getRows()) {
+            if (iRow.getProductNr() != null) {
+                SSProduct iProduct = iRow.getProduct(SSDB.getInstance().getProducts());
+
+                iRow.setProject(
+                        iProduct == null
+                                ? null
+                                : iProduct.getProject(iProduct.getProjectNr()));
+                iRow.setResultUnit(
+                        iProduct == null
+                                ? null
+                                : iProduct.getResultUnit(iProduct.getResultUnitNr()));
+            }
+        }
+        iPanel.setCreditSupplierInvoice(iSupplierCreditInvoice);
+
+        iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
+
+        final ActionListener iSaveAction = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                SSSupplierCreditInvoice iSupplierCreditInvoice = iPanel.getSupplierCreditInvoice();
+
+                SSDB.getInstance().addSupplierCreditInvoice(iSupplierCreditInvoice);
+
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
+
+                iPanel.dispose();
+                iDialog.closeDialog();
+            }
+        };
+
+        iPanel.addOkAction(iSaveAction);
+
+        iPanel.addCancelAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                iPanel.dispose();
+                iDialog.closeDialog();
+            }
+        });
+        iDialog.addWindowListener(
+                new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if (!iPanel.isValid()) {
+                    return;
+                }
+
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "suppliercreditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
+                    return;
+                }
+
+                iSaveAction.actionPerformed(null);
+            }
+        });
+        iDialog.setSize(800, 600);
+        iDialog.setLocationRelativeTo(iMainFrame);
+        iDialog.setVisible();
+    }
 
     /**
      *
@@ -174,15 +202,23 @@ public class SSSupplierCreditInvoiceDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSSupplierCreditInvoice iSupplierCreditInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {
-        final String lockString = "suppliercreditinvoice" + iSupplierCreditInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "suppliercreditinvoice"
+                + iSupplierCreditInvoice.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog(iMainFrame, "suppliercreditinvoiceframe.suppliercreditinvoiceopen", iSupplierCreditInvoice.getNumber());
+            new SSErrorDialog(iMainFrame,
+                    "suppliercreditinvoiceframe.suppliercreditinvoiceopen",
+                    iSupplierCreditInvoice.getNumber());
             return;
         }
-        final SSDialog                     iDialog = new SSDialog(iMainFrame, SSSupplierCreditInvoiceDialog.bundle.getString("suppliercreditinvoiceframe.edit.title"));
-        final SSSupplierCreditInvoicePanel iPanel  = new SSSupplierCreditInvoicePanel(iDialog);
+        final SSDialog                     iDialog = new SSDialog(iMainFrame,
+                SSSupplierCreditInvoiceDialog.bundle.getString(
+                "suppliercreditinvoiceframe.edit.title"));
+        final SSSupplierCreditInvoicePanel iPanel = new SSSupplierCreditInvoicePanel(
+                iDialog);
 
-        iPanel.setCreditSupplierInvoice( iSupplierCreditInvoice);
+        iPanel.setCreditSupplierInvoice(iSupplierCreditInvoice);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
@@ -192,13 +228,16 @@ public class SSSupplierCreditInvoiceDialog {
 
                 SSDB.getInstance().updateSupplierCreditInvoice(iSupplierCreditInvoice);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 SSPostLock.removeLock(lockString);
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -209,23 +248,25 @@ public class SSSupplierCreditInvoiceDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ){
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(), "suppliercreditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "suppliercreditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
 
-
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
@@ -237,38 +278,51 @@ public class SSSupplierCreditInvoiceDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSSupplierCreditInvoice iSupplierCreditInvoice, final SSTableModel<SSSupplierCreditInvoice> pModel) {
-        final String lockString = "suppliercreditinvoice" + iSupplierCreditInvoice.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "suppliercreditinvoice"
+                + iSupplierCreditInvoice.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (SSPostLock.isLocked(lockString)) {
-            new SSErrorDialog(iMainFrame, "suppliercreditinvoiceframe.suppliercreditinvoiceopen", iSupplierCreditInvoice.getNumber());
+            new SSErrorDialog(iMainFrame,
+                    "suppliercreditinvoiceframe.suppliercreditinvoiceopen",
+                    iSupplierCreditInvoice.getNumber());
             return;
         }
-        final SSDialog                    iDialog = new SSDialog(iMainFrame, SSSupplierCreditInvoiceDialog.bundle.getString("suppliercreditinvoiceframe.copy.title"));
-        final SSSupplierCreditInvoicePanel iPanel  = new SSSupplierCreditInvoicePanel(iDialog);
+        final SSDialog                    iDialog = new SSDialog(iMainFrame,
+                SSSupplierCreditInvoiceDialog.bundle.getString(
+                "suppliercreditinvoiceframe.copy.title"));
+        final SSSupplierCreditInvoicePanel iPanel = new SSSupplierCreditInvoicePanel(
+                iDialog);
 
         SSSupplierCreditInvoice iNew = new SSSupplierCreditInvoice(iSupplierCreditInvoice);
 
         iNew.setNumber(null);
         iNew.setEntered(false);
-        iNew.setDate(new Date() );
+        iNew.setDate(new Date());
         if (iSupplierCreditInvoice.getCrediting() == null) {
-            new SSErrorDialog(iMainFrame, "suppliercreditinvoiceframe.suppliercreditinvoicenoinvoice");
+            new SSErrorDialog(iMainFrame,
+                    "suppliercreditinvoiceframe.suppliercreditinvoicenoinvoice");
             return;
         }
-        iPanel.setCreditSupplierInvoice( iNew);
+        iPanel.setCreditSupplierInvoice(iNew);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSSupplierCreditInvoice iSupplierCreditInvoice = iPanel.getSupplierCreditInvoice();
+
                 SSDB.getInstance().addSupplierCreditInvoice(iSupplierCreditInvoice);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
 
                 iPanel.dispose();
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkAction(iSaveAction);
 
         iPanel.addCancelAction(new ActionListener() {
@@ -277,26 +331,26 @@ public class SSSupplierCreditInvoiceDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                if(! iPanel.isValid() ){
+                if (!iPanel.isValid()) {
                     return;
                 }
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "suppliercreditinvoiceframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "suppliercreditinvoiceframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }
-
-
-
 
 }

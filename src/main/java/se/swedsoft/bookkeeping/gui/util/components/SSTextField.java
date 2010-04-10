@@ -1,7 +1,9 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+
 
 /**
  * Date: 2006-feb-21

@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.autodist;
 
+
 import se.swedsoft.bookkeeping.data.SSAutoDist;
 import se.swedsoft.bookkeeping.data.SSAutoDistRow;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -20,6 +21,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ResourceBundle;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-sep-21
@@ -29,8 +31,7 @@ public class SSAutoDistDialog {
 
     private static ResourceBundle bundle = SSBundle.getBundle();
 
-    private SSAutoDistDialog() {
-    }
+    private SSAutoDistDialog() {}
 
     /**
      *
@@ -39,31 +40,36 @@ public class SSAutoDistDialog {
      * @param pModel
      */
     public static void copyDialog(final SSMainFrame iMainFrame, SSAutoDist iAutoDist, final SSAutoDistTableModel pModel) {
-        final String lockString = "autodist" + iAutoDist.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
-        if(SSPostLock.isLocked(lockString)){
-            new SSErrorDialog( iMainFrame, "autodistframe.autodistopen",iAutoDist.getNumber());
+        final String lockString = "autodist" + iAutoDist.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
+        if (SSPostLock.isLocked(lockString)) {
+            new SSErrorDialog(iMainFrame, "autodistframe.autodistopen",
+                    iAutoDist.getNumber());
             return;
         }
-        final SSDialog      iDialog = new SSDialog(iMainFrame, bundle.getString("autodistframe.copy.title"));
-        final SSAutoDistPanel iPanel  = new SSAutoDistPanel(iDialog, false);
+        final SSDialog      iDialog = new SSDialog(iMainFrame,
+                bundle.getString("autodistframe.copy.title"));
+        final SSAutoDistPanel iPanel = new SSAutoDistPanel(iDialog, false);
         SSAutoDist iNew = new SSAutoDist(iAutoDist);
 
-        iPanel.setAutoDist( iNew );
+        iPanel.setAutoDist(iNew);
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAutoDist iAutoDist = iPanel.getAutoDist();
-                for(SSAutoDist iCurrentAutoDist : SSDB.getInstance().getAutoDists()) {
-                    if (iCurrentAutoDist.getNumber().equals( iAutoDist.getNumber())) {
-                        new SSErrorDialog( iMainFrame, "autodistframe.autodistaccexists");
+
+                for (SSAutoDist iCurrentAutoDist : SSDB.getInstance().getAutoDists()) {
+                    if (iCurrentAutoDist.getNumber().equals(iAutoDist.getNumber())) {
+                        new SSErrorDialog(iMainFrame, "autodistframe.autodistaccexists");
                         return;
                     }
                 }
                 for (SSAutoDistRow iRow : iAutoDist.getRows()) {
                     if (iRow.getAccount() == null) {
-                        new SSErrorDialog( iMainFrame, "autodistframe.autodistrownoacc");
+                        new SSErrorDialog(iMainFrame, "autodistframe.autodistrownoacc");
                         return;
                     }
                 }
@@ -72,6 +78,7 @@ public class SSAutoDistDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkActionListener(iSaveAction);
 
         iPanel.addCancelActionListener(new ActionListener() {
@@ -80,11 +87,14 @@ public class SSAutoDistDialog {
             }
         });
 
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "autodistframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "autodistframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
 
@@ -103,41 +113,51 @@ public class SSAutoDistDialog {
      * @param pModel
      */
     public static void editDialog(final SSMainFrame iMainFrame, SSAutoDist iAutoDist, final SSAutoDistTableModel pModel) {
-        final String lockString = "autodist" + iAutoDist.getNumber()+SSDB.getInstance().getCurrentCompany().getId();
+        final String lockString = "autodist" + iAutoDist.getNumber()
+                + SSDB.getInstance().getCurrentCompany().getId();
+
         if (!SSPostLock.applyLock(lockString)) {
-            new SSErrorDialog( iMainFrame, "autodistframe.autodistopen",iAutoDist.getNumber());
+            new SSErrorDialog(iMainFrame, "autodistframe.autodistopen",
+                    iAutoDist.getNumber());
             return;
         }
-        final SSDialog      iDialog = new SSDialog(iMainFrame, bundle.getString("autodistframe.edit.title"));
-        final SSAutoDistPanel iPanel  = new SSAutoDistPanel(iDialog, true);
+        final SSDialog      iDialog = new SSDialog(iMainFrame,
+                bundle.getString("autodistframe.edit.title"));
+        final SSAutoDistPanel iPanel = new SSAutoDistPanel(iDialog, true);
 
         final SSAutoDist iOriginal = iAutoDist;
-        iPanel.setAutoDist( new SSAutoDist(iAutoDist) );
+
+        iPanel.setAutoDist(new SSAutoDist(iAutoDist));
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAutoDist iAutoDist = iPanel.getAutoDist();
-                for(SSAutoDist iCurrentAutoDist : SSDB.getInstance().getAutoDists()) {
-                    if (iCurrentAutoDist.getNumber().equals(iAutoDist.getNumber()) && !iAutoDist.getNumber().equals(iOriginal.getNumber())) {
-                        new SSErrorDialog( iMainFrame, "autodistframe.autodistaccexists");
+
+                for (SSAutoDist iCurrentAutoDist : SSDB.getInstance().getAutoDists()) {
+                    if (iCurrentAutoDist.getNumber().equals(iAutoDist.getNumber())
+                            && !iAutoDist.getNumber().equals(iOriginal.getNumber())) {
+                        new SSErrorDialog(iMainFrame, "autodistframe.autodistaccexists");
                         return;
                     }
                 }
                 for (SSAutoDistRow iRow : iAutoDist.getRows()) {
                     if (iRow.getAccount() == null) {
-                        new SSErrorDialog( iMainFrame, "autodistframe.autodistrownoacc");
+                        new SSErrorDialog(iMainFrame, "autodistframe.autodistrownoacc");
                         return;
                     }
                 }
                 SSDB.getInstance().updateAutoDist(iAutoDist, iOriginal);
 
-                if (pModel != null) pModel.fireTableDataChanged();
+                if (pModel != null) {
+                    pModel.fireTableDataChanged();
+                }
                 SSPostLock.removeLock(lockString);
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkActionListener(iSaveAction);
 
         iPanel.addCancelActionListener(new ActionListener() {
@@ -146,11 +166,14 @@ public class SSAutoDistDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "autodistframe.saveonclose") != JOptionPane.OK_OPTION) {
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "autodistframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     SSPostLock.removeLock(lockString);
                     return;
                 }
@@ -169,24 +192,27 @@ public class SSAutoDistDialog {
      * @param pModel
      */
     public static void newDialog(final SSMainFrame iMainFrame, final SSAutoDistTableModel pModel) {
-        final SSDialog      iDialog = new SSDialog(iMainFrame, bundle.getString("autodistframe.new.title"));
-        final SSAutoDistPanel iPanel  = new SSAutoDistPanel(iDialog, false);
-        iPanel.setAutoDist( new SSAutoDist() );
+        final SSDialog      iDialog = new SSDialog(iMainFrame,
+                bundle.getString("autodistframe.new.title"));
+        final SSAutoDistPanel iPanel = new SSAutoDistPanel(iDialog, false);
+
+        iPanel.setAutoDist(new SSAutoDist());
 
         iDialog.add(iPanel.getPanel(), BorderLayout.CENTER);
 
         final ActionListener iSaveAction = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSAutoDist iAutoDist = iPanel.getAutoDist();
-                for(SSAutoDist iCurrentAutoDist : SSDB.getInstance().getAutoDists()) {
-                    if (iCurrentAutoDist.getNumber().equals( iAutoDist.getNumber())) {
-                        new SSErrorDialog( iMainFrame, "autodistframe.autodistaccexists");
+
+                for (SSAutoDist iCurrentAutoDist : SSDB.getInstance().getAutoDists()) {
+                    if (iCurrentAutoDist.getNumber().equals(iAutoDist.getNumber())) {
+                        new SSErrorDialog(iMainFrame, "autodistframe.autodistaccexists");
                         return;
                     }
                 }
                 for (SSAutoDistRow iRow : iAutoDist.getRows()) {
                     if (iRow.getAccount() == null) {
-                        new SSErrorDialog( iMainFrame, "autodistframe.autodistrownoacc");
+                        new SSErrorDialog(iMainFrame, "autodistframe.autodistrownoacc");
                         return;
                     }
                 }
@@ -195,6 +221,7 @@ public class SSAutoDistDialog {
                 iDialog.closeDialog();
             }
         };
+
         iPanel.addOkActionListener(iSaveAction);
 
         iPanel.addCancelActionListener(new ActionListener() {
@@ -202,17 +229,20 @@ public class SSAutoDistDialog {
                 iDialog.closeDialog();
             }
         });
-        iDialog.addWindowListener(new WindowAdapter() {
+        iDialog.addWindowListener(
+                new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
 
-                if( SSQueryDialog.showDialog(iMainFrame,SSBundle.getBundle(), "autodistframe.saveonclose") != JOptionPane.OK_OPTION){
+                if (SSQueryDialog.showDialog(iMainFrame, SSBundle.getBundle(),
+                        "autodistframe.saveonclose")
+                        != JOptionPane.OK_OPTION) {
                     return;
                 }
                 iSaveAction.actionPerformed(null);
             }
         });
-        iDialog.setSize    (800, 600);
+        iDialog.setSize(800, 600);
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();
     }

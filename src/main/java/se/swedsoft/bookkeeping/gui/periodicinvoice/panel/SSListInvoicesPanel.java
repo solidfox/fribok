@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice.panel;
 
+
 import se.swedsoft.bookkeeping.data.SSInvoice;
 import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
@@ -13,6 +14,7 @@ import se.swedsoft.bookkeeping.gui.util.table.model.SSTableModel;
 
 import javax.swing.*;
 
+
 /**
  * User: Andreas Lago
  * Date: 2006-okt-17
@@ -22,11 +24,9 @@ public class SSListInvoicesPanel {
 
     private JPanel iPanel;
 
-
     private SSPeriodicInvoice iPeriodicInvoice;
 
     private SSTable iTable;
-
 
     private SSIntegerTextField iNumber;
 
@@ -40,9 +40,7 @@ public class SSListInvoicesPanel {
 
     private SSIntegerTextField iCount;
 
-
     private SSTableModel<SSInvoice> iModel;
-
 
     /**
      *
@@ -52,25 +50,25 @@ public class SSListInvoicesPanel {
         this.iPeriodicInvoice = iPeriodicInvoice;
 
         iModel = new SSInvoiceTableModel();
-        iModel.addColumn( new AddedColumn() );
-        iModel.addColumn( SSInvoiceTableModel.COLUMN_NUMBER );
-        iModel.addColumn( SSInvoiceTableModel.COLUMN_DATE );
-        iModel.addColumn( SSInvoiceTableModel.COLUMN_DUEDATE );
+        iModel.addColumn(new AddedColumn());
+        iModel.addColumn(SSInvoiceTableModel.COLUMN_NUMBER);
+        iModel.addColumn(SSInvoiceTableModel.COLUMN_DATE);
+        iModel.addColumn(SSInvoiceTableModel.COLUMN_DUEDATE);
         iModel.setupTable(iTable);
-        iModel.setObjects( iPeriodicInvoice.getInvoices() );
+        iModel.setObjects(iPeriodicInvoice.getInvoices());
 
         // Nummer
-        iNumber.setValue( iPeriodicInvoice.getNumber() );
+        iNumber.setValue(iPeriodicInvoice.getNumber());
         // Första faktueringsdatum
-        iDate.setDate( iPeriodicInvoice.getDate() );
+        iDate.setDate(iPeriodicInvoice.getDate());
         // Nästa fakturadatum
-        iNext.setDate( iPeriodicInvoice.getNextDate() );
+        iNext.setDate(iPeriodicInvoice.getNextDate());
         // Antal fakturor
-        iCount.setValue( iPeriodicInvoice.getCount() );
+        iCount.setValue(iPeriodicInvoice.getCount());
         // Periodtid i månader
-        iPeriod.setValue( iPeriodicInvoice.getPeriod() );
+        iPeriod.setValue(iPeriodicInvoice.getPeriod());
         // Beskrivning
-        iDescription.setText( iPeriodicInvoice.getDescription() );
+        iDescription.setText(iPeriodicInvoice.getDescription());
     }
 
     /**
@@ -78,27 +76,30 @@ public class SSListInvoicesPanel {
      * @param iMainFrame
      * @param iPeriodicInvoice
      */
-    public static void showDialog(SSMainFrame iMainFrame, SSPeriodicInvoice iPeriodicInvoice){
+    public static void showDialog(SSMainFrame iMainFrame, SSPeriodicInvoice iPeriodicInvoice) {
         SSListInvoicesPanel iPanel = new SSListInvoicesPanel(iPeriodicInvoice);
-        JOptionPane.showMessageDialog(iMainFrame, iPanel.iPanel, SSBundle.getBundle().getString("periodicinvoiceframe.invoicelist.title"), JOptionPane.PLAIN_MESSAGE);
+
+        JOptionPane.showMessageDialog(iMainFrame, iPanel.iPanel,
+                SSBundle.getBundle().getString("periodicinvoiceframe.invoicelist.title"),
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
      * Datum
      */
-    private class AddedColumn extends SSTableColumn<SSInvoice>{
+    private class AddedColumn extends SSTableColumn<SSInvoice> {
 
-        public AddedColumn(){
+        public AddedColumn() {
             super(SSBundle.getBundle().getString("periodicinvoicetable.column.6"));
         }
+
         @Override
         public Object getValue(SSInvoice iInvoice) {
-            return iPeriodicInvoice.isAdded( iInvoice );
+            return iPeriodicInvoice.isAdded(iInvoice);
         }
 
         @Override
-        public void setValue(SSInvoice iInvoice, Object iValue) {
-        }
+        public void setValue(SSInvoice iInvoice, Object iValue) {}
 
         @Override
         public Class getColumnClass() {
@@ -114,6 +115,7 @@ public class SSListInvoicesPanel {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.panel.SSListInvoicesPanel");
         sb.append("{iCount=").append(iCount);
         sb.append(", iDate=").append(iDate);

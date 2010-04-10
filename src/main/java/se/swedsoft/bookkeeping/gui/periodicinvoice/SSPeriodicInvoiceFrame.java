@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.gui.periodicinvoice;
 
+
 import se.swedsoft.bookkeeping.data.SSOrder;
 import se.swedsoft.bookkeeping.data.SSPeriodicInvoice;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -40,8 +41,8 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      * @param pWidth
      * @param pHeight
      */
-    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight){
-        if( cInstance == null || SSPeriodicInvoiceFrame.cInstance.isClosed() ){
+    public static void showFrame(SSMainFrame pMainFrame, int pWidth, int pHeight) {
+        if (cInstance == null || SSPeriodicInvoiceFrame.cInstance.isClosed()) {
             cInstance = new SSPeriodicInvoiceFrame(pMainFrame, pWidth, pHeight);
         }
         SSPeriodicInvoiceFrame.cInstance.setVisible(true);
@@ -53,7 +54,7 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      *
      * @return The SSNewCompanyFrame
      */
-    public static SSPeriodicInvoiceFrame getInstance(){
+    public static SSPeriodicInvoiceFrame getInstance() {
         return cInstance;
     }
 
@@ -71,9 +72,9 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      * @param height    The height of the frame.
      */
     private SSPeriodicInvoiceFrame(SSMainFrame pMainFrame, int width, int height) {
-        super(pMainFrame, SSBundle.getBundle().getString("periodicinvoiceframe.title"), width, height);
+        super(pMainFrame, SSBundle.getBundle().getString("periodicinvoiceframe.title"),
+                width, height);
     }
-
 
     /**
      * This method should return a toolbar if the sub-class wants one.
@@ -91,29 +92,32 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
 
         // New
         // ***************************
-        SSButton iButton = new SSButton("ICON_NEWITEM", "periodicinvoiceframe.newbutton", new ActionListener() {
+        SSButton iButton = new SSButton("ICON_NEWITEM", "periodicinvoiceframe.newbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoiceDialog.newDialog(getMainFrame(), iModel);
             }
         });
+
         toolBar.add(iButton);
-
-
 
         // Edit
         // ***************************
-        iButton = new SSButton("ICON_EDITITEM", "periodicinvoiceframe.editbutton", new ActionListener(){
+        iButton = new SSButton("ICON_EDITITEM", "periodicinvoiceframe.editbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getPeriodicInvoice(iSelected);
                 }
                 if (iSelected != null) {
                     SSPeriodicInvoiceDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "periodicinvoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "periodicinvoiceframe.invoicegone",
+                            iNumber);
                 }
             }
         });
@@ -122,18 +126,21 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
 
         // Copy
         // ***************************
-        iButton = new SSButton("ICON_COPYITEM", "periodicinvoiceframe.copybutton", new ActionListener(){
+        iButton = new SSButton("ICON_COPYITEM", "periodicinvoiceframe.copybutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getPeriodicInvoice(iSelected);
                 }
                 if (iSelected != null) {
                     SSPeriodicInvoiceDialog.copyDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "periodicinvoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "periodicinvoiceframe.invoicegone",
+                            iNumber);
                 }
             }
         });
@@ -143,10 +150,12 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
 
         // Delete
         // ***************************
-        iButton = new SSButton("ICON_DELETEITEM", "periodicinvoiceframe.deletebutton", new ActionListener(){
+        iButton = new SSButton("ICON_DELETEITEM", "periodicinvoiceframe.deletebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int[] selected = iTable.getSelectedRows();
                 List<SSPeriodicInvoice> toDelete = iModel.getObjects(selected);
+
                 deleteSelectedInvoice(toDelete);
             }
         });
@@ -154,21 +163,23 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-
         // List the invoices for this periodic invoice
         // ***************************
-        iButton = new SSButton("ICON_TASKLIST24", "periodicinvoiceframe.invoicelistbutton", new ActionListener(){
+        iButton = new SSButton("ICON_TASKLIST24", "periodicinvoiceframe.invoicelistbutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber = null;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getPeriodicInvoice(iSelected);
                 }
                 if (iSelected != null) {
                     SSListInvoicesPanel.showDialog(getMainFrame(), iSelected);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "periodicinvoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "periodicinvoiceframe.invoicegone",
+                            iNumber);
                 }
             }
         });
@@ -176,13 +187,15 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
         toolBar.add(iButton);
         toolBar.addSeparator();
 
-
         // Create PeriodicInvoice for sales
         // ***************************
-        iButton = new SSButton("ICON_CREATECHANGE", "periodicinvoiceframe.invoicebutton", new ActionListener(){
+        iButton = new SSButton("ICON_CREATECHANGE", "periodicinvoiceframe.invoicebutton",
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(SSPeriodicInvoiceDialog.pendingPeriodicInvoicesDialog( getMainFrame() )){
-                    SSPostLock.removeLock("periodicinvoicepending"+SSDB.getInstance().getCurrentCompany().getId());
+                if (SSPeriodicInvoiceDialog.pendingPeriodicInvoicesDialog(getMainFrame())) {
+                    SSPostLock.removeLock(
+                            "periodicinvoicepending"
+                                    + SSDB.getInstance().getCurrentCompany().getId());
                 }
             }
         });
@@ -190,8 +203,6 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
 
         return toolBar;
     }
-
-
 
     /**
      * This method should return the main content for the frame.
@@ -215,39 +226,42 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
 
         iModel.setupTable(iTable);
 
-
-        iTable.addDblClickListener(new ActionListener(){
+        iTable.addDblClickListener(
+                new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 SSPeriodicInvoice iSelected = iModel.getSelectedRow(iTable);
                 Integer iNumber;
-                if(iSelected != null){
+
+                if (iSelected != null) {
                     iNumber = iSelected.getNumber();
                     iSelected = getPeriodicInvoice(iSelected);
-                } else{
+                } else {
                     return;
                 }
                 if (iSelected != null) {
                     SSPeriodicInvoiceDialog.editDialog(getMainFrame(), iSelected, iModel);
                 } else {
-                    new SSErrorDialog( getMainFrame(), "periodicinvoiceframe.invoicegone",iNumber);
+                    new SSErrorDialog(getMainFrame(), "periodicinvoiceframe.invoicegone",
+                            iNumber);
                 }
             }
         });
 
         JPanel iPanel = new JPanel();
+
         iSearchPanel = new SSPeriodicInvoiceSearchPanel(iModel);
         iPanel.setLayout(new BorderLayout());
-        iPanel.add(iSearchPanel,BorderLayout.NORTH);
+        iPanel.add(iSearchPanel, BorderLayout.NORTH);
         iPanel.add(new JScrollPane(iTable), BorderLayout.CENTER);
-        iPanel.setBorder( BorderFactory.createEmptyBorder(2,2,2,2));
+        iPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
         return iPanel;
     }
 
     /*
-    *
-    * @return
-    */
+     *
+     * @return
+     */
     public SSTableModel<SSPeriodicInvoice> getModel() {
         return iModel;
     }
@@ -282,9 +296,6 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
         return false;
     }
 
-
-
-
     /**
      *
      * @param delete
@@ -294,21 +305,28 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
             return;
         }
 
-        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(), "periodicinvoiceframe.delete");
+        SSQueryDialog iDialog = new SSQueryDialog(getMainFrame(),
+                "periodicinvoiceframe.delete");
         int iResponce = iDialog.getResponce();
-        if(iResponce == JOptionPane.YES_OPTION) {
+
+        if (iResponce == JOptionPane.YES_OPTION) {
             for (SSPeriodicInvoice iPeriodicInvoice : delete) {
-                if (SSPostLock.isLocked("periodicinvoice" + iPeriodicInvoice.getNumber() + SSDB.getInstance().getCurrentCompany().getId())) {
-                    new SSErrorDialog(getMainFrame(), "periodicinvoiceframe.periodicinvoiceopen", iPeriodicInvoice.getNumber());
+                if (SSPostLock.isLocked(
+                        "periodicinvoice" + iPeriodicInvoice.getNumber()
+                        + SSDB.getInstance().getCurrentCompany().getId())) {
+                    new SSErrorDialog(getMainFrame(),
+                            "periodicinvoiceframe.periodicinvoiceopen",
+                            iPeriodicInvoice.getNumber());
                 } else {
                     List<SSOrder> iOrdersToUpdate = new LinkedList<SSOrder>();
+
                     for (SSOrder iOrder : SSDB.getInstance().getOrders()) {
                         if (iOrder.hasPeriodicInvoice(iPeriodicInvoice)) {
                             iOrder.setPeriodicInvoice(null);
                             iOrdersToUpdate.add(iOrder);
                         }
                     }
-                    for(SSOrder iOrder : iOrdersToUpdate){
+                    for (SSOrder iOrder : iOrdersToUpdate) {
                         SSDB.getInstance().updateOrder(iOrder);
                     }
                     iOrdersToUpdate = null;
@@ -322,7 +340,9 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
      *
      */
     public static void fireTableDataChanged() {
-        if(cInstance != null) cInstance.getModel().fireTableDataChanged();
+        if (cInstance != null) {
+            cInstance.getModel().fireTableDataChanged();
+        }
     }
 
     private SSPeriodicInvoice getPeriodicInvoice(SSPeriodicInvoice iPeriodicInvoice) {
@@ -332,16 +352,17 @@ public class SSPeriodicInvoiceFrame extends SSDefaultTableFrame {
     public void updateFrame() {
         iSearchPanel.ApplyFilter();
     }
-    public void actionPerformed(ActionEvent e)
-    {
-        iTable=null;
-        iModel=null;
-        cInstance=null;
+
+    public void actionPerformed(ActionEvent e) {
+        iTable = null;
+        iModel = null;
+        cInstance = null;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.gui.periodicinvoice.SSPeriodicInvoiceFrame");
         sb.append("{iModel=").append(iModel);
         sb.append(", iSearchPanel=").append(iSearchPanel);

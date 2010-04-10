@@ -1,6 +1,8 @@
 package se.swedsoft.bookkeeping.gui.util.components;
 
+
 import javax.swing.*;
+
 
 /**
  * User: Fredrik Stigsson
@@ -9,10 +11,8 @@ import javax.swing.*;
  */
 public class SSProgressBar extends JProgressBar {
 
-
     public SSProgressBar() {
         setIndeterminate(true);
     }
-
 
 }

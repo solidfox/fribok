@@ -1,5 +1,6 @@
 package se.swedsoft.bookkeeping.calc;
 
+
 import se.swedsoft.bookkeeping.calc.math.SSAccountMath;
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.calc.util.SSCalculatorException;
@@ -8,6 +9,7 @@ import se.swedsoft.bookkeeping.data.system.SSDB;
 
 import java.math.BigDecimal;
 import java.util.*;
+
 
 /**
  * Date: 2006-feb-17
@@ -37,8 +39,6 @@ public class SSMainBookCalculator {
 
         private BigDecimal   iSum;
 
-
-
         public boolean getHasdata() {
             return iHasdata;
         }
@@ -58,7 +58,6 @@ public class SSMainBookCalculator {
         public Date getDate() {
             return iDate;
         }
-
 
         public BigDecimal getDebet() {
             return iDebet;
@@ -91,6 +90,7 @@ public class SSMainBookCalculator {
         @Override
         public String toString() {
             final StringBuilder sb = new StringBuilder();
+
             sb.append("se.swedsoft.bookkeeping.calc.SSMainBookCalculator.SSMainBookRow");
             sb.append("{iAccount=").append(iAccount);
             sb.append(", iAdded=").append(iAdded);
@@ -107,12 +107,10 @@ public class SSMainBookCalculator {
         }
     }
 
-
-
     private SSNewAccountingYear iYearData;
 
-    private  SSAccount iAccountFrom;
-    private  SSAccount iAccountTo;
+    private SSAccount iAccountFrom;
+    private SSAccount iAccountTo;
 
     private Date iDateFrom;
     private Date iDateTo;
@@ -126,7 +124,6 @@ public class SSMainBookCalculator {
 
     private Map<SSAccount, BigDecimal> iInSaldo;
 
-
     /**
      *
      * @param pAccountFrom
@@ -136,8 +133,9 @@ public class SSMainBookCalculator {
      * @param iProject
      * @param iResultUnit
      */
-    public SSMainBookCalculator(SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
-        this( SSDB.getInstance().getCurrentYear(), pAccountFrom, pAccountTo, pDateFrom, pDateTo, iProject, iResultUnit );
+    public SSMainBookCalculator(SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit) {
+        this(SSDB.getInstance().getCurrentYear(), pAccountFrom, pAccountTo, pDateFrom,
+                pDateTo, iProject, iResultUnit);
     }
 
     /**
@@ -150,21 +148,19 @@ public class SSMainBookCalculator {
      * @param iProject
      * @param iResultUnit
      */
-    public SSMainBookCalculator(SSNewAccountingYear pYearData, SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit){
-        iYearData  = pYearData;
-        iAccountFrom    = pAccountFrom;
-        iAccountTo      = pAccountTo;
-        iDateFrom       = pDateFrom;
-        iDateTo         = pDateTo;
-        this.iProject    = iProject;
+    public SSMainBookCalculator(SSNewAccountingYear pYearData, SSAccount pAccountFrom, SSAccount pAccountTo, Date pDateFrom, Date pDateTo, SSNewProject iProject, SSNewResultUnit iResultUnit) {
+        iYearData = pYearData;
+        iAccountFrom = pAccountFrom;
+        iAccountTo = pAccountTo;
+        iDateFrom = pDateFrom;
+        iDateTo = pDateTo;
+        this.iProject = iProject;
         this.iResultUnit = iResultUnit;
 
-        iRows         = new LinkedList<SSMainBookRow>();
-        iInBalance    = new HashMap<SSAccount, BigDecimal>();
-        iInSaldo      = new HashMap<SSAccount, BigDecimal>();
+        iRows = new LinkedList<SSMainBookRow>();
+        iInBalance = new HashMap<SSAccount, BigDecimal>();
+        iInSaldo = new HashMap<SSAccount, BigDecimal>();
     }
-
-
 
     /**
      *
@@ -173,90 +169,96 @@ public class SSMainBookCalculator {
     public void calculate() throws SSCalculatorException {
 
         List<SSVoucher> iVouchers = iYearData.getVouchers();
-        //      List<SSAccount> iAccounts = iYearData.getAccounts();
+
+        // List<SSAccount> iAccounts = iYearData.getAccounts();
 
         iInBalance = iYearData.getInBalance();
 
         // Add the inbalance to the insaldo
-        for(Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()){
-            iInSaldo.put(ssAccountBigDecimalEntry.getKey(), ssAccountBigDecimalEntry.getValue());
+        for (Map.Entry<SSAccount, BigDecimal> ssAccountBigDecimalEntry : iInBalance.entrySet()) {
+            iInSaldo.put(ssAccountBigDecimalEntry.getKey(),
+                    ssAccountBigDecimalEntry.getValue());
         }
 
-
-        for(SSVoucher iVoucher: iVouchers){
+        for (SSVoucher iVoucher: iVouchers) {
 
             // If the date of the voucer is before the start date, add to InSaldo
-            boolean inSaldo  = iDateFrom.compareTo(iVoucher.getDate()) > 0;
+            boolean inSaldo = iDateFrom.compareTo(iVoucher.getDate()) > 0;
 
             // If the date of the oucher is in between the start and end date, add to PeriodChange
-            boolean inPeriod =  SSVoucherMath.inPeriod(iVoucher, iDateFrom, iDateTo);
+            boolean inPeriod = SSVoucherMath.inPeriod(iVoucher, iDateFrom, iDateTo);
 
             // Loop through all the rows
-            for(SSVoucherRow iVoucherRow: iVoucher.getRows()){
-                SSAccount    iAccount       = iVoucherRow.getAccount();
+            for (SSVoucherRow iVoucherRow: iVoucher.getRows()) {
+                SSAccount    iAccount = iVoucherRow.getAccount();
 
-                SSNewProject    iRowProject    = iVoucherRow.getProject();
+                SSNewProject    iRowProject = iVoucherRow.getProject();
                 SSNewResultUnit iRowResultUnit = iVoucherRow.getResultUnit();
 
                 // Skip the row if invalid
-                if( !iVoucherRow.isValid()  ) continue;
+                if (!iVoucherRow.isValid()) {
+                    continue;
+                }
 
-
-                if( iProject    != null && !iProject.equals(iRowProject)) continue;
-                if( iResultUnit != null && !iResultUnit.equals(iRowResultUnit)) continue;
+                if (iProject != null && !iProject.equals(iRowProject)) {
+                    continue;
+                }
+                if (iResultUnit != null && !iResultUnit.equals(iRowResultUnit)) {
+                    continue;
+                }
 
                 BigDecimal iRowSaldo = SSVoucherMath.getDebetMinusCredit(iVoucherRow);
 
                 // Add the row sum to the inSaldo, if in range
-                if (inSaldo && !iVoucherRow.isCrossed()){
-                    addValueToMap(iInSaldo , iAccount, iRowSaldo);
+                if (inSaldo && !iVoucherRow.isCrossed()) {
+                    addValueToMap(iInSaldo, iAccount, iRowSaldo);
                 }
 
                 // Add the row if the account and date is in the period
-                if(SSAccountMath.inPeriod(iAccount, iAccountFrom, iAccountTo) && inPeriod ){
+                if (SSAccountMath.inPeriod(iAccount, iAccountFrom, iAccountTo) && inPeriod) {
                     SSMainBookRow iMainBookRow = new SSMainBookRow();
 
                     iMainBookRow.iHasdata = true;
                     iMainBookRow.iAccount = iAccount;
 
-                    iMainBookRow.iNumber      = iVoucher.getNumber();
+                    iMainBookRow.iNumber = iVoucher.getNumber();
                     iMainBookRow.iDescription = iVoucher.getDescription();
-                    iMainBookRow.iDate        = iVoucher.getDate();
+                    iMainBookRow.iDate = iVoucher.getDate();
 
-                    iMainBookRow.iAdded       = iVoucherRow.isAdded();
-                    iMainBookRow.iCrossed     = iVoucherRow.isCrossed();
-                    iMainBookRow.iDebet       = iVoucherRow.getDebet();
-                    iMainBookRow.iCredit      = iVoucherRow.getCredit();
-                    iMainBookRow.iSum        =  iRowSaldo;
-                    iRows.add( iMainBookRow );
+                    iMainBookRow.iAdded = iVoucherRow.isAdded();
+                    iMainBookRow.iCrossed = iVoucherRow.isCrossed();
+                    iMainBookRow.iDebet = iVoucherRow.getDebet();
+                    iMainBookRow.iCredit = iVoucherRow.getCredit();
+                    iMainBookRow.iSum = iRowSaldo;
+                    iRows.add(iMainBookRow);
 
                 }
             }
         }
 
-        for(SSAccount iAccount : iInSaldo.keySet() ){
-            if( (iInSaldo.containsKey(iAccount) &&  iInSaldo.get(iAccount).signum() != 0) || (iInBalance.containsKey(iAccount) &&  iInBalance.get(iAccount).signum() != 0) ){
+        for (SSAccount iAccount : iInSaldo.keySet()) {
+            if ((iInSaldo.containsKey(iAccount) && iInSaldo.get(iAccount).signum() != 0)
+                    || (iInBalance.containsKey(iAccount)
+                            && iInBalance.get(iAccount).signum() != 0)) {
 
-                if(SSAccountMath.inPeriod(iAccount, iAccountFrom, iAccountTo) ){
+                if (SSAccountMath.inPeriod(iAccount, iAccountFrom, iAccountTo)) {
                     SSMainBookRow iMainBookRow = new SSMainBookRow();
 
                     iMainBookRow.iHasdata = false;
                     iMainBookRow.iAccount = iAccount;
 
-                    iMainBookRow.iAdded   = false;
+                    iMainBookRow.iAdded = false;
                     iMainBookRow.iCrossed = false;
-                    iMainBookRow.iDebet   = new BigDecimal(0);
-                    iMainBookRow.iCredit  = new BigDecimal(0);
-                    iMainBookRow.iSum     = new BigDecimal(0);
+                    iMainBookRow.iDebet = new BigDecimal(0);
+                    iMainBookRow.iCredit = new BigDecimal(0);
+                    iMainBookRow.iSum = new BigDecimal(0);
 
-                    iRows.add( iMainBookRow );
+                    iRows.add(iMainBookRow);
                 }
             }
         }
 
     }
-
-
 
     /**
      *
@@ -264,16 +266,16 @@ public class SSMainBookCalculator {
      * @param iAccount
      * @param iValue
      */
-    private void addValueToMap(Map<SSAccount, BigDecimal> iMap, SSAccount iAccount, BigDecimal iValue){
+    private void addValueToMap(Map<SSAccount, BigDecimal> iMap, SSAccount iAccount, BigDecimal iValue) {
         // Add the row sum to the total sum
         BigDecimal s = iMap.get(iAccount);
-        if(s == null) {
-            iMap.put(iAccount, iValue );
-        }   else {
-            iMap.put(iAccount, s.add(iValue) );
+
+        if (s == null) {
+            iMap.put(iAccount, iValue);
+        } else {
+            iMap.put(iAccount, s.add(iValue));
         }
     }
-
 
     /**
      *
@@ -302,6 +304,7 @@ public class SSMainBookCalculator {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder();
+
         sb.append("se.swedsoft.bookkeeping.calc.SSMainBookCalculator");
         sb.append("{iAccountFrom=").append(iAccountFrom);
         sb.append(", iAccountTo=").append(iAccountTo);
