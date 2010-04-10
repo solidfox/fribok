@@ -24,10 +24,8 @@ public class SSLocalizedTextField extends JPanel {
 
     private Map<Locale, JTextField> iTextFields;
 
-
-
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSLocalizedTextField() {
@@ -125,9 +123,6 @@ public class SSLocalizedTextField extends JPanel {
             iTextFields.get(iLocale).setText( iValues.get(iLocale) );
         }
     }
-
-
-
 
     /**
      *

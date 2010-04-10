@@ -31,7 +31,7 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */

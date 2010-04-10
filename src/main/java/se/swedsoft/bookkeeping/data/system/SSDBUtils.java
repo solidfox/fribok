@@ -118,7 +118,7 @@ public class SSDBUtils {
 
 
     /**
-     * Creates a backup name for the given file name. <P>
+     * Creates a backup name for the given file name.
      *
      * @param iFile The file name to append a backup appendix to.
      *

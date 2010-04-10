@@ -49,7 +49,7 @@ public class SSDateChooser extends JPanel implements ActionListener, ChangeListe
     private JPanel iPanel;
 
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSDateChooser() {

@@ -349,7 +349,7 @@ public class SSAccountPlan implements Serializable, Cloneable, SSTableSearchable
 
 
     /**
-     * Returns only actove accounts. <P>
+     * Returns only actove accounts.
      *
      * @return A List of active accounts.
      */

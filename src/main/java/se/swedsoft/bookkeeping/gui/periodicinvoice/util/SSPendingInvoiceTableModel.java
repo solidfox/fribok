@@ -57,7 +57,7 @@ public class SSPendingInvoiceTableModel extends SSTableModel<SSPendingInvoiceTab
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */

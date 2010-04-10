@@ -21,10 +21,8 @@ import java.util.List;
 
 /**
  * This should be the deafult table for most applications in this application.
- *
- *
  */
-public class SSTable extends JTable{
+public class SSTable extends JTable {
     /**
      *
      */
@@ -79,12 +77,9 @@ public class SSTable extends JTable{
 
     }
 
-
-
-
     /**
-     * Constructs a <code>JTable</code> that is initialized with
-     * <code>dm</code> as the data model, a default column model,
+     * Constructs a {@code JTable} that is initialized with
+     * {@code dm} as the data model, a default column model,
      * and a default selection model.
      *
      * @param dm the data model for the table
@@ -167,7 +162,7 @@ public class SSTable extends JTable{
     }
 
     /**
-     * Makes sure that only one row can be selected at the time. <P>
+     * Makes sure that only one row can be selected at the time.
      */
     public void setSingleSelect() {
         // Only allow one row to be selected at a time.
@@ -175,7 +170,7 @@ public class SSTable extends JTable{
     }
 
     /**
-     * Make sure that the table fills the entire parent component area. <P>
+     * Make sure that the table fills the entire parent component area.
      *
      * @return A boolean.
      */
@@ -186,8 +181,6 @@ public class SSTable extends JTable{
         }
         return false;
     }
-
-
 
     final Color GRID_COLOR             = new Color(80, 80, 80);
     //final Color CELL_READONLY          = new Color(241, 240, 227);
@@ -237,7 +230,6 @@ public class SSTable extends JTable{
 
         return c;
     }
-
 
     /**
      * @param pListener

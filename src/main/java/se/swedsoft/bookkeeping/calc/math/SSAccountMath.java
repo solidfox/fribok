@@ -233,7 +233,7 @@ public class SSAccountMath {
 
 
     /**
-     * Returns the accounts with VAT codes specified. <P>
+     * Returns the accounts with VAT codes specified.
      *
      * @param pAccounts The list of accounts to filter.
      * @param pVatCodes The VAT Codes
@@ -280,7 +280,7 @@ public class SSAccountMath {
 
 
     /**
-     * Returns the number of accounts with VAT codes specified. <P>
+     * Returns the number of accounts with VAT codes specified.
      *
      * @param pAccounts The list of accounts to filter.
      * @param pVatCodes The VAT Codes
@@ -330,7 +330,7 @@ public class SSAccountMath {
 
 
     /**
-     * Returns the accounts with SRU codes specified. <P>
+     * Returns the accounts with SRU codes specified.
      *
      * @param pAccounts The list of accounts to filter.
      * @param pSruCodes The SRU Codes
@@ -388,7 +388,7 @@ public class SSAccountMath {
         return filtered;
     }
     /**
-     * Returns the number of accounts without any SRU code specified. <P>
+     * Returns the number of accounts without any SRU code specified.
      *
      * @param pAccounts The list of accounts to filter.
      *

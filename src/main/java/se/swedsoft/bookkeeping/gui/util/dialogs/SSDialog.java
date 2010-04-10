@@ -75,7 +75,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
     }
 
     /**
-     *
+     * Call setVisible(true)
      */
     public void setVisible(){
         setVisible(true);
@@ -110,7 +110,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
 
     /*
      * Sets the option pane to use
-
+     *
      * @param The option pane
      */
     public void setOptionPane(final JOptionPane pOptionPane){
@@ -175,7 +175,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
     }
 
     /**
-     * Return the modal result if invisible, <code>JOptionPane.NO_OPTION</code> if visible
+     * Return the modal result if invisible, {@code JOptionPane.NO_OPTION} if visible
      *
      * @return the modal result
      */

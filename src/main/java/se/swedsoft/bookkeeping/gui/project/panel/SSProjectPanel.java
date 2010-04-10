@@ -37,7 +37,7 @@ public class SSProjectPanel{
     protected SSDateChooser iConcludedDate;
 
     /**
-     * Default constructor. <P>
+     * Default constructor.
      * @param iEdit
      */
     public SSProjectPanel(boolean iEdit) {

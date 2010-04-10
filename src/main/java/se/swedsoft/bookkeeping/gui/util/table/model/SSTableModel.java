@@ -306,7 +306,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Deletes the data at the given indices. <P>
+     * Deletes the data at the given indices.
      *
      * @param indices The indices for the rows to remove.
      */
@@ -320,14 +320,14 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */
     public abstract Class getType();
 
     /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
+     * Returns {@code Object.class} regardless of {@code columnIndex}.
      *
      * @param columnIndex the column being queried
      * @return the Object.class
@@ -386,8 +386,8 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
     /**
      * Returns the index in this list of the first occurrence of the specified
      * element, or -1 if this list does not contain this element.
-     * More formally, returns the lowest index <tt>i</tt> such that
-     * <tt>(o==null ? get(i)==null : o.equals(get(i)))</tt>,
+     * More formally, returns the lowest index {@code i} such that
+     * {@code (o==null ? get(i)==null : o.equals(get(i)))},
      * or -1 if there is no such index.
      *
      * @param iObject

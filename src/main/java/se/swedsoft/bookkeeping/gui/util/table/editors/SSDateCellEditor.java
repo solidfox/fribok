@@ -86,8 +86,8 @@ public class SSDateCellEditor extends AbstractCellEditor implements TableCellEdi
     /**
      * Sets an initial <code>value</code> for the editor.  This will cause
      * the editor to <code>stopEditing</code> and lose any partially
-     * edited value if the editor is editing when this method is called. <p>
-     * <p/>
+     * edited value if the editor is editing when this method is called.
+     * 
      * Returns the component that should be added to the client's
      * <code>Component</code> hierarchy.  Once installed in the client's
      * hierarchy this component will then be able to draw and receive

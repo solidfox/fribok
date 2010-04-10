@@ -301,7 +301,7 @@ public class SSVoucherMath {
      * Retuns if the database contains a voucher with the specified number
      *
      * @param iNumber
-     * @return <code>true</code> if a voucher with the specified number exists, <code>false</code> othervise.
+     * @return {@code true} if a voucher with the specified number exists, {@code false} othervise.
      */
     public static boolean hasVoucher(Integer iNumber) {
         SSVoucher iVoucher = new SSVoucher(iNumber);
@@ -313,7 +313,7 @@ public class SSVoucherMath {
      *
      * @param iVouchers
      * @param iNumber
-     * @return <code>true</code> if a voucher with the specified number exists, <code>false</code> othervise.
+     * @return {@code true} if a voucher with the specified number exists, {@code false} othervise.
      */
     public static boolean hasVoucher(List<SSVoucher> iVouchers, Integer iNumber) {
         for(SSVoucher iVoucher:  iVouchers){

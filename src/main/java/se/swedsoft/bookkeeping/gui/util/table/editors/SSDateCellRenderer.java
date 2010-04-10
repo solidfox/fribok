@@ -13,7 +13,7 @@ import java.text.DateFormat;
 
 /**
  * This class implements a cell renderer that renders a Date using a DateFormat
- * with format DateFormat.SHORT. This will only display year-month-day. <P>
+ * with format DateFormat.SHORT. This will only display year-month-day.
  *
  * @author Roger Björnstedt
  */

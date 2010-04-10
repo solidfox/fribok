@@ -19,7 +19,7 @@ import java.beans.PropertyVetoException;
 // Java specific imports
 
 /**
- * This class implements a basic internal frame. <P>
+ * This class implements a basic internal frame.
  *
  * @author Roger Björnstedt
  */
@@ -27,9 +27,8 @@ public abstract class SSInternalFrame extends JInternalFrame {
     // The main frame.
     private SSMainFrame iMainFrame;
 
-
     /**
-     * Constructor. <P>
+     * Constructor.
      *
      * @param pMainFrame The main frame of the program.
      * @param pTitle     The title to set for this frame.
@@ -50,24 +49,20 @@ public abstract class SSInternalFrame extends JInternalFrame {
         SSFrameManager.getInstance().addFrame(this);
     }
 
-
-
     /**
      * Makes the component visible or invisible.
-     * Overrides <code>Component.setVisible</code>.
+     * Overrides {@code Component.setVisible}.
      *
      * @param aFlag true to make the component visible; false to
      *              make it invisible
      */
     @Override
     public void setVisible(boolean aFlag) {
-        if(! aFlag){
+        if (!aFlag){
             SSFrameManager.getInstance().removeFrame(this);
         }
         super.setVisible(aFlag);
     }
-
-
 
     /**
      *
@@ -106,7 +101,6 @@ public abstract class SSInternalFrame extends JInternalFrame {
         return iMainFrame;
     }
 
-
     /**
      * Indicates whether this frame is a company data related frame.
      *
@@ -121,14 +115,9 @@ public abstract class SSInternalFrame extends JInternalFrame {
      */
     public abstract boolean isYearDataFrame();
 
-
-
-
-
-
-    /*
-      * @param iFrame
-    */
+    /**
+     * @param iFrame
+     */
     public void setInCenter(JFrame iFrame){
         int x = (iFrame.getWidth()  - getWidth()  ) / 2;
         int y = (iFrame.getHeight() - getHeight() ) / 2;
@@ -136,9 +125,9 @@ public abstract class SSInternalFrame extends JInternalFrame {
         setBounds(x, y, getWidth(), getHeight());
     }
 
-      /*
-      * @param iFrame
-    */
+    /**
+     * @param iFrame
+     */
     public void setInCenter(JDialog iDialog){
         int x = (iDialog.getWidth()  - getWidth()  ) / 2;
         int y = (iDialog.getHeight() - getHeight() ) / 2;
@@ -146,9 +135,9 @@ public abstract class SSInternalFrame extends JInternalFrame {
         setBounds(x, y, getWidth(), getHeight());
     }
 
-    /*
-      * @param iMainFrame
-    */
+    /**
+     * @param iMainFrame
+     */
     public void setInCenter(SSMainFrame iMainFrame){
         int x = (iMainFrame.getDesktopPane().getWidth()  - getWidth()  ) / 2;
         int y = (iMainFrame.getDesktopPane().getHeight() - getHeight() ) / 2;
@@ -156,18 +145,12 @@ public abstract class SSInternalFrame extends JInternalFrame {
         setBounds(x, y, getWidth(), getHeight());
     }
 
-
-
-
-
-
     /**
      *
      */
     public static void closeAllFrames() {
         SSFrameManager.getInstance().close();
     }
-
 
     @Override
     public String toString() {

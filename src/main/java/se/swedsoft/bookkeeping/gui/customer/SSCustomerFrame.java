@@ -89,7 +89,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
 
 
     /**
-     * This method should return a toolbar if the sub-class wants one. <P>
+     * This method should return a toolbar if the sub-class wants one.
      * Otherwise, it may return null.
      *
      * @return A JToolBar or null.
@@ -364,7 +364,7 @@ public class SSCustomerFrame extends SSDefaultTableFrame {
     }
 
     /**
-     * This method should return the main content for the frame. <P>
+     * This method should return the main content for the frame.
      * Such as an object table.
      *
      * @return The main content for this frame.

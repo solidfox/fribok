@@ -624,7 +624,7 @@ public class SSPurchaseOrder implements SSTableSearchable, Serializable {
     ////////////////////////////////////////////////////////
 
     /**
-     * Returns the sum of the <code>SSPurchaseOrderRow.getSum()</code> for all rows.
+     * Returns the sum of the {@code SSPurchaseOrderRow.getSum()} for all rows.
      *
      * @return the sum
      */

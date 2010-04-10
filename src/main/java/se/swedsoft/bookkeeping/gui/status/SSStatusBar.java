@@ -33,11 +33,10 @@ public class SSStatusBar extends JPanel {
 
     private List<SSStatusBarPanel> iPanels;
 
-
     //private static int width
 
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSStatusBar() {
@@ -156,7 +155,6 @@ public class SSStatusBar extends JPanel {
         }
     }
 
-
     /**
      *
      */
@@ -165,7 +163,7 @@ public class SSStatusBar extends JPanel {
         private Color cColor2 = new Color(243, 241, 231);
 
         /**
-         * Creates a new <code>JPanel</code> with a double buffer
+         * Creates a new {@code JPanel} with a double buffer
          * and a flow layout.
          */
         public SeparatorPanel() {

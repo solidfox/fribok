@@ -18,10 +18,10 @@ import java.awt.event.ItemListener;
 
 /**
  * A dialog where the user can enter info about a mail server used to send mail.
- * <p/>
+ * 
  * When opened it takes a SSMailServer and sets the fields of the dialog, and
  * returns a new SSMailServer with the new information.
- * <p/>
+ * 
  * Opened from SSCompanyPageAdditional.
  *
  * @author jensli
@@ -159,7 +159,7 @@ public class SSMailServerDialog extends SSDialog {
     /**
      * Called when the Ok button is clicked. Reads the fields of the dialog, constructs a
      * SSMailServer from them and sets iMailServer with that. Then close the dialog.
-     * <p/>
+     * 
      * If there was an error in the fields, open a dialog to inform about that.
      */
     private void onOK() {

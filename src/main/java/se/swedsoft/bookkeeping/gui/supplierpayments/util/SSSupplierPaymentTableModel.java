@@ -30,8 +30,6 @@ import java.util.List;
  */
 public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
 
-
-
     /**
      * Constructor.
      *
@@ -46,7 +44,7 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */
@@ -54,20 +52,6 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     public Class getType() {
         return SupplierPayment.class;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Number
@@ -288,11 +272,6 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
     };
 
-
-
-
-
-
     /**
      * Edit Supplier
      */
@@ -337,10 +316,6 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         }
     };
 
-
-
-
-
     /**
      * @param iTable
      */
@@ -350,10 +325,7 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
 
         iTable.setDefaultRenderer(PaymentMethod.class,  new PaymentMethodCellRenderer() );
         iTable.setDefaultEditor  (PaymentMethod.class,  new PaymentMethodCellEditor() );
-
-
     }
-
 
     /**
      *
@@ -361,7 +333,7 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
     private static class PaymentMethodCellEditor extends DefaultCellEditor {
 
         /**
-         * Constructs a <code>DefaultCellEditor</code> that uses a text field.
+         * Constructs a {@code DefaultCellEditor} that uses a text field.
          *
          */
         public PaymentMethodCellEditor() {
@@ -411,9 +383,6 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
             }
         }
     }
-
-
-
 
     /**
      *

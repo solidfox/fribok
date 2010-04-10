@@ -54,7 +54,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
 
     /**
-     * Default constructor. <P>
+     * Default constructor.
      * @param frame
      * @param width
      * @param height
@@ -81,7 +81,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
 
     /**
-     * This method should return a toolbar if the sub-class wants one. <P>
+     * This method should return a toolbar if the sub-class wants one.
      * Otherwise, it may return null.
      *
      * @return A JToolBar or null.
@@ -263,7 +263,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
 
     /**
-     * This method should return the main content for the frame. <P>
+     * This method should return the main content for the frame.
      * Such as an object table.
      *
      * @return The main content for this frame.
@@ -281,7 +281,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
 
     /**
-     * This method should return the status bar content, if any. <P>
+     * This method should return the status bar content, if any.
      *
      * @return The content for the status bar or null if none is wanted.
      */
@@ -299,7 +299,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
 
 
     /**
-     * Indicates whether this frame is a company data related frame. <P>
+     * Indicates whether this frame is a company data related frame.
      *
      * @return A boolean value.
      */
@@ -309,7 +309,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
     }
 
     /**
-     * Indicates whether this frame is a year data related frame. <P>
+     * Indicates whether this frame is a year data related frame.
      *
      * @return A boolean value.
      */

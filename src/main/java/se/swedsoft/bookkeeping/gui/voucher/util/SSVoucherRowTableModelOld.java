@@ -148,7 +148,7 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */
@@ -158,8 +158,8 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
     }
 
     /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
+     * Returns the value for the cell at {@code columnIndex} and
+     * {@code rowIndex}.
      *
      * voucherrowtable.column.1=Konto
      * voucherrowtable.column.2=Benämning

@@ -17,7 +17,7 @@ public class SSOwnReportMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
     private SSAccount iAccount;
     List<SSOwnReportRow> iRows;
     /**
-     * Default constructor. <P>
+     * Default constructor.
      * @param pAccount
      * @param pRows
      */

@@ -513,7 +513,7 @@ public class SSSaleRow implements SSTableSearchable, Serializable {
     }
 
     /**
-     * Returns <code>true</code> if the product is contained in the row
+     * Returns {@code true} if the product is contained in the row
      *
      * @param iProduct
      * @return if the row contains the product

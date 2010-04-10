@@ -58,7 +58,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */
@@ -68,8 +68,8 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
     }
 
     /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
+     * Returns the value for the cell at {@code columnIndex} and
+     * {@code rowIndex}.
      *
      * interestinvoicetable.column.1 = Fakturanr
      * interestinvoicetable.column.2 = Kundnummer
@@ -377,7 +377,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
     private static class InterestActionCellEditor extends DefaultCellEditor {
 
         /**
-         * Constructs a <code>DefaultCellEditor</code> that uses a text field.
+         * Constructs a {@code DefaultCellEditor} that uses a text field.
          *
          */
         public InterestActionCellEditor() {

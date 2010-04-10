@@ -56,7 +56,7 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
 
     private static final int[] EMPTY_INT_ARRAY = {};
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSTableComboBoxOld() {
@@ -397,9 +397,6 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         searchTable();
     }
 
-
-
-
     /**
      *
      * @return
@@ -505,9 +502,6 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
 
         return iTextField.processKeyBinding(ks, e, condition, pressed);
     }
-
-
-
 
     /**
      *
@@ -634,8 +628,8 @@ public class SSTableComboBoxOld<T extends SSTableSearchable> extends JPanel {
         /**
          * Sets an initial <code>value</code> for the editor.  This will cause
          * the editor to <code>stopEditing</code> and lose any partially
-         * edited value if the editor is editing when this method is called. <p>
-         * <p/>
+         * edited value if the editor is editing when this method is called.
+         * 
          * Returns the component that should be added to the client's
          * <code>Component</code> hierarchy.  Once installed in the client's
          * hierarchy this component will then be able to draw and receive

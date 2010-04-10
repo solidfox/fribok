@@ -180,7 +180,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
     }
 
     /**
-     * This method should return the main content for the frame. <P>
+     * This method should return the main content for the frame.
      * Such as an object table.
      *
      * @return The main content for this frame.
@@ -215,7 +215,7 @@ public class SSBackupFrame extends SSDefaultTableFrame {
 
 
     /**
-     * This method should return the status bar content, if any. <P>
+     * This method should return the status bar content, if any.
      *
      * @return The content for the status bar or null if none is wanted.
      */

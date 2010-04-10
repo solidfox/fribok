@@ -39,7 +39,7 @@ public class SSDBThread extends Thread {
      * <code>Runnable</code> run object, then that
      * <code>Runnable</code> object's <code>run</code> method is called;
      * otherwise, this method does nothing and returns.
-     * <p/>
+     * 
      * Subclasses of <code>Thread</code> should override this method.
      *
      * @see Thread#start()

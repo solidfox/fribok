@@ -40,7 +40,7 @@ public class SSDefaultJasperDataSource implements JRDataSource {
     //--------------- Constructors ----------------------------------
 
     /**
-     * Constructor. <P>
+     * Constructor.
      *
      * @param model The table model to use for generating the report.
      */

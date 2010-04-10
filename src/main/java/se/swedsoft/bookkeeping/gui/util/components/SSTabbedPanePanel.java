@@ -11,7 +11,7 @@ import java.awt.*;
 public class SSTabbedPanePanel extends JPanel {
 
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSTabbedPanePanel() {

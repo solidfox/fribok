@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This class should be the default class for internal frames in this application. <P>
+ * This class should be the default class for internal frames in this application.
  * Use this rather than the base class SSInternalFrame to enable global changes
  * to the application GUI.
  *
@@ -62,7 +62,7 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
 
 
     /**
-     * This method should return a toolbar if the sub-class wants one. <P>
+     * This method should return a toolbar if the sub-class wants one.
      * Otherwise, it may return null.
      *
      * @return A JToolBar or null.
@@ -71,7 +71,7 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
 
 
     /**
-     * This method should return the main content for the frame. <P>
+     * This method should return the main content for the frame.
      * Such as an object table.
      *
      * @return The main content for this frame.
@@ -80,7 +80,7 @@ public abstract class SSDefaultTableFrame extends SSInternalFrame {
 
 
     /**
-     * This method should return the status bar content, if any. <P>
+     * This method should return the status bar content, if any.
      *
      * @return The content for the status bar or null if none is wanted.
      */

@@ -59,13 +59,11 @@ public class SSIntegerTextField extends JFormattedTextField {
         super.removeAll();
     }
 
-
-
     /**
      * Returns the last isValid value. Based on the editing policy of
-     * the <code>AbstractFormatter</code> this may not return the current
+     * the {@code AbstractFormatter} this may not return the current
      * value. The currently edited value can be obtained by invoking
-     * <code>commitEdit</code> followed by <code>getInvoiceValue</code>.
+     * {@code commitEdit} followed by {@code getInvoiceValue}.
      *
      * @return Last isValid value
      */

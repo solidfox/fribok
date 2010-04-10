@@ -56,8 +56,9 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
 
 
     private static final int[] EMPTY_INT_ARRAY = {};
+
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSTableComboBox() {
@@ -683,8 +684,8 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
         /**
          * Sets an initial <code>value</code> for the editor.  This will cause
          * the editor to <code>stopEditing</code> and lose any partially
-         * edited value if the editor is editing when this method is called. <p>
-         * <p/>
+         * edited value if the editor is editing when this method is called.
+         * 
          * Returns the component that should be added to the client's
          * <code>Component</code> hierarchy.  Once installed in the client's
          * hierarchy this component will then be able to draw and receive
@@ -736,7 +737,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
         /**
          * Returns a reference to the editor component.
          *
-         * @return the editor <code>Component</code>
+         * @return the editor {@code Component}
          */
         public Component getComponent() {
             return iComboBox.iTextField;

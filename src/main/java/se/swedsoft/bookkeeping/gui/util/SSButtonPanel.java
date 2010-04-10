@@ -19,7 +19,7 @@ public class SSButtonPanel extends JPanel {
     private SSButton iOkButton;
 
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSButtonPanel() {

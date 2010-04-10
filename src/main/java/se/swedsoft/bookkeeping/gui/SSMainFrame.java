@@ -50,7 +50,7 @@ public class SSMainFrame extends JFrame {
 
 
     /**
-     * Default constructor. <P>
+     * Default constructor.
      * Creates and displays the main window of the application.
      */
     private SSMainFrame() {
@@ -152,7 +152,7 @@ public class SSMainFrame extends JFrame {
     }
 
     /**
-     * Returns the desktop pane for the application. <P>
+     * Returns the desktop pane for the application.
      *
      * @return The JDesktopPane.
      */

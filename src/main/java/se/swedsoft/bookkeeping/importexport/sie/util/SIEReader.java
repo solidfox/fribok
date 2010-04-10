@@ -62,11 +62,11 @@ public class SIEReader implements Iterator<String> {
     }
 
     /**
-     * Returns <tt>true</tt> if the iteration has more elements. (In other
-     * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+     * Returns {@code true} if the iteration has more elements. (In other
+     * words, returns {@code true} if {@code next} would return an element
      * rather than throwing an exception.)
      *
-     * @return <tt>true</tt> if the iterator has more elements.
+     * @return {@code true} if the iterator has more elements.
      */
     public boolean hasNextLine() {
         return iIndex+1 < iLines.size();

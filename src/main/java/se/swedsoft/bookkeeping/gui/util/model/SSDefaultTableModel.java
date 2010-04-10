@@ -72,7 +72,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
 
 
     /**
-     * Returns a List of Strings with the column names. <P>
+     * Returns a List of Strings with the column names.
      *
      * @return A List of String objects.
      */
@@ -81,7 +81,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Sets the objects to operate on for this table model. <P>
+     * Sets the objects to operate on for this table model.
      *
      * @param pObjects The objects to display.
      */
@@ -91,7 +91,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Sets the objects to operate on for this table model. <P>
+     * Sets the objects to operate on for this table model.
      *
      * @param pObjects The objects to display.
      */
@@ -149,7 +149,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
      * Returns if a row is the last row in the model.
      *
      * @param row
-     * @return if the row is the last one in the model
+     * @return true if the row is the last one in the model
      */
     public boolean isLastRow(int row) {
         return row + 1 == iObjects.size();
@@ -178,7 +178,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
 
 
     /**
-     * Adds the object to the table model. <P>
+     * Adds the object to the table model.
      *
      * @param pObject The object to add.
      */
@@ -189,7 +189,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Adds all objects to the table model. <P>
+     * Adds all objects to the table model.
      *
      * @param pObjects The objects to add.
      */
@@ -200,7 +200,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Returns the object at the given row index. <P>
+     * Returns the object at the given row index.
      *
      * @param row The row to get the object from.
      *
@@ -211,7 +211,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Deletes the object from the table model. <P>
+     * Deletes the object from the table model.
      *
      * @param pObject The object to delete.
      */
@@ -226,7 +226,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
 
     /**
      * Deletes the data at the given index if the index i within the limits of
-     * the underlaying structure. <P>
+     * the underlaying structure.
      *
      * @param index The index of the object to remove.
      */
@@ -238,7 +238,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Deletes the data at the given indices. <P>
+     * Deletes the data at the given indices.
      *
      * @param indices The indices for the rows to remove.
      */
@@ -252,14 +252,14 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */
     public abstract Class getType();
 
     /**
-     * Returns the List in the background of this table model. <P>
+     * Returns the List in the background of this table model.
      * Be careful to modify this.
      *
      * @return The internal list of objects.
@@ -269,7 +269,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Returns a List of objects for the given indices. <P>
+     * Returns a List of objects for the given indices.
      *
      * @param indices The indices of the objects to return.
      *
@@ -291,7 +291,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
     /**
-     * Returns a bundle that can be used for getting locale specific texts. <P>
+     * Returns a bundle that can be used for getting locale specific texts.
      *
      * @return A ResourceBundle.
      */
@@ -341,8 +341,8 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     /**
      * Returns the index in this list of the first occurrence of the specified
      * element, or -1 if this list does not contain this element.
-     * More formally, returns the lowest index <tt>i</tt> such that
-     * <tt>(o==null ? get(i)==null : o.equals(get(i)))</tt>,
+     * More formally, returns the lowest index {@code i} such that
+     * {@code (o==null ? get(i)==null : o.equals(get(i)))},
      * or -1 if there is no such index.
      *
      * @param o

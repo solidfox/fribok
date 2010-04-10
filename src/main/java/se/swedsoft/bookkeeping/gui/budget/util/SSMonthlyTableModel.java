@@ -16,7 +16,7 @@ public class SSMonthlyTableModel extends SSDefaultTableModel<SSMonth> {
     private SSAccount iAccount;
 
     /**
-     * Default constructor. <P>
+     * Default constructor.
      * @param pBudget
      * @param pAccount
      */

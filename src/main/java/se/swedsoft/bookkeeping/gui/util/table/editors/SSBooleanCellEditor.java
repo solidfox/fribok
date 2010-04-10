@@ -19,7 +19,6 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
     // Our panel
     private JPanel iPanel;
 
-
     /**
      * Default constructor.
      */
@@ -31,9 +30,8 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
         checkBox.setHorizontalAlignment(JCheckBox.CENTER);
     }
 
-
     /**
-     * Implements the <code>TableCellEditor</code> interface.
+     * Implements the {@code TableCellEditor} interface.
      */
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
@@ -54,9 +52,7 @@ public class SSBooleanCellEditor extends DefaultCellEditor {
         }
 
         return c;
-
     }
-
 
     @Override
     public String toString() {

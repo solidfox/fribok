@@ -49,7 +49,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     }
 
     /**
-     * Returns the type of data in this model. <P>
+     * Returns the type of data in this model.
      *
      * @return The current data type.
      */
@@ -59,8 +59,8 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     }
 
     /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
+     * Returns the value for the cell at {@code columnIndex} and
+     * {@code rowIndex}.
      *    producttable.column.1=Produkt nr
      *    producttable.column.2=Beskrivning
      *    producttable.column.3=Enhets pris
@@ -179,7 +179,7 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     }
 
     /**
-     * Returns the object at the given row index. <P>
+     * Returns the object at the given row index.
      *
      * @param row The row to get the object from.
      * @return An Object.
@@ -207,9 +207,6 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
         }
     }
 
-
-
-
     /**
      *
      * @param iTable
@@ -234,11 +231,11 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     private static class SSProductRenderer extends SSDefaultTableCellRenderer<SSProduct> {
 
         /**
-         * Sets the <code>String</code> object for the cell being rendered to
-         * <code>value</code>.
+         * Sets the {@code String} object for the cell being rendered to
+         * {@code value}.
          *
          * @param value the string value for this cell; if value is
-         *              <code>null</code> it sets the text value to an empty string
+         *              {@code null} it sets the text value to an empty string
          * @see JLabel#setText
          */
         @Override

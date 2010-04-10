@@ -14,11 +14,11 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
 
 
     /**
-     * Sets the <code>String</code> object for the cell being rendered to
-     * <code>value</code>.
+     * Sets the {@code String} object for the cell being rendered to
+     * {@code value}.
      *
-     * @param value the string value for this cell; if value is
-     *              <code>null</code> it sets the text value to an empty string
+     * @param value the string value for this cell; if value is {@code null} it
+     *              sets the text value to an empty string
      * @see JLabel#setText
      */
     @Override
@@ -31,11 +31,11 @@ public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> e
     }
 
     /**
-     * Sets the <code>String</code> object for the cell being rendered to
-     * <code>value</code>.
+     * Sets the {@code String} object for the cell being rendered to
+     * {@code value}.
      *
-     * @param value the string value for this cell; if value is
-     *              <code>null</code> it sets the text value to an empty string
+     * @param value the string value for this cell; if value is {@code null} it
+     *              sets the text value to an empty string
      * @see JLabel#setText
      */
     protected void setValue(T value) {

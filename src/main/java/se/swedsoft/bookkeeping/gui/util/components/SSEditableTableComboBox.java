@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
  */
 public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel {
 
-
     public interface EditingFactory<T extends SSTableSearchable> {
 
         T newAction();
@@ -25,7 +24,6 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
         void deleteAction(T iSelected);
     }
 
-
     private JButton iEditButton;
 
     private JPopupMenu iPopup;
@@ -34,10 +32,8 @@ public class SSEditableTableComboBox<T extends SSTableSearchable> extends JPanel
 
     private SSTableComboBox<T> iComboBox;
 
-
-
     /**
-     * Creates a new <code>JPanel</code> with a double buffer
+     * Creates a new {@code JPanel} with a double buffer
      * and a flow layout.
      */
     public SSEditableTableComboBox() {
