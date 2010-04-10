@@ -75,6 +75,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -85,7 +86,7 @@ import java.util.*;
  */
 public class SSMainMenu {
 
-    private static final File cMenuFile = new File(Path.get(Path.APP_DATA), "MainMenu.xml");
+    private static final String MENU_RES = "/MainMenu.xml";
 
     private static final ResourceBundle bundle = SSBundle.getBundle();
 
@@ -101,10 +102,9 @@ public class SSMainMenu {
     public SSMainMenu(SSMainFrame pMainFrame) {
         iMainFrame  = pMainFrame;
         iMenuLoader = new SSMenuLoader();
-
-        System.out.println("Loading main menu from: " + cMenuFile);
-
-        iMenuLoader.loadMenus(cMenuFile);
+ 
+        InputStream stream = getClass().getResourceAsStream(MENU_RES);
+        iMenuLoader.loadMenus(stream);
 
         iMenuLoader.setEnabled("Company", /*SSBookkeeping.iCompany.getData()  != null*/false);
         iMenuLoader.setEnabled("Year"   , /*SSBookkeeping.iCompany.getCurrentYear()     != null*/false);

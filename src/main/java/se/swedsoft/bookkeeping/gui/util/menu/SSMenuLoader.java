@@ -13,16 +13,16 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 /**
  * Date: 2006-feb-27
- * Time: 09:07:31
+ * @version $Id$
  */
-public class SSMenuLoader   {
+public class SSMenuLoader {
 
     private static String cParserClass = "org.apache.xerces.parsers.SAXParser";
-
 
     private Map<String, JMenuBar > iMenuBars;
     private Map<String, JMenu    > iMenus;
@@ -32,11 +32,10 @@ public class SSMenuLoader   {
 
     private Map<String, List<JComponent>> iDependancies;
 
-
     /**
-     *
+     * Default constructor.
      */
-    public SSMenuLoader(){
+    public SSMenuLoader() {
         iMenuBars      = new HashMap<String, JMenuBar>();
         iMenus         = new HashMap<String, JMenu>();
         iMenuItems     = new HashMap<String, JMenuItem>();
@@ -49,31 +48,30 @@ public class SSMenuLoader   {
      *
      * @param iFile
      */
-    public void loadMenus(File iFile){
+    public void loadMenus(InputStream stream) {
         iMenuBars   .clear();
         iMenus      .clear();
         iMenuItems  .clear();
 
         XMLReader iReader;
-        try{
+        try {
             iReader = XMLReaderFactory.createXMLReader(cParserClass);
         } catch (SAXException e) {
             e.printStackTrace();
             return;
         }
 
-        iReader.setContentHandler(new MenuBuilder(  ));
+        iReader.setContentHandler(new MenuBuilder());
 
         try {
-            iReader.parse(new InputSource( new FileInputStream(iFile)));
+            iReader.parse(new InputSource(stream));
         } catch (SAXException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
     }
+
     /**
      * Returns a menubar
      *
