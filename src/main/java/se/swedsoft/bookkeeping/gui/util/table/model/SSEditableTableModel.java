@@ -13,8 +13,6 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
 
     private static final String EMPTY_STRING = "";
 
-
-
     /**
      * Default constructor.
      */
@@ -42,26 +40,11 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
         iEditing = newObject();
     }
 
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     * @see #getColumnCount
-     */
     @Override
     public int getRowCount() {
         return super.getRowCount() + 1;
     }
 
-    /**
-     * Returns the object at the given row index.
-     *
-     * @param row The row to get the object from.
-     * @return An Object.
-     */
     @Override
     public T getObject(int row) {
 
@@ -71,14 +54,6 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
         return super.getObject(row);
     }
 
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
@@ -92,28 +67,17 @@ public abstract class SSEditableTableModel<T> extends SSTableModel<T> {
 
     }
 
-    /**
-     * Sets the objects to operate on for this table model.
-     *
-     * @param pObjects The objects to display.
-     */
     @Override
     public void setObjects(List<T> pObjects) {
         super.setObjects(pObjects);
         iEditing = newObject();
     }
 
-    /**
-     * Sets the objects to operate on for this table model.
-     *
-     * @param pObjects The objects to display.
-     */
     @Override
     public void setObjects(T... pObjects) {
         super.setObjects(pObjects);
         iEditing = newObject();
     }
-
 
     /**
      *

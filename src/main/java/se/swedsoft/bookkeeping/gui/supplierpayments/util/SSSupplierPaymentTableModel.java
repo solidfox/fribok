@@ -43,11 +43,6 @@ public class SSSupplierPaymentTableModel extends SSTableModel<SupplierPayment> {
         setObjects(iPayments);
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SupplierPayment.class;

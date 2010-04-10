@@ -48,11 +48,6 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSProduct.class;
@@ -95,14 +90,6 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
         return value;
     }
 
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSProductRow iRow  = getObject(rowIndex);
@@ -128,26 +115,11 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
 
     }
 
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     * @see #getColumnCount
-     */
     @Override
     public int getRowCount() {
         return super.getRowCount()+1;
     }
 
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
@@ -164,13 +136,6 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
     }
 
 
-    /**
-     * Returns false.  This is the default implementation for all cells.
-     *
-     * @param rowIndex    the row being queried
-     * @param columnIndex the column being queried
-     * @return false
-     */
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         SSProduct iProduct = getObject(rowIndex).getProduct( SSDB.getInstance().getProducts() );
@@ -178,12 +143,6 @@ public class SSProductRowTableModel extends SSDefaultTableModel<SSProductRow> {
         return (columnIndex == 0) || (iProduct != null && (columnIndex != 3));
     }
 
-    /**
-     * Returns the object at the given row index.
-     *
-     * @param row The row to get the object from.
-     * @return An Object.
-     */
     @Override
     public SSProductRow getObject(int row) {
         if( row == super.getRowCount()){

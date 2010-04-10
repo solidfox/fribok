@@ -18,7 +18,7 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
     private static ResourceBundle cBunbdle = SSBundle.getBundle();
 
     /**
-     *
+     * Default constructor.
      */
     public SSSystemYearDataModel(){
         addColumn(  cBunbdle.getString("accountingyeartable.column.1"));
@@ -27,24 +27,12 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
         addColumn(  cBunbdle.getString("accountingyeartable.column.4"));
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSSystemYear.class;
     }
 
-    /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
-     *
-     * @param    rowIndex    the row whose value is to be queried
-     * @param    columnIndex the column whose value is to be queried
-     * @return the value Object at the specified cell
-     */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         SSNewAccountingYear year = getObject(rowIndex);
 
@@ -68,13 +56,6 @@ public class SSSystemYearDataModel extends SSDefaultTableModel<SSNewAccountingYe
         return value;
     }
 
-
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
 

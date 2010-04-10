@@ -30,24 +30,12 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
         addColumn(  cBunbdle.getString("startingammounttable.column.3"));
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSAccount.class;
     }
 
-    /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
-     *
-     * @param    rowIndex    the row whose value is to be queried
-     * @param    columnIndex the column whose value is to be queried
-     * @return the value Object at the specified cell
-     */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         SSAccount iAccount = getObject(rowIndex);
 
@@ -69,15 +57,6 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
         return value;
     }
 
-
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSAccount iAccount = getObject(rowIndex);
@@ -92,13 +71,6 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
         fireTableCellUpdated(rowIndex, columnIndex);
     }
 
-
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
 
@@ -114,13 +86,6 @@ public class SSStartingAmountTableModel  extends SSDefaultTableModel<SSAccount> 
         return super.getColumnClass(columnIndex);
     }
 
-    /**
-     * Returns false.  This is the default implementation for all cells.
-     *
-     * @param rowIndex    the row being queried
-     * @param columnIndex the column being queried
-     * @return false
-     */
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return columnIndex == 2;

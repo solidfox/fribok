@@ -88,15 +88,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    /**
-     * Returns the number of columns in the model. A
-     * <code>JTable</code> uses this method to determine how many columns it
-     * should create and display by default.
-     *
-     * @return the number of columns in the model
-     *
-     * @see #getRowCount
-     */
+    @Override
     public int getColumnCount() {
         return iColumns.size();
     }
@@ -134,8 +126,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-
-
     /**
      *
      * @return The columns
@@ -144,13 +134,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         return iColumns;
     }
 
-    /**
-     * Returns a  name for the column
-     *
-     * @param column the column being queried
-     *
-     * @return a string containing the default name of <code>column</code>
-     */
     @Override
     public String getColumnName(int column) {
         // Inside the bounds ?
@@ -163,14 +146,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         return super.getColumnName(column);
     }
 
-    /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
-     *
-     * @param    rowIndex    the row whose value is to be queried
-     * @param    columnIndex the column whose value is to be queried
-     * @return the value Object at the specified cell
-     */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         SSTableColumn<T> iColumn = iColumns.get(columnIndex);
 
@@ -181,14 +157,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         return iColumn.getValue(iObject);
     }
 
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSTableColumn<T> iColumn = iColumns.get(columnIndex);
@@ -201,13 +169,6 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         fireTableRowsUpdated(rowIndex, rowIndex);
     }
 
-    /**
-     * Returns false.  This is the default implementation for all cells.
-     *
-     * @param rowIndex    the row being queried
-     * @param columnIndex the column being queried
-     * @return false
-     */
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         SSTableColumn<T> iColumn = iColumns.get(columnIndex);
@@ -217,17 +178,7 @@ public abstract class SSTableModel<T> extends AbstractTableModel {
         return iEditable.get(iColumn) && iColumn.isEditable(rowIndex);
     }
 
-
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     *
-     * @see #getColumnCount
-     */
+    @Override
     public int getRowCount() {
         return iObjects.size();
     }

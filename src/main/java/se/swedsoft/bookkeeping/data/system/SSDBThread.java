@@ -12,42 +12,12 @@ public class SSDBThread extends Thread {
 
     private SSSystemData iData;
 
-
-
-
-    /**
-     * Allocates a new <code>Thread</code> object. This constructor has
-     * the same effect as <code>Thread(null, null,</code>
-     * <i>gname</i><code>)</code>, where <b><i>gname</i></b> is
-     * a newly generated name. Automatically generated names are of the
-     * form <code>"Thread-"+</code><i>n</i>, where <i>n</i> is an integer.
-     *
-     * @param pDatabase
-     * @param pData
-     * @see Thread#Thread(ThreadGroup,
-     *      Runnable, String)
-     */
     public SSDBThread(SSDB pDatabase, SSSystemData pData) {
         iData     = pData;
         iDatabase = pDatabase;
         setName("SSDBThread");
     }
 
-
-    /**
-     * If this thread was constructed using a separate
-     * <code>Runnable</code> run object, then that
-     * <code>Runnable</code> object's <code>run</code> method is called;
-     * otherwise, this method does nothing and returns.
-     * 
-     * Subclasses of <code>Thread</code> should override this method.
-     *
-     * @see Thread#start()
-     * @see Thread#stop()
-     * @see Thread#Thread(ThreadGroup,
-     *      Runnable, String)
-     * @see Runnable#run()
-     */
     @Override
     public void run() {
 

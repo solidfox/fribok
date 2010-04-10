@@ -31,6 +31,7 @@ import java.util.List;
 public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> {
 
     private Map<SSInvoice, InterestAction> iActions;
+
     /**
      * Constructor.
      *
@@ -57,11 +58,6 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
         addColumn(SSBundle.getBundle().getString("interestinvoicetable.column.10"));
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSInvoice.class;
@@ -127,17 +123,6 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
         return value;
     }
 
-
-
-
-
-
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){
@@ -165,26 +150,11 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
         return super.getColumnClass(columnIndex);
     }
 
-    /**
-     * Returns false.  This is the default implementation for all cells.
-     *
-     * @param rowIndex    the row being queried
-     * @param columnIndex the column being queried
-     * @return false
-     */
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return columnIndex == 9;
     }
 
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         SSInvoice iInvoice = getObject(rowIndex);
@@ -196,8 +166,6 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
         }
         fireTableDataChanged();
     }
-
-
 
     /**
      * Get the interest invoices depending on the user selections.
@@ -354,7 +322,6 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
             return SSBundle.getBundle().getString(iBundleName);
         }
 
-
         /**
          * Returns the render string to be shown in the tables
          *
@@ -420,7 +387,6 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
 
 
     }
-
 
     @Override
     public String toString() {

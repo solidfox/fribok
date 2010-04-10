@@ -93,17 +93,6 @@ public class SSTable extends JTable {
         setModel(dm);
     }
 
-
-    /**
-     * Sets the data model for this table to <code>newModel</code> and registers
-     * with it for listener notifications from the new data model.
-     *
-     * @param dataModel the new data source for this table
-     *
-     * @throws IllegalArgumentException if <code>newModel</code> is <code>null</code>
-     *
-     * @see #getModel
-     */
     @Override
     public void setModel(TableModel dataModel) {
         if(iColumnSortingEnabled){
@@ -115,12 +104,6 @@ public class SSTable extends JTable {
         }
     }
 
-
-    /**
-     * Returns the index of the first selected row, -1 if no row is selected.
-     *
-     * @return the index of the first selected row
-     */
     @Override
     public int getSelectedRow() {
         if(iColumnSortingEnabled){
@@ -134,14 +117,6 @@ public class SSTable extends JTable {
         }
     }
 
-    /**
-     * Returns the indices of all selected rows.
-     *
-     * @return an array of integers containing the indices of all selected rows,
-     *         or an empty array if no row is selected
-     *
-     * @see #getSelectedRow
-     */
     @Override
     public int[] getSelectedRows() {
         if(iColumnSortingEnabled){
@@ -189,14 +164,6 @@ public class SSTable extends JTable {
     final Color CELL_READONLY_SELECTED = new Color(249, 224, 137);
     final Color CELL_EDITABLE_SELECTED = new Color(251, 232, 175);
 
-    /**
-     *
-     * @param renderer
-     * @param row
-     * @param col
-     *
-     * @return Component
-     */
     @Override
     public Component prepareRenderer(TableCellRenderer renderer, int row, int col) {
         Component c = super.prepareRenderer(renderer, row, col);

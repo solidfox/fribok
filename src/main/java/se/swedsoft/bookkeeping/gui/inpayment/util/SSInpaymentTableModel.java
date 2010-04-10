@@ -41,25 +41,12 @@ public class SSInpaymentTableModel extends SSDefaultTableModel<SSInpayment> {
         addColumn(SSBundle.getBundle().getString("inpaymenttable.column.4"));
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSProduct.class;
     }
 
-    /**
-     * Returns the value for the cell at <code>columnIndex</code> and
-     * <code>rowIndex</code>.
-     *
-     *
-     * @param    rowIndex    the row whose value is to be queried
-     * @param    columnIndex the column whose value is to be queried
-     * @return the value Object at the specified cell
-     */
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         SSInpayment iInpayment = getObject(rowIndex);
 
@@ -82,12 +69,6 @@ public class SSInpaymentTableModel extends SSDefaultTableModel<SSInpayment> {
         return value;
     }
 
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
         switch(columnIndex){

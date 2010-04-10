@@ -491,28 +491,6 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
         stopEdit();
     }
 
-
-    /**
-     * Invoked to process the key bindings for <code>ks</code> as the result
-     * of the <code>KeyEvent</code> <code>e</code>. This obtains
-     * the appropriate <code>InputMap</code>,
-     * gets the binding, gets the action from the <code>ActionMap</code>,
-     * and then (if the action is found and the component
-     * is enabled) invokes <code>notifyAction</code> to notify the action.
-     *
-     * @param ks        the <code>KeyStroke</code> queried
-     * @param e         the <code>KeyEvent</code>
-     * @param condition one of the following values:
-     *                  <ul>
-     *                  <li>JComponent.WHEN_FOCUSED
-     *                  <li>JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT
-     *                  <li>JComponent.WHEN_IN_FOCUSED_WINDOW
-     *                  </ul>
-     * @param pressed   true if the key is pressed
-     * @return true if there was a binding to an action, and the action
-     *         was enabled
-     * @since 1.3
-     */
     @Override
     protected boolean processKeyBinding(KeyStroke ks, KeyEvent e, int condition, boolean pressed) {
         super.processKeyBinding(ks, e, condition, pressed);
@@ -681,31 +659,7 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
         protected void setModel(SSTableModel<T> pModel){
             iComboBox.setModel( pModel );
         }
-        /**
-         * Sets an initial <code>value</code> for the editor.  This will cause
-         * the editor to <code>stopEditing</code> and lose any partially
-         * edited value if the editor is editing when this method is called.
-         * 
-         * Returns the component that should be added to the client's
-         * <code>Component</code> hierarchy.  Once installed in the client's
-         * hierarchy this component will then be able to draw and receive
-         * user input.
-         *
-         * @param    table        the <code>JTable</code> that is asking the
-         * editor to edit; can be <code>null</code>
-         * @param    value        the value of the cell to be edited; it is
-         * up to the specific editor to interpret
-         * and draw the value.  For example, if value is
-         * the string "true", it could be rendered as a
-         * string or it could be rendered as a check
-         * box that is checked.  <code>null</code>
-         * is a isValid value
-         * @param    isSelected    true if the cell is to be rendered with
-         * highlighting
-         * @param    row the row of the cell being edited
-         * @param    column the column of the cell being edited
-         * @return the component for editing
-         */
+
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             iCurrentTable  = table;
             iCurrentRow    = row;
@@ -760,20 +714,6 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
             return iComboBox.getValue();
         }
 
-        /**
-         * Asks the editor if it can start editing using <code>anEvent</code>.
-         * <code>anEvent</code> is in the invoking component coordinate system.
-         * The editor can not assume the Component returned by
-         * <code>getCellEditorComponent</code> is installed.  This method
-         * is intended for the use of client to avoid the cost of setting up
-         * and installing the editor component if editing is not possible.
-         * If editing can be started this method returns true.
-         *
-         * @param    anEvent        the event the editor should use to consider
-         * whether to begin editing or not
-         * @return true if editing can be started
-         * @see #shouldSelectCell
-         */
         @Override
         public boolean isCellEditable(EventObject anEvent) {
             if (anEvent instanceof MouseEvent) {
@@ -782,23 +722,6 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
             return true;
         }
 
-        /**
-         * Returns true if the editing cell should be selected, false otherwise.
-         * Typically, the return value is true, because is most cases the editing
-         * cell should be selected.  However, it is useful to return false to
-         * keep the selection from changing for some types of edits.
-         * eg. A table that contains a column of check boxes, the user might
-         * want to be able to change those checkboxes without altering the
-         * selection.  (See Netscape Communicator for just such an example)
-         * Of course, it is up to the client of the editor to use the return
-         * value, but it doesn't need to if it doesn't want to.
-         *
-         * @param    anEvent        the event the editor should use to start
-         * editing
-         * @return true if the editor would like the editing cell to be selected;
-         * otherwise returns false
-         * @see #isCellEditable
-         */
         @Override
         public boolean shouldSelectCell(EventObject anEvent) {
             return true;
@@ -814,10 +737,6 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
             return true;
         }
 
-        /**
-         *
-         * @return
-         */
         @Override
         public boolean stopCellEditing() {
             iComboBox.iPopup.setVisible(false);
@@ -825,9 +744,6 @@ public class SSTableComboBox<T extends SSTableSearchable> extends JPanel {
             return true;
         }
 
-        /**
-         *
-         */
         @Override
         public void cancelCellEditing() {
             iComboBox.iPopup.setVisible(false);

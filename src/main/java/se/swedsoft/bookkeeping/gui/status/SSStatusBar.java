@@ -127,12 +127,6 @@ public class SSStatusBar extends JPanel {
         }
     }
 
-
-    /**
-     * Invoked by Swing to draw components.
-     *
-     * @param g the <code>Graphics</code> context in which to paint
-     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -171,11 +165,6 @@ public class SSStatusBar extends JPanel {
             setMinimumSize  (new Dimension(8, 18));
         }
 
-        /**
-         * Invoked by Swing to draw components.
-         *
-         * @param g the <code>Graphics</code> context in which to paint
-         */
         @Override
         public void paint(Graphics g) {
             g.setColor(cColor1);
@@ -205,16 +194,6 @@ public class SSStatusBar extends JPanel {
         private Color cOuterColor = new Color(165, 163, 151);
         private Color cInnerColor = new Color(200, 198, 183);
 
-        /**
-         * This default implementation does no painting.
-         *
-         * @param c      the component for which this border is being painted
-         * @param g      the paint graphics
-         * @param x      the x position of the painted border
-         * @param y      the y position of the painted border
-         * @param width  the width of the painted border
-         * @param height the height of the painted border
-         */
         @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             Color oldColor = g.getColor();
@@ -230,27 +209,11 @@ public class SSStatusBar extends JPanel {
             g.setColor(oldColor);
         }
 
-        /**
-         * This default implementation returns a new <code>Insets</code>
-         * instance where the <code>top</code>, <code>left</code>,
-         * <code>bottom</code>, and
-         * <code>right</code> fields are set to <code>0</code>.
-         *
-         * @param c the component for which this border insets value applies
-         * @return the new <code>Insets</code> object initialized to 0
-         */
         @Override
         public Insets getBorderInsets(Component c) {
             return new Insets(2,4,2,12);
         }
 
-        /**
-         * Reinitializes the insets parameter with this Border's current Insets.
-         *
-         * @param c      the component for which this border insets value applies
-         * @param insets the object to be reinitialized
-         * @return the <code>insets</code> object
-         */
         @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             insets.left   = 4;

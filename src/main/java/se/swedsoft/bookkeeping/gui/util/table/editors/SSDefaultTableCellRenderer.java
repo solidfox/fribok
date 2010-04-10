@@ -12,15 +12,6 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public abstract class SSDefaultTableCellRenderer <T extends SSTableSearchable> extends DefaultTableCellRenderer {
 
-
-    /**
-     * Sets the {@code String} object for the cell being rendered to
-     * {@code value}.
-     *
-     * @param value the string value for this cell; if value is {@code null} it
-     *              sets the text value to an empty string
-     * @see JLabel#setText
-     */
     @Override
     protected void setValue(Object value) {
         if(value instanceof SSTableSearchable){

@@ -70,24 +70,13 @@ public class SSBudgetMainPanel {
 
         // Get the available accounts.
         SSDefaultTableModel<SSAccount> iModel = new SSDefaultTableModel<SSAccount>(iAccounts) {
-            /**
-             * Returns the type of data in this model.
-             *
-             * @return The current data type.
-             */
+
             @Override
             public Class getType() {
                 return SSAccount.class;
             }
 
-            /**
-             * Returns the value for the cell at <code>columnIndex</code> and
-             * <code>rowIndex</code>.
-             *
-             * @param   rowIndex    the row whose value is to be queried
-             * @param   columnIndex the column whose value is to be queried
-             * @return  the value Object at the specified cell
-             */
+            @Override
             public Object getValueAt(int rowIndex, int columnIndex) {
 
                 SSAccount account = getObject(rowIndex);

@@ -29,8 +29,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
     public static final int COL_EDITED_DATE         = 6;
     public static final int COL_EDITED_SIGNATURE    = 7;
 
-
-
     // toggles if were are editing a existing voucher
     private boolean iEdit;
 
@@ -40,8 +38,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
     private int     iReadOnlyRowCount;
     // The current row
     private SSVoucherRow iEditingRow;
-
-
 
     /**
      * Default constructor.
@@ -82,16 +78,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         fireTableDataChanged();
     }
 
-
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     * @see #getColumnCount
-     */
     @Override
     public int getRowCount() {
         if(iReadOnly){
@@ -101,12 +87,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         }
     }
 
-    /**
-     * Returns the object at the given row index.
-     *
-     * @param row The row to get the object from.
-     * @return An Object.
-     */
     @Override
     public SSVoucherRow getObject(int row) {
         if( row >= super.getRowCount() ){
@@ -116,14 +96,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         }
     }
 
-    /**
-     * Returns false.  This is the default implementation for all cells.
-     *
-     * @param rowIndex    the row being queried
-     * @param columnIndex the column being queried
-     *
-     * @return false
-     */
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         SSVoucherRow iRow = getObject(rowIndex);
@@ -147,11 +119,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         return false;
     }
 
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSVoucherRow.class;
@@ -169,8 +136,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
      * voucherrowtable.column.6=Resultatenhet
      * voucherrowtable.column.7=Ändrad
      * voucherrowtable.column.8=Signatur
-
-     *
      *
      * @param    rowIndex    the row whose value is to be queried
      * @param    columnIndex the column whose value is to be queried
@@ -212,15 +177,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         return value;
     }
 
-
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
@@ -274,14 +230,6 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         }
     }
 
-    /**
-     * Returns the number of columns in the model. A
-     * <code>JTable</code> uses this method to determine how many columns it
-     * should create and display by default.
-     *
-     * @return the number of columns in the model
-     * @see #getRowCount
-     */
     @Override
     public int getColumnCount() {
         int count = super.getColumnCount();
@@ -289,16 +237,8 @@ public class SSVoucherRowTableModelOld extends SSDefaultTableModel<SSVoucherRow>
         return (iEdit) ? count : Math.min(count, 6 );
     }
 
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     *
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-
         switch (columnIndex) {
             case COL_ACCOUNT:
                 return SSAccount.class;

@@ -22,9 +22,7 @@ import java.math.BigDecimal;
  */
 public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
 
-
     private SSInpaymentRow iEditing;
-
 
     /**
      * Default constructor.
@@ -33,39 +31,16 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         iEditing = new SSInpaymentRow();
     }
 
-
-    /**
-     * Returns the type of data in this model.
-     *
-     * @return The current data type.
-     */
     @Override
     public Class getType() {
         return SSInpaymentRow.class;
     }
 
-
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     * @see #getColumnCount
-     */
     @Override
     public int getRowCount() {
         return super.getRowCount() + 1;
     }
 
-
-    /**
-     * Returns the object at the given row index.
-     *
-     * @param row The row to get the object from.
-     * @return An Object.
-     */
     @Override
     public SSInpaymentRow getObject(int row) {
         if( row == super.getRowCount()){
@@ -75,15 +50,6 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
         }
     }
 
-
-    /**
-     * This empty implementation is provided so users don't have to implement
-     * this method if their data model is not editable.
-     *
-     * @param aValue      value to assign to cell
-     * @param rowIndex    row of cell
-     * @param columnIndex column of cell
-     */
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         super.setValueAt(aValue, rowIndex, columnIndex);
@@ -239,17 +205,11 @@ public class SSInpaymentRowTableModel extends SSTableModel<SSInpaymentRow> {
             return 80;
         }
 
-        /**
-         * @return
-         */
         @Override
         public TableCellEditor getCellEditor() {
             return new SSBigDecimalCellEditor(5);
         }
 
-        /**
-         * @return
-         */
         @Override
         public TableCellRenderer getCellRenderer() {
             return  new SSBigDecimalCellRenderer(5);

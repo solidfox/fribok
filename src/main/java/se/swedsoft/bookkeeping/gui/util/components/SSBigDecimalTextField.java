@@ -124,15 +124,6 @@ public class SSBigDecimalTextField extends JFormattedTextField {
 
     }
 
-    /**
-     * Sets the text of this <code>TextComponent</code>
-     * to the specified text.  If the text is <code>null</code>
-     * or empty, has the effect of simply deleting the old text.
-     * When text has been inserted, the resulting caret location
-     * is determined by the implementation of the caret class.
-     *
-     * @param t the new text to be set
-     */
     @Override
     public void setText(String t) {
         if(iAppendText != null){

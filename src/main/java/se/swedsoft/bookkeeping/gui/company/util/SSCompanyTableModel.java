@@ -22,6 +22,7 @@ public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
         return SSNewCompany.class;
     }
 
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 
         SSNewCompany iCompany = getObject(rowIndex);
@@ -37,13 +38,6 @@ public class SSCompanyTableModel extends SSDefaultTableModel<SSNewCompany>{
         return "";
     }
 
-    /**
-     * Returns <code>Object.class</code> regardless of <code>columnIndex</code>.
-     *
-     * @param columnIndex the column being queried
-     *
-     * @return the Object.class
-     */
     @Override
     public Class<?> getColumnClass(int columnIndex) {
 

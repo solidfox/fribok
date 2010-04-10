@@ -39,10 +39,6 @@ public class SSBundle extends ResourceBundle {
         return cBundle;
     }
 
-    /**
-     * Returns an enumeration of the keys.
-     * @return
-     */
     @Override
     public Enumeration<String> getKeys() {
         return iBundle.getKeys();
@@ -62,15 +58,6 @@ public class SSBundle extends ResourceBundle {
         return true;
     }
 
-    /**
-     * Gets an object for the given key from this resource bundle.
-     * Returns null if this resource bundle does not contain an
-     * object for the given key.
-     *
-     * @param key the key for the desired object
-     * @return the object for the given key, or null
-     * @throws NullPointerException if <code>key</code> is <code>null</code>
-     */
     @Override
     protected Object handleGetObject(String key) {
 
@@ -94,4 +81,4 @@ public class SSBundle extends ResourceBundle {
         sb.append('}');
         return sb.toString();
     }
-} // End of class SSBundle
+}

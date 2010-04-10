@@ -119,28 +119,12 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
     }
 
 
-    /**
-     * Returns a  name for the column
-     *
-     * @param column the column being queried
-     *
-     * @return a string containing the default name of <code>column</code>
-     */
     @Override
     public String getColumnName(int column) {
         return column < iColumns.size() ? iColumns.get(column) : super.getColumnName(column);
     }
 
-    /**
-     * Returns the number of rows in the model. A
-     * <code>JTable</code> uses this method to determine how many rows it
-     * should display.  This method should be quick, as it
-     * is called frequently during rendering.
-     *
-     * @return the number of rows in the model
-     *
-     * @see #getColumnCount
-     */
+    @Override
     public int getRowCount() {
         return iObjects.size();
     }
@@ -155,15 +139,7 @@ public abstract class SSDefaultTableModel<T> extends AbstractTableModel {
         return row + 1 == iObjects.size();
     }
 
-    /**
-     * Returns the number of columns in the model. A
-     * <code>JTable</code> uses this method to determine how many columns it
-     * should create and display by default.
-     *
-     * @return the number of columns in the model
-     *
-     * @see #getRowCount
-     */
+    @Override
     public int getColumnCount() {
         return iColumns.size();
     }

@@ -252,15 +252,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         return iDialog.showDialog();
     }
 
-
-    /**
-     * This method is called by the current KeyboardFocusManager requesting
-     * that this KeyEventDispatcher dispatch the specified event on its behalf.
-     * @param e the KeyEvent to dispatch
-     * @return <code>true</code> if the KeyboardFocusManager should take no
-     *         further action with regard to the KeyEvent; <code>false</code>
-     *         otherwise
-     */
+    @Override
     public boolean dispatchKeyEvent(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             iModalResult = JOptionPane.CLOSED_OPTION;
@@ -278,6 +270,7 @@ public class SSDialog extends JDialog implements KeyEventDispatcher,ActionListen
         return false;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e)
     {
 
