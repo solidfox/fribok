@@ -10,8 +10,8 @@ import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.*;
 
@@ -83,11 +83,11 @@ public class SSAccountSchema implements Serializable {
     public static SSAccountSchema getAccountSchema(String iSchema){
         SSAccountSchema iAccountSchema;
 
-        if( iSchemaCache.containsKey(iSchema) ){
+        if (iSchemaCache.containsKey(iSchema)) {
             iAccountSchema = iSchemaCache.get(iSchema);
         } else {
-            iAccountSchema = createAccountSchema(new File(Path.get(Path.APP_DATA), iSchema));
-
+            InputStream is = SSAccountSchema.class.getResourceAsStream("/account/" + iSchema);
+            iAccountSchema = createAccountSchema(is);
             iSchemaCache.put(iSchema, iAccountSchema);
         }
 
@@ -110,7 +110,7 @@ public class SSAccountSchema implements Serializable {
      * @param iFile
      * @return
      */
-    private static SSAccountSchema createAccountSchema(File iFile){
+    private static SSAccountSchema createAccountSchema(InputStream is) {
         SSAccountSchema iSchema = new SSAccountSchema();
 
         XMLReader iReader;
@@ -124,7 +124,7 @@ public class SSAccountSchema implements Serializable {
         iReader.setContentHandler(new AccountGroupLoader( iSchema ));
 
         try {
-            iReader.parse(new InputSource( new FileInputStream(iFile)));
+            iReader.parse(new InputSource(is));
         } catch (SAXException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
