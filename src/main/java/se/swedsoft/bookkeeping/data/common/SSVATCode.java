@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.LinkedList;
 import java.util.List;
+import java.io.InputStream;
 
 
 /**
@@ -115,21 +116,19 @@ public class SSVATCode implements SSTableSearchable {
 
     private static List<SSVATCode> iValues;
 
-    private static File VATCODE_FILE = new File(Path.get(Path.APP_DATA), "vatcodes.xml");
-
     /**
      *
-     * @return The vat codes
+     * @return the vat codes
      */
     public static List<SSVATCode> getValues(){
-
-        if( iValues == null){
+        if (iValues == null) {
             iValues = new LinkedList<SSVATCode>();
 
             DOMParser iParser = new DOMParser();
             try {
                 //  parser.set(false)
-                iParser.parse( new InputSource(new FileInputStream( VATCODE_FILE )) );
+                InputStream istream = SSVATCode.class.getResourceAsStream("/vatcodes.xml");
+                iParser.parse(new InputSource(istream));
                 NodeList iNodes = iParser.getDocument().getDocumentElement().getElementsByTagName("vatcode");
                 for(int i = 0; i < iNodes.getLength(); i++){
                     Node iNode = iNodes.item(i);
