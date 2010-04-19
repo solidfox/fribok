@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> SIE Import</para>
+               <para/>
+               <para>Ni kan importera räkenskapsinformation från en fil i det standardiserade SIE-formatet, SIE4. Ni kan alltså importera kontoplan, ingående balans, budget och verifikationer som har sparats i filformatet SIE 4.Ni importerar verifikationerna genom att ni trycker på "Företagsimport" och "SIE" i menyn "Arkiv" och letar upp den fil som innehåller verifikationerna på den enhet och i den mapp där den finns sparad.När ni importerar en SIE4-fil uppdateras aktivt bokföringsår så att det passar för den importerade SIE4-filen och den aktiva kontoplanen för bokföringsåret ersätts också av den kontoplan som finns sparad i SIE4-filen. Ni behöver därför uppdatera momskoderna i den aktiva kontoplanen för bokföringsåret, ni gör det här genom att gå till "Ändra kontoplan för aktivt år" i menyn "Register" och där trycka på knappen "Uppdatera momskoder". Ni väljer sedan en kontoplan i uppslagskolumnen varifrån ni vill hämta uppdaterade momskoder.Observera att verifikationerna i aktivt bokföringsår ersätts av verifikationerna som finns i SIE4-filen, om ni har registrerat verifikationer i aktivt bokföringsår bör ni ta en säkerhetskopia av aktivt företag innan ni importerar en SIE4-fil.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

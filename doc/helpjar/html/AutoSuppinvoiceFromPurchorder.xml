@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Skapa leverantörsfaktura från inköpsordrar</para>
+               <para/>
+               <para>Ni skapar en leverantörsfaktura från en eller flera inköpsordrar genom att markera en eller flera inköpsordrar i listan över inköpsordrar och trycka på knappen "Skapa leverantörsfaktura för valda inköpsordrar". Fönstret "Ändra leverantörsfaktura" poppar upp och ni kan ändra i leverantörsfakturan eller spara leverantörsfakturan så som den har hämtats från inköpsordrarna. Se "Ändra leverantörsfaktura" för mer information om hur ni ska ändra i en leverantörsfaktura.Om ni skapar en leverantörsfaktura automatiskt från flera inköpsordrar måste dessa inköpsordrar vara till samma leverantör, ni kan sortera kolumnen för leverantörsnummer eller leverantörsnamn genom att klicka på kolumnetiketten för leverantörsnummer eller leverantörsnamn.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

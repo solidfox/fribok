@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Komprimera databas</para>
+               <para/>
+               <para>Det här alternativet innebär att ni komprimerar databasen för att göra den här mindre. Ibland när man tar bort objekt så frigörs inte alla upptagna bytes i databasen och därför kan det vara bra att komprimera databasen emellanåt. När ni komprimerar databasen så avslutas även programmet.Om ni arbetar i nätverk skall ni göra komprimeringen i JFS Server.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

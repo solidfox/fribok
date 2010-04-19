@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Förfrågan</para>
+               <para/>
+               <para>Den här rapporten visar en förfrågan. En förfrågan är en begäran till leverantören att skicka en offert till ert företag med uppgift om priser på listade produkter och andra villkor.Ni skriver ut en förfrågan genom att markera önskad inköpsorder i listan över inköpsordrar och trycka på knappen "Skriv ut inköpsordrar" och därefter välja "Förfrågan". En förfrågan kan skrivas ut på både svenska och engelska.Följande fält finns i den här rapporten:OrdernummerHär visas ett unikt nummer för att identifiera en inköpsorder.OrderdatumHär visas datumet då inköpsordern skapades och utfärdades.Vår leveransadressHär visas leveransadressen enligt inköpsordern, den adress dit leverantören skall skicka produkterna.Er adressHär visas leverantörens adress enligt inköpsordern, den adress dit er förfrågan skall skickas.Vår kontaktHär visas ert företags kontaktperson när det gäller frågor rörande den här förfrågan.LeveransvillkorHär visas leveransvillkoret för er förfrågan, leveransvillkoret anger vem som ansvarar för leveransen mellan olika punkter på leveransrutten och vem som står för fraktkostnaden. LeveranssättHär visas leveranssättet för er förfrågan, leveranssättet anger på vilket sätt och med vilket transportmedel produkterna levereras till ert företag.BetalningsvillkorHär visas betalningsvillkoret för er förfrågan, betalningsvillkoret anger kredittiden för när leverantörsfakturan skall betalas efter dess utfärdande.Er kontaktHär visas leverantörens kontaktperson när det gäller frågor rörande den här förfrågan.Beräknad leveransHär visas en beräknad leveranstid eller ett beräknat leveransdatum för produkterna i er förfrågan.Ert art nrHär visas leverantörens artikelnummer för de produkter som ingår i er förfrågan.Produkt nrHär visas ett unikt nummer för de produkter som ingår i er förfrågan och som finns upplagda i produktregistret. Saknas ett produktnummer beror det på att produkten inte finns upplagd i produktregistret.BeskrivningHär visas produktens namn eller beskrivning enligt er förfrågan.AntalHär visas antalet enheter av produkten som ingår i er förfrågan.InköpsordertextHär visas en frivillig text eller ett meddelande till leverantören för er förfrågan.FöretagsnamnHär visas ert företags företagsnamn enligt företagsinställningarna.AdressHär visas ert företags postadress enligt företagsinställningarna.Adress2Här visas ert företags andra rad för postadress enligt företagsinställningarna.PostnummerHär visas ert företags postnummer enligt företagsinställningarna.PostortHär visas ert företags postort enligt företagsinställningarna.LandHär visas ert företags land enligt företagsinställningarna.TelefonHär visas ert företags huvudsakliga telefonnummer enligt företagsinställningarna.FaxHär visas ert företags faxnummer enligt företagsinställningarna.SäteHär visas orten för ert företags säte (orten för huvudkontoret) enligt företagsinställningarna, måste anges om ert företag är en filial.E-postHär visas ert företags e-postadress enligt företagsinställningarna.HemsidaHär visas ert företags Internetadress för hemsida enligt företagsinställningarna.Org nrHär visas ert företags organisationsnummer enligt företagsinställningarna.VAT-nrHär visas ert företags momsregistreringsnummer (VAT-nummer) enligt företagsinställningarna.PlusgiroHär visas ert företags plusgironummer enligt företagsinställningarna.BankgiroHär visas ert företags bankgironummer enligt företagsinställningarna.BankHär visas ert företags bank för ert internationella bankkonto(IBAN) enligt företagsinställningarna.BICHär visas ert företags identifieringskod för banken där ni har ert internationella bankkonto (IBAN) enligt företagsinställningarna.IBANHär visas ert företags internationella bankkontonummer(IBAN) enligt företagsinställningarna.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

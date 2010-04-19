@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Konteringsmallar</para>
+               <para/>
+               <para>I det här fönstret listas alla sparade konteringsmallar för aktivt företag med dess beskrivning. Ni tar bort en konteringsmall genom att markera den i listan över konteringsmallar och trycka på knappen "Ta bort konteringsmall(ar)". </para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

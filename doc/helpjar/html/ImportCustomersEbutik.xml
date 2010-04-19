@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Importera kunder E-butik</para>
+               <para/>
+               <para>Ni kan importera kunder i textformat från E-butik.se från en fil som har exporterats i E-butik.se. De kunder som importeras i JFS Administration uppdaterar redan registrerade kunder eller läggs till som nya kunder.Följande information importeras från textfil med kunder skapad i E-butik.se:#1 KundNr#3 Företag#4 Förnamn#5 Efternamn#6 Adress#7 Postnummer#8 Stad#9 Land#10 Leverans - företag#11 Leverans - förnamn#12 Leverans - efternamn#13 Leverans - adress#14 Leverans - postnummer#15 Leverans - stad#16 Leverans - land#17 Telefonnummer#18 Faxnummer#19 E-postadress#20 Organisationsnummer/Personnummer</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

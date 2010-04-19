@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Verifikationer</para>
+               <para/>
+               <para>Den här rapporten listar alla verifikationer mellan två datum eller mellan två olika verifikationsnummer. När ni ska skriva ut verifikationslistan kan ni välja startnummer och slutnummer för verifikationsnummer, start- och slutdatum för datum eller alla verifikationer. Verifikationslistan filtreras sedan efter era val av verifikationsnummer eller datum.I rapportens fot summeras beloppen i debet och kredit kolumnerna.Följande fält finns i den här rapporten:NummerHär visas ett unikt nummer för varje registrerad verifikation enligt en obruten nummerserie som börjar med 1 för varje nytt bokföringsår och ökar med 1 för varje ny verifikation.DatumHär visas datumet för den underliggande verifikationen.TextHär visas en text som beskriver den affärshändelse som den underliggande verifikationen utgör.KontoHär visas de kontonummer som har angivits när verifikationen registrerades.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på kontot.ProjektHär visas projektet som har registrerats för framförvarande konto.ResultatenhetHär visas resultatenheten som har registrerats för framförvarande konto.DebetHär visas ett monetärt belopp som har registrerats för framförvarande konto.KreditHär visas ett monetärt belopp som har registrerats för framförvarande konto.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

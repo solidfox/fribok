@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Kundfakturor</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa kundfakturor, en faktura specifierar vilka produkter och tjänster som har levererats eller utförts åt kund och utgör underlag för kundens betalning.Kundfakturor listas under tre flikar "Alla", "Obetalda" och "Förfallna". Under fliken "Alla" visas alla kundfakturor, under fliken "Obetalda" visas de fakturor som ännu inte har blivit betalda av kund och under fliken "Förfallna" visas obetalda fakturor där förfallodatum har passerats av dagens datum.Tryck på knappen "Skapa ny kundfaktura" och välj "Normal faktura" eller "Kontantkvitto" för att registrera en ny kundfaktura. Markera en faktura och tryck på knappen "Ändra vald kundfaktura" eller dubbelklicka på en kundfaktura för att ändra en kundfaktura. Markera en kundfaktura och tryck på knappen "Skapa kopia av kundfaktura" för att kopiera en kundfaktura med all data som finns sparad för denna. Ni tar bort en kundfaktura genom att markera kundfakturan i listan över kundfakturor och trycka på knappen "Radera valda kundfakturor".Ni kan automatiskt skapa en inbetalning för en eller flera kundfakturor genom att markera en eller flera kundfakturor i listan över kundfakturor och trycka på knappen "Skapa inbetalning för valda kundfakturor". Ni kan skapa en kreditfaktura på en kundfaktura genom att markera önskad kundfaktura i listan över kundfakturor och trycka på knappen "Skapa kreditfaktura av vald kundfaktura". Ni kan skriva ut påminnelser för kundfakturor genom att markera en eller flera kundfakturor under fliken "Förfallna" och trycka på knappen "Skriv ut påminnelse för valda kundfakturor". Ni kan skriva ut räntefakturor för slutbetalda fakturor som har betalats för sent genom att trycka på knappen "Skapa räntefakturor".Ni skriver ut en fakturalista genom att trycka på knappen "Skriv ut kundfakturor" och sedan välja "fakturalista". Ni skriver ut en eller flera kundfakturor genom att först markera en eller flera kundfakturor i listan över kundfakturor och sedan trycka på knappen "Skriv ut kundfakturor" och välja "Faktura" eller "OCR-faktura".Följande fält finns i listan över kundfakturor: BildHär visas en bild om kundfakturan blivit utskriven.FakturanrHär visas ett unikt nummer för att identifiera en kundfaktura.TypHär visas kundfakturans typ, kan vara normal för normal faktura med kredit eller kontant för kontantkvitto.KundnummerHär visas kundnumret för den kund som kundfakturan är skapad för.KundnamnHär visas kundens företagsnamn eller personnamn.FakturadatumHär visas datumet då kundfakturan skapades och utfärdades.FörfallodatumHär visas datumet då kundfakturan förfaller till betalning.NettosummaHär visas kundfakturans totala monetära värde exklusive moms i efterföljande angiven valuta.ValutaHär visas kundfakturans valuta.TotalsummaHär visas kundfakturans totala monetära värde inklusive moms i framförvarande angiven valuta.SaldoHär visas kundfakturans kvarvarande saldo i framförvarande angiven valuta när inbetalningar och krediteringar har dragits av från totalsumma.KravHär visas det antal påminnelser som har skrivits ut för kundfakturan.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> EU Kvartalsredovisning</para>
+               <para/>
+               <para>Den här rapporten avser att vara underlag för EU-kvartalsredovisning. Företag som säljer varor till ett annat EU-land än Sverige är skyldiga att upprätta och skicka en kvartalsredovisning till Skatteverket.I Kvartalsredovisningen skall EU-kundernas VAT-nummer anges och summan för värdet av varuleveranser och trepartshandel till respektive EU-kund. Kvartalsredovisningen skall inlämnas till Skatteverket senast den 5:e i andra månaden efter varje kvartals utgång.När ni skriver ut den här rapporten väljer ni År och kvartal för att få ut kvartalsredovisningen för ett specifikt kvartal.Följande fält finns i den här rapporten:Avser tidenHär visas den tidsperiod som den här kvartalsrapporten avser.Momsreg nrHär visas ert företags momsregistreringsnummer, är samma nummer som VAT-numret.KvartalskodHär visas en kvartalskod, för tidsperioden, exempelvis 00-2, för andra kvartalet år 2000.AdressHär visas ert företags adress enligt företagsinställningarna.VAT-nummerHär visas EU-kundens VAT-nummer, hämtat från kundregistret.KundnummerHär visas EU-kundens kundnummer, kundens unika identifieringsnummer i ert företag.KundnamnHär visas EU-kundens företagsnamn.Värde av varuleveranserHär visas den totala monetära summan av direkta varuleveranser till EU-kunden.Värde av trepartshandelHär visas den totala monetära summan av trepartsleveranser till EU-kunden.SummaHär visas summan av "Värde av varuleveranser" respektive summan av "Värde av trepartshandel" för alla EU-kunder i kvartalsredovisningen.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

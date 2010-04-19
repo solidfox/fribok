@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Leverantörer</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa leverantörer, en leverantör är ett företag varifrån ert företag köper in varor och tjänster till er verksamhet.Tryck på knappen "Skapa ny leverantör" för att registrera en ny leverantör. Markera en leverantör och tryck på knappen "Ändra vald leverantör" eller dubbelklicka på en leverantör för att ändra en leverantör. Ni tar bort en leverantör genom att markera leverantören i listan över leverantörer och trycka på knappen "Radera valda leverantörer".Ni måste skapa en leverantör innan ni kan skapa inköpsorders eller leverantörsfakturor till leverantören.Ni skriver ut en leverantörslista genom att trycka på knappen "Skriv ut leverantörer".Följande fält finns i listan över leverantörer:Leverantörs nrHär visas ett unikt nummer för att identifiera en leverantör.NamnHär visas leverantörens företagsnamn.KontaktpersonHär visas leverantörens kontaktperson, den person hos leverantören som ert företag i första hand ska kontakta.TelefonHär visas leverantörens huvudsakliga telefonnummer.Vårt kund nrHär visas ert företags kundnummer hos leverantören.LeverantörsskuldHär visas ert företags skuld till leverantören angivet i redovisningsvalutan.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

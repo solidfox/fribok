@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Nätverk</para>
+               <para/>
+               <para>I JFS Administration kan ni vara flera användare samtidigt som arbetar med samma företag eller olika företag. För att komma igång och arbeta med nätverk måste ett antal åtgärder vidtas för att det skall fungera att arbeta i nätverk.FörberedelserFör det första bör man bestämma vilken dator i nätverket som skall vara värddator. Antivirus program kan ställa till problem när man arbetar i nätverk i och med att virusprogrammen vill söka igenom nätverksmappar. På varje dator i nätverket bör man göra ett genomsökningsundantag på nätverksmappen så att inte flera datorer i nätverket söker igenom nätverksmappen samtidigt.På värddatorn måste man köra igång JFS Server varje gång innan man börjar arbeta i nätverk, JFS Server ligger i programmappen i mappen db. JFS Server tar hand om anslutningar till databasmappen, låsning för skrivning och läsning samt postlåsning. I Antivirusprogrammet bör man godkänna programmet JFS Server så att programmen i nätverket kan kommunicera med detta program.Arbeta i nätverkNär förberedelserna är gjorda kan klientdatorerna ansluta sig till JFS Server på värddatorn, JFS Server ansluter till databasen. I varje klientprogram går man till "Arkiv" och "Nätverksinställningar", där skall ip-adressen till värddatorn eller datornamnet för värddatorn anges så att klientprogrammet kan ansluta till JFS Server på värddatorn.Ip-adressen och datornamnet på värddatorn står i huvudfönstret i JFS Server på värddatorn. JFS Server måste alltid vara igång innan klientprogrammen kan ansluta till databasen och arbeta i nätverk, om JFS Server avslutas när klientdatorer är anslutna måste klientprogrammen stängas ned och JFS Server startas om.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

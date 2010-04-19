@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Återställ säkerhetskopia</para>
+               <para/>
+               <para>Det här alternativet innebär att ni kan återskapa data från en säkerhetskopia som ni tidigare har sparat på er dator, om ni arbetar i nätverk skall återställa säkerhetskopior i JFS Server. I listan över säkerhetskopior visas alla säkerhetskopior ni har skapat från programmet om ni inte efteråt har flyttat på säkerhetskopian från den mapp på datorn där den ursprungligen sparades.Om ni vill hämta och återställa data från en säkerhetskopia som inte finns i listan över säkerhetskopior ska ni trycka på knappen "Öppna extern säkerhetskopia" och välja den säkerhetskopia ni vill återställa ifrån.Ni återställer data från en säkerhetskopia genom att markera önskad säkerhetskopia och trycka på knappen "Återställ vald säkerhetskopia". Ni tar bort en säkerhetskopia genom att markera önskad säkerhetskopia i listan över säkerhetskopior och trycka på knappen "Ta bort valda säkerhetskopior".Följande fält finns i listan över säkerhetskopior:DatumHär visas datum och klockslag då säkerhetskopian skapades.FilnamnHär visas filnamnet för en säkerhetskopia.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

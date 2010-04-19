@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Öppna bokföringsår</para>
+               <para/>
+               <para>Ni öppnar ett bokföringsår genom att ni markerar önskat bokföringsår i listan över bokföringsår och trycker på knappen "Öppna". När ni har öppnat ett bokföringsår så blir det här bokföringsåret aktivt och det syns vilket bokföringsår som är aktivt på statusraden längst ner eller genom att en bock finns ikryssad i checkrutan framför bokföringsåret i listan över bokföringsår.När ni sedan börjar arbeta i programmet så sparas allt arbete ni gör för det aktiva bokföringsåret och företaget.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

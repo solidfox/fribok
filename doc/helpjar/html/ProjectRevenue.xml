@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Projektsomsättning</para>
+               <para/>
+               <para>I den här rapporten kan ni se omsättningen per projekt och månad men även omsättning per projekt över hela den valda perioden.Ni kan välja ut projekt för rapporten genom att markera en eller flera projekt i listan över projekt och sedan trycka på knappen "Skriv ut projekt" och välja projektomsättning. Ni kan också skriva ut rapporten för alla projekt. Omsättningen är angiven exklusive moms i redovisningsvalutan. Följande fält finns i den här rapporten:Projekt NrHär visas ett unikt nummer för att identifiera ett projekt.BeskrivningHär visas en beskrivande text för projektet.MånadHär listas de månader som inbegrips i den valda perioden vid utskrift.Per månadHär visas projektets omsättning för månaden.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

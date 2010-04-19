@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Orderlista</para>
+               <para/>
+               <para>Den här rapporten listar alla ordrar eller bara ej fakturerade ordrar för alla kunder eller en specifik kund under hela perioden eller mellan två datum.När ni ska skriva ut orderlistan kan ni välja om ni vill skriva ut alla ordrar eller ej fakturerade ordrar, ni kan också välja att skriva ut orderlistan för en specifik kund och/eller mellan ett start- och slutdatum för orderdatum. Orderlistan filtreras sedan enligt era val.Följande fält finns i den här rapporten:Order nrHär visas ett unikt nummer för varje registrerad order.Kund nrHär visas kundnumret för den kund som ordern är skapad för.KundnamnHär visas kundens företagsnamn eller personnamn.ValutaHär visas orderns valuta.DatumHär visas datumet då ordern skapades och utfärdades.Produkt nrHär visas ett unikt nummer för de produkter som ingår i ordern och som finns upplagda i produktregistret. Saknas ett produktnummer beror det på att produkten inte finns upplagd i produktregistret.BeskrivningHär visas produktens namn eller beskrivning enligt ordern.EnhetsprisHär visas produktens försäljningspris per enhet exklusive moms angivet i orderns valuta.AntalHär visas antalet enheter av produkten som ingår i ordern.RabattHär visas rabatten i procent för produkten enligt ordern.RadsummaHär visas produktradens totala monetära värde exklusive moms angivet i orderns valuta. Radsumma beräknas på enhetspris, antal och rabatt för produkten.OrdersummaHär visas orderns totala monetära värde exklusive moms angivet i orderns valuta.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

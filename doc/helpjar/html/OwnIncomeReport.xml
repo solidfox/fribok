@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Egna resultatrapporter</para>
+               <para/>
+               <para>I det här fönstret kan ni skapa egna resultatrapporter, ändra i redan skapade resultatrapporter och ta bort egna resultatrapporter. Tryck på knappen "Skapa ny resultatrapport" för att skapa en egen resultatrapport. Markera en resultatrapport och tryck på knappen "Ändra vald resultatrapport" eller dubbelklicka på en resultatrapport för att ändra en egen resultatrapport. Ni tar bort en egen resultatrapport genom att markera resultatrapporten i listan över resultatrapporter och trycka på knappen "Radera valda resultatrapporter".Ni skriver ut en egen resultatrapport genom att markera en resultatrapport och trycka på knappen "Skriv ut resultatrapport".Följande fält finns i listan över egna resultatrapporter:NamnHär visas en namnet på den egna resultatrapporten.ProjektHär visas ett projektnummer om den egna resultatrapporten har ett kopplat projekt.ResultatenhetHär visas ett resultatenhetsnummer om den egna resultatrapporten har en kopplad resultatenhet.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

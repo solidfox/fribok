@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Skriv ut egen resultatrapport</para>
+               <para/>
+               <para>Ni skriver ut en egen resultatrapport genom att markera en resultatrapport i listan över resultatrapporter och trycka på knappen "Skriv ut egen resultatrapport".Vid utskrift väljer ni ett datumintervall genom att ange start- och slutdatum. Följande fält finns i den här rapporten:RubrikHär visas en beskrivande text för en grupp av konton.KontoKontonumret identifierar varje konto och talar även om huruvida det är ett intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.Enl. budgetHär visas budgeterat saldo för kontot enligt vald period vid utskrift.PeriodenHär visas periodens saldo för kontot enligt vald period vid utskrift.AvvikelseHär visas avvikelsen mellan periodens saldo och budget eller föregående år. Avvikelsen beräknas som periodens saldo minus budget. Det här innebär att en positiv avvikelse motsvarar högre intäkter eller lägre kostnader för perioden jämfört med budget.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

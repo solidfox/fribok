@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Kunder</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa kunder, en kund är ett företag eller en person vilka får varor levererade eller tjänster utförda av ert företag.Tryck på knappen "Skapa ny kund" för att registrera en ny kund. Markera en kund och tryck på knappen "Ändra vald kund" eller dubbelklicka på en kund för att ändra en kund. Ni tar bort en kund genom att markera kunden i listan över kunder och trycker på knappen "Radera valda kunder".Ni behöver inte registrera kunder för att kunna skapa offerter, ordrar och fakturor, kunder kan däremot läggas till när ni skapar offert, order eller faktura om de här kunderna inte finns inlagda sedan tidigare.Ni skriver ut en kundlista genom att trycka på knappen "Skriv ut kunder".Följande fält finns i listan över kunder:KundnrHär visas ett unikt nummer för att identifiera en kund.NamnHär visas kundens företagsnamn eller personnamn.KontaktpersonHär visas kundens kontaktperson, den person hos kunden som ert företag i första hand ska kontakta.Org nrHär visas kundens organisationsnummer eller personnummer.TelefonHär visas kundens huvudsakliga telefonnummer.KundfordranHär visas total fordran på kunden angivet i redovisningsvalutan.KreditgränsHär visas kundens kreditgräns i den valuta som är vald för kunden.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

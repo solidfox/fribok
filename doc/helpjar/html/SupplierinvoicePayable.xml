@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Leverantörsskuld</para>
+               <para/>
+               <para>Den här rapporten listar alla obetalda (ej slutbetlda) leverantörsfakturor vid ett av ert valt reskontradatum eller slutdatum. När ni skriver ut den här rapporten skriver ni in eller väljer ett reskontradatum för att få fram aktuell leverantörsskuld vid denna tidpunkt och alla icke slutbetalda leverantörsfakturor som ingår i det här totalbeloppet för leverantörsskuld. Den här rapporten är ett utmärkt underlag för avstämning av konton för leverantörsskuld i bokföringen.Följande fält finns i den här rapporten:Faktura nrHär visas ett unikt internt löpnummer för varje registrerad leverantörsfaktura.LeverantörsnrHär visas leverantörsnumret för den leverantör som har skapat leverantörsfakturan.LeverantörsnamnHär visas leverantörens företagsnamn.DatumHär visas datumet då leverantörsfakturan skapades och utfärdades av leverantören.FakturabeloppHär visas leverantörsfakturans totala monetära värde inklusive moms angivet i leverantörsfakturans valuta.SaldoHär visas kvarvarande saldo för leverantörsfakturan i leverantörsfakturans valuta vid reskontradatum. Saldot beräknas som "Fakturabelopp" minus summan av krediteringar och utbetalningar av leverantörsfakturan.ValutaHär visas leverantörsfakturans valuta.LeverantörsskuldHär visas leverantörsfakturans saldo angivet i redovisningsvalutan vid reskontradatum.Summa leverantörsskuldHär visas total leverantörsskuld vid reskontradatum, beräknas som summan av "Leverantörsskuld" för alla listade leverantörsfakturor i rapporten.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

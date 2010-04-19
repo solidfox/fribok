@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Introduktion</para>
+               <para/>
+               <para>Vi är stolta att presentera JFS Administration, administrationsprogrammet av företagare för företagare. Vi vill gratulera dig till ditt val av JFS Administration för din verksamhets administration och hoppas att du skall vara nöjd med oss och vårt administrationsprogram. Klicka på länkarna till vänster för att läsa mer om och lära dig mer om de funktioner som finns i JFS Administration.Med vänlig hälsningUtvecklingsgruppenJFS Bokföring</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

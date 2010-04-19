@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Leverantörsomsättning</para>
+               <para/>
+               <para>I den här rapporten kan ni se inköpen per leverantör och månad men även inköpen per leverantör över hela den valda perioden.Ni kan välja ut leverantörer för rapporten genom att markera en eller flera leverantörer i listan över leverantörer och sedan trycka på knappen "Skriv ut leverantörer" och välja leverantörsomsättning. Ni kan också skriva ut rapporten för alla leverantörer. Inköpsomsättningen är angiven exklusive moms i redovisningsvalutan. Följande fält finns i den här rapporten:Leverantör NrHär visas ett unikt nummer för att identifiera en leverantör.NamnHär visas leverantörens namn.MånadHär listas de månader som inbegrips i den valda perioden vid utskrift.Per månadHär visas inköpsomsättningen för leverantören och månaden.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

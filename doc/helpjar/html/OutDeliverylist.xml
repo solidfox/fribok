@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Utleveranslista</para>
+               <para/>
+               <para>Den här rapporten listar alla utleveranser för alla produkter eller en specifik produkt under hela perioden eller mellan två datum.När ni ska skriva ut utleveranslistan kan ni välja om ni vill skriva ut alla utleveranser, ni kan också välja att skriva ut utleveranslistan för en specifik produkt och/eller mellan ett start- och slutdatum för utleveransdatum. Utleveranslistan filtreras sedan enligt era val.Följande fält finns i den här rapporten:UtleveransnrHär visas ett unikt nummer för varje registrerad utleverans.TextHär visas en beskrivande text för utleveransen.DatumHär visas datumet då utleveransen gjordes från ert företag.Produkt nrHär visas ett unikt nummer för de produkter som ingår i utleveransen.BeskrivningHär visas produktens namn eller beskrivning.AntalHär visas antalet enheter av produkten som har leverarats ut från ert företag.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Radera utbetalningar</para>
+               <para/>
+               <para>Ni tar bort en utbetalning genom att ni markerar önskad utbetalning i listan över utbetalningar och trycker på knappen "Radera valda utbetalningar". Ni får ett varningsmeddelande när ni trycker på knappen "Radera" och ni kan därmed ångra er innan utbetalningen raderas.Ni bör inte ta bort utbetalningar mitt i nummerserien eftersom nummerserien då blir bruten, vilket leder till brister i fullständighet. Ni bör inte heller ta bort utbetalningar som har blivit bokförda. Ni kan däremot ta bort den sista icke bokförda utbetalningen i nummerserien.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

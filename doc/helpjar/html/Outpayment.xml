@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Utbetalningar</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa utbetalningar, en utbetalning är en betalning till leverantör av en från leverantören utställd leverantörsfaktura.Tryck på knappen "Skapa ny utbetalning" för att registrera en ny utbetalning. Markera en utbetalning och tryck på knappen "Ändra vald utbetalning" eller dubbelklicka på en utbetalning för att ändra en utbetalning. Ni tar bort en utbetalning genom att markera utbetalningen i listan över utbetalningar och trycka på knappen "Radera valda utbetalningar". Följande fält finns i listan över utbetalningar: UtbetalningsnrHär visas ett unikt nummer för att identifiera en utbetalning.BetalningsdatumHär visas datumet då utbetalningen drogs från ert bank- eller plusgirokonto.TextHär visas en beskrivande text för utbetalningen.Utbetalt beloppHär visas totalt utbetalt monetärt belopp för hela utbetalningen inkluderande alla utbetalda leverantörsfakturor, utbetalt belopp anges i redovisningsvalutan enligt företagsinställningarna.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

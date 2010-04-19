@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Utbetalningsjournal</para>
+               <para/>
+               <para>Den här rapporten listar utbetalningar mellan två datum och visar hur varje utbetalning kommer att bokföras och hur de bidrar till den totala bokföringsposten i bokföringsunderlaget på sista sidan i den här rapporten.När ni ska skriva ut utbetalningsjournalen kan ni välja startdatum och slutdatum för betalningsdatum för att få med alla icke bokförda utbetalningar under vald period i utbetalningsjournalen. Utbetalningsjournalen används för att bokföra flera utbetalningar under en månad automatiskt i en verifikation.I utbetalningsjournalen är det viktigt att kontrollera utbetalningarnas nummerserie, att det inte finns några luckor i nummerserien, så att inte vissa utbetalningar utelämnas i bokföringen. Ni bör även kontrollera att rätt kontonummer har använts vid bokföring av utbetalningarna, ni kan ändra konteringen för de enskilda utbetalningarna tills utbetalningsjournalen med aktuella utbetalningar har godkänts och bokförts.När ni har skrivit ut utbetalningsjournalen kommer ni få en fråga om ni vill godkänna och bokföra utbetalningsjournalen, om ni svarar "Ja" på den här frågan så kommer utbetalningsjournalen bokföras automatiskt enligt bokföringsunderlaget. Bokföringsunderlaget utgör en verifikation för konteringen.Följande sidor och fält finns i den här rapporten:UtbetalningsjournalUtbetalnings nrHär visas ett unikt nummer för varje registrerad utbetalning.TextHär visas en beskrivande text för utbetalningen.DatumHär visas datumet då utbetalningen drogs från ert företagets bank- eller plusgirokonto.Konto nrHär visas de kontonummer som anges under utbetalningens konteringsflik.BeskrivningHär visas kontobeskrivningen för framförvarande kontonummer.DebetHär visas ett monetärt belopp som har registrerats för framförvarande konto i utbetalningen.KreditHär visas ett monetärt belopp som har registrerats för framförvarande konto i utbetalningen.Summa redovisningsvalutaHär visas utbetalningens totala monetära värde angivet i redovisningsvalutan enligt summering av varje enskild leverantörsfakturabetalning som ingår i den totala utbetalningen gånger betalkursen för varje leverantörsfakturabetalning som ingår i den totala utbetalningen.BokföringsunderlagKontoHär visas de kontonummer som ska användas vid bokföring av utbetalningsjournalen.BeskrivningHär visas kontobeskrivningen för framförvarande kontonummer.DebetHär visas ett monetärt belopp som skall bokföras för framförvarande konto.KreditHär visas ett monetärt belopp som skall bokföras för framförvarande konto.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

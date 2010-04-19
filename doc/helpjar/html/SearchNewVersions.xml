@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Sök efter nyare version</para>
+               <para/>
+               <para>Ni kan med den här funktionen se om det finns en nyare version av JFS Administration och installera den här uppdateringen. I uppslagskolumnen för "Tillgängliga uppdateringar" listas de versioner som finns tillgängliga för uppdatering och ni kan i den här uppslagskolumnen välja en version för uppdatering, den senaste versionen visas vid start. När ni har valt en version kan ni ladda hem den här uppdateringen genom att markera en av tre uppdateringar i listan över uppdateringar längst ned i fönstret som passar för ert operativsystem och er dator och sedan trycka på knappen "Uppdatera".</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

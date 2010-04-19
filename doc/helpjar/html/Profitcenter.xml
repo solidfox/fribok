@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Resultatenhet</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa resultatenheter, vilka ni kan ange på alla konteringsrader vid bokföring av verifikationer.Ni anger resultatenhet vid bokföring av verifikationer för att kunna ta ut en resultatrapport för enskilda resultatenheter eller för alla resultatenheter.Tryck på knappen "Ny resultatenhet" för att skapa en ny resultatenhet. För att ändra uppgifterna i redan skapade resultatenheter, markera önskad resultatenhet och tryck på knappen "Ändra resultatenhet".Ni kan ta bort en resultatenhet genom att markera önskad resultatenhet och trycka på knappen "Radera resultatenhet". Ni kan dock inte ta bort resultatenheter som har angivits vid bokföring av verifikationer. Resultatenheter kan vara avdelningar, säljare eller produkter. Ni skriver ut en lista över resultatenheter genom att markera önskade resultatenheter och trycka på knappen "Skriv ut resultatenheter", men ni kan även skriva ut en lista över alla resultatenheter.Följande fält finns i listan över resultatenheter:NummerHär visas ett unikt nummer för att identifiera en resultatenhet.NamnHär visas resultatenhetens namn.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

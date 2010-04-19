@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Bokföra</para>
+               <para/>
+               <para>I JFS Administration kan ni registrera verifikationer som ni kan ändra i och skapa ändringsverifikationer för. Tryck på knappen "Ny verifikation" för att registrera en ny verifikation. För att ändra i en redan registrerad verifikation, markera önskad verifikation och tryck på knappen "Ändra verifikation" eller dubbelklicka på verifikationen. Ni skapar en ändringsverifikation för en redan registrerad verifikation genom att markera önskad verifikation och trycka på knappen "Skapa ny ändringsverifikation", ni kan då välja om ni vill skapa den här ändringsverifikationen med omvända tecken eller som en tom verifikation. Om ni skapar ändringsverifikationen med omvända tecken kan ni givetvis ta bort, lägga till och ändra i konteringsrader. Ni kan importera verifikationer från SIE filer via "Lägg till verifikationer från SIE fil", de importerade verifikationerna läggs till i verifikationslistan med unika nummer utan att ersätta eller ta bort några befintliga verifikationer. För att skriva ut en verifikationslista, markera önskade verifikationer och tryck på knappen "Skriv ut verifikationer", ni kan givetvis skriva ut listan med alla verifikationer om ni svarar nej på den fråga som dyker upp när ni trycker på knappen.Följande fält finns i listan över verifikationer:VerifikationHär visas ett unikt nummer för varje registrerad verifikation enligt en obruten nummerserie som börjar med 1 för varje nytt bokföringsår.DatumHär visas datumet för den registrerade verifikationen.BeskrivningHär visas en text för att beskriva den affärshändelse som den underliggande verifikationen utgör.RättarFör de verifikationer som är ändringsverifikationer, visas här vilket verifikationsnummer den här ändringsverifikationen rättar. Tryck i rutan för att automatiskt komma till den verifikation som har blivit rättad.Rättad avOm en verifikation har blivit rättad av en ändringsverifikation, visas här vilket verifikationsnummer den här ändringsverifikationen har. Tryck i rutan för att automatiskt komma till den ändringsverifikation som rättar den här verifikationen.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

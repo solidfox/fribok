@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Produkter</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa produkter, både vanliga produkter och paketprodukter som innehåller andra produkter. En produkt är en vara eller tjänst som ert företag avser att leverera eller utföra till befintliga och framtida kunder. Tryck på knappen "Skapa ny produkt" för att registrera en ny produkt. Markera en produkt och tryck på knappen "Ändra vald produkt" eller dubbelklicka på en produktrad för att ändra en produkt. Markera en produkt och tryck på knappen "Skapa kopia av produkt" för att kopiera en produkt med all data som finns sparad för denna. Ni tar bort en produkt genom att markera produkten i listan över produkter och trycka på knappen "Radera valda produkter".Ni behöver inte registrera produkter för att kunna skapa offerter, ordrar och fakturor, produkter kan däremot läggas till när ni skapar offert, order eller faktura om de här produkterna inte finns inlagda sedan tidigare.Ni skriver ut en produktlista genom att trycka på knappen "Skriv ut produkter".Följande fält finns i listan över produkter:BildrutaHär visas en bild om produkten är en paketprodukt, i annat fall är den här rutan tom.ProduktnrHär visas ett unikt nummer för att identifiera en produkt.BeskrivningHär visas produktens namn.EnhetsprisHär visas produktens försäljningspris i valfri valuta, priset bör vara angivet i redovisningsvalutan. Enhetspriset kan räknas om automatiskt i offert, order och kundfaktura till annan valuta, exempelvis från SEK till USD.LagerplatsHär visas var produkten finns att hitta någonstans.LagerantalHär visas antalet enheter i lager just nu.DisponibeltHär visas antalet enheter i lager som är disponibelt för kund. Det vill säga antal i lager minus antal reserverade enheter av andra kunder.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

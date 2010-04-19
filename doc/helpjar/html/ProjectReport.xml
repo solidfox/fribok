@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Resultatrapport för projekt</para>
+               <para/>
+               <para>Den här rapporten visar ert företags prestationer under en av er vald period för enskilda projekt eller för alla icke avslutade projekt, genom att visa intäkter, kostnader och resultat.Vid utskrift väljer ni ett datumintervall genom att ange start- och slutdatum. Ni anger även om ni vill skriva ut projektresultatet för alla oavslutade projekt genom att checka i den här rutan eller för endast ett projekt genom att välja ett projekt i uppslagskolumnen. Den här rapporten är ett utmärkt underlag för att periodisera projektresultat vid årsskiften. Resultatrapporten för projekt grupperar konton efter rubriker som beskriver den här gruppen av konton och de här rubrikerna är uppställda i Årsredovisningslagens (ÅRL) mall för kostnadslagsindelad resultaträkning.Följande fält finns i den här rapporten:RubrikHär visas en beskrivande text för en grupp av konton.KontoKontonumret identifierar varje konto och talar även om huruvida det är ett intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.PeriodenHär visas periodens saldo för kontot enligt vald period och projektval vid utskrift.Alla årHär visas ackumulerat saldo på kontot för alla år då intäkter och kostnader bokförts för projektet/projekten.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

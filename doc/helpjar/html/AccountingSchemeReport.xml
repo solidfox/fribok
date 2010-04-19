@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Räkenskapsschema</para>
+               <para/>
+               <para>Den här rapporten summerar bokförda belopp per SRU-kod för aktivt bokföringsår. Räkenskapsschemat är en typ av resultat- och balansrapport som är utformad av Skatteverket och är i de flesta fall en del av inkomstdeklarationen.Alla konton i kontoplanen skall ha tilldelats en SRU-kod. SRU-koderna är redan ifyllda i de Bas-kontoplaner som medföljer i programmet, men om ni lägger till ett konto så måste ni även fylla i SRU-koden för det här kontot.Följande fält finns i den här rapporten:Rubrik/textSRU-koderna grupperas med rubriker och beskrivs av texter för att visa på vilka typer av tillgångar, skulder, intäkter och kostnader som inbegrips i SRU-koderna.SRU-kodHär visas SRU-koderna i den ordning de skall visas enligt Skatteverket.BeloppHär visas det summerade beloppet för en SRU-kod under aktivt bokföringsår enligt den koppling som har gjorts till konton i kontoplanen.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

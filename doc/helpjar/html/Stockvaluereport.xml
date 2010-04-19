@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Lagervärde</para>
+               <para/>
+               <para>Den här rapporten listar alla produkter som är ikryssade som lagervaror utom paketprodukter med information om aktuellt lagervärde angivet i redovisningsvalutan vid ett av ert valt slutdatum. När ni skriver ut den här rapporten skriver ni in eller väljer ett slutdatum för att få aktuellt lagervärde vid valt slutdatum för alla lagervaror utom paketprodukter. Den här rapporten används för lagervärdering och bokföring av lagerförändring vid periodens slut.Följande fält finns i den här rapporten:ProduktnrHär visas ett unikt nummer för varje produkt som listas i rapporten för lagervärde.BeskrivningHär visas en beskrivning av produkten eller produktens benämning.UtgåttHär visas huruvida produkten har utgått ur sortimentet eller ej, en bock visar på att produkten har utgått ur sortimentet.LagerantalHär visas antalet enheter av produkten som finns i lager vid valt slutdatum.Senaste inprisHär visas det senaste inköpspriset och enhetsfrakten för produkten utifrån skapade leverantörsfakturor. Senaste inpris är angivet i redovisningsvalutan.LagervärdeHär visas aktuellt lagervärde för produkten, beräknas utifrån senaste inpris och lagerantal. Lagervärdet anges i redovisningsvalutan. Om det inte finns några inköp av produkten (leverantörsfakturor) kan inte lagervärdet beräknas.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

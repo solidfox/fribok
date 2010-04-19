@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Skapa kundfaktura från ordrar</para>
+               <para/>
+               <para>Ni skapar en kundfaktura från en eller flera ordrar genom att markera en eller flera ordrar i listan över ordrar och trycka på knappen "Skapa faktura för valda ordrar" och välja "Kundfaktura". Fönstret "Ändra kundfaktura" poppar upp och ni kan ändra i kundfakturan eller spara kundfakturan så som den har hämtats från ordrarna.Se "Ändra kundfaktura" för mer information om hur ni ska ändra i en kundfaktura. Om ni skapar en kundfaktura automatiskt från flera ordrar måste dessa ordrar vara till samma kund, ni kan sortera kolumnen för kundnummer eller kundnamn genom att klicka på kolumnetiketten för kundnummer eller kundnamn. </para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

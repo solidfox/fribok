@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Kreditfakturalista</para>
+               <para/>
+               <para>Den här rapporten listar alla kreditfakturor för alla kunder eller en specifik kund under hela perioden eller mellan två datum.När ni ska skriva ut kreditfakturalistan kan ni välja om ni vill skriva ut alla kreditfakturor för alla kunder genom att inte kryssa i någon av rutorna för kund eller datum, eller för en specifik kund och/eller mellan ett start- och slutdatum för kreditfakturadatum. Kreditfakturalistan filtreras sedan enligt era val.Följande fält finns i den här rapporten:Kreditfaktura nrHär visas ett unikt nummer för varje registrerad kreditfaktura.Kund nrHär visas kundnumret för den kund som kreditfakturan är skapad för.KundnamnHär visas kundens företagsnamn eller personnamn.KrediterarHär visas fakturanumret på den kundfaktura som har blivit krediterad av den här kreditfakturan.ValutaHär visas kreditfakturans valuta.DatumHär visas datumet då kreditfakturan skapades och utfärdades.Produkt nrHär visas ett unikt nummer för de produkter som ingår i kreditfakturan och som finns upplagda i produktregistret. Saknas ett produktnummer beror det på att produkten inte finns upplagd i produktregistret.BeskrivningHär visas produktens namn eller beskrivning enligt kreditfakturan.EnhetsprisHär visas produktens försäljningspris per enhet exklusive moms angivet i kreditfakturans valuta.AntalHär visas antalet enheter av produkten som ingår i kreditfakturan.RabattHär visas rabatten i procent för produkten enligt kreditfakturan.RadsummaHär visas produktradens totala monetära värde exklusive moms angivet i kreditfakturans valuta. Radsumma beräknas på enhetspris, antal och rabatt för produkten.FakturasummaHär visas kreditfakturans totala monetära värde inklusive moms angivet i kreditfakturans valuta.Varav momsHär visas kreditfakturans totala monetära värde för mervärdesskatt angivet i kreditfakturans valuta.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

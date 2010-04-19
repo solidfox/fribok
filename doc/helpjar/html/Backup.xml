@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Säkerhetskopiering</para>
+               <para/>
+               <para>Vi rekommenderar att ni säkerhetskopierar all data i JFS Administration minst en gång i veckan. Ni bör säkerhetskopiera till två separata CD skivor som ni förvarar säkert på två olika platser.Ni väljer ett alternativ i "Arkiv" och "Säkerhetskopiering" och bestämmer vad filen skall heta och väljer på vilken enhet och i vilken mapp ni vill att säkerhetskopian skall sparas.När ni vill återskapa data från en säkerhetskopia väljer ni alternativet "Återställ från säkerhetskopia" under "Arkiv" och "Säkerhetskopiering" och letar upp säkerhetskopian på den enhet och i den mapp där ni har sparat säkerhetskopian för att sedan välja den här filen.Om ni arbetar i nätverk skall säkerhetskopiering och återställning från säkerhetskopia ske i JFS Server.Följande alternativ finns för säkerhetskopiering:Säkerhetskopiera hela databasenDet här alternativet innebär att ni skapar en säkerhetskopia för all data som finns sparad för alla företag som ni har skapat.Återställ från säkerhetskopiaDet här alternativet innebär att ni kan återskapa all data för alla företag som finns sparade på säkerhetskopian.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

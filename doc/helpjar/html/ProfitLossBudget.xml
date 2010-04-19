@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Resultatbudget</para>
+               <para/>
+               <para>I det här formuläret skapar ni en resultatbudget. Ni skapar en resultatbudget för hela bokföringsåret men kan även fördela det budgeterade beloppet för hela bokföringsåret på månader.Det finns två flikar i det här formuläret, en för hela bokföringsåret och en för månadsfördelning. I den första fliken listas alla konton som har ett nummer mellan 3000 och 8999. Ni fyller i belopp i kolumnen "Summa" för respektive konto, ange positiva tal för kreditsaldon och negativa tal för debetsaldon. Om ni vill göra en månadsfördelning av beloppen på helåret så markerar ni ett konto och trycker på fliken "Månad", där kan ni fördela helårsbeloppet på månader.Ni skriver ut resultatbudgeten genom att trycka på knappen "Skriv ut".Följande flikar och fält finns när ni ska skapa en resultatbudget.HelårKontoKontonumret identifierar varje konto och talar även om huruvida det är ett intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.SummaHär skriver ni in ett budgeterat belopp för kontot och helåret. Intäkter anges med postiva belopp och kostnader med negativa belopp.MånadKontoKontonumret identifierar varje konto och talar även om huruvida det är ett intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.MånadHär visas de månader som det budgeterade beloppet för helåret kan fördelas på.VärdeHär skriver ni in ett budgeterat belopp för kontot och månaden. Intäkter anges med postiva belopp och kostnader med negativa belopp.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

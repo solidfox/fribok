@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Bokföringsår</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa bokföringsår och växla obehindrat mellan dessa. Tryck på knappen "Nytt bokföringsår" för att skapa ett nytt bokföringsår. Vill ni öppna ett bokföringsår i listan ska ni markera önskat bokföringsår och trycka på knappen "Öppna valt bokföringsår". För att ändra uppgifterna i ett redan registrerat bokföringsår, markera önskat bokföringsår och tryck på knappen "Ändra valt bokföringsår".Ni kan ta bort ett bokföringsår genom att markera önskat bokföringsår och trycka på knappen "Radera valt bokföringsår".Följande fält finns i listan över bokföringsår:AktivtEn bock i rutan innebär att efterföljande bokföringsår är aktivt, all data som registreras i JFS Administration sparas för det aktiva bokföringsåret och företaget. I statusfältet längst ner ser ni också vilket bokföringsår som är aktivt.StartdatumHär visas första datumet för bokföringsåret.SlutdatumHär visas sista datumet för bokföringsåret.KontoplanHär visas namnet på den kontoplan som har valts för bokföringsåret.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Ta bort postlås</para>
+               <para/>
+               <para>Ibland kan det hända att postlås ligger kvar i JFS Server trots att en klientdator har slutat arbeta med posten. Det här kan hända om ett klientprogram avslutats felaktig när en post är öppen. Man kan med den här funktionen ta bort alla postlås som ligger och skyddar poster som inte längre används.Man bör dock iaktaga försiktighet då man gör det här så att inte någon annan arbetar med poster för tillfället. </para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

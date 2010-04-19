@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Inventeringslista</para>
+               <para/>
+               <para>Den här rapporten listar alla inventeringar för alla produkter eller en specifik produkt under hela perioden eller mellan två datum.När ni ska skriva ut inventeringslistan kan ni välja om ni vill skriva ut alla inventeringar, ni kan också välja att skriva ut inventeringslistan för en specifik produkt och/eller mellan ett start- och slutdatum för inventeringsdatum. Inventeringslistan filtreras sedan enligt era val.Följande fält finns i den här rapporten:InventeringsnrHär visas ett unikt nummer för varje registrerad inventering.TextHär visas en beskrivande text för inventeringen.DatumHär visas datumet då inventeringen av ert lager gjordes.Produkt nrHär visas ett unikt nummer för de produkter som ingår i inventeringen.BeskrivningHär visas produktens namn eller beskrivning.SkillnadHär visas skillnaden mellan antal i lager och inventerat antal vid inventeringstillfället, en positiv skillnad visar på en ökning av antalet enheter i lager och en negativ skillnad visar på en minskning av antalet enheter i lager.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

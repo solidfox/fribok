@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Utleveranser</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa utleveranser. En utleverans görs då en kundfaktura saknas för de utlevererade produkterna.En utleverans minskar antalet enheter i lager men utleveransen bokförs inte automatiskt och därför måste utleveransen bokföras manuellt.Tryck på knappen "Skapa ny utleverans" för att registrera en ny utleverans av produkter. Markera en utleverans och tryck på knappen "Ändra vald utleverans" eller dubbelklicka på en utleverans för att ändra en utleverans. Markera en utleverans och tryck på knappen "Skapa kopia av utleverans" för att kopiera en utleverans med all data som finns sparad för denna. Ni tar bort en utleverans genom att markera utleveransen i listan över utleveranser och trycka på knappen "Radera valda utleveranser".Följande fält finns i listan över utleveranser:NummerHär visas ett unikt nummer för att identifiera en utleverans.DatumHär visas datumet för utleveransen.TextHär visas en beskrivande text för utleveransen.Totalt antalHär visas totalt antal utlevererade enheter för alla produkter som är med i utleveransen.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

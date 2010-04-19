@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Rensa transaktioner</para>
+               <para/>
+               <para>Det här är en funktion för att rensa ut gamla transaktioner för att därigenom hålla databasen i en hanterlig storlek. Det här alternativet innebär att ni rensar ut alla offerter, ordrar, betalda kundfakturor, kreditfakturor till betalda kundfakturor, inbetalningar till betalda kundfakturor, avslutade periodfakturor, inköpsordrar, betalda leverantörsfakturor, leverantörskreditfakturor till betalda leverantörsfakturor, utbetalningar till betalda leverantörsfakturor, inleveranser, utleveranser och inventeringar till och med ett av er valt slutdatum. En säkerhetskopia kommer att skapas innan utrensningen börjar och utrensningen kommer inte att påbörjas innan en säkerhetskopia har tagits. När utrensningen är klar kommer lagret att återställas till nuvarande nivå genom att en inventering skapas.När allt är klart så kommer programmet att avslutas för att databasen skall kunna komprimeras.Om ni arbetar i nätverk så måste ni själva ta en säkerhetskopia i JFS Server innan ni börjar rensa transaktioner och när allt är klart själva utföra komprimeringen av databasen i JFS Server.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

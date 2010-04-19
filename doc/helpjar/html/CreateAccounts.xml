@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Skapa kontoplan</para>
+               <para/>
+               <para>I det här formuläret kan ni skapa en ny kontoplan. Ni lägger till nya konton genom att skriva in kontoinformation i de tomma raderna.Ni ändrar uppgifterna genom att ersätta texten i ifyllda fält, genom att skriva in text i tomma fält eller genom att välja momskoder i en uppslagskolumn. Markera önskade konton och tryck på knappen "Del" på tangentbordet för att ta bort konton.När ni har lagt till, ändrat eller tagit bort konton måste ni trycka på knappen "Spara" för att ändringarna ska bli giltiga.Följande fält finns när ni ska skapa en ny kontoplan:NamnHär kan ni skriva in ett valfritt namn på kontoplanen.TaxeringsårHär skriver ni in det taxeringsår för vilka SRU-koderna är giltiga.KontoplantypHär väljer ni en kontoplanstyp för kontoplanen vilken styr hur resultat- och balansrapport skall ställas upp. Kontoplanstypen EUBAS97 gäller för alla baskontoplaner från 1997 och därefter.AktivtEn bock i rutan innebär att kontot finns med i uppslagskolumnen vid bokföring av verifikationer och att kontot finns med när ni skriver ut kontoplanen.KontoKontonumret identifierar varje konto och talar även om huruvida det är ett tillgångs-, skuld-, intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.MomskodMomskoden anger vid vilken rubrik i momsrapporten saldot för respektive konto skall summeras. Det är bara vissa konton som ska finnas med på momsrapporten, det vill säga alla konton skall inte tilldelas en momskod.SRUAnvänds för att ett standardiserat räkenskapsschema ska kunna skapas. Räkenskapsscheman används vid deklaration och rapportering till Skatteverket. SRU-koderna är utformade av skatteverket och varje konto skall ha en SRU-kod knuten till sig.RapportkodAnvänds till att upprätta det förenklade årsbokslutet.ProjektKryssa i den här rutan för att kräva att projekt anges för det specifika kontot vid verifikationsregistrering.ResultatenhetKryssa i den här rutan för att kräva att resultatenhet anges för det specifika kontot vid verifikationsregistrering.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Skapa bokföringsår</para>
+               <para/>
+               <para>I det här formuläret kan ni skapa ett nytt bokföringsår. Ni måste välja eller själva skriva in startdatum och slutdatum för bokföringsåret men även välja en kontoplan för bokföringsåret.Följande fält finns när ni ska skapa ett nytt bokföringsår:StartdatumI det här fältet väljer eller skriver ni in ett datum för första dagen på bokföringsåret. Ni kan välja datum genom att trycka på "Kalendern" och däri välja månad, år och dag för bokföringsårets första dag. Ni kan även stega er upp och ner en dag med hjälp av "Pil upp" och "Pil ner" knapparna.SlutdatumI det här fältet väljer eller skriver ni in ett datum för sista dagen på bokföringsåret. Ni kan välja datum genom att trycka på "Kalendern" och däri välja månad, år och dag för bokföringsårets sista dag. Ni kan även stega er upp och ner en dag med hjälp av "Pil upp" och "Pil ner" knapparna.Använd kontoplan från föregående årDet här valet innebär att ni väljer den aktiva kontoplanen från föregående år med alla ändringar och tillägg som ni gjort i den här kontoplanen.KontoplanI den här uppslagskolumnen väljer ni en ny kontoplan för bokföringsåret. Finns inte den kontoplan ni vill använda för det här bokföringsåret med i listan över kontoplaner i uppslagskolumnen måste ni först importera eller skapa egen kontoplan, vilket ni gör under menyn "Arkiv" och "Kontoplaner".</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE article
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+<article lang="">
+   <informaltable frame="all">
+      <tgroup cols="1"><tbody><row>
+            <entry>
+               <para>
+                  <note>
+                     <remark>HTML: &lt;META HTTP-EQUIV="Content-Language" CONTENT="sv"&gt;</remark>
+                  </note>
+                  <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Inleveranser</para>
+               <para/>
+               <para>I JFS Administration kan ni skapa inleveranser. En inleverans görs då en leverantörsfaktura saknas för de inlevererade produkterna.En inleverans ökar antalet enheter i lager men inleveransen bokförs inte automatiskt och därför måste inleveransen bokföras manuellt.Tryck på knappen "Skapa ny inleverans" för att registrera en ny inleverans av produkter. Markera en inleverans och tryck på knappen "Ändra vald inleverans" eller dubbelklicka på en inleverans för att ändra en inleverans. Markera en inleverans och tryck på knappen "Skapa kopia av inleverans" för att kopiera en inleverans med all data som finns sparad för denna. Ni tar bort en inleverans genom att markera inleveransen i listan över inleveranser och trycka på knappen "Radera valda inleveranser".Följande fält finns i listan över inleveranser:NummerHär visas ett unikt nummer för att identifiera en inleverans.DatumHär visas datumet för inleveransen.TextHär visas en beskrivande text för inleveransen.Totalt antalHär visas totalt antal inlevererade enheter för alla produkter som är med i inleveransen.</para>
+               <para/>
+               <para>Copyright 2006-©-JFS Bokföring</para>
+            </entry>
+         </row></tbody></tgroup>
+   </informaltable>
+   <para/>
+</article>
