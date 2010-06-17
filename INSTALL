@@ -11,6 +11,8 @@ $ mvn assembly:assembly
 
 $ java -jar target/administration-x.x-SNAPSHOT-jar-with-dependencies.jar
 
+The above command must be run from the project root directory.
+
 Other things to try:
 
 $ mvn compile
