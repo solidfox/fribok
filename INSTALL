@@ -1,10 +1,10 @@
-JFS Administration, INSTALL file
+Fribok, INSTALL file
 
 Build requirements:
 * Java SDK, version 1.6 or greater
 * Apache Maven 2
 
-The preferred way of building JFS Administration is using the Maven POM-file.
+The preferred way of building Fribok is using the Maven POM-file.
 
 $ mvn assembly:assembly
 [output...]
@@ -35,7 +35,7 @@ easy access inside IntelliJ.
 
 $ mvn idea:idea -DdownloadSources=true -DdownloadJavadocs=true
 
-If you don't wish to use Maven, you can build JFS Administration from inside
+If you don't wish to use Maven, you can build Fribok from inside
 IntelliJ IDEA.  What follows is build instructions for IntelliJ IDEA Community
 Edition.
 

@@ -6,9 +6,9 @@
   <artifactId>administration</artifactId>
   <version>0.1-SNAPSHOT</version>
   <!-- Project Information -->
-  <name>JFS administration</name>
+  <name>Fribok</name>
   <description>
-    JFS Administration is a free software bookkeeping package aimed at non-profit
+    Fribok is a free software bookkeeping package aimed at non-profit
     organizations and small companies.
   </description>
   <url>https://sourceforge.net/projects/jfsaccounting/</url>

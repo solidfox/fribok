@@ -69,7 +69,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="JFS Bokföring"/>
+                      <text value="Fribok"/>
                     </properties>
                   </component>
                   <component id="a1b62" class="javax.swing.JLabel">
@@ -140,7 +140,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="JFS Bokföring"/>
+                      <text value="Fribok"/>
                     </properties>
                   </component>
                   <component id="fef3" class="javax.swing.JTextField" binding="iOurContactPerson">
@@ -151,7 +151,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="JFS Bokföring"/>
+                      <text value="Fribok"/>
                     </properties>
                   </component>
                   <component id="49b08" class="javax.swing.JTextField" binding="iVATNumber">

@@ -1,20 +1,20 @@
 /*
  * Copyright © 2009 Stefan Kangas <stefankangas@gmail.com>
  *
- * This file is part of JFS Accounting.
+ * This file is part of Fribok.
  *
- * JFS Accounting is free software: you can redistribute it and/or modify it
+ * Fribok is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
  * any later version.
  *
- * JFS Accounting is distributed in the hope that it will be useful, but WITHOUT
+ * Fribok is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
  * details.
  *
  * You should have received a copy of the GNU General Public License along with
- * JFS Accounting.  If not, see <http://www.gnu.org/licenses/>.
+ * Fribok.  If not, see <http://www.gnu.org/licenses/>.
  */
 package se.swedsoft.bookkeeping.calc;
 

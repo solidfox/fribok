@@ -73,7 +73,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="JFS Bokföring"/>
+                      <text value="Fribok"/>
                     </properties>
                   </component>
                   <component id="fb7a8" class="javax.swing.JLabel">
@@ -113,7 +113,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="JFS Bokföring"/>
+                      <text value="Fribok"/>
                     </properties>
                   </component>
                   <component id="fa1e5" class="javax.swing.JLabel">
@@ -133,7 +133,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text value="JFS Bokföring"/>
+                      <text value="Fribok"/>
                     </properties>
                   </component>
                   <component id="89d27" class="javax.swing.JLabel">

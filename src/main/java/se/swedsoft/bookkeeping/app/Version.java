@@ -6,7 +6,7 @@ package se.swedsoft.bookkeeping.app;
  * @version $Id$
  */
 public final class Version {
-    public final static String APP_TITLE = "JFS Administration";
+    public final static String APP_TITLE = "Fribok";
     public final static String APP_VERSION = "2.1-dev-$Rev$";
     public final static String APP_BUILD = "$Date$";
 
