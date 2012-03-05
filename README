@@ -1,6 +1,5 @@
-JFS Accounting is a project for a free accounting software developed in
-Java. This accounting software includes the cycles of sale, purchasing,
-inventory and accounting.
+Fribok is a project for a free accounting software developed in Java. This
+software includes the cycles of sale, purchasing, inventory and accounting.
 
 See file `COPYING' for copying conditions.
 See file `INSTALL' for building and installation instructions.
@@ -10,9 +9,9 @@ rid of this dependency.  For now, we recommend people to use the free software
 community edition of the IDE to edit the forms.  It is available from:
 http://www.jetbrains.org/
 
-The software was originally developed for use in Sweden, and the
+The software was originally developed for use in Sweden, and therefore the
 internationalization might be less than satisfactory.  Let us know if you run
-into problems.
+into any problems.
 
 The primary source directory can be found in `src/main/java'.
 

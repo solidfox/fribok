@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <!-- POM Relationships -->
   <groupId>jfs</groupId>
-  <artifactId>administration</artifactId>
+  <artifactId>fribok</artifactId>
   <version>0.1-SNAPSHOT</version>
   <!-- Project Information -->
   <name>Fribok</name>
