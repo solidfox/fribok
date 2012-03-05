@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class SSReportCache {
     private static final File REPORT_DIR = new File(Path.get(Path.APP_DATA), "report");
-    private static final File COMPILED_DIR = new File(REPORT_DIR, "compiled");
+    private static final File COMPILED_DIR = new File(Path.get(Path.USER_DATA), "report_cache");
 
     // The report cache with compiled report definitions.
     private Map<String, JasperReport> iReportCache;
@@ -44,6 +44,9 @@ public class SSReportCache {
      */
     private SSReportCache() {
         iReportCache = new HashMap<String, JasperReport>();
+
+        // Make sure the report cache directory is available
+        Path.mkdir(COMPILED_DIR);
     }
 
     /**
@@ -108,7 +111,7 @@ public class SSReportCache {
                     new BufferedInputStream(iFileInputStream));
 
             // Make the output directory
-            iCompiledFile.getParentFile().mkdirs();
+            Path.mkdir(iCompiledFile.getParentFile());
 
             return saveCompiledReport(iCompiledFile, iReport);
         } catch (JRException ex) {

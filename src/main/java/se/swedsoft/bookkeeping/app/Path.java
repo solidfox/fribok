@@ -38,7 +38,13 @@ import java.util.Map;
 public enum Path {
 
     /** The application base directory */
-    APP_BASE, /** The application data directory */ APP_DATA, /** The user configuration directory */ USER_CONF, /** The user data directory */ USER_DATA;
+    APP_BASE,
+    /** The application data directory */
+    APP_DATA,
+    /** The user configuration directory */
+    USER_CONF,
+    /** The user data directory */
+    USER_DATA;
 
     private static final String APP_SUBDIR = "fribok";
     private static final Map<Path, File> path = new EnumMap<Path, File>(Path.class);
@@ -63,6 +69,31 @@ public enum Path {
 
             path.put(USER_DATA, new File(userData, APP_SUBDIR));
             path.put(USER_CONF, new File(userConf, APP_SUBDIR));
+        }
+    }
+
+    public static void mkdir(Path p) {
+        mkdir(Path.get(p));
+    }
+
+    public static void mkdir(File dir) {
+        String warning = null;
+        if (!dir.exists()) {
+            try {
+                if (dir.mkdirs()) {
+                    //System.out.println("Created " + dir);
+                } else {
+                    warning = "unable to create";
+                }
+            } catch (SecurityException e) {
+                e.printStackTrace();
+            }
+        } else if (!dir.isDirectory()) {
+            warning = "exists but is not a directory";
+        }
+
+        if (warning != null) {
+            System.out.println(" !! WARNING: " + dir + ' ' + warning);
         }
     }
 
