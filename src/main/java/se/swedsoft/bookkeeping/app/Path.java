@@ -40,7 +40,7 @@ public enum Path {
     /** The application base directory */
     APP_BASE, /** The application data directory */ APP_DATA, /** The user configuration directory */ USER_CONF, /** The user data directory */ USER_DATA;
 
-    private static final String JFS_SUBDIR = "jfsaccounting";
+    private static final String APP_SUBDIR = "fribok";
     private static final Map<Path, File> path = new EnumMap<Path, File>(Path.class);
 
     static {
@@ -61,8 +61,8 @@ public enum Path {
             String userData = iBaseDirs.getUserPath(BaseDirs.Resource.DATA);
             String userConf = iBaseDirs.getUserPath(BaseDirs.Resource.CONFIG);
 
-            path.put(USER_DATA, new File(userData, JFS_SUBDIR));
-            path.put(USER_CONF, new File(userConf, JFS_SUBDIR));
+            path.put(USER_DATA, new File(userData, APP_SUBDIR));
+            path.put(USER_CONF, new File(userConf, APP_SUBDIR));
         }
     }
 
