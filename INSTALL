@@ -13,6 +13,25 @@ $ java -jar target/fribok-0.1-SNAPSHOT-jar-with-dependencies.jar
 
 The above command must be run from the project root directory.
 
+NOTE: The jasperforge.org system administrator has since some time decided that
+it is a good idea if their webserver does not to give out a proper 404 MISSING
+errors for missing files. Instead, they redirect to a file called 404.php and
+give a 200 OK status.
+
+This breaks our build since Maven depends on the webserver behaving
+properly. Therefore you must disable the jasperreports.org maven repository
+prior to building, or you will get many strange errors.
+
+For your convenience, we have a settings file for Maven that does just that. You
+can install it by simply:
+
+$ mkdir ~/.m2
+$ cp m2-settings.xml ~/.m2/settings.xml
+
+With this in place, you should be able to build the project. If you think this
+is a hassle, you are free to go to the forums over at jasperforge.org and let
+them know what you think about non-compliance with standards. (Hint: It sucks.)
+
 Other things to try:
 
 $ mvn compile

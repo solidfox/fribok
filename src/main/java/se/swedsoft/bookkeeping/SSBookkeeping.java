@@ -103,7 +103,7 @@ public class SSBookkeeping {
         System.out.println("");
         System.out.println("Operating system: " + System.getProperty("os.name"));
         System.out.println("Architecture    : " + System.getProperty("os.arch"));
-        System.out.println("Java version     : " + System.getProperty("java.version"));
+        System.out.println("Java version    : " + System.getProperty("java.version"));
         System.out.println("");
         System.out.println("Paths:");
         for (Path name : Path.values()) {
