@@ -103,16 +103,37 @@ public class SSBookkeeping {
         System.out.println("");
         System.out.println("Operating system: " + System.getProperty("os.name"));
         System.out.println("Architecture    : " + System.getProperty("os.arch"));
-        System.out.println("Java version    : " + System.getProperty("java.version"));
+        System.out.println("Java version     : " + System.getProperty("java.version"));
         System.out.println("");
         System.out.println("Paths:");
         for (Path name : Path.values()) {
             System.out.printf("   %-12s = %s\n", name, Path.get(name));
         }
 
-        // Create necessary paths
-        Path.mkdir(Path.USER_CONF);
-        Path.mkdir(Path.USER_DATA);
+        String warning = null;
+
+        // Create paths as needed, warning the user on failure
+        for (Path name : Path.values()) {
+            File dir = Path.get(name);
+
+            if (!dir.exists()) {
+                try {
+                    if (dir.mkdirs()) {
+                        System.out.println("Created " + dir);
+                    } else {
+                        warning = "unable to create";
+                    }
+                } catch (SecurityException e) {
+                    e.printStackTrace();
+                }
+            } else if (!dir.isDirectory()) {
+                warning = "exists but is not a directory";
+            }
+            if (warning != null) {
+                System.out.println(" !! WARNING: " + dir + ' ' + warning);
+                warning = null;
+            }
+        }
 
         // Create and display the main iMainFrame.
         SSMainFrame iMainFrame = SSMainFrame.getInstance();
