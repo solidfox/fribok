@@ -4,10 +4,10 @@ software includes the cycles of sale, purchasing, inventory and accounting.
 See file `COPYING' for copying conditions.
 See file `INSTALL' for building and installation instructions.
 
-IntelliJ IDEA forms are used to generate parts of the GUI.  We would like to get
-rid of this dependency.  For now, we recommend people to use the free software
-community edition of the IDE to edit the forms.  It is available from:
-http://www.jetbrains.org/
+To run:
+$ java -jar target/fribok-0.1-SNAPSHOT-jar-with-dependencies.jar
+
+The above command must currently be run from the project root directory.
 
 The software was originally developed for use in Sweden, and therefore the
 internationalization might be less than satisfactory.  Let us know if you run
@@ -15,5 +15,6 @@ into any problems.
 
 The primary source directory can be found in `src/main/java'.
 
-The website can be found at http://sourceforge.net/projects/jfsaccounting
+The source code is hosted at http://sourceforge.net/projects/jfsaccounting
 
+For more info in Swedish about Fribok at http://fribok.org/ and its maintainer Friprogramvarusyndikatet at http://friprogramvarusyndikatet.se/
