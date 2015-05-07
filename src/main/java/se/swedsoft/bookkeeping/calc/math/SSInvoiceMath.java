@@ -522,7 +522,7 @@ public class SSInvoiceMath extends SSSaleMath {
         return null;
     }
 
-    public static Map<String, Integer> getStockInfluencing(List<SSInvoice> iInvoices) {
+    public static Map<String, Integer> getStockInfluencing(List<? extends SSInvoice> iInvoices) {
         Map<String, Integer> iInvoiceCount = new HashMap<String, Integer>();
         List<String> iParcelProducts = new LinkedList<String>();
         List<SSProduct> iProducts = new LinkedList<SSProduct>(
