@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Customers" resourceBundle="book">
+
+
+    <!-- Declared fields in the report. -->
+
+    <field name="customer.number"             class="java.lang.String"/>
+    <field name="customer.name"               class="java.lang.String"/>
+    <field name="customer.contact"            class="java.lang.String"/>
+    <field name="customer.registrationnumber" class="java.lang.String"/>
+    <field name="customer.phone"              class="java.lang.String"/>
+
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+
+            <!-- Column 1 -->
+            <textField>
+                <reportElement x="20" y="0" width="60" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerlistreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="80" y="0" width="150" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerlistreport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="230" y="0" width="100" height="12" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerlistreport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="330" y="0" width="100" height="12" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerlistreport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="430" y="0" width="100" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{customerlistreport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band height="14"  isSplitAllowed="true">
+            <!-- Number-->
+            <textField isBlankWhenNull="true">
+                <reportElement x="20" y="0" width="60" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Name-->
+            <textField isBlankWhenNull="true">
+                <reportElement x="80" y="0" width="150" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.name}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Our contact person-->
+            <textField isBlankWhenNull="true">
+                <reportElement x="230" y="0" width="100" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.contact}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Registration number -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="330" y="0" width="100" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.registrationnumber}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Phone -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="430" y="0" width="100" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{customer.phone}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+
+
+
+
+        </band>
+    </detail>
+
+
+
+
+</jasperReport>

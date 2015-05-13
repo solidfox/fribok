@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="VATReport" resourceBundle="book" >
+
+
+    <field name="group.1.number"      class="java.lang.Integer"/>
+    <field name="group.1.description" class="java.lang.String"/>
+
+    <field name="group.2.number"       class="java.lang.Integer"/>
+    <field name="group.2.description"  class="java.lang.String"/>
+    <field name="group.2.sum"          class="java.math.BigDecimal"/>
+
+    <field name="sum"                   class="java.math.BigDecimal"/>
+
+    <!-- Sums the result from fields 32 - 37. -->
+    <variable name="vatreport.sum" class="java.math.BigDecimal" resetType="Report" calculation="Sum">
+        <variableExpression>
+            <![CDATA[( $F{group.2.number}.intValue() >= 32 && $F{group.2.number}.intValue() <= 37) ? ($F{group.2.number}.intValue() < 37) ? $F{group.2.sum} : $F{group.2.sum}.negate() : new BigDecimal(0.0) ]]></variableExpression>
+        <initialValueExpression>new BigDecimal(0.0) </initialValueExpression>
+    </variable>
+
+    <!-- Group the data by account group number. -->
+    <group name="group.1" >
+        <groupExpression>
+            <![CDATA[$F{group.1.number}]]>
+        </groupExpression>
+
+        <groupHeader>
+            <band height="25">
+                <textField>
+                    <reportElement x="20" y="4" width="400" height="16" />
+                    <textElement>
+                        <font size="12" isBold="true"/>
+                    </textElement>
+                    <textFieldExpression>
+                        <![CDATA[$F{group.1.description}]]>
+                    </textFieldExpression>
+                </textField>
+            </band>
+        </groupHeader>
+    </group>
+
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+            <textField>
+                <reportElement x="450" y="0" width="80" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{vatreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band height="12" isSplitAllowed="false">
+            <textField>
+                <reportElement x="20" y="0" width="30" height="12"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{group.2.number}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="40" y="0" width="250" height="12"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{group.2.description}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0">
+                <reportElement x="450" y="0" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{group.2.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </detail>
+
+    <summary>
+        <band height="25">
+
+
+            <rectangle>
+                <reportElement x="20" y="0" width="510" height="2" backcolor="#000000"/>
+                <graphicElement pen="None" fill="Solid"/>
+            </rectangle>
+
+            <textField>
+                <reportElement x="20" y="3" width="250" height="14"/>
+                <textElement>
+                    <font size="10" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{vatreport.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0" isBlankWhenNull="false">
+                <reportElement x="450" y="3" width="80" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="10" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{vatreport.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </summary>
+
+</jasperReport>

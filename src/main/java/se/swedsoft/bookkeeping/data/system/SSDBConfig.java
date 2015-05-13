@@ -14,9 +14,12 @@ import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.AttributeListImpl;
 
 
 /**
@@ -218,6 +221,27 @@ public class SSDBConfig {
     static {
         load();
     }
+    
+    /*
+     * Create a config file if not found
+    */
+    private static void createIfNotExists() throws IOException {
+        if (CONFIG_FILE.createNewFile()) {
+            System.out.println("Creating database config file.");
+            
+            XMLSerializer serializer = new XMLSerializer(new FileOutputStream(CONFIG_FILE),
+                new OutputFormat("XML", "UTF-8", true));
+
+            try {
+                serializer.startDocument();
+                serializer.startElement("database", new AttributeListImpl());
+                serializer.endElement("database");
+                serializer.endDocument();
+//                serializer.serialize(new );
+            } catch (SAXException ex) {
+            }
+        }
+    }
 
     /**
      *
@@ -227,6 +251,8 @@ public class SSDBConfig {
         DOMParser iParser = new DOMParser();
 
         try {
+            createIfNotExists();
+            
             // parser.set(false)
             iParser.parse(new InputSource(new FileInputStream(CONFIG_FILE)));
 

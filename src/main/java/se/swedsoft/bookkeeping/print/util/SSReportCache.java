@@ -5,12 +5,16 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
 import se.swedsoft.bookkeeping.app.Path;
+import se.swedsoft.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.util.SSException;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PropertyResourceBundle;
 
 
 /**
@@ -21,6 +25,8 @@ import java.util.Map;
 public class SSReportCache {
     private static final File REPORT_DIR = new File(Path.get(Path.APP_DATA), "report");
     private static final File COMPILED_DIR = new File(REPORT_DIR, "compiled");
+    private static final String REPORT_RESOURCE = "/reports/report/";
+    private static final String DATE_TIME_FORMAT_NO_MS = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
     // The report cache with compiled report definitions.
     private Map<String, JasperReport> iReportCache;
@@ -80,33 +86,36 @@ public class SSReportCache {
         File iReportFile = new File(REPORT_DIR, pReportName);
         File iCompiledFile = new File(COMPILED_DIR,
                 pReportName.replace(".jrxml", ".jasperreport"));
+	String iReportResource = REPORT_RESOURCE + pReportName;
 
         try {
             // If the report exists on disk, load it...
             if (iCompiledFile.exists()) {
-                Date iReportDate = new Date(iReportFile.lastModified());
-                Date iCompiledDate = new Date(iCompiledFile.lastModified());
-
-                // if the report file hasnt been changes since the last compile,
-                // load the compiled file, else fall through to the compile code
-                if (iReportDate.compareTo(iCompiledDate) <= 0) {
-                    System.out.printf("Loading precompiled report %s from disk...\n",
-                            iCompiledFile);
-
-                    return loadCompiledReport(iCompiledFile);
-                }
-
-                System.out.println("Precompiled report exists, but report is changed...");
+		SimpleDateFormat sdf = new SimpleDateFormat(DATE_TIME_FORMAT_NO_MS);
+		try {
+		    Date iReportDate = sdf.parse(Version.APP_BUILD);
+		    Date iCompiledDate = new Date(iCompiledFile.lastModified());
+		    // if the report file hasn't been changes since the last compile,
+		    // load the compiled file, else fall through to the compile code
+		    if (iReportDate.compareTo(iCompiledDate) <= 0) {
+			System.out.printf("Loading precompiled report %s from disk...\n",
+					  iCompiledFile);
+			return loadCompiledReport(iCompiledFile);
+		    }
+		} catch (ParseException ex)  {
+		    // ta bort den kompilerade versionen?
+		    System.out.println(ex.getMessage());
+		}
+		
+                System.out.println("Precompiled report exists, but report is changed ...");
             }
 
             // .. we need to recompile the report
-            System.out.printf("Compiling and saving report %s to disk...\n", iReportFile);
+	    System.out.printf("Compiling and saving report %s to disk...\n", iReportResource);
 
-            FileInputStream iFileInputStream = new FileInputStream(iReportFile);
+	    InputStream is = getClass().getResourceAsStream(iReportResource);
 
-            JasperReport iReport = JasperCompileManager.compileReport(
-                    new BufferedInputStream(iFileInputStream));
-
+	    JasperReport iReport = JasperCompileManager.compileReport(is);
             // Make the output directory
             iCompiledFile.getParentFile().mkdirs();
 

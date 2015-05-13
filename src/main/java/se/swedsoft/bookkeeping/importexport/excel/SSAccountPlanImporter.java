@@ -17,7 +17,9 @@ import se.swedsoft.bookkeeping.importexport.excel.util.SSExcelSheet;
 import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -44,13 +46,31 @@ public class SSAccountPlanImporter {
     public SSAccountPlanImporter(File iFile) {
         this.iFile = iFile;
     }
-
+    
     /**
      *
      * @throws IOException
      * @throws SSImportException
      */
     public void doImport() throws IOException, SSImportException {
+        doImport(iFile);
+    }
+    
+    /**
+     * Statisk metod för att ladda en kontoplan från fil
+     * @param iFile excel-fil
+     * @throws IOException
+     */
+    public static void doImport(File iFile) throws IOException {
+        doImport(new FileInputStream(iFile));
+    }
+    
+    /**
+     * Statisk metod för att ladda en kontoplan från InputStream
+     * @param iInputStream streamat excel-ark med kontoplanen
+     * @throws IOException
+     */
+    public static void doImport(InputStream iInputStream) throws IOException {
         WorkbookSettings iSettings = new WorkbookSettings();
 
         iSettings.setLocale(new Locale("sv", "SE"));
@@ -61,7 +81,7 @@ public class SSAccountPlanImporter {
         SSAccountPlan iAccountPlan = new SSAccountPlan();
 
         try {
-            Workbook iWorkbook = Workbook.getWorkbook(iFile, iSettings);
+            Workbook iWorkbook = Workbook.getWorkbook(iInputStream, iSettings);
 
             // Empty workbook, ie nothing to import
             if (iWorkbook.getNumberOfSheets() == 0) {
@@ -93,7 +113,7 @@ public class SSAccountPlanImporter {
      * @param pSheet
      * @param pAccountPlan
      */
-    private void readAccountPlan(SSExcelSheet pSheet, SSAccountPlan pAccountPlan) {
+    private static void readAccountPlan(SSExcelSheet pSheet, SSAccountPlan pAccountPlan) {
         int iRowStart = Integer.MAX_VALUE;
 
         for (SSExcelRow iRow : pSheet.getRows()) {

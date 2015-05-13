@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <!-- POM Relationships -->
-  <groupId>jfs</groupId>
+  <groupId>org.fribok</groupId>
   <artifactId>fribok</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>2.1-SNAPSHOT</version>
   <!-- Project Information -->
   <name>Fribok</name>
   <description>
@@ -77,6 +77,16 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources/meta</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
   </build>
   <dependencies>
     <!-- compiletime dependencies -->
@@ -140,6 +150,12 @@
         <version>1.1</version>
         <scope>compile</scope>
         </dependency-->
+        <dependency>
+          <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.10</version>
+        <scope>compile</scope>
+      </dependency>
     <dependency>
       <groupId>com.intellij</groupId>
       <artifactId>forms_rt</artifactId>
@@ -255,6 +271,8 @@
   </reporting>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <timestamp>${maven.build.timestamp}</timestamp>
+    <!--maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format-->
   </properties>
 </project>
 

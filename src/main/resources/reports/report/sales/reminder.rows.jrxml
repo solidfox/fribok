@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="ReminderRows">
+
+    <field name="invoice.number"        class="java.lang.String"/>
+    <field name="invoice.date"          class="java.util.Date"/>
+    <field name="invoice.duedate"       class="java.util.Date"/>
+    <field name="invoice.duedays"       class="java.lang.Integer"/>
+    <field name="invoice.numreminders"  class="java.lang.Integer"/>
+    <field name="invoice.delayinterest" class="java.math.BigDecimal"/>
+    <field name="invoice.saldo"         class="java.math.BigDecimal"/>
+    <field name="invoice.delayfee"      class="java.math.BigDecimal"/>
+
+
+    <variable name="delayfee.sum" class="java.math.BigDecimal" calculation="Sum" resetType="Report">
+        <variableExpression>
+            <![CDATA[$F{invoice.delayfee}]]>
+        </variableExpression>
+        <initialValueExpression>
+            <![CDATA[new BigDecimal(0.0)]]>
+        </initialValueExpression>
+    </variable>
+
+    <variable name="saldo.sum"  class="java.math.BigDecimal" calculation="Sum" resetType="Report">
+        <variableExpression>
+            <![CDATA[$F{invoice.saldo}]]>
+        </variableExpression>
+        <initialValueExpression>
+            <![CDATA[new BigDecimal(0.0)]]>
+        </initialValueExpression>
+    </variable>
+
+
+    <columnHeader>
+        <band height="16" isSplitAllowed="true">
+            <line>
+                <reportElement x="0" y="0" width="510" height="1"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+            <line>
+                <reportElement x="0" y="13" width="510" height="1"/>
+                <graphicElement pen="Thin"/>
+            </line>
+
+            <!-- Invoice number -->
+            <textField>
+                <reportElement x="10" y="2" width="70" height="12"/>
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Invoice date -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="80" y="2" width="60" height="12"/>
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Due date -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="140" y="2" width="60" height="12"/>
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Due days -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="180" y="2" width="70" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Reminder no -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="250" y="2" width="45" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Delay interest -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="295" y="2" width="65" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.6}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Saldo -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="340" y="2" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.7}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Interest sum -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="420" y="2" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.column.8}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="12" isSplitAllowed="true">
+            <printWhenExpression>
+                <![CDATA[new Boolean( $F{invoice.duedays}.intValue() > 0) ]]>
+            </printWhenExpression>
+
+
+            <!-- Number -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="10" y="0" width="70" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{invoice.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Date -->
+            <textField isBlankWhenNull="true" pattern="yyyy-MM-dd">
+                <reportElement x="80" y="0" width="60" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.util.Date">
+                    <![CDATA[$F{invoice.date}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Due date -->
+            <textField isBlankWhenNull="true" pattern="yyyy-MM-dd">
+                <reportElement x="140" y="0" width="60" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.util.Date">
+                    <![CDATA[$F{invoice.duedate}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Due days -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="180" y="0" width="70" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{invoice.duedays}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Num reminders -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="250" y="0" width="45" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{invoice.numreminders}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Delay interest -->
+            <textField  isBlankWhenNull="true" pattern="#,##0.00" >
+                <reportElement x="295" y="0" width="65" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.delayinterest} ]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="362" y="0" width="12" height="12"/>
+                <textElement textAlignment="Left">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA["%"]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Expired value  -->
+            <textField  isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="340" y="0" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.saldo}  ]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Delay fee -->
+            <textField  isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="420" y="0" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{invoice.delayfee}  ]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </detail>
+
+    <pageFooter>
+        <band height="12">
+            <!-- Number -->
+            <textField>
+                <reportElement x="0" y="0" width="510" height="12"/>
+
+                <box bottomBorder="Thin" borderColor="#000000" />
+
+                <textElement textAlignment="Right" verticalAlignment="Bottom">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{reminderreport.continuing}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </pageFooter>
+
+    <lastPageFooter>
+        <band height="0">
+        </band>
+    </lastPageFooter>
+
+
+</jasperReport>

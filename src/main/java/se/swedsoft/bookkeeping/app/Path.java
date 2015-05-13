@@ -50,8 +50,15 @@ public enum Path {
         path.put(APP_DATA, new File(base, "data"));
 
         String os = System.getProperty("os.name");
-
-        if (os.startsWith("Mac OS") || os.startsWith("Windows")) {
+        
+        if (os.startsWith("Windows")) {
+            // TODO: migration to new path? %LOCALAPPDATA%/fribok is good on windows
+//            String appdata = System.getenv("LOCALAPPDATA");
+//            path.put(USER_DATA, new File(appdata, APP_SUBDIR));
+//            path.put(USER_CONF, new File(appdata, APP_SUBDIR));
+            path.put(USER_DATA, base);
+            path.put(USER_CONF, base);
+        } else if (os.startsWith("Mac OS")) {
             // TODO: Decide locations for MacOSX and Windows. This should
             // probably be done by someone with access to a MacOSX/Windows box.
             path.put(USER_DATA, base);

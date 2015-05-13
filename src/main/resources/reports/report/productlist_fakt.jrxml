@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="Projects" resourceBundle="book">
+    <parameter name="Report"     class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="Parameters" class="java.util.HashMap"/>
+
+
+    <!-- Declared fields in the report. -->
+    <field name="product.isparcel"      class="java.lang.Boolean"/>
+
+    <field name="product.number"                class="java.lang.String"/>
+    <field name="product.description"           class="java.lang.String"/>
+    <field name="product.unit"                  class="java.lang.String"/>
+    <field name="product.unitprice"             class="java.math.BigDecimal"/>
+    <field name="product.warehouselocation"     class="java.lang.String"/>
+
+    <field name="product.rows"  class="net.sf.jasperreports.engine.JRDataSource"/>
+
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+
+            <!-- Column 1 -->
+            <textField>
+                <reportElement x="20" y="0" width="80" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{productlistreport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="100" y="0" width="230" height="12" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{productlistreport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="230" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{productlistreport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="375" y="0" width="70" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{productlistreport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="450" y="0" width="80" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{productlistreport.column.6}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="14"  isSplitAllowed="true">
+            <textField>
+                <reportElement x="20" y="0" width="80" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="100" y="0" width="230" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.description}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- warehouse location -->
+            <textField>
+                <reportElement x="230" y="0" width="70" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.warehouselocation}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <!-- Unit -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="362" y="0" width="18" height="12"/>
+                <textElement textAlignment="Left">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{product.unit}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <!-- product unitprice -->
+            <textField pattern="#,##0.00">
+                <reportElement x="450" y="0" width="80" height="14"/>
+                <textElement  textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.unitprice}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Subreport for the rows -->
+            <subreport isUsingCache="false">
+                <reportElement x="0" y="14" width="530" height="0" isPrintWhenDetailOverflows="true"/>
+
+                <parametersMapExpression>
+                    <![CDATA[$P{REPORT_PARAMETERS_MAP}]]>
+                </parametersMapExpression>
+
+                <subreportParameter name="REPORT_RESOURCE_BUNDLE">
+                    <subreportParameterExpression>
+                        <![CDATA[$P{REPORT_RESOURCE_BUNDLE}]]>
+                    </subreportParameterExpression>
+                </subreportParameter>
+
+                <dataSourceExpression>
+                    <![CDATA[$F{product.rows}]]>
+                </dataSourceExpression>
+
+                <subreportExpression class="net.sf.jasperreports.engine.JasperReport">
+                    <![CDATA[$P{Report}]]>
+                </subreportExpression>
+
+
+            </subreport>
+
+        </band>
+    </detail>
+
+
+
+
+</jasperReport>

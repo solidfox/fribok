@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="VoucherRows"  leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+
+
+    <field name="voucherrow.account"     class="java.lang.Integer"/>
+    <field name="voucherrow.description" class="java.lang.String"/>
+    <field name="voucherrow.debet"       class="java.math.BigDecimal"/>
+    <field name="voucherrow.credet"      class="java.math.BigDecimal"/>
+    <field name="voucherrow.project"     class="java.lang.String"/>
+    <field name="voucherrow.resultunit"  class="java.lang.String"/>
+
+    <field name="voucherrow.isadded"     class="java.lang.Boolean"/>
+    <field name="voucherrow.iscrossed"   class="java.lang.Boolean"/>
+    <field name="voucherrow.ismarked"    class="java.lang.Boolean"/>
+
+
+    <!-- The sum. -->
+    <variable name="debet.sum" class="java.math.BigDecimal"  resetType="Report" calculation="Sum">
+        <variableExpression>$F{voucherrow.iscrossed}.booleanValue() ? new BigDecimal(0.0) : $F{voucherrow.debet}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0) </initialValueExpression>
+    </variable>
+
+    <variable name="credet.sum" class="java.math.BigDecimal"  resetType="Report" calculation="Sum">
+        <variableExpression>$F{voucherrow.iscrossed}.booleanValue() ? new BigDecimal(0.0) : $F{voucherrow.credet}</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0) </initialValueExpression>
+    </variable>
+
+
+    <group name="marked" >
+        <groupExpression>
+            <![CDATA[$F{voucherrow.ismarked}]]>
+        </groupExpression>
+
+        <groupHeader >
+            <band height="1" >
+                <line>
+                    <reportElement x="20" y="0" width="510" height="1">
+                        <printWhenExpression>
+                            <![CDATA[$F{voucherrow.ismarked}]]>
+                        </printWhenExpression>
+                    </reportElement>
+                </line>
+            </band>
+        </groupHeader>
+    </group>
+
+
+    <detail>
+        <band height="14">
+            <!-- Cossed row -->
+            <line>
+                <reportElement x="20" y="5" width="510" height="1">
+                    <printWhenExpression>
+                        <![CDATA[$F{voucherrow.iscrossed}]]>
+                    </printWhenExpression>
+                </reportElement>
+                <graphicElement pen="Dotted"/>
+            </line>
+            <!-- added row -->
+            <line>
+                <reportElement x="20" y="10" width="510" height="1">
+                    <printWhenExpression>
+                        <![CDATA[$F{voucherrow.isadded}]]>
+                    </printWhenExpression>
+                </reportElement>
+                <graphicElement pen="Dotted"/>
+            </line>
+
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="20" y="0" width="80" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{voucherrow.account}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="80" y="0" width="220" height="14" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{voucherrow.description}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="0" isBlankWhenNull="true">
+                <reportElement x="270" y="0" width="50" height="14" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{voucherrow.project}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="0" isBlankWhenNull="true">
+                <reportElement x="320" y="0" width="50" height="14" />
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{voucherrow.resultunit}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00" isBlankWhenNull="true">
+                <reportElement x="370" y="0" width="80" height="14" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{voucherrow.debet}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00" isBlankWhenNull="true">
+                <reportElement x="450" y="0" width="80" height="14" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{voucherrow.credet}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+        </band>
+    </detail>
+
+    <summary>
+        <band height="12" isSplitAllowed="false">
+            <line>
+                <reportElement x="20" y="0" width="510" height="1"/>
+            </line>
+
+
+            <!-- Debet -->
+            <textField pattern="#,##0.00">
+                <reportElement x="370" y="0" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{debet.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Credet -->
+            <textField pattern="#,##0.00">
+                <reportElement x="450" y="0" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{credet.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </summary>
+
+</jasperReport>

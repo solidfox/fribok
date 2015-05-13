@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="MonthlyDistribution" resourceBundle="book">
+
+    <parameter name="product.number" class="java.lang.String"/>
+
+    <field name="month.date"          class="java.lang.String"/>
+    <field name="month.description"   class="java.lang.String"/>
+    <field name="month.value"         class="java.math.BigDecimal"/>
+    <field name="month.visible"       class="java.lang.Boolean"/>
+
+    <!-- The sum. -->
+    <variable name="month.sum" class="java.math.BigDecimal"  resetType="Report" calculation="Sum">
+        <variableExpression>$F{month.visible}.booleanValue() ? $F{month.value} : new BigDecimal(0.0)</variableExpression>
+        <initialValueExpression>new BigDecimal(0.0) </initialValueExpression>
+    </variable>
+
+
+
+
+    <detail>
+        <band height="12" isSplitAllowed="true">
+            <printWhenExpression>
+                <![CDATA[$F{month.visible}]]>
+            </printWhenExpression>
+
+            <textField>
+                <reportElement x="80" y="0" width="80" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$F{month.date}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField pattern="#,##0.00" isBlankWhenNull="false">
+                <reportElement x="260" y="0" width="250" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{month.value} != null ? $F{month.value} : new BigDecimal(0.0) ]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </detail>
+
+    <summary>
+        <band height="12" isSplitAllowed="false">
+            <line>
+                <reportElement x="80" y="0" width="430" height="1"/>
+            </line>
+
+            <textField>
+                <reportElement x="80" y="0" width="250" height="12"/>
+                <textElement>
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression>
+                    <![CDATA[$R{productrevenue.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField pattern="#,##0.00" isBlankWhenNull="false">
+                <reportElement x="260" y="0" width="250" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$V{month.sum}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </summary>
+
+
+</jasperReport>

@@ -1,8 +1,8 @@
 package se.swedsoft.bookkeeping.data.util;
 
 
-import org.apache.xerces.utils.Base64;
-
+// import org.apache.xerces.utils.Base64;
+import org.apache.commons.codec.binary.Base64;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -41,11 +41,11 @@ public class SymetricCrypter {
     }
 
     public String encrypt(String clearText) {
-        return new String(Base64.encode(encrypt(clearText.getBytes())));
+        return new String(Base64.encodeBase64(encrypt(clearText.getBytes())));
     }
 
     public String decrypt(String cipherText) {
-        return new String(decrypt(Base64.decode(cipherText.getBytes())));
+        return new String(decrypt(Base64.decodeBase64(cipherText.getBytes())));
     }
 
     public byte[] decrypt(byte[] cipherText) {

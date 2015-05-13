@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="SaleReport" resourceBundle="book">
+
+    <!-- Declared fields in the report. -->
+
+    <field name="product.number"       class="java.lang.String"/>
+    <field name="product.description"  class="java.lang.String"/>
+
+
+    <field name="product.count"    class="java.lang.Integer"/>
+    <field name="product.monthly"  class="java.math.BigDecimal"/>
+    <field name="product.weekly"   class="java.math.BigDecimal"/>
+
+    <field name="product.unitprice" class="java.math.BigDecimal"/>
+    <field name="product.inprice"   class="java.math.BigDecimal"/>
+
+    <field name="product.contribution"         class="java.math.BigDecimal"/>
+    <field name="product.contributionrate"     class="java.math.BigDecimal"/>
+    <field name="product.grossprofit"          class="java.math.BigDecimal"/>
+    <field name="product.averagesellingprice"  class="java.math.BigDecimal"/>
+
+
+
+    <columnHeader>
+        <band height="30">
+            <line>
+                <reportElement x="20" y="23" width="510" height="1"/>
+            </line>
+
+            <!-- Faktura nr -->
+            <textField>
+                <reportElement x="20" y="0" width="80" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="80" y="0" width="70" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="140" y="0" width="80" height="24" />
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.3}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="180" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.4}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="250" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.5}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="320" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.6}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="390" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.7}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <textField>
+                <reportElement x="460" y="0" width="70" height="24" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.column.8}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </columnHeader>
+
+
+    <detail>
+        <band height="30" isSplitAllowed="true">
+
+
+            <!-- Product number -->
+            <textField>
+                <reportElement x="20" y="0" width="120" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.number}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Product descriptionr -->
+            <textField>
+                <reportElement x="140" y="0" width="200" height="14"/>
+                <textElement>
+                    <font size="8" isBold="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{product.description}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Row #2 -->
+
+            <!-- Period sales -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="20" y="14" width="80" height="14"/>
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{product.count}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Montly sales -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="80" y="14" width="70" height="14"/>
+                <textElement textAlignment="Left">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.monthly}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Weekly sales -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="140" y="14" width="60" height="14"/>
+                <textElement textAlignment="Left">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.weekly}]]>
+                </textFieldExpression>
+            </textField>
+
+
+            <!-- Unit price -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="180" y="14" width="70" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.unitprice}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Genomsnittligt pris -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="250" y="14" width="70" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.averagesellingprice}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Inprice -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="320" y="14" width="70" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.inprice}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- TG% -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="390" y="14" width="70" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.contributionrate}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Bruttovinst -->
+            <textField isBlankWhenNull="true" pattern="#,##0.00">
+                <reportElement x="460" y="14" width="70" height="14"/>
+                <textElement textAlignment="Right">
+                    <font size="8" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{product.grossprofit}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+            <textField>
+                <reportElement x="320" y="14" width="210" height="12">
+                    <printWhenExpression>
+                        <![CDATA[new Boolean($F{product.inprice} == null)]]>
+                    </printWhenExpression>
+                </reportElement>
+                <textElement textAlignment="Right">
+                    <font size="8" isItalic="true"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{salereport.noinprice}]]>
+                </textFieldExpression>
+            </textField>
+
+
+
+
+        </band>
+    </detail>
+
+</jasperReport>

@@ -46,6 +46,9 @@ import java.rmi.server.UID;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
+import se.swedsoft.bookkeeping.importexport.excel.SSAccountPlanImporter;
+import se.swedsoft.bookkeeping.importexport.util.SSImportException;
+import se.swedsoft.bookkeeping.util.SSUtil;
 
 
 /**
@@ -132,6 +135,10 @@ public class SSDB {
         createNewTables();
         // dropTriggers();
         createLocalTriggers();
+        
+        checkCreateExampleCompany();
+        checkImportDefaultAccountPlans();
+        
         // Läs in företaget och året som senast var öppet.
         Integer iLastCompany = SSDBConfig.getCompanyId();
         Integer iLastYear = SSDBConfig.getYearId();
@@ -513,6 +520,80 @@ public class SSDB {
             ex.printStackTrace();
         }
 
+    }
+    
+    /* skapa exempelföretaget i databasen */
+    private void checkCreateExampleCompany() {
+        try {
+            if (iConnection == null || iConnection.isClosed()) {
+                return;
+            }
+
+            Statement iStatement = iConnection.createStatement();
+            ResultSet iResultSet = iStatement.executeQuery("SELECT 0 FROM tbl_company");
+            if (iResultSet.next()) {
+                // Have at least one company in DB
+                iStatement.close();
+                return;
+            }
+
+            System.out.println("Creating example company.");
+
+            String q = SSUtil.readResourceToString("sql/example.sql");
+
+            iStatement.executeUpdate(q);
+            iConnection.commit();
+            iStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /* Create default account plans if no account plan exists in DB */
+    private void checkImportDefaultAccountPlans() {
+        try {
+            if (iConnection == null || iConnection.isClosed()) {
+                return;
+            }
+
+            Statement iStatement = iConnection.createStatement();
+            ResultSet iResultSet = iStatement.executeQuery("SELECT 0 FROM tbl_accountplan");
+            if (iResultSet.next()) {
+                // Have at least one account plan in DB. Dont import defaults
+                iStatement.close();
+                return;
+            }
+            iStatement.close();
+
+            System.out.println("Creating default account plans.");  
+
+            String[] defaults = new String[]{
+                "BAS96(07)-AB & EF.xls",
+                "BAS96(07)-Enskild näringsidkare.xls",
+                "BAS96(07)-HB & KB.xls",
+                "Bas2006(07)-AB & EF.xls",
+                "Bas2006(07)-Enskild näringsidkare.xls",
+                "Bas2006(07)-HB & KB.xls",
+                "Bas2007(K1)-Enskild näringsidkare.xls",};
+
+            for (String s : defaults) {
+                System.out.println(s);
+                String path = "account/default/" + s;
+                InputStream is = ClassLoader.getSystemResourceAsStream(path);
+                if (is == null) {
+                    throw new RuntimeException("Resource not found: " + path);
+                }
+                try {
+                    SSAccountPlanImporter.doImport(is);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (SSImportException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeClient() {
@@ -8061,9 +8142,10 @@ public class SSDB {
             if (iConnection == null || iConnection.isClosed()) {
                 return;
             }
+            
+            String q = SSUtil.readResourceToString("sql/create_tables.sql");
 
-            PreparedStatement iStatement = iConnection.prepareStatement(
-                    "CREATE CACHED TABLE tbl_ownreport(id INTEGER IDENTITY, ownreport OBJECT, companyid INTEGER, FOREIGN KEY(companyid) REFERENCES tbl_company(id));");
+            PreparedStatement iStatement = iConnection.prepareStatement(q);
 
             iStatement.executeUpdate();
             iConnection.commit();

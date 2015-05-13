@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport name="ResultColumnHeader" resourceBundle="book">
+
+    <!-- Declared fields in the report. -->
+
+
+    <parameter name="column.text.1"    class="java.lang.String"/>
+    <parameter name="column.text.2"    class="java.lang.String"/>
+    <parameter name="column.text.3"    class="java.lang.String"/>
+
+
+    <columnHeader>
+        <band height="15">
+            <line>
+                <reportElement x="20" y="12" width="510" height="1"/>
+            </line>
+
+            <!-- Number -->
+            <textField>
+                <reportElement x="40" y="0" width="30" height="12"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{resultreport.column.8}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Description -->
+            <textField>
+                <reportElement x="100" y="0" width="250" height="12"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$R{resultreport.column.9}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Column 1 -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="290" y="0" width="80" height="12"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{column.text.1}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Column 2 -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="370" y="0" width="80" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{column.text.2}]]>
+                </textFieldExpression>
+            </textField>
+
+            <!-- Column 3 -->
+            <textField isBlankWhenNull="true">
+                <reportElement x="450" y="0" width="80" height="12" />
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{column.text.3}]]>
+                </textFieldExpression>
+            </textField>
+
+
+        </band>
+    </columnHeader>
+
+</jasperReport>
