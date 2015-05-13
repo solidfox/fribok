@@ -67,7 +67,7 @@ public class SSOrderImporter {
 
                 /** Nummren nedan har inget att göra med i, utan bara visar ordningen dom
                  *  fälten förekommer i filen.
-                 * 0 = ORDERNR, 1 = ORDERDATE, 2 = CUSTOMERNR, 3 = CUSTOMERNAME
+                 * 0 = ORDERNR, 1 = ORDERDATE, 2 = CUSTOMER-ID, 3 = CUSTOMERNAME
                  * 4 = OURCONTACTPERSON, 5 = YOURCONTACTPERSON, 6 = DELAYINTEREST
                  * 7 = CURRENCY, 8 = PAYMENTTERM, 9 = DELIVERYTERM, 10 = DELIVERYWAY
                  * 11 = TAXFREE, 12 = ORDERTEXT, 13 = TAXRATE1, 14 = TAXRATE2
@@ -172,7 +172,7 @@ public class SSOrderImporter {
                         iOrder.setTaxRate3(new BigDecimal(iValue));
                     }
 
-                    // Kundnummer
+                    // Kund-id
                     iValue = null;
                     iOrderAttList = iOrderElement.getElementsByTagName("CustomerNumber");
                     iFirstOrderAttElement = (Element) iOrderAttList.item(0);
@@ -901,7 +901,7 @@ public class SSOrderImporter {
                         }
                         iOrder.setCustomer(iCustomer);
                     } else if (iFields[0] == null) {
-                        iBadOrders.add(iOrderNumber + " - Kundnummer saknas");
+                        iBadOrders.add(iOrderNumber + " - Kund-id saknas");
                         continue order;
                     }
 

@@ -29,6 +29,7 @@ import java.util.List;
  * User: Andreas Lago
  * Date: 2006-mar-21
  * Time: 10:34:35
+ * $Id$
  */
 public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> {
 
@@ -70,7 +71,7 @@ public class SSInterestInvoiceTableModel extends SSDefaultTableModel<SSInvoice> 
      * {@code rowIndex}.
      *
      * interestinvoicetable.column.1 = Fakturanr
-     * interestinvoicetable.column.2 = Kundnummer
+     * interestinvoicetable.column.2 = Kund-id
      * interestinvoicetable.column.3 = Kundnamn
      * interestinvoicetable.column.4 = Förfallodatum
      * interestinvoicetable.column.5 = Slutbetald

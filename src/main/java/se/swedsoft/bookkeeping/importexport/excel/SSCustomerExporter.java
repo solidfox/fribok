@@ -33,15 +33,16 @@ import java.util.Locale;
  * User: Andreas Lago
  * Date: 2006-aug-01
  * Time: 11:32:25
+ * $Id$
  */
 public class SSCustomerExporter {
     // Column names
-    public static final String KUNDNUMMER = "Kundnummer";
+    public static final String KUNDNUMMER = "Kund-id";
     public static final String NAMN = "Namn";
     public static final String TELEFON1 = "Telefon1";
     public static final String TELEFON2 = "Telefon2";
     public static final String FAX = "Fax";
-    public static final String EPOST = "EPost";
+    public static final String EPOST = "Epost";
     public static final String KONTAKTPERSON = "Kontaktperson";
     public static final String ORGANISATIONSNUMMER = "Organisationsnummer";
     public static final String BANKGIRO = "Bankgiro";
@@ -446,8 +447,8 @@ public class SSCustomerExporter {
         iXmlDoc.appendChild(iRoot);
         try {
             FileOutputStream fos = new FileOutputStream(iFile.getAbsolutePath());
-            OutputStreamWriter osw = new OutputStreamWriter(fos, "windows-1252");
-            OutputFormat of = new OutputFormat("XML", "windows-1252", true);
+            OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+            OutputFormat of = new OutputFormat("XML", "UTF-8", true);
 
             of.setIndent(1);
             of.setIndenting(true);

@@ -39,6 +39,7 @@ import java.util.*;
 /**
  * Date: 2006-feb-13
  * Time: 16:43:09
+ * $Id$
  */
 public class SSCustomerImporter {
 
@@ -452,7 +453,7 @@ public class SSCustomerImporter {
                     String iValue = null;
                     Element iCustomerElement = (Element) iCustomerNode;
 
-                    // Kundnummer
+                    // Kund-id
                     NodeList iCustomerAttList = iCustomerElement.getElementsByTagName(
                             "CustomerNo");
                     Element iFirstCustomerAttElement = (Element) iCustomerAttList.item(0);

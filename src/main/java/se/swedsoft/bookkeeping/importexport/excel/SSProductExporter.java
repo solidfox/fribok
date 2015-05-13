@@ -37,20 +37,21 @@ import java.util.Locale;
  * User: Andreas Lago
  * Date: 2006-aug-01
  * Time: 11:32:25
+ * $Id$
  */
 public class SSProductExporter {
     public static final String PRODUKTNUMMER = "Produktnummer";
     public static final String BESKRIVNING = "Beskrivning";
-    public static final String FORSALJNINGSPRIS = "F�rs�ljningspris";
-    public static final String INKOPSPRIS = "Ink�pspris";
+    public static final String FORSALJNINGSPRIS = "Försäljningspris";
+    public static final String INKOPSPRIS = "Inköpspris";
     public static final String ENHETSFRAKT = "Enhetsfrakt";
     public static final String MOMS = "Moms";
     public static final String ENHET = "Enhet";
     public static final String VIKT = "Vikt";
     public static final String VOLYM = "Volym";
-    public static final String LEVERANTOR = "Leverant�r";
-    public static final String LEVERANTORENS_ARTIKEL_NUMMER = "Leverant�rens artikel nummer";
-    public static final String BESTALLNINGSPUNKT = "Best�llningspunkt";
+    public static final String LEVERANTOR = "Leverantör";
+    public static final String LEVERANTORENS_ARTIKEL_NUMMER = "Leverantörens artikelnummer";
+    public static final String BESTALLNINGSPUNKT = "Beställningspunkt";
     public static final String LAGERPLATS = "Lagerplats";
     public static final String LAGERANTAL = "Lagerantal";
     public static final String DISPONIBELT = "Disponibelt";

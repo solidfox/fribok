@@ -25,19 +25,20 @@ import java.util.Locale;
  * User: Andreas Lago
  * Date: 2006-aug-01
  * Time: 11:32:25
+ * $Id$
  */
 public class SSSupplierExporter {
     // Column names
-    public static final String LEVERANTORSNUMMER = "Leverant�rsnummer";
+    public static final String LEVERANTORSNUMMER = "Leverantörs-id";
     public static final String NAMN = "Namn";
     public static final String TELEFON1 = "Telefon1";
     public static final String TELEFON2 = "Telefon2";
     public static final String FAX = "Fax";
-    public static final String EPOST = "EPost";
+    public static final String EPOST = "Epost";
     public static final String HEMSIDA = "Hemsida";
     public static final String KONTAKTPERSON = "Kontaktperson";
     public static final String ORGANISATIONSNUMMER = "Organisationsnummer";
-    public static final String VART_KUNDNUMMER = "V�rt kundnummer";
+    public static final String VART_KUNDNUMMER = "Vårt kundnummer";
     public static final String BANKGIRO = "Bankgiro";
     public static final String PLUSGIRO = "Plusgiro";
     public static final String ADRESS_NAMN = "Adress.Namn";
@@ -86,7 +87,7 @@ public class SSSupplierExporter {
         try {
             WritableWorkbook iWorkbook = Workbook.createWorkbook(iFile, iSettings);
 
-            WritableSheet iSheet = iWorkbook.createSheet("Leverant�rer", 0);
+            WritableSheet iSheet = iWorkbook.createSheet("Leverantörer", 0);
 
             writeSuppliers(new SSWritableExcelSheet(iSheet));
 
