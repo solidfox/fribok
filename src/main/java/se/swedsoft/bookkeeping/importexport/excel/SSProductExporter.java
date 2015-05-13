@@ -40,7 +40,7 @@ import java.util.Locale;
  * $Id$
  */
 public class SSProductExporter {
-    public static final String PRODUKTNUMMER = "Produktnummer";
+    public static final String PRODUKTNUMMER = "Produkt-id";
     public static final String BESKRIVNING = "Beskrivning";
     public static final String FORSALJNINGSPRIS = "Försäljningspris";
     public static final String INKOPSPRIS = "Inköpspris";
@@ -333,8 +333,8 @@ public class SSProductExporter {
         iXmlDoc.appendChild(iRoot);
         try {
             FileOutputStream fos = new FileOutputStream(iFile.getAbsolutePath());
-            OutputStreamWriter osw = new OutputStreamWriter(fos, "windows-1252");
-            OutputFormat of = new OutputFormat("XML", "windows-1252", true);
+            OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+            OutputFormat of = new OutputFormat("XML", "UTF-8", true);
 
             of.setIndent(1);
             of.setIndenting(true);
