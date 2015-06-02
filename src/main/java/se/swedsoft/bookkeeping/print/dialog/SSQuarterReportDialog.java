@@ -4,7 +4,7 @@ package se.swedsoft.bookkeeping.print.dialog;
 import se.swedsoft.bookkeeping.gui.SSMainFrame;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.gui.util.SSButtonPanel;
-import se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSQuaterChooser;
+import se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSQuarterChooser;
 import se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSYearChooser;
 import se.swedsoft.bookkeeping.gui.util.dialogs.SSDialog;
 
@@ -25,7 +25,7 @@ public class SSQuarterReportDialog extends SSDialog {
 
     private SSButtonPanel iButtonPanel;
 
-    private SSQuaterChooser iQuaterChooser;
+    private SSQuarterChooser iQuarterChooser;
 
     private SSYearChooser iYearChooser;
 
@@ -50,7 +50,7 @@ public class SSQuarterReportDialog extends SSDialog {
 
         iYearChooser.addChangeListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                iQuaterChooser.setDate(iYearChooser.getDate());
+                iQuarterChooser.setDate(iYearChooser.getDate());
             }
         });
     }
@@ -60,7 +60,7 @@ public class SSQuarterReportDialog extends SSDialog {
      * @return
      */
     public Date getDate() {
-        return iQuaterChooser.getDate();
+        return iQuarterChooser.getDate();
     }
 
     /**
@@ -68,7 +68,7 @@ public class SSQuarterReportDialog extends SSDialog {
      * @return
      */
     public Date getEndDate() {
-        return iQuaterChooser.getEndDate();
+        return iQuarterChooser.getEndDate();
     }
 
     @Override
@@ -78,7 +78,7 @@ public class SSQuarterReportDialog extends SSDialog {
         sb.append("se.swedsoft.bookkeeping.print.dialog.SSQuarterReportDialog");
         sb.append("{iButtonPanel=").append(iButtonPanel);
         sb.append(", iPanel=").append(iPanel);
-        sb.append(", iQuaterChooser=").append(iQuaterChooser);
+        sb.append(", iQuarterChooser=").append(iQuarterChooser);
         sb.append(", iYearChooser=").append(iYearChooser);
         sb.append('}');
         return sb.toString();

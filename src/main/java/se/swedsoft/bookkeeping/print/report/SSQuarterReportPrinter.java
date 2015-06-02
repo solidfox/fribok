@@ -148,7 +148,7 @@ public class SSQuarterReportPrinter extends SSPrinter {
         // Sale parameters
         addParameter("number", iCompany.getVATNumber());
         addParameter("date", getPeriodText());
-        addParameter("quater", getQuarterText());
+        addParameter("quarter", getQuarterText());
     }
 
     /**

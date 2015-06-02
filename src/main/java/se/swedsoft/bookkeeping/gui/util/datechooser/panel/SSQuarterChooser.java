@@ -19,7 +19,7 @@ import java.util.List;
  * Date: 2006-maj-31
  * Time: 15:18:50
  */
-public class SSQuaterChooser extends JPanel implements ItemListener {
+public class SSQuarterChooser extends JPanel implements ItemListener {
 
     private JComboBox iComboBox;
 
@@ -33,7 +33,7 @@ public class SSQuaterChooser extends JPanel implements ItemListener {
     /**
      *
      */
-    public SSQuaterChooser() {
+    public SSQuarterChooser() {
         iChangeListeners = new LinkedList<ActionListener>();
 
         setLayout(new BorderLayout());
@@ -46,7 +46,7 @@ public class SSQuaterChooser extends JPanel implements ItemListener {
          iComboBox.addItem("3");
          iComboBox.addItem("4"); */
 
-        updateQuaterNames();
+        updateQuarterNames();
 
         iComboBox.addItemListener(this);
         setDate(new Date());
@@ -55,7 +55,7 @@ public class SSQuaterChooser extends JPanel implements ItemListener {
     /**
      *
      */
-    private void updateQuaterNames() {
+    private void updateQuarterNames() {
         String[] iMonths = new DateFormatSymbols().getMonths();
 
         iComboBox.removeAllItems();
@@ -83,7 +83,7 @@ public class SSQuaterChooser extends JPanel implements ItemListener {
      *
      */
     private void notifyChangeListeners() {
-        ActionEvent iEvent = new ActionEvent(this, 0, "quater");
+        ActionEvent iEvent = new ActionEvent(this, 0, "quarter");
 
         for (ActionListener iActionListener : iChangeListeners) {
             iActionListener.actionPerformed(iEvent);
@@ -163,7 +163,7 @@ public class SSQuaterChooser extends JPanel implements ItemListener {
     public String toString() {
         final StringBuilder sb = new StringBuilder();
 
-        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSQuaterChooser");
+        sb.append("se.swedsoft.bookkeeping.gui.util.datechooser.panel.SSQuarterChooser");
         sb.append("{iChangeListeners=").append(iChangeListeners);
         sb.append(", iComboBox=").append(iComboBox);
         sb.append(", iDate=").append(iDate);

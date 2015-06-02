@@ -10,7 +10,7 @@
 
     <parameter name="number"    class="java.lang.String"/>
     <parameter name="date"      class="java.lang.String"/>
-    <parameter name="quater"      class="java.lang.String"/>
+    <parameter name="quarter"      class="java.lang.String"/>
 
     <parameter name="company.logo"       class="java.awt.Image"/>
 
@@ -140,7 +140,7 @@
             </frame>
 
 
-            <!-- Quater code -->
+            <!-- Quarter code -->
             <frame>
                 <reportElement x="430" y="50" width="100" height="25"/>
 
@@ -153,7 +153,7 @@
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quarterreport.title.quater}]]>
+                        <![CDATA[$R{quarterreport.title.quarter}]]>
                     </textFieldExpression>
                 </textField>
 
@@ -164,7 +164,7 @@
                         <font size="10"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$P{quater}]]>
+                        <![CDATA[$P{quarter}]]>
                     </textFieldExpression>
                 </textField>
 
@@ -190,7 +190,7 @@
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quaterreport.address}]]>
+                        <![CDATA[$R{quarterreport.address}]]>
                     </textFieldExpression>
                 </textField>
 
@@ -265,58 +265,58 @@
 
                 <!-- Vat number -->
                 <textField>
-                    <reportElement x="20" y="2" width="140" height="12"/>
+                    <reportElement x="20" y="2" width="100" height="12"/>
                     <textElement textAlignment="Left">
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quaterreport.column.1}]]>
+                        <![CDATA[$R{quarterreport.column.1}]]>
                     </textFieldExpression>
                 </textField>
 
 
                 <!-- Customer nr -->
                 <textField isBlankWhenNull="true">
-                    <reportElement x="160" y="2" width="60" height="12"/>
+                    <reportElement x="120" y="2" width="60" height="12"/>
                     <textElement textAlignment="Left">
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quaterreport.column.2}]]>
+                        <![CDATA[$R{quarterreport.column.2}]]>
                     </textFieldExpression>
                 </textField>
 
                 <!-- Customer name -->
                 <textField isBlankWhenNull="true">
-                    <reportElement x="220" y="2" width="110" height="12"/>
+                    <reportElement x="180" y="2" width="110" height="12"/>
                     <textElement textAlignment="Left">
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quaterreport.column.3}]]>
+                        <![CDATA[$R{quarterreport.column.3}]]>
                     </textFieldExpression>
                 </textField>
 
 
-                <!-- Discount -->
+                <!-- Goods -->
                 <textField isBlankWhenNull="true">
-                    <reportElement x="330" y="2" width="100" height="12"/>
+                    <reportElement x="290" y="2" width="110" height="12"/>
                     <textElement textAlignment="Right">
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quaterreport.column.4}]]>
+                        <![CDATA[$R{quarterreport.column.4}]]>
                     </textFieldExpression>
                 </textField>
 
-                <!-- Sum -->
+                <!-- 3rd party trade -->
                 <textField isBlankWhenNull="true">
-                    <reportElement x="430" y="2" width="100" height="12"/>
+                    <reportElement x="400" y="2" width="110" height="12"/>
                     <textElement textAlignment="Right">
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression>
-                        <![CDATA[$R{quaterreport.column.5}]]>
+                        <![CDATA[$R{quarterreport.column.5}]]>
                     </textFieldExpression>
                 </textField>
             </frame>
@@ -334,7 +334,7 @@
 
             <!-- Customer VAT-Number -->
             <textField isBlankWhenNull="true">
-                <reportElement x="20" y="0" width="140" height="12"/>
+                <reportElement x="20" y="0" width="100" height="12"/>
                 <textElement>
                     <font size="8" isBold="false"/>
                 </textElement>
@@ -345,7 +345,7 @@
 
             <!-- Customer number -->
             <textField isBlankWhenNull="true">
-                <reportElement x="160" y="0" width="60" height="12"/>
+                <reportElement x="120" y="0" width="60" height="12"/>
                 <textElement>
                     <font size="8" isBold="false"/>
                 </textElement>
@@ -357,7 +357,7 @@
 
             <!-- Customer name -->
             <textField isBlankWhenNull="true">
-                <reportElement x="220" y="0" width="110" height="12"/>
+                <reportElement x="180" y="0" width="110" height="12"/>
                 <textElement textAlignment="Left">
                     <font size="8" isBold="false"/>
                 </textElement>
@@ -367,9 +367,9 @@
             </textField>
 
 
-            <!-- EU Sale Commudity -->
+            <!-- EU Sale Commodity -->
             <textField pattern="#,##0"  isBlankWhenNull="true">
-                <reportElement x="330" y="0" width="100" height="12"/>
+                <reportElement x="290" y="0" width="110" height="12"/>
                 <textElement textAlignment="Right">
                     <font size="8" isBold="false"/>
                 </textElement>
@@ -383,7 +383,7 @@
 
             <!-- EU Sale Thirdpart Commodity -->
             <textField pattern="#,##0"  isBlankWhenNull="true">
-                <reportElement x="430" y="0" width="100" height="12"/>
+                <reportElement x="400" y="0" width="110" height="12"/>
                 <textElement textAlignment="Right">
                     <font size="8" isBold="false"/>
                 </textElement>
@@ -407,7 +407,7 @@
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression class="java.lang.String">
-                        <![CDATA[$R{quaterreport.page}]]>
+                        <![CDATA[$R{quarterreport.page}]]>
                     </textFieldExpression>
                 </textField>
                 <textField evaluationTime="Now">
@@ -425,7 +425,7 @@
                         <font size="8"/>
                     </textElement>
                     <textFieldExpression class="java.lang.String">
-                        <![CDATA[$R{quaterreport.page.of}]]>
+                        <![CDATA[$R{quarterreport.page.of}]]>
                     </textFieldExpression>
                 </textField>
                 <textField evaluationTime="Report">
@@ -455,12 +455,12 @@
                     <font size="10"/>
                 </textElement>
                 <textFieldExpression>
-                    <![CDATA[$R{quaterreport.sum}]]>
+                    <![CDATA[$R{quarterreport.sum}]]>
                 </textFieldExpression>
             </textField>
 
             <textField pattern="#,##0" isBlankWhenNull="true">
-                <reportElement x="330" y="2" width="100" height="14"/>
+                <reportElement x="290" y="2" width="110" height="14"/>
                 <textElement textAlignment="Right">
                     <font size="10"/>
                 </textElement>
@@ -470,7 +470,7 @@
             </textField>
 
             <textField pattern="#,##0" isBlankWhenNull="true">
-                <reportElement x="430" y="2" width="100" height="14"/>
+                <reportElement x="400" y="2" width="110" height="14"/>
                 <textElement textAlignment="Right">
                     <font size="10"/>
                 </textElement>
