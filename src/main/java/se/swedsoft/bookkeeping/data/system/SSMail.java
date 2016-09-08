@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
-
+import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSStandardText;
@@ -41,9 +41,8 @@ public class SSMail {
     // Change this to get detailed debug info form JavaMail
     private static final boolean SHOULD_DEBUG_PRINT = false;
 
-    // This dir where to look for pdf to send as attachments. This is hardcoded thouhg out the
-    // application, so dont change.
-    private static final String PDF_FILE_DIR = "pdftoemail" + File.separator;
+    // This dir is where to look for pdf to send as attachments. 
+    private static final File PDF_FILE_DIR = new File(Path.get(Path.APP_DATA), "pdftoemail");
 
     private SSMail() {}
 
@@ -72,7 +71,7 @@ public class SSMail {
         SSNewCompany company = SSDB.getInstance().getCurrentCompany();
 
         SSMailMessage message = new SSMailMessage(company.getEMail(), pTo, pSubject,
-                company.getStandardText(SSStandardText.Email), PDF_FILE_DIR + pFileName);
+                company.getStandardText(SSStandardText.Email), new File(PDF_FILE_DIR, pFileName).getPath());
 
         // Send message
         MimeMessage mimeMessage = makeMessage(company.getMailServer(), message);
@@ -142,7 +141,7 @@ public class SSMail {
             DataSource source = new FileDataSource(mail.getFileName());
 
             messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(mail.getFileName());
+            messageBodyPart.setFileName(mail.getFileName().substring(mail.getFileName().lastIndexOf(File.separator) + 1));
 
             // Add the second part
             multipart.addBodyPart(messageBodyPart);

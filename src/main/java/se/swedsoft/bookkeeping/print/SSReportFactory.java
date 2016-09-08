@@ -3,6 +3,7 @@ package se.swedsoft.bookkeeping.print;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
+import se.swedsoft.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.calc.SSOCRNumber;
 import se.swedsoft.bookkeeping.calc.math.*;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
@@ -37,6 +38,7 @@ import java.util.List;
  * Time: 10:38:58
  */
 public class SSReportFactory {
+    private static final File PDF_FILE_DIR = new File(Path.get(Path.APP_DATA), "pdftoemail");
     private SSReportFactory() {}
 
     /**
@@ -1333,10 +1335,13 @@ public class SSReportFactory {
                 iPrinter.generateReport();
                 iPrinter.getPrinter();
                 String iFileName = "faktura.pdf";
+		if (!PDF_FILE_DIR.exists()) {
+		    PDF_FILE_DIR.mkdirs();
+		}
 
                 try {
                     JasperExportManager.exportReportToPdfFile(iPrinter.getPrinter(),
-                            "pdftoemail" + File.separator + iFileName);
+                            new File(PDF_FILE_DIR, iFileName).getPath());
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
@@ -1465,10 +1470,12 @@ public class SSReportFactory {
                 iPrinter.generateReport();
                 iPrinter.getPrinter();
                 String iFileName = "kreditfaktura.pdf";
-
+		if (!PDF_FILE_DIR.exists()) {
+		    PDF_FILE_DIR.mkdirs();
+		}
                 try {
                     JasperExportManager.exportReportToPdfFile(iPrinter.getPrinter(),
-                            "pdftoemail" + File.separator + iFileName);
+                            new File(PDF_FILE_DIR, iFileName).getPath());
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
@@ -1556,10 +1563,13 @@ public class SSReportFactory {
                 iPrinter.generateReport();
                 iPrinter.getPrinter();
                 String iFileName = "order.pdf";
+		if (!PDF_FILE_DIR.exists()) {
+		    PDF_FILE_DIR.mkdirs();
+		}
 
                 try {
                     JasperExportManager.exportReportToPdfFile(iPrinter.getPrinter(),
-                            "pdftoemail" + File.separator + iFileName);
+                            new File(PDF_FILE_DIR, iFileName).getPath());
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
@@ -1651,10 +1661,13 @@ public class SSReportFactory {
                 iPrinter.generateReport();
                 iPrinter.getPrinter();
                 String iFileName = "offert.pdf";
+		if (!PDF_FILE_DIR.exists()) {
+		    PDF_FILE_DIR.mkdirs();
+		}
 
                 try {
                     JasperExportManager.exportReportToPdfFile(iPrinter.getPrinter(),
-                            "pdftoemail" + File.separator + iFileName);
+                            new File(PDF_FILE_DIR, iFileName).getPath());
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
@@ -1811,10 +1824,13 @@ public class SSReportFactory {
                 iPrinter.generateReport();
                 iPrinter.getPrinter();
                 String iFileName = "inkopsorder.pdf";
+		if (!PDF_FILE_DIR.exists()) {
+		    PDF_FILE_DIR.mkdirs();
+		}
 
                 try {
                     JasperExportManager.exportReportToPdfFile(iPrinter.getPrinter(),
-                            "pdftoemail" + File.separator + iFileName);
+                            new File(PDF_FILE_DIR, iFileName).getPath());
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
@@ -1891,10 +1907,13 @@ public class SSReportFactory {
                 iPrinter.generateReport();
                 iPrinter.getPrinter();
                 String iFileName = "forfragan.pdf";
+		if (!PDF_FILE_DIR.exists()) {
+		    PDF_FILE_DIR.mkdirs();
+		}
 
                 try {
                     JasperExportManager.exportReportToPdfFile(iPrinter.getPrinter(),
-                            "pdftoemail" + File.separator + iFileName);
+                            new File(PDF_FILE_DIR, iFileName).getPath());
                 } catch (JRException e) {
                     e.printStackTrace();
                 }
