@@ -50,7 +50,7 @@
 
     <detail>
         <band height="14">
-            <!-- Cossed row -->
+            <!-- Crossed row -->
             <line>
                 <reportElement x="20" y="5" width="510" height="1">
                     <printWhenExpression>

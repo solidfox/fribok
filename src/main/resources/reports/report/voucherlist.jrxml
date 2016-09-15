@@ -15,7 +15,7 @@
     <field name="voucher.debet"          class="java.math.BigDecimal"/>
     <field name="voucher.credet"         class="java.math.BigDecimal"/>
 
-    <field name="voucher.rows"     class="net.sf.jasperreports.engine.JRDataSource"/>
+    <field name="voucher.rows"     class="net.sf.jasperreports.engine.JRRewindableDataSource"/>
 
 
 

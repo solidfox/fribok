@@ -29,7 +29,7 @@
 
     <detail>
         <band height="14">
-            <!-- Cossed row -->
+            <!-- Crossed row -->
             <line>
                 <reportElement x="60" y="5" width="470" height="1">
                     <printWhenExpression>

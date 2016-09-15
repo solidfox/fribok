@@ -6,6 +6,7 @@ package se.swedsoft.bookkeeping.print.util;
 
 
 import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRRewindableDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
@@ -22,7 +23,7 @@ import java.util.Map;
 /**
  * @author Roger Björnstedt
  */
-public class SSDefaultJasperDataSource implements JRDataSource {
+public class SSDefaultJasperDataSource implements JRRewindableDataSource {
 
     // --------------- Constants -------------------------------------
 
@@ -64,6 +65,11 @@ public class SSDefaultJasperDataSource implements JRDataSource {
      *
      */
     public void reset() {
+        iRow = -1;
+    }
+
+    @Override
+    public void moveFirst() {
         iRow = -1;
     }
 
