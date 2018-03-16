@@ -129,7 +129,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text resource-bundle="book" key="customerframe.orginisationnumber"/>
+                      <text resource-bundle="book" key="customerframe.organisationnumber"/>
                     </properties>
                   </component>
                   <component id="9247e" class="javax.swing.JTextField" binding="iYourContactPerson">
