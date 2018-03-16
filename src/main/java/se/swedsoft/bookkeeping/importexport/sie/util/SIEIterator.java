@@ -6,6 +6,7 @@ import se.swedsoft.bookkeeping.data.SSMonth;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -34,7 +35,7 @@ public class SIEIterator implements Iterator<String> {
      * @param pLine
      */
     public SIEIterator(String pLine) {
-        iIndex = 0;
+        iIndex = -1;
         iValues = parseLine(pLine);
     }
 
@@ -43,7 +44,7 @@ public class SIEIterator implements Iterator<String> {
      * @param pValues
      */
     public SIEIterator(String... pValues) {
-        iIndex = 0;
+        iIndex = -1;
         iValues = new LinkedList<String>();
         iValues.addAll(Arrays.asList(pValues));
     }
@@ -53,19 +54,19 @@ public class SIEIterator implements Iterator<String> {
      * @param pValues
      */
     public SIEIterator(List<String> pValues) {
-        iIndex = 0;
+        iIndex = -1;
         iValues = pValues;
     }
 
     @Override
     public boolean hasNext() {
-        return iIndex < iValues.size();
+        return iIndex + 1 < iValues.size();
     }
 
     @Override
     public String next() {
 
-        if (iIndex >= iValues.size()) {
+        if (iIndex + 1 >= iValues.size()) {
             throw new NoSuchElementException();
         }
 
@@ -83,7 +84,7 @@ public class SIEIterator implements Iterator<String> {
         if (iIndex >= iValues.size()) {
             return null;
         }
-        return iValues.get(iIndex);
+        return iValues.get(iIndex + 1);
     }
 
     @Override
@@ -292,13 +293,15 @@ public class SIEIterator implements Iterator<String> {
     public Date nextDate() {
         String iValue = next();
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+
         if (iValue != null && iValue.length() == 8) {
 
             iValue = iValue.substring(0, 4) + '-' + iValue.substring(4, 6) + '-'
                     + iValue.substring(6, 8);
 
             try {
-                return iFormat.parse(iValue);
+                return formatter.parse(iValue);
             } catch (ParseException ex) {
                 ex.printStackTrace();
             }

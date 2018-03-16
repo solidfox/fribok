@@ -49,7 +49,7 @@ public class SIEEntryRAR implements SIEEntry {
         if (iYear == 0 && iCurrentYearData != null) {
             iCurrentYearData.setFrom(iFrom);
             iCurrentYearData.setTo(iTo);
-            // SSDB.getInstance().updateAccountingYear(iCurrentYearData);
+            SSDB.getInstance().updateAccountingYear(iCurrentYearData);
         }
 
         return true;

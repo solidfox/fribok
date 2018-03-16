@@ -51,7 +51,11 @@ public class SIEEntryVerifikation implements SIEEntry {
         String     iDescription = iReader.hasNextString() ? iReader.nextString() : null;
 
         if (!iSerie.equals("A") && iSerie.length() > 0) {
-            iNumber = iNumber + (iSerie.charAt(0) - 'A') * 100000;
+	    if (iSerie.charAt(0) - 'A' < 0) {
+		iNumber = iNumber + (10000 * iSerie.charAt(0)) + 2000000;
+	    } else {
+		iNumber = iNumber + (10000 * (iSerie.charAt(0) - 'A')) + 1000000;
+	    }
         }
         boolean iHasNumber = false;
 
