@@ -11,7 +11,7 @@ import se.swedsoft.bookkeeping.gui.util.SSBundle;
  */
 public enum PaymentMethod {
 
-    BANKGIRO ("supplierpaymentframe.method.1"), PLUSGIRO ("supplierpaymentframe.method.2"), CASH     ("supplierpaymentframe.method.3");
+    BANKGIRO ("supplierpaymentframe.method.1"), PLUSGIRO ("supplierpaymentframe.method.2"), CASH     ("supplierpaymentframe.method.3"), KONTO ("supplierpaymentframe.method.4");
 
     private String iBundleName;
 

@@ -9,11 +9,7 @@ import java.util.Date;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-sep-04
- * Time: 11:04:23
- *
- * Betalningspost
+ * Girering till Plusgironummer
  */
 public class LBinPostTK54 extends LBinPost {
 

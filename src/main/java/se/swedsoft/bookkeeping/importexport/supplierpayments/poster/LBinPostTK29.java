@@ -8,9 +8,7 @@ import java.math.BigDecimal;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-sep-04
- * Time: 15:24:40
+ * Slutsumma
  */
 public class LBinPostTK29 extends LBinPost {
 

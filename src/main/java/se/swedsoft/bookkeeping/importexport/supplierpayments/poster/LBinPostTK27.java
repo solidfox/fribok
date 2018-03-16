@@ -9,11 +9,7 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-30
- * Time: 14:18:56
- *
- * Namn, kontantutbetalning,
+ * Adress, kontantutbetalning,
  */
 public class LBinPostTK27 extends LBinPost {
 

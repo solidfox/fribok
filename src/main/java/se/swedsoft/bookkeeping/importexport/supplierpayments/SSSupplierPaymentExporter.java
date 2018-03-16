@@ -122,7 +122,14 @@ public class SSSupplierPaymentExporter {
                 iPosts.add(new LBinPostTK27(iPayment));
 
             }
+	    // TK40 - fixme!  Bankkonto- eller löneinsättning
+            if (iPaymentMethod == PaymentMethod.KONTO) {
 
+                iPosts.add(
+                        new LBinPostTK14(iPayment, iPayment.getBankGiro()));
+
+                iPosts.add(new LBinPostTK40(iPayment));
+            }
             iSum = iSum.add(iPayment.getValue());
         }
 

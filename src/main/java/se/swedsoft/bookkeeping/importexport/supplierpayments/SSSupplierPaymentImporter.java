@@ -22,9 +22,7 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-28
- * Time: 11:57:35
+ * $Id$
  */
 public class SSSupplierPaymentImporter {
     private SSSupplierPaymentImporter() {}
@@ -71,6 +69,7 @@ public class SSSupplierPaymentImporter {
         List<SSOutpayment> iOutpayments = new LinkedList<SSOutpayment>();
 
         SSOutpayment iOutpayment = null;
+        boolean paymentRead = false;
 
         for (LBinPost iPost : iPosts) {
             if (iPost instanceof LBinPostTK11) {
@@ -117,7 +116,7 @@ public class SSSupplierPaymentImporter {
                     iRow.setValue(iPostTK14.getValue());
 
                     iOutpayment.getRows().add(iRow);
-
+                    paymentRead = true;
                 } else {
                     throw new SSImportException(SSBundle.getBundle(),
                             "supplierpaymentimport.error.invalidreference", iReference);
@@ -147,7 +146,7 @@ public class SSSupplierPaymentImporter {
                     iRow.setValue(iPostTK54.getValue());
 
                     iOutpayment.getRows().add(iRow);
-
+                    paymentRead = true;
                 } else {
                     throw new SSImportException(SSBundle.getBundle(),
                             "supplierpaymentimport.error.invalidreference", iReference);
@@ -155,6 +154,10 @@ public class SSSupplierPaymentImporter {
 
             }
         }
+	if (paymentRead == false) {
+	    throw new SSImportException(SSBundle.getBundle(),
+                            "supplierpaymentimport.error.nopaymentread");
+	}
         return iOutpayments;
     }
 
@@ -184,6 +187,9 @@ public class SSSupplierPaymentImporter {
         }
         if (iPostTyp.equals("29")) {
             return new LBinPostTK29();
+        }
+        if (iPostTyp.equals("40")) {
+            return new LBinPostTK40();
         }
         if (iPostTyp.equals("54")) {
             return new LBinPostTK54();

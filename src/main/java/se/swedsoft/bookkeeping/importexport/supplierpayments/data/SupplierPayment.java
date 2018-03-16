@@ -202,6 +202,16 @@ public class SupplierPayment {
      *
      * @return
      */
+    public String getKonto() {
+        SSSupplier iSupplier = iInvoice.getSupplier(SSDB.getInstance().getSuppliers());
+
+        return iSupplier == null ? null : iSupplier.getBankgiro();
+    }
+
+    /**
+     *
+     * @return
+     */
     public Integer getOutpaymentNumber() {
         SSSupplier iSupplier = iInvoice.getSupplier(SSDB.getInstance().getSuppliers());
 
