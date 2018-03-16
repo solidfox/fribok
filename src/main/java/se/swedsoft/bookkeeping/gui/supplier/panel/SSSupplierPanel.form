@@ -166,7 +166,7 @@
                       </grid>
                     </constraints>
                     <properties>
-                      <text resource-bundle="book" key="supplierframe.orginisationnumber"/>
+                      <text resource-bundle="book" key="supplierframe.organisationnumber"/>
                     </properties>
                   </component>
                   <component id="e43f6" class="javax.swing.JTextField" binding="iRegistrationNumber">
