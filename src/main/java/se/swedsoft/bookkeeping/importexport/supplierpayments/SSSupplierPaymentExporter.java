@@ -10,9 +10,12 @@ import se.swedsoft.bookkeeping.importexport.util.SSExportException;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,7 +39,11 @@ public class SSSupplierPaymentExporter {
         List<LBinPost> iLines = getPosts(iPayments);
 
         try {
-            BufferedWriter iWriter = new BufferedWriter(new FileWriter(iFile));
+	    // fixme! - Latin-1 cr+lf
+	    OutputStreamWriter osw = new OutputStreamWriter(
+				         new FileOutputStream(iFile),
+				         StandardCharsets.ISO_8859_1);
+            BufferedWriter iWriter = new BufferedWriter(osw);
 
             for (LBinPost iPost : iLines) {
                 // Make shure we dont add any empty posts
@@ -46,7 +53,9 @@ public class SSSupplierPaymentExporter {
                     iPost.write(iLine);
 
                     iWriter.write(iLine.toString());
-                    iWriter.newLine();
+		    iWriter.write('\r');
+		    iWriter.write('\n');
+                    //iWriter.newLine();
                 }
             }
             iWriter.flush();

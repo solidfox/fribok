@@ -8,9 +8,7 @@ import java.util.Date;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-30
- * Time: 14:18:56
+ * $Id$
  *
  * Öppningspost
  */
@@ -45,13 +43,13 @@ public class LBinPostTK11 extends LBinPost {
     @Override
     public void write(LBinLine iLine) {
         iLine.append("11");
-        iLine.append(iBankGiroNr, 10, '0'); // 3 => 12: Bakngiro
+        iLine.append(iBankGiroNr, 10, '0'); // 3 => 12: Bankgiro
         iLine.append(iDate, 6, "yyMMdd"); // 13 => 18: Skrivdatum
         iLine.append(iText, 22); // 19 => 40: Text
         iLine.append("", 6); // 41 => 46: betalningsdatum
         iLine.append("", 13); // 47 => 59: Blanka
         iLine.append(iCurrency, 3); // 60 => 62: Valuta
-        iLine.append("", 17); // 63 => 80: Blanka
+        iLine.append("", 18); // 63 => 80: Blanka
     }
 
     /**
