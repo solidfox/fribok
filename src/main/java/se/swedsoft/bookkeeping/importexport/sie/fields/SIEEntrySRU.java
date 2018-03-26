@@ -15,8 +15,9 @@ import se.swedsoft.bookkeeping.importexport.util.SSImportException;
 
 
 /**
- * Date: 2006-feb-23
- * Time: 11:11:59
+ *
+ * $Id$
+ *
  */
 public class SIEEntrySRU implements SIEEntry {
 
@@ -33,11 +34,11 @@ public class SIEEntrySRU implements SIEEntry {
     public boolean importEntry(SSSIEImporter iImporter, SIEReader iReader, SSNewAccountingYear iYearData) throws SSImportException {
 
         SSAccountPlan iAccountPlan = iYearData.getAccountPlan();
-
+	String line = iReader.peekLine().toString();
         // read the account number
         if (!iReader.hasNextInteger()) {
             throw new SSImportException(
-                    SSBundleString.getString("sieimport.fielderror", iReader.peekLine()));
+                    SSBundleString.getString("sieimport.fielderror", line));
         }
 
         int iAccountNumber = iReader.nextInteger();
@@ -47,7 +48,7 @@ public class SIEEntrySRU implements SIEEntry {
         // read the account description
         if (!iReader.hasNext()) {
             throw new SSImportException(
-                    SSBundleString.getString("sieexport.expectedbutfound.value"));
+                    SSBundleString.getString("sieexport.expectedbutfound.value", line));
         }
 
         if (iAccount == null) {
