@@ -1,9 +1,4 @@
-/*
- * 2005-2010
- * $Id$
- */
 package se.swedsoft.bookkeeping.data;
-
 
 import se.swedsoft.bookkeeping.calc.math.SSVoucherMath;
 import se.swedsoft.bookkeeping.data.system.SSDB;
@@ -19,11 +14,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-// Trade Extensions specific imports
-
-// Java specific imports
-
 /**
+ *
+ * $Id$
+ *
  * @author Roger Björnstedt
  */
 public class SSVoucherTemplate implements Serializable, SSTableSearchable {
@@ -189,7 +183,7 @@ public class SSVoucherTemplate implements Serializable, SSTableSearchable {
 
         private Integer iAccountNr;
 
-        private boolean iDebet;
+        private Boolean iDebet;
 
         private SSAccount iAccount;
 
