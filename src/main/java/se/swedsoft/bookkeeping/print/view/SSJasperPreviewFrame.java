@@ -27,12 +27,13 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 
 /**
- * Date: 2006-jan-20
- * Time: 13:46:09
+ * $Id$
+ *
  */
 public class SSJasperPreviewFrame extends SSDefaultTableFrame implements PropertyChangeListener {
 
@@ -388,7 +389,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
         if (iFileExt.equals(".rtf")
                 || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterRTF)) {
             try {
-                JRRtfSaveContributor iSaver = new JRRtfSaveContributor();
+                JRRtfSaveContributor iSaver = new JRRtfSaveContributor(new Locale("sv", "SE"), bundle);
 
                 iSaver.save(iPrinter, pSelectedFile);
             } catch (JRException ex) {
@@ -401,7 +402,7 @@ public class SSJasperPreviewFrame extends SSDefaultTableFrame implements Propert
                 || (iFileExt.length() == 0 && pFileFilter instanceof SSFilterXLS)) {
 
             try {
-                JRMultipleSheetsXlsSaveContributor iSaver = new JRMultipleSheetsXlsSaveContributor();
+                JRMultipleSheetsXlsSaveContributor iSaver = new JRMultipleSheetsXlsSaveContributor(new Locale("sv", "SE"), bundle);
 
                 iSaver.save(iPrinter, pSelectedFile);
             } catch (JRException ex) {
