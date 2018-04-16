@@ -4,8 +4,8 @@
 
 <jasperReport name="Invoice"  leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
 
-    <reportFont name="OCR-A" fontName="IDAutomationOCRa" pdfFontName="IDAutomationOCRa.ttf" isPdfEmbedded="true" />
-    <reportFont name="OCR-B" fontName="IDAutomationOCRb" pdfFontName="IDAutomationOCRb.ttf" isPdfEmbedded="true" />
+    <reportFont name="OCR-A" fontName="OCRA" pdfFontName="OCRA.ttf" isPdfEmbedded="true" />
+    <reportFont name="OCR-B" fontName="OCRB" pdfFontName="OCRB.ttf" isPdfEmbedded="true" />
 
 
     <!--- Declared parameters in the report. -->

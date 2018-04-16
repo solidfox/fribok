@@ -190,7 +190,7 @@
                     <font size="8" />
                 </textElement>
                 <textFieldExpression>
-                    <![CDATA["Bokföringsnämndens regler\nför förenklat årsbokslut\n(BFNAR 2006:1)\noch broschyr hittar du\npå  www.bfn.se"]]>
+                    <![CDATA["Bokföringsnämndens regler\nför förenklat årsbokslut\n(BFNAR 2006:1)\noch broschyr hittar du\npå www.bfn.se"]]>
                 </textFieldExpression>
             </textField>
 
@@ -317,7 +317,7 @@
                     <font size="8" isBold="false"/>
                 </textElement>
                 <textFieldExpression>
-                    <![CDATA["Spara detta bokslut i 10 år tillsammans med bokföringen\noch bokslutsunderlagen"]]>
+                    <![CDATA["Spara detta årsbokslut i 7 år tillsammans med bokföringen och\n bokslutsunderlagen.\nÅrsbokslutet ska inte skickas in till Skatteverket."]]>
                 </textFieldExpression>
             </textField>
         </band>
