@@ -34,7 +34,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.2-beta-5</version>
+        <version>2.4</version>
         <configuration>
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
@@ -48,7 +48,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>se.swedsoft.bookkeeping.SSBookkeeping</mainClass>
+              <mainClass>org.fribok.bookkeeping.Bookkeeping</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -56,6 +56,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>ideauidesigner-maven-plugin</artifactId>
+        <version>1.0-beta-1</version>
         <executions>
           <execution>
             <goals>
@@ -72,6 +73,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-idea-plugin</artifactId>
+        <version>2.2.1</version>
         <configuration>
           <jdkLevel>1.7</jdkLevel>
         </configuration>
@@ -168,15 +170,33 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-        <groupId>com.lowagie</groupId>
-        <artifactId>itext</artifactId>
-        <version>2.1.7</version>
-        <scope>compile</scope>
-        </dependency>
+      <groupId>org.fribok</groupId>
+      <artifactId>fonts</artifactId>
+      <version>0.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.lowagie</groupId>
+      <artifactId>itext</artifactId>
+      <version>2.1.7</version>
+      <scope>compile</scope>
+    </dependency>
     <dependency>
       <groupId>jasperreports</groupId>
       <artifactId>jasperreports</artifactId>
       <version>3.5.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>2.5</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>2.5</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -191,15 +211,25 @@
       <version>2.6.3</version>
       <scope>compile</scope>
     </dependency>
-    <dependency>
+    <!--dependency>
       <groupId>com.jgoodies</groupId>
       <artifactId>looks</artifactId>
       <version>[2.2.0,)</version>
+    </dependency-->
+    <dependency>
+      <groupId>com.jgoodies</groupId>
+      <artifactId>jgoodies-looks</artifactId>
+      <version>[2.7.0,)</version>
     </dependency>
+    <!--dependency>
+        <groupId>com.intellij</groupId>
+        <artifactId>forms_rt</artifactId>
+        <version>7.0.3</version>
+    </dependency-->
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
-      <version>1.4</version>
+      <version>1.4.7</version>
       <scope>compile</scope>
     </dependency>
     <!--dependency>
@@ -223,8 +253,7 @@
       <groupId>org.fribok</groupId>
       <artifactId>help</artifactId>
       <version>0.1</version>
-      <scope>system</scope>
-      <systemPath>${basedir}/data/help.jar</systemPath>
+      <scope>compile</scope>
     </dependency>
     <!-- test dependencies -->
     <dependency>
