@@ -166,6 +166,8 @@ public class SSMail {
         props.put("mail.smtp.host", server.getURI().getHost());
         props.put("mail.smtp.port", Integer.toString(server.getURI().getPort()));
         props.put("mail.smtp.auth", Boolean.toString(server.isAuth()));
+        props.put("mail.smtp.ssl.enable", Boolean.toString(server.isSSL()));
+        props.put("mail.smtp.starttls.enable", Boolean.toString(server.isStartTLS()));
 
         Authenticator auth = null;
 

@@ -1,6 +1,7 @@
 package se.swedsoft.bookkeeping.gui.company.panel;
 
 
+import org.fribok.bookkeeping.data.util.ConnectionSecurity;
 import se.swedsoft.bookkeeping.data.system.SSMail;
 import se.swedsoft.bookkeeping.data.util.SSMailServer;
 import se.swedsoft.bookkeeping.data.util.SSMailServerException;
@@ -16,7 +17,7 @@ import java.awt.event.ItemListener;
 
 
 /**
- * A dialog where the user can enter info about a mail server used to send mail.
+ * A dialog where the user can enter info about a mail server to send mail with.
  *
  * When opened it takes a SSMailServer and sets the fields of the dialog, and
  * returns a new SSMailServer with the new information.
@@ -34,6 +35,8 @@ public class SSMailServerDialog extends SSDialog {
     private JTextField addressText;
     private JLabel addressLabel;
     private JCheckBox authCheckbox;
+    private JLabel connectionSecurityLabel;
+    private JComboBox connectionSecurityCombobox;
     private JLabel userNameLabel;
     private JTextField usernameText;
     private JPasswordField passwordField;
@@ -78,6 +81,9 @@ public class SSMailServerDialog extends SSDialog {
                 onNewAuthState(e.getStateChange() == ItemEvent.SELECTED);
             }
         });
+	for (ConnectionSecurity type : ConnectionSecurity.values()) {
+	    connectionSecurityCombobox.addItem(type);
+	}
 
         pack();
     }
@@ -90,6 +96,7 @@ public class SSMailServerDialog extends SSDialog {
 
         addressText.setText(server.getURI().getHost());
         authCheckbox.setSelected(server.isAuth());
+        connectionSecurityCombobox.setSelectedIndex(server.getConnectionSecurity().getIndex());
         usernameText.setText(server.getUsername());
         passwordField.setText(SSMail.crypter.decrypt(server.getPassword()));
         portField.setText(Integer.toString(server.getURI().getPort()));
@@ -115,14 +122,14 @@ public class SSMailServerDialog extends SSDialog {
         }
 
         return SSMailServer.makeIfValid("NONAME", addressText.getText(), port,
-                authCheckbox.isSelected(), usernameText.getText(),
+                authCheckbox.isSelected(), (ConnectionSecurity) connectionSecurityCombobox.getSelectedItem(), usernameText.getText(),
                 SSMail.crypter.encrypt(String.valueOf(passwordField.getPassword())));
     }
 
     /**
      * The method for opening the dialog. The data from server will be
      * copied to the text fields of the dialog, a SSMailServer constructed
-     * from the edited fields will bve returned.
+     * from the edited fields will be returned.
      * @param server
      * @return
      */
@@ -207,6 +214,8 @@ public class SSMailServerDialog extends SSDialog {
         sb.append("{addressLabel=").append(addressLabel);
         sb.append(", addressText=").append(addressText);
         sb.append(", authCheckbox=").append(authCheckbox);
+        sb.append(", connectionSecurityLabel=").append(connectionSecurityLabel);
+        sb.append(", connectionSecurityCombobox=").append(connectionSecurityCombobox);
         sb.append(", contentPane=").append(contentPane);
         sb.append(", iButtonPanel=").append(iButtonPanel);
         sb.append(", iMailServer=").append(iMailServer);

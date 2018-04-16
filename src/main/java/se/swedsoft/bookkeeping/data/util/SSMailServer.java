@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.util;
 
-
+import org.fribok.bookkeeping.data.util.ConnectionSecurity;
 import se.swedsoft.bookkeeping.util.SSUtil;
 
 import java.io.Serializable;
@@ -11,6 +11,8 @@ import java.net.URISyntaxException;
 /**
  * Class to store data about a mail server. Immutable.
  *
+ * $Id$
+ * 
  * @author jensli
  */
 public class SSMailServer implements Serializable {
@@ -21,6 +23,7 @@ public class SSMailServer implements Serializable {
     private final URI address;
 
     private final boolean isAuth; // Should authorization be used when connecting to the mail server?
+    private final ConnectionSecurity connectionSecurity; // Should SSL or STARTTLS be used
 
     /**
      * Creates a new SSMailServer if arguments are valid, else throws MailServerException
@@ -30,13 +33,15 @@ public class SSMailServer implements Serializable {
      * @param host
      * @param port
      * @param isAuth
+     * @param connectionSecurity
      * @param username
      * @param password
      * @return
      * @throws SSMailServerException
      */
     public static SSMailServer makeIfValid(String name, String host,
-            int port, boolean isAuth, String username, String password)
+            int port, boolean isAuth, ConnectionSecurity connectionSecurity,
+	    String username, String password)
         throws SSMailServerException {
 
         if (!SSUtil.isInRage(port, 1, 65563)) {
@@ -55,10 +60,10 @@ public class SSMailServer implements Serializable {
             onError("mailserver.parts_error");
         }
 
-        return new SSMailServer(name, tempAddress, isAuth, username, password);
+        return new SSMailServer(name, tempAddress, isAuth, connectionSecurity, username, password);
     }
 
-    public SSMailServer(String name, URI address, boolean isAuth, String username, String password) {
+    public SSMailServer(String name, URI address, boolean isAuth, ConnectionSecurity connectionSecurity, String username, String password) {
 
         SSUtil.verifyNotNull("argument to SSMailServer constructor", name, address);
 
@@ -69,6 +74,7 @@ public class SSMailServer implements Serializable {
 
         this.name = name;
         this.isAuth = isAuth;
+        this.connectionSecurity = connectionSecurity;
         this.username = username;
         this.password = password;
         this.address = address;
@@ -110,11 +116,27 @@ public class SSMailServer implements Serializable {
         return isAuth;
     }
 
+    public boolean isSSL() {
+        return connectionSecurity == ConnectionSecurity.SSL_TLS;
+    }
+
+    public boolean isStartTLS() {
+        return connectionSecurity == ConnectionSecurity.STARTTLS;
+    }
+
+    public boolean isNoConnectionSecurity() {
+        return !isSSL() && !isStartTLS();
+    }
+    
+    public ConnectionSecurity getConnectionSecurity() {
+	return connectionSecurity;
+    }
+
     public URI getURI() {
         return address;
     }
 
-    static final long serialVersionUID = 1L;
+    static final long serialVersionUID = 2L;
 
     @Override
     public String toString() {
@@ -123,6 +145,7 @@ public class SSMailServer implements Serializable {
         sb.append("se.swedsoft.bookkeeping.data.util.SSMailServer");
         sb.append("{address=").append(address);
         sb.append(", isAuth=").append(isAuth);
+        sb.append(", connectionSecurity=").append(connectionSecurity);
         sb.append(", name='").append(name).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append(", username='").append(username).append('\'');
