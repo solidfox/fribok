@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Resultatbudget</para>
                <para/>
-               <para>I den här rapporten kan ni se resultatbudgeten för en av er vald period vid utskrift. Budgeten kan skrivas ut för hela bokföringsåret, för ett intervall av månader eller för enstaka månader. Resultatbudgeten är grupperad efter konton och inom varje konto visas en fördelning av belopp på månader vilka summeras till en summa för perioden. Följande fält finns i den här rapporten:KontoKontonumret identifierar varje konto och talar även om huruvida det är ett intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.MånadHär listas de månader som inbegrips i den valda perioden vid utskrift.Per månadHär visas budgeterade belopp per månad och för hela perioden i summa.</para>
+               <para>I den här rapporten kan du se resultatbudgeten för en av din vald period vid utskrift. Budgeten kan skrivas ut för hela bokföringsåret, för ett intervall av månader eller för enstaka månader. Resultatbudgeten är grupperad efter konton och inom varje konto visas en fördelning av belopp på månader vilka summeras till en summa för perioden. Följande fält finns i den här rapporten:KontoKontonumret identifierar varje konto och talar även om huruvida det är ett intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.MånadHär listas de månader som inbegrips i den valda perioden vid utskrift.Per månadHär visas budgeterade belopp per månad och för hela perioden i summa.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

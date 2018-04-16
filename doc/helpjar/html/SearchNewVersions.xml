@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Sök efter nyare version</para>
                <para/>
-               <para>Ni kan med den här funktionen se om det finns en nyare version av JFS Administration och installera den här uppdateringen. I uppslagskolumnen för "Tillgängliga uppdateringar" listas de versioner som finns tillgängliga för uppdatering och ni kan i den här uppslagskolumnen välja en version för uppdatering, den senaste versionen visas vid start. När ni har valt en version kan ni ladda hem den här uppdateringen genom att markera en av tre uppdateringar i listan över uppdateringar längst ned i fönstret som passar för ert operativsystem och er dator och sedan trycka på knappen "Uppdatera".</para>
+               <para>Du kan med den här funktionen se om det finns en nyare version av Fribok Administration och installera den här uppdateringen. I uppslagskolumnen för "Tillgängliga uppdateringar" listas de versioner som finns tillgängliga för uppdatering och du kan i den här uppslagskolumnen välja en version för uppdatering, den senaste versionen visas vid start. När du har valt en version kan du ladda hem den här uppdateringen genom att markera en av tre uppdateringar i listan över uppdateringar längst ned i fönstret som passar för ert operativsystem och din dator och sedan trycka på knappen "Uppdatera".</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

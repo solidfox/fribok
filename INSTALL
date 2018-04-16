@@ -1,7 +1,7 @@
 Fribok, INSTALL file
 
 Build requirements:
-* Java SDK, version 1.6 or greater
+* Java SDK, version 1.7 or greater
 * Apache Maven 2
 
 The preferred way of building Fribok is using the Maven POM-file.
@@ -10,7 +10,7 @@ $ mvn assembly:assembly
 [output...]
 
 And to run it:
-$ java -jar target/fribok-0.1-SNAPSHOT-jar-with-dependencies.jar
+$ java -jar target/fribok-2.1-SNAPSHOT-jar-with-dependencies.jar
 
 The above command must be run from the project root directory.
 
@@ -60,8 +60,7 @@ Edition.
 
 3. Choose the menu option `Run' -> `Edit configurations'
 
-4. Add a new configuration as `Application', using SSBookkeeping as main class
+4. Add a new configuration as `Application', using org.fribok.bookkeeping.Bookkeeping as main class
    and `administration' as working dir. Make sure to specify an SDK to use.
 
 5. Run the program!
-

@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Importera kontoplan</para>
                <para/>
-               <para>Ni importerar en kontoplan från Excel genom att trycka på knappen "Importera kontoplan" och välja en Excelfil varifrån ni vill importera kontoplanen. Excelfilen måste ha samma ordning från vänster till höger på fältrubriker och fältinformation såsom de är ordnade i JFS Administration.Excelfilen måste även innehålla följande information för att importen skall fungera, ni kan exportera en kontoplan för att se hur det ska se ut:#NamnI cell B1 skriver ni in namnet på kontoplanen, namnsättningen är valfri.#TypI cell B2 skriver ni in kontoplanstypen, för närvarande finns det bara tre typer att välja på: BAS95, BAS96 och EUBAS97.#TaxeringsårI cell B3 skriver ni in det taxeringsår som SRU-koderna är giltiga för, taxeringsåret är 2007 för inkomståret 2006.#StartI cell B4 skriver ni in startnumret på den rad där listan med kontonummer börjar.</para>
+               <para>Du importerar en kontoplan från Excel genom att trycka på knappen "Importera kontoplan" och välja en Excelfil varifrån du vill importera kontoplanen. Excelfilen måste ha samma ordning från vänster till höger på fältrubriker och fältinformation såsom de är ordnade i Fribok Administration.Excelfilen måste även innehålla följande information för att importen skall fungera, du kan exportera en kontoplan för att se hur det ska se ut:#NamnI cell B1 skriver du in namnet på kontoplanen, namnsättningen är valfri.#TypI cell B2 skriver du in kontoplanstypen, för närvarande finns det bara tre typer att välja på: BAS95, BAS96 och EUBAS97.#TaxeringsårI cell B3 skriver du in det taxeringsår som SRU-koderna är giltiga för, taxeringsåret är 2007 för inkomståret 2006.#StartI cell B4 skriver du in startnumret på den rad där listan med kontonummer börjar.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

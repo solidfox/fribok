@@ -5,18 +5,26 @@ See file `COPYING' for copying conditions.
 See file `INSTALL' for building and installation instructions.
 
 To run:
-$ java -jar target/fribok-0.1-SNAPSHOT-jar-with-dependencies.jar
+$ java -jar target/fribok-2.1-SNAPSHOT-jar-with-dependencies.jar
 
 The above command must currently be run from the project root directory.
 
-If you already have a working installation of JFS Administration/Bokföring/Fakturering you can replace the current JFS.jar by moving over the jar target/fribok-0.1-SNAPSHOT.jar as JFS.jar in the installation directory.
+If you already have a working installation of JFS Administration/Bokföring/Fakturering: 
+* Firstly do a backup in your current installation. 
+* Secondly, either:
+** Run the downloaded all-in-one-jar target/fribok-2.1-SNAPSHOT.jar and restore the backup.
+or 
+** Replace the current JFS.jar by moving over the all-in-one-jar 
+target/fribok-2.1-SNAPSHOT.jar as JFS.jar in the original installation directory.
 
-The software was originally developed for use in Sweden, and therefore the
-internationalization might be less than satisfactory.  Let us know if you run
-into any problems.
+The software is developed for use in Sweden. The internationalization
+is only for the UI. There are no adaptations to other legislative
+areas.
+
+Let us know if you run into any problems.
 
 The primary source directory can be found in `src/main/java'.
 
 The source code is hosted at http://sourceforge.net/projects/jfsaccounting
 
-For more info in Swedish about Fribok at http://fribok.org/ and its maintainer Friprogramvarusyndikatet at http://friprogramvarusyndikatet.se/
+For more info in Swedish about Fribok at https://fribok.org/ and its maintainer Friprogramvarusyndikatet at https://friprogramvarusyndikatet.se/

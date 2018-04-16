@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Leverantörsomsättning</para>
                <para/>
-               <para>I den här rapporten kan ni se inköpen per leverantör och månad men även inköpen per leverantör över hela den valda perioden.Ni kan välja ut leverantörer för rapporten genom att markera en eller flera leverantörer i listan över leverantörer och sedan trycka på knappen "Skriv ut leverantörer" och välja leverantörsomsättning. Ni kan också skriva ut rapporten för alla leverantörer. Inköpsomsättningen är angiven exklusive moms i redovisningsvalutan. Följande fält finns i den här rapporten:Leverantör NrHär visas ett unikt nummer för att identifiera en leverantör.NamnHär visas leverantörens namn.MånadHär listas de månader som inbegrips i den valda perioden vid utskrift.Per månadHär visas inköpsomsättningen för leverantören och månaden.</para>
+               <para>I den här rapporten kan du se inköpen per leverantör och månad men även inköpen per leverantör över hela den valda perioden.Du kan välja ut leverantörer för rapporten genom att markera en eller flera leverantörer i listan över leverantörer och sedan trycka på knappen "Skriv ut leverantörer" och välja leverantörsomsättning. Du kan också skriva ut rapporten för alla leverantörer. Inköpsomsättningen är angiven exklusive moms i redovisningsvalutan. Följande fält finns i den här rapporten:Leverantör NrHär visas ett unikt nummer för att identifiera en leverantör.NamnHär visas leverantörens namn.MånadHär listas de månader som inbegrips i den valda perioden vid utskrift.Per månadHär visas inköpsomsättningen för leverantören och månaden.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

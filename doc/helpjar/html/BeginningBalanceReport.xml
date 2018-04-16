@@ -15,7 +15,7 @@
                <para/>
                <para>I den här rapporten listas alla konton med nummer mellan 1000 och 2999 som har en ingående balans skild från noll. För respektive konto visas dess ingående balans för det aktiva bokföringsåret och i rapportens fot summeras de ingående balanserna.Följande fält finns i den här rapporten:KontoKontonumret identifierar varje konto och talar även om huruvida det är ett tillgångs- eller skuldkonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på kontot.Ingående balansHär visas den ingående balansen för kontot, ett positivt belopp visar på ett debetsaldo för kontot och ett negativt belopp visar på ett kreditsaldo för kontot.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

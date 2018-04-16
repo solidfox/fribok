@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <helpset>
-  <title>JFS Administration hj�lp</title>
+  <title>Hjälp för Bokföring och Administration – Fribok.org</title>
   <maps>
     <homeID>hem_html</homeID>
     <mapref location="default.map"/>
   </maps>
   <view>
     <name>Table of Contents</name>
-    <label>Inneh�ll</label>
+    <label>Innehåll</label>
     <image>New Text Document 16 n p_png</image>
     <type>javax.help.TOCView</type>
     <data>toc.xml</data>
   </view>
   <view>
     <name>Search</name>
-    <label>S�k</label>
+    <label>Sök</label>
     <image>Search 16 n p_png</image>
     <type>javax.help.SearchView</type>
     <data engine="com.sun.java.help.search.DefaultSearchEngine">JavaHelpSearch</data>

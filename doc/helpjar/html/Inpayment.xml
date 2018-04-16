@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Inbetalningar</para>
                <para/>
-               <para>I JFS Administration kan ni skapa inbetalningar, en inbetalning är en betalning från kund av en till kunden utställd kundfaktura.Tryck på knappen "Skapa ny inbetalning" för att registrera en ny inbetalning. Markera en inbetalning och tryck på knappen "Ändra vald inbetalning" eller dubbelklicka på en inbetalning för att ändra en inbetalning. Ni tar bort en inbetalning genom att markera inbetalningen i listan över inbetalningar och trycka på knappen "Radera valda inbetalningar". Följande fält finns i listan över inbetalningar: InbetalningsnrHär visas ett unikt nummer för att identifiera en inbetalning.BetalningsdatumHär visas datumet då inbetalningen inkom till ert bank- eller plusgirokonto.TextHär visas en beskrivande text för inbetalningen.Inbetalt beloppHär visas totalt inbetalt monetärt belopp för hela inbetalningen inkluderande alla inbetalda kundfakturor, inbetalt belopp anges i redovisningsvalutan enligt företagsinställningarna.</para>
+               <para>I Fribok Administration kan du skapa inbetalningar, en inbetalning är en betalning från kund av en till kunden utställd kundfaktura.Tryck på knappen "Skapa ny inbetalning" för att registrera en ny inbetalning. Markera en inbetalning och tryck på knappen "Ändra vald inbetalning" eller dubbelklicka på en inbetalning för att ändra en inbetalning. Du tar bort en inbetalning genom att markera inbetalningen i listan över inbetalningar och trycka på knappen "Radera valda inbetalningar". Följande fält finns i listan över inbetalningar: InbetalningsnrHär visas ett unikt nummer för att identifiera en inbetalning.BetalningsdatumHär visas datumet då inbetalningen inkom till ert bank- eller plusgirokonto.TextHär visas en beskrivande text för inbetalningen.Inbetalt beloppHär visas totalt inbetalt monetärt belopp för hela inbetalningen inkluderande alla inbetalda kundfakturor, inbetalt belopp anges i redovisningsvalutan enligt företagsinställningarna.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

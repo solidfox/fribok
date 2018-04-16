@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
 <map version="1.0">
   <mapID target="SupplierRevenue_html" url="html/SupplierRevenue.html"/>
@@ -148,7 +148,7 @@
   <mapID target="InventoryCount_html" url="html/InventoryCount.html"/>
   <mapID target="DeleteInpayments_html" url="html/DeleteInpayments.html"/>
   <mapID target="Products_html" url="html/Products.html"/>
-  <mapID target="JFS_logo_png" url="images/JFS_logo.png"/>
+  <mapID target="Fribok_logo_png" url="images/logo.png"/>
   <mapID target="DeleteAccounts_html" url="html/DeleteAccounts.html"/>
   <mapID target="CopySupplierinvoice_html" url="html/CopySupplierinvoice.html"/>
   <mapID target="ChangeOwnIncomeReport_html" url="html/ChangeOwnIncomeReport.html"/>
@@ -162,7 +162,6 @@
   <mapID target="ProfitcenterReport_html" url="html/ProfitcenterReport.html"/>
   <mapID target="DeleteProducts_html" url="html/DeleteProducts.html"/>
   <mapID target="Supplierinvoices_html" url="html/Supplierinvoices.html"/>
-  <mapID target="productregister_htm" url="html/productregister.htm"/>
   <mapID target="DeletePeriodicInvoices_html" url="html/DeletePeriodicInvoices.html"/>
   <mapID target="AutoSuppinvoiceFromPurchorder_html" url="html/AutoSuppinvoiceFromPurchorder.html"/>
   <mapID target="AutoPeriodicinvoiceFromOrder_html" url="html/AutoPeriodicinvoiceFromOrder.html"/>
@@ -202,9 +201,9 @@
   <mapID target="Project_html" url="html/Project.html"/>
   <mapID target="ImportProducts_html" url="html/ImportProducts.html"/>
   <mapID target="SIEexportVer_html" url="html/SIEexportVer.html"/>
-  <mapID target="support_htm" url="html/support.htm"/>
+  <mapID target="support_html" url="html/support.html"/>
   <mapID target="Book Red 16 n p_png" url="images/Book Red 16 n p.png"/>
-  <mapID target="ImportTemplatExcel_html" url="html/ImportTemplatExcel.html"/>
+  <mapID target="ImportTemplateExcel_html" url="html/ImportTemplateExcel.html"/>
   <mapID target="ChangeActiveAccounts_html" url="html/ChangeActiveAccounts.html"/>
   <mapID target="Saleorder_html" url="html/Saleorder.html"/>
   <mapID target="CreateSupplierinvoice_html" url="html/CreateSupplierinvoice.html"/>
@@ -222,7 +221,7 @@
   <mapID target="ExportSuppliers_html" url="html/ExportSuppliers.html"/>
   <mapID target="CopyInventorycount_html" url="html/CopyInventorycount.html"/>
   <mapID target="DeleteOutdelivery_html" url="html/DeleteOutdelivery.html"/>
-  <mapID target="updates_htm" url="html/updates.htm"/>
+  <mapID target="updates_html" url="html/updates.html"/>
   <mapID target="Invoices_html" url="html/Invoices.html"/>
   <mapID target="CreateInventorycount_html" url="html/CreateInventorycount.html"/>
   <mapID target="ChangeProfitcenter_html" url="html/ChangeProfitcenter.html"/>
@@ -238,7 +237,7 @@
   <mapID target="EmailInquiry_html" url="html/EmailInquiry.html"/>
   <mapID target="ChangeInventorycount_html" url="html/ChangeInventorycount.html"/>
   <mapID target="VersionHandling_html" url="html/VersionHandling.html"/>
-  <mapID target="import_voucher_htm" url="html/import.voucher.htm"/>
+  <mapID target="import_voucher_html" url="html/import.voucher.html"/>
   <mapID target="Backup_html" url="html/Backup.html"/>
   <mapID target="CreateYear_html" url="html/CreateYear.html"/>
   <mapID target="EmailQuotation_html" url="html/EmailQuotation.html"/>

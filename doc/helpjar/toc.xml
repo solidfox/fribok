@@ -1,60 +1,60 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "http://java.sun.com/products/javahelp/toc_2_0.dtd">
 <toc version="2.0">
   <tocitem target="hem_html" text="Hem"/>
   <tocitem target="Intro_html" text="Introduktion"/>
-  <tocitem target="Network_html" text="Nätverk"/>
+  <tocitem target="Network_html" text="NÃ¤tverk"/>
   <tocitem image="Book Green 16 n p_png" text="Arkiv">
-    <tocitem image="Book Red 16 n p_png" target="Company_html" text="Företag">
-      <tocitem target="CreateCompany_html" text="Skapa företag"/>
-      <tocitem target="OpenCompany_html" text="Öppna företag"/>
-      <tocitem target="ChangeCompany_html" text="Ändra företag"/>
-      <tocitem target="DeleteCompany_html" text="Radera företag"/>
+    <tocitem image="Book Red 16 n p_png" target="Company_html" text="FÃ¶retag">
+      <tocitem target="CreateCompany_html" text="Skapa fÃ¶retag"/>
+      <tocitem target="OpenCompany_html" text="Ã–ppna fÃ¶retag"/>
+      <tocitem target="ChangeCompany_html" text="Ã„ndra fÃ¶retag"/>
+      <tocitem target="DeleteCompany_html" text="Radera fÃ¶retag"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Accounts_html" text="Kontoplaner">
       <tocitem target="CreateAccounts_html" text="Skapa kontoplan"/>
-      <tocitem target="ChangeAccounts_html" text="Ändra kontoplan"/>
+      <tocitem target="ChangeAccounts_html" text="Ã„ndra kontoplan"/>
       <tocitem target="DeleteAccounts_html" text="Radera kontoplan"/>
       <tocitem target="ExportAccounts_html" text="Exportera kontoplan"/>
       <tocitem target="ImportAccounts_html" text="Importera kontoplan"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" text="Företagsimport">
+    <tocitem image="Book Red 16 n p_png" text="FÃ¶retagsimport">
       <tocitem target="SIEimport_html" text="SIE"/>
-      <tocitem target="import_voucher_htm" text="Verifikationer"/>
+      <tocitem target="import_voucher_html" text="Verifikationer"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" text="Företagsexport">
+    <tocitem image="Book Red 16 n p_png" text="FÃ¶retagsexport">
       <tocitem target="SIEexport_html" text="SIE"/>
       <tocitem target="SIEexportVer_html" text="Verifikationer"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="Backup_html" text="Säkerhetskopiering">
-      <tocitem target="BackupAllCompany_html" text="Säkerhetskopiera hela databasen"/>
-      <tocitem target="RestoreBackup_html" text="Återställ från säkerhetskopia"/>
+    <tocitem image="Book Red 16 n p_png" target="Backup_html" text="SÃ¤kerhetskopiering">
+      <tocitem target="BackupAllCompany_html" text="SÃ¤kerhetskopiera hela databasen"/>
+      <tocitem target="RestoreBackup_html" text="Ã…terstÃ¤ll frÃ¥n sÃ¤kerhetskopia"/>
     </tocitem>
-    <tocitem target="NetworkSettings_html" text="Nätverksinställningar"/>
+    <tocitem target="NetworkSettings_html" text="NÃ¤tverksinstÃ¤llningar"/>
   </tocitem>
   <tocitem image="Book Green 16 n p_png" text="Register">
-    <tocitem image="Book Red 16 n p_png" target="Year_html" text="Välj bokföringsår">
-      <tocitem target="CreateYear_html" text="Skapa bokföringsår"/>
-      <tocitem target="ChangeYear_html" text="Ändra bokföringsår"/>
-      <tocitem target="OpenYear_html" text="Öppna bokföringsår"/>
-      <tocitem target="DeleteYear_html" text="Radera bokföringsår"/>
+    <tocitem image="Book Red 16 n p_png" target="Year_html" text="VÃ¤lj bokfÃ¶ringsÃ¥r">
+      <tocitem target="CreateYear_html" text="Skapa bokfÃ¶ringsÃ¥r"/>
+      <tocitem target="ChangeYear_html" text="Ã„ndra bokfÃ¶ringsÃ¥r"/>
+      <tocitem target="OpenYear_html" text="Ã–ppna bokfÃ¶ringsÃ¥r"/>
+      <tocitem target="DeleteYear_html" text="Radera bokfÃ¶ringsÃ¥r"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="ChangeActiveAccounts_html" text="Ändra kontoplan för aktivt år"/>
+    <tocitem image="Book Red 16 n p_png" target="ChangeActiveAccounts_html" text="Ã„ndra kontoplan fÃ¶r aktivt Ã¥r"/>
     <tocitem image="Book Red 16 n p_png" target="Project_html" text="Projekt">
       <tocitem target="CreateProject_html" text="Skapa projekt"/>
-      <tocitem target="ChangeProject_html" text="Ändra projekt"/>
+      <tocitem target="ChangeProject_html" text="Ã„ndra projekt"/>
       <tocitem target="DeleteProject_html" text="Radera projekt"/>
-      <tocitem target="ProjectRevenue_html" text="Projektomsättning"/>
+      <tocitem target="ProjectRevenue_html" text="ProjektomsÃ¤ttning"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Profitcenter_html" text="Resultatenhet">
       <tocitem target="CreateProfitcenter_html" text="Skapa resultatenhet"/>
-      <tocitem target="ChangeProfitcenter_html" text="Ändra resultatenhet"/>
+      <tocitem target="ChangeProfitcenter_html" text="Ã„ndra resultatenhet"/>
       <tocitem target="DeleteProfitcenter_html" text="Radera resultatenhet"/>
-      <tocitem target="ResultunitRevenue_html" text="Resultatenhetsomsättning"/>
+      <tocitem target="ResultunitRevenue_html" text="ResultatenhetsomsÃ¤ttning"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Products_html" text="Produkter">
       <tocitem target="CreateProducts_html" text="Skapa produkter"/>
-      <tocitem target="ChangeProducts_html" text="Ändra produkter"/>
+      <tocitem target="ChangeProducts_html" text="Ã„ndra produkter"/>
       <tocitem target="CopyProducts_html" text="Kopiera produkter"/>
       <tocitem target="DeleteProducts_html" text="Radera produkter"/>
       <tocitem image="Book Blue 16 n p_png" text="Importera produkter">
@@ -65,11 +65,11 @@
         <tocitem target="ExportProducts_html" text="Exportera produkter (Excel)"/>
         <tocitem target="ExportProductsXML_html" text="Exportera produkter (XML)"/>
       </tocitem>
-      <tocitem target="ProductRevenue_html" text="Produktomsättning"/>
+      <tocitem target="ProductRevenue_html" text="ProduktomsÃ¤ttning"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Customers_html" text="Kunder">
       <tocitem target="CreateCustomers_html" text="Skapa kunder"/>
-      <tocitem target="ChangeCustomers_html" text="Ändra kunder"/>
+      <tocitem target="ChangeCustomers_html" text="Ã„ndra kunder"/>
       <tocitem target="CopyCustomers_html" text="Kopiera kunder"/>
       <tocitem target="DeleteCustomers_html" text="Radera kunder"/>
       <tocitem image="Book Blue 16 n p_png" text="Importera kunder">
@@ -81,40 +81,40 @@
         <tocitem target="ExportCustomers_html" text="Exportera kunder (Excel)"/>
         <tocitem target="ExportCustomersXML_html" text="Exportera kunder (XML)"/>
       </tocitem>
-      <tocitem target="CustomerRevenue_html" text="Kundomsättning"/>
+      <tocitem target="CustomerRevenue_html" text="KundomsÃ¤ttning"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="Suppliers_html" text="Leverantörer">
-      <tocitem target="CreateSuppliers_html" text="Skapa leverantörer"/>
-      <tocitem target="ChangeSuppliers_html" text="Ändra leverantörer"/>
-      <tocitem target="CopySuppliers_html" text="Kopiera leverantörer"/>
-      <tocitem target="DeleteSuppliers_html" text="Radera leverantörer"/>
-      <tocitem target="ImportSuppliers_html" text="Importera leverantörer"/>
-      <tocitem target="ExportSuppliers_html" text="Exportera leverantörer"/>
-      <tocitem target="SupplierRevenue_html" text="Leverantörsomsättning"/>
+    <tocitem image="Book Red 16 n p_png" target="Suppliers_html" text="LeverantÃ¶rer">
+      <tocitem target="CreateSuppliers_html" text="Skapa leverantÃ¶rer"/>
+      <tocitem target="ChangeSuppliers_html" text="Ã„ndra leverantÃ¶rer"/>
+      <tocitem target="CopySuppliers_html" text="Kopiera leverantÃ¶rer"/>
+      <tocitem target="DeleteSuppliers_html" text="Radera leverantÃ¶rer"/>
+      <tocitem target="ImportSuppliers_html" text="Importera leverantÃ¶rer"/>
+      <tocitem target="ExportSuppliers_html" text="Exportera leverantÃ¶rer"/>
+      <tocitem target="SupplierRevenue_html" text="LeverantÃ¶rsomsÃ¤ttning"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="AccountingTemplate_html" text="Konteringsmallar">
-      <tocitem target="ImportTemplatExcel_html" text="Importera konteringsmallar från Excel"/>
-      <tocitem target="ExportTemplateExcel_html" text="Exportera konteringsmallar från Excel"/>
+      <tocitem target="ImportTemplateExcel_html" text="Importera konteringsmallar frÃ¥n Excel-fil"/>
+      <tocitem target="ExportTemplateExcel_html" text="Exportera konteringsmallar till Excel-fil"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="AutomaticDistribution_html" text="Automatfördelning">
-      <tocitem target="CreateAutomaticDist_html" text="Skapa automatfördelning"/>
-      <tocitem target="ChangeAutomaticDist_html" text="Ändra automatfördelning"/>
-      <tocitem target="CopyAutomaticDist_html" text="Kopiera automatfördelning"/>
-      <tocitem target="DeleteAutomaticDist_html" text="Radera automatfördelning"/>
+    <tocitem image="Book Red 16 n p_png" target="AutomaticDistribution_html" text="AutomatfÃ¶rdelning">
+      <tocitem target="CreateAutomaticDist_html" text="Skapa automatfÃ¶rdelning"/>
+      <tocitem target="ChangeAutomaticDist_html" text="Ã„ndra automatfÃ¶rdelning"/>
+      <tocitem target="CopyAutomaticDist_html" text="Kopiera automatfÃ¶rdelning"/>
+      <tocitem target="DeleteAutomaticDist_html" text="Radera automatfÃ¶rdelning"/>
     </tocitem>
   </tocitem>
-  <tocitem image="Book Green 16 n p_png" text="Försäljning">
+  <tocitem image="Book Green 16 n p_png" text="FÃ¶rsÃ¤ljning">
     <tocitem image="Book Red 16 n p_png" target="Inpayment_html" text="Inbetalningar">
       <tocitem target="CreateInpayment_html" text="Skapa inbetalning"/>
-      <tocitem target="ChangeInpayment_html" text="Ändra inbetalning"/>
+      <tocitem target="ChangeInpayment_html" text="Ã„ndra inbetalning"/>
       <tocitem target="DeleteInpayments_html" text="Radera inbetalningar"/>
       <tocitem target="Inpaymentlist_html" text="Inbetalningslista"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Quotation_html" text="Offerter">
       <tocitem target="CreateQuotation_html" text="Skapa offert"/>
-      <tocitem target="ChangeQuotation_html" text="Ändra offert"/>
+      <tocitem target="ChangeQuotation_html" text="Ã„ndra offert"/>
       <tocitem target="CopyQuotation_html" text="Kopiera offert"/>
-      <tocitem target="AutoOrderFromQuote_html" text="Skapa order från offert"/>
+      <tocitem target="AutoOrderFromQuote_html" text="Skapa order frÃ¥n offert"/>
       <tocitem target="DeleteQuotations_html" text="Radera offerter"/>
       <tocitem target="QuotationReport_html" text="Offert"/>
       <tocitem target="EmailQuotation_html" text="E-postoffert"/>
@@ -122,42 +122,42 @@
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Saleorder_html" text="Ordrar">
       <tocitem target="CreateOrder_html" text="Skapa order"/>
-      <tocitem target="ChangeOrder_html" text="Ändra order"/>
+      <tocitem target="ChangeOrder_html" text="Ã„ndra order"/>
       <tocitem target="CopyOrder_html" text="Kopiera order"/>
-      <tocitem target="AutoInvoiceFromOrder_html" text="Skapa kundfaktura från ordrar"/>
-      <tocitem target="AutoCashFromOrder_html" text="Skapa kontantkvitto från ordrar"/>
-      <tocitem target="AutoPeriodicinvoiceFromOrder_html" text="Skapa periodfaktura från ordrar"/>
-      <tocitem target="AutoPOFromOrder_html" text="Skapa inköpsorder från ordrar"/>
+      <tocitem target="AutoInvoiceFromOrder_html" text="Skapa kundfaktura frÃ¥n ordrar"/>
+      <tocitem target="AutoCashFromOrder_html" text="Skapa kontantkvitto frÃ¥n ordrar"/>
+      <tocitem target="AutoPeriodicinvoiceFromOrder_html" text="Skapa periodfaktura frÃ¥n ordrar"/>
+      <tocitem target="AutoPOFromOrder_html" text="Skapa inkÃ¶psorder frÃ¥n ordrar"/>
       <tocitem target="DeleteOrders_html" text="Radera ordrar"/>
       <tocitem image="Book Blue 16 n p_png" text="Importera ordrar">
         <tocitem target="ImportOrdersXML_html" text="Importera ordrar (XML)"/>
         <tocitem target="ImportOrdersEbutik_html" text="Importera ordrar E-butik"/>
       </tocitem>
       <tocitem target="ExportOrdersXML_html" text="Exportera ordrar (XML)"/>
-      <tocitem target="OrderReport_html" text="Orderbekräftelse"/>
-      <tocitem target="EmailOrder_html" text="E-postorderbekräftelse"/>
+      <tocitem target="OrderReport_html" text="OrderbekrÃ¤ftelse"/>
+      <tocitem target="EmailOrder_html" text="E-postorderbekrÃ¤ftelse"/>
       <tocitem target="Pickingslip_html" text="Plocklista"/>
-      <tocitem target="Deliverynote_html" text="Följesedel"/>
+      <tocitem target="Deliverynote_html" text="FÃ¶ljesedel"/>
       <tocitem target="OrderList_html" text="Orderlista"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="Invoices_html" text="Kundfakturor">
       <tocitem target="CreateInvoice_html" text="Skapa kundfaktura"/>
-      <tocitem target="ChangeInvoice_html" text="Ändra kundfaktura"/>
+      <tocitem target="ChangeInvoice_html" text="Ã„ndra kundfaktura"/>
       <tocitem target="CopyInvoice_html" text="Kopiera kundfaktura"/>
-      <tocitem target="AutoInpayFromInvoice_html" text="Skapa inbetalning från kundfakturor"/>
-      <tocitem target="AutoCreditFromInvoice_html" text="Skapa kreditfaktura från kundfaktura"/>
-      <tocitem target="AutoReminderFromInvoice_html" text="Skapa påminnelser från kundfakturor"/>
-      <tocitem target="CreateInterestinvoice_html" text="Skapa räntefakturor"/>
+      <tocitem target="AutoInpayFromInvoice_html" text="Skapa inbetalning frÃ¥n kundfakturor"/>
+      <tocitem target="AutoCreditFromInvoice_html" text="Skapa kreditfaktura frÃ¥n kundfaktura"/>
+      <tocitem target="AutoReminderFromInvoice_html" text="Skapa pÃ¥minnelser frÃ¥n kundfakturor"/>
+      <tocitem target="CreateInterestinvoice_html" text="Skapa rÃ¤ntefakturor"/>
       <tocitem target="DeleteInvoices_html" text="Radera kundfakturor"/>
       <tocitem target="InvoiceReport_html" text="Kundfaktura"/>
       <tocitem target="EmailInvoice_html" text="E-postfaktura"/>
       <tocitem target="OCRInvoice_html" text="OCR-faktura"/>
-      <tocitem target="Reminder_html" text="Betalningspåminnelse"/>
+      <tocitem target="Reminder_html" text="BetalningspÃ¥minnelse"/>
       <tocitem target="InvoiceList_html" text="Fakturalista"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="CreditInvoices_html" text="Kreditfakturor">
       <tocitem target="CreateCreditinvoice_html" text="Skapa kreditfaktura"/>
-      <tocitem target="ChangeCreditinvoice_html" text="Ändra kreditfaktura"/>
+      <tocitem target="ChangeCreditinvoice_html" text="Ã„ndra kreditfaktura"/>
       <tocitem target="CopyCreditinvoice_html" text="Kopiera kreditfaktura"/>
       <tocitem target="DeleteCreditinvoices_html" text="Radera kreditfakturor"/>
       <tocitem target="CreditinvoiceReport_html" text="Kreditfaktura"/>
@@ -166,11 +166,11 @@
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="PeriodicInvoices_html" text="Periodfakturor">
       <tocitem target="CreatePeriodicInvoice_html" text="Skapa periodfaktura"/>
-      <tocitem target="ChangePeriodicInvoice_html" text="Ändra periodfaktura"/>
+      <tocitem target="ChangePeriodicInvoice_html" text="Ã„ndra periodfaktura"/>
       <tocitem target="CopyPeriodicInvoice_html" text="Kopiera periodfaktura"/>
       <tocitem target="DeletePeriodicInvoices_html" text="Radera periodfakturor"/>
-      <tocitem target="ListInvoicesForPeriodicInvoices_html" text="Lista fakturor för vald periodfaktura"/>
-      <tocitem target="AutoInvoicesFromPeriodic_html" text="Skapa kundfakturor från periodfakturor"/>
+      <tocitem target="ListInvoicesForPeriodicInvoices_html" text="Lista fakturor fÃ¶r vald periodfaktura"/>
+      <tocitem target="AutoInvoicesFromPeriodic_html" text="Skapa kundfakturor frÃ¥n periodfakturor"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" text="Rapporter">
       <tocitem image="Book Blue 16 n p_png" text="Journaler">
@@ -178,129 +178,128 @@
         <tocitem target="InvoiceJournal_html" text="Fakturajournal"/>
         <tocitem target="CreditinvoiceJournal_html" text="Kreditfakturajournal"/>
       </tocitem>
-      <tocitem target="SaleProfitReport_html" text="Försäljningsrapport"/>
-      <tocitem target="SaleValues_html" text="Försäljningsvärden"/>
+      <tocitem target="SaleProfitReport_html" text="FÃ¶rsÃ¤ljningsrapport"/>
+      <tocitem target="SaleValues_html" text="FÃ¶rsÃ¤ljningsvÃ¤rden"/>
       <tocitem target="InvoiceReceivable_html" text="Kundfordran"/>
       <tocitem target="AccountsReceivable_html" text="Kundreskontra"/>
       <tocitem target="EUQReport_html" text="EU Kvartalsredovisning"/>
     </tocitem>
   </tocitem>
-  <tocitem image="Book Green 16 n p_png" text="Inköp">
+  <tocitem image="Book Green 16 n p_png" text="InkÃ¶p">
     <tocitem image="Book Red 16 n p_png" target="Outpayment_html" text="Utbetalningar">
       <tocitem target="CreateOutpayment_html" text="Skapa utbetalning"/>
-      <tocitem target="ChangeOutpayment_html" text="Ändra utbetalning"/>
+      <tocitem target="ChangeOutpayment_html" text="Ã„ndra utbetalning"/>
       <tocitem target="DeleteOutpayments_html" text="Radera utbetalningar"/>
       <tocitem target="Outpaymentlist_html" text="Utbetalningslista"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="Purchaseorders_html" text="Inköpsordrar">
-      <tocitem target="CreatePurchaseorder_html" text="Skapa inköpsorder"/>
-      <tocitem target="ChangePurchaseorder_html" text="Ändra inköpsorder"/>
-      <tocitem target="CopyPurchaseorder_html" text="Kopiera inköpsorder"/>
-      <tocitem target="AutoSuppinvoiceFromPurchorder_html" text="Skapa leverantörsfaktura från inköpsordrar"/>
-      <tocitem target="DeletePurchaseorders_html" text="Radera inköpsordrar"/>
-      <tocitem target="Purchaseorderreport_html" text="Inköpsorder"/>
-      <tocitem target="EmailPO_html" text="E-postinköpsorder"/>
-      <tocitem target="InquiryReport_html" text="Förfrågan"/>
-      <tocitem target="EmailInquiry_html" text="E-postförfrågan"/>
-      <tocitem target="PurchaseorderList_html" text="Inköpsorderlista"/>
+    <tocitem image="Book Red 16 n p_png" target="Purchaseorders_html" text="InkÃ¶psordrar">
+      <tocitem target="CreatePurchaseorder_html" text="Skapa inkÃ¶psorder"/>
+      <tocitem target="ChangePurchaseorder_html" text="Ã„ndra inkÃ¶psorder"/>
+      <tocitem target="CopyPurchaseorder_html" text="Kopiera inkÃ¶psorder"/>
+      <tocitem target="AutoSuppinvoiceFromPurchorder_html" text="Skapa leverantÃ¶rsfaktura frÃ¥n inkÃ¶psordrar"/>
+      <tocitem target="DeletePurchaseorders_html" text="Radera inkÃ¶psordrar"/>
+      <tocitem target="Purchaseorderreport_html" text="InkÃ¶psorder"/>
+      <tocitem target="EmailPO_html" text="E-postinkÃ¶psorder"/>
+      <tocitem target="InquiryReport_html" text="FÃ¶rfrÃ¥gan"/>
+      <tocitem target="EmailInquiry_html" text="E-postfÃ¶rfrÃ¥gan"/>
+      <tocitem target="PurchaseorderList_html" text="InkÃ¶psorderlista"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="Supplierinvoices_html" text="Leverantörsfakturor">
-      <tocitem target="CreateSupplierinvoice_html" text="Skapa leverantörsfaktura"/>
-      <tocitem target="ChangeSupplierinvoice_html" text="Ändra leverantörsfaktura"/>
-      <tocitem target="CopySupplierinvoice_html" text="Kopiera leverantörsfaktura"/>
-      <tocitem target="AutoCsuppinvFromSuppinv_html" text="Skapa leverantörskreditfaktura från leverantörsfaktura"/>
-      <tocitem target="DeleteSupplierinvoices_html" text="Radera leverantörsfakturor"/>
-      <tocitem target="AutoOutpayFromSuppInvoice_html" text="Skapa utbetalning från leverantörsfakturor"/>
-      <tocitem target="CreateLBpayment_html" text="Skapa LB-fil för leverantörsbetalning"/>
-      <tocitem target="SupplierinvoiceList_html" text="Leverantörsfakturalista"/>
+    <tocitem image="Book Red 16 n p_png" target="Supplierinvoices_html" text="LeverantÃ¶rsfakturor">
+      <tocitem target="CreateSupplierinvoice_html" text="Skapa leverantÃ¶rsfaktura"/>
+      <tocitem target="ChangeSupplierinvoice_html" text="Ã„ndra leverantÃ¶rsfaktura"/>
+      <tocitem target="CopySupplierinvoice_html" text="Kopiera leverantÃ¶rsfaktura"/>
+      <tocitem target="AutoCsuppinvFromSuppinv_html" text="Skapa leverantÃ¶rskreditfaktura frÃ¥n leverantÃ¶rsfaktura"/>
+      <tocitem target="DeleteSupplierinvoices_html" text="Radera leverantÃ¶rsfakturor"/>
+      <tocitem target="AutoOutpayFromSuppInvoice_html" text="Skapa utbetalning frÃ¥n leverantÃ¶rsfakturor"/>
+      <tocitem target="CreateLBpayment_html" text="Skapa LB-fil fÃ¶r leverantÃ¶rsbetalning"/>
+      <tocitem target="SupplierinvoiceList_html" text="LeverantÃ¶rsfakturalista"/>
     </tocitem>
-    <tocitem image="Book Red 16 n p_png" target="Suppliercreditinvoices_html" text="Leverantörskreditfakturor">
-      <tocitem target="CreateSuppliercreditinvoice_html" text="Skapa leverantörskreditfaktura"/>
-      <tocitem target="ChangeSuppliercreditinvoice_html" text="Ändra leverantörskreditfaktura"/>
-      <tocitem target="CopySuppliercreditinvoice_html" text="Kopiera leverantörskreditfaktura"/>
-      <tocitem target="DeleteSuppliercreditinvoices_html" text="Radera leverantörskreditfakturor"/>
-      <tocitem target="SuppliercreditInvoiceList_html" text="Leverantörskreditfakturalista"/>
+    <tocitem image="Book Red 16 n p_png" target="Suppliercreditinvoices_html" text="LeverantÃ¶rskreditfakturor">
+      <tocitem target="CreateSuppliercreditinvoice_html" text="Skapa leverantÃ¶rskreditfaktura"/>
+      <tocitem target="ChangeSuppliercreditinvoice_html" text="Ã„ndra leverantÃ¶rskreditfaktura"/>
+      <tocitem target="CopySuppliercreditinvoice_html" text="Kopiera leverantÃ¶rskreditfaktura"/>
+      <tocitem target="DeleteSuppliercreditinvoices_html" text="Radera leverantÃ¶rskreditfakturor"/>
+      <tocitem target="SuppliercreditInvoiceList_html" text="LeverantÃ¶rskreditfakturalista"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" text="Rapporter">
       <tocitem image="Book Blue 16 n p_png" text="Journaler">
         <tocitem target="OutpaymentJournal_html" text="Utbetalningsjournal"/>
-        <tocitem target="SupplierinvoiceJournal_html" text="Leverantörsfakturajournal"/>
-        <tocitem target="SuppliercreditinvoiceJournal_html" text="Leverantörskreditfakturajournal"/>
+        <tocitem target="SupplierinvoiceJournal_html" text="LeverantÃ¶rsfakturajournal"/>
+        <tocitem target="SuppliercreditinvoiceJournal_html" text="LeverantÃ¶rskreditfakturajournal"/>
       </tocitem>
-      <tocitem target="PurchaseValues_html" text="Inköpsvärden"/>
-      <tocitem target="SupplierinvoicePayable_html" text="Leverantörsskuld"/>
-      <tocitem target="AccountsPayable_html" text="Leverantörsreskontra"/>
+      <tocitem target="PurchaseValues_html" text="InkÃ¶psvÃ¤rden"/>
+      <tocitem target="SupplierinvoicePayable_html" text="LeverantÃ¶rsskuld"/>
+      <tocitem target="AccountsPayable_html" text="LeverantÃ¶rsreskontra"/>
     </tocitem>
   </tocitem>
   <tocitem image="Book Green 16 n p_png" text="Bankgiro">
-    <tocitem target="ImportBgMax_html" text="Importera inbetalningar från BgMax-fil"/>
-    <tocitem target="ImportLbin_html" text="Importera utbetalningar från Lbut-fil"/>
+    <tocitem target="ImportBgMax_html" text="Importera inbetalningar frÃ¥n BgMax-fil"/>
+    <tocitem target="ImportLbin_html" text="Importera utbetalningar frÃ¥n Lbut-fil"/>
   </tocitem>
   <tocitem image="Book Green 16 n p_png" text="Lager">
     <tocitem image="Book Red 16 n p_png" target="InDelivery_html" text="Inleveranser">
       <tocitem target="CreateIndelivery_html" text="Skapa inleverans"/>
-      <tocitem target="ChangeIndelivery_html" text="Ändra inleverans"/>
+      <tocitem target="ChangeIndelivery_html" text="Ã„ndra inleverans"/>
       <tocitem target="CopyIndelivery_html" text="Kopiera inleverans"/>
       <tocitem target="DeleteIndelivery_html" text="Radera inleveranser"/>
       <tocitem target="InDeliverylist_html" text="Inleveranslista"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="OutDelivery_html" text="Utleveranser">
       <tocitem target="CreateOutdelivery_html" text="Skapa utleverans"/>
-      <tocitem target="ChangeOutdelivery_html" text="Ändra utleverans"/>
+      <tocitem target="ChangeOutdelivery_html" text="Ã„ndra utleverans"/>
       <tocitem target="CopyOutdelivery_html" text="Kopiera utleverans"/>
       <tocitem target="DeleteOutdelivery_html" text="Radera utleveranser"/>
       <tocitem target="OutDeliverylist_html" text="Utleveranslista"/>
     </tocitem>
-    <tocitem target="AutoPO_html" text="Inköpsförslag"/>
+    <tocitem target="AutoPO_html" text="InkÃ¶psfÃ¶rslag"/>
     <tocitem image="Book Red 16 n p_png" target="InventoryCount_html" text="Inventeringar">
       <tocitem target="CreateInventorycount_html" text="Skapa inventering"/>
-      <tocitem target="ChangeInventorycount_html" text="Ändra inventering"/>
+      <tocitem target="ChangeInventorycount_html" text="Ã„ndra inventering"/>
       <tocitem target="DeleteInventorycount_html" text="Radera inventeringar"/>
       <tocitem target="Inventorycountlist_html" text="Inventeringslista"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" text="Rapporter">
       <tocitem target="Inventorycountdoc_html" text="Inventeringsunderlag"/>
       <tocitem target="Instockreport_html" text="Lagerredovisning"/>
-      <tocitem target="Stockvaluereport_html" text="Lagervärde"/>
+      <tocitem target="Stockvaluereport_html" text="LagervÃ¤rde"/>
     </tocitem>
   </tocitem>
-  <tocitem image="Book Green 16 n p_png" text="Bokföring">
-    <tocitem image="Book Red 16 n p_png" target="BeginningBalance_html" text="Ingående balans"/>
-    <tocitem image="Book Red 16 n p_png" target="Verifications_html" text="Bokföra">
+  <tocitem image="Book Green 16 n p_png" text="BokfÃ¶ring">
+    <tocitem image="Book Red 16 n p_png" target="BeginningBalance_html" text="IngÃ¥ende balans"/>
+    <tocitem image="Book Red 16 n p_png" target="Verifications_html" text="BokfÃ¶ra">
       <tocitem target="CreateVerifications_html" text="Skapa verifikationer"/>
-      <tocitem target="ChangeVerifications_html" text="Ändra verifikationer"/>
-      <tocitem target="CorrectionVerifications_html" text="Skapa ändringsverifikation"/>
-      <tocitem target="ExportVerExcel_html" text="Exportera verifikationer till Excel"/>
-      <tocitem target="ImportVerExcel_html" text="Importera verifikationer från Excel"/>
-      <tocitem target="import_voucher_htm" text="Importera verifikationer (SIE)"/>
+      <tocitem target="ChangeVerifications_html" text="Ã„ndra verifikationer"/>
+      <tocitem target="CorrectionVerifications_html" text="Skapa Ã¤ndringsverifikation"/>
+      <tocitem target="ExportVerExcel_html" text="Exportera verifikationer till Excel-fil"/>
+      <tocitem target="ImportVerExcel_html" text="Importera verifikationer frÃ¥n Excel-fil"/>
+      <tocitem target="import_voucher_html" text="Importera verifikationer frÃ¥n SIE-fil"/>
     </tocitem>
     <tocitem image="Book Red 16 n p_png" target="ProfitLossBudget_html" text="Resultatbudget"/>
     <tocitem image="Book Red 16 n p_png" text="Rapporter">
       <tocitem target="VerificationsReport_html" text="Verifikationer"/>
-      <tocitem target="BeginningBalanceReport_html" text="Ingående balans"/>
+      <tocitem target="BeginningBalanceReport_html" text="IngÃ¥ende balans"/>
       <tocitem target="AccountsReport_html" text="Kontoplan"/>
       <tocitem target="GeneralLedgerReport_html" text="Huvudbok"/>
       <tocitem target="ProfitLossReport_html" text="Resultatrapport"/>
-      <tocitem target="ProjectReport_html" text="Resultatrapport för projekt"/>
-      <tocitem target="ProfitcenterReport_html" text="Resultatrapport för resultatenhet"/>
+      <tocitem target="ProjectReport_html" text="Resultatrapport fÃ¶r projekt"/>
+      <tocitem target="ProfitcenterReport_html" text="Resultatrapport fÃ¶r resultatenhet"/>
       <tocitem target="ProfitLossBudgetReport_html" text="Resultatbudget"/>
       <tocitem target="BalanceReport_html" text="Balansrapport"/>
       <tocitem target="SalesTaxReport_html" text="Momsrapport"/>
-      <tocitem target="AccountingSchemeReport_html" text="Räkenskapsschema"/>
-      <tocitem target="SimpleStatement_html" text="Förenklat årsbokslut"/>
+      <tocitem target="AccountingSchemeReport_html" text="RÃ¤kenskapsschema"/>
+      <tocitem target="SimpleStatement_html" text="FÃ¶renklat Ã¥rsbokslut"/>
       <tocitem image="Book Blue 16 n p_png" target="OwnIncomeReport_html" text="Egna resultatrapporter">
         <tocitem target="CreateOwnIncomeReport_html" text="Skapa egen resultatrapport"/>
-        <tocitem target="ChangeOwnIncomeReport_html" text="Ändra egen resultatrapport"/>
+        <tocitem target="ChangeOwnIncomeReport_html" text="Ã„ndra egen resultatrapport"/>
         <tocitem target="DeleteOwnIncomeReport_html" text="Radera egen resultatrapport"/>
         <tocitem target="PrintOwnIncomeReport_html" text="Skriv ut egen resultatrapport"/>
       </tocitem>
     </tocitem>
   </tocitem>
-  <tocitem image="Book Green 16 n p_png" text="Hjälp">
-    <tocitem target="productregister_htm" text="Produktregistrering"/>
-    <tocitem target="updates_htm" text="Online uppdatering"/>
-    <tocitem target="support_htm" text="Online support"/>
-    <tocitem target="DeletePostlocks_html" text="Ta bort postlås"/>
+  <tocitem image="Book Green 16 n p_png" text="HjÃ¤lp">
+    <tocitem target="updates_html" text="Uppdatering online"/>
+    <tocitem target="support_html" text="Support online"/>
+    <tocitem target="DeletePostlocks_html" text="Ta bort postlÃ¥s"/>
     <tocitem target="CompressDatabase_html" text="Komprimera databasen"/>
     <tocitem target="CleanTransactions_html" text="Rensa transaktioner"/>
   </tocitem>

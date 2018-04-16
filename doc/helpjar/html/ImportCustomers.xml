@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Importera kunder (Excel)</para>
                <para/>
-               <para>I JFS Administration kan ni importera enstaka kunder eller ett helt kundregister från en Excel-fil. Ni sätter rubriknamn på första raden för varje kolumn i Excel-filen och JFS Administration läser av rubriknamnet och lägger kolumnens data som finns sparad i Excel-filen i rätt fält.En kund måste finnas på en och endast en rad i Excel-filen. Ni kan exportera en kundlista från JFS Administration för att se hur Excel-filen kan se ut. Följande kolumnrubriker kan finnas i Excel-filen:*Kundnummer*Namn*Telefon1*Telefon2*Fax*EPost*Hemsida*Kontaktperson*Organisationsnummer*Bankgiro*Plusgiro*Fakturaadress.Namn*Fakturaadress.Adress1*Fakturaadress.Adress2*Fakturaadress.Postnummer*Fakturaadress.Postort*Fakturaadress.Land*Leveransadress.Namn*Leveransadress.Adress1*Leveransadress.Adress2*Leveransadress.Postnummer*Leveransadress.Postort*Leveransadress.Land</para>
+               <para>I Fribok Administration kan du importera enstaka kunder eller ett helt kundregister från en Excel-fil. Du sätter rubriknamn på första raden för varje kolumn i Excel-filen och Fribok Administration läser av rubriknamnet och lägger kolumnens data som finns sparad i Excel-filen i rätt fält.En kund måste finnas på en och endast en rad i Excel-filen. Du kan exportera en kundlista från Fribok Administration för att se hur Excel-filen kan se ut. Följande kolumnrubriker kan finnas i Excel-filen:*Kundnummer*Namn*Telefon1*Telefon2*Fax*EPost*Hemsida*Kontaktperson*Organisationsnummer*Bankgiro*Plusgiro*Fakturaadress.Namn*Fakturaadress.Adress1*Fakturaadress.Adress2*Fakturaadress.Postnummer*Fakturaadress.Postort*Fakturaadress.Land*Leveransadress.Namn*Leveransadress.Adress1*Leveransadress.Adress2*Leveransadress.Postnummer*Leveransadress.Postort*Leveransadress.Land</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

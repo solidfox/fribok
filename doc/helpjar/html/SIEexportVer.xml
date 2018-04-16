@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Export av verifikationer</para>
                <para/>
-               <para>Ni kan exportera enbart era verifikationer i det standardiserade SIE4-formatet. När ni exporterar verifikationer sparas projekt, resultatenheter, kontoplan och alla verifikationer för aktivt bokföringsår i er skapade SIE4 fil. Den här filen kan sedan importeras i JFS Administration eller i andra bokföringsprogram.</para>
+               <para>Du kan exportera enbart era verifikationer i det standardiserade SIE4-formatet. När du exporterar verifikationer sparas projekt, resultatenheter, kontoplan och alla verifikationer för aktivt bokföringsår i din skapade SIE4 fil. Den här filen kan sedan importeras i Fribok Administration eller i andra bokföringsprogram.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

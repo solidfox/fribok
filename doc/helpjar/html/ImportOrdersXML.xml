@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Importera ordrar (XML)</para>
                <para/>
-               <para>Ni kan importera nya ordrar i XML-format från en XML-fil som skapats från exempelvis en E-butik som stödjer vårt format för XML-filer eller från en XML-fil som skapats i våra program.De ordrar som importeras i JFS Administration lägger sig som nya ordrar efter redan registrerade ordrar. Kunder som inte finns i registret eller produkter som inte finns i registret läggs till i respektive register vid import av ordrar i XML-format.Om ni importera ordrar från en XML-fil som är skapad i exempelvis en E-butik är det viktigt att ni har synkroniserat beteckningarna för betalningsvillkor, leveransvillkor, leveranssätt, enhet och valuta så att dessa koder heter likadant i båda systemen. </para>
+               <para>Du kan importera nya ordrar i XML-format från en XML-fil som skapats från exempelvis en E-butik som stödjer vårt format för XML-filer eller från en XML-fil som skapats i våra program.De ordrar som importeras i Fribok Administration lägger sig som nya ordrar efter redan registrerade ordrar. Kunder som inte finns i registret eller produkter som inte finns i registret läggs till i respektive register vid import av ordrar i XML-format.Om du importera ordrar från en XML-fil som är skapad i exempelvis en E-butik är det viktigt att du har synkroniserat beteckningarna för betalningsvillkor, leveransvillkor, leveranssätt, enhet och valuta så att dessa koder heter likadant i båda systemen. </para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

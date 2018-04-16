@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Radera leverantörsfakturor</para>
                <para/>
-               <para>Ni tar bort en leverantörsfaktura genom att ni markerar önskad leverantörsfaktura i listan över leverantörsfakturor och trycker på knappen "Radera valda leverantörsfakturor". Ni får ett varningsmeddelande när ni trycker på knappen "Radera" och ni kan därmed ångra er innan leverantörsfakturan raderas.Ni bör inte ta bort leverantörsfakturor mitt i nummerserien eftersom nummerserien då blir bruten, vilket leder till brister i fullständighet. Ni bör inte heller ta bort leverantörsfakturor som har blivit bokförda. Ni kan däremot ta bort den sista icke bokförda leverantörsfakturan i nummerserien.</para>
+               <para>Du tar bort en leverantörsfaktura genom att du markerar önskad leverantörsfaktura i listan över leverantörsfakturor och trycker på knappen "Radera valda leverantörsfakturor". Du får ett varningsmeddelande när du trycker på knappen "Radera" och du kan därmed ångra din innan leverantörsfakturan raderas.Du bör inte ta bort leverantörsfakturor mitt i nummerserien eftersom nummerserien då blir bruten, vilket leder till brister i fullständighet. Du bör inte heller ta bort leverantörsfakturor som har blivit bokförda. Du kan däremot ta bort den sista icke bokförda leverantörsfakturan i nummerserien.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

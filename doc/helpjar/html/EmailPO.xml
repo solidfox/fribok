@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> E-postinköpsorder</para>
                <para/>
-               <para>Ni kan skicka en inköpsorder direkt till leverantören via e-post. För att kunna göra det här måste ni ha angett adressen till en "SMTP-server" för utgående e-post i företagsinställningarna och e-postadressen till leverantören. Ni kan även ange en standartext för e-postmeddelanden i företagsinställningarna. </para>
+               <para>Du kan skicka en inköpsorder direkt till leverantören via e-post. För att kunna göra det här måste du ha angett adressen till en "SMTP-server" för utgående e-post i företagsinställningarna och e-postadressen till leverantören. Du kan även ange en standartext för e-postmeddelanden i företagsinställningarna. </para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Exportera kunder (XML)</para>
                <para/>
-               <para>Ni kan exportera alla era kunder eller bara valda kunder till en XML-fil. Markera de kunder ni vill exportera och tryck på knappen "Exportera kunder" och välj "XML" om ni bara vill exportera ett urval av kunder.Exporterade kunder i XML kan importeras i JFS Administration och uppdaterar då redan registrerade kunder och lägger till nya kunder. En export av kunder kan tillexempel göras till en E-butik som stödjer import av våra filer i XML-format.</para>
+               <para>Du kan exportera alla era kunder eller bara valda kunder till en XML-fil. Markera de kunder du vill exportera och tryck på knappen "Exportera kunder" och välj "XML" om du bara vill exportera ett urval av kunder.Exporterade kunder i XML kan importeras i Fribok Administration och uppdaterar då redan registrerade kunder och lägger till nya kunder. En export av kunder kan tillexempel göras till en E-butik som stödjer import av våra filer i XML-format.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

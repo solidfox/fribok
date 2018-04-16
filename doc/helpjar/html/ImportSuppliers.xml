@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Importera leverantörer</para>
                <para/>
-               <para>I JFS Administration kan ni importera enstaka leverantörer eller ett helt leverantörsregister från en Excel-fil. Ni sätter rubriknamn på första raden för varje kolumn i Excel-filen och JFS Administration läser av rubriknamnet och lägger kolumnens data som finns sparad i Excel-filen i rätt fält i programmet.En leverantör måste finnas på en och endast en rad i Excel-filen. Ni kan exportera en leverantörslista från JFS Administration för att se hur Excel-filen kan se ut. Följande kolumnrubriker kan finnas i Excel-filen:*Leverantörsnummer*Namn*Telefon1*Telefon2*Fax*EPost*Hemsida*Kontaktperson*Organisationsnummer*Vårt kundnummer*Bankgiro*Plusgiro*Adress.Namn*Adress.Adress1*Adress.Adress2*Adress.Postnummer*Adress.Postort*Adress.Land</para>
+               <para>I Fribok Administration kan du importera enstaka leverantörer eller ett helt leverantörsregister från en Excel-fil. Du sätter rubriknamn på första raden för varje kolumn i Excel-filen och Fribok Administration läser av rubriknamnet och lägger kolumnens data som finns sparad i Excel-filen i rätt fält i programmet.En leverantör måste finnas på en och endast en rad i Excel-filen. Du kan exportera en leverantörslista från Fribok Administration för att se hur Excel-filen kan se ut. Följande kolumnrubriker kan finnas i Excel-filen:*Leverantörsnummer*Namn*Telefon1*Telefon2*Fax*EPost*Hemsida*Kontaktperson*Organisationsnummer*Vårt kundnummer*Bankgiro*Plusgiro*Adress.Namn*Adress.Adress1*Adress.Adress2*Adress.Postnummer*Adress.Postort*Adress.Land</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

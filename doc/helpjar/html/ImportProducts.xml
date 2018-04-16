@@ -13,9 +13,9 @@
                   </note>
                   <inlinegraphic fileref="../images/header.png" width="18.522cm" depth="0.53cm"/> Importera produkter (Excel)</para>
                <para/>
-               <para>I JFS Administration kan ni importera enstaka produkter eller ett helt produktregister från en Excel-fil. Ni sätter rubriknamn på första raden för varje kolumn i Excel-filen och JFS Administration läser av rubriknamnet och lägger kolumnens data som finns sparad i Excel-filen i rätt fält.En produkt måste finnas på en och endast en rad i Excel-filen. Ni kan exportera en produktlista från JFS Administration för att se hur Excel-filen kan se ut. Följande kolumnrubriker kan finnas i Excel-filen:*Produktnummer*Beskrivning*Försäljningspris (Kan inte vara blank, 0 anges i så fall)*Inköpspris (Kan inte vara blank, 0 anges i så fall)*Enhetsfrakt (Kan inte vara blank, 0 anges i så fall)*Moms*Enhet*Vikt (Kan inte vara blank, 0 anges i så fall)*Volym (Kan inte vara blank, 0 anges i så fall)*Leverantör*Leverantörens artikel nummer*Beställningspunkt (Kan inte vara blank, 0 anges i så fall)*Lagerplats</para>
+               <para>I Fribok Administration kan du importera enstaka produkter eller ett helt produktregister från en Excel-fil. Du sätter rubriknamn på första raden för varje kolumn i Excel-filen och Fribok Administration läser av rubriknamnet och lägger kolumnens data som finns sparad i Excel-filen i rätt fält.En produkt måste finnas på en och endast en rad i Excel-filen. Du kan exportera en produktlista från Fribok Administration för att se hur Excel-filen kan se ut. Följande kolumnrubriker kan finnas i Excel-filen:*Produktnummer*Beskrivning*Försäljningspris (Kan inte vara blank, 0 anges i så fall)*Inköpspris (Kan inte vara blank, 0 anges i så fall)*Enhetsfrakt (Kan inte vara blank, 0 anges i så fall)*Moms*Enhet*Vikt (Kan inte vara blank, 0 anges i så fall)*Volym (Kan inte vara blank, 0 anges i så fall)*Leverantör*Leverantörens artikel nummer*Beställningspunkt (Kan inte vara blank, 0 anges i så fall)*Lagerplats</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>

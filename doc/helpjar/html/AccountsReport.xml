@@ -15,7 +15,7 @@
                <para/>
                <para>I den här rapporten listas alla konton i vald kontoplan för aktivt bokföringsår med dess beskrivning, momskod och SRU-kod.Följande fält finns i den här rapporten:NummerKontonumret identifierar varje konto och talar även om huruvida det är ett tillgångs-, skuld-, intäkts- eller kostnadskonto.BeskrivningHär visas en text som beskriver kontot och mer specifikt anger vilka affärshändelser som skall bokföras på det här kontot.MomskodMomskoden anger vid vilken rubrik i momsrapporten saldot för respektive konto skall summeras. Det är bara vissa konton som ska finnas med i momsrapporten, det vill säga alla konton har inte en momskod.SRUAnvänds för att ett standardiserat räkenskapsschema ska kunna skapas. Räkenskapsscheman används vid deklaration och rapportering till Skatteverket. SRU-koderna är utformade av skatteverket och varje konto skall ha en SRU-kod knuten till sig.RapportkodAnvänds inte för närvarande.</para>
                <para/>
-               <para>Copyright 2006-©-JFS Bokföring</para>
+               <para>Copyright 2006-2018 - Fribok.org</para>
             </entry>
          </row></tbody></tgroup>
    </informaltable>
