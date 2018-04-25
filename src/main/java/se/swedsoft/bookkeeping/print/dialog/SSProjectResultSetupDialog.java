@@ -20,8 +20,8 @@ import java.util.List;
 
 
 /**
- * Date: 2006-feb-08
- * Time: 12:01:51
+ * $Id$
+ *
  */
 public class SSProjectResultSetupDialog extends SSDialog {
 
@@ -65,6 +65,8 @@ public class SSProjectResultSetupDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         ButtonGroup iGroup = new ButtonGroup();
 

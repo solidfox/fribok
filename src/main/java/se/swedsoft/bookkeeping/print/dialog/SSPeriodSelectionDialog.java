@@ -13,9 +13,8 @@ import java.util.Date;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-jun-02
- * Time: 15:48:53
+ * $Id$
+ *
  */
 public class SSPeriodSelectionDialog extends SSDialog {
 
@@ -48,6 +47,7 @@ public class SSPeriodSelectionDialog extends SSDialog {
             }
         });
 
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
     }
 
     /**

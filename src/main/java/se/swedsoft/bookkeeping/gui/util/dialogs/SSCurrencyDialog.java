@@ -12,9 +12,8 @@ import java.math.BigDecimal;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-mar-23
- * Time: 14:25:51
+ * $Id$
+ *
  */
 public class SSCurrencyDialog extends SSDialog {
 
@@ -47,6 +46,9 @@ public class SSCurrencyDialog extends SSDialog {
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
+
         setLocationRelativeTo(iFrame);
     }
 

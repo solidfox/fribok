@@ -10,9 +10,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-okt-05
- * Time: 09:33:49
+ * $Id$
+ *
  */
 public class SSImportReportDialog extends SSDialog {
 
@@ -41,6 +40,8 @@ public class SSImportReportDialog extends SSDialog {
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
     }
 
     /**

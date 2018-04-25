@@ -16,8 +16,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * Date: 2006-feb-15
- * Time: 09:27:34
+ * $Id$
+ *
  */
 public class SSImportAccountplanDialog extends SSDialog {
 
@@ -57,6 +57,9 @@ public class SSImportAccountplanDialog extends SSDialog {
                 setVisible(false);
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
+
         iAccountPlan.setModel(SSAccountPlanTableModel.getDropDownModel());
         iAccountPlan.setSelected(iAccountPlan.getFirst());
     }

@@ -14,9 +14,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * User: Fredrik Stigsson
- * Date: 2006-feb-07
- * Time: 10:49:10
+ * $Id$
+ *
  */
 public class SSCopyReversedVoucherDialog extends SSDialog {
 
@@ -42,6 +41,8 @@ public class SSCopyReversedVoucherDialog extends SSDialog {
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
     }
 
     /**

@@ -25,9 +25,8 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-19
- * Time: 14:28:34
+ * $Id$
+ *
  */
 public class SSInpaymentListDialog extends SSDialog {
 
@@ -62,6 +61,8 @@ public class SSInpaymentListDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iInvoice.setModel(SSInvoiceTableModel.getDropDownModel());
         iInvoice.setSearchColumns(0);

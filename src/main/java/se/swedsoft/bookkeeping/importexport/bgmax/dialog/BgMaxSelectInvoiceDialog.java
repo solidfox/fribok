@@ -18,9 +18,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-24
- * Time: 09:36:38
+ * $Id$
+ *
  */
 public class BgMaxSelectInvoiceDialog extends SSDialog {
 
@@ -77,6 +76,8 @@ public class BgMaxSelectInvoiceDialog extends SSDialog {
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
     }
 
     /**

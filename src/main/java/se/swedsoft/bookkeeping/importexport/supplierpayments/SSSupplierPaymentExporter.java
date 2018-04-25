@@ -39,7 +39,6 @@ public class SSSupplierPaymentExporter {
         List<LBinPost> iLines = getPosts(iPayments);
 
         try {
-	    // fixme! - Latin-1 cr+lf
 	    OutputStreamWriter osw = new OutputStreamWriter(
 				         new FileOutputStream(iFile),
 				         StandardCharsets.ISO_8859_1);
@@ -55,7 +54,6 @@ public class SSSupplierPaymentExporter {
                     iWriter.write(iLine.toString());
 		    iWriter.write('\r');
 		    iWriter.write('\n');
-                    //iWriter.newLine();
                 }
             }
             iWriter.flush();
@@ -75,7 +73,8 @@ public class SSSupplierPaymentExporter {
         List<LBinPost> iPosts = new LinkedList<LBinPost>();
 
         iPosts.addAll(getAvsnitt(iPayments, "SEK"));
-        iPosts.addAll(getAvsnitt(iPayments, "EUR"));
+	// fixme! - endast SEK från 20161031
+        //iPosts.addAll(getAvsnitt(iPayments, "EUR"));
 
         return iPosts;
 

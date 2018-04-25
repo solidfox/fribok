@@ -12,9 +12,8 @@ import java.util.Locale;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-maj-05
- * Time: 09:41:08
+ * $Id$
+ *
  */
 public class SSOCRInvoiceDialog extends SSDialog {
 
@@ -44,6 +43,8 @@ public class SSOCRInvoiceDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         ButtonGroup iGroup = new ButtonGroup();
 

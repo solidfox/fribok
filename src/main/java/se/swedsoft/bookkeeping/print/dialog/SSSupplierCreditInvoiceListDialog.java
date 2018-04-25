@@ -25,9 +25,8 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-19
- * Time: 14:28:34
+ * $Id$
+ *
  */
 public class SSSupplierCreditInvoiceListDialog extends SSDialog {
 
@@ -63,6 +62,8 @@ public class SSSupplierCreditInvoiceListDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iSupplier.setModel(SSSupplierTableModel.getDropDownModel());
         iSupplier.setSearchColumns(0);

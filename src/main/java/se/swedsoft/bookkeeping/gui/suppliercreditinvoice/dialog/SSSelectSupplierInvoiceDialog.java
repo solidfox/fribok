@@ -17,9 +17,8 @@ import java.awt.event.ActionListener;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-21
- * Time: 11:04:30
+ * $Id$
+ * 
  */
 public class SSSelectSupplierInvoiceDialog extends SSDialog {
 
@@ -56,6 +55,8 @@ public class SSSelectSupplierInvoiceDialog extends SSDialog {
                 setVisible(false);
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iInvoices.setModel(SSSupplierInvoiceTableModel.getDropDownModel());
     }

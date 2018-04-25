@@ -20,9 +20,8 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-25
- * Time: 10:19:35
+ * $Id$
+ *
  */
 public class SSCompanySettingsDialog extends SSDialog implements ListSelectionListener {
 
@@ -68,6 +67,8 @@ public class SSCompanySettingsDialog extends SSDialog implements ListSelectionLi
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iContainer.setLayout(new BorderLayout());
 

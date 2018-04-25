@@ -9,7 +9,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="bbdae" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iOkButton">
+      <component id="bbdae" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iCancelButton">
         <constraints>
           <xy x="156" y="3" width="100" height="25"/>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
@@ -18,12 +18,10 @@
           </grid>
         </constraints>
         <properties>
-          <enabled value="true"/>
-          <iconName value=""/>
-          <text resource-bundle="book" key="okcancelpanel.okbutton"/>
+          <text resource-bundle="book" key="okcancelpanel.cancelbutton"/>
         </properties>
       </component>
-      <component id="79c24" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iCancelButton">
+      <component id="79c24" class="se.swedsoft.bookkeeping.gui.util.components.SSButton" binding="iOkButton">
         <constraints>
           <xy x="258" y="3" width="100" height="25"/>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0">
@@ -31,7 +29,9 @@
           </grid>
         </constraints>
         <properties>
-          <text resource-bundle="book" key="okcancelpanel.cancelbutton"/>
+          <enabled value="true"/>
+          <iconName value=""/>
+          <text resource-bundle="book" key="okcancelpanel.okbutton"/>
         </properties>
       </component>
       <hspacer id="fbb58">

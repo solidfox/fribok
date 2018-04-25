@@ -26,9 +26,8 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-19
- * Time: 14:28:34
+ * $Id$
+ *
  */
 public class SSOrderListDialog extends SSDialog {
 
@@ -64,6 +63,8 @@ public class SSOrderListDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iCustomer.setModel(new SSCustomerDropdownModel());
         iCustomer.setSearchColumns(0);

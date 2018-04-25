@@ -44,6 +44,8 @@ public class SSAccountsPayableDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
     }
 
     /**

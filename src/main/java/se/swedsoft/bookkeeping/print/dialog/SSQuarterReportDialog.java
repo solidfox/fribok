@@ -15,9 +15,8 @@ import java.util.Date;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-24
- * Time: 16:16:46
+ * $Id$
+ *
  */
 public class SSQuarterReportDialog extends SSDialog {
 
@@ -47,6 +46,8 @@ public class SSQuarterReportDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iYearChooser.addChangeListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

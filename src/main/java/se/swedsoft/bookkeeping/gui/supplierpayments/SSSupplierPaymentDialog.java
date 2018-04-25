@@ -29,9 +29,8 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-28
- * Time: 11:30:33
+ * $Id$
+ *
  */
 public class SSSupplierPaymentDialog extends SSDialog {
 
@@ -163,6 +162,8 @@ public class SSSupplierPaymentDialog extends SSDialog {
                 closeDialog();
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         addWindowListener(
                 new WindowAdapter() {

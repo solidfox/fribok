@@ -22,9 +22,8 @@ import java.util.Date;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-jun-02
- * Time: 15:48:53
+ * $Id$
+ *
  */
 public class SSVATReportDialog extends SSDialog {
 
@@ -104,6 +103,8 @@ public class SSVATReportDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         SSNewCompany iCurrentCompany = SSDB.getInstance().getCurrentCompany();
 

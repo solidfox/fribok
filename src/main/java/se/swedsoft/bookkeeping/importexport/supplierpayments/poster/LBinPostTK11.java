@@ -48,7 +48,7 @@ public class LBinPostTK11 extends LBinPost {
         iLine.append(iText, 22); // 19 => 40: Text
         iLine.append("", 6); // 41 => 46: betalningsdatum
         iLine.append("", 13); // 47 => 59: Blanka
-        iLine.append(iCurrency, 3); // 60 => 62: Valuta
+        iLine.append(iCurrency, 3); // 60 => 62: Valuta fixme! - endast SEK från 20161031
         iLine.append("", 18); // 63 => 80: Blanka
     }
 

@@ -62,7 +62,6 @@ public class SSMailServerDialog extends SSDialog {
 
         setContentPane(contentPane);
         setModal(true);
-        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iButtonPanel.getOkButton().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +74,8 @@ public class SSMailServerDialog extends SSDialog {
                 onCancel();
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         authCheckbox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {

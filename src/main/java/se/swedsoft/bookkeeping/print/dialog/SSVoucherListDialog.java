@@ -24,8 +24,8 @@ import java.util.List;
 
 
 /**
- * Date: 2006-feb-17
- * Time: 15:54:16
+ * $Id$
+ *
  */
 public class SSVoucherListDialog extends SSDialog {
 
@@ -89,6 +89,8 @@ public class SSVoucherListDialog extends SSDialog {
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iRadioAll.addChangeListener(iChangeListener);
         iRadioDate.addChangeListener(iChangeListener);

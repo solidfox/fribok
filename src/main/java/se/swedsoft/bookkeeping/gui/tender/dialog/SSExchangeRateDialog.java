@@ -18,9 +18,8 @@ import java.math.RoundingMode;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-mar-28
- * Time: 17:10:03
+ * $Id$
+ *
  */
 public class SSExchangeRateDialog extends SSDialog {
 
@@ -52,6 +51,8 @@ public class SSExchangeRateDialog extends SSDialog {
 
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iExchangeRate.setValue(new BigDecimal(1));
     }

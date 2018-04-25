@@ -23,9 +23,8 @@ import java.util.List;
 
 
 /**
- * User: Fredrik Stigsson
- * Date: 2006-feb-07
- * Time: 10:49:10
+ * $Id$
+ *
  */
 public class SSAddAccountDialog extends SSDialog {
 
@@ -116,6 +115,8 @@ public class SSAddAccountDialog extends SSDialog {
                 closeDialog(JOptionPane.CANCEL_OPTION);
             }
         });
+
+        getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iInputVerifier = new SSInputVerifier();
 

@@ -18,9 +18,8 @@ import static se.swedsoft.bookkeeping.print.report.SSSaleReportPrinter.SortingMo
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-19
- * Time: 14:28:34
+ * $Id$
+ *
  */
 public class SSSaleReportDialog extends SSDialog {
 
@@ -62,6 +61,8 @@ public class SSSaleReportDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         iSort.setModel(new DefaultComboBoxModel(SortingMode.values()));
         iSort.setSelectedItem(SortingMode.Product);

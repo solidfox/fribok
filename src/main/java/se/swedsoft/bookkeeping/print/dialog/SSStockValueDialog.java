@@ -16,9 +16,8 @@ import java.util.Date;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-apr-24
- * Time: 16:16:46
+ * $Id$
+ * 
  */
 public class SSStockValueDialog extends SSDialog {
 
@@ -48,6 +47,8 @@ public class SSStockValueDialog extends SSDialog {
                 setModalResult(JOptionPane.OK_OPTION, true);
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         ChangeListener iChangeListener = new ChangeListener() {
             public void stateChanged(ChangeEvent e) {

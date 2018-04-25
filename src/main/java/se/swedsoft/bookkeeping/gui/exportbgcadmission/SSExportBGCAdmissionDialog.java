@@ -19,9 +19,8 @@ import java.util.List;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-28
- * Time: 11:30:33
+ * $Id$
+ *
  */
 public class SSExportBGCAdmissionDialog extends SSDialog {
 
@@ -72,6 +71,8 @@ public class SSExportBGCAdmissionDialog extends SSDialog {
                 closeDialog();
             }
         });
+
+	getRootPane().setDefaultButton(iButtonPanel.getOkButton());
 
         addWindowListener(new WindowAdapter() {
             @Override
