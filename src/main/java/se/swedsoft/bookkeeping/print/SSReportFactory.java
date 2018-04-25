@@ -34,8 +34,8 @@ import java.util.List;
 
 
 /**
- * Date: 2006-jan-25
- * Time: 10:38:58
+ * $Id$
+ *
  */
 public class SSReportFactory {
     private static final File PDF_FILE_DIR = new File(Path.get(Path.APP_DATA), "pdftoemail");
@@ -196,6 +196,9 @@ public class SSReportFactory {
                 iDialog.closeDialog();
             }
         });
+
+	iDialog.getRootPane().setDefaultButton(iPanel.getButtonPanel().getOkButton());
+
         iDialog.pack();
         iDialog.setLocationRelativeTo(iMainFrame);
         iDialog.setVisible();

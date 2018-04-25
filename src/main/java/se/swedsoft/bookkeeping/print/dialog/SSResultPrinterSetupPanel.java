@@ -10,8 +10,8 @@ import java.util.Date;
 
 
 /**
- * Date: 2006-jan-30
- * Time: 15:53:24
+ * $Id$
+ *
  */
 public class SSResultPrinterSetupPanel {
 
@@ -121,6 +121,10 @@ public class SSResultPrinterSetupPanel {
      */
     public void addOkActionListener(ActionListener iListener) {
         iButtonPanel.addOkActionListener(iListener);
+    }
+
+    public SSButtonPanel getButtonPanel() {
+	return iButtonPanel;
     }
 
     @Override
