@@ -136,7 +136,7 @@ public class SSMailServer implements Serializable {
         return address;
     }
 
-    static final long serialVersionUID = 2L;
+    static final long serialVersionUID = 1L;
 
     @Override
     public String toString() {

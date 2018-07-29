@@ -97,7 +97,11 @@ public class SSMailServerDialog extends SSDialog {
 
         addressText.setText(server.getURI().getHost());
         authCheckbox.setSelected(server.isAuth());
-        connectionSecurityCombobox.setSelectedIndex(server.getConnectionSecurity().getIndex());
+	try {
+	    connectionSecurityCombobox.setSelectedIndex(server.getConnectionSecurity().getIndex());
+	} catch (NullPointerException ex) { 
+	    System.out.println("Just missing new connection security values of dialogue. Nothing to worry about.");
+	}
         usernameText.setText(server.getUsername());
         passwordField.setText(SSMail.crypter.decrypt(server.getPassword()));
         portField.setText(Integer.toString(server.getURI().getPort()));
