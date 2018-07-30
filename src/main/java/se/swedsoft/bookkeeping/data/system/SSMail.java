@@ -111,7 +111,7 @@ public class SSMail {
         message.setFrom(new InternetAddress(mail.getFrom()));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(mail.getTo()));
 
-	if (mail.getBcc() != null) {
+	if (mail.getBcc() != null && !"".equals(mail.getBcc())) {
 	    for (String bcc : Arrays.asList(mail.getBcc().split(",[ ]*"))) {
 		message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bcc));
 	    }
