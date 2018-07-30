@@ -34,6 +34,8 @@ public class SSMailServerDialog extends SSDialog {
     private JPanel contentPane;
     private JTextField addressText;
     private JLabel addressLabel;
+    private JTextField bccAddressesText;
+    private JLabel bccAddressesLabel;
     private JCheckBox authCheckbox;
     private JLabel connectionSecurityLabel;
     private JComboBox connectionSecurityCombobox;
@@ -96,6 +98,7 @@ public class SSMailServerDialog extends SSDialog {
     private void loadFieldsFromServer(SSMailServer server) {
 
         addressText.setText(server.getURI().getHost());
+        bccAddressesText.setText(server.getBccAddresses());
         authCheckbox.setSelected(server.isAuth());
 	try {
 	    connectionSecurityCombobox.setSelectedIndex(server.getConnectionSecurity().getIndex());
@@ -127,7 +130,7 @@ public class SSMailServerDialog extends SSDialog {
         }
 
         return SSMailServer.makeIfValid("NONAME", addressText.getText(), port,
-                authCheckbox.isSelected(), (ConnectionSecurity) connectionSecurityCombobox.getSelectedItem(), usernameText.getText(),
+                bccAddressesText.getText(), authCheckbox.isSelected(), (ConnectionSecurity) connectionSecurityCombobox.getSelectedItem(), usernameText.getText(),
                 SSMail.crypter.encrypt(String.valueOf(passwordField.getPassword())));
     }
 
@@ -218,6 +221,7 @@ public class SSMailServerDialog extends SSDialog {
         sb.append("se.swedsoft.bookkeeping.gui.company.panel.SSMailServerDialog");
         sb.append("{addressLabel=").append(addressLabel);
         sb.append(", addressText=").append(addressText);
+        sb.append(", bccAddressesText=").append(bccAddressesText);
         sb.append(", authCheckbox=").append(authCheckbox);
         sb.append(", connectionSecurityLabel=").append(connectionSecurityLabel);
         sb.append(", connectionSecurityCombobox=").append(connectionSecurityCombobox);

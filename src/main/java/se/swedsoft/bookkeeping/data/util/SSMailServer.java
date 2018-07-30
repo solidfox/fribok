@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
  * $Id$
  * 
  * @author jensli
+ * @author ljo
  */
 public class SSMailServer implements Serializable {
     private final String name;
@@ -25,6 +26,8 @@ public class SSMailServer implements Serializable {
     private final boolean isAuth; // Should authorization be used when connecting to the mail server?
     private final ConnectionSecurity connectionSecurity; // Should SSL or STARTTLS be used
 
+    private final String bccAddresses;
+
     /**
      * Creates a new SSMailServer if arguments are valid, else throws MailServerException
      * with resourceName set to something that can identify the error so that an appropriate
@@ -32,6 +35,7 @@ public class SSMailServer implements Serializable {
      * @param name
      * @param host
      * @param port
+     * @param bccAddresses
      * @param isAuth
      * @param connectionSecurity
      * @param username
@@ -40,7 +44,8 @@ public class SSMailServer implements Serializable {
      * @throws SSMailServerException
      */
     public static SSMailServer makeIfValid(String name, String host,
-            int port, boolean isAuth, ConnectionSecurity connectionSecurity,
+            int port, String bccAddresses, boolean isAuth,
+	    ConnectionSecurity connectionSecurity,
 	    String username, String password)
         throws SSMailServerException {
 
@@ -60,10 +65,10 @@ public class SSMailServer implements Serializable {
             onError("mailserver.parts_error");
         }
 
-        return new SSMailServer(name, tempAddress, isAuth, connectionSecurity, username, password);
+        return new SSMailServer(name, tempAddress, bccAddresses, isAuth, connectionSecurity, username, password);
     }
 
-    public SSMailServer(String name, URI address, boolean isAuth, ConnectionSecurity connectionSecurity, String username, String password) {
+    public SSMailServer(String name, URI address, String bccAddresses, boolean isAuth, ConnectionSecurity connectionSecurity, String username, String password) {
 
         SSUtil.verifyNotNull("argument to SSMailServer constructor", name, address);
 
@@ -78,6 +83,7 @@ public class SSMailServer implements Serializable {
         this.username = username;
         this.password = password;
         this.address = address;
+        this.bccAddresses = bccAddresses;
     }
 
     public static void onError(String msg) throws SSMailServerException {
@@ -112,6 +118,10 @@ public class SSMailServer implements Serializable {
         return password;
     }
 
+    public String getBccAddresses() {
+        return bccAddresses;
+    }
+
     public boolean isAuth() {
         return isAuth;
     }
@@ -144,6 +154,7 @@ public class SSMailServer implements Serializable {
 
         sb.append("se.swedsoft.bookkeeping.data.util.SSMailServer");
         sb.append("{address=").append(address);
+        sb.append("{bccAddresses=").append(bccAddresses);
         sb.append(", isAuth=").append(isAuth);
         sb.append(", connectionSecurity=").append(connectionSecurity);
         sb.append(", name='").append(name).append('\'');

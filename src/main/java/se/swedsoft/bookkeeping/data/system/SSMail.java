@@ -22,7 +22,7 @@ import javax.mail.internet.*;
 import javax.swing.*;
 import java.io.File;
 import java.util.Properties;
-
+import java.util.Arrays;
 
 /**
  * Utility methods for sending mail
@@ -70,7 +70,7 @@ public class SSMail {
 
         SSNewCompany company = SSDB.getInstance().getCurrentCompany();
 
-        SSMailMessage message = new SSMailMessage(company.getEMail(), pTo, pSubject,
+        SSMailMessage message = new SSMailMessage(company.getEMail(), pTo, company.getMailServer().getBccAddresses(), pSubject,
                 company.getStandardText(SSStandardText.Email), new File(PDF_FILE_DIR, pFileName).getPath());
 
         // Send message
@@ -110,6 +110,12 @@ public class SSMail {
 
         message.setFrom(new InternetAddress(mail.getFrom()));
         message.addRecipient(Message.RecipientType.TO, new InternetAddress(mail.getTo()));
+
+	if (mail.getBcc() != null) {
+	    for (String bcc : Arrays.asList(mail.getBcc().split(",[ ]*"))) {
+		message.addRecipient(Message.RecipientType.BCC, new InternetAddress(bcc));
+	    }
+	}
         message.setSubject(mail.getSubject());
         return message;
     }
