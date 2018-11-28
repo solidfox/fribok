@@ -2,9 +2,9 @@
 
 <vatcodes>
 
-    <vatcode name="MP1"      description="Momspliktig omsättning inom Sverige, 25%"/>
-    <vatcode name="MP2"      description="Momspliktig omsättning inom Sverige, 12%"/>
-    <vatcode name="MP3"      description="Momspliktig omsättning inom Sverige, 6%"/>
+    <vatcode name="MP1"      description="Momspliktig omsättning inom Sverige, 25 %"/>
+    <vatcode name="MP2"      description="Momspliktig omsättning inom Sverige, 12 %"/>
+    <vatcode name="MP3"      description="Momspliktig omsättning inom Sverige,  6 %"/>
     <vatcode name="MF"       description="Övrig momsfri försäljning"/>
     <vatcode name="MPFF"     description="Hyresinkomster vid  frivillig skattskyldighet"/>
     <vatcode name="MBBU"     description="Beskattningsunderlag för marginalbeskattad omsättning"/>
@@ -16,9 +16,13 @@
     <vatcode name="3VEU"     description="Mellanmans inköp av varor vid trepartshandel"/>
     <vatcode name="UVL"      description="Utgående moms för verksamhetslokaler"/>
     <vatcode name="IVL"      description="Ingående moms för verksamhetslokaler"/>
-    <vatcode name="U1"       description="Utgående moms, 25% på momspliktig försäljning eller uttag"/>
-    <vatcode name="U2"       description="Utgående moms, 12% på momspliktig försäljning eller uttag"/>
-    <vatcode name="U3"       description="Utgående moms, 6% på momspliktig försäljning eller uttag"/>
+    <vatcode name="U1"       description="Utgående moms, 25 % på momspliktig försäljning eller uttag"/>
+    <vatcode name="U2"       description="Utgående moms, 12 % på momspliktig försäljning eller uttag"/>
+    <vatcode name="U3"       description="Utgående moms,  6 % på momspliktig försäljning eller uttag"/>
+    <vatcode name="IBU"      description="Beskattningsunderlag vid import"/>
+    <vatcode name="UI1"      description="Utgående moms import av varor 25 %"/>
+    <vatcode name="UI2"      description="Utgående moms import av varor 12 %"/>
+    <vatcode name="UI3"      description="Utgående moms import av varor  6 %"/>
     <vatcode name="UEU"      description="Utgående moms på varuförvärv från EU-land"/>
     <vatcode name="UTFU"     description="Utgående moms på tjänsteförvärv från EU-land"/>
     <vatcode name="I"        description="Avdragsgill ingående moms"/>
@@ -27,17 +31,17 @@
     <vatcode name="R2"       description="Redovisningskonto, belopp att betala"/>
     <vatcode name="A"        description="Konto för öresavrundning"/>
 
-    <vatcode name="MU1"        description="Momspliktiga uttag av varor eller tjänster, 25%"/>
-    <vatcode name="MU2"        description="Momspliktiga uttag av varor eller tjänster, 12%"/>
-    <vatcode name="MU3"        description="Momspliktiga uttag av varor eller tjänster, 6%"/>
+    <vatcode name="MU1"        description="Momspliktiga uttag av varor eller tjänster, 25 %"/>
+    <vatcode name="MU2"        description="Momspliktiga uttag av varor eller tjänster, 12 %"/>
+    <vatcode name="MU3"        description="Momspliktiga uttag av varor eller tjänster,  6 %"/>
 
     <vatcode name="TFFU"        description="Inköp av tjänster från land utanför EG"/>
     <vatcode name="IVIS"        description="Inköp av varor i Sverige"/>
     <vatcode name="ITIS"        description="Inköp av tjänster i Sverige"/>
 
-    <vatcode name="U1MI"        description="Utgående moms, 25% på momspliktiga inköp"/>
-    <vatcode name="U2MI"        description="Utgående moms, 12% på momspliktiga inköp"/>
-    <vatcode name="U3MI"        description="Utgående moms, 6% på momspliktiga inköp"/>
+    <vatcode name="U1MI"        description="Utgående moms, 25 % på momspliktiga inköp"/>
+    <vatcode name="U2MI"        description="Utgående moms, 12 % på momspliktiga inköp"/>
+    <vatcode name="U3MI"        description="Utgående moms,  6 % på momspliktiga inköp"/>
     <vatcode name="3FEU"        description="Mellanmans försäljning av varor vid trepartshandel"/>
     <vatcode name="FTEU"        description="Försäjning av tjänster när köparen är skattskyldig i EG"/>
     <vatcode name="OMSS"        description="Försäljning när köparen är skattskyldig i Sverige"/>
@@ -45,6 +49,3 @@
 
 
 </vatcodes>
-
-
-

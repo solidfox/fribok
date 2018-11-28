@@ -18,8 +18,7 @@ import java.util.Map;
 
 
 /**
- * Date: 2006-jan-26
- * Time: 08:40:41
+ * $Id$
  */
 public class SSVATUtil {
     private SSVATUtil() {}
@@ -30,8 +29,9 @@ public class SSVATUtil {
      * @return The result
      */
     public static BigDecimal getVatToPayOrRetrieve(Map<SSAccount, BigDecimal> creditMinusDebetSum) {
+	// Lagt till momskoder för importmoms: UI1 UI2 UI3
         return SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "U1", "UVL",
-                "U2", "U3", "UEU", "UTFU", "I", "IVL");
+                "U2", "U3", "UEU", "UTFU", "I", "IVL", "UI1", "UI2", "UI3");
     }
 
     /**
@@ -71,12 +71,12 @@ public class SSVATUtil {
         DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 
         String iDescription = String.format(
-                SSBundle.getBundle().getString("vatreport2007.voucherdescription"),
+                SSBundle.getBundle().getString("vatreport2015.voucherdescription"),
                 iFormat.format(iDateFrom), iFormat.format(iDateTo));
-
+	// Lagt till momskoder för importmoms: UI1 UI2 UI3
         List<SSAccount> iAccounts = SSAccountMath.getAccountsByVATCode(
                 SSDB.getInstance().getAccounts(), "U1", "U2", "U3", "UVL", "UEU", "UTFU",
-                "I", "IVL");
+                "I", "IVL", "UI1", "UI2", "UI3");
         List<SSVoucher> iVouchers = SSVoucherMath.getVouchers(
                 SSDB.getInstance().getVouchers(), iDateFrom, iDateTo);
 

@@ -925,7 +925,7 @@ public class SSMainMenu {
 
         // Momsrapport 2007
         // *****************************
-        iMenuLoader.addActionListener("reportmenu.vatreport2007", new ActionListener() {
+        /* iMenuLoader.addActionListener("reportmenu.vatreport2007", new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();
                 if (!SSPostLock.applyLock(lockString)) {
@@ -942,6 +942,28 @@ public class SSMainMenu {
                 }
 
                 SSReportFactory.VATReport2007(iMainFrame, bundle, iAccountingYear);
+            }
+        }); */
+
+        // Momsrapport 2015
+        // *****************************
+        iMenuLoader.addActionListener("reportmenu.vatreport2015", new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                final String lockString = "voucher"+SSDB.getInstance().getCurrentCompany().getId()+SSDB.getInstance().getCurrentYear().getId();
+                if (!SSPostLock.applyLock(lockString)) {
+                    new SSErrorDialog( iMainFrame, "voucheriscreated");
+                    return;
+                }
+                SSNewAccountingYear iAccountingYear = SSDB.getInstance().getCurrentYear();
+
+                // Check so the yeardata isn't null
+                if (iAccountingYear == null) {
+                    SSPostLock.removeLock(lockString);
+                    SSNewAccountingYear.openWarningDialogNoYearData(iMainFrame);
+                    return;
+                }
+
+                SSReportFactory.VATReport2015(iMainFrame, bundle, iAccountingYear);
             }
         });
 

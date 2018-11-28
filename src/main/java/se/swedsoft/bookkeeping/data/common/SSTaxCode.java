@@ -10,9 +10,8 @@ import java.text.NumberFormat;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-mar-28
- * Time: 11:12:04
+ * $Id$
+ *
  */
 public enum SSTaxCode implements SSTableSearchable {
     TAXRATE_0("0"), TAXRATE_1("1"), TAXRATE_2("2"), TAXRATE_3("3");
@@ -54,7 +53,7 @@ public enum SSTaxCode implements SSTableSearchable {
             }
 
             if (iValue != null) {
-                return iFormat.format(iValue) + '%';
+                return iFormat.format(iValue) + ' %';
             }
         }
 
@@ -69,7 +68,7 @@ public enum SSTaxCode implements SSTableSearchable {
     public static SSTaxCode decode(String iValue) {
         // Append a % if not
         if (!iValue.endsWith("%")) {
-            iValue = iValue + '%';
+            iValue = iValue + ' %';
         }
 
         if (iValue.equals(TAXRATE_1.toRenderString())) {
@@ -88,7 +87,7 @@ public enum SSTaxCode implements SSTableSearchable {
     public static SSTaxCode decode2(String iValue) {
         // Append a % if not
         if (!iValue.endsWith("%")) {
-            iValue = iValue + '%';
+            iValue = iValue + ' %';
         }
 
         if (iValue.equals(TAXRATE_0.toRenderString())) {

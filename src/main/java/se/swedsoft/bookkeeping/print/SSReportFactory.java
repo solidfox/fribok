@@ -542,6 +542,82 @@ public class SSReportFactory {
     /**
      *
      * @param iMainFrame
+     * @param bundle
+     * @param iAccountingYear
+     */
+    public static void VATReport2015(final SSMainFrame iMainFrame, final ResourceBundle bundle, final SSNewAccountingYear iAccountingYear) {
+        final String lockString = "voucher"
+                + SSDB.getInstance().getCurrentCompany().getId()
+                + SSDB.getInstance().getCurrentYear().getId();
+        SSVATReportDialog iDialog = new SSVATReportDialog(iMainFrame);
+
+        iDialog.setLocationRelativeTo(iMainFrame);
+        int iResponce = iDialog.showDialog();
+
+        if (iResponce != JOptionPane.OK_OPTION) {
+            SSPostLock.removeLock(lockString);
+            return;
+        }
+
+        final Date iFrom = iDialog.getFrom();
+        final Date iTo = iDialog.getTo();
+
+        // Get the R1, R2 and A accounts
+        final SSAccount iAccountR1 = iDialog.getAccountR1();
+        final SSAccount iAccountR2 = iDialog.getAccountR2();
+        final SSAccount iAccountA = iDialog.getAccountA();
+
+        SSProgressDialog.runProgress(iMainFrame,
+                new Runnable() {
+            public void run() {
+                SSMultiPrinter iPrinter = new SSMultiPrinter();
+
+                SSVATReport2015Printer   iPrinter1 = new SSVATReport2015Printer(
+                        iAccountingYear, iFrom, iTo);
+                SSVATControl2015Printer  iPrinter2 = new SSVATControl2015Printer(
+                        iAccountingYear, iFrom, iTo);
+
+                final SSVoucher iVoucher = iPrinter2.getVoucher(iAccountR1, iAccountR2,
+                        iAccountA);
+
+                SSVoucherPrinter  iPrinter3 = new SSVoucherPrinter(iVoucher,
+                        bundle.getString("vatbasisreport.title"), iAccountR1, iAccountR2,
+                        iAccountA);
+
+                iPrinter.addReport(iPrinter1);
+                iPrinter.addReport(iPrinter2);
+                iPrinter.addReport(iPrinter3);
+
+                iPrinter.preview(iMainFrame,
+                        new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        DateFormat iFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+                        SSQueryDialog iDialog = new SSQueryDialog(iMainFrame,
+                                SSBundle.getBundle(), "vatcontrol2015.voucherdialog",
+                                iFormat.format(iFrom), iFormat.format(iTo),
+                                iVoucher.getNumber());
+
+                        int iResponce = iDialog.getResponce();
+
+                        if (iResponce != JOptionPane.OK_OPTION) {
+                            SSPostLock.removeLock(lockString);
+                            return;
+                        }
+                        SSDB.getInstance().addVoucher(iVoucher, false);
+
+                        if (SSVoucherFrame.getInstance() != null) {
+                            SSVoucherFrame.getInstance().getModel().fireTableDataChanged();
+                        }
+                        SSPostLock.removeLock(lockString);
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     *
+     * @param iMainFrame
      */
     public static void SimplestatementReport(final SSMainFrame iMainFrame) {
         SSPeriodSelectionDialog iDialog = new SSPeriodSelectionDialog(iMainFrame,

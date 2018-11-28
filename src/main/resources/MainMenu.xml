@@ -147,7 +147,7 @@
                 <MenuItem Action="reportmenu.resultunitresult"          Bundle="reportmenu.resultunitresult"    Dependent="Year"/>
                 <MenuItem Action="reportmenu.budget"                    Bundle="reportmenu.budget"              Dependent="Year"/>
                 <Separator/>
-                <MenuItem Action="reportmenu.vatreport2007"             Bundle="reportmenu.vatreport2007"       Dependent="Year"/>
+                <MenuItem Action="reportmenu.vatreport2015"             Bundle="reportmenu.vatreport2015"       Dependent="Year"/>
                 <MenuItem Action="reportmenu.accountdiagram"            Bundle="reportmenu.accountdiagram"      Dependent="Year"/>
                 <MenuItem Action="reportmenu.simplestatement"           Bundle="reportmenu.simplestatement"     Dependent="Year"/>
 		<Separator/>

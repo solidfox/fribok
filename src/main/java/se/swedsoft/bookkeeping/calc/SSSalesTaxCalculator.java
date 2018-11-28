@@ -68,6 +68,7 @@ public class SSSalesTaxCalculator {
 
         for (SSVATReportGroup iGroup : iReportGroups) {
             BigDecimal iSum = null;
+	    // fixme! - Lägga till momskoderna för importmoms - kod (ruta): IBU (50), UI1 (60) , UI2 (61) , UI3 (62)
 
             switch (iGroup.getGroup2()) {
 
@@ -158,6 +159,22 @@ public class SSSalesTaxCalculator {
             case 37:
                 iSum = SSAccountMath.getSumByVATCodeForAccounts(debetMinusCreditSum, "I",
                         "IVL");
+                break;
+
+            case 50:
+                iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "IBU");
+                break;
+
+            case 60:
+                iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "UI1");
+                break;
+
+            case 61:
+                iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "UI2");
+                break;
+
+            case 62:
+                iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "UI3");
                 break;
             }
             iGroup.setSum(iSum);

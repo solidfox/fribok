@@ -9,25 +9,45 @@ import java.util.List;
 
 
 /**
- * Date: 2006-mar-28
- * Time: 14:03:11
+ * $Id$
+ *
  */
 public enum SSDefaultAccount implements Serializable {
     // Kundfodran
-    CustomerClaim(1510), // Inbetalning
-    InPayment(1930), // Utbetalning
-    OutPayment(1930), // Kontant
-    Cash(1910), // Leverantörsskuld
-    SupplierDebt(2440), // Moms 1
-    Tax1(2611), // Moms 2
-    Tax2(2621), // Moms 3
-    Tax3(2631), // Försäljning
-    Sales(3051), // Inköp
-    Purchases(4010), // Valutakursvinst
-    CurrencyProfit(3960), // Valutakursförlust
-    CurrencyLoss(7960), // Öresavrundning
-    Rounding(3740), // Ränteintäkt
-    InterestProfit(8300), // Ingående moms
+    CustomerClaim(1510), 
+    // Inbetalning
+    InPayment(1930),
+    // Utbetalning
+    OutPayment(1930),
+    // Kontant
+    Cash(1910),
+    // Leverantörsskuld
+    SupplierDebt(2440),
+    // Moms 1
+    Tax1(2611),
+    // Moms 2
+    Tax2(2621),
+    // Moms 3
+    Tax3(2631),
+    // Importmoms 1
+    //ImportTax1(2616),
+    // Importmoms 2
+    //ImportTax2(2626),
+    // Importmoms 3
+    //ImportTax3(2636),
+    // Försäljning
+    Sales(3051),
+    // Inköp
+    Purchases(4010),
+    // Valutakursvinst
+    CurrencyProfit(3960),
+    // Valutakursförlust
+    CurrencyLoss(7960),
+    // Öresavrundning
+    Rounding(3740),
+    // Ränteintäkt
+    InterestProfit(8300),
+    // Ingående moms
     IncommingTax(2640);
     private static final long serialVersionUID = 6209981489711135940L;
 
