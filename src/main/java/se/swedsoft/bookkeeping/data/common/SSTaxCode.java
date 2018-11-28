@@ -53,7 +53,7 @@ public enum SSTaxCode implements SSTableSearchable {
             }
 
             if (iValue != null) {
-                return iFormat.format(iValue) + ' %';
+                return iFormat.format(iValue) + " %";
             }
         }
 
@@ -68,7 +68,7 @@ public enum SSTaxCode implements SSTableSearchable {
     public static SSTaxCode decode(String iValue) {
         // Append a % if not
         if (!iValue.endsWith("%")) {
-            iValue = iValue + ' %';
+            iValue = iValue + " %";
         }
 
         if (iValue.equals(TAXRATE_1.toRenderString())) {
@@ -87,7 +87,7 @@ public enum SSTaxCode implements SSTableSearchable {
     public static SSTaxCode decode2(String iValue) {
         // Append a % if not
         if (!iValue.endsWith("%")) {
-            iValue = iValue + ' %';
+            iValue = iValue + " %";
         }
 
         if (iValue.equals(TAXRATE_0.toRenderString())) {
