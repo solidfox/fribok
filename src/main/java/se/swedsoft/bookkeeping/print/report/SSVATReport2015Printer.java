@@ -80,7 +80,13 @@ public class SSVATReport2015Printer extends SSPrinter {
         // Get all vouchers
         List<SSVoucher> iVouchers = SSVoucherMath.getVouchers(
                 iAccountingYear.getVouchers(), iDateFrom, iDateTo);
-	List<SSVoucher> iVouchers2 = iVouchers.subList(iStartVoucher, iVouchers.size());
+	final int iStartVoucherIndex = iStartVoucher - 1;
+	List<SSVoucher> iVouchers2 = iVouchers; 
+	if (iStartVoucherIndex >= 0 && iStartVoucherIndex < iVouchers.size()) {
+	    iVouchers2 = iVouchers.subList(iStartVoucherIndex, iVouchers.size());
+	} else {
+	    System.err.println("Använder hela periodens verifikat då börja-med-verifikat ligger utanför giltigt intervall.");
+	}
         iCreditMinusDebetSum = SSVoucherMath.getCreditMinusDebetSum(iVouchers2);
         iDebetMinusCreditSum = SSVoucherMath.getDebetMinusCreditSum(iVouchers2);
 
