@@ -39,6 +39,8 @@ public class SSVATReportDialog extends SSDialog {
     private SSTableComboBox<SSAccount> iAccountR1;
     private SSTableComboBox<SSAccount> iAccountR2;
 
+    private JLabel startVoucherLabel;
+    private JTextField txtStartVoucher;
     private JTextField txtAccountR2;
     private JTextField txtAccountR1;
     private JTextField txtAccountA;
@@ -51,6 +53,8 @@ public class SSVATReportDialog extends SSDialog {
         super(iMainFrame, SSBundle.getBundle().getString("vatreport2007.dialog.title"));
 
         setPanel(iPanel);
+
+        setStartVoucher(1);
 
         iAccountA.setModel(SSAccountTableModel.getDropDownModel());
         iAccountA.setSearchColumns(0);
@@ -163,6 +167,28 @@ public class SSVATReportDialog extends SSDialog {
      *
      * @return
      */
+    public int getStartVoucher() {
+	int startVoucher = 1;
+        try {
+            startVoucher = Integer.parseInt(txtStartVoucher.getText());
+        } catch (NumberFormatException e) {
+	    System.err.println("Kunde inte hantera som siffra: "  + txtStartVoucher.getText());
+        }
+        return startVoucher;
+    }
+
+    /**
+     *
+     * @param from
+     */
+    public void setStartVoucher(final int startVoucher) {
+        txtStartVoucher.setText(Integer.toString(startVoucher));
+    }
+
+    /**
+     *
+     * @return
+     */
     public SSAccount getAccountR1() {
         return iAccountR1.getSelected();
     }
@@ -195,6 +221,7 @@ public class SSVATReportDialog extends SSDialog {
         sb.append(", iFrom=").append(iFrom);
         sb.append(", iPanel=").append(iPanel);
         sb.append(", iTo=").append(iTo);
+        sb.append(", txtStartVoucher=").append(txtStartVoucher);
         sb.append(", txtAccountA=").append(txtAccountA);
         sb.append(", txtAccountR1=").append(txtAccountR1);
         sb.append(", txtAccountR2=").append(txtAccountR2);

@@ -562,6 +562,8 @@ public class SSReportFactory {
         final Date iFrom = iDialog.getFrom();
         final Date iTo = iDialog.getTo();
 
+	final int iStartVoucher = iDialog.getStartVoucher();
+
         // Get the R1, R2 and A accounts
         final SSAccount iAccountR1 = iDialog.getAccountR1();
         final SSAccount iAccountR2 = iDialog.getAccountR2();
@@ -573,9 +575,9 @@ public class SSReportFactory {
                 SSMultiPrinter iPrinter = new SSMultiPrinter();
 
                 SSVATReport2015Printer   iPrinter1 = new SSVATReport2015Printer(
-                        iAccountingYear, iFrom, iTo);
+                        iAccountingYear, iFrom, iTo, iStartVoucher);
                 SSVATControl2015Printer  iPrinter2 = new SSVATControl2015Printer(
-                        iAccountingYear, iFrom, iTo);
+                        iAccountingYear, iFrom, iTo, iStartVoucher);
 
                 final SSVoucher iVoucher = iPrinter2.getVoucher(iAccountR1, iAccountR2,
                         iAccountA);

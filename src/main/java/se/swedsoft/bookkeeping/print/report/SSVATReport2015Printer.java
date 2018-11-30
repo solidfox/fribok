@@ -28,6 +28,8 @@ public class SSVATReport2015Printer extends SSPrinter {
 
     private Date iDateTo;
 
+    private int iStartVoucher;
+
     private SSVATReportRowPrinter iPrinter;
 
     private SSDefaultJasperDataSource iDataSource;
@@ -45,11 +47,13 @@ public class SSVATReport2015Printer extends SSPrinter {
      * @param iAccountingYear
      * @param iDateFrom
      * @param iDateTo
+     * @param iStartVoucher
      */
-    public SSVATReport2015Printer(SSNewAccountingYear iAccountingYear, Date iDateFrom, Date iDateTo) {
+    public SSVATReport2015Printer(SSNewAccountingYear iAccountingYear, Date iDateFrom, Date iDateTo, int iStartVoucher) {
         this.iAccountingYear = iAccountingYear;
         this.iDateFrom = iDateFrom;
         this.iDateTo = iDateTo;
+        this.iStartVoucher = iStartVoucher;
         iAccounts = iAccountingYear.getAccounts();
 
         setPageHeader("header_period.jrxml");
@@ -76,9 +80,9 @@ public class SSVATReport2015Printer extends SSPrinter {
         // Get all vouchers
         List<SSVoucher> iVouchers = SSVoucherMath.getVouchers(
                 iAccountingYear.getVouchers(), iDateFrom, iDateTo);
-
-        iCreditMinusDebetSum = SSVoucherMath.getCreditMinusDebetSum(iVouchers);
-        iDebetMinusCreditSum = SSVoucherMath.getDebetMinusCreditSum(iVouchers);
+	List<SSVoucher> iVouchers2 = iVouchers.subList(iStartVoucher, iVouchers.size());
+        iCreditMinusDebetSum = SSVoucherMath.getCreditMinusDebetSum(iVouchers2);
+        iDebetMinusCreditSum = SSVoucherMath.getDebetMinusCreditSum(iVouchers2);
 
         iAccountsByVatCode = new HashMap<String, List<SSAccount>>();
 
