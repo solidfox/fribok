@@ -197,7 +197,13 @@ public class SSVATControl2015Printer extends SSPrinter {
             return getSumForAccounts(iCreditMinusDebetSum, "MP3", "MU3");
 
         case 4:
-            return getSumForAccounts(iCreditMinusDebetSum, "IBU");
+            return getSumForAccounts(iCreditMinusDebetSum, "IBU", "IBU1");
+
+        case 5:
+            return getSumForAccounts(iCreditMinusDebetSum, "IBU2");
+
+        case 6:
+            return getSumForAccounts(iCreditMinusDebetSum, "IBU3");
         }
 
         return new BigDecimal(0);
@@ -221,9 +227,14 @@ public class SSVATControl2015Printer extends SSPrinter {
         case 3:
             return iValue.multiply(new BigDecimal("0.06"));
 
-	// fixme! - vilken siffra ska användas för importmomsen då den är blandad?
         case 4:
             return iValue.multiply(new BigDecimal("0.25"));
+
+        case 5:
+            return iValue.multiply(new BigDecimal("0.12"));
+
+        case 6:
+            return iValue.multiply(new BigDecimal("0.06"));
         }
 
         return new BigDecimal(0);
@@ -247,7 +258,13 @@ public class SSVATControl2015Printer extends SSPrinter {
             return getSumForAccounts(iCreditMinusDebetSum, "U3");
 
         case 4:
-            return getSumForAccounts(iCreditMinusDebetSum, "UI1", "UI2", "UI3");
+            return getSumForAccounts(iCreditMinusDebetSum, "UI1");
+
+        case 5:
+            return getSumForAccounts(iCreditMinusDebetSum, "UI2");
+
+        case 6:
+            return getSumForAccounts(iCreditMinusDebetSum, "UI3");
         }
 
         return new BigDecimal(0);
@@ -309,6 +326,8 @@ public class SSVATControl2015Printer extends SSPrinter {
         iModel.add(2);
         iModel.add(3);
 	iModel.add(4);
+	iModel.add(5);
+	iModel.add(6);
 
         return iModel;
     }

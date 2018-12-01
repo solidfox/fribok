@@ -162,7 +162,7 @@ public class SSSalesTaxCalculator {
                 break;
 
             case 50:
-                iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "IBU");
+                iSum = SSAccountMath.getSumByVATCodeForAccounts(creditMinusDebetSum, "IBU", "IBU1", "IBU2", "IBU3");
                 break;
 
             case 60:

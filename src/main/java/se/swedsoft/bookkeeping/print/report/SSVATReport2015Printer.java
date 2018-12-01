@@ -197,7 +197,7 @@ public class SSVATReport2015Printer extends SSPrinter {
 
 	// H. Importmoms
         case 50:
-            return "IBU";
+            return "IBU, IBU1, IBU2, IBU3";
 
 	// I. Utgående moms på import i ruta 50 
         case 60:
@@ -322,7 +322,7 @@ public class SSVATReport2015Printer extends SSPrinter {
 
 	// H. Importmoms
         case 50:
-            return getSumForAccounts(iCreditMinusDebetSum, "IBU");
+            return getSumForAccounts(iCreditMinusDebetSum, "IBU", "IBU1", "IBU2", "IBU3");
 
 	// I. Utgående moms på import i ruta 50 
         case 60:

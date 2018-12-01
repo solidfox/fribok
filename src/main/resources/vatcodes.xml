@@ -20,6 +20,9 @@
     <vatcode name="U2"       description="Utgående moms, 12 % på momspliktig försäljning eller uttag"/>
     <vatcode name="U3"       description="Utgående moms,  6 % på momspliktig försäljning eller uttag"/>
     <vatcode name="IBU"      description="Beskattningsunderlag vid import"/>
+    <vatcode name="IBU1"      description="Beskattningsunderlag vid import, 25 % moms"/>
+    <vatcode name="IBU2"      description="Beskattningsunderlag vid import, 12 % moms"/>
+    <vatcode name="IBU3"      description="Beskattningsunderlag vid import,  6 % moms"/>
     <vatcode name="UI1"      description="Utgående moms import av varor 25 %"/>
     <vatcode name="UI2"      description="Utgående moms import av varor 12 %"/>
     <vatcode name="UI3"      description="Utgående moms import av varor  6 %"/>
