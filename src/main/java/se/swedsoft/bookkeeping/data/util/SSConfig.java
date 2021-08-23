@@ -27,7 +27,7 @@ public class SSConfig implements Serializable {
      */
     public static SSConfig getInstance() {
         if (cInstance == null) {
-            if (CONFIG_FILE.exists()) {
+            if (CONFIG_FILE.exists() && CONFIG_FILE.length() != 0) {
                 loadConfig();
             } else {
                 newConfig();

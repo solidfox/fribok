@@ -27,10 +27,9 @@ import java.util.Arrays;
 /**
  * Utility methods for sending mail
  *
- *
- * User: Johan Gunnarsson
  * Date: 2007-mar-26
  * Time: 16:35:15
+ * @version $Id$
  */
 public class SSMail {
 
@@ -173,6 +172,7 @@ public class SSMail {
         props.put("mail.smtp.port", Integer.toString(server.getURI().getPort()));
         props.put("mail.smtp.auth", Boolean.toString(server.isAuth()));
         props.put("mail.smtp.ssl.enable", Boolean.toString(server.isSSL()));
+	props.put("mail.smtp.ssl.protocols","TLSv1.2");
         props.put("mail.smtp.starttls.enable", Boolean.toString(server.isStartTLS()));
 
         Authenticator auth = null;
