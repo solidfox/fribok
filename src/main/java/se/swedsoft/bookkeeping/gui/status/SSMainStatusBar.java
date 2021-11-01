@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.gui.status;
 
 
-import se.swedsoft.bookkeeping.app.Version;
+import org.fribok.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.system.SSDB;

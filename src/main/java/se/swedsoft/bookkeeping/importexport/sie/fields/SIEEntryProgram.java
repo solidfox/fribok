@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.importexport.sie.fields;
 
 
-import se.swedsoft.bookkeeping.app.Version;
+import org.fribok.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.SSNewAccountingYear;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEExporter;
 import se.swedsoft.bookkeeping.importexport.sie.SSSIEImporter;

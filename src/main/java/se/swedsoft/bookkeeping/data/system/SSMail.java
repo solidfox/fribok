@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.data.system;
 
-import se.swedsoft.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSNewCompany;
 import se.swedsoft.bookkeeping.data.SSStandardText;

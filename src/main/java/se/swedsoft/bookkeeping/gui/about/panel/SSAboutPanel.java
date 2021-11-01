@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.gui.about.panel;
 
 
-import se.swedsoft.bookkeeping.app.Version;
+import org.fribok.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.gui.util.SSBundle;
 import se.swedsoft.bookkeeping.util.BrowserLaunch;
 

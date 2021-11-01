@@ -1,6 +1,6 @@
 package se.swedsoft.bookkeeping.gui;
 
-import se.swedsoft.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.calc.math.SSDateMath;
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.calc.math.SSSupplierInvoiceMath;

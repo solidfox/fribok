@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.data.backup;
 
 
-import se.swedsoft.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Path;
 
 import java.io.*;
 import java.util.List;

@@ -2,8 +2,8 @@ package se.swedsoft.bookkeeping;
 
 
 import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
-import se.swedsoft.bookkeeping.app.Path;
-import se.swedsoft.bookkeeping.app.Version;
+import org.fribok.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.system.SSCompanyLock;
 import se.swedsoft.bookkeeping.data.system.SSDB;
 import se.swedsoft.bookkeeping.data.system.SSDBConfig;

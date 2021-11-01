@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along with
  * Fribok.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.swedsoft.bookkeeping.app;
+package org.fribok.bookkeeping.app;
 
 
 import org.freedesktop.xdg.BaseDirs;
@@ -33,7 +33,7 @@ import java.util.Map;
  * File objects available for use in different parts of the program.
  *
  * @author Stefan Kangas
- * @version $Id$
+ * @version $Id:$
  */
 public enum Path {
 

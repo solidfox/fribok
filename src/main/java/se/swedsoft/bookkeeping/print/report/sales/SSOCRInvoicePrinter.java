@@ -14,9 +14,8 @@ import java.util.ResourceBundle;
 
 
 /**
- * User: Andreas Lago
- * Date: 2006-aug-17
- * Time: 10:52:35
+ * $Id$ 
+ *
  */
 public class SSOCRInvoicePrinter extends SSInvoicePrinter {
 
@@ -93,7 +92,7 @@ public class SSOCRInvoicePrinter extends SSInvoicePrinter {
             for (int i = 0; i < 84; i++) {
                 iCharacters[i] = ' ';
             }
-            // Förtrykta fält
+            // Förtryckta fält
             iCharacters[83] = 'H';
 
             /* iCharacters[79] = '#';

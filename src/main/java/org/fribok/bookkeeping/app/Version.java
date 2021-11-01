@@ -1,4 +1,4 @@
-package se.swedsoft.bookkeeping.app;
+package org.fribok.bookkeeping.app;
 
 import java.io.IOException;
 import java.util.ResourceBundle;

@@ -2,7 +2,7 @@ package se.swedsoft.bookkeeping.data.system;
 
 
 import se.swedsoft.bookkeeping.SSTriggerHandler;
-import se.swedsoft.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Path;
 import se.swedsoft.bookkeeping.calc.math.*;
 import se.swedsoft.bookkeeping.calc.util.SSAutoIncrement;
 import se.swedsoft.bookkeeping.data.*;

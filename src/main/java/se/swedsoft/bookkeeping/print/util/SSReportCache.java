@@ -4,8 +4,8 @@ package se.swedsoft.bookkeeping.print.util;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
-import se.swedsoft.bookkeeping.app.Path;
-import se.swedsoft.bookkeeping.app.Version;
+import org.fribok.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.util.SSException;
 
 import java.io.*;

@@ -5,7 +5,7 @@
 package se.swedsoft.bookkeeping.gui;
 
 
-import se.swedsoft.bookkeeping.app.Version;
+import org.fribok.bookkeeping.app.Version;
 import se.swedsoft.bookkeeping.data.util.SSConfig;
 import se.swedsoft.bookkeeping.gui.company.SSCompanyFrame;
 import se.swedsoft.bookkeeping.gui.status.SSMainStatusBar;

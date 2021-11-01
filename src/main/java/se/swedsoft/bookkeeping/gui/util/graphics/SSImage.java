@@ -1,7 +1,7 @@
 package se.swedsoft.bookkeeping.gui.util.graphics;
 
 
-import se.swedsoft.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Path;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
