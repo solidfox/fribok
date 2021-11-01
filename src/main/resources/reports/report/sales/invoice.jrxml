@@ -33,7 +33,6 @@
     <parameter name="text"      class="java.lang.String"/>
 
 
-
     <parameter name="invoice.deliveryadress.name"     class="java.lang.String"/>
     <parameter name="invoice.deliveryadress.address1" class="java.lang.String"/>
     <parameter name="invoice.deliveryadress.address2" class="java.lang.String"/>
@@ -65,7 +64,7 @@
     <parameter name="invoice.taxrate2"                  class="java.lang.String"/>
     <parameter name="invoice.taxrate3"                  class="java.lang.String"/>
 
-    <parameter name="invoice.hasdiscount"     class="java.lang.Boolean"/>
+    <parameter name="invoice.hasdiscount"        class="java.lang.Boolean"/>
 
     <parameter name="invoice.netsum"             class="java.math.BigDecimal"/>
     <parameter name="invoice.taxsum1"            class="java.math.BigDecimal"/>

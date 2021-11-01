@@ -3,14 +3,7 @@
 <!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
 
 <jasperReport name="Invoice"  leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
-
-    <reportFont name="OCR-A" fontName="OCRA" pdfFontName="OCRA.ttf" isPdfEmbedded="true" />
-    <reportFont name="OCR-B" fontName="OCRB" pdfFontName="OCRB.ttf" isPdfEmbedded="true" />
-
-
     <!--- Declared parameters in the report. -->
-    <parameter name="subreport.report"          class="net.sf.jasperreports.engine.JasperReport"/>
-
     <parameter name="title"      class="java.lang.String"/>
 
     <parameter name="company.logo"       class="java.awt.Image"/>
@@ -26,20 +19,23 @@
     <parameter name="company.residence" class="java.lang.String"/>
     <parameter name="company.email"     class="java.lang.String"/>
     <parameter name="company.homepage"  class="java.lang.String"/>
+
     <parameter name="company.plusaccount"  class="java.lang.String"/>
     <parameter name="company.bankaccount"  class="java.lang.String"/>
+
     <parameter name="company.bic"   class="java.lang.String"/>
     <parameter name="company.iban"  class="java.lang.String"/>
     <parameter name="company.bank"  class="java.lang.String"/>
+
     <parameter name="company.taxregistered"     class="java.lang.Boolean"/>
     <parameter name="company.corporateid"       class="java.lang.String"/>
     <parameter name="company.vatnr"             class="java.lang.String"/>
 
 
-
     <parameter name="number"    class="java.lang.Integer"/>
     <parameter name="date"      class="java.lang.String"/>
     <parameter name="text"      class="java.lang.String"/>
+
 
     <parameter name="invoice.deliveryadress.name"     class="java.lang.String"/>
     <parameter name="invoice.deliveryadress.address1" class="java.lang.String"/>
@@ -72,6 +68,8 @@
     <parameter name="invoice.taxrate2"                  class="java.lang.String"/>
     <parameter name="invoice.taxrate3"                  class="java.lang.String"/>
 
+    <parameter name="invoice.hasdiscount"        class="java.lang.Boolean"/>
+
     <parameter name="invoice.netsum"             class="java.math.BigDecimal"/>
     <parameter name="invoice.taxsum1"            class="java.math.BigDecimal"/>
     <parameter name="invoice.taxsum2"            class="java.math.BigDecimal"/>
@@ -81,10 +79,12 @@
 
     <parameter name="invoicereport.totalsum"       class="java.lang.String"/>
 
+    <parameter name="subreport.report"          class="net.sf.jasperreports.engine.JasperReport"/>
+    <parameter name="subreport.datasource"  class="net.sf.jasperreports.engine.JRDataSource"/>
+
     <parameter name="ocrinvoice.coderow"       class="java.lang.String"/>
     <parameter name="ocrinvoice.background" class="java.awt.Image"/>
 
-    <parameter name="subreport.datasource"  class="net.sf.jasperreports.engine.JRDataSource"/>
 
     <background>
         <band height="842" isSplitAllowed="false">
@@ -693,10 +693,6 @@
 
             </frame>
 
-
-
-
-
         </band>
     </detail>
 
@@ -1170,7 +1166,7 @@
                     <reportElement x="0" y="230" width="594" height="20"/>
 
                     <textElement>
-                        <font reportFont="OCR-B" size="9"/>
+                        <font fontName="OCRB" size="9"/>
                     </textElement>
                     <textFieldExpression>
                         <![CDATA[$P{ocrinvoice.coderow}]]>
