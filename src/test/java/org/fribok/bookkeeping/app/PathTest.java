@@ -16,12 +16,12 @@
  * You should have received a copy of the GNU General Public License along with
  * Fribok.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.swedsoft.bookkeeping.app;
+package org.fribok.bookkeeping.app;
 
 
 import org.junit.Assert;
 import org.junit.Test;
-import se.swedsoft.bookkeeping.app.Path;
+import org.fribok.bookkeeping.app.Path;
 
 
 /**
