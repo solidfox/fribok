@@ -1,6 +1,5 @@
 package se.swedsoft.bookkeeping.print.report.sales;
 
-
 import se.swedsoft.bookkeeping.calc.math.SSInvoiceMath;
 import se.swedsoft.bookkeeping.data.SSCustomer;
 import se.swedsoft.bookkeeping.data.SSInvoice;
@@ -13,12 +12,14 @@ import se.swedsoft.bookkeeping.gui.util.model.SSDefaultTableModel;
 import se.swedsoft.bookkeeping.print.SSPrinter;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
 /**
- * Date: 2006-mar-03
- * Time: 15:32:42
+ *
+ * $Id$
  */
 public class SSInvoicePrinter extends SSPrinter {
 
@@ -153,6 +154,38 @@ public class SSInvoicePrinter extends SSPrinter {
         addParameter("invoice.taxsum3", iTaxSum.get(SSTaxCode.TAXRATE_3));
         addParameter("invoice.rounding", iRounding);
         addParameter("invoice.totalsum", iTotalSum);
+
+
+        // QR-code 
+        DateFormat iFormat = new SimpleDateFormat("yyyyMMdd");
+        final StringBuilder uqrData = new StringBuilder();
+
+        uqrData.append("{\"uqr\": 1, \"tp\": 1, ");
+        uqrData.append("\"nme\": \""); 
+        uqrData.append(iCompany.getName());
+        uqrData.append("\", \"cc\": \"SE\""); //iCompany.getAddress().getCountry()
+        uqrData.append(", \"cid\": \"");
+        uqrData.append(iCompany.getCorporateID());
+        uqrData.append("\", \"iref\": \"");
+        uqrData.append(iInvoice.getNumber());
+        uqrData.append("\", \"idt\": \"");
+        uqrData.append(iFormat.format(iInvoice.getDate()));
+        uqrData.append("\", \"ddt\": \"");
+        uqrData.append(iFormat.format(iInvoice.getDueDate()));
+        uqrData.append("\", \"due\": ");
+        uqrData.append(iTotalSum);
+        uqrData.append(", \"vat\": ");
+        uqrData.append((iTotalSum.subtract(iNetSum)));
+        uqrData.append(", \"cur\": \"");
+        uqrData.append(iInvoice.getCurrency()); 
+        uqrData.append("\", \"pt\": \"");
+        uqrData.append(iCompany.getBankGiroNumber() != ""? "BG": "");  
+        uqrData.append("\", \"acc\": \"");
+        uqrData.append(iCompany.getBankGiroNumber());  //iCompany.getPlusGiroNumber(), iCompany.getBIC(), iCompany.getIBAN() 
+        uqrData.append("\"}");
+
+        SSSalePrinterUtils.addParameterForQRCode(uqrData.toString(), this);
+
     }
 
     /**
