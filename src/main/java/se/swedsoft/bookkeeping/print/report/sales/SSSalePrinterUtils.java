@@ -63,10 +63,8 @@ public class SSSalePrinterUtils {
      * @param iPrinter
      */
     public static void addParameterForQRCode(final String uqrData, SSPrinter iPrinter) {
-        // fixme! - Not much use here to go UTF-8 yet, since ISO-8859-1 
-        // basically covers windows-1252, but in general for v3 this should be changed 
-        final String uqrEncoding = "ISO-8859-1";
-
+//SSNewCompany iCompany,
+//SSInvoice iInvoice,
         File uqrFileDir = new File(Path.get(Path.APP_DATA), "qrcode");
         String iFileName = "qrkod-faktura.png";
         if (!uqrFileDir.exists()) {
@@ -75,11 +73,11 @@ public class SSSalePrinterUtils {
         File uqrFile = new File(uqrFileDir, iFileName);
 
         try {
-            CreateQRCode.createQRCode(uqrData, uqrEncoding, uqrFile, 200, 200);
+            CreateQRCode.createQRCode(uqrData, uqrFile, 200, 200);
         } catch (WriterException we) {
             System.out.println("Something in the uqr data cannot be encoded as QR-code: " + uqrData.toString());
         } catch (UnsupportedEncodingException uee) {
-            System.out.println("Unexpected character encoding: " + uqrEncoding);
+            System.out.println("Unexpected character encoding: " + uqrData.toString());
         }
 
         iPrinter.addParameter("invoice.qrcode", SSSalePrinterUtils.getImage(uqrFile));
@@ -108,6 +106,32 @@ public class SSSalePrinterUtils {
         }
         return iImage;
 
+    }
+
+    
+    public static String getPrimaryPaymentMethod(final SSNewCompany iCompany) {
+        // fixme! - Check SE, NO, DK
+        if (!"".equals(iCompany.getBankGiroNumber())) {
+            return "BG";
+        } else if (!"".equals(iCompany.getPlusGiroNumber())) {
+            return "PG";
+        } else if (!"".equals(iCompany.getIBAN())) {
+            if ("".equals(iCompany.getBIC())) {
+                return "BBAN";
+            }
+            return "IBAN";
+        }
+        return "IBAN";
+    }
+    
+    public static String getPrimaryPaymentAccount(final SSNewCompany iCompany) {
+        // fixme! - Check SE, NO, DK
+        if (!"".equals(iCompany.getBankGiroNumber())) {
+            return iCompany.getBankGiroNumber();
+        } else if (!"".equals(iCompany.getPlusGiroNumber())) {
+            return iCompany.getPlusGiroNumber();
+        }
+        return iCompany.getIBAN();
     }
 
 }

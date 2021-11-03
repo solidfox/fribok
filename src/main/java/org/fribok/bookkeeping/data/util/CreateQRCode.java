@@ -30,12 +30,17 @@ public class CreateQRCode {
      * @param height
      * @param width
      */
-    public static void createQRCode(final String uqrData, final String charset, final File iFile, final int height, final int width) throws WriterException, UnsupportedEncodingException {
+    public static void createQRCode(final String uqrData, final File iFile, final int height, final int width) throws WriterException, UnsupportedEncodingException {
 
         Map<EncodeHintType, ErrorCorrectionLevel> encodeHintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
         encodeHintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
 
-	BitMatrix matrix = new MultiFormatWriter().encode(new String(uqrData.getBytes(charset), charset), BarcodeFormat.QR_CODE, width, height, encodeHintMap);
+        // fixme! - We go UTF-8 here specifically (due to spec) from windows-1252, 
+        // but in general for v3 this should be changed all over 
+        final String uqrEncoding = "UTF-8";
+        System.out.println("Original UsingQR data: " + uqrData);
+
+        BitMatrix matrix = new MultiFormatWriter().encode(new String(uqrData.getBytes(uqrEncoding), uqrEncoding), BarcodeFormat.QR_CODE, width, height, encodeHintMap);
 
 	try {
 	    MatrixToImageWriter.writeToFile(matrix, "png", iFile);
