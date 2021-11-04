@@ -177,13 +177,13 @@ public class SSInvoicePrinter extends SSPrinter {
         uqrData.append("\", \"due\": ");
         uqrData.append(iTotalSum);
         uqrData.append(", \"vat\": ");
-        uqrData.append(iTotalSum.subtract(iNetSum).setScale(0, RoundingMode.HALF_UP));
+        uqrData.append(iTotalSum.subtract(iNetSum).setScale(2, RoundingMode.HALF_UP));
         uqrData.append(", \"vh\": ");
-        uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_1).setScale(0, RoundingMode.HALF_UP));
+        uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_1).setScale(2, RoundingMode.HALF_UP));
         uqrData.append(", \"vm\": ");
-        uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_2).setScale(0, RoundingMode.HALF_UP));
+        uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_2).setScale(2, RoundingMode.HALF_UP));
         uqrData.append(", \"vl\": ");
-        uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_3).setScale(0, RoundingMode.HALF_UP));
+        uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_3).setScale(2, RoundingMode.HALF_UP));
         uqrData.append(", \"cur\": \"");
         uqrData.append(iInvoice.getCurrency()); 
         uqrData.append("\", \"pt\": \"");
