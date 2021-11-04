@@ -177,7 +177,7 @@ public class SSInvoicePrinter extends SSPrinter {
         uqrData.append("\", \"due\": ");
         uqrData.append(iTotalSum);
         uqrData.append(", \"vat\": ");
-        uqrData.append(iTotalSum.subtract(iNetSum).setScale(2, RoundingMode.HALF_UP));
+        uqrData.append(iTotalSum.subtract(iNetSum).subtract(iRounding).setScale(2, RoundingMode.HALF_UP));
         uqrData.append(", \"vh\": ");
         uqrData.append(iTaxSum.get(SSTaxCode.TAXRATE_1).setScale(2, RoundingMode.HALF_UP));
         uqrData.append(", \"vm\": ");
